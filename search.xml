@@ -15,6 +15,19 @@
       </tags>
   </entry>
   <entry>
+    <title>在服务器中搭建hexo博客</title>
+    <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<center>个人服务器搭建hexo(宝塔)</center>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>hexo博客</tag>
+        <tag>小教程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>next主题优化</title>
     <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<center>hexo博客next主题主要优化修改方案</center>
@@ -28,19 +41,6 @@
         <tag>hexo博客</tag>
         <tag>小教程</tag>
         <tag>next主题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在服务器中搭建hexo博客</title>
-    <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<center>个人服务器搭建hexo(宝塔)</center>
-<span id="more"></span>]]></content>
-      <categories>
-        <category>hexo博客</category>
-      </categories>
-      <tags>
-        <tag>hexo博客</tag>
-        <tag>小教程</tag>
       </tags>
   </entry>
   <entry>
@@ -80,6 +80,28 @@
       </tags>
   </entry>
   <entry>
+    <title>面向对象之多态</title>
+    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%A4%9A%E6%80%81/</url>
+    <content><![CDATA[<p>多态:同一个类型的多个实例，在执行同一个方法时，呈现出多种的行为特征</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//“铠甲勇士”类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 铠甲勇士 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">skill</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;:普通攻击&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//“刑天铠甲”类继承了“铠甲勇士”类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 刑天铠甲 <span class="keyword">extends</span> 铠甲勇士</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String name = <span class="string">&quot;刑天铠甲&quot;</span>;</span><br><span class="line">    <span class="comment">//重写“铠甲勇士”类skill方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">skill</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;:火光剑法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//“飞影铠甲”类继承了“铠甲勇士”类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 飞影铠甲 <span class="keyword">extends</span> 铠甲勇士</span>&#123;</span><br><span class="line">    <span class="comment">//新增features方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">features</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;飞影铠甲特征:蓝色&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//“铠甲功能”类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 铠甲功能 </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        铠甲功能.技能释放();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//向上转型，子类对象直接赋值给父类对象</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> 技能释放()&#123;</span><br><span class="line"><span class="comment">//        动态绑定“刑天铠甲”类的skill方法，编译类型是“铠甲勇士”，实际类型是“刑天铠甲”</span></span><br><span class="line">        铠甲勇士 刑天技能 = <span class="keyword">new</span> 刑天铠甲();</span><br><span class="line">        name = <span class="string">&quot;刑天铠甲&quot;</span>;</span><br><span class="line">        刑天技能.skill(name);</span><br><span class="line"><span class="comment">//        动态绑飞影铠甲类的skill方法，若无，则向父类查找，编译类型是”铠甲勇士“，实际类型是飞影铠甲</span></span><br><span class="line">        铠甲勇士 飞影技能 = <span class="keyword">new</span> 飞影铠甲();</span><br><span class="line">        name = <span class="string">&quot;飞影铠甲&quot;</span>;</span><br><span class="line">        飞影技能.skill(name);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//向下转型，父类对象赋值给子类对象，需要强转类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> 铠甲特征()&#123;</span><br><span class="line">        铠甲勇士 飞影技能 = <span class="keyword">new</span> 飞影铠甲();;</span><br><span class="line"><span class="comment">//        于编译器而言，“飞影技能”是“铠甲勇士”类型（实际运行时是“飞影铠甲”类型），由于“铠甲勇士”类下并没有features方法，所以编译报错，实际可以运行</span></span><br><span class="line"><span class="comment">//        飞影技能.features();</span></span><br><span class="line"><span class="comment">//		  强制类型转换，将“铠甲勇士”类型的“飞影技能”强转为“飞影铠甲”类型，“飞影铠甲”类有features()方法，故不会报错</span></span><br><span class="line">        飞影铠甲 铠甲类型强转 = (飞影铠甲)飞影技能;</span><br><span class="line">        铠甲类型强转.features();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行“铠甲功能”类，输出：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">刑天铠甲:火光剑法</span><br><span class="line">飞影铠甲:普通攻击</span><br><span class="line">飞影铠甲特征:蓝色</span><br><span class="line"><span class="comment">//小类赋值给大类称为向上转型，子类对象直接赋值给父类对象</span></span><br><span class="line"><span class="comment">//大类赋值给小类称为向下转型，父类对象赋值给子类对象，需要强转类型</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>面向对象之封装</title>
     <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85/</url>
     <content><![CDATA[]]></content>
@@ -94,18 +116,6 @@
   <entry>
     <title>面向对象之继承</title>
     <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%BB%A7%E6%89%BF/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面向对象之多态</title>
-    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%A4%9A%E6%80%81/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>java笔记</category>
