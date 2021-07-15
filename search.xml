@@ -15,19 +15,6 @@
       </tags>
   </entry>
   <entry>
-    <title>在服务器中搭建hexo博客</title>
-    <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<center>个人服务器搭建hexo(宝塔)</center>
-<span id="more"></span>]]></content>
-      <categories>
-        <category>hexo博客</category>
-      </categories>
-      <tags>
-        <tag>hexo博客</tag>
-        <tag>小教程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>next主题优化</title>
     <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<center>hexo博客next主题主要优化修改方案</center>
@@ -41,6 +28,19 @@
         <tag>hexo博客</tag>
         <tag>小教程</tag>
         <tag>next主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在服务器中搭建hexo博客</title>
+    <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<center>个人服务器搭建hexo(宝塔)</center>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>hexo博客</tag>
+        <tag>小教程</tag>
       </tags>
   </entry>
   <entry>
@@ -67,9 +67,11 @@
   <entry>
     <title>小衅笔记</title>
     <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<center>新站点建好了~ 开心~</center>
-<center>July,goodluck~</center>
-
+    <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
 ]]></content>
       <categories>
         <category>站点日志</category>
