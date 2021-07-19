@@ -21,15 +21,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xxin.xyz","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="我没有对不起谁，所以心安理得，而那些对不起我的人，或许有他们的难言之隐，我不会在意">
+<meta name="description" content="访问控制符的权限级别&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;public &gt; protected &gt; default &gt; private &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;public:公共访问权限&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;pritected:子类访问权限&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;default:包访问权限&amp;ens">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面向对象之封装">
 <meta property="og:url" content="http://blog.xxin.xyz/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85/index.html">
 <meta property="og:site_name" content="小衅笔记">
-<meta property="og:description" content="我没有对不起谁，所以心安理得，而那些对不起我的人，或许有他们的难言之隐，我不会在意">
+<meta property="og:description" content="访问控制符的权限级别&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;public &gt; protected &gt; default &gt; private &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;public:公共访问权限&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;pritected:子类访问权限&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;default:包访问权限&amp;ens">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-15T00:45:30.000Z">
-<meta property="article:modified_time" content="2021-07-15T00:57:38.369Z">
+<meta property="article:modified_time" content="2021-07-19T13:07:57.960Z">
 <meta property="article:author" content="xxin">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="学习笔记">
@@ -138,7 +138,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -151,6 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E7%AC%A6%E7%9A%84%E6%9D%83%E9%99%90%E7%BA%A7%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">访问控制符的权限级别</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -277,7 +278,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h4 id="访问控制符的权限级别"><a href="#访问控制符的权限级别" class="headerlink" title="访问控制符的权限级别"></a>访问控制符的权限级别</h4><p>&ensp;&ensp;&ensp;&ensp;<em>public &gt; protected &gt; default &gt; private</em></p>
+<p>&ensp;&ensp;&ensp;&ensp;public:公共访问权限<br>&ensp;&ensp;&ensp;&ensp;pritected:子类访问权限<br>&ensp;&ensp;&ensp;&ensp;default:包访问权限<br>&ensp;&ensp;&ensp;&ensp;private:当前类访问权限</p>
+<span id="more"></span>
     </div>
 
     
