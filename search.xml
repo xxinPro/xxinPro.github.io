@@ -15,6 +15,35 @@
       </tags>
   </entry>
   <entry>
+    <title>next主题优化</title>
+    <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<center>hexo博客next主题主要优化修改方案</center>
+<span id="more"></span>
+
+<p>next官方文档<a href="https://theme-next.js.org/docs/">https://theme-next.js.org/docs/</a></p>
+<h3 id="一、安装和升级"><a href="#一、安装和升级" class="headerlink" title="一、安装和升级"></a>一、安装和升级</h3><h4 id="安装next主题"><a href="#安装next主题" class="headerlink" title="安装next主题"></a>安装next主题</h4><p>从github下载next</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> hexo/myblog</span></span><br><span class="line"><span class="meta">#</span><span class="bash">直接下载到themes文件夹</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-更新next主题"><a href="#2-更新next主题" class="headerlink" title="2.更新next主题"></a>2.更新next主题</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> hexo/myblog</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-theme-next@latest</span></span><br></pre></td></tr></table></figure>
+<p>NexT 建议通过这种方式从版本 5 或 7 升级到版本 8：</p>
+<ol>
+<li>复制一些旧的 NexT 文件：<br>1.1. _config.yml或next.yml（如果您使用了Alternate Theme Config）。<br>1.2. 放置在next/source/css/_custom/和next/source/css/_variables/目录中的自定义 CSS 文件。<br>1.3. 自定义布局文件放置在next/layout/_custom/*.<br>1.4. 可以通过存储库之间的比较工具找到的任何其他可能的自定义添加。</li>
+<li>然后重命名旧的 NexT 文件夹，例如重命名next为next-old.</li>
+<li>按照本文提供的方法安装新版本：安装说明。运行hexo clean并hexo s检查站点是否正常工作。</li>
+<li>更新 Hexo 和 Hexo 插件<br>如果在完成上述步骤后，执行hexo s或时出现错误hexo g，则表示可能是旧版本的 Hexo/Hexo 插件与新版本的主题 NexT 之间存在冲突。我们建议将 Hexo 升级到 5.0 或更高版本，并将 Hexo 插件升级到最新版本。您可以运行npm outdated以查看所有可升级的插件。</li>
+<li>如果您发现任何错误或您只是不喜欢此版本，您可以随时切换回旧版本。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>hexo博客</tag>
+        <tag>小教程</tag>
+        <tag>next主题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在服务器中搭建hexo博客</title>
     <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<center>个人服务器搭建hexo(宝塔)</center>
@@ -66,35 +95,6 @@
       </tags>
   </entry>
   <entry>
-    <title>next主题优化</title>
-    <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<center>hexo博客next主题主要优化修改方案</center>
-<span id="more"></span>
-
-<p>next官方文档<a href="https://theme-next.js.org/docs/">https://theme-next.js.org/docs/</a></p>
-<h3 id="一、安装和升级"><a href="#一、安装和升级" class="headerlink" title="一、安装和升级"></a>一、安装和升级</h3><h4 id="安装next主题"><a href="#安装next主题" class="headerlink" title="安装next主题"></a>安装next主题</h4><p>从github下载next</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> hexo/myblog</span></span><br><span class="line"><span class="meta">#</span><span class="bash">直接下载到themes文件夹</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-更新next主题"><a href="#2-更新next主题" class="headerlink" title="2.更新next主题"></a>2.更新next主题</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> hexo/myblog</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-theme-next@latest</span></span><br></pre></td></tr></table></figure>
-<p>NexT 建议通过这种方式从版本 5 或 7 升级到版本 8：</p>
-<ol>
-<li>复制一些旧的 NexT 文件：<br>1.1. _config.yml或next.yml（如果您使用了Alternate Theme Config）。<br>1.2. 放置在next/source/css/_custom/和next/source/css/_variables/目录中的自定义 CSS 文件。<br>1.3. 自定义布局文件放置在next/layout/_custom/*.<br>1.4. 可以通过存储库之间的比较工具找到的任何其他可能的自定义添加。</li>
-<li>然后重命名旧的 NexT 文件夹，例如重命名next为next-old.</li>
-<li>按照本文提供的方法安装新版本：安装说明。运行hexo clean并hexo s检查站点是否正常工作。</li>
-<li>更新 Hexo 和 Hexo 插件<br>如果在完成上述步骤后，执行hexo s或时出现错误hexo g，则表示可能是旧版本的 Hexo/Hexo 插件与新版本的主题 NexT 之间存在冲突。我们建议将 Hexo 升级到 5.0 或更高版本，并将 Hexo 插件升级到最新版本。您可以运行npm outdated以查看所有可升级的插件。</li>
-<li>如果您发现任何错误或您只是不喜欢此版本，您可以随时切换回旧版本。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>hexo博客</category>
-      </categories>
-      <tags>
-        <tag>hexo博客</tag>
-        <tag>小教程</tag>
-        <tag>next主题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>夜郎自大</title>
     <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
     <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
@@ -113,23 +113,6 @@
       <tags>
         <tag>网抑云</tag>
         <tag>毒鸡汤</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>小衅笔记</title>
-    <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-]]></content>
-      <categories>
-        <category>站点日志</category>
-      </categories>
-      <tags>
-        <tag>好心情</tag>
-        <tag>站点日志</tag>
       </tags>
   </entry>
   <entry>
@@ -164,27 +147,20 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>面向对象之封装</title>
-    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85/</url>
-    <content><![CDATA[]]></content>
+    <title>小衅笔记</title>
+    <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+]]></content>
       <categories>
-        <category>java笔记</category>
+        <category>站点日志</category>
       </categories>
       <tags>
-        <tag>java</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面向对象之继承</title>
-    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%BB%A7%E6%89%BF/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>学习笔记</tag>
+        <tag>好心情</tag>
+        <tag>站点日志</tag>
       </tags>
   </entry>
   <entry>
@@ -209,6 +185,30 @@
 <h5 id="instanceof运算符-避免ClassCastException异常"><a href="#instanceof运算符-避免ClassCastException异常" class="headerlink" title="instanceof运算符:避免ClassCastException异常"></a>instanceof运算符:避免ClassCastException异常</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//运用该运算符，可以将test()方法改写为如下</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Object value1 = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (value1 <span class="keyword">instanceof</span> Integer)&#123;</span><br><span class="line">        Integer value2 = (Integer)value1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;String不能强转为Integer类型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//那么铠甲特征()方法可修改为如下</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> 铠甲特征()&#123;</span><br><span class="line">    铠甲勇士 飞影技能 = <span class="keyword">new</span> 飞影铠甲();</span><br><span class="line">    <span class="keyword">if</span> (飞影技能 <span class="keyword">instanceof</span> 飞影铠甲)&#123;</span><br><span class="line">        飞影铠甲 铠甲类型强转 = (飞影铠甲)飞影技能;</span><br><span class="line">        铠甲类型强转.features();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;飞影技能不能强转为飞影铠甲类型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    铠甲勇士 刑天技能 = <span class="keyword">new</span> 刑天铠甲();</span><br><span class="line">    <span class="keyword">if</span> (刑天技能 <span class="keyword">instanceof</span> 飞影铠甲)&#123;</span><br><span class="line">        飞影铠甲 铠甲类型强转<span class="number">2</span> = (飞影铠甲)刑天技能;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;刑天技能不能强转为飞影铠甲类型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//instanceof运算符可以确保被强制转换类型的变量确实可以强制转换，从而避免ClassCastException</span></span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象之继承</title>
+    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%BB%A7%E6%89%BF/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象之封装</title>
+    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>java笔记</category>
       </categories>
