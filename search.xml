@@ -1,73 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>next主题优化</title>
-    <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<center>hexo博客next主题主要优化修改方案</center>
-<center>基于hexo5.x和next8.x</center>
-<span id="more"></span>
-<hr>
-
-<p>next官方文档<a href="https://theme-next.js.org/docs/">https://theme-next.js.org/docs/</a></p>
-<h3 id="一、安装和升级"><a href="#一、安装和升级" class="headerlink" title="一、安装和升级"></a>一、安装和升级</h3><h4 id="安装next主题"><a href="#安装next主题" class="headerlink" title="安装next主题"></a>安装next主题</h4><p>从github下载next</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> hexo/myblog</span></span><br><span class="line"><span class="meta">#</span><span class="bash">直接下载到themes文件夹</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span></span><br></pre></td></tr></table></figure>
-<p>在hexo的_config.yum配置文件中搜索theme，并将其修改为next</p>
-<h4 id="2-更新next主题"><a href="#2-更新next主题" class="headerlink" title="2.更新next主题"></a>2.更新next主题</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> hexo/myblog</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-theme-next@latest</span></span><br></pre></td></tr></table></figure>
-<p>NexT 建议通过下面这种方式从版本 5 或 7 升级到版本 8：</p>
-<ol>
-<li>复制一些旧的 NexT 文件：<br>1.1. _config.yml或next.yml（如果您使用了Alternate Theme Config）。<br>1.2. 放置在next/source/css/_custom/和next/source/css/_variables/目录中的自定义 CSS 文件。<br>1.3. 自定义布局文件放置在next/layout/_custom/*.<br>1.4. 可以通过存储库之间的比较工具找到的任何其他可能的自定义添加。</li>
-<li>然后重命名旧的 NexT 文件夹，例如重命名next为next-old.</li>
-<li>按照本文提供的方法安装新版本：安装说明。运行hexo clean并hexo s检查站点是否正常工作。</li>
-<li>更新 Hexo 和 Hexo 插件<br>如果在完成上述步骤后，执行hexo s或时出现错误hexo g，则表示可能是旧版本的 Hexo/Hexo 插件与新版本的主题 NexT 之间存在冲突。我们建议将 Hexo 升级到 5.0 或更高版本，并将 Hexo 插件升级到最新版本。您可以运行npm outdated以查看所有可升级的插件。</li>
-<li>如果您发现任何错误或您只是不喜欢此版本，您可以随时切换回旧版本。</li>
-</ol>
-<h3 id="二、美化"><a href="#二、美化" class="headerlink" title="二、美化"></a>二、美化</h3><h4 id="1-主题选择"><a href="#1-主题选择" class="headerlink" title="1.主题选择"></a>1.主题选择</h4><p>next的配置文件中搜索Scheme Settings<br>提供了四种主题:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
-<p>本博客使用第三种</p>
-<h4 id="2-网页icon设置"><a href="#2-网页icon设置" class="headerlink" title="2.网页icon设置"></a>2.网页icon设置</h4><p>next配置文件搜索favicon</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">favicon:</span><br><span class="line">  small: /images/favicon-16x16-next.png</span><br><span class="line">  medium: /images/favicon-32x32-next.png</span><br><span class="line">  apple_touch_icon: /images/apple-touch-icon-next.png</span><br><span class="line">  safari_pinned_tab: /images/logo.svg</span><br><span class="line">  #android_manifest: /manifest.json</span><br></pre></td></tr></table></figure>
-<p>制作favicon.ico图标，并放置在themes/next/sources/images即可</p>
-<h4 id="3-博客底部的标签样式"><a href="#3-博客底部的标签样式" class="headerlink" title="3.博客底部的标签样式"></a>3.博客底部的标签样式</h4><p>修改后效果↓<br><img src="https://blog.xxin.xyz/pageImg/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/1.png" style="zoom:100%;"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打开hexo\myblog\themes\next-old\layout\_macro\post.swig</span><br><span class="line"></span><br><span class="line">搜索rel=&quot;tag&quot;，将后面的&#123;&#123; tag_indicate &#125;&#125;修改为&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-侧边栏头像"><a href="#4-侧边栏头像" class="headerlink" title="4.侧边栏头像"></a>4.侧边栏头像</h4><p>next配置文件搜索Sidebar Avatar</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: http://q1.qlogo.cn/g?b=qq&amp;nk=3033528136&amp;s=640 #头像的网络位置或相对路径(blog/themes/next/source/images)</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #鼠标放在头像上时是否旋转</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #头像是否设为圆形，否则为矩形</span><br><span class="line">  opacity: 2 #头像放缩指数</span><br></pre></td></tr></table></figure>
-
-<h4 id="5-侧边栏社交信息"><a href="#5-侧边栏社交信息" class="headerlink" title="5.侧边栏社交信息"></a>5.侧边栏社交信息</h4><p>next配置文件搜索Social Links</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">site_state: true # 是否在侧边栏加入日志、分类、标签等跳转链接</span><br><span class="line"></span><br><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/yourname || fab fa-github</span><br><span class="line">  E-Mail: mailto:x@xxin.xyz || fa fa-envelope</span><br><span class="line">  QQ: https://wpa.qq.com/msgrd?v=3&amp;uin=3033528136&amp;site=qq&amp;menu=yes || fab fa-qq</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br><span class="line">  </span><br><span class="line">social_icons:</span><br><span class="line">  enable: true #是否显示社交图标</span><br><span class="line">  icons_only: false #是否仅显示社交图标</span><br><span class="line">  transition: true</span><br></pre></td></tr></table></figure>
-
-<h4 id="6-侧边栏设置"><a href="#6-侧边栏设置" class="headerlink" title="6.侧边栏设置"></a>6.侧边栏设置</h4><p>next配置文件搜索Sidebar Settings</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  # Sidebar Position.</span><br><span class="line">  position: left #侧边栏位置</span><br><span class="line">  #position: right</span><br><span class="line"></span><br><span class="line">  # Manual define the sidebar width. If commented, will be default for:</span><br><span class="line">  # Muse | Mist: 320</span><br><span class="line">  # Pisces | Gemini: 240</span><br><span class="line">  #width: 300</span><br><span class="line"></span><br><span class="line">  # Sidebar Display (only for Muse | Mist), available values:</span><br><span class="line">  #  - post    expand on posts automatically. Default.</span><br><span class="line">  #  - always  expand for all pages automatically.</span><br><span class="line">  #  - hide    expand only when click on the sidebar toggle icon.</span><br><span class="line">  #  - remove  totally remove sidebar including sidebar toggle.</span><br><span class="line">  display: post</span><br><span class="line"></span><br><span class="line">  # Sidebar padding in pixels.</span><br><span class="line">  padding: 18 #侧边栏相对主菜单像素距离</span><br><span class="line">  # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).</span><br><span class="line">  offset: 12 #侧边栏相对主菜单像素距离</span><br><span class="line">  onmobile: true #手机上是否显示侧边栏</span><br></pre></td></tr></table></figure>
-
-<h4 id="7-版权信息"><a href="#7-版权信息" class="headerlink" title="7.版权信息"></a>7.版权信息</h4><p>next配置文件搜索creative_commons</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">creative_commons: #版权配置</span><br><span class="line">  # Available values: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | cc-zero</span><br><span class="line">  license: by-nc-sa</span><br><span class="line">  # Available values: big | small</span><br><span class="line">  size: small</span><br><span class="line">  sidebar: true #侧边栏显示版权信息</span><br><span class="line">  post: true #文章底部显示版权信息</span><br><span class="line">  # You can set a language value if you prefer a translated version of CC license, e.g. deed.zh</span><br><span class="line">  # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org</span><br><span class="line">  language: </span><br></pre></td></tr></table></figure>
-
-<h3 id="三、配置建议"><a href="#三、配置建议" class="headerlink" title="三、配置建议"></a>三、配置建议</h3><h4 id="1-浏览器缓存"><a href="#1-浏览器缓存" class="headerlink" title="1.浏览器缓存"></a>1.浏览器缓存</h4><p>next配置文件中搜索cache</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: false</span><br><span class="line">#默认关闭，开启后打开浏览器缓存</span><br></pre></td></tr></table></figure>
-<p>建议调试博客时关闭，平时打开</p>
-<h4 id="2-菜单标签与标签路径"><a href="#2-菜单标签与标签路径" class="headerlink" title="2.菜单标签与标签路径"></a>2.菜单标签与标签路径</h4><p>next配置文件中搜索Menu Settings</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#设置菜单项开启关闭、图标及其相对路径</span><br><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  about: /about/ || fa fa-user</span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
-<p>只需去除”#”号即打开对应配置，同时需创建对应页面</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#创建新页面</span><br><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
-<p>并将新页面中index.md的内容修改为</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2021-07-12 11:42:29</span><br><span class="line">type: &quot;tags&quot; #对应的标签类型</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-页面图标设置"><a href="#3-页面图标设置" class="headerlink" title="3.页面图标设置"></a>3.页面图标设置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu_settings:</span><br><span class="line">  icons: true # 是否显示各个页面的图标</span><br><span class="line">  badges: true # 标签、分类、归档内的文章数量显示</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-摘要显示"><a href="#4-摘要显示" class="headerlink" title="4.摘要显示"></a>4.摘要显示</h4><p>next配置文件搜索Read more button</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">read_more_btn: true #显示阅读全文按钮</span><br></pre></td></tr></table></figure>
-<p>会自动截取文章&lt;!–more–&gt;前的内容作为摘要</p>
-]]></content>
-      <categories>
-        <category>hexo博客</category>
-      </categories>
-      <tags>
-        <tag>hexo博客</tag>
-        <tag>next主题</tag>
-        <tag>小教程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>github+hexo博客</title>
     <url>/2021/07/15/github-hexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<center>github等代码托管平台搭建hexo博客</center>
@@ -133,6 +66,94 @@
       </tags>
   </entry>
   <entry>
+    <title>next主题优化</title>
+    <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<center>hexo博客next主题主要优化修改方案</center>
+<center>基于hexo5.x和next8.x</center>
+<span id="more"></span>
+<hr>
+
+<p>next官方文档<a href="https://theme-next.js.org/docs/">https://theme-next.js.org/docs/</a></p>
+<h3 id="一、安装和升级"><a href="#一、安装和升级" class="headerlink" title="一、安装和升级"></a>一、安装和升级</h3><h4 id="安装next主题"><a href="#安装next主题" class="headerlink" title="安装next主题"></a>安装next主题</h4><p>从github下载next</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> hexo/myblog</span></span><br><span class="line"><span class="meta">#</span><span class="bash">直接下载到themes文件夹</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span></span><br></pre></td></tr></table></figure>
+<p>在hexo的_config.yum配置文件中搜索theme，并将其修改为next</p>
+<h4 id="2-更新next主题"><a href="#2-更新next主题" class="headerlink" title="2.更新next主题"></a>2.更新next主题</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> hexo/myblog</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-theme-next@latest</span></span><br></pre></td></tr></table></figure>
+<p>NexT 建议通过下面这种方式从版本 5 或 7 升级到版本 8：</p>
+<ol>
+<li>复制一些旧的 NexT 文件：<br>1.1. _config.yml或next.yml（如果您使用了Alternate Theme Config）。<br>1.2. 放置在next/source/css/_custom/和next/source/css/_variables/目录中的自定义 CSS 文件。<br>1.3. 自定义布局文件放置在next/layout/_custom/*.<br>1.4. 可以通过存储库之间的比较工具找到的任何其他可能的自定义添加。</li>
+<li>然后重命名旧的 NexT 文件夹，例如重命名next为next-old.</li>
+<li>按照本文提供的方法安装新版本：安装说明。运行hexo clean并hexo s检查站点是否正常工作。</li>
+<li>更新 Hexo 和 Hexo 插件<br>如果在完成上述步骤后，执行hexo s或时出现错误hexo g，则表示可能是旧版本的 Hexo/Hexo 插件与新版本的主题 NexT 之间存在冲突。我们建议将 Hexo 升级到 5.0 或更高版本，并将 Hexo 插件升级到最新版本。您可以运行npm outdated以查看所有可升级的插件。</li>
+<li>如果您发现任何错误或您只是不喜欢此版本，您可以随时切换回旧版本。</li>
+</ol>
+<h3 id="二、美化"><a href="#二、美化" class="headerlink" title="二、美化"></a>二、美化</h3><h4 id="1-主题选择"><a href="#1-主题选择" class="headerlink" title="1.主题选择"></a>1.主题选择</h4><p>next的配置文件中搜索Scheme Settings<br>提供了四种主题:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
+<p>本博客使用第三种</p>
+<h4 id="2-网页icon设置"><a href="#2-网页icon设置" class="headerlink" title="2.网页icon设置"></a>2.网页icon设置</h4><p>next配置文件搜索favicon</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">favicon:</span><br><span class="line">  small: /images/favicon-16x16-next.png</span><br><span class="line">  medium: /images/favicon-32x32-next.png</span><br><span class="line">  apple_touch_icon: /images/apple-touch-icon-next.png</span><br><span class="line">  safari_pinned_tab: /images/logo.svg</span><br><span class="line">  #android_manifest: /manifest.json</span><br></pre></td></tr></table></figure>
+<p>制作favicon.ico图标，并放置在themes/next/sources/images即可</p>
+<h4 id="3-博客底部的标签样式"><a href="#3-博客底部的标签样式" class="headerlink" title="3.博客底部的标签样式"></a>3.博客底部的标签样式</h4><p>修改后效果↓<br><img src="https://blog.xxin.xyz/pageImg/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/1.png" style="zoom:100%;"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打开hexo\myblog\themes\next-old\layout\_macro\post.swig</span><br><span class="line"></span><br><span class="line">搜索rel=&quot;tag&quot;，将后面的&#123;&#123; tag_indicate &#125;&#125;修改为&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-侧边栏头像"><a href="#4-侧边栏头像" class="headerlink" title="4.侧边栏头像"></a>4.侧边栏头像</h4><p>next配置文件搜索Sidebar Avatar</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: http://q1.qlogo.cn/g?b=qq&amp;nk=3033528136&amp;s=640 #头像的网络位置或相对路径(blog/themes/next/source/images)</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #鼠标放在头像上时是否旋转</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #头像是否设为圆形，否则为矩形</span><br><span class="line">  opacity: 2 #头像放缩指数</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-侧边栏社交信息"><a href="#5-侧边栏社交信息" class="headerlink" title="5.侧边栏社交信息"></a>5.侧边栏社交信息</h4><p>next配置文件搜索Social Links</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">site_state: true # 是否在侧边栏加入日志、分类、标签等跳转链接</span><br><span class="line"></span><br><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/yourname || fab fa-github</span><br><span class="line">  E-Mail: mailto:x@xxin.xyz || fa fa-envelope</span><br><span class="line">  QQ: https://wpa.qq.com/msgrd?v=3&amp;uin=3033528136&amp;site=qq&amp;menu=yes || fab fa-qq</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br><span class="line">  </span><br><span class="line">social_icons:</span><br><span class="line">  enable: true #是否显示社交图标</span><br><span class="line">  icons_only: false #是否仅显示社交图标</span><br><span class="line">  transition: true</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-侧边栏设置"><a href="#6-侧边栏设置" class="headerlink" title="6.侧边栏设置"></a>6.侧边栏设置</h4><p>next配置文件搜索Sidebar Settings</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  # Sidebar Position.</span><br><span class="line">  position: left #侧边栏位置</span><br><span class="line">  #position: right</span><br><span class="line"></span><br><span class="line">  # Manual define the sidebar width. If commented, will be default for:</span><br><span class="line">  # Muse | Mist: 320</span><br><span class="line">  # Pisces | Gemini: 240</span><br><span class="line">  #width: 300</span><br><span class="line"></span><br><span class="line">  # Sidebar Display (only for Muse | Mist), available values:</span><br><span class="line">  #  - post    expand on posts automatically. Default.</span><br><span class="line">  #  - always  expand for all pages automatically.</span><br><span class="line">  #  - hide    expand only when click on the sidebar toggle icon.</span><br><span class="line">  #  - remove  totally remove sidebar including sidebar toggle.</span><br><span class="line">  display: post</span><br><span class="line"></span><br><span class="line">  # Sidebar padding in pixels.</span><br><span class="line">  padding: 18 #侧边栏相对主菜单像素距离</span><br><span class="line">  # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).</span><br><span class="line">  offset: 12 #侧边栏相对主菜单像素距离</span><br><span class="line">  onmobile: true #手机上是否显示侧边栏</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-版权信息"><a href="#7-版权信息" class="headerlink" title="7.版权信息"></a>7.版权信息</h4><p>next配置文件搜索creative_commons</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">creative_commons: #版权配置</span><br><span class="line">  # Available values: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | cc-zero</span><br><span class="line">  license: by-nc-sa</span><br><span class="line">  # Available values: big | small</span><br><span class="line">  size: small</span><br><span class="line">  sidebar: true #侧边栏显示版权信息</span><br><span class="line">  post: true #文章底部显示版权信息</span><br><span class="line">  # You can set a language value if you prefer a translated version of CC license, e.g. deed.zh</span><br><span class="line">  # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org</span><br><span class="line">  language: </span><br></pre></td></tr></table></figure>
+
+<h3 id="三、配置建议"><a href="#三、配置建议" class="headerlink" title="三、配置建议"></a>三、配置建议</h3><h4 id="1-浏览器缓存"><a href="#1-浏览器缓存" class="headerlink" title="1.浏览器缓存"></a>1.浏览器缓存</h4><p>next配置文件中搜索cache</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: false</span><br><span class="line">#默认关闭，开启后打开浏览器缓存</span><br></pre></td></tr></table></figure>
+<p>建议调试博客时关闭，平时打开</p>
+<h4 id="2-菜单标签与标签路径"><a href="#2-菜单标签与标签路径" class="headerlink" title="2.菜单标签与标签路径"></a>2.菜单标签与标签路径</h4><p>next配置文件中搜索Menu Settings</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#设置菜单项开启关闭、图标及其相对路径</span><br><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  about: /about/ || fa fa-user</span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
+<p>只需去除”#”号即打开对应配置，同时需创建对应页面</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#创建新页面</span><br><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+<p>并将新页面中index.md的内容修改为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2021-07-12 11:42:29</span><br><span class="line">type: &quot;tags&quot; #对应的标签类型</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-页面图标设置"><a href="#3-页面图标设置" class="headerlink" title="3.页面图标设置"></a>3.页面图标设置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu_settings:</span><br><span class="line">  icons: true # 是否显示各个页面的图标</span><br><span class="line">  badges: true # 标签、分类、归档内的文章数量显示</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-摘要显示"><a href="#4-摘要显示" class="headerlink" title="4.摘要显示"></a>4.摘要显示</h4><p>next配置文件搜索Read more button</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">read_more_btn: true #显示阅读全文按钮</span><br></pre></td></tr></table></figure>
+<p>会自动截取文章&lt;!–more–&gt;前的内容作为摘要</p>
+]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>hexo博客</tag>
+        <tag>小教程</tag>
+        <tag>next主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>夜郎自大</title>
+    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
+<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”</p>
+<span id="more"></span>
+<p>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
+<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
+<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
+<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
+<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
+<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>小衅笔记</title>
     <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
@@ -147,20 +168,6 @@
       <tags>
         <tag>好心情</tag>
         <tag>站点日志</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面向对象之toString和equals</title>
-    <url>/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString%E5%92%8Cequals/</url>
-    <content><![CDATA[<h4 id="重写toString"><a href="#重写toString" class="headerlink" title="重写toString"></a>重写toString</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        测试类 toStringTest = <span class="keyword">new</span> 测试类(<span class="string">&quot;测试&quot;</span>);</span><br><span class="line">        System.out.println(toStringTest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> 测试类</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String str;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;str：&quot;</span> + <span class="keyword">this</span>.str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> 测试类(String str)&#123;</span><br><span class="line">        <span class="keyword">this</span>.str = str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="重写equals"><a href="#重写equals" class="headerlink" title="重写equals"></a>重写equals</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        铠甲勇士 铠甲<span class="number">1</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;炎龙铠甲&quot;</span>,<span class="number">1</span>);</span><br><span class="line"><span class="comment">//        铠甲勇士 铠甲2 = new 铠甲勇士(&quot;炎龙铠甲&quot;,1);</span></span><br><span class="line">        铠甲勇士 铠甲<span class="number">2</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;风影铠甲&quot;</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(铠甲<span class="number">1.</span>equals(铠甲<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 铠甲勇士</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//重写equals</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        this即为Equals中&quot;.&quot;之前的对象，obj即为传入的对象类型参数，判断两个对象的引用地址是否为一致</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == obj)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * equals()中的实参在传入后其编译类型就变成了形参中Object类型（实际类型”铠甲勇士“，详见”多态“）</span></span><br><span class="line"><span class="comment">         * Object属于”铠甲勇士“类的父类，在Object类中没有name和id两个变量，因为要调用obj的两个变量，所以强制转换</span></span><br><span class="line"><span class="comment">         * 首先判断obj的实际类型是否为”铠甲勇士“，如果不是则返回false</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"><span class="comment">//        if (!(obj instanceof 铠甲勇士))&#123;</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        判断TestObj对象是否不为空，并且为当前”铠甲勇士“类型对象</span></span><br><span class="line">        <span class="keyword">if</span> (obj != <span class="keyword">null</span> &amp;&amp; obj.getClass() == 铠甲勇士.class)&#123;</span><br><span class="line"><span class="comment">//            强转</span></span><br><span class="line">            铠甲勇士 TestObj = (铠甲勇士)obj;</span><br><span class="line"><span class="comment">//            判断name，判断id</span></span><br><span class="line">            <span class="keyword">if</span> (TestObj.name.equals(<span class="keyword">this</span>.name) &amp;&amp; TestObj.id == <span class="keyword">this</span>.id)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//    构造器</span></span><br><span class="line">    <span class="keyword">public</span> 铠甲勇士(String name,<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -184,8 +191,22 @@
         <category>我的文章</category>
       </categories>
       <tags>
-        <tag>毒鸡汤</tag>
         <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象之toString和equals</title>
+    <url>/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString%E5%92%8Cequals/</url>
+    <content><![CDATA[<h4 id="重写toString"><a href="#重写toString" class="headerlink" title="重写toString"></a>重写toString</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        测试类 toStringTest = <span class="keyword">new</span> 测试类(<span class="string">&quot;测试&quot;</span>);</span><br><span class="line">        System.out.println(toStringTest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> 测试类</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String str;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;str：&quot;</span> + <span class="keyword">this</span>.str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> 测试类(String str)&#123;</span><br><span class="line">        <span class="keyword">this</span>.str = str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="重写equals"><a href="#重写equals" class="headerlink" title="重写equals"></a>重写equals</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        铠甲勇士 铠甲<span class="number">1</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;炎龙铠甲&quot;</span>,<span class="number">1</span>);</span><br><span class="line"><span class="comment">//        铠甲勇士 铠甲2 = new 铠甲勇士(&quot;炎龙铠甲&quot;,1);</span></span><br><span class="line">        铠甲勇士 铠甲<span class="number">2</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;风影铠甲&quot;</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(铠甲<span class="number">1.</span>equals(铠甲<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 铠甲勇士</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//重写equals</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        this即为Equals中&quot;.&quot;之前的对象，obj即为传入的对象类型参数，判断两个对象的引用地址是否为一致</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == obj)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * equals()中的实参在传入后其编译类型就变成了形参中Object类型（实际类型”铠甲勇士“，详见”多态“）</span></span><br><span class="line"><span class="comment">         * Object属于”铠甲勇士“类的父类，在Object类中没有name和id两个变量，因为要调用obj的两个变量，所以强制转换</span></span><br><span class="line"><span class="comment">         * 首先判断obj的实际类型是否为”铠甲勇士“，如果不是则返回false</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"><span class="comment">//        if (!(obj instanceof 铠甲勇士))&#123;</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        判断TestObj对象是否不为空，并且为当前”铠甲勇士“类型对象</span></span><br><span class="line">        <span class="keyword">if</span> (obj != <span class="keyword">null</span> &amp;&amp; obj.getClass() == 铠甲勇士.class)&#123;</span><br><span class="line"><span class="comment">//            强转</span></span><br><span class="line">            铠甲勇士 TestObj = (铠甲勇士)obj;</span><br><span class="line"><span class="comment">//            判断name，判断id</span></span><br><span class="line">            <span class="keyword">if</span> (TestObj.name.equals(<span class="keyword">this</span>.name) &amp;&amp; TestObj.id == <span class="keyword">this</span>.id)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//    构造器</span></span><br><span class="line">    <span class="keyword">public</span> 铠甲勇士(String name,<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -230,27 +251,6 @@
       <tags>
         <tag>java</tag>
         <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>夜郎自大</title>
-    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
-<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”</p>
-<span id="more"></span>
-<p>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
-<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
-<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
-<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
-<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
-<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>毒鸡汤</tag>
-        <tag>网抑云</tag>
       </tags>
   </entry>
   <entry>
