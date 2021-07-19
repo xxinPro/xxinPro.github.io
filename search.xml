@@ -15,35 +15,6 @@
       </tags>
   </entry>
   <entry>
-    <title>next主题优化</title>
-    <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<center>hexo博客next主题主要优化修改方案</center>
-<span id="more"></span>
-
-<p>next官方文档<a href="https://theme-next.js.org/docs/">https://theme-next.js.org/docs/</a></p>
-<h3 id="一、安装和升级"><a href="#一、安装和升级" class="headerlink" title="一、安装和升级"></a>一、安装和升级</h3><h4 id="安装next主题"><a href="#安装next主题" class="headerlink" title="安装next主题"></a>安装next主题</h4><p>从github下载next</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> hexo/myblog</span></span><br><span class="line"><span class="meta">#</span><span class="bash">直接下载到themes文件夹</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-更新next主题"><a href="#2-更新next主题" class="headerlink" title="2.更新next主题"></a>2.更新next主题</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> hexo/myblog</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-theme-next@latest</span></span><br></pre></td></tr></table></figure>
-<p>NexT 建议通过这种方式从版本 5 或 7 升级到版本 8：</p>
-<ol>
-<li>复制一些旧的 NexT 文件：<br>1.1. _config.yml或next.yml（如果您使用了Alternate Theme Config）。<br>1.2. 放置在next/source/css/_custom/和next/source/css/_variables/目录中的自定义 CSS 文件。<br>1.3. 自定义布局文件放置在next/layout/_custom/*.<br>1.4. 可以通过存储库之间的比较工具找到的任何其他可能的自定义添加。</li>
-<li>然后重命名旧的 NexT 文件夹，例如重命名next为next-old.</li>
-<li>按照本文提供的方法安装新版本：安装说明。运行hexo clean并hexo s检查站点是否正常工作。</li>
-<li>更新 Hexo 和 Hexo 插件<br>如果在完成上述步骤后，执行hexo s或时出现错误hexo g，则表示可能是旧版本的 Hexo/Hexo 插件与新版本的主题 NexT 之间存在冲突。我们建议将 Hexo 升级到 5.0 或更高版本，并将 Hexo 插件升级到最新版本。您可以运行npm outdated以查看所有可升级的插件。</li>
-<li>如果您发现任何错误或您只是不喜欢此版本，您可以随时切换回旧版本。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>hexo博客</category>
-      </categories>
-      <tags>
-        <tag>hexo博客</tag>
-        <tag>小教程</tag>
-        <tag>next主题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在服务器中搭建hexo博客</title>
     <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<center>个人服务器搭建hexo(宝塔)</center>
@@ -95,6 +66,73 @@
       </tags>
   </entry>
   <entry>
+    <title>next主题优化</title>
+    <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<center>hexo博客next主题主要优化修改方案</center>
+<center>基于hexo5.x和next8.x</center>
+<span id="more"></span>
+<hr>
+
+<p>next官方文档<a href="https://theme-next.js.org/docs/">https://theme-next.js.org/docs/</a></p>
+<h3 id="一、安装和升级"><a href="#一、安装和升级" class="headerlink" title="一、安装和升级"></a>一、安装和升级</h3><h4 id="安装next主题"><a href="#安装next主题" class="headerlink" title="安装next主题"></a>安装next主题</h4><p>从github下载next</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> hexo/myblog</span></span><br><span class="line"><span class="meta">#</span><span class="bash">直接下载到themes文件夹</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span></span><br></pre></td></tr></table></figure>
+<p>在hexo的_config.yum配置文件中搜索theme，并将其修改为next</p>
+<h4 id="2-更新next主题"><a href="#2-更新next主题" class="headerlink" title="2.更新next主题"></a>2.更新next主题</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> hexo/myblog</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-theme-next@latest</span></span><br></pre></td></tr></table></figure>
+<p>NexT 建议通过下面这种方式从版本 5 或 7 升级到版本 8：</p>
+<ol>
+<li>复制一些旧的 NexT 文件：<br>1.1. _config.yml或next.yml（如果您使用了Alternate Theme Config）。<br>1.2. 放置在next/source/css/_custom/和next/source/css/_variables/目录中的自定义 CSS 文件。<br>1.3. 自定义布局文件放置在next/layout/_custom/*.<br>1.4. 可以通过存储库之间的比较工具找到的任何其他可能的自定义添加。</li>
+<li>然后重命名旧的 NexT 文件夹，例如重命名next为next-old.</li>
+<li>按照本文提供的方法安装新版本：安装说明。运行hexo clean并hexo s检查站点是否正常工作。</li>
+<li>更新 Hexo 和 Hexo 插件<br>如果在完成上述步骤后，执行hexo s或时出现错误hexo g，则表示可能是旧版本的 Hexo/Hexo 插件与新版本的主题 NexT 之间存在冲突。我们建议将 Hexo 升级到 5.0 或更高版本，并将 Hexo 插件升级到最新版本。您可以运行npm outdated以查看所有可升级的插件。</li>
+<li>如果您发现任何错误或您只是不喜欢此版本，您可以随时切换回旧版本。</li>
+</ol>
+<h3 id="二、美化"><a href="#二、美化" class="headerlink" title="二、美化"></a>二、美化</h3><h4 id="1-主题选择"><a href="#1-主题选择" class="headerlink" title="1.主题选择"></a>1.主题选择</h4><p>next的配置文件中搜索Scheme Settings<br>提供了四种主题:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure>
+<p>本博客使用第三种</p>
+<h4 id="2-网页icon设置"><a href="#2-网页icon设置" class="headerlink" title="2.网页icon设置"></a>2.网页icon设置</h4><p>next配置文件搜索favicon</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">favicon:</span><br><span class="line">  small: /images/favicon-16x16-next.png</span><br><span class="line">  medium: /images/favicon-32x32-next.png</span><br><span class="line">  apple_touch_icon: /images/apple-touch-icon-next.png</span><br><span class="line">  safari_pinned_tab: /images/logo.svg</span><br><span class="line">  #android_manifest: /manifest.json</span><br></pre></td></tr></table></figure>
+<p>制作favicon.ico图标，并放置在themes/next/sources/images即可</p>
+<h4 id="3-博客底部的标签样式"><a href="#3-博客底部的标签样式" class="headerlink" title="3.博客底部的标签样式"></a>3.博客底部的标签样式</h4><p>修改后效果↓<br><img src="https://blog.xxin.xyz/pageImg/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/1.png" style="zoom:100%;"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打开hexo\myblog\themes\next-old\layout\_macro\post.swig</span><br><span class="line"></span><br><span class="line">搜索rel=&quot;tag&quot;，将后面的&#123;&#123; tag_indicate &#125;&#125;修改为&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-侧边栏头像"><a href="#4-侧边栏头像" class="headerlink" title="4.侧边栏头像"></a>4.侧边栏头像</h4><p>next配置文件搜索Sidebar Avatar</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: http://q1.qlogo.cn/g?b=qq&amp;nk=3033528136&amp;s=640 #头像的网络位置或相对路径(blog/themes/next/source/images)</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #鼠标放在头像上时是否旋转</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #头像是否设为圆形，否则为矩形</span><br><span class="line">  opacity: 2 #头像放缩指数</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-侧边栏社交信息"><a href="#5-侧边栏社交信息" class="headerlink" title="5.侧边栏社交信息"></a>5.侧边栏社交信息</h4><p>next配置文件搜索Social Links</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">site_state: true # 是否在侧边栏加入日志、分类、标签等跳转链接</span><br><span class="line"></span><br><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/yourname || fab fa-github</span><br><span class="line">  E-Mail: mailto:x@xxin.xyz || fa fa-envelope</span><br><span class="line">  QQ: https://wpa.qq.com/msgrd?v=3&amp;uin=3033528136&amp;site=qq&amp;menu=yes || fab fa-qq</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br><span class="line">  </span><br><span class="line">social_icons:</span><br><span class="line">  enable: true #是否显示社交图标</span><br><span class="line">  icons_only: false #是否仅显示社交图标</span><br><span class="line">  transition: true</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-侧边栏设置"><a href="#6-侧边栏设置" class="headerlink" title="6.侧边栏设置"></a>6.侧边栏设置</h4><p>next配置文件搜索Sidebar Settings</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  # Sidebar Position.</span><br><span class="line">  position: left #侧边栏位置</span><br><span class="line">  #position: right</span><br><span class="line"></span><br><span class="line">  # Manual define the sidebar width. If commented, will be default for:</span><br><span class="line">  # Muse | Mist: 320</span><br><span class="line">  # Pisces | Gemini: 240</span><br><span class="line">  #width: 300</span><br><span class="line"></span><br><span class="line">  # Sidebar Display (only for Muse | Mist), available values:</span><br><span class="line">  #  - post    expand on posts automatically. Default.</span><br><span class="line">  #  - always  expand for all pages automatically.</span><br><span class="line">  #  - hide    expand only when click on the sidebar toggle icon.</span><br><span class="line">  #  - remove  totally remove sidebar including sidebar toggle.</span><br><span class="line">  display: post</span><br><span class="line"></span><br><span class="line">  # Sidebar padding in pixels.</span><br><span class="line">  padding: 18 #侧边栏相对主菜单像素距离</span><br><span class="line">  # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).</span><br><span class="line">  offset: 12 #侧边栏相对主菜单像素距离</span><br><span class="line">  onmobile: true #手机上是否显示侧边栏</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-版权信息"><a href="#7-版权信息" class="headerlink" title="7.版权信息"></a>7.版权信息</h4><p>next配置文件搜索creative_commons</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">creative_commons: #版权配置</span><br><span class="line">  # Available values: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | cc-zero</span><br><span class="line">  license: by-nc-sa</span><br><span class="line">  # Available values: big | small</span><br><span class="line">  size: small</span><br><span class="line">  sidebar: true #侧边栏显示版权信息</span><br><span class="line">  post: true #文章底部显示版权信息</span><br><span class="line">  # You can set a language value if you prefer a translated version of CC license, e.g. deed.zh</span><br><span class="line">  # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org</span><br><span class="line">  language: </span><br></pre></td></tr></table></figure>
+
+<h3 id="三、配置建议"><a href="#三、配置建议" class="headerlink" title="三、配置建议"></a>三、配置建议</h3><h4 id="1-浏览器缓存"><a href="#1-浏览器缓存" class="headerlink" title="1.浏览器缓存"></a>1.浏览器缓存</h4><p>next配置文件中搜索cache</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enable: false</span><br><span class="line">#默认关闭，开启后打开浏览器缓存</span><br></pre></td></tr></table></figure>
+<p>建议调试博客时关闭，平时打开</p>
+<h4 id="2-菜单标签与标签路径"><a href="#2-菜单标签与标签路径" class="headerlink" title="2.菜单标签与标签路径"></a>2.菜单标签与标签路径</h4><p>next配置文件中搜索Menu Settings</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#设置菜单项开启关闭、图标及其相对路径</span><br><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  about: /about/ || fa fa-user</span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
+<p>只需去除”#”号即打开对应配置，同时需创建对应页面</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#创建新页面</span><br><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+<p>并将新页面中index.md的内容修改为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2021-07-12 11:42:29</span><br><span class="line">type: &quot;tags&quot; #对应的标签类型</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-页面图标设置"><a href="#3-页面图标设置" class="headerlink" title="3.页面图标设置"></a>3.页面图标设置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu_settings:</span><br><span class="line">  icons: true # 是否显示各个页面的图标</span><br><span class="line">  badges: true # 标签、分类、归档内的文章数量显示</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-摘要显示"><a href="#4-摘要显示" class="headerlink" title="4.摘要显示"></a>4.摘要显示</h4><p>next配置文件搜索Read more button</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">read_more_btn: true #显示阅读全文按钮</span><br></pre></td></tr></table></figure>
+<p>会自动截取文章&lt;!–more–&gt;前的内容作为摘要</p>
+]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>hexo博客</tag>
+        <tag>小教程</tag>
+        <tag>next主题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>夜郎自大</title>
     <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
     <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
@@ -116,11 +154,27 @@
       </tags>
   </entry>
   <entry>
+    <title>小衅笔记</title>
+    <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+]]></content>
+      <categories>
+        <category>站点日志</category>
+      </categories>
+      <tags>
+        <tag>好心情</tag>
+        <tag>站点日志</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>我的庸俗，我的封建</title>
     <url>/2021/07/18/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA/</url>
     <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;我的庸俗，向来我是承认的</p>
 <p>&ensp;&ensp;&ensp;&ensp;拒绝了酒吧和ktv，推辞各种娱乐活动，甚至逃避稍微有些情调的餐厅，一条黑色的直筒裤子，一件各个商场角落都能找到的黑色上衣，一双黑色运动鞋，万年不变的发型，左兜是手机，右兜是烟，不出意外的话，烟应该是白将军</p>
-<span id="more"></span>
 <p>&ensp;&ensp;&ensp;&ensp;并非不喜欢世界的精彩，也非不懂得享受安逸，不过是觉得这些东西不应该发生在我身上，我怕在享受这世界繁华的过程中它会潜移默化的改变我，磨去我的斗志；怕有一天我变得只贪财，而忘了取之有道；怕有一天我变得只好色，而忘了有品；怕有一天我也变得虚伪，口是心非；怕松了这口气，血液就再也沸腾不起来；怕我忘了我的理想、忘了我的出身</p>
 <p>&ensp;&ensp;&ensp;&ensp;想起了很久以前美术老师说过的：“不要爬在画纸上死抠一个部位，那样你永远也发觉不到这张画的全局问题，你应该多去把画立起来放在那里，站远一点，才能看清自己到底哪里不好，到底要修改哪里”。高楼的林立、闹市的喧嚣、街道的霓虹，我知道我看见的美好只是他们想让我看到的美好，他们不想让我看见的丑陋我永远也看不见，好像只有远离这些，让我变得庸俗，才能看清：世界是世界，我是我</p>
 <p>&ensp;&ensp;&ensp;&ensp;网络很强大，让下等人也能清楚的看到上等人的世界，产生“卓尔不群”的错觉，不知道这种错觉让多少人沉迷在了自己的幻想中，强行让生活丰富多彩，还拿出不切实际的理论来劝说别人；人都以为自己是聪明的、自己的选择是最正确的，然后就会有把别人都变成自己的想法，或许他们是善良的，甘愿把自己认为的最完美的人生经验分享给别人，哈哈，懒惰又愚蠢，多站起来看看吧，站远一点，以第三方的角度看看自己，看看为挣一时口舌之利时自己不堪入目的样子吧</p>
@@ -145,23 +199,6 @@
     <title>面向对象之toString&amp;&amp;equals</title>
     <url>/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString&amp;&amp;equals/</url>
     <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>小衅笔记</title>
-    <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-]]></content>
-      <categories>
-        <category>站点日志</category>
-      </categories>
-      <tags>
-        <tag>好心情</tag>
-        <tag>站点日志</tag>
-      </tags>
   </entry>
   <entry>
     <title>面向对象之多态</title>
@@ -194,8 +231,8 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象之继承</title>
-    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%BB%A7%E6%89%BF/</url>
+    <title>面向对象之封装</title>
+    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>java笔记</category>
@@ -206,8 +243,8 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象之封装</title>
-    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85/</url>
+    <title>面向对象之继承</title>
+    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%BB%A7%E6%89%BF/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>java笔记</category>
