@@ -15,57 +15,6 @@
       </tags>
   </entry>
   <entry>
-    <title>在服务器中搭建hexo博客</title>
-    <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<center>个人服务器搭建hexo(宝塔)</center>
-<br>
-<center>环境：Linux、CentOS 7.6 64bit、宝塔、nginx</center>
-<span id="more"></span>
-<br>
-优点：相对于github或gitee，速度快，自定义程度高
-
-<p>缺点：自己花钱买域名，自己花钱买服务器，没钱了ovo</p>
-<h3 id="一、环境安装"><a href="#一、环境安装" class="headerlink" title="一、环境安装"></a>一、环境安装</h3><h4 id="1-站点创建"><a href="#1-站点创建" class="headerlink" title="1.站点创建"></a>1.站点创建</h4><p>在宝塔中创建新的站点，该站点即为博客地址<br><img src="https://blog.xxin.xyz/pageImg/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/1.png" style="zoom:50%;" /></p>
-<h4 id="2-nginx配置"><a href="#2-nginx配置" class="headerlink" title="2.nginx配置"></a>2.nginx配置</h4><p>从宝塔的软件商店即可快捷安装nginx环境<br><img src="https://blog.xxin.xyz/pageImg/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/2.png" style="zoom:40%;" /></p>
-<h4 id="3-git工具下载"><a href="#3-git工具下载" class="headerlink" title="3.git工具下载"></a>3.git工具下载</h4><p>通过ssh连接服务器，并下载安装git工具</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum -y install git #yum安装git</span><br></pre></td></tr></table></figure>
-<p>相关命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git --version #查看git安装版本</span><br><span class="line">yum remove git #卸载git工具</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、git仓库搭建"><a href="#二、git仓库搭建" class="headerlink" title="二、git仓库搭建"></a>二、git仓库搭建</h3><p>和之前github的仓库一样，服务器也需要创建一个仓库用来实现静态文件储存</p>
-<h4 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1.创建用户"></a>1.创建用户</h4><p>在服务器端创建一个新用户git</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">adduser git #创建git用户</span><br><span class="line">chmod 740 /etc/sudoers #改变sudoers文件的权限为文件所有者可写</span><br><span class="line">vim /etc/sudoers #读取</span><br><span class="line">i #表示insert，从仅读取切换到编辑(插入)</span><br><span class="line"><span class="meta">#</span><span class="bash">在root ALL=(ALL) ALL 下方添加一行git ALL=(ALL) ALL</span></span><br><span class="line">:wq! #强制保存退出 :q! 强制不保存退出</span><br><span class="line">chmod 400 /etc/sudoers #改变sudoers文件的权限为文件所有者可读</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-给git用户添加ssh密钥"><a href="#2-给git用户添加ssh密钥" class="headerlink" title="2.给git用户添加ssh密钥"></a>2.给git用户添加ssh密钥</h4><p>建立主机与服务器连接，添连接后不需要密码也能登录服务器，方便我们日后的博客文件上传</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">本地打开Git Bash并进入到C:\Users\admin\.ssh目录</span></span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C &quot;blog.xxin.xyz&quot;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -t 指定密钥类型，默认是 rsa ，可以省略</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -C 用于识别这个密钥的注释，可以输入任何内容</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -f 指定密钥文件存储文件名，默认id\_rsa</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">服务器端打开终端命令行</span></span><br><span class="line">su git #切换到git用户</span><br><span class="line">mkdir -p ~/.ssh #在git用户(/home/git)下创建.ssh文件夹，用于储存ssh密钥文件</span><br><span class="line">touch ~/.ssh/authorized\_keys #创建authorized_keys文件</span><br><span class="line">chmod 600 ~/.ssh/authorized\_keys  #为authorized_keys文件赋予文件所有者可读可写的权限</span><br><span class="line">chmod 700 ~/.ssh  #为.ssh文件夹赋予文件夹所有者可读可写可执行的权限</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">复制C:\Users\admin\.ssh目录下，公匙id_rsa.pub内容到服务器/home/git/.ssh/authorized_keys，关闭终端</span></span><br><span class="line"><span class="meta">#</span><span class="bash">使用ssh git@server重新登录服务器，测试是否能不要密码登录到git用户</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-创建git仓库"><a href="#3-创建git仓库" class="headerlink" title="3.创建git仓库"></a>3.创建git仓库</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo mkdir /home/git/repos #在git用户目录下创建repos文件夹作为仓库位置</span><br><span class="line">cd /home/git/repos</span><br><span class="line">sudo git init --bare blog.git #初始化一个名叫blog.git的仓库</span><br></pre></td></tr></table></figure>
-<h4 id="4-配置钩子实现自动部署"><a href="#4-配置钩子实现自动部署" class="headerlink" title="4.配置钩子实现自动部署"></a>4.配置钩子实现自动部署</h4><p>找到 /home/git/repos/taiblog.git/hooks/post-update.sample 改名post-update，内容改为</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">git --work-tree=/www/wwwroot/blog.xxin.xyz --git-dir=/home/git/repos/blog.git checkout -f</span><br><span class="line">                  ↑博客静态文件储存的位置                 ↑仓库位置</span><br></pre></td></tr></table></figure>
-<p>然后给权限</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd blog.git/hooks/</span><br><span class="line">sudo chmod +x post-update  #赋予其可执行权限</span><br><span class="line">sudo chown -R git:git /home/git/repos/ #仓库所有者改为git</span><br><span class="line">sudo chown -R git:git /www/wwwroot/blog.xxin.xyz/ #站点文件夹所有者改为git</span><br></pre></td></tr></table></figure>
-
-<h4 id="5-测试可用性"><a href="#5-测试可用性" class="headerlink" title="5.测试可用性"></a>5.测试可用性</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">在主机端，如果能将仓库拉下来，说明Git仓库搭建成功</span></span><br><span class="line">git clone git@server\_ip:/home/git/repos/blog.git</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、修改本地配置"><a href="#三、修改本地配置" class="headerlink" title="三、修改本地配置"></a>三、修改本地配置</h3><h4 id="1-本地config-yml配置"><a href="#1-本地config-yml配置" class="headerlink" title="1.本地config.yml配置"></a>1.本地config.yml配置</h4><p>本地Hexo博客文件夹中的_config.yml文件尾部</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@159.75.7.25:/home/git/repos/blog.git #仓库地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-测试"><a href="#2-测试" class="headerlink" title="2.测试"></a>2.测试</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean  #清除缓存</span><br><span class="line">hexo generate #生成静态页面</span><br><span class="line">hexo delopy  #将本地静态页面目录部署到云服务器</span><br></pre></td></tr></table></figure>
-<p>也可以在package.json 中添加 npm 脚本，这样就可以直接npm run dd一下执行</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;hexo generate&quot;,</span><br><span class="line">    &quot;clean&quot;: &quot;hexo clean&quot;,</span><br><span class="line">    &quot;deploy&quot;: &quot;hexo deploy&quot;,</span><br><span class="line">    &quot;dd&quot;: &quot;hexo clean &amp;&amp; hexo g -d&quot;,</span><br><span class="line">    &quot;server&quot;: &quot;hexo server&quot;,</span><br><span class="line">    &quot;ss&quot;: &quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-访问测试"><a href="#3-访问测试" class="headerlink" title="3.访问测试"></a>3.访问测试</h4><p><a href="https://blog.xxin.xyz/">https://blog.xxin.xyz</a></p>
-<p>参考文章<a href="https://cloud.tencent.com/developer/article/1823096">https://cloud.tencent.com/developer/article/1823096</a></p>
-]]></content>
-      <categories>
-        <category>hexo博客</category>
-      </categories>
-      <tags>
-        <tag>hexo博客</tag>
-        <tag>小教程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>next主题优化</title>
     <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<center>hexo博客next主题主要优化修改方案</center>
@@ -196,9 +145,55 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象之toString&amp;&amp;equals</title>
-    <url>/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString&amp;&amp;equals/</url>
-    <content><![CDATA[]]></content>
+    <title>在服务器中搭建hexo博客</title>
+    <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<center>个人服务器搭建hexo(宝塔)</center>
+<br>
+<center>环境：Linux、CentOS 7.6 64bit、宝塔、nginx</center>
+<span id="more"></span>
+<br>
+优点：相对于github或gitee，速度快，自定义程度高
+
+<p>缺点：自己花钱买域名，自己花钱买服务器，没钱了ovo</p>
+<h3 id="一、环境安装"><a href="#一、环境安装" class="headerlink" title="一、环境安装"></a>一、环境安装</h3><h4 id="1-站点创建"><a href="#1-站点创建" class="headerlink" title="1.站点创建"></a>1.站点创建</h4><p>在宝塔中创建新的站点，该站点即为博客地址<br><img src="https://blog.xxin.xyz/pageImg/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/1.png" style="zoom:50%;" /></p>
+<h4 id="2-nginx配置"><a href="#2-nginx配置" class="headerlink" title="2.nginx配置"></a>2.nginx配置</h4><p>从宝塔的软件商店即可快捷安装nginx环境<br><img src="https://blog.xxin.xyz/pageImg/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/2.png" style="zoom:40%;" /></p>
+<h4 id="3-git工具下载"><a href="#3-git工具下载" class="headerlink" title="3.git工具下载"></a>3.git工具下载</h4><p>通过ssh连接服务器，并下载安装git工具</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum -y install git #yum安装git</span><br></pre></td></tr></table></figure>
+<p>相关命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git --version #查看git安装版本</span><br><span class="line">yum remove git #卸载git工具</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、git仓库搭建"><a href="#二、git仓库搭建" class="headerlink" title="二、git仓库搭建"></a>二、git仓库搭建</h3><p>和之前github的仓库一样，服务器也需要创建一个仓库用来实现静态文件储存</p>
+<h4 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1.创建用户"></a>1.创建用户</h4><p>在服务器端创建一个新用户git</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">adduser git #创建git用户</span><br><span class="line">chmod 740 /etc/sudoers #改变sudoers文件的权限为文件所有者可写</span><br><span class="line">vim /etc/sudoers #读取</span><br><span class="line">i #表示insert，从仅读取切换到编辑(插入)</span><br><span class="line"><span class="meta">#</span><span class="bash">在root ALL=(ALL) ALL 下方添加一行git ALL=(ALL) ALL</span></span><br><span class="line">:wq! #强制保存退出 :q! 强制不保存退出</span><br><span class="line">chmod 400 /etc/sudoers #改变sudoers文件的权限为文件所有者可读</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-给git用户添加ssh密钥"><a href="#2-给git用户添加ssh密钥" class="headerlink" title="2.给git用户添加ssh密钥"></a>2.给git用户添加ssh密钥</h4><p>建立主机与服务器连接，添连接后不需要密码也能登录服务器，方便我们日后的博客文件上传</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">本地打开Git Bash并进入到C:\Users\admin\.ssh目录</span></span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C &quot;blog.xxin.xyz&quot;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -t 指定密钥类型，默认是 rsa ，可以省略</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -C 用于识别这个密钥的注释，可以输入任何内容</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -f 指定密钥文件存储文件名，默认id\_rsa</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">服务器端打开终端命令行</span></span><br><span class="line">su git #切换到git用户</span><br><span class="line">mkdir -p ~/.ssh #在git用户(/home/git)下创建.ssh文件夹，用于储存ssh密钥文件</span><br><span class="line">touch ~/.ssh/authorized\_keys #创建authorized_keys文件</span><br><span class="line">chmod 600 ~/.ssh/authorized\_keys  #为authorized_keys文件赋予文件所有者可读可写的权限</span><br><span class="line">chmod 700 ~/.ssh  #为.ssh文件夹赋予文件夹所有者可读可写可执行的权限</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">复制C:\Users\admin\.ssh目录下，公匙id_rsa.pub内容到服务器/home/git/.ssh/authorized_keys，关闭终端</span></span><br><span class="line"><span class="meta">#</span><span class="bash">使用ssh git@server重新登录服务器，测试是否能不要密码登录到git用户</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-创建git仓库"><a href="#3-创建git仓库" class="headerlink" title="3.创建git仓库"></a>3.创建git仓库</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo mkdir /home/git/repos #在git用户目录下创建repos文件夹作为仓库位置</span><br><span class="line">cd /home/git/repos</span><br><span class="line">sudo git init --bare blog.git #初始化一个名叫blog.git的仓库</span><br></pre></td></tr></table></figure>
+<h4 id="4-配置钩子实现自动部署"><a href="#4-配置钩子实现自动部署" class="headerlink" title="4.配置钩子实现自动部署"></a>4.配置钩子实现自动部署</h4><p>找到 /home/git/repos/taiblog.git/hooks/post-update.sample 改名post-update，内容改为</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">git --work-tree=/www/wwwroot/blog.xxin.xyz --git-dir=/home/git/repos/blog.git checkout -f</span><br><span class="line">                  ↑博客静态文件储存的位置                 ↑仓库位置</span><br></pre></td></tr></table></figure>
+<p>然后给权限</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd blog.git/hooks/</span><br><span class="line">sudo chmod +x post-update  #赋予其可执行权限</span><br><span class="line">sudo chown -R git:git /home/git/repos/ #仓库所有者改为git</span><br><span class="line">sudo chown -R git:git /www/wwwroot/blog.xxin.xyz/ #站点文件夹所有者改为git</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-测试可用性"><a href="#5-测试可用性" class="headerlink" title="5.测试可用性"></a>5.测试可用性</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">在主机端，如果能将仓库拉下来，说明Git仓库搭建成功</span></span><br><span class="line">git clone git@server\_ip:/home/git/repos/blog.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、修改本地配置"><a href="#三、修改本地配置" class="headerlink" title="三、修改本地配置"></a>三、修改本地配置</h3><h4 id="1-本地config-yml配置"><a href="#1-本地config-yml配置" class="headerlink" title="1.本地config.yml配置"></a>1.本地config.yml配置</h4><p>本地Hexo博客文件夹中的_config.yml文件尾部</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@159.75.7.25:/home/git/repos/blog.git #仓库地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-测试"><a href="#2-测试" class="headerlink" title="2.测试"></a>2.测试</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean  #清除缓存</span><br><span class="line">hexo generate #生成静态页面</span><br><span class="line">hexo delopy  #将本地静态页面目录部署到云服务器</span><br></pre></td></tr></table></figure>
+<p>也可以在package.json 中添加 npm 脚本，这样就可以直接npm run dd一下执行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;hexo generate&quot;,</span><br><span class="line">    &quot;clean&quot;: &quot;hexo clean&quot;,</span><br><span class="line">    &quot;deploy&quot;: &quot;hexo deploy&quot;,</span><br><span class="line">    &quot;dd&quot;: &quot;hexo clean &amp;&amp; hexo g -d&quot;,</span><br><span class="line">    &quot;server&quot;: &quot;hexo server&quot;,</span><br><span class="line">    &quot;ss&quot;: &quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-访问测试"><a href="#3-访问测试" class="headerlink" title="3.访问测试"></a>3.访问测试</h4><p><a href="https://blog.xxin.xyz/">https://blog.xxin.xyz</a></p>
+<p>参考文章<a href="https://cloud.tencent.com/developer/article/1823096">https://cloud.tencent.com/developer/article/1823096</a></p>
+]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>hexo博客</tag>
+        <tag>小教程</tag>
+      </tags>
   </entry>
   <entry>
     <title>面向对象之多态</title>
@@ -231,8 +226,8 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象之封装</title>
-    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85/</url>
+    <title>面向对象之继承</title>
+    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%BB%A7%E6%89%BF/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>java笔记</category>
@@ -243,8 +238,13 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象之继承</title>
-    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%BB%A7%E6%89%BF/</url>
+    <title>面向对象之toString和equals</title>
+    <url>/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString%E5%92%8Cequals/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>面向对象之封装</title>
+    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>java笔记</category>
