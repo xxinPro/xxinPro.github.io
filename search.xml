@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>final修饰符</title>
+    <url>/2021/07/22/final%E4%BF%AE%E9%A5%B0%E7%AC%A6/</url>
+    <content><![CDATA[<h3 id="final修饰的变量"><a href="#final修饰的变量" class="headerlink" title="final修饰的变量"></a>final修饰的变量</h3><p>final修饰的成员变量一定由程序员指定初始值，并且一经复制后，变量值将无法被修改</p>
+<h4 id="实例成员变量"><a href="#实例成员变量" class="headerlink" title="实例成员变量"></a>实例成员变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  实例成员变量有3种方式为其赋初始值</span></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">test3</span></span>&#123;</span><br><span class="line">	<span class="comment">//直接赋值</span></span><br><span class="line">	<span class="keyword">final</span> <span class="keyword">int</span> height = <span class="number">180</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//    实例成员变量</span></span><br><span class="line">    <span class="keyword">final</span> String name;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> age;</span><br><span class="line">    </span><br><span class="line">    &#123;</span><br><span class="line"><span class="comment">//        实例代码块中为final修饰的实例变量赋予初始值</span></span><br><span class="line">        name = <span class="string">&quot;默认&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">test3</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        构造器中为final修饰的实例变量赋予初始值</span></span><br><span class="line">        age = <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  其实三者本质上还是同一种赋值方式，因为他们编译后都会被还原到构造器中</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="类成员变量"><a href="#类成员变量" class="headerlink" title="类成员变量"></a>类成员变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//类成员变量有两种方式为其赋初始值</span></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">test4</span></span>&#123;</span><br><span class="line"><span class="comment">//    直接赋值</span></span><br><span class="line">	<span class="keyword">final</span> <span class="keyword">static</span> age = <span class="number">20</span>;</span><br><span class="line">    <span class="comment">//    类成员变量</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">static</span> String name;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line"><span class="comment">//        静态代码块中为final修饰的实例变量赋予初始值</span></span><br><span class="line">        name = <span class="string">&quot;默认&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  二者本质上也是同一种赋值方式，类成员变量在编译后会被还原到类代码块中</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">test5</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methods1</span><span class="params">()</span></span>&#123;</span><br><span class="line">	    <span class="keyword">final</span> <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">final</span> String b = <span class="string">&quot;默认值&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methods2</span><span class="params">()</span></span>&#123;</span><br><span class="line">	    <span class="keyword">final</span> <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">final</span> String b = <span class="string">&quot;默认值&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//    局部变量本来就需要显式赋予初始值，因此没有太大变动</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h4><p>final修饰引用类型的变量时，只保证这个引用类型变量引用的地址不会发生改变，但对象可以被改变</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">finalTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        此时obj.getName会返回小红</span></span><br><span class="line">        <span class="keyword">final</span> finalObj obj = <span class="keyword">new</span> finalObj(<span class="string">&quot;小红&quot;</span>);</span><br><span class="line"><span class="comment">//        通过set方法修改name值为小刚</span></span><br><span class="line">        obj.setName(<span class="string">&quot;小刚&quot;</span>);</span><br><span class="line">        System.out.println(obj.getName()); <span class="comment">//  输出小刚</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">finalObj</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"><span class="comment">//    set</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    get</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">finalObj</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于final变量来说，不管是类变量、实例变量、局部变量，只要满足下面三个条件，就不是变量，而相当于一个直接量</p>
+<ol>
+<li>使用final修饰符修饰</li>
+<li>在定义该变量时指定了初始值</li>
+<li>该初始值可以在编译时就被确定下来</li>
+</ol>
+<h3 id="final修饰的方法"><a href="#final修饰的方法" class="headerlink" title="final修饰的方法"></a>final修饰的方法</h3><p>final修饰的方法不可被重写</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">finalTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">public</span> <span class="keyword">void</span> 铠甲勇士()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;铠甲勇士&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">final</span>方法重写 <span class="keyword">extends</span> <span class="title">finalTest</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲勇士()&#123;</span><br><span class="line"><span class="comment">//      final修饰的方法无法被重写，将会报错</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="final修饰的类"><a href="#final修饰的类" class="headerlink" title="final修饰的类"></a>final修饰的类</h3><p>final修饰的类不可被继承</p>
+<p>完~</p>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>github+hexo博客</title>
+    <url>/2021/07/15/github-hexo%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<center>github等代码托管平台搭建hexo博客</center>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>hexo博客</tag>
+        <tag>小教程</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>next主题优化</title>
     <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<center>hexo博客next主题主要优化修改方案</center>
@@ -63,35 +109,8 @@
       </categories>
       <tags>
         <tag>hexo博客</tag>
+        <tag>小教程</tag>
         <tag>next主题</tag>
-        <tag>小教程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>github+hexo博客</title>
-    <url>/2021/07/15/github-hexo%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<center>github等代码托管平台搭建hexo博客</center>
-<span id="more"></span>]]></content>
-      <categories>
-        <category>hexo博客</category>
-      </categories>
-      <tags>
-        <tag>hexo博客</tag>
-        <tag>小教程</tag>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>this和super</title>
-    <url>/2021/07/20/this%E5%92%8Csuper/</url>
-    <content><![CDATA[<p>this()重载构造器和super()限定</p>
-<span id="more"></span>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -103,6 +122,19 @@
 
 <p>调用时</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>this和super</title>
+    <url>/2021/07/20/this%E5%92%8Csuper/</url>
+    <content><![CDATA[<p>this()重载构造器和super()限定</p>
+<span id="more"></span>]]></content>
       <categories>
         <category>java笔记</category>
       </categories>
@@ -223,6 +255,87 @@
       <tags>
         <tag>网抑云</tag>
         <tag>毒鸡汤</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>抽象类abstract</title>
+    <url>/2021/07/22/%E6%8A%BD%E8%B1%A1%E7%B1%BBabstract/</url>
+    <content><![CDATA[<ol>
+<li>抽象类与抽象方法必须用abstract修饰(与final互斥)，抽象方法不可有方法体</li>
+<li>抽象类不可被实例化，不能用于创建对象</li>
+<li>抽象类包括成员变量、方法(普通方法和抽象方法)、构造器、初始化块、内部类，主要用于派生子类</li>
+<li>抽象类的子类要么重写父类的全部抽象方法，要么只能定义为抽象类</li>
+</ol>
+<span id="more"></span>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">abstractTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        用抽象类创建对象时，只能用其子类向上转型</span></span><br><span class="line">        铠甲勇士<span class="number">2</span> 炎龙技能类型 = <span class="keyword">new</span> 炎龙铠甲<span class="number">2</span>();</span><br><span class="line">        铠甲勇士<span class="number">2</span> 风鹰技能类型 = <span class="keyword">new</span> 风影铠甲<span class="number">2</span>();</span><br><span class="line">        炎龙技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">        风鹰技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>abstract抽象类最主要的功能：派生子类，abstract与final互斥</li>
+<li>相对于普通类，abstract类多了abstract方法，抽象类不可实例化，即不能被分配内存、不能创建对象</li>
+<li>static修饰的方法属于类本身，必须被分配内存，static和abstract不可同时修饰一个方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>();</span><br><span class="line"><span class="comment">//    public abstract static void main()&#123;</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;测试&quot;);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 非抽象()&#123;</span><br><span class="line"><span class="comment">//        非抽象方法，不必须重写</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>抽象类的子类，要么重写父类的全部抽象方法，要么也是抽象类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 炎龙铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;封魔斩&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 风影铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;穿风刺&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 帝皇铠甲 <span class="keyword">extends</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>接口interface</title>
+    <url>/2021/07/22/%E6%8E%A5%E5%8F%A3interface/</url>
+    <content><![CDATA[<p>接口，比抽象类还要抽象的类:</p>
+<ol>
+<li>接口中的方法会被隐式的指定为  public abstract （只能是 public abstract，其他修饰符都会报错）。</li>
+<li>接口中的变量会被隐式的指定为  public static final   变量（并且只能是 public，用 private 修饰会报编译错误。）</li>
+<li>接口中的方法是不能在接口中实现的，只能由实现接口的类来实现接口中的方法。</li>
+</ol>
+<span id="more"></span>
+
+<h4 id="定义接口"><a href="#定义接口" class="headerlink" title="定义接口"></a>定义接口</h4><p>定义接口不再使用class关键字，而是interface</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">interface</span> 接口名 <span class="keyword">extends</span> 父接口1,父接口2...</span>&#123;</span><br><span class="line">    常量</span><br><span class="line">	抽象方法</span><br><span class="line">	内部类、接口、枚举</span><br><span class="line">	方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接口中的成员变量始终默认添加public static final修饰符</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">interfaceTest</span> </span>&#123;</span><br><span class="line"><span class="comment">//    成员变量始终添加public static final修饰符</span></span><br><span class="line">    String name = <span class="string">&quot;默认&quot;</span>;</span><br><span class="line"><span class="comment">//    等同于public static final String name = &quot;默认&quot;;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="接口中的方法"><a href="#接口中的方法" class="headerlink" title="接口中的方法"></a>接口中的方法</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">interfaceTest</span> </span>&#123;</span><br><span class="line"><span class="comment">//    抽象方法methods()，默认添加public abstract</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methods</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    j8开始允许有static方法，所以接口可以直接运行，可以省略访问权限控制符不写，默认添加public</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hi~&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    若要创建默认方法，就得把static改成default，default并无实际作用，仅用于抵消abstract</span></span><br><span class="line"><span class="comment">//    接口的默认方法其实就是实例方法，由于早期接口中的实例方法不能有方法体不能直接推到</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;实例方法&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.test2();</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    私有方法</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//    从java9开始，接口允许私有静态方法</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">bar</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//    从java9开始，接口允许私有默认方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="接口的继承"><a href="#接口的继承" class="headerlink" title="接口的继承"></a>接口的继承</h4><p>接口支持多继承</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">inter1</span> <span class="keyword">extends</span> <span class="title">inter2</span>,<span class="title">inter3</span>,<span class="title">inter4</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">inter2</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">inter3</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">inter4</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>接口不能显式继承任何类(隐式继承Object)</p>
+<h4 id="类使用接口"><a href="#类使用接口" class="headerlink" title="类使用接口"></a>类使用接口</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="keyword">implements</span> 接口1,接口2,接口3</span>&#123;</span><br><span class="line"><span class="comment">//    与继承父类一样，可以获得接口内的常量、方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用接口的类必须重写接口的全部抽象方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">public_test</span> <span class="keyword">implements</span> <span class="title">interfaceTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main2</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">interfaceTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">main2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">main3</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//    非抽象方法，不必须重写</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="接口和抽象类"><a href="#接口和抽象类" class="headerlink" title="接口和抽象类"></a>接口和抽象类</h4><p>相同</p>
+<ol>
+<li>都不能被实例化</li>
+<li>都可以包含抽象方法</li>
+</ol>
+<p>不同</p>
+<ol>
+<li>接口只能包含抽象方法、静态方法、默认方法和私有方法，不能为普通方法提供实现；抽象类可以包含普通方法</li>
+<li>接口只能定义静态常量，不能定义普通成员变量；抽象类能定义静态常量，也能定义普通成员变量</li>
+<li>接口不包含构造器；抽象类可以包含构造器，用于让子类调用构造器完成初始化操作</li>
+<li>接口不能包含初始化块；抽象类能包含初始化块</li>
+<li>一个类只能继承一个类；一个类可以实现多个接口</li>
+</ol>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
