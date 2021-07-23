@@ -29,7 +29,7 @@
 <meta property="og:description" content="成员内部类 内部类可以使用public private protected default static修饰 java源文件中仅包含一个外部类和一个内部类时，编译会生成两个class文件:外部类.class、外部类$内部类.class 外部类的静态方法不能访问非静态内部类；静态内部类无法访问外部类非静态成员">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-23T03:51:01.000Z">
-<meta property="article:modified_time" content="2021-07-23T09:37:17.319Z">
+<meta property="article:modified_time" content="2021-07-23T13:25:14.511Z">
 <meta property="article:author" content="xxin">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="学习笔记">
@@ -281,8 +281,10 @@
         <h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><ol>
 <li>内部类可以使用public private protected default static修饰</li>
 <li>java源文件中仅包含一个外部类和一个内部类时，编译会生成两个class文件:外部类.class、外部类$内部类.class</li>
-<li>外部类的静态方法不能访问非静态内部类；静态内部类无法访问外部类非静态成员<span id="more"></span></li>
+<li>外部类的静态方法不能访问非静态内部类；静态内部类无法访问外部类非静态成员</li>
 </ol>
+<span id="more"></span>
+
 <h4 id="非静态内部类"><a href="#非静态内部类" class="headerlink" title="非静态内部类"></a>非静态内部类</h4><p>&ensp;&ensp;无static修饰符修饰的非静态内部类，只能包含非静态成员</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 外部类 </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> 外部类()&#123;</span><br><span class="line"><span class="comment">//        外部类的构造器，在构造器中调用内部类的methods方法</span></span><br><span class="line">        内部类 内部类对象 = <span class="keyword">new</span> 内部类();</span><br><span class="line">        内部类对象.methods();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        外部类的main方法</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    非静态内部类内无法创建静态成员</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 内部类</span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methods</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//            非静态内部类的实例方法</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> 内部类()&#123;</span><br><span class="line"><span class="comment">//            内部类的构造器</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 

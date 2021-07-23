@@ -132,8 +132,10 @@
     <content><![CDATA[<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><ol>
 <li>内部类可以使用public private protected default static修饰</li>
 <li>java源文件中仅包含一个外部类和一个内部类时，编译会生成两个class文件:外部类.class、外部类$内部类.class</li>
-<li>外部类的静态方法不能访问非静态内部类；静态内部类无法访问外部类非静态成员<span id="more"></span></li>
+<li>外部类的静态方法不能访问非静态内部类；静态内部类无法访问外部类非静态成员</li>
 </ol>
+<span id="more"></span>
+
 <h4 id="非静态内部类"><a href="#非静态内部类" class="headerlink" title="非静态内部类"></a>非静态内部类</h4><p>&ensp;&ensp;无static修饰符修饰的非静态内部类，只能包含非静态成员</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 外部类 </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> 外部类()&#123;</span><br><span class="line"><span class="comment">//        外部类的构造器，在构造器中调用内部类的methods方法</span></span><br><span class="line">        内部类 内部类对象 = <span class="keyword">new</span> 内部类();</span><br><span class="line">        内部类对象.methods();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        外部类的main方法</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    非静态内部类内无法创建静态成员</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 内部类</span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methods</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//            非静态内部类的实例方法</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> 内部类()&#123;</span><br><span class="line"><span class="comment">//            内部类的构造器</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -201,6 +203,23 @@
       </tags>
   </entry>
   <entry>
+    <title>小衅笔记</title>
+    <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+]]></content>
+      <categories>
+        <category>站点日志</category>
+      </categories>
+      <tags>
+        <tag>好心情</tag>
+        <tag>站点日志</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在服务器中搭建hexo博客</title>
     <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<center>个人服务器搭建hexo(宝塔)</center>
@@ -252,60 +271,6 @@
       </tags>
   </entry>
   <entry>
-    <title>夜郎自大</title>
-    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
-<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”</p>
-<span id="more"></span>
-<p>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
-<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
-<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
-<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
-<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
-<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>小衅笔记</title>
-    <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-]]></content>
-      <categories>
-        <category>站点日志</category>
-      </categories>
-      <tags>
-        <tag>好心情</tag>
-        <tag>站点日志</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>怂崽</title>
-    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
-<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
-<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
-        <tag>坏心情</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>我的庸俗，我的封建</title>
     <url>/2021/07/18/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA/</url>
     <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;我的庸俗，向来我是承认的</p>
@@ -326,8 +291,29 @@
         <category>我的文章</category>
       </categories>
       <tags>
-        <tag>网抑云</tag>
         <tag>毒鸡汤</tag>
+        <tag>网抑云</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>夜郎自大</title>
+    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
+<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”</p>
+<span id="more"></span>
+<p>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
+<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
+<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
+<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
+<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
+<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>毒鸡汤</tag>
+        <tag>网抑云</tag>
       </tags>
   </entry>
   <entry>
@@ -361,6 +347,22 @@
       <tags>
         <tag>java</tag>
         <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>怂崽</title>
+    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
+<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
+<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>毒鸡汤</tag>
+        <tag>网抑云</tag>
+        <tag>坏心情</tag>
       </tags>
   </entry>
   <entry>
@@ -412,20 +414,6 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象之toString和equals</title>
-    <url>/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString%E5%92%8Cequals/</url>
-    <content><![CDATA[<h4 id="重写toString"><a href="#重写toString" class="headerlink" title="重写toString"></a>重写toString</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        测试类 toStringTest = <span class="keyword">new</span> 测试类(<span class="string">&quot;测试&quot;</span>);</span><br><span class="line">        System.out.println(toStringTest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> 测试类</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String str;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;str：&quot;</span> + <span class="keyword">this</span>.str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> 测试类(String str)&#123;</span><br><span class="line">        <span class="keyword">this</span>.str = str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="重写equals"><a href="#重写equals" class="headerlink" title="重写equals"></a>重写equals</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        铠甲勇士 铠甲<span class="number">1</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;炎龙铠甲&quot;</span>,<span class="number">1</span>);</span><br><span class="line"><span class="comment">//        铠甲勇士 铠甲2 = new 铠甲勇士(&quot;炎龙铠甲&quot;,1);</span></span><br><span class="line">        铠甲勇士 铠甲<span class="number">2</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;风影铠甲&quot;</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(铠甲<span class="number">1.</span>equals(铠甲<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 铠甲勇士</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//重写equals</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        this即为Equals中&quot;.&quot;之前的对象，obj即为传入的对象类型参数，判断两个对象的引用地址是否为一致</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == obj)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * equals()中的实参在传入后其编译类型就变成了形参中Object类型（实际类型”铠甲勇士“，详见”多态“）</span></span><br><span class="line"><span class="comment">         * Object属于”铠甲勇士“类的父类，在Object类中没有name和id两个变量，因为要调用obj的两个变量，所以强制转换</span></span><br><span class="line"><span class="comment">         * 首先判断obj的实际类型是否为”铠甲勇士“，如果不是则返回false</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"><span class="comment">//        if (!(obj instanceof 铠甲勇士))&#123;</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        判断TestObj对象是否不为空，并且为当前”铠甲勇士“类型对象</span></span><br><span class="line">        <span class="keyword">if</span> (obj != <span class="keyword">null</span> &amp;&amp; obj.getClass() == 铠甲勇士.class)&#123;</span><br><span class="line"><span class="comment">//            强转</span></span><br><span class="line">            铠甲勇士 TestObj = (铠甲勇士)obj;</span><br><span class="line"><span class="comment">//            判断name，判断id</span></span><br><span class="line">            <span class="keyword">if</span> (TestObj.name.equals(<span class="keyword">this</span>.name) &amp;&amp; TestObj.id == <span class="keyword">this</span>.id)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//    构造器</span></span><br><span class="line">    <span class="keyword">public</span> 铠甲勇士(String name,<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>面向对象之多态</title>
     <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%A4%9A%E6%80%81/</url>
     <content><![CDATA[<h5 id="多态-同一个类型的多个实例，在执行同一个方法时，呈现出多种的行为特征"><a href="#多态-同一个类型的多个实例，在执行同一个方法时，呈现出多种的行为特征" class="headerlink" title="多态:同一个类型的多个实例，在执行同一个方法时，呈现出多种的行为特征"></a>多态:同一个类型的多个实例，在执行同一个方法时，呈现出多种的行为特征</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//“铠甲勇士”类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 铠甲勇士 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">skill</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;:普通攻击&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -447,6 +435,20 @@
 <h5 id="instanceof运算符-避免ClassCastException异常"><a href="#instanceof运算符-避免ClassCastException异常" class="headerlink" title="instanceof运算符:避免ClassCastException异常"></a>instanceof运算符:避免ClassCastException异常</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//运用该运算符，可以将test()方法改写为如下</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Object value1 = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (value1 <span class="keyword">instanceof</span> Integer)&#123;</span><br><span class="line">        Integer value2 = (Integer)value1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;String不能强转为Integer类型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//那么铠甲特征()方法可修改为如下</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> 铠甲特征()&#123;</span><br><span class="line">    铠甲勇士 飞影技能 = <span class="keyword">new</span> 飞影铠甲();</span><br><span class="line">    <span class="keyword">if</span> (飞影技能 <span class="keyword">instanceof</span> 飞影铠甲)&#123;</span><br><span class="line">        飞影铠甲 铠甲类型强转 = (飞影铠甲)飞影技能;</span><br><span class="line">        铠甲类型强转.features();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;飞影技能不能强转为飞影铠甲类型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    铠甲勇士 刑天技能 = <span class="keyword">new</span> 刑天铠甲();</span><br><span class="line">    <span class="keyword">if</span> (刑天技能 <span class="keyword">instanceof</span> 飞影铠甲)&#123;</span><br><span class="line">        飞影铠甲 铠甲类型强转<span class="number">2</span> = (飞影铠甲)刑天技能;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;刑天技能不能强转为飞影铠甲类型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//instanceof运算符可以确保被强制转换类型的变量确实可以强制转换，从而避免ClassCastException</span></span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象之toString和equals</title>
+    <url>/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString%E5%92%8Cequals/</url>
+    <content><![CDATA[<h4 id="重写toString"><a href="#重写toString" class="headerlink" title="重写toString"></a>重写toString</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        测试类 toStringTest = <span class="keyword">new</span> 测试类(<span class="string">&quot;测试&quot;</span>);</span><br><span class="line">        System.out.println(toStringTest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> 测试类</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String str;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;str：&quot;</span> + <span class="keyword">this</span>.str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> 测试类(String str)&#123;</span><br><span class="line">        <span class="keyword">this</span>.str = str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="重写equals"><a href="#重写equals" class="headerlink" title="重写equals"></a>重写equals</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        铠甲勇士 铠甲<span class="number">1</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;炎龙铠甲&quot;</span>,<span class="number">1</span>);</span><br><span class="line"><span class="comment">//        铠甲勇士 铠甲2 = new 铠甲勇士(&quot;炎龙铠甲&quot;,1);</span></span><br><span class="line">        铠甲勇士 铠甲<span class="number">2</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;风影铠甲&quot;</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(铠甲<span class="number">1.</span>equals(铠甲<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 铠甲勇士</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//重写equals</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        this即为Equals中&quot;.&quot;之前的对象，obj即为传入的对象类型参数，判断两个对象的引用地址是否为一致</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == obj)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * equals()中的实参在传入后其编译类型就变成了形参中Object类型（实际类型”铠甲勇士“，详见”多态“）</span></span><br><span class="line"><span class="comment">         * Object属于”铠甲勇士“类的父类，在Object类中没有name和id两个变量，因为要调用obj的两个变量，所以强制转换</span></span><br><span class="line"><span class="comment">         * 首先判断obj的实际类型是否为”铠甲勇士“，如果不是则返回false</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"><span class="comment">//        if (!(obj instanceof 铠甲勇士))&#123;</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        判断TestObj对象是否不为空，并且为当前”铠甲勇士“类型对象</span></span><br><span class="line">        <span class="keyword">if</span> (obj != <span class="keyword">null</span> &amp;&amp; obj.getClass() == 铠甲勇士.class)&#123;</span><br><span class="line"><span class="comment">//            强转</span></span><br><span class="line">            铠甲勇士 TestObj = (铠甲勇士)obj;</span><br><span class="line"><span class="comment">//            判断name，判断id</span></span><br><span class="line">            <span class="keyword">if</span> (TestObj.name.equals(<span class="keyword">this</span>.name) &amp;&amp; TestObj.id == <span class="keyword">this</span>.id)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//    构造器</span></span><br><span class="line">    <span class="keyword">public</span> 铠甲勇士(String name,<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>java笔记</category>
       </categories>
