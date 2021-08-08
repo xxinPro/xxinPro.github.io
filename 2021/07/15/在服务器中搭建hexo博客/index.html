@@ -21,12 +21,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xxin.xyz","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="个人服务器搭建hexo(宝塔)  环境：Linux、CentOS 7.6 64bit、宝塔、nginx">
+<meta name="description" content="个人服务器搭建hexo(宝塔) 环境：Linux、CentOS 7.6 64bit、宝塔、nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在服务器中搭建hexo博客">
 <meta property="og:url" content="https://blog.xxin.xyz/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="小衅笔记">
-<meta property="og:description" content="个人服务器搭建hexo(宝塔)  环境：Linux、CentOS 7.6 64bit、宝塔、nginx">
+<meta property="og:description" content="个人服务器搭建hexo(宝塔) 环境：Linux、CentOS 7.6 64bit、宝塔、nginx">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.xxin.xyz/pageImg/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/1.png">
 <meta property="og:image" content="https://blog.xxin.xyz/pageImg/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/2.png">
@@ -94,9 +94,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">20</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">22</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -170,7 +170,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -183,7 +183,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -280,44 +280,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <center>个人服务器搭建hexo(宝塔)</center>
-<br>
-<center>环境：Linux、CentOS 7.6 64bit、宝塔、nginx</center>
-<span id="more"></span>
-<br>
-优点：相对于github或gitee，速度快，自定义程度高
-
+        <p><center>个人服务器搭建hexo(宝塔)</center><br><br></p>
+<p><center>环境：Linux、CentOS 7.6 64bit、宝塔、nginx</center><br><span id="more"></span><br><br><br>优点：相对于github或gitee，速度快，自定义程度高</p>
 <p>缺点：自己花钱买域名，自己花钱买服务器，没钱了ovo</p>
 <h3 id="一、环境安装"><a href="#一、环境安装" class="headerlink" title="一、环境安装"></a>一、环境安装</h3><h4 id="1-站点创建"><a href="#1-站点创建" class="headerlink" title="1.站点创建"></a>1.站点创建</h4><p>在宝塔中创建新的站点，该站点即为博客地址<br><img src="https://blog.xxin.xyz/pageImg/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/1.png" style="zoom:50%;" /></p>
 <h4 id="2-nginx配置"><a href="#2-nginx配置" class="headerlink" title="2.nginx配置"></a>2.nginx配置</h4><p>从宝塔的软件商店即可快捷安装nginx环境<br><img src="https://blog.xxin.xyz/pageImg/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/2.png" style="zoom:40%;" /></p>
-<h4 id="3-git工具下载"><a href="#3-git工具下载" class="headerlink" title="3.git工具下载"></a>3.git工具下载</h4><p>通过ssh连接服务器，并下载安装git工具</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install git #yum安装git</span><br></pre></td></tr></table></figure>
-<p>相关命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git --version #查看git安装版本</span><br><span class="line">yum remove git #卸载git工具</span><br></pre></td></tr></table></figure>
-
+<h4 id="3-git工具下载"><a href="#3-git工具下载" class="headerlink" title="3.git工具下载"></a>3.git工具下载</h4><p>通过ssh连接服务器，并下载安装git工具<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install git #yum安装git</span><br></pre></td></tr></table></figure><br>相关命令<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git --version #查看git安装版本</span><br><span class="line">yum remove git #卸载git工具</span><br></pre></td></tr></table></figure></p>
 <h3 id="二、git仓库搭建"><a href="#二、git仓库搭建" class="headerlink" title="二、git仓库搭建"></a>二、git仓库搭建</h3><p>和之前github的仓库一样，服务器也需要创建一个仓库用来实现静态文件储存</p>
-<h4 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1.创建用户"></a>1.创建用户</h4><p>在服务器端创建一个新用户git</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">adduser git #创建git用户</span><br><span class="line">chmod 740 /etc/sudoers #改变sudoers文件的权限为文件所有者可写</span><br><span class="line">vim /etc/sudoers #读取</span><br><span class="line">i #表示insert，从仅读取切换到编辑(插入)</span><br><span class="line"><span class="meta">#</span><span class="bash">在root ALL=(ALL) ALL 下方添加一行git ALL=(ALL) ALL</span></span><br><span class="line">:wq! #强制保存退出 :q! 强制不保存退出</span><br><span class="line">chmod 400 /etc/sudoers #改变sudoers文件的权限为文件所有者可读</span><br></pre></td></tr></table></figure>
-
+<h4 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1.创建用户"></a>1.创建用户</h4><p>在服务器端创建一个新用户git<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">adduser git #创建git用户</span><br><span class="line">chmod 740 /etc/sudoers #改变sudoers文件的权限为文件所有者可写</span><br><span class="line">vim /etc/sudoers #读取</span><br><span class="line">i #表示insert，从仅读取切换到编辑(插入)</span><br><span class="line"><span class="meta">#</span><span class="bash">在root ALL=(ALL) ALL 下方添加一行git ALL=(ALL) ALL</span></span><br><span class="line">:wq! #强制保存退出 :q! 强制不保存退出</span><br><span class="line">chmod 400 /etc/sudoers #改变sudoers文件的权限为文件所有者可读</span><br></pre></td></tr></table></figure></p>
 <h4 id="2-给git用户添加ssh密钥"><a href="#2-给git用户添加ssh密钥" class="headerlink" title="2.给git用户添加ssh密钥"></a>2.给git用户添加ssh密钥</h4><p>建立主机与服务器连接，添连接后不需要密码也能登录服务器，方便我们日后的博客文件上传</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">本地打开Git Bash并进入到C:\Users\admin\.ssh目录</span></span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C &quot;blog.xxin.xyz&quot;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -t 指定密钥类型，默认是 rsa ，可以省略</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -C 用于识别这个密钥的注释，可以输入任何内容</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -f 指定密钥文件存储文件名，默认id\_rsa</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">服务器端打开终端命令行</span></span><br><span class="line">su git #切换到git用户</span><br><span class="line">mkdir -p ~/.ssh #在git用户(/home/git)下创建.ssh文件夹，用于储存ssh密钥文件</span><br><span class="line">touch ~/.ssh/authorized\_keys #创建authorized_keys文件</span><br><span class="line">chmod 600 ~/.ssh/authorized\_keys  #为authorized_keys文件赋予文件所有者可读可写的权限</span><br><span class="line">chmod 700 ~/.ssh  #为.ssh文件夹赋予文件夹所有者可读可写可执行的权限</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">复制C:\Users\admin\.ssh目录下，公匙id_rsa.pub内容到服务器/home/git/.ssh/authorized_keys，关闭终端</span></span><br><span class="line"><span class="meta">#</span><span class="bash">使用ssh git@server重新登录服务器，测试是否能不要密码登录到git用户</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="3-创建git仓库"><a href="#3-创建git仓库" class="headerlink" title="3.创建git仓库"></a>3.创建git仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /home/git/repos #在git用户目录下创建repos文件夹作为仓库位置</span><br><span class="line">cd /home/git/repos</span><br><span class="line">sudo git init --bare blog.git #初始化一个名叫blog.git的仓库</span><br></pre></td></tr></table></figure>
-<h4 id="4-配置钩子实现自动部署"><a href="#4-配置钩子实现自动部署" class="headerlink" title="4.配置钩子实现自动部署"></a>4.配置钩子实现自动部署</h4><p>找到 /home/git/repos/taiblog.git/hooks/post-update.sample 改名post-update，内容改为</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">git --work-tree=/www/wwwroot/blog.xxin.xyz --git-dir=/home/git/repos/blog.git checkout -f</span><br><span class="line">                  ↑博客静态文件储存的位置                 ↑仓库位置</span><br></pre></td></tr></table></figure>
-<p>然后给权限</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd blog.git/hooks/</span><br><span class="line">sudo chmod +x post-update  #赋予其可执行权限</span><br><span class="line">sudo chown -R git:git /home/git/repos/ #仓库所有者改为git</span><br><span class="line">sudo chown -R git:git /www/wwwroot/blog.xxin.xyz/ #站点文件夹所有者改为git</span><br></pre></td></tr></table></figure>
-
+<h4 id="4-配置钩子实现自动部署"><a href="#4-配置钩子实现自动部署" class="headerlink" title="4.配置钩子实现自动部署"></a>4.配置钩子实现自动部署</h4><p>找到 /home/git/repos/taiblog.git/hooks/post-update.sample 改名post-update，内容改为<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">git --work-tree=/www/wwwroot/blog.xxin.xyz --git-dir=/home/git/repos/blog.git checkout -f</span><br><span class="line">                  ↑博客静态文件储存的位置                 ↑仓库位置</span><br></pre></td></tr></table></figure><br>然后给权限<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd blog.git/hooks/</span><br><span class="line">sudo chmod +x post-update  #赋予其可执行权限</span><br><span class="line">sudo chown -R git:git /home/git/repos/ #仓库所有者改为git</span><br><span class="line">sudo chown -R git:git /www/wwwroot/blog.xxin.xyz/ #站点文件夹所有者改为git</span><br></pre></td></tr></table></figure></p>
 <h4 id="5-测试可用性"><a href="#5-测试可用性" class="headerlink" title="5.测试可用性"></a>5.测试可用性</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">在主机端，如果能将仓库拉下来，说明Git仓库搭建成功</span></span><br><span class="line">git clone git@server\_ip:/home/git/repos/blog.git</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、修改本地配置"><a href="#三、修改本地配置" class="headerlink" title="三、修改本地配置"></a>三、修改本地配置</h3><h4 id="1-本地config-yml配置"><a href="#1-本地config-yml配置" class="headerlink" title="1.本地config.yml配置"></a>1.本地config.yml配置</h4><p>本地Hexo博客文件夹中的_config.yml文件尾部</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@159.75.7.25:/home/git/repos/blog.git #仓库地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
+<h3 id="三、修改本地配置"><a href="#三、修改本地配置" class="headerlink" title="三、修改本地配置"></a>三、修改本地配置</h3><h4 id="1-本地config-yml配置"><a href="#1-本地config-yml配置" class="headerlink" title="1.本地config.yml配置"></a>1.本地config.yml配置</h4><p>本地Hexo博客文件夹中的_config.yml文件尾部<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@159.75.7.25:/home/git/repos/blog.git #仓库地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
 <h4 id="2-测试"><a href="#2-测试" class="headerlink" title="2.测试"></a>2.测试</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  #清除缓存</span><br><span class="line">hexo generate #生成静态页面</span><br><span class="line">hexo delopy  #将本地静态页面目录部署到云服务器</span><br></pre></td></tr></table></figure>
-<p>也可以在package.json 中添加 npm 脚本，这样就可以直接npm run dd一下执行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;hexo generate&quot;,</span><br><span class="line">    &quot;clean&quot;: &quot;hexo clean&quot;,</span><br><span class="line">    &quot;deploy&quot;: &quot;hexo deploy&quot;,</span><br><span class="line">    &quot;dd&quot;: &quot;hexo clean &amp;&amp; hexo g -d&quot;,</span><br><span class="line">    &quot;server&quot;: &quot;hexo server&quot;,</span><br><span class="line">    &quot;ss&quot;: &quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-访问测试"><a href="#3-访问测试" class="headerlink" title="3.访问测试"></a>3.访问测试</h4><p><a href="https://blog.xxin.xyz/">https://blog.xxin.xyz</a></p>
+<p>也可以在package.json 中添加 npm 脚本，这样就可以直接npm run dd一下执行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;hexo generate&quot;,</span><br><span class="line">    &quot;clean&quot;: &quot;hexo clean&quot;,</span><br><span class="line">    &quot;deploy&quot;: &quot;hexo deploy&quot;,</span><br><span class="line">    &quot;dd&quot;: &quot;hexo clean &amp;&amp; hexo g -d&quot;,</span><br><span class="line">    &quot;server&quot;: &quot;hexo server&quot;,</span><br><span class="line">    &quot;ss&quot;: &quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-访问测试"><a href="#3-访问测试" class="headerlink" title="3.访问测试"></a>3.访问测试</h4><p><a href="https://blog.xxin.xyz">https://blog.xxin.xyz</a></p>
 <p>参考文章<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1823096">https://cloud.tencent.com/developer/article/1823096</a></p>
 
     </div>
@@ -391,6 +370,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
