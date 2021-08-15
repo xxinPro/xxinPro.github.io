@@ -132,6 +132,19 @@
       </tags>
   </entry>
   <entry>
+    <title>this和super</title>
+    <url>/2021/07/20/this%E5%92%8Csuper/</url>
+    <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>专升本试题集</title>
     <url>/2021/08/07/%E4%B8%93%E5%8D%87%E6%9C%AC%E8%AF%95%E9%A2%98%E9%9B%86/</url>
     <content><![CDATA[<h3 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h3><ol>
@@ -151,16 +164,45 @@
       </tags>
   </entry>
   <entry>
-    <title>this和super</title>
-    <url>/2021/07/20/this%E5%92%8Csuper/</url>
-    <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
+    <title>函数概念</title>
+    <url>/2021/08/08/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><h4 id="一-、绝对值"><a href="#一-、绝对值" class="headerlink" title="(一)、绝对值"></a>(一)、绝对值</h4><p>$ $<br>\begin{align}<br>\left | a \right | &amp; = \begin{Bmatrix}  \notag<br> a &amp; a\ge 0\\<br> -a &amp; a&lt; 0<br>\end{Bmatrix}\quad \quad (\left | a \right | \ge 0)<br>\end{align}<br>$ $</p>
+<h5 id="绝对值不等式"><a href="#绝对值不等式" class="headerlink" title="绝对值不等式"></a>绝对值不等式</h5><p>$ $<br>\begin{align}<br>&amp; \left | x \right | \le a \quad (a&gt;0) \Longleftrightarrow -a \le x \le a; \notag \\<br>&amp; \left | x \right | \ge a \quad (a&gt;0) \Longleftrightarrow x \ge a 或 x \le -a; \notag<br>\end{align}<br>$ $</p>
+<h4 id="二-、区间"><a href="#二-、区间" class="headerlink" title="(二)、区间"></a>(二)、区间</h4><p>是介于某两个实数之间的全体实数，这两个实数叫做区间的端点</p>
+<center> $ \left \{ x|a < x < b \right \} $称为$\color{red}{\text{开区间}}$，记作$ (a,b) $ </center>
+<br>
+<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%871.png" style="zoom:60%;"> </center>
+<br>
+<center> $\left \{ x|a \le x \le b \right \} $称为$\color{red}{\text{闭区间}}$，记作$ [a,b] $</center>
+<br>
+<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%872.png" style="zoom:60%;"> </center>
+
+<center> $ \left \{ x|a \le x < b \right \} $称为半开半闭区间，记作$ [a,b) $ </center>
+<center> $ \left \{ x|a < x \le b \right \} $称为半开半闭区间，记作$ (a,b] $ </center>
+<br>
+<center> $ [a,+\infty ) = \left \{ x \mid a \le x \right \} $ </center>
+
+<center> $ \left ( -\infty ,b \right ) =\left \{ x \mid x < b \right \}  $ </center>
+
+<!-- \] -->
+<p><br></p>
+<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%874.png" style="zoom:60%;"> </center>
+<br>
+<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%875.png" style="zoom:60%;"> </center>
+
+<p>&ensp;&ensp;区间长度的定义:（上限-下限）<br>&ensp;&ensp;两端点间的距离(线段的长度)称为区间的长度</p>
+<h5 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h5><p>用区间表示下列不等式的解</p>
+<p>$ $<br>\begin{align}<br>&amp; x^2 &lt; 9\\<br>解: \notag \\<br>&amp; \left ( -\infty ,-3 \right ) \cup \left ( 3 ,+\infty  \right ) \notag \\<br>\notag \\<br>&amp; \left | x-2&lt;1 \right | \\<br>解: \notag \\<br>&amp; \left ( 1,3 \right ) \notag \\<br>\notag \\<br>&amp; x^2-5x-6&lt;0 \\<br>解: \notag \\<br>&amp; \left ( -1,6 \right ) \notag<br>\end{align}<br>$ $</p>
+<h4 id="邻域"><a href="#邻域" class="headerlink" title="邻域"></a>邻域</h4><p><center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%876.png" style="zoom:60%;"> </center><br><br><br>&ensp;&ensp;设a与δ是两个实数，且δ&gt;0<br>&ensp;&ensp;数集$\left \{ x\mid \left | x-a \right | &lt; \delta \right \}$称为点a的δ邻域，点a叫做邻域的中心，δ叫做邻域的半径<br>$ $<br>\begin{align}<br>U_{\delta }{(a)} = \left \{ x\mid a-\delta &lt;x&lt;a+\delta \right \}\notag<br>\end{align}<br>$ $</p>
+<p>&ensp;&ensp;点a的去心邻域，记作$U_{\delta }^{0}{(a)}$<br>$ $<br>\begin{align}<br>U_{\delta }^{0}{(a)} = \left \{ x\mid 0 &lt; \left | x-a \right | &lt; \delta \right \}\notag<br>\end{align}<br>$ $</p>
 ]]></content>
       <categories>
-        <category>java笔记</category>
+        <category>专升本学习</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>学习笔记</tag>
+        <tag>重点难点</tag>
+        <tag>专升本数学</tag>
       </tags>
   </entry>
   <entry>
@@ -204,65 +246,6 @@
         <tag>java</tag>
         <tag>学习笔记</tag>
         <tag>重点难点</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>函数概念</title>
-    <url>/2021/08/08/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><h4 id="一-、绝对值"><a href="#一-、绝对值" class="headerlink" title="(一)、绝对值"></a>(一)、绝对值</h4><p>$ $<br>\begin{align}<br>\left | a \right | &amp; = \begin{Bmatrix}  \notag<br> a &amp; a\ge 0\\<br> -a &amp; a&lt; 0<br>\end{Bmatrix}\quad \quad (\left | a \right | \ge 0)<br>\end{align}<br>$ $</p>
-<h5 id="绝对值不等式"><a href="#绝对值不等式" class="headerlink" title="绝对值不等式"></a>绝对值不等式</h5><p>$ $<br>\begin{align}<br>&amp; \left | x \right | \le a \quad (a&gt;0) \Longleftrightarrow -a \le x \le a; \notag \\<br>&amp; \left | x \right | \ge a \quad (a&gt;0) \Longleftrightarrow x \ge a 或 x \le -a; \notag<br>\end{align}<br>$ $</p>
-<h4 id="二-、区间"><a href="#二-、区间" class="headerlink" title="(二)、区间"></a>(二)、区间</h4><p>是介于某两个实数之间的全体实数，这两个实数叫做区间的端点</p>
-<center> $ \left \{ x|a < x < b \right \} $称为$\color{red}{\text{开区间}}$，记作$ (a,b) $ </center>
-<br>
-<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%871.png" style="zoom:60%;"> </center>
-<br>
-<center> $\left \{ x|a \le x \le b \right \} $称为$\color{red}{\text{闭区间}}$，记作$ [a,b] $</center>
-<br>
-<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%872.png" style="zoom:60%;"> </center>
-
-<center> $ \left \{ x|a \le x < b \right \} $称为半开半闭区间，记作$ [a,b) $ </center>
-<center> $ \left \{ x|a < x \le b \right \} $称为半开半闭区间，记作$ (a,b] $ </center>
-<br>
-<center> $ [a,+\infty ) = \left \{ x \mid a \le x \right \} $ </center>
-
-<center> $ \left ( -\infty ,b \right ) =\left \{ x \mid x < b \right \}  $ </center>
-
-<!-- \] -->
-<p><br></p>
-<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%874.png" style="zoom:60%;"> </center>
-<br>
-<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%875.png" style="zoom:60%;"> </center>
-
-<p>&ensp;&ensp;区间长度的定义:（上限-下限）<br>&ensp;&ensp;两端点间的距离(线段的长度)称为区间的长度</p>
-<h5 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h5><p>用区间表示下列不等式的解</p>
-<p>$ $<br>\begin{align}<br>&amp; x^2 &lt; 9\\<br>解: \notag \\<br>&amp; \left ( -\infty ,-3 \right ) \cup \left ( 3 ,+\infty  \right ) \notag \\<br>\notag \\<br>&amp; \left | x-2&lt;1 \right | \\<br>解: \notag \\<br>&amp; \left ( 1,3 \right ) \notag \\<br>\notag \\<br>&amp; x^2-5x-6&lt;0 \\<br>解: \notag \\<br>&amp; \left ( -1,6 \right ) \notag<br>\end{align}<br>$ $</p>
-<h4 id="邻域"><a href="#邻域" class="headerlink" title="邻域"></a>邻域</h4><center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%876.png" style="zoom:60%;"> </center>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>专升本学习</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>重点难点</tag>
-        <tag>专升本数学</tag>
       </tags>
   </entry>
   <entry>
@@ -331,6 +314,31 @@
       </tags>
   </entry>
   <entry>
+    <title>我的庸俗，我的封建</title>
+    <url>/2021/07/18/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;我的庸俗，向来我是承认的</p>
+<p>&ensp;&ensp;&ensp;&ensp;拒绝了酒吧和ktv，推辞各种娱乐活动，甚至逃避稍微有些情调的餐厅，一条黑色的直筒裤子，一件各个商场角落都能找到的黑色上衣，一双黑色运动鞋，万年不变的发型，左兜是手机，右兜是烟，不出意外的话，烟应该是白将军</p>
+<p>&ensp;&ensp;&ensp;&ensp;并非不喜欢世界的精彩，也非不懂得享受安逸，不过是觉得这些东西不应该发生在我身上，我怕在享受这世界繁华的过程中它会潜移默化的改变我，磨去我的斗志；怕有一天我变得只贪财，而忘了取之有道；怕有一天我变得只好色，而忘了有品；怕有一天我也变得虚伪，口是心非；怕松了这口气，血液就再也沸腾不起来；怕我忘了我的理想、忘了我的出身</p>
+<p>&ensp;&ensp;&ensp;&ensp;想起了很久以前美术老师说过的：“不要爬在画纸上死抠一个部位，那样你永远也发觉不到这张画的全局问题，你应该多去把画立起来放在那里，站远一点，才能看清自己到底哪里不好，到底要修改哪里”。高楼的林立、闹市的喧嚣、街道的霓虹，我知道我看见的美好只是他们想让我看到的美好，他们不想让我看见的丑陋我永远也看不见，好像只有远离这些，让我变得庸俗，才能看清：世界是世界，我是我</p>
+<p>&ensp;&ensp;&ensp;&ensp;网络很强大，让下等人也能清楚的看到上等人的世界，产生“卓尔不群”的错觉，不知道这种错觉让多少人沉迷在了自己的幻想中，强行让生活丰富多彩，还拿出不切实际的理论来劝说别人；人都以为自己是聪明的、自己的选择是最正确的，然后就会有把别人都变成自己的想法，或许他们是善良的，甘愿把自己认为的最完美的人生经验分享给别人，哈哈，懒惰又愚蠢，多站起来看看吧，站远一点，以第三方的角度看看自己，看看为挣一时口舌之利时自己不堪入目的样子吧</p>
+<p>&ensp;&ensp;&ensp;&ensp;历史发展到今天，生活的节奏似乎随着网速变得越来越快，工作、学习、吃饭以及出行，男女关系也变得像儿戏一样，在这个快节奏时代，我刻意用大量时间只去做一件小事，想试着把节奏拖得慢一点，好让身边的人、事、物都能多停留半刻，可惜，遗憾，在5G网络的70M/S面前，这种所作所为俨然像个傻吊。“历史潮流，浩浩荡荡，顺之者昌，逆之者亡”，尽管知道以我之渺小难挡历史之潮流、时代之节奏，我还是会去做，我就是想用我的行动表达一个态度——我会热爱我之热爱、坚持我之坚持、向往我之向往，潮流逆之，便逆潮流而行，这就是我的庸俗</p>
+<p>&ensp;&ensp;&ensp;&ensp;我的封建，只来约束我自己</p>
+<p>&ensp;&ensp;&ensp;&ensp;这种封建思想，想想就觉得憋屈，只一个男女授受不亲的可怕想法，就快要把我折磨死，不止一次和喜欢的女孩独处时，心里就会偷偷的想：“多好的机会啊，现在我装作不小心不经意去碰一下她的手，肯定不会被发现，嘿嘿”，微微放纵的思绪只片刻就被强行打断，事后又会后悔：“为什么刚刚不碰一下呢？？？我怂什么呢？？？”，，，哈哈哈，好邪恶</p>
+<p>&ensp;&ensp;&ensp;&ensp;心里的世界和现实世界多少会有点冲突，发生冲突时它被带入到现实是很可怕的，行为被强行约束，思维被强制控制，年少的轻狂和冲动又刚好会让我产生很多不该出现的想法。纹个身吧，不止一次已经选好了要纹的图案，才忽觉荒唐！身体发肤，受之父母，不敢毁伤！好不容易心动了女孩子，emmmm，她真好看，那我…..不吧，学业未结，父母操劳，囊中羞涩，任重而道远，怎敢涉及儿女情长</p>
+<p>&ensp;&ensp;&ensp;&ensp;有时候也会感谢我的封建带给我的约束，起码它不会让我在没人的地方作恶，在众目睽睽下行善，然后站在道德的制高点指指点点；它让我讨厌去听一些故作清高的垃圾总结出大道理，讨厌他们给我所认知的东西强加一个不沾边的概念，讨厌把那些原本不美好的东西渡一层金色外表。这就是屎，但是它是一堆金屎，它被世人所追捧，清醒者想去抵抗，却被冠之以封建，一道光照亮了黑暗屋子里的丑陋，那这道光就成了罪恶</p>
+<p>&ensp;&ensp;&ensp;&ensp;封建与庸俗碰撞就形成了两个极端思维，一种莫名的责任感，它让我的大多数时间都陷入在自责中，生不如死。妈的，一件错事，不管错是由谁引起的，都会被这天杀的责任感一股脑的揽到自己身上，总有一百种理由从中找到关于自己的原因，心底的高傲和优越感让我知道这不是自卑，就是单纯的自己坑自己，于是见不得周围的人对我失望，那我会发了疯的去弥补，心里一遍又一遍问自己到底为什么，一遍又一遍猜想、演算，推导换做其他方式的最终结果，再回过头去了结心中的愧疚，就算不是今天也肯定是明天，就算结果非我所愿，也一定会去做</p>
+<p>&ensp;&ensp;&ensp;&ensp;在责任感对立面的，是极致的顺其自然，对一件事丝毫不感兴趣时，即使它在我能力之内，关于这件事的一切也会变得默然，不管它于我有关或无关，不会生气也不会开心，看着这件事自然发展，看着事中的人或像狼狗一样的狂吠、或像鸭子一样的嘎嘎笑，都无所谓，你觉得是什么就是什么，你爱怎么你就怎么，偶尔觉得对方实在太傻逼，才会萌生出一点可笑的情绪，或许他们也这样看我，不过无所谓，哈哈</p>
+<p>&ensp;&ensp;&ensp;&ensp;这时代和平又混乱，让受其所害的人嘲笑未受其害的人，让妥协的人嘲笑反抗的人，每个人都渴望拥有又不想抛弃，我明白他们的心软让他们狠不下心逃离安逸圈，久而久之背负的垃圾就越来越多，把一杯水分做十份二十份的时候，这杯水就不够分了，忙来忙去却导致了最后的全线崩塌，满盘皆输，岂不悲乎？</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>小衅笔记</title>
     <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
@@ -361,31 +369,6 @@
         <tag>网抑云</tag>
         <tag>毒鸡汤</tag>
         <tag>坏心情</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我的庸俗，我的封建</title>
-    <url>/2021/07/18/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;我的庸俗，向来我是承认的</p>
-<p>&ensp;&ensp;&ensp;&ensp;拒绝了酒吧和ktv，推辞各种娱乐活动，甚至逃避稍微有些情调的餐厅，一条黑色的直筒裤子，一件各个商场角落都能找到的黑色上衣，一双黑色运动鞋，万年不变的发型，左兜是手机，右兜是烟，不出意外的话，烟应该是白将军</p>
-<p>&ensp;&ensp;&ensp;&ensp;并非不喜欢世界的精彩，也非不懂得享受安逸，不过是觉得这些东西不应该发生在我身上，我怕在享受这世界繁华的过程中它会潜移默化的改变我，磨去我的斗志；怕有一天我变得只贪财，而忘了取之有道；怕有一天我变得只好色，而忘了有品；怕有一天我也变得虚伪，口是心非；怕松了这口气，血液就再也沸腾不起来；怕我忘了我的理想、忘了我的出身</p>
-<p>&ensp;&ensp;&ensp;&ensp;想起了很久以前美术老师说过的：“不要爬在画纸上死抠一个部位，那样你永远也发觉不到这张画的全局问题，你应该多去把画立起来放在那里，站远一点，才能看清自己到底哪里不好，到底要修改哪里”。高楼的林立、闹市的喧嚣、街道的霓虹，我知道我看见的美好只是他们想让我看到的美好，他们不想让我看见的丑陋我永远也看不见，好像只有远离这些，让我变得庸俗，才能看清：世界是世界，我是我</p>
-<p>&ensp;&ensp;&ensp;&ensp;网络很强大，让下等人也能清楚的看到上等人的世界，产生“卓尔不群”的错觉，不知道这种错觉让多少人沉迷在了自己的幻想中，强行让生活丰富多彩，还拿出不切实际的理论来劝说别人；人都以为自己是聪明的、自己的选择是最正确的，然后就会有把别人都变成自己的想法，或许他们是善良的，甘愿把自己认为的最完美的人生经验分享给别人，哈哈，懒惰又愚蠢，多站起来看看吧，站远一点，以第三方的角度看看自己，看看为挣一时口舌之利时自己不堪入目的样子吧</p>
-<p>&ensp;&ensp;&ensp;&ensp;历史发展到今天，生活的节奏似乎随着网速变得越来越快，工作、学习、吃饭以及出行，男女关系也变得像儿戏一样，在这个快节奏时代，我刻意用大量时间只去做一件小事，想试着把节奏拖得慢一点，好让身边的人、事、物都能多停留半刻，可惜，遗憾，在5G网络的70M/S面前，这种所作所为俨然像个傻吊。“历史潮流，浩浩荡荡，顺之者昌，逆之者亡”，尽管知道以我之渺小难挡历史之潮流、时代之节奏，我还是会去做，我就是想用我的行动表达一个态度——我会热爱我之热爱、坚持我之坚持、向往我之向往，潮流逆之，便逆潮流而行，这就是我的庸俗</p>
-<p>&ensp;&ensp;&ensp;&ensp;我的封建，只来约束我自己</p>
-<p>&ensp;&ensp;&ensp;&ensp;这种封建思想，想想就觉得憋屈，只一个男女授受不亲的可怕想法，就快要把我折磨死，不止一次和喜欢的女孩独处时，心里就会偷偷的想：“多好的机会啊，现在我装作不小心不经意去碰一下她的手，肯定不会被发现，嘿嘿”，微微放纵的思绪只片刻就被强行打断，事后又会后悔：“为什么刚刚不碰一下呢？？？我怂什么呢？？？”，，，哈哈哈，好邪恶</p>
-<p>&ensp;&ensp;&ensp;&ensp;心里的世界和现实世界多少会有点冲突，发生冲突时它被带入到现实是很可怕的，行为被强行约束，思维被强制控制，年少的轻狂和冲动又刚好会让我产生很多不该出现的想法。纹个身吧，不止一次已经选好了要纹的图案，才忽觉荒唐！身体发肤，受之父母，不敢毁伤！好不容易心动了女孩子，emmmm，她真好看，那我…..不吧，学业未结，父母操劳，囊中羞涩，任重而道远，怎敢涉及儿女情长</p>
-<p>&ensp;&ensp;&ensp;&ensp;有时候也会感谢我的封建带给我的约束，起码它不会让我在没人的地方作恶，在众目睽睽下行善，然后站在道德的制高点指指点点；它让我讨厌去听一些故作清高的垃圾总结出大道理，讨厌他们给我所认知的东西强加一个不沾边的概念，讨厌把那些原本不美好的东西渡一层金色外表。这就是屎，但是它是一堆金屎，它被世人所追捧，清醒者想去抵抗，却被冠之以封建，一道光照亮了黑暗屋子里的丑陋，那这道光就成了罪恶</p>
-<p>&ensp;&ensp;&ensp;&ensp;封建与庸俗碰撞就形成了两个极端思维，一种莫名的责任感，它让我的大多数时间都陷入在自责中，生不如死。妈的，一件错事，不管错是由谁引起的，都会被这天杀的责任感一股脑的揽到自己身上，总有一百种理由从中找到关于自己的原因，心底的高傲和优越感让我知道这不是自卑，就是单纯的自己坑自己，于是见不得周围的人对我失望，那我会发了疯的去弥补，心里一遍又一遍问自己到底为什么，一遍又一遍猜想、演算，推导换做其他方式的最终结果，再回过头去了结心中的愧疚，就算不是今天也肯定是明天，就算结果非我所愿，也一定会去做</p>
-<p>&ensp;&ensp;&ensp;&ensp;在责任感对立面的，是极致的顺其自然，对一件事丝毫不感兴趣时，即使它在我能力之内，关于这件事的一切也会变得默然，不管它于我有关或无关，不会生气也不会开心，看着这件事自然发展，看着事中的人或像狼狗一样的狂吠、或像鸭子一样的嘎嘎笑，都无所谓，你觉得是什么就是什么，你爱怎么你就怎么，偶尔觉得对方实在太傻逼，才会萌生出一点可笑的情绪，或许他们也这样看我，不过无所谓，哈哈</p>
-<p>&ensp;&ensp;&ensp;&ensp;这时代和平又混乱，让受其所害的人嘲笑未受其害的人，让妥协的人嘲笑反抗的人，每个人都渴望拥有又不想抛弃，我明白他们的心软让他们狠不下心逃离安逸圈，久而久之背负的垃圾就越来越多，把一杯水分做十份二十份的时候，这杯水就不够分了，忙来忙去却导致了最后的全线崩塌，满盘皆输，岂不悲乎？</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
       </tags>
   </entry>
   <entry>
@@ -456,18 +439,6 @@
       </tags>
   </entry>
   <entry>
-    <title>枚举</title>
-    <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
-    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>面向对象之toString和equals</title>
     <url>/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString%E5%92%8Cequals/</url>
     <content><![CDATA[<h4 id="重写toString"><a href="#重写toString" class="headerlink" title="重写toString"></a>重写toString</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        测试类 toStringTest = <span class="keyword">new</span> 测试类(<span class="string">&quot;测试&quot;</span>);</span><br><span class="line">        System.out.println(toStringTest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> 测试类</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String str;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;str：&quot;</span> + <span class="keyword">this</span>.str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> 测试类(String str)&#123;</span><br><span class="line">        <span class="keyword">this</span>.str = str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -481,10 +452,9 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象之继承</title>
-    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%BB%A7%E6%89%BF/</url>
-    <content><![CDATA[<p>方法继承<br><span id="more"></span></p>
-]]></content>
+    <title>枚举</title>
+    <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
+    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>java笔记</category>
       </categories>
@@ -506,6 +476,19 @@
 <p>第二种ClassCastException错误<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//    value1编译时类型为Object，实际类型为String</span></span><br><span class="line">    Object value1 = <span class="string">&quot;123&quot;</span>;</span><br><span class="line"><span class="comment">//    Integer继承于Object，所以编译时不会报错</span></span><br><span class="line">    Integer value2 = (Integer)value1;</span><br><span class="line"><span class="comment">//    运行时报错java.lang.String cannot be cast to java.lang.Integer</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//    结论：具有继承关系的编译类型强制转换时，如果被转变量的实际类型不是要转的目标类型，则运行错误</span></span><br></pre></td></tr></table></figure></p>
 <h5 id="instanceof运算符-避免ClassCastException异常"><a href="#instanceof运算符-避免ClassCastException异常" class="headerlink" title="instanceof运算符:避免ClassCastException异常"></a>instanceof运算符:避免ClassCastException异常</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//运用该运算符，可以将test()方法改写为如下</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Object value1 = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (value1 <span class="keyword">instanceof</span> Integer)&#123;</span><br><span class="line">        Integer value2 = (Integer)value1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;String不能强转为Integer类型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//那么铠甲特征()方法可修改为如下</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> 铠甲特征()&#123;</span><br><span class="line">    铠甲勇士 飞影技能 = <span class="keyword">new</span> 飞影铠甲();</span><br><span class="line">    <span class="keyword">if</span> (飞影技能 <span class="keyword">instanceof</span> 飞影铠甲)&#123;</span><br><span class="line">        飞影铠甲 铠甲类型强转 = (飞影铠甲)飞影技能;</span><br><span class="line">        铠甲类型强转.features();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;飞影技能不能强转为飞影铠甲类型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    铠甲勇士 刑天技能 = <span class="keyword">new</span> 刑天铠甲();</span><br><span class="line">    <span class="keyword">if</span> (刑天技能 <span class="keyword">instanceof</span> 飞影铠甲)&#123;</span><br><span class="line">        飞影铠甲 铠甲类型强转<span class="number">2</span> = (飞影铠甲)刑天技能;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;刑天技能不能强转为飞影铠甲类型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//instanceof运算符可以确保被强制转换类型的变量确实可以强制转换，从而避免ClassCastException</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象之继承</title>
+    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%BB%A7%E6%89%BF/</url>
+    <content><![CDATA[<p>方法继承<br><span id="more"></span></p>
 ]]></content>
       <categories>
         <category>java笔记</category>
