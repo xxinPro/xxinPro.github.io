@@ -2892,18 +2892,3 @@ mjx-container[display="true"] + br {
     margin-bottom: 10px;
   }
 }
-body {
-  background-image: url("/images/background.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
-.main-inner {
-  background-color: rgba(255,255,255,0.9);
-}
-.sidebar-inner {
-  background: rgba(255,255,255,0.9);
-}
-.header-inner {
-  background: rgba(255,255,255,0.9);
-}
