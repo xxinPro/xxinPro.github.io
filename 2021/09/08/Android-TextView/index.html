@@ -21,28 +21,31 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xxin.xyz","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="“谁在开枪，谁在开枪”“我看不见，他站在制高点，在阳光下”">
+<meta name="description" content="TextView详解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的庸俗，我的封建">
-<meta property="og:url" content="https://blog.xxin.xyz/2021/08/29/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA-1/index.html">
+<meta property="og:title" content="Android-TextView">
+<meta property="og:url" content="https://blog.xxin.xyz/2021/09/08/Android-TextView/index.html">
 <meta property="og:site_name" content="小衅笔记">
-<meta property="og:description" content="“谁在开枪，谁在开枪”“我看不见，他站在制高点，在阳光下”">
+<meta property="og:description" content="TextView详解">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-08-29T06:55:29.000Z">
-<meta property="article:modified_time" content="2021-08-29T07:01:01.982Z">
+<meta property="og:image" content="https://blog.xxin.xyz/2021/09/08/Android-TextView/MyTextView.jpg">
+<meta property="article:published_time" content="2021-09-08T06:33:15.000Z">
+<meta property="article:modified_time" content="2021-09-08T09:25:01.939Z">
 <meta property="article:author" content="xxin">
-<meta property="article:tag" content="网抑云">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="学习笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.xxin.xyz/2021/09/08/Android-TextView/MyTextView.jpg">
 
 
-<link rel="canonical" href="https://blog.xxin.xyz/2021/08/29/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA-1/">
+<link rel="canonical" href="https://blog.xxin.xyz/2021/09/08/Android-TextView/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xxin.xyz/2021/08/29/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA-1/","path":"2021/08/29/我的庸俗，我的封建-1/","title":"我的庸俗，我的封建"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xxin.xyz/2021/09/08/Android-TextView/","path":"2021/09/08/Android-TextView/","title":"Android-TextView"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>我的庸俗，我的封建 | 小衅笔记</title>
+<title>Android-TextView | 小衅笔记</title>
   
 
 
@@ -90,9 +93,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">25</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -136,7 +139,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -149,6 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#TextView%E7%9A%84%E5%9F%BA%E7%A1%80%E5%B1%9E%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">TextView的基础属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TextView%E9%98%B4%E5%BD%B1"><span class="nav-number">2.</span> <span class="nav-text">TextView阴影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%91%E9%A9%AC%E7%81%AF%E6%95%88%E6%9E%9C"><span class="nav-number">3.</span> <span class="nav-text">跑马灯效果</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89TextView"><span class="nav-number">3.1.</span> <span class="nav-text">自定义TextView</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9xml%E6%A0%87%E7%AD%BE"><span class="nav-number">3.2.</span> <span class="nav-text">修改xml标签</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,20 +169,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -229,7 +233,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.xxin.xyz/2021/08/29/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA-1/">
+    <link itemprop="mainEntityOfPage" href="https://blog.xxin.xyz/2021/09/08/Android-TextView/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="http://q1.qlogo.cn/g?b=qq&nk=3033528136&s=640">
@@ -242,7 +246,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          我的庸俗，我的封建
+          Android-TextView
         </h1>
 
         <div class="post-meta-container">
@@ -253,7 +257,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-08-29 14:55:29" itemprop="dateCreated datePublished" datetime="2021-08-29T14:55:29+08:00">2021-08-29</time>
+      <time title="创建时间：2021-09-08 14:33:15" itemprop="dateCreated datePublished" datetime="2021-09-08T14:33:15+08:00">2021-09-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -261,14 +265,14 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%88%91%E7%9A%84%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">我的文章</span></a>
+          <a href="/categories/Android%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">Android笔记</span></a>
         </span>
     </span>
 
   
 </div>
 
-            <div class="post-description"><center>“谁在开枪，谁在开枪”</center><br/><center>“我看不见，他站在制高点，在阳光下”</center></div>
+            <div class="post-description"><center>TextView详解</center></div>
         </div>
       </header>
 
@@ -276,19 +280,37 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>&ensp;&ensp;我的庸俗，向来我是承认的</p>
-<p>&ensp;&ensp;拒绝了酒吧和ktv，推辞各种娱乐活动，甚至逃避稍微有些情调的餐厅，一条黑色的直筒裤子，一件各个商场角落都能找到的黑色上衣，一双黑色运动鞋，万年不变的发型，左兜是手机，右兜是烟，不出意外的话，烟应该是白将军</p>
-<p>&ensp;&ensp;并非不喜欢世界的精彩，也非不懂得享受安逸，不过是觉得这些东西不应该发生在我身上，我怕在享受这世界繁华的过程中它会潜移默化的改变我，磨去我的斗志；怕有一天我变得只贪财，而忘了取之有道；怕有一天我变得只好色，而忘了有品；怕有一天我也变得虚伪，口是心非；怕松了这口气，血液就再也沸腾不起来；怕我忘了我的理想、忘了我的出身</p>
-<p>&ensp;&ensp;想起了很久以前美术老师说过的：“不要爬在画纸上死抠一个部位，那样你永远也发觉不到这张画的全局问题，你应该多去把画立起来放在那里，站远一点，才能看清自己到底哪里不好，到底要修改哪里”。高楼的林立、闹市的喧嚣、街道的霓虹，我知道我看见的美好只是他们想让我看到的美好，他们不想让我看见的丑陋我永远也看不见，好像只有远离这些，让我变得庸俗，才能看清：世界是世界，我是我</p>
-<p>&ensp;&ensp;网络很强大，让下等人也能清楚的看到上等人的世界，产生“卓尔不群”的错觉，不知道这种错觉让多少人沉迷在了自己的幻想中，强行让生活丰富多彩，还拿出不切实际的理论来劝说别人；人都以为自己是聪明的、自己的选择是最正确的，然后就会有把别人都变成自己的想法，或许他们是善良的，甘愿把自己认为的最完美的人生经验分享给别人，哈哈，懒惰又愚蠢，多站起来看看吧，站远一点，以第三方的角度看看自己，看看为挣一时口舌之利时自己不堪入目的样子吧</p>
-<p>&ensp;&ensp;历史发展到今天，生活的节奏似乎随着网速变得越来越快，工作、学习、吃饭以及出行，男女关系也变得像儿戏一样，在这个快节奏时代，我刻意用大量时间只去做一件小事，想试着把节奏拖得慢一点，好让身边的人、事、物都能多停留半刻，可惜，遗憾，在5G网络的70M/S面前，这种所作所为俨然像个傻吊。“历史潮流，浩浩荡荡，顺之者昌，逆之者亡”，尽管知道以我之渺小难挡历史之潮流、时代之节奏，我还是会去做，我就是想用我的行动表达一个态度——我会热爱我之热爱、坚持我之坚持、向往我之向往，潮流逆之，便逆潮流而行，这就是我的庸俗</p>
-<p>&ensp;&ensp;我的封建，只来约束我自己</p>
-<p>&ensp;&ensp;这种封建思想，想想就觉得憋屈，只一个男女授受不亲的可怕想法，就快要把我折磨死，不止一次和喜欢的女孩独处时，心里就会偷偷的想：“多好的机会啊，现在我装作不小心不经意去碰一下她的手，肯定不会被发现，嘿嘿”，微微放纵的思绪只片刻就被强行打断，事后又会后悔：“为什么刚刚不碰一下呢？？？我怂什么呢？？？”，，，哈哈哈，好邪恶</p>
-<p>&ensp;&ensp;心里的世界和现实世界多少会有点冲突，发生冲突时它被带入到现实是很可怕的，行为被强行约束，思维被强制控制，年少的轻狂和冲动又刚好会让我产生很多不该出现的想法。纹个身吧，不止一次已经选好了要纹的图案，才忽觉荒唐！身体发肤，受之父母，不敢毁伤！好不容易心动了女孩子，emmmm，她真好看，那我…..不吧，学业未结，父母操劳，囊中羞涩，任重而道远，怎敢涉及儿女情长</p>
-<p>&ensp;&ensp;有时候也会感谢我的封建带给我的约束，起码它不会让我在没人的地方作恶，在众目睽睽下行善，然后站在道德的制高点指指点点；它让我讨厌去听一些故作清高的垃圾总结出大道理，讨厌他们给我所认知的东西强加一个不沾边的概念，讨厌把那些原本不美好的东西渡一层金色外表。这就是屎，但是它是一堆金屎，它被世人所追捧，清醒者想去抵抗，却被冠之以封建，一道光照亮了黑暗屋子里的丑陋，那这道光就成了罪恶</p>
-<p>&ensp;&ensp;封建与庸俗碰撞就形成了两个极端思维，一种是莫名的责任感，它让我的大多数时间都陷入在自责中，生不如死。妈的，一件错事，不管错是由谁引起的，都会被这天杀的责任感一股脑的揽到自己身上，总有一百种理由从中找到关于自己的原因，心底的高傲和优越感让我知道这不是自卑，就是单纯的自己坑自己，于是见不得周围的人对我失望，那我会发了疯的去弥补，心里一遍又一遍问自己到底为什么，一遍又一遍猜想、演算，推导换做其他方式的最终结果，再回过头去了结心中的愧疚，就算不是今天也肯定是明天，就算结果非我所愿，也一定会去做</p>
-<p>&ensp;&ensp;在责任感对立面的，是极致的顺其自然，对一件事丝毫不感兴趣时，即使它在我能力之内，关于这件事的一切也会变得默然，不管它于我有关或无关，不会生气也不会开心，看着这件事自然发展，看着事中的人或像狼狗一样的狂吠、或像鸭子一样的嘎嘎笑，都无所谓，你觉得是什么就是什么，你爱怎么你就怎么，偶尔觉得对方实在太傻逼，才会萌生出一点可笑的情绪，或许他们也这样看我，不过无所谓，哈哈</p>
-<p>&ensp;&ensp;这时代和平又混乱，让受其所害的人嘲笑未受其害的人，让妥协的人嘲笑反抗的人，每个人都渴望拥有又不想抛弃，我明白他们的心软让他们狠不下心逃离安逸圈，久而久之背负的垃圾就越来越多，把一杯水分做十份二十份的时候，这杯水就不够分了，忙来忙去却导致了最后的全线崩塌，满盘皆输，岂不悲乎？</p>
+        <h4 id="TextView的基础属性"><a href="#TextView的基础属性" class="headerlink" title="TextView的基础属性"></a>TextView的基础属性</h4><ol>
+<li>layout_width: 组件的宽度</li>
+<li>layout_height: 组件的高度</li>
+<li>id: 组件的id</li>
+<li>text: 设置文本显示的内容</li>
+<li>textColor: 设置字体颜色</li>
+<li>textStyle: 设置字体风格，normal[无效果]、bold[加粗]、italic[倾斜]</li>
+<li>textSize: 字体大小，单位一般用sp</li>
+<li>background: 控件的背景颜色，可以是图片</li>
+<li>gravity: 设置控件中内容的对齐方向</li>
+</ol>
+<h4 id="TextView阴影"><a href="#TextView阴影" class="headerlink" title="TextView阴影"></a>TextView阴影</h4><ol>
+<li>shadowColor: 设置阴影的颜色，需要与shadowRadius一起使用</li>
+<li>shadowRadius: 设置阴影的模糊程度，建议3.0</li>
+<li>shadowDx: 设置阴影在水平方向的偏移</li>
+<li>shadowDy: 设置阴影在垂直方向的偏移</li>
+</ol>
+<h4 id="跑马灯效果"><a href="#跑马灯效果" class="headerlink" title="跑马灯效果"></a>跑马灯效果</h4><ol>
+<li>android:singleLine: 内容单行显示</li>
+<li>android:focusable: 是否可以获取焦点</li>
+<li>android:focusableInTouchMode: 用于控制视图在触摸模式下是否可以聚焦</li>
+<li>android:ellipsize: 在哪里省略文本</li>
+<li>android:marqueeRepeatLimit: 字母动画重复的次数</li>
+</ol>
+<p>设置上面5个属性后，此时跑马灯依然不能运行，有两种运行的解决方案</p>
+<h5 id="自定义TextView"><a href="#自定义TextView" class="headerlink" title="自定义TextView"></a>自定义TextView</h5><p>1.新建MyTextView类继承TextView类<br><img src="../Android-TextView/MyTextView.jpg" /></p>
+<p>2.继承3个MyTextView构造方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTextView</span> <span class="keyword">extends</span> <span class="title">TextView</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyTextView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyTextView</span><span class="params">(Context context, <span class="meta">@Nullable</span> AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyTextView</span><span class="params">(Context context, <span class="meta">@Nullable</span> AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFocused</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.重写isFocused方法，使其返回true<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTextView</span> <span class="keyword">extends</span> <span class="title">TextView</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyTextView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyTextView</span><span class="params">(Context context, <span class="meta">@Nullable</span> AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyTextView</span><span class="params">(Context context, <span class="meta">@Nullable</span> AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFocused</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4.将xml布局文件中的TextView修改为com.a.Smartcity.MyTextView(全类名)</p>
+<h5 id="修改xml标签"><a href="#修改xml标签" class="headerlink" title="修改xml标签"></a>修改xml标签</h5><p>1.将TextView单标签修改为双标签</p>
+<p>2.在TextView中添加<code>&lt;requestFocus/&gt;</code>单标签</p>
 
     </div>
 
@@ -298,15 +320,16 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%BD%91%E6%8A%91%E4%BA%91/" rel="tag"><i class="fa fa-tag"></i> 网抑云</a>
+              <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 学习笔记</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/08/21/%E9%97%AA%E4%B8%8D%E5%8A%A8%E6%A0%A1%E5%9B%AD/" rel="prev" title="闪不动校园">
-                  <i class="fa fa-chevron-left"></i> 闪不动校园
+                <a href="/2021/09/07/Android%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/" rel="prev" title="Android工程结构">
+                  <i class="fa fa-chevron-left"></i> Android工程结构
                 </a>
             </div>
             <div class="post-nav-item">

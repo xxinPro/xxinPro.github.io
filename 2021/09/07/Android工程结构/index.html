@@ -21,26 +21,31 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xxin.xyz","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="希望你别被乱世迷了双眼">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小衅笔记">
-<meta property="og:url" content="https://blog.xxin.xyz/categories/java%E7%AC%94%E8%AE%B0/index.html">
+<meta name="description" content="Android Studio在java开发环境下的项目工程目录结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android工程结构">
+<meta property="og:url" content="https://blog.xxin.xyz/2021/09/07/Android%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="小衅笔记">
-<meta property="og:description" content="希望你别被乱世迷了双眼">
+<meta property="og:description" content="Android Studio在java开发环境下的项目工程目录结构">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.xxin.xyz/2021/09/07/Android工程结构/project.jpg">
+<meta property="article:published_time" content="2021-09-07T07:05:50.000Z">
+<meta property="article:modified_time" content="2021-09-08T07:50:29.696Z">
 <meta property="article:author" content="xxin">
-<meta property="article:tag" content="小衅,小衅笔记,乐享轩,乐享轩小衅,xxin,xxin笔记,xxinPro">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="学习笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.xxin.xyz/2021/09/07/Android工程结构/project.jpg">
 
 
-<link rel="canonical" href="https://blog.xxin.xyz/categories/java%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="https://blog.xxin.xyz/2021/09/07/Android%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"categories/java笔记/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xxin.xyz/2021/09/07/Android%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/","path":"2021/09/07/Android工程结构/","title":"Android工程结构"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>分类: java笔记 | 小衅笔记</title>
+<title>Android工程结构 | 小衅笔记</title>
   
 
 
@@ -134,7 +139,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -147,6 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#gradle%E5%92%8C-idea%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">.gradle和.idea目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#app%E7%9B%AE%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">app目录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#app-build"><span class="nav-number">2.1.</span> <span class="nav-text">app&#x2F;build</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#app-libs"><span class="nav-number">2.2.</span> <span class="nav-text">app&#x2F;libs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#app-src"><span class="nav-number">2.3.</span> <span class="nav-text">app&#x2F;src&#x2F;</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gradle%E7%9B%AE%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">gradle目录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#gradle-wapper%E7%9B%AE%E5%BD%95"><span class="nav-number">3.1.</span> <span class="nav-text">gradle&#x2F;wapper目录</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gitignore%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">.gitignore文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#build-gradle%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">build.gradle文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gradle-properties%E6%96%87%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">gradle.properties文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gradlew%E5%92%8Cgradle-bat%E6%96%87%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">gradlew和gradle.bat文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#local-properties%E6%96%87"><span class="nav-number">8.</span> <span class="nav-text">local.properties文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setting-gradle"><span class="nav-number">9.</span> <span class="nav-text">setting.gradle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#External-Libraries"><span class="nav-number">10.</span> <span class="nav-text">External Libraries</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -216,233 +222,114 @@
 </noscript>
 
 
-    <div class="main-inner category posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">java笔记
-          <small>分类</small>
-        </h2>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.xxin.xyz/2021/09/07/Android%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://q1.qlogo.cn/g?b=qq&nk=3033528136&s=640">
+      <meta itemprop="name" content="xxin">
+      <meta itemprop="description" content="希望你别被乱世迷了双眼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小衅笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android工程结构
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-07 15:05:50" itemprop="dateCreated datePublished" datetime="2021-09-07T15:05:50+08:00">2021-09-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">Android笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description"><center>Android Studio在java开发环境下的项目工程目录结构</center></div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><center><label style="color:red">注意：</label>下列所有目录均在Project目录模式下</center><br><img src="../Android工程结构/project.jpg"/></p>
+<h4 id="gradle和-idea目录"><a href="#gradle和-idea目录" class="headerlink" title=".gradle和.idea目录"></a>.gradle和.idea目录</h4><p>在创建项目时Android Studio自动生成的目录，移动源码时也会删掉这两个文件夹</p>
+<h4 id="app目录"><a href="#app目录" class="headerlink" title="app目录"></a>app目录</h4><p>项目中的代码、资源等，核心目录</p>
+<h5 id="app-build"><a href="#app-build" class="headerlink" title="app/build"></a>app/build</h5><p>make project生成的缓存文件</p>
+<h5 id="app-libs"><a href="#app-libs" class="headerlink" title="app/libs"></a>app/libs</h5><p>存放jar包</p>
+<h5 id="app-src"><a href="#app-src" class="headerlink" title="app/src/"></a>app/src/</h5><p>放置java代码、软件清单文件、xml布局文件、资源文件等。核心目录</p>
+<h4 id="gradle目录"><a href="#gradle目录" class="headerlink" title="gradle目录"></a>gradle目录</h4><p>构建器</p>
+<h5 id="gradle-wapper目录"><a href="#gradle-wapper目录" class="headerlink" title="gradle/wapper目录"></a>gradle/wapper目录</h5><p>存放gradle/wapper</p>
+<h4 id="gitignore文件"><a href="#gitignore文件" class="headerlink" title=".gitignore文件"></a>.gitignore文件</h4><p>项目版本控制文件</p>
+<h4 id="build-gradle文件"><a href="#build-gradle文件" class="headerlink" title="build.gradle文件"></a>build.gradle文件</h4><p>项目全局的gradle构建脚本</p>
+<h4 id="gradle-properties文件"><a href="#gradle-properties文件" class="headerlink" title="gradle.properties文件"></a>gradle.properties文件</h4><p>项目全局的gradle配置文件</p>
+<h4 id="gradlew和gradle-bat文件"><a href="#gradlew和gradle-bat文件" class="headerlink" title="gradlew和gradle.bat文件"></a>gradlew和gradle.bat文件</h4><p>执行gradle命令</p>
+<h4 id="local-properties文"><a href="#local-properties文" class="headerlink" title="local.properties文"></a>local.properties文</h4><p>指定安卓sdk路径</p>
+<h4 id="setting-gradle"><a href="#setting-gradle" class="headerlink" title="setting.gradle"></a>setting.gradle</h4><p>指定项目中所有引入的模块</p>
+<h4 id="External-Libraries"><a href="#External-Libraries" class="headerlink" title="External Libraries"></a>External Libraries</h4><p>第三方库</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-24T11:46:26+08:00"
-              content="2021-07-24">
-          07-24
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/24/%E6%9E%9A%E4%B8%BE/" itemprop="url">
-            <span itemprop="name">枚举</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 学习笔记</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/21/%E9%97%AA%E4%B8%8D%E5%8A%A8%E6%A0%A1%E5%9B%AD/" rel="prev" title="闪不动校园">
+                  <i class="fa fa-chevron-left"></i> 闪不动校园
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/09/08/Android-TextView/" rel="next" title="Android-TextView">
+                  Android-TextView <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-24T09:46:08+08:00"
-              content="2021-07-24">
-          07-24
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/24/Lambda/" itemprop="url">
-            <span itemprop="name">Lambda</span>
-          </a>
-      </div>
 
-      
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-23T11:51:01+08:00"
-              content="2021-07-23">
-          07-23
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/23/%E5%86%85%E9%83%A8%E7%B1%BB/" itemprop="url">
-            <span itemprop="name">内部类*</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-22T11:25:13+08:00"
-              content="2021-07-22">
-          07-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/22/%E6%8E%A5%E5%8F%A3interface/" itemprop="url">
-            <span itemprop="name">接口interface</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-22T11:24:24+08:00"
-              content="2021-07-22">
-          07-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/22/%E6%8A%BD%E8%B1%A1%E7%B1%BBabstract/" itemprop="url">
-            <span itemprop="name">抽象类abstract</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-22T11:24:08+08:00"
-              content="2021-07-22">
-          07-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/22/final%E4%BF%AE%E9%A5%B0%E7%AC%A6/" itemprop="url">
-            <span itemprop="name">final修饰符</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-20T15:02:11+08:00"
-              content="2021-07-20">
-          07-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" itemprop="url">
-            <span itemprop="name">单例模式</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-20T10:31:35+08:00"
-              content="2021-07-20">
-          07-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/20/this%E5%92%8Csuper/" itemprop="url">
-            <span itemprop="name">this和super</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-17T10:23:10+08:00"
-              content="2021-07-17">
-          07-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString%E5%92%8Cequals/" itemprop="url">
-            <span itemprop="name">面向对象之toString和equals</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-15T08:45:47+08:00"
-              content="2021-07-15">
-          07-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%A4%9A%E6%80%81/" itemprop="url">
-            <span itemprop="name">面向对象之多态</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/categories/java%E7%AC%94%E8%AE%B0/page/2/">2</a><a class="extend next" rel="next" href="/categories/java%E7%AC%94%E8%AE%B0/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 </div>
   </main>
