@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Android-Button</title>
+    <url>/2021/09/08/Android-Button/</url>
+    <content><![CDATA[<h3 id="StateListDrawable"><a href="#StateListDrawable" class="headerlink" title="StateListDrawable"></a>StateListDrawable</h3><p>&ensp;&ensp;StateListDrawable：StateListDrawable就是对应于selector标签，也是表示一个Drawable集合，每个Drawable都对应View的一种状态<br>&ensp;&ensp;StateListDrawable用途：设置可单击的View的背景，常和ShapeDrawable一起使用</p>
+<h4 id="StateListDrawable常用属性"><a href="#StateListDrawable常用属性" class="headerlink" title="StateListDrawable常用属性"></a>StateListDrawable常用属性</h4><ol>
+<li>drawable: 引用的drawable位图</li>
+<li>state_focused: 是否获得焦点</li>
+<li>state_pressed: 控件是否被按下</li>
+<li>state_enaabled: 控件是否可用</li>
+<li>state_selected: 控件时是否被选择，针对有滚轮的情况</li>
+<li>state_checked: 控件是否被勾选</li>
+<li>state_checkable: 控件可否被勾选</li>
+</ol>
+<h3 id="Button使用drawable文件设置背景"><a href="#Button使用drawable文件设置背景" class="headerlink" title="Button使用drawable文件设置背景"></a>Button使用drawable文件设置背景</h3><p>Button继承自TextView，基本属性大致相同</p>
+<h4 id="Button背景选择器"><a href="#Button背景选择器" class="headerlink" title="Button背景选择器"></a>Button背景选择器</h4><p>1.在app/src/main/res/drawable目录下创建一个drawable资源文件<br><img src="../Android-Button/drawableFile.jpg" /><br><img src="../Android-Button/drawableCreate.jpg" /></p>
+<p>2.导入几张drawable图片<br><img src="../Android-Button/drawablePictrue.jpg" /></p>
+<p>3.在资源文件中写入对应的item标签</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    被按下时--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/ic_baseline_accessible_24&quot;</span> <span class="attr">android:state_pressed</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    没有按下时--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/ic_baseline_accessible_forward_24&quot;</span> <span class="attr">android:state_pressed</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>4.将按钮的背景设置为drawable文件<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;80dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;80dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/btn1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:background</span>=<span class="string">&quot;@drawable/button1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;按钮&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>5.当按钮按下时，背景为ic_baseline_accessible_forward_24，松开时为ic_baseline_accessible_24</p>
+<h3 id="Button事件处理"><a href="#Button事件处理" class="headerlink" title="Button事件处理"></a>Button事件处理</h3><h4 id="单击事件"><a href="#单击事件" class="headerlink" title="单击事件"></a>单击事件</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">btn1 = findViewById(R.id.btn1);</span><br><span class="line"></span><br><span class="line">btn1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        tv_one.setText(<span class="string">&quot;大丈夫身居天地之间，岂能郁郁久居人篱下&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>单击事件还可以在xml中对某控件添加<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;80dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;80dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/btn1&quot;</span></span></span><br><span class="line"><span class="tag">&lt;!<span class="attr">--</span>        需要有对应的<span class="attr">TestClick</span>()方法<span class="attr">--</span>&gt;</span></span><br><span class="line">        android:onClick=&quot;TestClick&quot;</span><br><span class="line">        android:background=&quot;@drawable/button1&quot;</span><br><span class="line">        android:text=&quot;按钮&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="长按事件"><a href="#长按事件" class="headerlink" title="长按事件"></a>长按事件</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">btn1 = findViewById(R.id.btn1);</span><br><span class="line"></span><br><span class="line">btn1.setOnLongClickListener(<span class="keyword">new</span> View.OnLongClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onLongClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        tv_one.setText(<span class="string">&quot;须知少时凌云志，曾许人间第一流&quot;</span>);</span><br><span class="line"><span class="comment">//        返回true时，不再执行OnClick事件(若存在)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="触摸事件"><a href="#触摸事件" class="headerlink" title="触摸事件"></a>触摸事件</h4><p>触摸事件分为三种</p>
+<ol>
+<li>ACTION_UP = 1(离开)</li>
+<li>ACTION_DOWM = 0(按下)</li>
+<li>ACTION_MOVE = 2(移动)</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">btn1.setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View view, MotionEvent motionEvent)</span> </span>&#123;</span><br><span class="line">        tv_one.setText(<span class="string">&quot;他日若遂凌云志，敢笑黄巢不丈夫&quot;</span>);</span><br><span class="line"><span class="comment">//        返回true时，不再相应OnClick和OnLongClick事件(若存在)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android-TextView</title>
     <url>/2021/09/08/Android-TextView/</url>
     <content><![CDATA[<h4 id="TextView的基础属性"><a href="#TextView的基础属性" class="headerlink" title="TextView的基础属性"></a>TextView的基础属性</h4><ol>
@@ -34,45 +73,6 @@
 <p>4.将xml布局文件中的TextView修改为com.a.Smartcity.MyTextView(全类名)</p>
 <h5 id="方法二、修改xml标签"><a href="#方法二、修改xml标签" class="headerlink" title="方法二、修改xml标签"></a>方法二、修改xml标签</h5><p>1.将TextView单标签修改为双标签</p>
 <p>2.在TextView中添加<code>&lt;requestFocus/&gt;</code>单标签</p>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android-Button</title>
-    <url>/2021/09/08/Android-Button/</url>
-    <content><![CDATA[<h3 id="StateListDrawable"><a href="#StateListDrawable" class="headerlink" title="StateListDrawable"></a>StateListDrawable</h3><p>&ensp;&ensp;StateListDrawable：StateListDrawable就是对应于selector标签，也是表示一个Drawable集合，每个Drawable都对应View的一种状态<br>&ensp;&ensp;StateListDrawable用途：设置可单击的View的背景，常和ShapeDrawable一起使用</p>
-<h4 id="StateListDrawable常用属性"><a href="#StateListDrawable常用属性" class="headerlink" title="StateListDrawable常用属性"></a>StateListDrawable常用属性</h4><ol>
-<li>drawable: 引用的drawable位图</li>
-<li>state_focused: 是否获得焦点</li>
-<li>state_pressed: 控件是否被按下</li>
-<li>state_enaabled: 控件是否可用</li>
-<li>state_selected: 控件时是否被选择，针对有滚轮的情况</li>
-<li>state_checked: 控件是否被勾选</li>
-<li>state_checkable: 控件可否被勾选</li>
-</ol>
-<h3 id="Button使用drawable文件设置背景"><a href="#Button使用drawable文件设置背景" class="headerlink" title="Button使用drawable文件设置背景"></a>Button使用drawable文件设置背景</h3><p>Button继承自TextView，基本属性大致相同</p>
-<h4 id="Button背景选择器"><a href="#Button背景选择器" class="headerlink" title="Button背景选择器"></a>Button背景选择器</h4><p>1.在app/src/main/res/drawable目录下创建一个drawable资源文件<br><img src="../Android-Button/drawableFile.jpg" /><br><img src="../Android-Button/drawableCreate.jpg" /></p>
-<p>2.导入几张drawable图片<br><img src="../Android-Button/drawablePictrue.jpg" /></p>
-<p>3.在资源文件中写入对应的item标签</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    被按下时--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/ic_baseline_accessible_24&quot;</span> <span class="attr">android:state_pressed</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    没有按下时--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/ic_baseline_accessible_forward_24&quot;</span> <span class="attr">android:state_pressed</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>4.将按钮的背景设置为drawable文件<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;80dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;80dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/btn1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:background</span>=<span class="string">&quot;@drawable/button1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;按钮&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>5.当按钮按下时，背景为ic_baseline_accessible_forward_24，松开时为ic_baseline_accessible_24</p>
-<h3 id="Button事件处理"><a href="#Button事件处理" class="headerlink" title="Button事件处理"></a>Button事件处理</h3><h4 id="单击事件"><a href="#单击事件" class="headerlink" title="单击事件"></a>单击事件</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">btn1 = findViewById(R.id.btn1);</span><br><span class="line"></span><br><span class="line">btn1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        tv_one.setText(<span class="string">&quot;大丈夫身居天地之间，岂能郁郁久居人篱下&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>单击事件还可以在xml中对某控件添加<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;80dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;80dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/btn1&quot;</span></span></span><br><span class="line"><span class="tag">&lt;!<span class="attr">--</span>        需要有对应的<span class="attr">TestClick</span>()方法<span class="attr">--</span>&gt;</span></span><br><span class="line">        android:onClick=&quot;TestClick&quot;</span><br><span class="line">        android:background=&quot;@drawable/button1&quot;</span><br><span class="line">        android:text=&quot;按钮&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="长按事件"><a href="#长按事件" class="headerlink" title="长按事件"></a>长按事件</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">btn1 = findViewById(R.id.btn1);</span><br><span class="line"></span><br><span class="line">btn1.setOnLongClickListener(<span class="keyword">new</span> View.OnLongClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onLongClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        tv_one.setText(<span class="string">&quot;须知少时凌云志，曾许人间第一流&quot;</span>);</span><br><span class="line"><span class="comment">//        返回true时，不再执行OnClick事件(若存在)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="触摸事件"><a href="#触摸事件" class="headerlink" title="触摸事件"></a>触摸事件</h4><p>触摸事件分为三种</p>
-<ol>
-<li>ACTION_UP = 1(离开)</li>
-<li>ACTION_DOWM = 0(按下)</li>
-<li>ACTION_MOVE = 2(移动)</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">btn1.setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View view, MotionEvent motionEvent)</span> </span>&#123;</span><br><span class="line">        tv_one.setText(<span class="string">&quot;他日若遂凌云志，敢笑黄巢不丈夫&quot;</span>);</span><br><span class="line"><span class="comment">//        返回true时，不再相应OnClick和OnLongClick事件(若存在)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -167,6 +167,40 @@
       </tags>
   </entry>
   <entry>
+    <title>hexo+next中数学公式的引用</title>
+    <url>/2021/08/08/hexo-next%E4%B8%AD%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BC%95%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="简单方程"><a href="#简单方程" class="headerlink" title="简单方程"></a>简单方程</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq1&#125; </span><br><span class="line">e=mc ^ 2 </span><br><span class="line">\end &#123;equation&#125; $ $</span><br></pre></td></tr></table></figure>
+<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {equation} \label {eq1}<br>e=mc ^ 2<br>\end {equation} $ $</p>
+<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">爱因斯坦提出的著名的物质-能量方程$ \eqref &#123;eq1&#125; $ ...</span><br></pre></td></tr></table></figure>
+<p>爱因斯坦提出的著名的物质-能量方程$ \eqref {eq1} $ …</p>
+<h3 id="多线方程"><a href="#多线方程" class="headerlink" title="多线方程"></a>多线方程</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq2&#125; </span><br><span class="line">\begin &#123;aligned&#125; </span><br><span class="line">a &amp; = b + c \\ &amp; = d + e + f + g \\ &amp; = h + i \end &#123;aligned&#125; \end &#123;equation &#125; $ $</span><br></pre></td></tr></table></figure>
+<h4 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {equation} \label {eq2}<br>\begin {aligned}<br>a &amp; = b + c \\ &amp; = d + e + f + g \\ &amp; = h + i<br>\end {aligned}<br>\end {equation} $ $</p>
+<h4 id="调用-1"><a href="#调用-1" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方程$ \eqref &#123;eq2&#125; $是一个多线方程。</span><br></pre></td></tr></table></figure>
+<p>方程$ \eqref {eq2} $是一个多线方程。</p>
+<h3 id="多重对齐方程"><a href="#多重对齐方程" class="headerlink" title="多重对齐方程"></a>多重对齐方程</h3><h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;align&#125; </span><br><span class="line">a &amp; = b + c \label &#123;eq3&#125; \\</span><br><span class="line"> x &amp; = yz \label &#123;eq4&#125; \\</span><br><span class="line"> l &amp; = m - n \label &#123;eq5&#125; </span><br><span class="line">\end &#123;align&#125; $ $</span><br></pre></td></tr></table></figure>
+<h4 id="效果-2"><a href="#效果-2" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {align}<br>a &amp; = b + c \label {eq3} \\<br> x &amp; = yz \label {eq4} \\<br> l &amp; = m - n \label {eq5}<br>\end {align} $ $</p>
+<h4 id="调用-2"><a href="#调用-2" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有三个对齐的方程：方程$ \eqref &#123;eq3&#125; $，方程$ \eqref &#123;eq4&#125; $和方程$ \eqref &#123;eq5&#125; $。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>有三个对齐的方程：方程$ \eqref {eq3} $，方程$ \eqref {eq4} $和方程$ \eqref {eq5} $。</p>
+<h3 id="行间公式"><a href="#行间公式" class="headerlink" title="行间公式"></a>行间公式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">行间公式$O(f(n))=log_2^&#123;n&#125;$测试</span><br></pre></td></tr></table></figure>
+<p>行间公式$O(f(n))=log_2^{n}$测试</p>
+<h3 id="更多参考"><a href="#更多参考" class="headerlink" title="更多参考"></a>更多参考</h3><ol>
+<li>官方配置教程<a href="https://theme-next.js.org/docs/third-party-services/math-equations">https://theme-next.js.org/docs/third-party-services/math-equations</a></li>
+<li>中文教程<a href="https://www.jianshu.com/p/8424da4dd673">https://www.jianshu.com/p/8424da4dd673</a></li>
+<li>修改本地文件<a href="https://www.cnblogs.com/iHeling/p/14095986.html">https://www.cnblogs.com/iHeling/p/14095986.html</a></li>
+<li>详细教程<a href="https://blog.csdn.net/weixin_45511189/article/details/115798563">https://blog.csdn.net/weixin_45511189/article/details/115798563</a></li>
+<li>LaTex在线编辑器<a href="https://www.latexlive.com/">https://www.latexlive.com/</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>hexo博客</tag>
+        <tag>小教程</tag>
+        <tag>next主题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>next主题优化</title>
     <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<p><center>hexo博客next主题主要优化修改方案</center></p>
@@ -207,40 +241,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo+next中数学公式的引用</title>
-    <url>/2021/08/08/hexo-next%E4%B8%AD%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BC%95%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="简单方程"><a href="#简单方程" class="headerlink" title="简单方程"></a>简单方程</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq1&#125; </span><br><span class="line">e=mc ^ 2 </span><br><span class="line">\end &#123;equation&#125; $ $</span><br></pre></td></tr></table></figure>
-<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {equation} \label {eq1}<br>e=mc ^ 2<br>\end {equation} $ $</p>
-<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">爱因斯坦提出的著名的物质-能量方程$ \eqref &#123;eq1&#125; $ ...</span><br></pre></td></tr></table></figure>
-<p>爱因斯坦提出的著名的物质-能量方程$ \eqref {eq1} $ …</p>
-<h3 id="多线方程"><a href="#多线方程" class="headerlink" title="多线方程"></a>多线方程</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq2&#125; </span><br><span class="line">\begin &#123;aligned&#125; </span><br><span class="line">a &amp; = b + c \\ &amp; = d + e + f + g \\ &amp; = h + i \end &#123;aligned&#125; \end &#123;equation &#125; $ $</span><br></pre></td></tr></table></figure>
-<h4 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {equation} \label {eq2}<br>\begin {aligned}<br>a &amp; = b + c \\ &amp; = d + e + f + g \\ &amp; = h + i<br>\end {aligned}<br>\end {equation} $ $</p>
-<h4 id="调用-1"><a href="#调用-1" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方程$ \eqref &#123;eq2&#125; $是一个多线方程。</span><br></pre></td></tr></table></figure>
-<p>方程$ \eqref {eq2} $是一个多线方程。</p>
-<h3 id="多重对齐方程"><a href="#多重对齐方程" class="headerlink" title="多重对齐方程"></a>多重对齐方程</h3><h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;align&#125; </span><br><span class="line">a &amp; = b + c \label &#123;eq3&#125; \\</span><br><span class="line"> x &amp; = yz \label &#123;eq4&#125; \\</span><br><span class="line"> l &amp; = m - n \label &#123;eq5&#125; </span><br><span class="line">\end &#123;align&#125; $ $</span><br></pre></td></tr></table></figure>
-<h4 id="效果-2"><a href="#效果-2" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {align}<br>a &amp; = b + c \label {eq3} \\<br> x &amp; = yz \label {eq4} \\<br> l &amp; = m - n \label {eq5}<br>\end {align} $ $</p>
-<h4 id="调用-2"><a href="#调用-2" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有三个对齐的方程：方程$ \eqref &#123;eq3&#125; $，方程$ \eqref &#123;eq4&#125; $和方程$ \eqref &#123;eq5&#125; $。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>有三个对齐的方程：方程$ \eqref {eq3} $，方程$ \eqref {eq4} $和方程$ \eqref {eq5} $。</p>
-<h3 id="行间公式"><a href="#行间公式" class="headerlink" title="行间公式"></a>行间公式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">行间公式$O(f(n))=log_2^&#123;n&#125;$测试</span><br></pre></td></tr></table></figure>
-<p>行间公式$O(f(n))=log_2^{n}$测试</p>
-<h3 id="更多参考"><a href="#更多参考" class="headerlink" title="更多参考"></a>更多参考</h3><ol>
-<li>官方配置教程<a href="https://theme-next.js.org/docs/third-party-services/math-equations">https://theme-next.js.org/docs/third-party-services/math-equations</a></li>
-<li>中文教程<a href="https://www.jianshu.com/p/8424da4dd673">https://www.jianshu.com/p/8424da4dd673</a></li>
-<li>修改本地文件<a href="https://www.cnblogs.com/iHeling/p/14095986.html">https://www.cnblogs.com/iHeling/p/14095986.html</a></li>
-<li>详细教程<a href="https://blog.csdn.net/weixin_45511189/article/details/115798563">https://blog.csdn.net/weixin_45511189/article/details/115798563</a></li>
-<li>LaTex在线编辑器<a href="https://www.latexlive.com/">https://www.latexlive.com/</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>hexo博客</category>
-      </categories>
-      <tags>
-        <tag>hexo博客</tag>
-        <tag>小教程</tag>
-        <tag>next主题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>专升本试题集</title>
     <url>/2021/08/07/%E4%B8%93%E5%8D%87%E6%9C%AC%E8%AF%95%E9%A2%98%E9%9B%86/</url>
     <content><![CDATA[<h3 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h3><ol>
@@ -257,48 +257,6 @@
         <tag>学习笔记</tag>
         <tag>文件文档</tag>
         <tag>重点难点</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>函数概念</title>
-    <url>/2021/08/08/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><h4 id="一-、绝对值"><a href="#一-、绝对值" class="headerlink" title="(一)、绝对值"></a>(一)、绝对值</h4><p>$ $<br>\begin{align}<br>\left | a \right | &amp; = \begin{Bmatrix}  \notag<br> a &amp; a\ge 0\\<br> -a &amp; a&lt; 0<br>\end{Bmatrix}\quad \quad (\left | a \right | \ge 0)<br>\end{align}<br>$ $</p>
-<h5 id="绝对值不等式"><a href="#绝对值不等式" class="headerlink" title="绝对值不等式"></a>绝对值不等式</h5><p>$ $<br>\begin{align}<br>&amp; \left | x \right | \le a \quad (a&gt;0) \Longleftrightarrow -a \le x \le a; \notag \\<br>&amp; \left | x \right | \ge a \quad (a&gt;0) \Longleftrightarrow x \ge a 或 x \le -a; \notag<br>\end{align}<br>$ $</p>
-<h4 id="二-、区间"><a href="#二-、区间" class="headerlink" title="(二)、区间"></a>(二)、区间</h4><p>是介于某两个实数之间的全体实数，这两个实数叫做区间的端点</p>
-<center> $ \left \{ x|a < x < b \right \} $称为$\color{red}{\text{开区间}}$，记作$ (a,b) $ </center>
-<br>
-<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%871.png" style="zoom:60%;"> </center>
-<br>
-<center> $\left \{ x|a \le x \le b \right \} $称为$\color{red}{\text{闭区间}}$，记作$ [a,b] $</center>
-<br>
-<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%872.png" style="zoom:60%;"> </center>
-
-<center> $ \left \{ x|a \le x < b \right \} $称为半开半闭区间，记作$ [a,b) $ </center>
-<center> $ \left \{ x|a < x \le b \right \} $称为半开半闭区间，记作$ (a,b] $ </center>
-<br>
-<center> $ [a,+\infty ) = \left \{ x \mid a \le x \right \} $ </center>
-
-<center> $ \left ( -\infty ,b \right ) =\left \{ x \mid x < b \right \}  $ </center>
-
-<!-- \] -->
-<p><br></p>
-<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%874.png" style="zoom:60%;"> </center>
-<br>
-<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%875.png" style="zoom:60%;"> </center>
-
-<p>&ensp;&ensp;区间长度的定义:（上限-下限）<br>&ensp;&ensp;两端点间的距离(线段的长度)称为区间的长度</p>
-<h5 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h5><p>用区间表示下列不等式的解</p>
-<p>$ $<br>\begin{align}<br>&amp; x^2 &lt; 9\\<br>解: \notag \\<br>&amp; \left ( -\infty ,-3 \right ) \cup \left ( 3 ,+\infty  \right ) \notag \\<br>\notag \\<br>&amp; \left | x-2&lt;1 \right | \\<br>解: \notag \\<br>&amp; \left ( 1,3 \right ) \notag \\<br>\notag \\<br>&amp; x^2-5x-6&lt;0 \\<br>解: \notag \\<br>&amp; \left ( -1,6 \right ) \notag<br>\end{align}<br>$ $</p>
-<h4 id="邻域"><a href="#邻域" class="headerlink" title="邻域"></a>邻域</h4><p><center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%876.png" style="zoom:60%;"> </center><br><br><br>&ensp;&ensp;设a与δ是两个实数，且δ&gt;0<br>&ensp;&ensp;数集$\left \{ x\mid \left | x-a \right | &lt; \delta \right \}$称为点a的δ邻域，点a叫做邻域的中心，δ叫做邻域的半径<br>$ $<br>\begin{align}<br>U_{\delta }{(a)} = \left \{ x\mid a-\delta &lt;x&lt;a+\delta \right \}\notag<br>\end{align}<br>$ $</p>
-<p>&ensp;&ensp;点a的去心邻域，记作$U_{\delta }^{0}{(a)}$<br>$ $<br>\begin{align}<br>U_{\delta }^{0}{(a)} = \left \{ x\mid 0 &lt; \left | x-a \right | &lt; \delta \right \}\notag<br>\end{align}<br>$ $</p>
-]]></content>
-      <categories>
-        <category>专升本学习</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>重点难点</tag>
-        <tag>专升本数学</tag>
       </tags>
   </entry>
   <entry>
@@ -358,6 +316,64 @@
       </tags>
   </entry>
   <entry>
+    <title>函数概念</title>
+    <url>/2021/08/08/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><h4 id="一-、绝对值"><a href="#一-、绝对值" class="headerlink" title="(一)、绝对值"></a>(一)、绝对值</h4><p>$ $<br>\begin{align}<br>\left | a \right | &amp; = \begin{Bmatrix}  \notag<br> a &amp; a\ge 0\\<br> -a &amp; a&lt; 0<br>\end{Bmatrix}\quad \quad (\left | a \right | \ge 0)<br>\end{align}<br>$ $</p>
+<h5 id="绝对值不等式"><a href="#绝对值不等式" class="headerlink" title="绝对值不等式"></a>绝对值不等式</h5><p>$ $<br>\begin{align}<br>&amp; \left | x \right | \le a \quad (a&gt;0) \Longleftrightarrow -a \le x \le a; \notag \\<br>&amp; \left | x \right | \ge a \quad (a&gt;0) \Longleftrightarrow x \ge a 或 x \le -a; \notag<br>\end{align}<br>$ $</p>
+<h4 id="二-、区间"><a href="#二-、区间" class="headerlink" title="(二)、区间"></a>(二)、区间</h4><p>是介于某两个实数之间的全体实数，这两个实数叫做区间的端点</p>
+<center> $ \left \{ x|a < x < b \right \} $称为$\color{red}{\text{开区间}}$，记作$ (a,b) $ </center>
+<br>
+<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%871.png" style="zoom:60%;"> </center>
+<br>
+<center> $\left \{ x|a \le x \le b \right \} $称为$\color{red}{\text{闭区间}}$，记作$ [a,b] $</center>
+<br>
+<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%872.png" style="zoom:60%;"> </center>
+
+<center> $ \left \{ x|a \le x < b \right \} $称为半开半闭区间，记作$ [a,b) $ </center>
+<center> $ \left \{ x|a < x \le b \right \} $称为半开半闭区间，记作$ (a,b] $ </center>
+<br>
+<center> $ [a,+\infty ) = \left \{ x \mid a \le x \right \} $ </center>
+
+<center> $ \left ( -\infty ,b \right ) =\left \{ x \mid x < b \right \}  $ </center>
+
+<!-- \] -->
+<p><br></p>
+<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%874.png" style="zoom:60%;"> </center>
+<br>
+<center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%875.png" style="zoom:60%;"> </center>
+
+<p>&ensp;&ensp;区间长度的定义:（上限-下限）<br>&ensp;&ensp;两端点间的距离(线段的长度)称为区间的长度</p>
+<h5 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h5><p>用区间表示下列不等式的解</p>
+<p>$ $<br>\begin{align}<br>&amp; x^2 &lt; 9\\<br>解: \notag \\<br>&amp; \left ( -\infty ,-3 \right ) \cup \left ( 3 ,+\infty  \right ) \notag \\<br>\notag \\<br>&amp; \left | x-2&lt;1 \right | \\<br>解: \notag \\<br>&amp; \left ( 1,3 \right ) \notag \\<br>\notag \\<br>&amp; x^2-5x-6&lt;0 \\<br>解: \notag \\<br>&amp; \left ( -1,6 \right ) \notag<br>\end{align}<br>$ $</p>
+<h4 id="邻域"><a href="#邻域" class="headerlink" title="邻域"></a>邻域</h4><p><center> <img src="https://blog.xxin.xyz/pageImg/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/%E5%9B%BE%E7%89%876.png" style="zoom:60%;"> </center><br><br><br>&ensp;&ensp;设a与δ是两个实数，且δ&gt;0<br>&ensp;&ensp;数集$\left \{ x\mid \left | x-a \right | &lt; \delta \right \}$称为点a的δ邻域，点a叫做邻域的中心，δ叫做邻域的半径<br>$ $<br>\begin{align}<br>U_{\delta }{(a)} = \left \{ x\mid a-\delta &lt;x&lt;a+\delta \right \}\notag<br>\end{align}<br>$ $</p>
+<p>&ensp;&ensp;点a的去心邻域，记作$U_{\delta }^{0}{(a)}$<br>$ $<br>\begin{align}<br>U_{\delta }^{0}{(a)} = \left \{ x\mid 0 &lt; \left | x-a \right | &lt; \delta \right \}\notag<br>\end{align}<br>$ $</p>
+]]></content>
+      <categories>
+        <category>专升本学习</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>重点难点</tag>
+        <tag>专升本数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单例模式</title>
+    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>调用时</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在服务器中搭建hexo博客</title>
     <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p><center>个人服务器搭建hexo(宝塔)</center><br><br></p>
@@ -388,19 +404,22 @@
       </tags>
   </entry>
   <entry>
-    <title>单例模式</title>
-    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>调用时</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <title>夜郎自大</title>
+    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
+<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”<br><span id="more"></span><br>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
+<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
+<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
+<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
+<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
+<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
+]]></content>
       <categories>
-        <category>java笔记</category>
+        <category>我的文章</category>
       </categories>
       <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
       </tags>
   </entry>
   <entry>
@@ -418,25 +437,6 @@
       <tags>
         <tag>好心情</tag>
         <tag>站点日志</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>夜郎自大</title>
-    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
-<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”<br><span id="more"></span><br>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
-<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
-<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
-<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
-<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
-<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
       </tags>
   </entry>
   <entry>
@@ -560,6 +560,42 @@
       </tags>
   </entry>
   <entry>
+    <title>程序开发常用的142个单词</title>
+    <url>/2021/09/08/%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E7%9A%84142%E4%B8%AA%E5%8D%95%E8%AF%8D/</url>
+    <content><![CDATA[<p>A. 6<br>abstract 抽象的<br>abstract class 抽象类<br>account 账户<br>address 地址<br>annotation 注解、评注<br>array 数组</p>
+<p>B. 6<br>bit 位<br>boolean 布尔值( 真假值，true或false )<br>breakpoint 断点<br>buttons 按钮<br>bug 错误<br>byte 位元组(由8 bits组成)</p>
+<p>C. 26<br>cache 高速缓存<br>calendar 日历<br>chain 链(function calls)<br>character 字符<br>check box 复选框<br>class 类<br>class library 类库<br>classification 分类<br>client application 客户端应用程序<br>cleanup 清理、清除<br>client 客户、客户端<br>clone 克隆<br>collection 集合<br>comment 注释<br>commit 提交 (for database)<br>compiler 编译器<br>connection 连接 (for database)<br>connection pooling 连接池<br>console 控制台<br>constructor 构造函数、构造器<br>container 容器<br>context 环境、上下文<br>control 控件<br>cookie (不译)<br>copy 拷贝<br>create/creation 创建、生成</p>
+<p>D. 9<br>data 数据<br>data source 数据源 (for database)<br>database 数据库 (for database)<br>debug 调试<br>deploy 部署<br>destroy 销毁<br>device 设备<br>document 文档<br>DOM (Document Object Model)文档对象模型​</p>
+<p>E. 9<br>entity 实体<br>enum (enumeration) 枚举<br>equal 相等<br>error log 错误日志 (for database)<br>event 事件<br>exception 异常<br>exit 退出<br>export 导出<br>expression 表达式</p>
+<p>F.6<br>field 字段(java)<br>file 文件<br>flag 标记<br>font 字体<br>framework 框架<br>function 函数</p>
+<p>G.4<br>game 游戏<br>global 全局的<br>global object 全局对象<br>group 组、群</p>
+<p>H.3<br>heap 堆<br>HTML (HyperText Markup Language) 超文本标记语言<br>HTTP (HyperText Transfer Protocol) 超文本传输协议</p>
+<p>I. 12<br>icon 图标<br>IDE (Integrated Development Environment)集成开发环境<br>image 图象<br>index 索引 (for database)<br>implement 实现<br>import 导入<br>instance 实例<br>interface 接口<br>invoke 调用<br>iterate 迭代<br>iterator 迭代器<br>item 项、条款、项目</p>
+<p>K. 1<br>key 键 (for database)​</p>
+<p>L. 9<br>library 库<br>link 连接、链接<br>list 列表、表、链表<br>load 装载、加载<br>local 局部的<br>lock 锁<br>log 日志<br>login 登录<br>loop 循环</p>
+<p>M. 7<br>member 成员<br>memory 内存<br>memory leak 内存泄漏<br>menu 菜单<br>message 消息<br>method 方法<br>module 模块</p>
+<p>N. 1<br>network 网络</p>
+<p>O. 3<br>object 对象<br>operation 操作<br>override 覆写、重载、重新定义</p>
+<p>P. 7<br>package 包<br>parameter 参数、形式参数、形参<br>parent class 父类<br>port 端口<br>program 程序<br>project 项目、工程<br>property 属性</p>
+<p>Q. 2<br>quality 质量<br>queue 队列​</p>
+<p>R. 7<br>radio button 单选按钮<br>record 记录 (for database)<br>reference 引用、参考<br>reflection 反射<br>regular expression 正则表达式<br>return 返回<br>row 行 (for database)</p>
+<p>S. 9<br>save 保存<br>screen 屏幕<br>search 查找<br>serialization/serialize 序列化<br>software 软件<br>source code 源码、源代码<br>SQL (Structured Query Language) 结构化查询语言 (for database)<br>stream 流<br>string 字符串</p>
+<p>T. 7<br>table 表 (for database)</p>
+<p>text 文本<br>thread 线程<br>throw 抛出、引发(常指发出一个exception)<br>token 符号、标记、令牌（看场合）<br>transaction 事务 (for database)<br>type 类型</p>
+<p>U. 4<br>URI (Uniform Resource identifier) 统一资源标识符<br>URL (Uniform Resource Locator) 统一资源定位器<br>user 用户<br>user interface 用户界面</p>
+<p>V. 2<br>variable 变量<br>view 视图</p>
+<p>W. 2<br>Web Services web服务<br>word 单词​</p>
+]]></content>
+      <categories>
+        <category>随手记事</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>文件文档</tag>
+        <tag>好心情</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>闪不动校园</title>
     <url>/2021/08/21/%E9%97%AA%E4%B8%8D%E5%8A%A8%E6%A0%A1%E5%9B%AD/</url>
     <content><![CDATA[<h3 id="温馨提示"><a href="#温馨提示" class="headerlink" title="温馨提示"></a>温馨提示</h3><p>&ensp;&ensp;教程很详细但是并不简单<br>&ensp;&ensp;教程中所使用的Fake Location需要9块钱一月会员，9块跟我一分钱关系没有，这软件不是我开发的，介意的话到这里就不要继续看了<br>&ensp;&ensp;教程中所用到的软件均采集自网络，以学习交流软件设计思路为主要目的，请勿用于任何商业及违法用途，并于下载后的24小时内删除</p>
@@ -601,25 +637,6 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象之封装</title>
-    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85/</url>
-    <content><![CDATA[<h4 id="访问控制符的权限级别"><a href="#访问控制符的权限级别" class="headerlink" title="访问控制符的权限级别"></a>访问控制符的权限级别</h4><p>&ensp;&ensp;&ensp;&ensp;<em>public &gt; protected &gt; default &gt; private</em></p>
-<p>&ensp;&ensp;&ensp;&ensp;public:公共访问权限<br>&ensp;&ensp;&ensp;&ensp;pritected:子类访问权限<br>&ensp;&ensp;&ensp;&ensp;default:包访问权限<br>&ensp;&ensp;&ensp;&ensp;private:当前类访问权限<br><span id="more"></span></p>
-<h4 id="set和get"><a href="#set和get" class="headerlink" title="set和get"></a>set和get</h4><p>如下类，使用<em>private</em>将<em>test</em>类中的<em>name</em>变量封装了起来<br>并且提供了<em>setName</em>和<em>getName</em>使其他类通过我们提供的方法修改和获取name变量<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">public_test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        test set = <span class="keyword">new</span> test();</span><br><span class="line"><span class="comment">//        修改test类中name变量的值</span></span><br><span class="line">        set.setName(<span class="string">&quot;xxin&quot;</span>);</span><br><span class="line"><span class="comment">//        将会输出&quot;xxin&quot;</span></span><br><span class="line">        System.out.println(set.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name = <span class="string">&quot;默认名&quot;</span>;</span><br><span class="line"><span class="comment">//    修改name</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    获取name</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="package和import"><a href="#package和import" class="headerlink" title="package和import"></a>package和import</h4><p>package<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package作为java源文件第一行代码，制定了class文件的包路径</span></span><br><span class="line"><span class="keyword">package</span> lee.demo;</span><br><span class="line"><span class="comment">//将该源程序所编译的class文件放置在lee\demo</span></span><br></pre></td></tr></table></figure></p>
-<p>import<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//impoit用于引入包路径</span></span><br><span class="line"><span class="keyword">import</span> lee.demo.test; <span class="comment">//引入test\demo路径下的test类</span></span><br><span class="line"><span class="keyword">import</span> lee.demo.*; <span class="comment">//引入lee\demo包下的所有类</span></span><br></pre></td></tr></table></figure></p>
-<p>import static<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//import static静态导入，用于导入指定类的某个静态成员变量、方法或全部的静态成员变量、方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//方法导入</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> lee.demo.test.method1;  <span class="comment">//引入lee\demo包下，test类的method1方法</span></span><br><span class="line"><span class="comment">//引入后可直接调用method1</span></span><br><span class="line">method1();</span><br><span class="line"></span><br><span class="line"><span class="comment">//变量导入</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> lee.demo.test.a;  <span class="comment">//引入lee\demo包下，test类的a变量</span></span><br><span class="line"><span class="comment">//引入后可直接调用a</span></span><br><span class="line">System.out.println(a);</span><br><span class="line"></span><br><span class="line"><span class="comment">//引入全部静态变量方法</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> lee.demo.test.*;  <span class="comment">//引入lee\demo包下，test类的全部静态变量方法</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<h4 id="java常用包"><a href="#java常用包" class="headerlink" title="java常用包"></a>java常用包</h4><p>&ensp;&ensp;&ensp;&ensp;java.lang: 这个包下包含了Java语言的核心类，如String、Math、Sytem和Thread类等，使用这个包无需使用import语句导入，系统会自动导入这个包中的所有类。<br>&ensp;&ensp;&ensp;&ensp;java.util: 这个包下包含java的大量工具类/接口和集合框架类/接口。如Arrays和List、Set等。<br>&ensp;&ensp;&ensp;&ensp;java.net: 这个包下包含了一些Java网络编程相关的类/接口。<br>&ensp;&ensp;&ensp;&ensp;java.io: 这个包含了一些Java输入/输出编程相关的类/接口。<br>&ensp;&ensp;&ensp;&ensp;java.text: 这个包下包含一些Java格式化相关的类。<br>&ensp;&ensp;&ensp;&ensp;java.sql: 这个包下包含了java进行JDBC数据库编程的相关类/接口。<br>&ensp;&ensp;&ensp;&ensp;java.awt: 这个包下包含了抽象窗口工具集(Abstract Window Toolkits) 的相关类/接口，这些类主要用于构建图形用户界面(GUI)程序。<br>&ensp;&ensp;&ensp;&ensp;java.swing:这个包下包含了Swing图形用户界面编程的相关类/接口，这些可用于构建平台无关的GUI程序。</p>
-]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>面向对象之多态</title>
     <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%A4%9A%E6%80%81/</url>
     <content><![CDATA[<h5 id="多态-同一个类型的多个实例，在执行同一个方法时，呈现出多种的行为特征"><a href="#多态-同一个类型的多个实例，在执行同一个方法时，呈现出多种的行为特征" class="headerlink" title="多态:同一个类型的多个实例，在执行同一个方法时，呈现出多种的行为特征"></a>多态:同一个类型的多个实例，在执行同一个方法时，呈现出多种的行为特征</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//“铠甲勇士”类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 铠甲勇士 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">skill</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;:普通攻击&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -632,6 +649,25 @@
 <p>第二种ClassCastException错误<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//    value1编译时类型为Object，实际类型为String</span></span><br><span class="line">    Object value1 = <span class="string">&quot;123&quot;</span>;</span><br><span class="line"><span class="comment">//    Integer继承于Object，所以编译时不会报错</span></span><br><span class="line">    Integer value2 = (Integer)value1;</span><br><span class="line"><span class="comment">//    运行时报错java.lang.String cannot be cast to java.lang.Integer</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//    结论：具有继承关系的编译类型强制转换时，如果被转变量的实际类型不是要转的目标类型，则运行错误</span></span><br></pre></td></tr></table></figure></p>
 <h5 id="instanceof运算符-避免ClassCastException异常"><a href="#instanceof运算符-避免ClassCastException异常" class="headerlink" title="instanceof运算符:避免ClassCastException异常"></a>instanceof运算符:避免ClassCastException异常</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//运用该运算符，可以将test()方法改写为如下</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Object value1 = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (value1 <span class="keyword">instanceof</span> Integer)&#123;</span><br><span class="line">        Integer value2 = (Integer)value1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;String不能强转为Integer类型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//那么铠甲特征()方法可修改为如下</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> 铠甲特征()&#123;</span><br><span class="line">    铠甲勇士 飞影技能 = <span class="keyword">new</span> 飞影铠甲();</span><br><span class="line">    <span class="keyword">if</span> (飞影技能 <span class="keyword">instanceof</span> 飞影铠甲)&#123;</span><br><span class="line">        飞影铠甲 铠甲类型强转 = (飞影铠甲)飞影技能;</span><br><span class="line">        铠甲类型强转.features();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;飞影技能不能强转为飞影铠甲类型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    铠甲勇士 刑天技能 = <span class="keyword">new</span> 刑天铠甲();</span><br><span class="line">    <span class="keyword">if</span> (刑天技能 <span class="keyword">instanceof</span> 飞影铠甲)&#123;</span><br><span class="line">        飞影铠甲 铠甲类型强转<span class="number">2</span> = (飞影铠甲)刑天技能;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;刑天技能不能强转为飞影铠甲类型&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//instanceof运算符可以确保被强制转换类型的变量确实可以强制转换，从而避免ClassCastException</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象之封装</title>
+    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85/</url>
+    <content><![CDATA[<h4 id="访问控制符的权限级别"><a href="#访问控制符的权限级别" class="headerlink" title="访问控制符的权限级别"></a>访问控制符的权限级别</h4><p>&ensp;&ensp;&ensp;&ensp;<em>public &gt; protected &gt; default &gt; private</em></p>
+<p>&ensp;&ensp;&ensp;&ensp;public:公共访问权限<br>&ensp;&ensp;&ensp;&ensp;pritected:子类访问权限<br>&ensp;&ensp;&ensp;&ensp;default:包访问权限<br>&ensp;&ensp;&ensp;&ensp;private:当前类访问权限<br><span id="more"></span></p>
+<h4 id="set和get"><a href="#set和get" class="headerlink" title="set和get"></a>set和get</h4><p>如下类，使用<em>private</em>将<em>test</em>类中的<em>name</em>变量封装了起来<br>并且提供了<em>setName</em>和<em>getName</em>使其他类通过我们提供的方法修改和获取name变量<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">public_test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        test set = <span class="keyword">new</span> test();</span><br><span class="line"><span class="comment">//        修改test类中name变量的值</span></span><br><span class="line">        set.setName(<span class="string">&quot;xxin&quot;</span>);</span><br><span class="line"><span class="comment">//        将会输出&quot;xxin&quot;</span></span><br><span class="line">        System.out.println(set.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name = <span class="string">&quot;默认名&quot;</span>;</span><br><span class="line"><span class="comment">//    修改name</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    获取name</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="package和import"><a href="#package和import" class="headerlink" title="package和import"></a>package和import</h4><p>package<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package作为java源文件第一行代码，制定了class文件的包路径</span></span><br><span class="line"><span class="keyword">package</span> lee.demo;</span><br><span class="line"><span class="comment">//将该源程序所编译的class文件放置在lee\demo</span></span><br></pre></td></tr></table></figure></p>
+<p>import<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//impoit用于引入包路径</span></span><br><span class="line"><span class="keyword">import</span> lee.demo.test; <span class="comment">//引入test\demo路径下的test类</span></span><br><span class="line"><span class="keyword">import</span> lee.demo.*; <span class="comment">//引入lee\demo包下的所有类</span></span><br></pre></td></tr></table></figure></p>
+<p>import static<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//import static静态导入，用于导入指定类的某个静态成员变量、方法或全部的静态成员变量、方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//方法导入</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> lee.demo.test.method1;  <span class="comment">//引入lee\demo包下，test类的method1方法</span></span><br><span class="line"><span class="comment">//引入后可直接调用method1</span></span><br><span class="line">method1();</span><br><span class="line"></span><br><span class="line"><span class="comment">//变量导入</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> lee.demo.test.a;  <span class="comment">//引入lee\demo包下，test类的a变量</span></span><br><span class="line"><span class="comment">//引入后可直接调用a</span></span><br><span class="line">System.out.println(a);</span><br><span class="line"></span><br><span class="line"><span class="comment">//引入全部静态变量方法</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> lee.demo.test.*;  <span class="comment">//引入lee\demo包下，test类的全部静态变量方法</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h4 id="java常用包"><a href="#java常用包" class="headerlink" title="java常用包"></a>java常用包</h4><p>&ensp;&ensp;&ensp;&ensp;java.lang: 这个包下包含了Java语言的核心类，如String、Math、Sytem和Thread类等，使用这个包无需使用import语句导入，系统会自动导入这个包中的所有类。<br>&ensp;&ensp;&ensp;&ensp;java.util: 这个包下包含java的大量工具类/接口和集合框架类/接口。如Arrays和List、Set等。<br>&ensp;&ensp;&ensp;&ensp;java.net: 这个包下包含了一些Java网络编程相关的类/接口。<br>&ensp;&ensp;&ensp;&ensp;java.io: 这个包含了一些Java输入/输出编程相关的类/接口。<br>&ensp;&ensp;&ensp;&ensp;java.text: 这个包下包含一些Java格式化相关的类。<br>&ensp;&ensp;&ensp;&ensp;java.sql: 这个包下包含了java进行JDBC数据库编程的相关类/接口。<br>&ensp;&ensp;&ensp;&ensp;java.awt: 这个包下包含了抽象窗口工具集(Abstract Window Toolkits) 的相关类/接口，这些类主要用于构建图形用户界面(GUI)程序。<br>&ensp;&ensp;&ensp;&ensp;java.swing:这个包下包含了Swing图形用户界面编程的相关类/接口，这些可用于构建平台无关的GUI程序。</p>
 ]]></content>
       <categories>
         <category>java笔记</category>
