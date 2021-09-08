@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.xxin.xyz/2021/09/07/Android工程结构/project.jpg">
 <meta property="article:published_time" content="2021-09-07T07:05:50.000Z">
-<meta property="article:modified_time" content="2021-09-08T07:50:29.696Z">
+<meta property="article:modified_time" content="2021-09-08T10:43:17.484Z">
 <meta property="article:author" content="xxin">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="学习笔记">
@@ -95,7 +95,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">25</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">26</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -169,7 +169,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -285,7 +285,7 @@
 <h4 id="app目录"><a href="#app目录" class="headerlink" title="app目录"></a>app目录</h4><p>项目中的代码、资源等，核心目录</p>
 <h5 id="app-build"><a href="#app-build" class="headerlink" title="app/build"></a>app/build</h5><p>make project生成的缓存文件</p>
 <h5 id="app-libs"><a href="#app-libs" class="headerlink" title="app/libs"></a>app/libs</h5><p>存放jar包</p>
-<h5 id="app-src"><a href="#app-src" class="headerlink" title="app/src/"></a>app/src/</h5><p>放置java代码、软件清单文件、xml布局文件、资源文件等。核心目录</p>
+<h5 id="app-src"><a href="#app-src" class="headerlink" title="app/src/"></a>app/src/</h5><p>放置java代码、软件清单文件、xml布局文件、资源文件等。核心目录<br><br/><br>其中，app/src/main/res/values/themes.xml中style标签内的parent属性需要做出下面的修改，否则软件内的部分控件属性将不会对修改做出变动<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Theme.MaterialComponents.DayNight.DarkActionBar</span><br><span class="line"></span><br><span class="line">修改为</span><br><span class="line"></span><br><span class="line">Theme.MaterialComponents.DayNight.DarkActionBar.Bridge</span><br></pre></td></tr></table></figure></p>
 <h4 id="gradle目录"><a href="#gradle目录" class="headerlink" title="gradle目录"></a>gradle目录</h4><p>构建器</p>
 <h5 id="gradle-wapper目录"><a href="#gradle-wapper目录" class="headerlink" title="gradle/wapper目录"></a>gradle/wapper目录</h5><p>存放gradle/wapper</p>
 <h4 id="gitignore文件"><a href="#gitignore文件" class="headerlink" title=".gitignore文件"></a>.gitignore文件</h4><p>项目版本控制文件</p>
