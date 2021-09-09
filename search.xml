@@ -40,6 +40,47 @@
       </tags>
   </entry>
   <entry>
+    <title>Android-EditText</title>
+    <url>/2021/09/09/Android-EditText/</url>
+    <content><![CDATA[<h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
+<li>android:hint: 编辑框为空时提示</li>
+<li>android:textColorHint: 提示文字的颜色</li>
+<li>android:inputType: 输入类型</li>
+<li>android:drawableXxxx: 在输入框的指定方位添加图片</li>
+<li>android:drawablePadding: 设置图片与输入内容的间距</li>
+<li>android:paddingXxxx: 设置内容与边框的间距</li>
+<li>android:background: 背景色</li>
+</ol>
+<h5 id="inputType的常用类型"><a href="#inputType的常用类型" class="headerlink" title="inputType的常用类型"></a>inputType的常用类型</h5><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//文本类型，多为大写、小写和数字符号。</span><br><span class="line">    android:inputType=&quot;none&quot;</span><br><span class="line">    android:inputType=&quot;text&quot;</span><br><span class="line">    android:inputType=&quot;textCapCharacters&quot; 字母大写</span><br><span class="line">    android:inputType=&quot;textCapWords&quot; 首字母大写</span><br><span class="line">    android:inputType=&quot;textCapSentences&quot; 仅第一个字母大写</span><br><span class="line">    android:inputType=&quot;textAutoCorrect&quot; 自动完成</span><br><span class="line">    android:inputType=&quot;textAutoComplete&quot; 自动完成</span><br><span class="line">    android:inputType=&quot;textMultiLine&quot; 多行输入</span><br><span class="line">    android:inputType=&quot;textImeMultiLine&quot; 输入法多行（如果支持）</span><br><span class="line">    android:inputType=&quot;textNoSuggestions&quot; 不提示</span><br><span class="line">    android:inputType=&quot;textUri&quot; 网址</span><br><span class="line">    android:inputType=&quot;textEmailAddress&quot; 电子邮件地址</span><br><span class="line">    android:inputType=&quot;textEmailSubject&quot; 邮件主题</span><br><span class="line">    android:inputType=&quot;textShortMessage&quot; 短讯</span><br><span class="line">    android:inputType=&quot;textLongMessage&quot; 长信息</span><br><span class="line">    android:inputType=&quot;textPersonName&quot; 人名</span><br><span class="line">    android:inputType=&quot;textPostalAddress&quot; 地址</span><br><span class="line">    android:inputType=&quot;textPassword&quot; 密码</span><br><span class="line">    android:inputType=&quot;textVisiblePassword&quot; 可见密码</span><br><span class="line">    android:inputType=&quot;textWebEditText&quot; 作为网页表单的文本</span><br><span class="line">    android:inputType=&quot;textFilter&quot; 文本筛选过滤</span><br><span class="line">    android:inputType=&quot;textPhonetic&quot; 拼音输入</span><br><span class="line">//数值类型</span><br><span class="line">    android:inputType=&quot;number&quot; 数字</span><br><span class="line">    android:inputType=&quot;numberSigned&quot; 带符号数字格式</span><br><span class="line">    android:inputType=&quot;numberDecimal&quot; 带小数点的浮点格式</span><br><span class="line">    android:inputType=&quot;phone&quot; 拨号键盘</span><br><span class="line">    android:inputType=&quot;datetime&quot; 时间日期</span><br><span class="line">    android:inputType=&quot;date&quot; 日期键盘</span><br><span class="line">    android:inputType=&quot;time&quot; 时间键盘</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android-ImageView</title>
+    <url>/2021/09/09/Android-ImageView/</url>
+    <content><![CDATA[<h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
+<li>android:src: 设置图片资源</li>
+<li>android:scaleType: 设置图片缩放类型</li>
+<li>android:maxHeight: 最大高度</li>
+<li>android:maxWidth: 最大宽度</li>
+<li>android:adjustViewBounds: 调整view界限</li>
+</ol>
+<h5 id="scaleType缩放类型"><a href="#scaleType缩放类型" class="headerlink" title="scaleType缩放类型"></a>scaleType缩放类型</h5><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//共同点：缩小图片</span><br><span class="line">android:fitStart: 保持宽高比缩放图片，直到较长的边与image的边长相等，缩放后将图片放在ImageView的左上角</span><br><span class="line">android:fitCenter: 默认值，保持宽高比缩放图片，直到较长的边与image的边长相等，缩放后放于中间</span><br><span class="line">android:fitEnd: 保持宽高比缩放图片，直到较长的边与image的边长相等，缩放后放于右下角</span><br><span class="line">android:fitXY: 对图像的纵横方向进行独立缩放使得图片完全适应ImageView，但是图片的宽高比可能会发生改变</span><br><span class="line">//共同点：居中显示</span><br><span class="line">android:center: 保持原图的宽高比和大小，图片中心点与ImageView中心点重叠，当原图宽高大于ImageView时，超出部分将被剪裁</span><br><span class="line">android:centerCrop: 保持宽高比缩放图片，直到完全覆盖ImageView，可能会出现图片的显示不完全</span><br><span class="line">android:centerInside: 保持宽高比缩放图片，直到ImageView能够完全地将图片显示出，如果图片宽高小于ImageView，将直接居中显示</span><br><span class="line"></span><br><span class="line">android:matrix: 保持原图的宽高比和大小,从ImageView的左上角开始绘制原图，超出部分将被剪裁</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android-TextView</title>
     <url>/2021/09/08/Android-TextView/</url>
     <content><![CDATA[<h4 id="TextView的基础属性"><a href="#TextView的基础属性" class="headerlink" title="TextView的基础属性"></a>TextView的基础属性</h4><ol>
@@ -122,6 +163,21 @@
       <tags>
         <tag>学习笔记</tag>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android常用权限</title>
+    <url>/2021/09/09/Android%E5%B8%B8%E7%94%A8%E6%9D%83%E9%99%90/</url>
+    <content><![CDATA[<p>访问网络<br>android.permission.INTERNET，访问网络连接，可能产生GPRS流量<br>android.permission.CHANGE_WIFI_STATE  Wifi 改变状态<br>android.permission.ACCESS_WIFI_STATE WiFi 状态<br>android.permission.ACCESS_NETWORK_STATE 网络状态<br>录制视频<br>android.permission.CAMERA<br>android.permission.RECORD_AUDIO<br>android.permission.WRITE_EXTERNAL_STORAGE<br>底层访问权限<br>android.permission.CWJ_GROUP，允许CWJ账户组访问底层信息<br>手机优化大师扩展权限<br>android.permission.CELL_PHONE_MASTER_EX，手机优化大师扩展权限<br>控制定位更新<br>android.permission.CONTROL_LOCATION_UPDATES，允许获得移动网络定位信息改变<br>删除缓存文件<br>android.permission.DELETE_CACHE_FILES，允许应用删除缓存文件<br>删除应用<br>android.permission.DELETE_PACKAGES，允许程序删除应用<br>电源管理<br>android.permission.DEVICE_POWER，允许访问底层电源管理<br>应用诊断<br>android.permission.DIAGNOSTIC，允许程序到RW到诊断资源<br>禁用键盘锁<br>android.permission.DISABLE_KEYGUARD，允许程序禁用键盘锁<br>转存系统信息<br>android.permission.DUMP，允许程序获取系统dump信息从系统服务<br>状态栏控制<br>android.permission.EXPAND_STATUS_BAR，允许程序扩展或收缩状态栏<br>工厂测试模式<br>android.permission.FACTORY_TEST，允许程序运行工厂测试模式<br>使用闪光灯<br>android.permission.FLASHLIGHT，允许访问闪光灯<br>强制后退<br>android.permission.FORCE_BACK，允许程序强制使用back后退按键，无论Activity是否在顶层<br>访问账户Gmail列表<br>android.permission.GET_ACCOUNTS，访问GMail账户列表<br>获取应用大小<br>android.permission.GET_PACKAGE_SIZE，获取应用的文件大小<br>获取任务信息<br>android.permission.GET_TASKS，允许程序获取当前或最近运行的应用<br>允许全局搜索<br>android.permission.GLOBAL_SEARCH，允许程序使用全局搜索功能<br>硬件测试<br>android.permission.HARDWARE_TEST，访问硬件辅助设备，用于硬件测试<br>注射事件<br>android.permission.INJECT_EVENTS，允许访问本程序的底层事件，获取按键、轨迹球的事件流<br>安装定位提供<br>android.permission.INSTALL_LOCATION_PROVIDER，安装定位提供<br>安装应用程序<br>android.permission.INSTALL_PACKAGES，允许程序安装应用<br>内部系统窗口<br>android.permission.INTERNAL_SYSTEM_WINDOW，允许程序打开内部窗口，不对第三方应用程序开放此权限<br>结束后台进程<br>android.permission.KILL_BACKGROUND_PROCESSES，允许程序调用killBackgroundProcesses(String).方法结束后台进程<br>管理账户<br>android.permission.MANAGE_ACCOUNTS，允许程序管理AccountManager中的账户列表<br>管理程序引用<br>android.permission.MANAGE_APP_TOKENS，管理创建、摧毁、Z轴顺序，仅用于系统<br>高级权限<br>android.permission.MTWEAK_USER，允许mTweak用户访问高级系统权限<br>社区权限<br>android.permission.MTWEAK_FORUM，允许使用mTweak社区权限<br>软格式化<br>android.permission.MASTER_CLEAR，允许程序执行软格式化，删除系统配置信息<br>修改声音设置<br>android.permission.MODIFY_AUDIO_SETTINGS，修改声音设置信息<br>修改电话状态<br>android.permission.MODIFY_PHONE_STATE，修改电话状态，如飞行模式，但不包含替换系统拨号器界面<br>格式化文件系统<br>android.permission.MOUNT_FORMAT_FILESYSTEMS，格式化可移动文件系统，比如格式化清空SD卡<br>挂载文件系统<br>android.permission.MOUNT_UNMOUNT_FILESYSTEMS，挂载、反挂载外部文件系统<br>允许NFC通讯<br>android.permission.NFC，允许程序执行NFC近距离通讯操作，用于移动支持<br>永久Activity<br>android.permission.PERSISTENT_ACTIVITY，创建一个永久的Activity，该功能标记为将来将被移除<br>处理拨出电话<br>android.permission.PROCESS_OUTGOING_CALLS，允许程序监视，修改或放弃播出电话<br>读取日程提醒<br>android.permission.READ_CALENDAR，允许程序读取用户的日程信息<br>读取联系人<br>android.permission.READ_CONTACTS，允许应用访问联系人通讯录信息<br>屏幕截图<br>android.permission.READ_FRAME_BUFFER，读取帧缓存用于屏幕截图<br>读取收藏夹和历史记录<br>com.android.browser.permission.READ_HISTORY_BOOKMARKS，读取浏览器收藏夹和历史记录<br>读取输入状态<br>android.permission.READ_INPUT_STATE，读取当前键的输入状态，仅用于系统<br>读取系统日志<br>android.permission.READ_LOGS，读取系统底层日志<br>读取电话状态<br>android.permission.READ_PHONE_STATE，访问电话状态<br>读取短信内容<br>android.permission.READ_SMS，读取短信内容<br>读取同步设置<br>android.permission.READ_SYNC_SETTINGS，读取同步设置，读取Google在线同步设置<br>读取同步状态<br>android.permission.READ_SYNC_STATS，读取同步状态，获得Google在线同步状态<br>重启设备<br>android.permission.REBOOT，允许程序重新启动设备<br>开机自动允许<br>android.permission.RECEIVE_BOOT_COMPLETED，允许程序开机自动运行<br>接收彩信<br>android.permission.RECEIVE_MMS，接收彩信<br>接收短信<br>android.permission.RECEIVE_SMS，接收短信<br>接收Wap Push<br>android.permission.RECEIVE_WAP_PUSH，接收WAP PUSH信息<br>录音<br>android.permission.RECORD_AUDIO，录制声音通过手机或耳机的麦克<br>排序系统任务<br>android.permission.REORDER_TASKS，重新排序系统Z轴运行中的任务<br>结束系统任务<br>android.permission.RESTART_PACKAGES，结束任务通过restartPackage(String)方法，该方式将在外来放弃<br>发送短信<br>android.permission.SEND_SMS，发送短信<br>设置Activity观察其<br>android.permission.SET_ACTIVITY_WATCHER，设置Activity观察器一般用于monkey测试<br>设置闹铃提醒<br>com.android.alarm.permission.SET_ALARM，设置闹铃提醒<br>设置总是退出<br>android.permission.SET_ALWAYS_FINISH，设置程序在后台是否总是退出<br>设置动画缩放<br>android.permission.SET_ANIMATION_SCALE，设置全局动画缩放<br>设置调试程序<br>android.permission.SET_DEBUG_APP，设置调试程序，一般用于开发<br>设置屏幕方向<br>android.permission.SET_ORIENTATION，设置屏幕方向为横屏或标准方式显示，不用于普通应用<br>设置应用参数<br>android.permission.SET_PREFERRED_APPLICATIONS，设置应用的参数，已不再工作具体查看addPackageToPreferred(String)介绍<br>设置进程限制<br>android.permission.SET_PROCESS_LIMIT，允许程序设置最大的进程数量的限制<br>设置系统时间<br>android.permission.SET_TIME，设置系统时间<br>设置系统时区<br>android.permission.SET_TIME_ZONE，设置系统时区<br>设置桌面壁纸<br>android.permission.SET_WALLPAPER，设置桌面壁纸<br>设置壁纸建议<br>android.permission.SET_WALLPAPER_HINTS，设置壁纸建议<br>发送永久进程信号<br>android.permission.SIGNAL_PERSISTENT_PROCESSES，发送一个永久的进程信号<br>状态栏控制<br>android.permission.STATUS_BAR，允许程序打开、关闭、禁用状态栏<br>访问订阅内容<br>android.permission.SUBSCRIBED_FEEDS_READ，访问订阅信息的数据库<br>写入订阅内容<br>android.permission.SUBSCRIBED_FEEDS_WRITE，写入或修改订阅内容的数据库<br>显示系统窗口<br>android.permission.SYSTEM_ALERT_WINDOW，显示系统窗口<br>更新设备状态<br>android.permission.UPDATE_DEVICE_STATS，更新设备状态<br>使用证书<br>android.permission.USE_CREDENTIALS，允许程序请求验证从AccountManager<br>使用SIP视频<br>android.permission.USE_SIP，允许程序使用SIP视频服务<br>使用振动<br>android.permission.VIBRATE，允许振动<br>唤醒锁定<br>android.permission.WAKE_LOCK，允许程序在手机屏幕关闭后后台进程仍然运行<br>写入GPRS接入点设置<br>android.permission.WRITE_APN_SETTINGS，写入网络GPRS接入点设置<br>写入日程提醒<br>android.permission.WRITE_CALENDAR，写入日程，但不可读取<br>写入联系人<br>android.permission.WRITE_CONTACTS，写入联系人，但不可读取<br>写入外部存储<br>android.permission.WRITE_EXTERNAL_STORAGE，允许程序写入外部存储，如SD卡上写文件<br>写入Google地图数据<br>android.permission.WRITE_GSERVICES，允许程序写入Google Map服务数据<br>写入收藏夹和历史记录<br>com.android.browser.permission.WRITE_HISTORY_BOOKMARKS，写入浏览器历史记录或收藏夹，但不可读取<br>读写系统敏感设置<br>android.permission.WRITE_SECURE_SETTINGS，允许程序读写系统安全敏感的设置项<br>读写系统设置<br>android.permission.WRITE_SETTINGS，允许读写系统设置项<br>编写短信<br>android.permission.WRITE_SMS，允许编写短信<br>写入在线同步设置<br>android.permission.WRITE_SYNC_SETTINGS，写入Google在线同步设置</p>
+<p><uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/><br>访问登记属性<br>android.permission.ACCESS_CHECKIN_PROPERTIES ，读取或写入登记check-in数据库属性表的权限<br>获取错略位置<br>android.permission.ACCESS_COARSE_LOCATION，通过WiFi或移动基站的方式获取用户错略的经纬度信息，定位精度大概误差在30~1500米<br>获取精确位置<br>android.permission.ACCESS_FINE_LOCATION，通过GPS芯片接收卫星的定位信息，定位精度达10米以内<br>访问定位额外命令<br>android.permission.ACCESS_LOCATION_EXTRA_COMMANDS，允许程序访问额外的定位提供者指令<br>GPS定位获取模拟定位信息<br>android.permission.ACCESS_MOCK_LOCATION，获取模拟定位信息，一般用于帮助开发者调试应用<br>获取网络状态</p>
+<p>android.permission.ACCESS_NETWORK_STATE，获取网络信息状态，如当前的网络连接是否有效<br>访问Surface Flinger<br>android.permission.ACCESS_SURFACE_FLINGER，Android平台上底层的图形显示支持，一般用于游戏或照相机预览界面和底层模式的屏幕截图<br>获取WiFi状态<br>android.permission.ACCESS_WIFI_STATE，获取当前WiFi接入的状态以及WLAN热点的信息<br>账户管理<br>android.permission.ACCOUNT_MANAGER，获取账户验证信息，主要为GMail账户信息，只有系统级进程才能访问的权限<br>验证账户<br>android.permission.AUTHENTICATE_ACCOUNTS，允许一个程序通过账户验证方式访问账户管理ACCOUNT_MANAGER相关信息<br>电量统计<br>android.permission.BATTERY_STATS，获取电池电量统计信息<br>绑定小插件<br>android.permission.BIND_APPWIDGET，允许一个程序告诉appWidget服务需要访问小插件的数据库，只有非常少的应用才用到此权限<br>绑定设备管理<br>android.permission.BIND_DEVICE_ADMIN，请求系统管理员接收者receiver，只有系统才能使用<br>绑定输入法<br>android.permission.BIND_INPUT_METHOD ，请求InputMethodService服务，只有系统才能使用<br>绑定RemoteView<br>android.permission.BIND_REMOTEVIEWS，必须通过RemoteViewsService服务来请求，只有系统才能用<br>绑定壁纸<br>android.permission.BIND_WALLPAPER，必须通过WallpaperService服务来请求，只有系统才能用<br>使用蓝牙<br>android.permission.BLUETOOTH，允许程序连接配对过的蓝牙设备<br>蓝牙管理<br>android.permission.BLUETOOTH_ADMIN，允许程序进行发现和配对新的蓝牙设备<br>变成砖头<br>android.permission.BRICK，能够禁用手机，非常危险，顾名思义就是让手机变成砖头<br>应用删除时广播<br>android.permission.BROADCAST_PACKAGE_REMOVED，当一个应用在删除时触发一个广播<br>收到短信时广播<br>android.permission.BROADCAST_SMS，当收到短信时触发一个广播<br>连续广播<br>android.permission.BROADCAST_STICKY，允许一个程序收到广播后快速收到下一个广播<br>WAP PUSH广播<br>android.permission.BROADCAST_WAP_PUSH，WAP PUSH服务收到后触发一个广播<br>拨打电话<br>android.permission.CALL_PHONE，允许程序从非系统拨号器里输入电话号码<br>通话权限<br>android.permission.CALL_PRIVILEGED，允许程序拨打电话，替换系统的拨号器界面<br>拍照权限<br>android.permission.CAMERA，允许访问摄像头进行拍照<br>改变组件状态<br>android.permission.CHANGE_COMPONENT_ENABLED_STATE，改变组件是否启用状态<br>改变配置<br>android.permission.CHANGE_CONFIGURATION，允许当前应用改变配置，如定位<br>改变网络状态<br>android.permission.CHANGE_NETWORK_STATE，改变网络状态如是否能联网<br>改变WiFi多播状态<br>android.permission.CHANGE_WIFI_MULTICAST_STATE，改变WiFi多播状态<br>改变WiFi状态<br>android.permission.CHANGE_WIFI_STATE，改变WiFi状态<br>清除应用缓存<br>android.permission.CLEAR_APP_CACHE，清除应用缓存<br>清除用户数据<br>android.permission.CLEAR_APP_USER_DATA，清除应用的用户数据</p>
+]]></content>
+      <categories>
+        <category>随手记事</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -478,6 +534,74 @@
       <tags>
         <tag>网抑云</tag>
         <tag>毒鸡汤</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>手机调试代码</title>
+    <url>/2021/09/09/%E6%89%8B%E6%9C%BA%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<h4 id="Ⅰ-魅族"><a href="#Ⅰ-魅族" class="headerlink" title="Ⅰ 魅族"></a>Ⅰ 魅族</h4><p>*#*#4636#*#* – 显示手机信息、电池信息、电池记录、使用统计数据、WiFi 信息</p>
+<p>*#*#7780#*#* – 重设为原厂设定，不会删除预设程序，及 SD 卡档案</p>
+<p>*2767*3855# –重设为原厂设定，会删除 SD 卡所有档案</p>
+<p>*#*#34971539#*#* –显示相机相机韧体版本，或更新相机韧体</p>
+<p>*#*#7594#*#* –当长按关机按钮时，会出现一个切换手机模式的窗口，包括： 静音模式、飞航模式及关机，你可以用以上代码，直接变成关机按钮</p>
+<p>*#*#273283*255*663282*#*#* –开启一个能让你备份媒体文件的地方，例如相片、声音及影片等</p>
+<p>*#*#197328640#*#* –启动服务模式，可以测试手机部分设置及更改设定 WLAN、 GPS 及蓝牙测试的代码</p>
+<p>*#*#232339#*#* 或 *#*#526#*#* 或 *#*#528#*#* – WLAN 测试</p>
+<p>*#*#232338#*#* – 显示 WiFi MAC 地址</p>
+<p>*#*#1472365#*#* – GPS 测试</p>
+<p>*#*#1575#*#* – 其它 GPS 测试</p>
+<p>*#*#232331#*#* – 蓝牙测试</p>
+<p>*#*#232337#*# – 显示蓝牙装置地址</p>
+<p>*#*#8255#*#* –启动 GTalk 服务监视器 显示手机软件版本的代码</p>
+<p>*#*#4986*2650468#*#* – PDA、 Phone、 H/W、 RFCallDate</p>
+<p>*#*#1234#*#* – PDA 及 Phone *#*#1111#*#* – FTA SW 版</p>
+<p>*#*#2222#*#* – FTA HW 版本</p>
+<p>*#*#44336#*#* – PDA 、Phone、 CSC、 Build Time、 Changelist number 各项硬件测试</p>
+<p>*#*#0283#*#* – Packet Loopback</p>
+<p>*#*#0*#*#* – LCD 测试</p>
+<p>*#*#0673#*#* 或 *#*#0289#*#* – Melody 测试</p>
+<p>*#*#0842#*#* – 装置测试，例如振动、亮度</p>
+<p>*#*#2663#*#* – 触控屏幕版本</p>
+<p>*#*#2664#*#* – 触控屏幕测试</p>
+<p>*#*#0588#*#* – 接近感应器测试</p>
+<p>*#*#3264#*#* – 内存版本</p>
+<h4 id="Ⅱ-小米"><a href="#Ⅱ-小米" class="headerlink" title="Ⅱ 小米"></a>Ⅱ 小米</h4><p>*#*#64663#*#*  综合测试指令<br>*#*#4636#*#*  显示手机信息、电池信息、电池记录、使用统计数据、WiFi信息<br>*#*#7780#*#*  重设为原厂设定，不会删除预设程序，及SD卡档案。<br>*2767*3855#  重设为原厂设定，会删除SD卡所有档案。<br>*#*#34971539#*#*  显示相机相机韧体版本，或更新相机韧体<br>*#*#7594#*#*6  当长按关机按钮时，会出现一个切换手机模式的窗口，包括:静音模式、飞航模式及关机，你可以用以上代码，直接变成关机按钮。<br>*#*#273283*255*663282*#*#*  开启一个能让你备份媒体文件的地方，例如相片、声音及影片等<br>*#*#197328640#*#* 启动服务模式，可以测试手机部分设置及更改设定  ;<br>WLAN、GPS及蓝牙测试的代码<br>*#*#232339#*#*或*#*#526#*#*或*#*#528#*#*–WLAN测试<br>*#*#232338#*#*–显示WiFiMAC地址<br>*#*#1472365#*#*–GPS测试<br>*#*#1575#*#*–其它GPS测试<br>*#*#232331#*#*–蓝牙测试<br>*#*#232337#*#–显示蓝牙装置地址<br>*#*#8255#*#*启动GTalk服务监视器显示手机软件版本的代码<br>*#*#4986*2650468#*#*–PDA、Phone、H/W、RFCallDate<br>*#*#1234#*#*–PDA及Phone<br>*#*#1111#*#*–FTASW版本<br>*#*#2222#*#*–FTAHW版本<br>*#*#44336#*#*–PDA、Phone、csc、buildTime、anzhi.name、changelistnumber各项硬件测试<br>*#*#0283#*#*–PacketLoopback<br>*#*#0*#*#*–LCD测试<br>*#*#0673#*#*或*#*#0289#*#*–Melody测试<br>*#*#0842#*#*–装置测试，例如振动、亮度<br>*#*#2663#*#*–触控屏幕版本<br>*#*#2664#*#*–触控屏幕测试<br>*#*#0588#*#*–接近感应器测试<br>*#*#3264#*#*–内存版本    </p>
+<h4 id="Ⅲ-华为"><a href="#Ⅲ-华为" class="headerlink" title="Ⅲ 华为"></a>Ⅲ 华为</h4><p>*#*#4636#*#* - 当前手机号码、IMEI信息、信号强度、所使用的网络类型、电池信息、各种程序使用统计数据、WiFi信息等；输入*#06#，会显示本机的IMEI国际通信识别码，这个可用于查询手机是否行货水货。</p>
+<p>*#*#2846579#*#* - 工程模式，依次点击ProjectMenu、单板基本信息的查询、器件型号查询，即可获知挑选手机配备的各项元件的详细型号。</p>
+<p>*#*#197328640#*#*  - 启动服务模式，可以测试手机部分设置及更改设定WLAN、 GPS 及蓝牙测试的代码。<br>*#*#232339#*#*或 *#*#526#*#*或*#*#528#*#*     WLAN 测试<br>*#*#232338#*#* - 显示 WiFi MAC 地址。  *#*#1472365#*#* - GPS 测试。  </p>
+<p>*#*#1575#*#* - 其它 GPS 测试。<br>*#*#232331#*#* - 蓝牙测试。<br>*#*#232337#*# - 显示蓝牙装置地址。<br>*#*#4636#*#* - 显示手机信息、电池信息、电池记录、使用统计数据、WiFi 信息。<br>*#*#7780#*#* - 重设为原厂设定，不会删除预设程序，及 SD 卡档案。     </p>
+<p>*2767*3855# - 重设为原厂设定，会删除 SD 卡所有档案。        </p>
+<p>*#*#34971539#*#* - 显示相机相机韧体版本，或更新相机韧体。<br>*#*#7594#*#* - 当长按关机按钮时，会出现一个切换手机模式的窗口，包括: 静音模式、飞航模式及关机，你可以用以上代码，直接变成关机按钮。<br>*#*#273283*255*663282*#*#* - 开启一个能让你备份媒体文件的地方，例如相片、声音及影片等。<br>*#*#8255#*#* -  启动 GTalk 服务监视器显示手机软件版本的代码。<br>*#*#4986*2650468#*#* - PDAPDA、 Phone、 H/W、 RFCallDate<br>*#*#1234#*#*- PDA 及 Phone。  *#*#1111#*#* - FTA SW 版本。<br>*#*#2222#*#* - FTA HW 版本。<br>*#*#44336#*#* - PDA 、Phone、 CSC、 Build Time、 Changelist number各项硬件测试。<br>*#*#0283#*#* - Packet Loopback  </p>
+<p>*#*#0*#*#* - LCD 测试。<br>*#*#2663#*#* - 触控屏幕版本。<br>*#*#2664#*#* - 触控屏幕测试。<br>*#*#0588#*#* - 接近感应器测试。<br>*#*#0673#*#*或 *#*#0289#*#*Melody 测试*#*#0842#*#* – 装置测试，例如振动、亮度。  *#*#3264#*#*         内存版本</p>
+<h4 id="Ⅳ-OPPO"><a href="#Ⅳ-OPPO" class="headerlink" title="Ⅳ OPPO"></a>Ⅳ OPPO</h4><p>*#06# 手机串号</p>
+<p>*#99# 打开/关闭屏幕常亮</p>
+<p>*#800# log-test</p>
+<p>*#801# 工程模式开关，全端口开关，Serial</p>
+<p>*#802# TTFF</p>
+<p>*#803# WLAN设置</p>
+<p>*#804# 自动搜索</p>
+<p>*#805# 工程模式 蓝牙测试</p>
+<p>*#806# 自动老化 测试</p>
+<p>*#807# 自动测试</p>
+<p>*#808# 手动测试</p>
+<p>*#809# 回音测试</p>
+<p>*#888# 主板的PCB号</p>
+<p>*#1234# 可查询硬件代码和手机版本</p>
+<p>*#6776# 可查询手机版本、出厂信息等（几乎为手机全部信息）</p>
+<p>*#8778# 总清除（重置手机）</p>
+<p>*#36446337# 进入工程模式</p>
+<p>*#*#4636#*#* 进入手机、电池、网络设置信息</p>
+<p>*#2323# 显示3 g网络开关</p>
+<p>…*,*#*#4636#*#* 调手机信息改网络制式(T版用联通卡时)</p>
+<h4 id="Ⅴ-一加"><a href="#Ⅴ-一加" class="headerlink" title="Ⅴ 一加"></a>Ⅴ 一加</h4><p>*#99#:打开/关闭屏幕常亮<br>*#888#:查看硬件版本<br>*#1234#:查看软件版本<br>*#06#:查看本机ID<br>*#6776#:本机出厂日期<br>*#807#:自动测试<br>*#808#:原厂设定<br>*#8778#:恢复原厂设置<br>*#900# 蓝牙开启<br>*#901# 蓝牙关闭<br>*#4321# 蓝牙模式却换<br>*#*#4636#*#*显示手机信息，电池信息，电池记录，使用统计数据，wifi信息(安卓通用指令)<br>*2767*3855# 重设为原厂设定，会删除SD卡所有档案。<br>*#*#7594#*#*6 当长按关机按钮时，会出现一个切换手机模式的窗口，包括:静音模式、飞航模式及关机，你可以用以上代码，直接变成关机按钮。<br>*#*#273283*255*663282*#*#* 开启一个能让你备份媒体文件的地方，例如相片、声音及影片等<br>*#*#197328640#*#*启动服务模式，可以测试手机部分设置及更改设定WLAN、GPS及蓝牙测试的代码<br>*#*#232339#*#*或*#*#526#*#*或*#*#528#*#*–WLAN测试<br>*#*#232338#*#*–显示WiFiMAC地址<br>*#*#1472365#*#*–GPS测试<br>*#*#1575#*#*–其它GPS测试<br>*#*#232331#*#*–蓝牙测试<br>*#*#232337#*#–显示蓝牙装置地址<br>*#*#8255#*#*启动GTalk服务***器显示手机软件版本的代码<br>*#*#4986*2650468#*#*–PDA、Phone、H/W、RFCallDate<br>*#*#1234#*#*–PDA及Phone<br>*#*#1111#*#*–FTASW版本<br>*#*#2222#*#*–FTAHW版本<br>*#*#44336#*#*–PDA、Phone、csc、buildTime、anzhi.name、changelistnumber各项硬件测试<br>*#*#0283#*#*–PacketLoopback<br>*#*#0*#*#*–LCD测试<br>*#*#0673#*#*或*#*#0289#*#*–Melody测试   </p>
+<h4 id="Ⅵ-努比亚"><a href="#Ⅵ-努比亚" class="headerlink" title="Ⅵ 努比亚"></a>Ⅵ 努比亚</h4><p>*#805# - 自带的系统测试模式<br>*#*#4636#*#* - 显示手机信息、电池信息、电池记录、使用统计数据、WiFi信息等<br>*#406# - 校准屏幕代码<br>*#06#查看IMEI码，也就是手机序列号(国际移动装备辨识码)<br>*#7678#，打开后两个勾勾上即可-工程端口打开(线刷时用到)<br>*#1208888999# - 查看系统版本<br>*#776# - 红外感应校准<br>*#777# - 接近传感器校准(可用于校准通话黑屏亮屏的问题)<br>*#632# - NFC测试<br>*#8615# - 蓝牙/WiFi/GPS测试<br>*#8605# - 所有硬件测试<br>*#8604# - 各个模块测试<br>*#8607# - 内存容量测试<br>*#8612# - 收音机测试<br>*#8688# - 格式化内置存储(此代码一旦执行即不可逆，数据无价，请勿尝试)<br>*#746# - 双卡测试<br>*#983564# - 抓log用<br>*#94884# - 主题相关</p>
+]]></content>
+      <categories>
+        <category>随手记事</category>
+      </categories>
+      <tags>
+        <tag>小教程</tag>
+        <tag>文件文档</tag>
       </tags>
   </entry>
   <entry>
