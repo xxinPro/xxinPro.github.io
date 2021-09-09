@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.xxin.xyz/2021/09/09/Android-%E5%B8%83%E5%B1%80/</loc>
+    <lastmod>2021-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2021/09/09/Android-AlertDialog/</loc>
+    <lastmod>2021-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2021/09/09/Android-PopupWindow/</loc>
+    <lastmod>2021-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2021/09/09/Android-Toolbar/</loc>
+    <lastmod>2021-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2021/09/09/Android-Notification/</loc>
+    <lastmod>2021-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2021/09/09/Android-ProgressBar/</loc>
+    <lastmod>2021-09-09</lastmod>
+  </url>
+  <url>
     <loc>https://blog.xxin.xyz/2021/09/09/Android-ImageView/</loc>
     <lastmod>2021-09-09</lastmod>
   </url>
