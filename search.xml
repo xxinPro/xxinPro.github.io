@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Android-AlertDialog</title>
+    <url>/2021/09/09/Android-AlertDialog/</url>
+    <content><![CDATA[<h4 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//构建Dialog的各种参数</span></span><br><span class="line">AlertDialog.Bulider bulider = <span class="keyword">new</span> AlertDialog.Bulider(context); </span><br><span class="line"><span class="comment">//添加icon</span></span><br><span class="line">Bulider.setIcon(<span class="keyword">int</span> iconId);</span><br><span class="line"><span class="comment">//添加标题</span></span><br><span class="line">Bulider.setTitle(CharSequence title);</span><br><span class="line"><span class="comment">//添加消息</span></span><br><span class="line">Bulider.setMessage(CharSequence message);</span><br><span class="line"><span class="comment">//设置自定义布局</span></span><br><span class="line">Bulider.setView(View view);</span><br><span class="line"><span class="comment">//确定按钮</span></span><br><span class="line">Bulider.setPositiveButton(text,OnClickListener);</span><br><span class="line"><span class="comment">//中间按钮</span></span><br><span class="line">Bulider.setNegativeButton(text,OnClickListener);</span><br><span class="line"><span class="comment">//取消按钮</span></span><br><span class="line">Bulider.setNeutralButton(text,OnClickListener);</span><br><span class="line"><span class="comment">//创建Dialog</span></span><br><span class="line">Bulider.create();</span><br><span class="line"><span class="comment">//显示对话框</span></span><br><span class="line">Bulider.show();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="普通dialog"><a href="#普通dialog" class="headerlink" title="普通dialog"></a>普通dialog</h4><p>代码部分</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">MyClick</span><span class="params">()</span></span>&#123;</span><br><span class="line">    btn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">            AlertDialog.Builder dialog =  <span class="keyword">new</span> AlertDialog.Builder(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">            dialog.setTitle(<span class="string">&quot;标题&quot;</span>)</span><br><span class="line">                    .setIcon(R.mipmap.ic_launcher)</span><br><span class="line">                    .setMessage(<span class="string">&quot;对话框内容&quot;</span>)</span><br><span class="line">                    .setPositiveButton(<span class="string">&quot;确定按钮&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .setNegativeButton(<span class="string">&quot;中间按钮&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .setNeutralButton(<span class="string">&quot;取消按钮&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .create()</span><br><span class="line">                    .show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>展示图</p>
+<p><img src="../Android-AlertDialog/dialog2.png" /></p>
+<h4 id="将页面作为dialog"><a href="#将页面作为dialog" class="headerlink" title="将页面作为dialog"></a>将页面作为dialog</h4><p>先创建一个xml布局，命名为dialog<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:background</span>=<span class="string">&quot;#ff023198&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;测试&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;#ffffffff&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;22sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textStyle</span>=<span class="string">&quot;bold&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>代码部分<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">MyClick</span><span class="params">()</span></span>&#123;</span><br><span class="line">    btn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">            AlertDialog.Builder dialog =  <span class="keyword">new</span> AlertDialog.Builder(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">            dialog.setTitle(<span class="string">&quot;标题&quot;</span>)</span><br><span class="line">                    .setIcon(R.mipmap.ic_launcher)</span><br><span class="line">                    .setMessage(<span class="string">&quot;对话框内容&quot;</span>)</span><br><span class="line">                    .setPositiveButton(<span class="string">&quot;确定按钮&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .setNegativeButton(<span class="string">&quot;中间按钮&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .setNeutralButton(<span class="string">&quot;取消按钮&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line"><span class="comment">//                这里可以是布局文件或view对象，如果是view对象，需要先获取布局文件</span></span><br><span class="line"><span class="comment">//                View view1 = getLayoutInflater().inflate(R.layout.dialog,null);</span></span><br><span class="line"><span class="comment">//                将view1放在setView参数中</span></span><br><span class="line">                    .setView(R.layout.dialog)</span><br><span class="line">                    .create()</span><br><span class="line">                    .show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>展示图</p>
+<p><img src="../Android-AlertDialog/dialog1.png" /></p>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android-Button</title>
     <url>/2021/09/08/Android-Button/</url>
     <content><![CDATA[<h3 id="StateListDrawable"><a href="#StateListDrawable" class="headerlink" title="StateListDrawable"></a>StateListDrawable</h3><p>&ensp;&ensp;StateListDrawable：StateListDrawable就是对应于selector标签，也是表示一个Drawable集合，每个Drawable都对应View的一种状态<br>&ensp;&ensp;StateListDrawable用途：设置可单击的View的背景，常和ShapeDrawable一起使用</p>
@@ -30,27 +51,6 @@
 <li>ACTION_MOVE = 2(移动)</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">btn1.setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View view, MotionEvent motionEvent)</span> </span>&#123;</span><br><span class="line">        tv_one.setText(<span class="string">&quot;他日若遂凌云志，敢笑黄巢不丈夫&quot;</span>);</span><br><span class="line"><span class="comment">//        返回true时，不再相应OnClick和OnLongClick事件(若存在)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android-AlertDialog</title>
-    <url>/2021/09/09/Android-AlertDialog/</url>
-    <content><![CDATA[<h4 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//构建Dialog的各种参数</span></span><br><span class="line">AlertDialog.Bulider bulider = <span class="keyword">new</span> AlertDialog.Bulider(context); </span><br><span class="line"><span class="comment">//添加icon</span></span><br><span class="line">Bulider.setIcon(<span class="keyword">int</span> iconId);</span><br><span class="line"><span class="comment">//添加标题</span></span><br><span class="line">Bulider.setTitle(CharSequence title);</span><br><span class="line"><span class="comment">//添加消息</span></span><br><span class="line">Bulider.setMessage(CharSequence message);</span><br><span class="line"><span class="comment">//设置自定义布局</span></span><br><span class="line">Bulider.setView(View view);</span><br><span class="line"><span class="comment">//确定按钮</span></span><br><span class="line">Bulider.setPositiveButton(text,OnClickListener);</span><br><span class="line"><span class="comment">//中间按钮</span></span><br><span class="line">Bulider.setNegativeButton(text,OnClickListener);</span><br><span class="line"><span class="comment">//取消按钮</span></span><br><span class="line">Bulider.setNeutralButton(text,OnClickListener);</span><br><span class="line"><span class="comment">//创建Dialog</span></span><br><span class="line">Bulider.create();</span><br><span class="line"><span class="comment">//显示对话框</span></span><br><span class="line">Bulider.show();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="普通dialog"><a href="#普通dialog" class="headerlink" title="普通dialog"></a>普通dialog</h4><p>代码部分</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">MyClick</span><span class="params">()</span></span>&#123;</span><br><span class="line">    btn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">            AlertDialog.Builder dialog =  <span class="keyword">new</span> AlertDialog.Builder(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">            dialog.setTitle(<span class="string">&quot;标题&quot;</span>)</span><br><span class="line">                    .setIcon(R.mipmap.ic_launcher)</span><br><span class="line">                    .setMessage(<span class="string">&quot;对话框内容&quot;</span>)</span><br><span class="line">                    .setPositiveButton(<span class="string">&quot;确定按钮&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .setNegativeButton(<span class="string">&quot;中间按钮&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .setNeutralButton(<span class="string">&quot;取消按钮&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .create()</span><br><span class="line">                    .show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>展示图</p>
-<p><img src="../Android-AlertDialog/dialog2.png" /></p>
-<h4 id="将页面作为dialog"><a href="#将页面作为dialog" class="headerlink" title="将页面作为dialog"></a>将页面作为dialog</h4><p>先创建一个xml布局，命名为dialog<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:background</span>=<span class="string">&quot;#ff023198&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;测试&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;#ffffffff&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;22sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textStyle</span>=<span class="string">&quot;bold&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>代码部分<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">MyClick</span><span class="params">()</span></span>&#123;</span><br><span class="line">    btn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">            AlertDialog.Builder dialog =  <span class="keyword">new</span> AlertDialog.Builder(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">            dialog.setTitle(<span class="string">&quot;标题&quot;</span>)</span><br><span class="line">                    .setIcon(R.mipmap.ic_launcher)</span><br><span class="line">                    .setMessage(<span class="string">&quot;对话框内容&quot;</span>)</span><br><span class="line">                    .setPositiveButton(<span class="string">&quot;确定按钮&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .setNegativeButton(<span class="string">&quot;中间按钮&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .setNeutralButton(<span class="string">&quot;取消按钮&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line"><span class="comment">//                这里可以是布局文件或view对象，如果是view对象，需要先获取布局文件</span></span><br><span class="line"><span class="comment">//                View view1 = getLayoutInflater().inflate(R.layout.dialog,null);</span></span><br><span class="line"><span class="comment">//                将view1放在setView参数中</span></span><br><span class="line">                    .setView(R.layout.dialog)</span><br><span class="line">                    .create()</span><br><span class="line">                    .show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>展示图</p>
-<p><img src="../Android-AlertDialog/dialog1.png" /></p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -189,6 +189,19 @@
       </tags>
   </entry>
   <entry>
+    <title>Android-Toolbar</title>
+    <url>/2021/09/09/Android-Toolbar/</url>
+    <content><![CDATA[<p>菜单栏，后边在写</p>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android-布局</title>
     <url>/2021/09/09/Android-%E5%B8%83%E5%B1%80/</url>
     <content><![CDATA[<h3 id="一、LinearLayout-线性布局"><a href="#一、LinearLayout-线性布局" class="headerlink" title="一、LinearLayout(线性布局)"></a>一、LinearLayout(线性布局)</h3><h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
@@ -234,19 +247,23 @@
 <li>layout_column: 显示在第几列</li>
 <li>layout_ span: 横向跨几列</li>
 </ol>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android-Toolbar</title>
-    <url>/2021/09/09/Android-Toolbar/</url>
-    <content><![CDATA[<p>菜单栏，后边在写</p>
+<h3 id="五、GridLayout-网格布局"><a href="#五、GridLayout-网格布局" class="headerlink" title="五、GridLayout(网格布局)"></a>五、GridLayout(网格布局)</h3><h4 id="常用属性-4"><a href="#常用属性-4" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
+<li>columnCount: 列的显示个数</li>
+<li>rowCount: 行的显示个数</li>
+<li>orientation: 显示方向</li>
+</ol>
+<h4 id="子控件设置属性-1"><a href="#子控件设置属性-1" class="headerlink" title="子控件设置属性"></a>子控件设置属性</h4><ol>
+<li>layout_column: 显示在第几列</li>
+<li>layout_columnSpan: 横向跨几列</li>
+<li>layout_columnWeight: 横向剩余空间分配方式</li>
+<li>layout_gravity: 在网格中显示的位置</li>
+<li>layout_row: 显示在第几行</li>
+<li>layout_rowSpan: 横向跨几行</li>
+<li>layout_rowWeight: 纵向剩余空间分配方式</li>
+</ol>
+<h4 id="通过网格布局设置响应式工具栏"><a href="#通过网格布局设置响应式工具栏" class="headerlink" title="通过网格布局设置响应式工具栏"></a>通过网格布局设置响应式工具栏</h4><p>通过对GridLayouy的columnCount设置，达到响应式工具栏<br>1.当手机屏幕时，设置columnCount为4，此时显示两行四列<br>2.当平板电脑屏幕时，设置columnCount为6，此时显示一行六列</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">GridLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:background</span>=<span class="string">&quot;@color/sky&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/grid&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:columnCount</span>=<span class="string">&quot;4&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;120dp&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;0&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;1&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;2&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;3&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;4&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;5&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">GridLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/btn&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;修改行数&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="六、ConstraintLayout-约束布局"><a href="#六、ConstraintLayout-约束布局" class="headerlink" title="六、ConstraintLayout(约束布局)"></a>六、ConstraintLayout(约束布局)</h3><p>学尼玛，不学了</p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -314,20 +331,6 @@
       </tags>
   </entry>
   <entry>
-    <title>github+hexo博客</title>
-    <url>/2021/07/15/github-hexo%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p><center>github等代码托管平台搭建hexo博客</center><br><span id="more"></span></p>
-]]></content>
-      <categories>
-        <category>hexo博客</category>
-      </categories>
-      <tags>
-        <tag>hexo博客</tag>
-        <tag>小教程</tag>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>final修饰符</title>
     <url>/2021/07/22/final%E4%BF%AE%E9%A5%B0%E7%AC%A6/</url>
     <content><![CDATA[<h3 id="final修饰的变量"><a href="#final修饰的变量" class="headerlink" title="final修饰的变量"></a>final修饰的变量</h3><p>final修饰的成员变量一定由程序员指定初始值，并且一经复制后，变量值将无法被修改</p>
@@ -385,8 +388,22 @@
       </categories>
       <tags>
         <tag>hexo博客</tag>
-        <tag>小教程</tag>
         <tag>next主题</tag>
+        <tag>小教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>github+hexo博客</title>
+    <url>/2021/07/15/github-hexo%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p><center>github等代码托管平台搭建hexo博客</center><br><span id="more"></span></p>
+]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>hexo博客</tag>
+        <tag>小教程</tag>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -425,8 +442,8 @@
       </categories>
       <tags>
         <tag>hexo博客</tag>
-        <tag>小教程</tag>
         <tag>next主题</tag>
+        <tag>小教程</tag>
       </tags>
   </entry>
   <entry>
@@ -645,6 +662,31 @@
       </tags>
   </entry>
   <entry>
+    <title>我的庸俗，我的封建</title>
+    <url>/2021/07/18/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;我的庸俗，向来我是承认的</p>
+<p>&ensp;&ensp;&ensp;&ensp;拒绝了酒吧和ktv，推辞各种娱乐活动，甚至逃避稍微有些情调的餐厅，一条黑色的直筒裤子，一件各个商场角落都能找到的黑色上衣，一双黑色运动鞋，万年不变的发型，左兜是手机，右兜是烟，不出意外的话，烟应该是白将军</p>
+<p>&ensp;&ensp;&ensp;&ensp;并非不喜欢世界的精彩，也非不懂得享受安逸，不过是觉得这些东西不应该发生在我身上，我怕在享受这世界繁华的过程中它会潜移默化的改变我，磨去我的斗志；怕有一天我变得只贪财，而忘了取之有道；怕有一天我变得只好色，而忘了有品；怕有一天我也变得虚伪，口是心非；怕松了这口气，血液就再也沸腾不起来；怕我忘了我的理想、忘了我的出身</p>
+<p>&ensp;&ensp;&ensp;&ensp;想起了很久以前美术老师说过的：“不要爬在画纸上死抠一个部位，那样你永远也发觉不到这张画的全局问题，你应该多去把画立起来放在那里，站远一点，才能看清自己到底哪里不好，到底要修改哪里”。高楼的林立、闹市的喧嚣、街道的霓虹，我知道我看见的美好只是他们想让我看到的美好，他们不想让我看见的丑陋我永远也看不见，好像只有远离这些，让我变得庸俗，才能看清：世界是世界，我是我</p>
+<p>&ensp;&ensp;&ensp;&ensp;网络很强大，让下等人也能清楚的看到上等人的世界，产生“卓尔不群”的错觉，不知道这种错觉让多少人沉迷在了自己的幻想中，强行让生活丰富多彩，还拿出不切实际的理论来劝说别人；人都以为自己是聪明的、自己的选择是最正确的，然后就会有把别人都变成自己的想法，或许他们是善良的，甘愿把自己认为的最完美的人生经验分享给别人，哈哈，懒惰又愚蠢，多站起来看看吧，站远一点，以第三方的角度看看自己，看看为挣一时口舌之利时自己不堪入目的样子吧</p>
+<p>&ensp;&ensp;&ensp;&ensp;历史发展到今天，生活的节奏似乎随着网速变得越来越快，工作、学习、吃饭以及出行，男女关系也变得像儿戏一样，在这个快节奏时代，我刻意用大量时间只去做一件小事，想试着把节奏拖得慢一点，好让身边的人、事、物都能多停留半刻，可惜，遗憾，在5G网络的70M/S面前，这种所作所为俨然像个傻吊。“历史潮流，浩浩荡荡，顺之者昌，逆之者亡”，尽管知道以我之渺小难挡历史之潮流、时代之节奏，我还是会去做，我就是想用我的行动表达一个态度——我会热爱我之热爱、坚持我之坚持、向往我之向往，潮流逆之，便逆潮流而行，这就是我的庸俗</p>
+<p>&ensp;&ensp;&ensp;&ensp;我的封建，只来约束我自己</p>
+<p>&ensp;&ensp;&ensp;&ensp;这种封建思想，想想就觉得憋屈，只一个男女授受不亲的可怕想法，就快要把我折磨死，不止一次和喜欢的女孩独处时，心里就会偷偷的想：“多好的机会啊，现在我装作不小心不经意去碰一下她的手，肯定不会被发现，嘿嘿”，微微放纵的思绪只片刻就被强行打断，事后又会后悔：“为什么刚刚不碰一下呢？？？我怂什么呢？？？”，，，哈哈哈，好邪恶</p>
+<p>&ensp;&ensp;&ensp;&ensp;心里的世界和现实世界多少会有点冲突，发生冲突时它被带入到现实是很可怕的，行为被强行约束，思维被强制控制，年少的轻狂和冲动又刚好会让我产生很多不该出现的想法。纹个身吧，不止一次已经选好了要纹的图案，才忽觉荒唐！身体发肤，受之父母，不敢毁伤！好不容易心动了女孩子，emmmm，她真好看，那我…..不吧，学业未结，父母操劳，囊中羞涩，任重而道远，怎敢涉及儿女情长</p>
+<p>&ensp;&ensp;&ensp;&ensp;有时候也会感谢我的封建带给我的约束，起码它不会让我在没人的地方作恶，在众目睽睽下行善，然后站在道德的制高点指指点点；它让我讨厌去听一些故作清高的垃圾总结出大道理，讨厌他们给我所认知的东西强加一个不沾边的概念，讨厌把那些原本不美好的东西渡一层金色外表。这就是屎，但是它是一堆金屎，它被世人所追捧，清醒者想去抵抗，却被冠之以封建，一道光照亮了黑暗屋子里的丑陋，那这道光就成了罪恶</p>
+<p>&ensp;&ensp;&ensp;&ensp;封建与庸俗碰撞就形成了两个极端思维，一种莫名的责任感，它让我的大多数时间都陷入在自责中，生不如死。妈的，一件错事，不管错是由谁引起的，都会被这天杀的责任感一股脑的揽到自己身上，总有一百种理由从中找到关于自己的原因，心底的高傲和优越感让我知道这不是自卑，就是单纯的自己坑自己，于是见不得周围的人对我失望，那我会发了疯的去弥补，心里一遍又一遍问自己到底为什么，一遍又一遍猜想、演算，推导换做其他方式的最终结果，再回过头去了结心中的愧疚，就算不是今天也肯定是明天，就算结果非我所愿，也一定会去做</p>
+<p>&ensp;&ensp;&ensp;&ensp;在责任感对立面的，是极致的顺其自然，对一件事丝毫不感兴趣时，即使它在我能力之内，关于这件事的一切也会变得默然，不管它于我有关或无关，不会生气也不会开心，看着这件事自然发展，看着事中的人或像狼狗一样的狂吠、或像鸭子一样的嘎嘎笑，都无所谓，你觉得是什么就是什么，你爱怎么你就怎么，偶尔觉得对方实在太傻逼，才会萌生出一点可笑的情绪，或许他们也这样看我，不过无所谓，哈哈</p>
+<p>&ensp;&ensp;&ensp;&ensp;这时代和平又混乱，让受其所害的人嘲笑未受其害的人，让妥协的人嘲笑反抗的人，每个人都渴望拥有又不想抛弃，我明白他们的心软让他们狠不下心逃离安逸圈，久而久之背负的垃圾就越来越多，把一杯水分做十份二十份的时候，这杯水就不够分了，忙来忙去却导致了最后的全线崩塌，满盘皆输，岂不悲乎？</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>手机调试代码</title>
     <url>/2021/09/09/%E6%89%8B%E6%9C%BA%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/</url>
     <content><![CDATA[<h4 id="Ⅰ-魅族"><a href="#Ⅰ-魅族" class="headerlink" title="Ⅰ 魅族"></a>Ⅰ 魅族</h4><p>*#*#4636#*#* – 显示手机信息、电池信息、电池记录、使用统计数据、WiFi 信息</p>
@@ -710,31 +752,6 @@
       <tags>
         <tag>小教程</tag>
         <tag>文件文档</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我的庸俗，我的封建</title>
-    <url>/2021/07/18/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;我的庸俗，向来我是承认的</p>
-<p>&ensp;&ensp;&ensp;&ensp;拒绝了酒吧和ktv，推辞各种娱乐活动，甚至逃避稍微有些情调的餐厅，一条黑色的直筒裤子，一件各个商场角落都能找到的黑色上衣，一双黑色运动鞋，万年不变的发型，左兜是手机，右兜是烟，不出意外的话，烟应该是白将军</p>
-<p>&ensp;&ensp;&ensp;&ensp;并非不喜欢世界的精彩，也非不懂得享受安逸，不过是觉得这些东西不应该发生在我身上，我怕在享受这世界繁华的过程中它会潜移默化的改变我，磨去我的斗志；怕有一天我变得只贪财，而忘了取之有道；怕有一天我变得只好色，而忘了有品；怕有一天我也变得虚伪，口是心非；怕松了这口气，血液就再也沸腾不起来；怕我忘了我的理想、忘了我的出身</p>
-<p>&ensp;&ensp;&ensp;&ensp;想起了很久以前美术老师说过的：“不要爬在画纸上死抠一个部位，那样你永远也发觉不到这张画的全局问题，你应该多去把画立起来放在那里，站远一点，才能看清自己到底哪里不好，到底要修改哪里”。高楼的林立、闹市的喧嚣、街道的霓虹，我知道我看见的美好只是他们想让我看到的美好，他们不想让我看见的丑陋我永远也看不见，好像只有远离这些，让我变得庸俗，才能看清：世界是世界，我是我</p>
-<p>&ensp;&ensp;&ensp;&ensp;网络很强大，让下等人也能清楚的看到上等人的世界，产生“卓尔不群”的错觉，不知道这种错觉让多少人沉迷在了自己的幻想中，强行让生活丰富多彩，还拿出不切实际的理论来劝说别人；人都以为自己是聪明的、自己的选择是最正确的，然后就会有把别人都变成自己的想法，或许他们是善良的，甘愿把自己认为的最完美的人生经验分享给别人，哈哈，懒惰又愚蠢，多站起来看看吧，站远一点，以第三方的角度看看自己，看看为挣一时口舌之利时自己不堪入目的样子吧</p>
-<p>&ensp;&ensp;&ensp;&ensp;历史发展到今天，生活的节奏似乎随着网速变得越来越快，工作、学习、吃饭以及出行，男女关系也变得像儿戏一样，在这个快节奏时代，我刻意用大量时间只去做一件小事，想试着把节奏拖得慢一点，好让身边的人、事、物都能多停留半刻，可惜，遗憾，在5G网络的70M/S面前，这种所作所为俨然像个傻吊。“历史潮流，浩浩荡荡，顺之者昌，逆之者亡”，尽管知道以我之渺小难挡历史之潮流、时代之节奏，我还是会去做，我就是想用我的行动表达一个态度——我会热爱我之热爱、坚持我之坚持、向往我之向往，潮流逆之，便逆潮流而行，这就是我的庸俗</p>
-<p>&ensp;&ensp;&ensp;&ensp;我的封建，只来约束我自己</p>
-<p>&ensp;&ensp;&ensp;&ensp;这种封建思想，想想就觉得憋屈，只一个男女授受不亲的可怕想法，就快要把我折磨死，不止一次和喜欢的女孩独处时，心里就会偷偷的想：“多好的机会啊，现在我装作不小心不经意去碰一下她的手，肯定不会被发现，嘿嘿”，微微放纵的思绪只片刻就被强行打断，事后又会后悔：“为什么刚刚不碰一下呢？？？我怂什么呢？？？”，，，哈哈哈，好邪恶</p>
-<p>&ensp;&ensp;&ensp;&ensp;心里的世界和现实世界多少会有点冲突，发生冲突时它被带入到现实是很可怕的，行为被强行约束，思维被强制控制，年少的轻狂和冲动又刚好会让我产生很多不该出现的想法。纹个身吧，不止一次已经选好了要纹的图案，才忽觉荒唐！身体发肤，受之父母，不敢毁伤！好不容易心动了女孩子，emmmm，她真好看，那我…..不吧，学业未结，父母操劳，囊中羞涩，任重而道远，怎敢涉及儿女情长</p>
-<p>&ensp;&ensp;&ensp;&ensp;有时候也会感谢我的封建带给我的约束，起码它不会让我在没人的地方作恶，在众目睽睽下行善，然后站在道德的制高点指指点点；它让我讨厌去听一些故作清高的垃圾总结出大道理，讨厌他们给我所认知的东西强加一个不沾边的概念，讨厌把那些原本不美好的东西渡一层金色外表。这就是屎，但是它是一堆金屎，它被世人所追捧，清醒者想去抵抗，却被冠之以封建，一道光照亮了黑暗屋子里的丑陋，那这道光就成了罪恶</p>
-<p>&ensp;&ensp;&ensp;&ensp;封建与庸俗碰撞就形成了两个极端思维，一种莫名的责任感，它让我的大多数时间都陷入在自责中，生不如死。妈的，一件错事，不管错是由谁引起的，都会被这天杀的责任感一股脑的揽到自己身上，总有一百种理由从中找到关于自己的原因，心底的高傲和优越感让我知道这不是自卑，就是单纯的自己坑自己，于是见不得周围的人对我失望，那我会发了疯的去弥补，心里一遍又一遍问自己到底为什么，一遍又一遍猜想、演算，推导换做其他方式的最终结果，再回过头去了结心中的愧疚，就算不是今天也肯定是明天，就算结果非我所愿，也一定会去做</p>
-<p>&ensp;&ensp;&ensp;&ensp;在责任感对立面的，是极致的顺其自然，对一件事丝毫不感兴趣时，即使它在我能力之内，关于这件事的一切也会变得默然，不管它于我有关或无关，不会生气也不会开心，看着这件事自然发展，看着事中的人或像狼狗一样的狂吠、或像鸭子一样的嘎嘎笑，都无所谓，你觉得是什么就是什么，你爱怎么你就怎么，偶尔觉得对方实在太傻逼，才会萌生出一点可笑的情绪，或许他们也这样看我，不过无所谓，哈哈</p>
-<p>&ensp;&ensp;&ensp;&ensp;这时代和平又混乱，让受其所害的人嘲笑未受其害的人，让妥协的人嘲笑反抗的人，每个人都渴望拥有又不想抛弃，我明白他们的心软让他们狠不下心逃离安逸圈，久而久之背负的垃圾就越来越多，把一杯水分做十份二十份的时候，这杯水就不够分了，忙来忙去却导致了最后的全线崩塌，满盘皆输，岂不悲乎？</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
       </tags>
   </entry>
   <entry>
