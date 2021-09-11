@@ -29,7 +29,7 @@
 <meta property="og:description" content="ImageView控件详解">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-09T05:42:17.000Z">
-<meta property="article:modified_time" content="2021-09-09T06:33:28.053Z">
+<meta property="article:modified_time" content="2021-09-11T01:44:35.799Z">
 <meta property="article:author" content="xxin">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="学习笔记">
@@ -285,7 +285,7 @@
 <li>android:maxWidth: 最大宽度</li>
 <li>android:adjustViewBounds: 调整view界限</li>
 </ol>
-<h5 id="scaleType缩放类型"><a href="#scaleType缩放类型" class="headerlink" title="scaleType缩放类型"></a>scaleType缩放类型</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//共同点：缩小图片</span><br><span class="line">android:fitStart: 保持宽高比缩放图片，直到较长的边与image的边长相等，缩放后将图片放在ImageView的左上角</span><br><span class="line">android:fitCenter: 默认值，保持宽高比缩放图片，直到较长的边与image的边长相等，缩放后放于中间</span><br><span class="line">android:fitEnd: 保持宽高比缩放图片，直到较长的边与image的边长相等，缩放后放于右下角</span><br><span class="line">android:fitXY: 对图像的纵横方向进行独立缩放使得图片完全适应ImageView，但是图片的宽高比可能会发生改变</span><br><span class="line">//共同点：居中显示</span><br><span class="line">android:center: 保持原图的宽高比和大小，图片中心点与ImageView中心点重叠，当原图宽高大于ImageView时，超出部分将被剪裁</span><br><span class="line">android:centerCrop: 保持宽高比缩放图片，直到完全覆盖ImageView，可能会出现图片的显示不完全</span><br><span class="line">android:centerInside: 保持宽高比缩放图片，直到ImageView能够完全地将图片显示出，如果图片宽高小于ImageView，将直接居中显示</span><br><span class="line"></span><br><span class="line">android:matrix: 保持原图的宽高比和大小,从ImageView的左上角开始绘制原图，超出部分将被剪裁</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="scaleType缩放类型"><a href="#scaleType缩放类型" class="headerlink" title="scaleType缩放类型"></a>scaleType缩放类型</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//共同点：缩小图片</span><br><span class="line">fitStart: 保持宽高比缩放图片，直到较长的边与image的边长相等，缩放后将图片放在ImageView的左上角</span><br><span class="line">fitCenter: 默认值，保持宽高比缩放图片，直到较长的边与image的边长相等，缩放后放于中间</span><br><span class="line">fitEnd: 保持宽高比缩放图片，直到较长的边与image的边长相等，缩放后放于右下角</span><br><span class="line">fitXY: 对图像的纵横方向进行独立缩放使得图片完全适应ImageView，但是图片的宽高比可能会发生改变</span><br><span class="line">//共同点：居中显示</span><br><span class="line">center: 保持原图的宽高比和大小，图片中心点与ImageView中心点重叠，当原图宽高大于ImageView时，超出部分将被剪裁</span><br><span class="line">centerCrop: 保持宽高比缩放图片，直到完全覆盖ImageView，可能会出现图片的显示不完全</span><br><span class="line">centerInside: 保持宽高比缩放图片，直到ImageView能够完全地将图片显示出，如果图片宽高小于ImageView，将直接居中显示</span><br><span class="line"></span><br><span class="line">matrix: 保持原图的宽高比和大小,从ImageView的左上角开始绘制原图，超出部分将被剪裁</span><br><span class="line"></span><br></pre></td></tr></table></figure>
     </div>
 
     
