@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.xxin.xyz/2021/09/11/Android-RecyclerView/</loc>
+    
+    <lastmod>2021-09-11</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.xxin.xyz/2021/09/10/Android-ListView/</loc>
     
     <lastmod>2021-09-11</lastmod>
