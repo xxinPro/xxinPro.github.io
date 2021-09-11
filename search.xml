@@ -117,7 +117,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.BaseAdapter;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyListTest</span> <span class="keyword">extends</span> <span class="title">BaseAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String[] iconName;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] iconId;</span><br><span class="line">    <span class="keyword">private</span> Context context;</span><br><span class="line"></span><br><span class="line">    MyListTest(String[] iconName,<span class="keyword">int</span>[] iconId,Context context)&#123;</span><br><span class="line">        <span class="keyword">this</span>.iconName = iconName;</span><br><span class="line">        <span class="keyword">this</span>.iconId = iconId;</span><br><span class="line">        <span class="keyword">this</span>.context = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123; <span class="comment">//返回listView显示数据的总数</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.iconId.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123; <span class="comment">//返回item的数据对象</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getItemId</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123; <span class="comment">//返回item的id</span></span><br><span class="line">        <span class="keyword">return</span> position;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>)&#123;</span><br><span class="line">            convertView = View.inflate(context,R.layout.item,<span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        TextView textView = convertView.findViewById(R.id.text1);</span><br><span class="line">        ImageView imageView = convertView.findViewById(R.id.img1);</span><br><span class="line"></span><br><span class="line">        textView.setText(iconName[position]);</span><br><span class="line">        imageView.setImageResource(iconId[position]);</span><br><span class="line">        <span class="keyword">return</span> convertView;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>在MainActivity中对ListView进行应用</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.widget.ListView;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ListView listView;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] iconId = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;</span><br><span class="line">            R.mipmap.dangao,R.mipmap.cha,R.mipmap.hanbao,R.mipmap.jitui,R.mipmap.kafei,R.mipmap.kaixinguo,R.mipmap.lanmei,</span><br><span class="line">            R.mipmap.ningmeng,R.mipmap.niupai,R.mipmap.pijiu,R.mipmap.pisa,R.mipmap.qiyiguo,R.mipmap.regou,R.mipmap.sanmingzhi,</span><br><span class="line">            R.mipmap.shengnvguo,R.mipmap.shutiao,R.mipmap.tusi,R.mipmap.yimian,R.mipmap.yingtao,R.mipmap.zhangyuxiaowanzi</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">private</span> String[] iconName = <span class="keyword">new</span> String[]&#123;</span><br><span class="line">            <span class="string">&quot;蛋糕&quot;</span>,<span class="string">&quot;茶&quot;</span>,<span class="string">&quot;汉堡&quot;</span>,<span class="string">&quot;鸡腿&quot;</span>,<span class="string">&quot;咖啡&quot;</span>,<span class="string">&quot;开心果&quot;</span>,<span class="string">&quot;蓝莓&quot;</span>,<span class="string">&quot;柠檬&quot;</span>,<span class="string">&quot;牛排&quot;</span>,<span class="string">&quot;啤酒&quot;</span>,<span class="string">&quot;披萨&quot;</span>,<span class="string">&quot;奇异果&quot;</span>,<span class="string">&quot;热狗&quot;</span>,<span class="string">&quot;三明治&quot;</span>,<span class="string">&quot;圣女果&quot;</span>,<span class="string">&quot;薯条&quot;</span>,<span class="string">&quot;吐司&quot;</span>,<span class="string">&quot;意面&quot;</span>,<span class="string">&quot;樱桃&quot;</span>,<span class="string">&quot;章鱼小丸子&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"><span class="comment">//        获取到ListView</span></span><br><span class="line">        listView = findViewById(R.id.list);</span><br><span class="line"></span><br><span class="line">        MyListTest myListTest = <span class="keyword">new</span> MyListTest(iconName,iconId,<span class="keyword">this</span>);</span><br><span class="line">        listView.setAdapter(myListTest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>所需要的文件<a href="../Android/icon.zip">下载</a></p>
+<p>所需要的文件<a href="../Android-ListView/icon.zip">下载</a></p>
 <h4 id="ListView的优化"><a href="#ListView的优化" class="headerlink" title="ListView的优化"></a>ListView的优化</h4><p>当滑动列表时，划出屏幕的item就会被摧毁掉，新出现的item就会创建一个新的view对象</p>
 ]]></content>
       <categories>
@@ -487,6 +487,25 @@
       </tags>
   </entry>
   <entry>
+    <title>专升本试题集</title>
+    <url>/2021/08/07/%E4%B8%93%E5%8D%87%E6%9C%AC%E8%AF%95%E9%A2%98%E9%9B%86/</url>
+    <content><![CDATA[<h3 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h3><ol>
+<li><p><a href="https://blog.xxin.xyz/files/office/高中数学函数试题及答案.pdf">高中数学函数试题及答案.pdf</a></p>
+</li>
+<li><p><a href="https://blog.xxin.xyz/files/office/高中数学数列的极限试题及答案.pdf">高中数学数列的极限试题及答案.pdf</a></p>
+</li>
+</ol>
+<h3 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h3>]]></content>
+      <categories>
+        <category>专升本学习</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>文件文档</tag>
+        <tag>重点难点</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>内部类*</title>
     <url>/2021/07/23/%E5%86%85%E9%83%A8%E7%B1%BB/</url>
     <content><![CDATA[<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><ol>
@@ -530,22 +549,19 @@
       </tags>
   </entry>
   <entry>
-    <title>专升本试题集</title>
-    <url>/2021/08/07/%E4%B8%93%E5%8D%87%E6%9C%AC%E8%AF%95%E9%A2%98%E9%9B%86/</url>
-    <content><![CDATA[<h3 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h3><ol>
-<li><p><a href="https://blog.xxin.xyz/files/office/高中数学函数试题及答案.pdf">高中数学函数试题及答案.pdf</a></p>
-</li>
-<li><p><a href="https://blog.xxin.xyz/files/office/高中数学数列的极限试题及答案.pdf">高中数学数列的极限试题及答案.pdf</a></p>
-</li>
-</ol>
-<h3 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h3>]]></content>
+    <title>单例模式</title>
+    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>调用时</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>专升本学习</category>
+        <category>java笔记</category>
       </categories>
       <tags>
         <tag>学习笔记</tag>
-        <tag>重点难点</tag>
-        <tag>文件文档</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -588,22 +604,6 @@
         <tag>学习笔记</tag>
         <tag>重点难点</tag>
         <tag>专升本数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>单例模式</title>
-    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>调用时</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -673,22 +673,6 @@
       </tags>
   </entry>
   <entry>
-    <title>怂崽</title>
-    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
-<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
-<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
-        <tag>坏心情</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>我的庸俗，我的封建</title>
     <url>/2021/07/18/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA/</url>
     <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;我的庸俗，向来我是承认的</p>
@@ -711,6 +695,22 @@
       <tags>
         <tag>网抑云</tag>
         <tag>毒鸡汤</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>怂崽</title>
+    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
+<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
+<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+        <tag>坏心情</tag>
       </tags>
   </entry>
   <entry>
@@ -782,6 +782,34 @@
       </tags>
   </entry>
   <entry>
+    <title>抽象类abstract</title>
+    <url>/2021/07/22/%E6%8A%BD%E8%B1%A1%E7%B1%BBabstract/</url>
+    <content><![CDATA[<ol>
+<li>抽象类与抽象方法必须用abstract修饰(与final互斥)，抽象方法不可有方法体</li>
+<li>抽象类不可被实例化，不能用于创建对象</li>
+<li>抽象类包括成员变量、方法(普通方法和抽象方法)、构造器、初始化块、内部类，主要用于派生子类</li>
+<li>抽象类的子类要么重写父类的全部抽象方法，要么只能定义为抽象类</li>
+</ol>
+<span id="more"></span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">abstractTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        用抽象类创建对象时，只能用其子类向上转型</span></span><br><span class="line">        铠甲勇士<span class="number">2</span> 炎龙技能类型 = <span class="keyword">new</span> 炎龙铠甲<span class="number">2</span>();</span><br><span class="line">        铠甲勇士<span class="number">2</span> 风鹰技能类型 = <span class="keyword">new</span> 风影铠甲<span class="number">2</span>();</span><br><span class="line">        炎龙技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">        风鹰技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>abstract抽象类最主要的功能：派生子类，abstract与final互斥</li>
+<li>相对于普通类，abstract类多了abstract方法，抽象类不可实例化，即不能被分配内存、不能创建对象</li>
+<li>static修饰的方法属于类本身，必须被分配内存，static和abstract不可同时修饰一个方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>();</span><br><span class="line"><span class="comment">//    public abstract static void main()&#123;</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;测试&quot;);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 非抽象()&#123;</span><br><span class="line"><span class="comment">//        非抽象方法，不必须重写</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抽象类的子类，要么重写父类的全部抽象方法，要么也是抽象类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 炎龙铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;封魔斩&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 风影铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;穿风刺&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 帝皇铠甲 <span class="keyword">extends</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>接口interface</title>
     <url>/2021/07/22/%E6%8E%A5%E5%8F%A3interface/</url>
     <content><![CDATA[<p>接口，比抽象类还要抽象的类:</p>
@@ -824,34 +852,6 @@
     <title>枚举</title>
     <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
     <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>抽象类abstract</title>
-    <url>/2021/07/22/%E6%8A%BD%E8%B1%A1%E7%B1%BBabstract/</url>
-    <content><![CDATA[<ol>
-<li>抽象类与抽象方法必须用abstract修饰(与final互斥)，抽象方法不可有方法体</li>
-<li>抽象类不可被实例化，不能用于创建对象</li>
-<li>抽象类包括成员变量、方法(普通方法和抽象方法)、构造器、初始化块、内部类，主要用于派生子类</li>
-<li>抽象类的子类要么重写父类的全部抽象方法，要么只能定义为抽象类</li>
-</ol>
-<span id="more"></span>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">abstractTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        用抽象类创建对象时，只能用其子类向上转型</span></span><br><span class="line">        铠甲勇士<span class="number">2</span> 炎龙技能类型 = <span class="keyword">new</span> 炎龙铠甲<span class="number">2</span>();</span><br><span class="line">        铠甲勇士<span class="number">2</span> 风鹰技能类型 = <span class="keyword">new</span> 风影铠甲<span class="number">2</span>();</span><br><span class="line">        炎龙技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">        风鹰技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>abstract抽象类最主要的功能：派生子类，abstract与final互斥</li>
-<li>相对于普通类，abstract类多了abstract方法，抽象类不可实例化，即不能被分配内存、不能创建对象</li>
-<li>static修饰的方法属于类本身，必须被分配内存，static和abstract不可同时修饰一个方法</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>();</span><br><span class="line"><span class="comment">//    public abstract static void main()&#123;</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;测试&quot;);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 非抽象()&#123;</span><br><span class="line"><span class="comment">//        非抽象方法，不必须重写</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>抽象类的子类，要么重写父类的全部抽象方法，要么也是抽象类</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 炎龙铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;封魔斩&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 风影铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;穿风刺&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 帝皇铠甲 <span class="keyword">extends</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
       <categories>
         <category>java笔记</category>
       </categories>
