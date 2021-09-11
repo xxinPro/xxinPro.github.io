@@ -22,6 +22,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Android-EditText</title>
+    <url>/2021/09/09/Android-EditText/</url>
+    <content><![CDATA[<h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
+<li>android:hint: 编辑框为空时提示</li>
+<li>android:textColorHint: 提示文字的颜色</li>
+<li>android:inputType: 输入类型</li>
+<li>android:drawableXxxx: 在输入框的指定方位添加图片</li>
+<li>android:drawablePadding: 设置图片与输入内容的间距</li>
+<li>android:paddingXxxx: 设置内容与边框的间距</li>
+<li>android:background: 背景色</li>
+</ol>
+<h5 id="inputType的常用类型"><a href="#inputType的常用类型" class="headerlink" title="inputType的常用类型"></a>inputType的常用类型</h5><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//文本类型，多为大写、小写和数字符号。</span><br><span class="line">    android:inputType=&quot;none&quot;</span><br><span class="line">    android:inputType=&quot;text&quot;</span><br><span class="line">    android:inputType=&quot;textCapCharacters&quot; 字母大写</span><br><span class="line">    android:inputType=&quot;textCapWords&quot; 首字母大写</span><br><span class="line">    android:inputType=&quot;textCapSentences&quot; 仅第一个字母大写</span><br><span class="line">    android:inputType=&quot;textAutoCorrect&quot; 自动完成</span><br><span class="line">    android:inputType=&quot;textAutoComplete&quot; 自动完成</span><br><span class="line">    android:inputType=&quot;textMultiLine&quot; 多行输入</span><br><span class="line">    android:inputType=&quot;textImeMultiLine&quot; 输入法多行（如果支持）</span><br><span class="line">    android:inputType=&quot;textNoSuggestions&quot; 不提示</span><br><span class="line">    android:inputType=&quot;textUri&quot; 网址</span><br><span class="line">    android:inputType=&quot;textEmailAddress&quot; 电子邮件地址</span><br><span class="line">    android:inputType=&quot;textEmailSubject&quot; 邮件主题</span><br><span class="line">    android:inputType=&quot;textShortMessage&quot; 短讯</span><br><span class="line">    android:inputType=&quot;textLongMessage&quot; 长信息</span><br><span class="line">    android:inputType=&quot;textPersonName&quot; 人名</span><br><span class="line">    android:inputType=&quot;textPostalAddress&quot; 地址</span><br><span class="line">    android:inputType=&quot;textPassword&quot; 密码</span><br><span class="line">    android:inputType=&quot;textVisiblePassword&quot; 可见密码</span><br><span class="line">    android:inputType=&quot;textWebEditText&quot; 作为网页表单的文本</span><br><span class="line">    android:inputType=&quot;textFilter&quot; 文本筛选过滤</span><br><span class="line">    android:inputType=&quot;textPhonetic&quot; 拼音输入</span><br><span class="line">//数值类型</span><br><span class="line">    android:inputType=&quot;number&quot; 数字</span><br><span class="line">    android:inputType=&quot;numberSigned&quot; 带符号数字格式</span><br><span class="line">    android:inputType=&quot;numberDecimal&quot; 带小数点的浮点格式</span><br><span class="line">    android:inputType=&quot;phone&quot; 拨号键盘</span><br><span class="line">    android:inputType=&quot;datetime&quot; 时间日期</span><br><span class="line">    android:inputType=&quot;date&quot; 日期键盘</span><br><span class="line">    android:inputType=&quot;time&quot; 时间键盘</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android-Button</title>
     <url>/2021/09/08/Android-Button/</url>
     <content><![CDATA[<h3 id="StateListDrawable"><a href="#StateListDrawable" class="headerlink" title="StateListDrawable"></a>StateListDrawable</h3><p>&ensp;&ensp;StateListDrawable：StateListDrawable就是对应于selector标签，也是表示一个Drawable集合，每个Drawable都对应View的一种状态<br>&ensp;&ensp;StateListDrawable用途：设置可单击的View的背景，常和ShapeDrawable一起使用</p>
@@ -51,28 +73,6 @@
 <li>ACTION_MOVE = 2(移动)</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">btn1.setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View view, MotionEvent motionEvent)</span> </span>&#123;</span><br><span class="line">        tv_one.setText(<span class="string">&quot;他日若遂凌云志，敢笑黄巢不丈夫&quot;</span>);</span><br><span class="line"><span class="comment">//        返回true时，不再相应OnClick和OnLongClick事件(若存在)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android-EditText</title>
-    <url>/2021/09/09/Android-EditText/</url>
-    <content><![CDATA[<h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
-<li>android:hint: 编辑框为空时提示</li>
-<li>android:textColorHint: 提示文字的颜色</li>
-<li>android:inputType: 输入类型</li>
-<li>android:drawableXxxx: 在输入框的指定方位添加图片</li>
-<li>android:drawablePadding: 设置图片与输入内容的间距</li>
-<li>android:paddingXxxx: 设置内容与边框的间距</li>
-<li>android:background: 背景色</li>
-</ol>
-<h5 id="inputType的常用类型"><a href="#inputType的常用类型" class="headerlink" title="inputType的常用类型"></a>inputType的常用类型</h5><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//文本类型，多为大写、小写和数字符号。</span><br><span class="line">    android:inputType=&quot;none&quot;</span><br><span class="line">    android:inputType=&quot;text&quot;</span><br><span class="line">    android:inputType=&quot;textCapCharacters&quot; 字母大写</span><br><span class="line">    android:inputType=&quot;textCapWords&quot; 首字母大写</span><br><span class="line">    android:inputType=&quot;textCapSentences&quot; 仅第一个字母大写</span><br><span class="line">    android:inputType=&quot;textAutoCorrect&quot; 自动完成</span><br><span class="line">    android:inputType=&quot;textAutoComplete&quot; 自动完成</span><br><span class="line">    android:inputType=&quot;textMultiLine&quot; 多行输入</span><br><span class="line">    android:inputType=&quot;textImeMultiLine&quot; 输入法多行（如果支持）</span><br><span class="line">    android:inputType=&quot;textNoSuggestions&quot; 不提示</span><br><span class="line">    android:inputType=&quot;textUri&quot; 网址</span><br><span class="line">    android:inputType=&quot;textEmailAddress&quot; 电子邮件地址</span><br><span class="line">    android:inputType=&quot;textEmailSubject&quot; 邮件主题</span><br><span class="line">    android:inputType=&quot;textShortMessage&quot; 短讯</span><br><span class="line">    android:inputType=&quot;textLongMessage&quot; 长信息</span><br><span class="line">    android:inputType=&quot;textPersonName&quot; 人名</span><br><span class="line">    android:inputType=&quot;textPostalAddress&quot; 地址</span><br><span class="line">    android:inputType=&quot;textPassword&quot; 密码</span><br><span class="line">    android:inputType=&quot;textVisiblePassword&quot; 可见密码</span><br><span class="line">    android:inputType=&quot;textWebEditText&quot; 作为网页表单的文本</span><br><span class="line">    android:inputType=&quot;textFilter&quot; 文本筛选过滤</span><br><span class="line">    android:inputType=&quot;textPhonetic&quot; 拼音输入</span><br><span class="line">//数值类型</span><br><span class="line">    android:inputType=&quot;number&quot; 数字</span><br><span class="line">    android:inputType=&quot;numberSigned&quot; 带符号数字格式</span><br><span class="line">    android:inputType=&quot;numberDecimal&quot; 带小数点的浮点格式</span><br><span class="line">    android:inputType=&quot;phone&quot; 拨号键盘</span><br><span class="line">    android:inputType=&quot;datetime&quot; 时间日期</span><br><span class="line">    android:inputType=&quot;date&quot; 日期键盘</span><br><span class="line">    android:inputType=&quot;time&quot; 时间键盘</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -117,7 +117,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.BaseAdapter;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyListTest</span> <span class="keyword">extends</span> <span class="title">BaseAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String[] iconName;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] iconId;</span><br><span class="line">    <span class="keyword">private</span> Context context;</span><br><span class="line"></span><br><span class="line">    MyListTest(String[] iconName,<span class="keyword">int</span>[] iconId,Context context)&#123;</span><br><span class="line">        <span class="keyword">this</span>.iconName = iconName;</span><br><span class="line">        <span class="keyword">this</span>.iconId = iconId;</span><br><span class="line">        <span class="keyword">this</span>.context = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123; <span class="comment">//返回listView显示数据的总数</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.iconId.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123; <span class="comment">//返回item的数据对象</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getItemId</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123; <span class="comment">//返回item的id</span></span><br><span class="line">        <span class="keyword">return</span> position;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>)&#123;</span><br><span class="line">            convertView = View.inflate(context,R.layout.item,<span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        TextView textView = convertView.findViewById(R.id.text1);</span><br><span class="line">        ImageView imageView = convertView.findViewById(R.id.img1);</span><br><span class="line"></span><br><span class="line">        textView.setText(iconName[position]);</span><br><span class="line">        imageView.setImageResource(iconId[position]);</span><br><span class="line">        <span class="keyword">return</span> convertView;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>在MainActivity中对ListView进行应用</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.widget.ListView;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ListView listView;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] iconId = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;</span><br><span class="line">            R.mipmap.dangao,R.mipmap.cha,R.mipmap.hanbao,R.mipmap.jitui,R.mipmap.kafei,R.mipmap.kaixinguo,R.mipmap.lanmei,</span><br><span class="line">            R.mipmap.ningmeng,R.mipmap.niupai,R.mipmap.pijiu,R.mipmap.pisa,R.mipmap.qiyiguo,R.mipmap.regou,R.mipmap.sanmingzhi,</span><br><span class="line">            R.mipmap.shengnvguo,R.mipmap.shutiao,R.mipmap.tusi,R.mipmap.yimian,R.mipmap.yingtao,R.mipmap.zhangyuxiaowanzi</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">private</span> String[] iconName = <span class="keyword">new</span> String[]&#123;</span><br><span class="line">            <span class="string">&quot;蛋糕&quot;</span>,<span class="string">&quot;茶&quot;</span>,<span class="string">&quot;汉堡&quot;</span>,<span class="string">&quot;鸡腿&quot;</span>,<span class="string">&quot;咖啡&quot;</span>,<span class="string">&quot;开心果&quot;</span>,<span class="string">&quot;蓝莓&quot;</span>,<span class="string">&quot;柠檬&quot;</span>,<span class="string">&quot;牛排&quot;</span>,<span class="string">&quot;啤酒&quot;</span>,<span class="string">&quot;披萨&quot;</span>,<span class="string">&quot;奇异果&quot;</span>,<span class="string">&quot;热狗&quot;</span>,<span class="string">&quot;三明治&quot;</span>,<span class="string">&quot;圣女果&quot;</span>,<span class="string">&quot;薯条&quot;</span>,<span class="string">&quot;吐司&quot;</span>,<span class="string">&quot;意面&quot;</span>,<span class="string">&quot;樱桃&quot;</span>,<span class="string">&quot;章鱼小丸子&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"><span class="comment">//        获取到ListView</span></span><br><span class="line">        listView = findViewById(R.id.list);</span><br><span class="line"></span><br><span class="line">        MyListTest myListTest = <span class="keyword">new</span> MyListTest(iconName,iconId,<span class="keyword">this</span>);</span><br><span class="line">        listView.setAdapter(myListTest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>所需要的文件<a href="../Android-ListView/icon.zip">下载</a></p>
+<p>资源文件<a href="../Android-ListView/icon.zip">下载</a></p>
 <h4 id="ListView的优化"><a href="#ListView的优化" class="headerlink" title="ListView的优化"></a>ListView的优化</h4><p>当滑动列表时，划出屏幕的item就会被摧毁掉，新出现的item就会创建一个新的view对象</p>
 ]]></content>
       <categories>
@@ -549,22 +549,6 @@
       </tags>
   </entry>
   <entry>
-    <title>单例模式</title>
-    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>调用时</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>函数概念</title>
     <url>/2021/08/08/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><h4 id="一-、绝对值"><a href="#一-、绝对值" class="headerlink" title="(一)、绝对值"></a>(一)、绝对值</h4><p>$ $<br>\begin{align}<br>\left | a \right | &amp; = \begin{Bmatrix}  \notag<br> a &amp; a\ge 0\\<br> -a &amp; a&lt; 0<br>\end{Bmatrix}\quad \quad (\left | a \right | \ge 0)<br>\end{align}<br>$ $</p>
@@ -637,6 +621,22 @@
       </tags>
   </entry>
   <entry>
+    <title>单例模式</title>
+    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>调用时</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>夜郎自大</title>
     <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
     <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
@@ -673,6 +673,22 @@
       </tags>
   </entry>
   <entry>
+    <title>怂崽</title>
+    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
+<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
+<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+        <tag>坏心情</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>我的庸俗，我的封建</title>
     <url>/2021/07/18/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA/</url>
     <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;我的庸俗，向来我是承认的</p>
@@ -695,22 +711,6 @@
       <tags>
         <tag>网抑云</tag>
         <tag>毒鸡汤</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>怂崽</title>
-    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
-<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
-<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
-        <tag>坏心情</tag>
       </tags>
   </entry>
   <entry>
@@ -782,34 +782,6 @@
       </tags>
   </entry>
   <entry>
-    <title>抽象类abstract</title>
-    <url>/2021/07/22/%E6%8A%BD%E8%B1%A1%E7%B1%BBabstract/</url>
-    <content><![CDATA[<ol>
-<li>抽象类与抽象方法必须用abstract修饰(与final互斥)，抽象方法不可有方法体</li>
-<li>抽象类不可被实例化，不能用于创建对象</li>
-<li>抽象类包括成员变量、方法(普通方法和抽象方法)、构造器、初始化块、内部类，主要用于派生子类</li>
-<li>抽象类的子类要么重写父类的全部抽象方法，要么只能定义为抽象类</li>
-</ol>
-<span id="more"></span>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">abstractTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        用抽象类创建对象时，只能用其子类向上转型</span></span><br><span class="line">        铠甲勇士<span class="number">2</span> 炎龙技能类型 = <span class="keyword">new</span> 炎龙铠甲<span class="number">2</span>();</span><br><span class="line">        铠甲勇士<span class="number">2</span> 风鹰技能类型 = <span class="keyword">new</span> 风影铠甲<span class="number">2</span>();</span><br><span class="line">        炎龙技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">        风鹰技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>abstract抽象类最主要的功能：派生子类，abstract与final互斥</li>
-<li>相对于普通类，abstract类多了abstract方法，抽象类不可实例化，即不能被分配内存、不能创建对象</li>
-<li>static修饰的方法属于类本身，必须被分配内存，static和abstract不可同时修饰一个方法</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>();</span><br><span class="line"><span class="comment">//    public abstract static void main()&#123;</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;测试&quot;);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 非抽象()&#123;</span><br><span class="line"><span class="comment">//        非抽象方法，不必须重写</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>抽象类的子类，要么重写父类的全部抽象方法，要么也是抽象类</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 炎龙铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;封魔斩&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 风影铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;穿风刺&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 帝皇铠甲 <span class="keyword">extends</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>接口interface</title>
     <url>/2021/07/22/%E6%8E%A5%E5%8F%A3interface/</url>
     <content><![CDATA[<p>接口，比抽象类还要抽象的类:</p>
@@ -839,6 +811,34 @@
 <li>接口不能包含初始化块；抽象类能包含初始化块</li>
 <li>一个类只能继承一个类；一个类可以实现多个接口</li>
 </ol>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>抽象类abstract</title>
+    <url>/2021/07/22/%E6%8A%BD%E8%B1%A1%E7%B1%BBabstract/</url>
+    <content><![CDATA[<ol>
+<li>抽象类与抽象方法必须用abstract修饰(与final互斥)，抽象方法不可有方法体</li>
+<li>抽象类不可被实例化，不能用于创建对象</li>
+<li>抽象类包括成员变量、方法(普通方法和抽象方法)、构造器、初始化块、内部类，主要用于派生子类</li>
+<li>抽象类的子类要么重写父类的全部抽象方法，要么只能定义为抽象类</li>
+</ol>
+<span id="more"></span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">abstractTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        用抽象类创建对象时，只能用其子类向上转型</span></span><br><span class="line">        铠甲勇士<span class="number">2</span> 炎龙技能类型 = <span class="keyword">new</span> 炎龙铠甲<span class="number">2</span>();</span><br><span class="line">        铠甲勇士<span class="number">2</span> 风鹰技能类型 = <span class="keyword">new</span> 风影铠甲<span class="number">2</span>();</span><br><span class="line">        炎龙技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">        风鹰技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>abstract抽象类最主要的功能：派生子类，abstract与final互斥</li>
+<li>相对于普通类，abstract类多了abstract方法，抽象类不可实例化，即不能被分配内存、不能创建对象</li>
+<li>static修饰的方法属于类本身，必须被分配内存，static和abstract不可同时修饰一个方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>();</span><br><span class="line"><span class="comment">//    public abstract static void main()&#123;</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;测试&quot;);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 非抽象()&#123;</span><br><span class="line"><span class="comment">//        非抽象方法，不必须重写</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抽象类的子类，要么重写父类的全部抽象方法，要么也是抽象类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 炎龙铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;封魔斩&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 风影铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;穿风刺&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 帝皇铠甲 <span class="keyword">extends</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>java笔记</category>
@@ -960,15 +960,9 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象之封装</title>
-    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85/</url>
-    <content><![CDATA[<h4 id="访问控制符的权限级别"><a href="#访问控制符的权限级别" class="headerlink" title="访问控制符的权限级别"></a>访问控制符的权限级别</h4><p>&ensp;&ensp;&ensp;&ensp;<em>public &gt; protected &gt; default &gt; private</em></p>
-<p>&ensp;&ensp;&ensp;&ensp;public:公共访问权限<br>&ensp;&ensp;&ensp;&ensp;pritected:子类访问权限<br>&ensp;&ensp;&ensp;&ensp;default:包访问权限<br>&ensp;&ensp;&ensp;&ensp;private:当前类访问权限<br><span id="more"></span></p>
-<h4 id="set和get"><a href="#set和get" class="headerlink" title="set和get"></a>set和get</h4><p>如下类，使用<em>private</em>将<em>test</em>类中的<em>name</em>变量封装了起来<br>并且提供了<em>setName</em>和<em>getName</em>使其他类通过我们提供的方法修改和获取name变量<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">public_test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        test set = <span class="keyword">new</span> test();</span><br><span class="line"><span class="comment">//        修改test类中name变量的值</span></span><br><span class="line">        set.setName(<span class="string">&quot;xxin&quot;</span>);</span><br><span class="line"><span class="comment">//        将会输出&quot;xxin&quot;</span></span><br><span class="line">        System.out.println(set.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name = <span class="string">&quot;默认名&quot;</span>;</span><br><span class="line"><span class="comment">//    修改name</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    获取name</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="package和import"><a href="#package和import" class="headerlink" title="package和import"></a>package和import</h4><p>package<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package作为java源文件第一行代码，制定了class文件的包路径</span></span><br><span class="line"><span class="keyword">package</span> lee.demo;</span><br><span class="line"><span class="comment">//将该源程序所编译的class文件放置在lee\demo</span></span><br></pre></td></tr></table></figure></p>
-<p>import<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//impoit用于引入包路径</span></span><br><span class="line"><span class="keyword">import</span> lee.demo.test; <span class="comment">//引入test\demo路径下的test类</span></span><br><span class="line"><span class="keyword">import</span> lee.demo.*; <span class="comment">//引入lee\demo包下的所有类</span></span><br></pre></td></tr></table></figure></p>
-<p>import static<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//import static静态导入，用于导入指定类的某个静态成员变量、方法或全部的静态成员变量、方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//方法导入</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> lee.demo.test.method1;  <span class="comment">//引入lee\demo包下，test类的method1方法</span></span><br><span class="line"><span class="comment">//引入后可直接调用method1</span></span><br><span class="line">method1();</span><br><span class="line"></span><br><span class="line"><span class="comment">//变量导入</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> lee.demo.test.a;  <span class="comment">//引入lee\demo包下，test类的a变量</span></span><br><span class="line"><span class="comment">//引入后可直接调用a</span></span><br><span class="line">System.out.println(a);</span><br><span class="line"></span><br><span class="line"><span class="comment">//引入全部静态变量方法</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> lee.demo.test.*;  <span class="comment">//引入lee\demo包下，test类的全部静态变量方法</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<h4 id="java常用包"><a href="#java常用包" class="headerlink" title="java常用包"></a>java常用包</h4><p>&ensp;&ensp;&ensp;&ensp;java.lang: 这个包下包含了Java语言的核心类，如String、Math、Sytem和Thread类等，使用这个包无需使用import语句导入，系统会自动导入这个包中的所有类。<br>&ensp;&ensp;&ensp;&ensp;java.util: 这个包下包含java的大量工具类/接口和集合框架类/接口。如Arrays和List、Set等。<br>&ensp;&ensp;&ensp;&ensp;java.net: 这个包下包含了一些Java网络编程相关的类/接口。<br>&ensp;&ensp;&ensp;&ensp;java.io: 这个包含了一些Java输入/输出编程相关的类/接口。<br>&ensp;&ensp;&ensp;&ensp;java.text: 这个包下包含一些Java格式化相关的类。<br>&ensp;&ensp;&ensp;&ensp;java.sql: 这个包下包含了java进行JDBC数据库编程的相关类/接口。<br>&ensp;&ensp;&ensp;&ensp;java.awt: 这个包下包含了抽象窗口工具集(Abstract Window Toolkits) 的相关类/接口，这些类主要用于构建图形用户界面(GUI)程序。<br>&ensp;&ensp;&ensp;&ensp;java.swing:这个包下包含了Swing图形用户界面编程的相关类/接口，这些可用于构建平台无关的GUI程序。</p>
+    <title>面向对象之继承</title>
+    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%BB%A7%E6%89%BF/</url>
+    <content><![CDATA[<p>方法继承<br><span id="more"></span></p>
 ]]></content>
       <categories>
         <category>java笔记</category>
@@ -979,9 +973,15 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象之继承</title>
-    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%BB%A7%E6%89%BF/</url>
-    <content><![CDATA[<p>方法继承<br><span id="more"></span></p>
+    <title>面向对象之封装</title>
+    <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85/</url>
+    <content><![CDATA[<h4 id="访问控制符的权限级别"><a href="#访问控制符的权限级别" class="headerlink" title="访问控制符的权限级别"></a>访问控制符的权限级别</h4><p>&ensp;&ensp;&ensp;&ensp;<em>public &gt; protected &gt; default &gt; private</em></p>
+<p>&ensp;&ensp;&ensp;&ensp;public:公共访问权限<br>&ensp;&ensp;&ensp;&ensp;pritected:子类访问权限<br>&ensp;&ensp;&ensp;&ensp;default:包访问权限<br>&ensp;&ensp;&ensp;&ensp;private:当前类访问权限<br><span id="more"></span></p>
+<h4 id="set和get"><a href="#set和get" class="headerlink" title="set和get"></a>set和get</h4><p>如下类，使用<em>private</em>将<em>test</em>类中的<em>name</em>变量封装了起来<br>并且提供了<em>setName</em>和<em>getName</em>使其他类通过我们提供的方法修改和获取name变量<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">public_test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        test set = <span class="keyword">new</span> test();</span><br><span class="line"><span class="comment">//        修改test类中name变量的值</span></span><br><span class="line">        set.setName(<span class="string">&quot;xxin&quot;</span>);</span><br><span class="line"><span class="comment">//        将会输出&quot;xxin&quot;</span></span><br><span class="line">        System.out.println(set.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name = <span class="string">&quot;默认名&quot;</span>;</span><br><span class="line"><span class="comment">//    修改name</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    获取name</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="package和import"><a href="#package和import" class="headerlink" title="package和import"></a>package和import</h4><p>package<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package作为java源文件第一行代码，制定了class文件的包路径</span></span><br><span class="line"><span class="keyword">package</span> lee.demo;</span><br><span class="line"><span class="comment">//将该源程序所编译的class文件放置在lee\demo</span></span><br></pre></td></tr></table></figure></p>
+<p>import<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//impoit用于引入包路径</span></span><br><span class="line"><span class="keyword">import</span> lee.demo.test; <span class="comment">//引入test\demo路径下的test类</span></span><br><span class="line"><span class="keyword">import</span> lee.demo.*; <span class="comment">//引入lee\demo包下的所有类</span></span><br></pre></td></tr></table></figure></p>
+<p>import static<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//import static静态导入，用于导入指定类的某个静态成员变量、方法或全部的静态成员变量、方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//方法导入</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> lee.demo.test.method1;  <span class="comment">//引入lee\demo包下，test类的method1方法</span></span><br><span class="line"><span class="comment">//引入后可直接调用method1</span></span><br><span class="line">method1();</span><br><span class="line"></span><br><span class="line"><span class="comment">//变量导入</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> lee.demo.test.a;  <span class="comment">//引入lee\demo包下，test类的a变量</span></span><br><span class="line"><span class="comment">//引入后可直接调用a</span></span><br><span class="line">System.out.println(a);</span><br><span class="line"></span><br><span class="line"><span class="comment">//引入全部静态变量方法</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> lee.demo.test.*;  <span class="comment">//引入lee\demo包下，test类的全部静态变量方法</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h4 id="java常用包"><a href="#java常用包" class="headerlink" title="java常用包"></a>java常用包</h4><p>&ensp;&ensp;&ensp;&ensp;java.lang: 这个包下包含了Java语言的核心类，如String、Math、Sytem和Thread类等，使用这个包无需使用import语句导入，系统会自动导入这个包中的所有类。<br>&ensp;&ensp;&ensp;&ensp;java.util: 这个包下包含java的大量工具类/接口和集合框架类/接口。如Arrays和List、Set等。<br>&ensp;&ensp;&ensp;&ensp;java.net: 这个包下包含了一些Java网络编程相关的类/接口。<br>&ensp;&ensp;&ensp;&ensp;java.io: 这个包含了一些Java输入/输出编程相关的类/接口。<br>&ensp;&ensp;&ensp;&ensp;java.text: 这个包下包含一些Java格式化相关的类。<br>&ensp;&ensp;&ensp;&ensp;java.sql: 这个包下包含了java进行JDBC数据库编程的相关类/接口。<br>&ensp;&ensp;&ensp;&ensp;java.awt: 这个包下包含了抽象窗口工具集(Abstract Window Toolkits) 的相关类/接口，这些类主要用于构建图形用户界面(GUI)程序。<br>&ensp;&ensp;&ensp;&ensp;java.swing:这个包下包含了Swing图形用户界面编程的相关类/接口，这些可用于构建平台无关的GUI程序。</p>
 ]]></content>
       <categories>
         <category>java笔记</category>
