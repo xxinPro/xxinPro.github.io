@@ -61,6 +61,34 @@
       </tags>
   </entry>
   <entry>
+    <title>Android-Fragment</title>
+    <url>/2021/09/13/Android-Fragment/</url>
+    <content><![CDATA[<h3 id="使用一个fragment"><a href="#使用一个fragment" class="headerlink" title="使用一个fragment"></a>使用一个fragment</h3><h4 id="①创建fragment"><a href="#①创建fragment" class="headerlink" title="①创建fragment"></a>①创建fragment</h4><p>创建一个普通的fragment<br><img src="../Android-Fragment/fragment.png" height="70%" width="70%" /></p>
+<p>创建完毕后会自动生成一个fragment_blank.xml<br><img src="../Android-Fragment/fragment2.png" height="50%" width="50%" /></p>
+<h4 id="②修改BlankFragment"><a href="#②修改BlankFragment" class="headerlink" title="②修改BlankFragment"></a>②修改BlankFragment</h4><p>删掉其中无用的代码</p>
+<p>删除完毕后<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> androidx.fragment.app.Fragment;</span><br><span class="line"><span class="keyword">import</span> android.view.LayoutInflater;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlankFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container,</span></span></span><br><span class="line"><span class="params"><span class="function">                             Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> inflater.inflate(R.layout.fragment_blank, container, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h4 id="③添加至MainActivity"><a href="#③添加至MainActivity" class="headerlink" title="③添加至MainActivity"></a>③添加至MainActivity</h4><p>&ensp;&ensp;并非是直接用代码添加进MainActivity</p>
+<p>&ensp;&ensp;打开MainActivity的布局资源文件activity_main.xml，在其中插入fragment</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/linear&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">&quot;com.a.practice.BlankFragment&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/fragment1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">&quot;com.a.practice.BlankFragment&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/fragment2&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><label style="color:red;cursor:auto">注意</label><br>&ensp;&ensp; 1. 插入在activity_main.xml中的fragment一定要有id<br>&ensp;&ensp; 2. 插入在activity_main.xml中的fragment一定要有name(BlankFragment的完整类名)属性</p>
+<h3 id="给fragment添加事件"><a href="#给fragment添加事件" class="headerlink" title="给fragment添加事件"></a>给fragment添加事件</h3><h4 id="①修改onCreateView"><a href="#①修改onCreateView" class="headerlink" title="①修改onCreateView"></a>①修改onCreateView</h4><p>改写其返回值，若已存在则不再创建</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> View root;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container,</span></span></span><br><span class="line"><span class="params"><span class="function">                         Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>)&#123;</span><br><span class="line">        root = inflater.inflate(R.layout.fragment_blank,container,<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="②添加事件"><a href="#②添加事件" class="headerlink" title="②添加事件"></a>②添加事件</h4><p>fragment首次绘制界面时调用onCreateView，所以可以在onCreateView下写代码</p>
+<p>修改fragment_blank.xml<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;文本&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/text1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;@color/black&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textStyle</span>=<span class="string">&quot;bold&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;按钮&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/btn1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在BlankFragment写事件<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> androidx.fragment.app.Fragment;</span><br><span class="line"><span class="keyword">import</span> android.view.LayoutInflater;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.Button;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlankFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> View root;</span><br><span class="line">    <span class="keyword">private</span> TextView textView;</span><br><span class="line">    <span class="keyword">private</span> Button button;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container,</span></span></span><br><span class="line"><span class="params"><span class="function">                             Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            root = inflater.inflate(R.layout.fragment_blank,container,<span class="keyword">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        textView = root.findViewById(R.id.text1);</span><br><span class="line">        button = root.findViewById(R.id.btn1);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                textView.setText(<span class="string">&quot;fragment&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="③效果"><a href="#③效果" class="headerlink" title="③效果"></a>③效果</h4><p>MainActivity页显示两个fragment，但是又互不影响</p>
+<p><img src="../Android-Fragment/fragment.gif" height="40%" width="40%" /></p>
+<h3 id="动态添加fragment"><a href="#动态添加fragment" class="headerlink" title="动态添加fragment"></a>动态添加fragment</h3>]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+        <tag>重点难点</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android-EditText</title>
     <url>/2021/09/09/Android-EditText/</url>
     <content><![CDATA[<h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
@@ -80,19 +108,6 @@
       <tags>
         <tag>Android</tag>
         <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android-Fragment</title>
-    <url>/2021/09/13/Android-Fragment/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-        <tag>重点难点</tag>
       </tags>
   </entry>
   <entry>
@@ -237,19 +252,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-Toolbar</title>
-    <url>/2021/09/09/Android-Toolbar/</url>
-    <content><![CDATA[<p>菜单栏，后边在写</p>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android-TextView</title>
     <url>/2021/09/08/Android-TextView/</url>
     <content><![CDATA[<h4 id="TextView的基础属性"><a href="#TextView的基础属性" class="headerlink" title="TextView的基础属性"></a>TextView的基础属性</h4><ol>
@@ -293,11 +295,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Android-Toolbar</title>
+    <url>/2021/09/09/Android-Toolbar/</url>
+    <content><![CDATA[<p>菜单栏，后边在写</p>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android-ViewPager</title>
     <url>/2021/09/13/Android-ViewPager/</url>
     <content><![CDATA[<h4 id="创建ViewPager控件"><a href="#创建ViewPager控件" class="headerlink" title="创建ViewPager控件"></a>创建ViewPager控件</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/linear&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ViewPager控件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">androidx.viewpager.widget.ViewPager</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/viewPager&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h4 id="创建ViewPager的子view"><a href="#创建ViewPager的子view" class="headerlink" title="创建ViewPager的子view"></a>创建ViewPager的子view</h4><p><img src="../Android-ViewPager/CreateLayout.png" /><br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:background</span>=<span class="string">&quot;#ff00ffff&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;layout1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;28sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;@color/black&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textStyle</span>=<span class="string">&quot;bold&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="创建适配器"><a href="#创建适配器" class="headerlink" title="创建适配器"></a>创建适配器</h4><p>ViewPager和RecyclerView、ListView一样需要适配器Adapter，它的适配器继承自PagerAdapter<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.viewpager.widget.PagerAdapter;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">//继承自PagerAdapter</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">PagerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;View&gt; viewList;</span><br><span class="line"><span class="comment">//    构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(List&lt;View&gt; viewList)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.viewList = viewList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    将给定位置的view添加到ViewGroup中，创建并显示</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">instantiateItem</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup container, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        container.addView(viewList.get(position),<span class="number">0</span>);</span><br><span class="line"><span class="comment">//        返回一个Object(key)，通常直接返回view本身，可以自定义key，但是每个key和view有一一对应关系</span></span><br><span class="line">        <span class="keyword">return</span> viewList.get(position);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123; <span class="comment">//获得viewPager中view的数量</span></span><br><span class="line">        <span class="keyword">return</span> viewList.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    判断instantiateItem返回来的key与一个页面视图是否一一对应，通常直接写return view == object</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isViewFromObject</span><span class="params">(<span class="meta">@NonNull</span> View view, <span class="meta">@NonNull</span> Object object)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> view == object;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    销毁</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroyItem</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup container, <span class="keyword">int</span> position, <span class="meta">@NonNull</span> Object object)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        super.destroyItem(container, position, object);</span></span><br><span class="line">        container.removeView(viewList.get(position));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h4 id="创建适配器"><a href="#创建适配器" class="headerlink" title="创建适配器"></a>创建适配器</h4><p>ViewPager和RecyclerView、ListView一样需要适配器Adapter，它的适配器继承自PagerAdapter<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.viewpager.widget.PagerAdapter;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">//继承自PagerAdapter</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">PagerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;View&gt; viewList;</span><br><span class="line"><span class="comment">//    构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(List&lt;View&gt; viewList)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.viewList = viewList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    将view项实例化到ViewGroup中</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">instantiateItem</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup container, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        container.addView(viewList.get(position),<span class="number">0</span>);</span><br><span class="line"><span class="comment">//        返回一个Object(key)，通常直接返回view本身，可以自定义key，但是每个key和view有一一对应关系</span></span><br><span class="line">        <span class="keyword">return</span> viewList.get(position);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    返回viewPager中view的数量</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> viewList.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    判断instantiateItem返回来的key与一个页面视图是否一一对应，通常直接写return view == object</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isViewFromObject</span><span class="params">(<span class="meta">@NonNull</span> View view, <span class="meta">@NonNull</span> Object object)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> view == object;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    对超出范围的资源进行销毁</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroyItem</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup container, <span class="keyword">int</span> position, <span class="meta">@NonNull</span> Object object)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        super.destroyItem(container, position, object);</span></span><br><span class="line">        container.removeView(viewList.get(position));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <h4 id="调用适配器"><a href="#调用适配器" class="headerlink" title="调用适配器"></a>调用适配器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> androidx.viewpager.widget.ViewPager;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ViewPager viewPager;</span><br><span class="line">    <span class="keyword">private</span> List&lt;View&gt; viewList;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        给集合中添加值</span></span><br><span class="line">        viewList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        View view1 = View.inflate(<span class="keyword">this</span>,R.layout.layout1,<span class="keyword">null</span>);</span><br><span class="line">        View view2 = View.inflate(<span class="keyword">this</span>,R.layout.layout2,<span class="keyword">null</span>);</span><br><span class="line">        View view3 = View.inflate(<span class="keyword">this</span>,R.layout.layout3,<span class="keyword">null</span>);</span><br><span class="line">        viewList.add(view1);</span><br><span class="line">        viewList.add(view2);</span><br><span class="line">        viewList.add(view3);</span><br><span class="line"></span><br><span class="line">        viewPager = findViewById(R.id.viewPager);</span><br><span class="line"><span class="comment">//        创建 适配器对象</span></span><br><span class="line">        MyAdapter myAdapter = <span class="keyword">new</span> MyAdapter(viewList);</span><br><span class="line"><span class="comment">//        设置适配器</span></span><br><span class="line">        viewPager.setAdapter(myAdapter);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -328,6 +343,33 @@
 <li>translate: 平移</li>
 </ol>
 <h3 id="属性动画"><a href="#属性动画" class="headerlink" title="属性动画"></a>属性动画</h3><p>太无聊了动画这个东西，以后有时间再写</p>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android工程结构</title>
+    <url>/2021/09/07/Android%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<p><center><label style="color:red">注意：</label>下列所有目录均在Project目录模式下</center><br><img src="../Android工程结构/project.jpg"/></p>
+<h4 id="gradle和-idea目录"><a href="#gradle和-idea目录" class="headerlink" title=".gradle和.idea目录"></a>.gradle和.idea目录</h4><p>在创建项目时Android Studio自动生成的目录，移动源码时也会删掉这两个文件夹</p>
+<h4 id="app目录"><a href="#app目录" class="headerlink" title="app目录"></a>app目录</h4><p>项目中的代码、资源等，核心目录</p>
+<h5 id="app-build"><a href="#app-build" class="headerlink" title="app/build"></a>app/build</h5><p>make project生成的缓存文件</p>
+<h5 id="app-libs"><a href="#app-libs" class="headerlink" title="app/libs"></a>app/libs</h5><p>存放jar包</p>
+<h5 id="app-src"><a href="#app-src" class="headerlink" title="app/src/"></a>app/src/</h5><p>放置java代码、软件清单文件、xml布局文件、资源文件等。核心目录<br><br/><br>其中，app/src/main/res/values/themes.xml中style标签内的parent属性需要做出下面的修改，否则软件内的部分控件属性将不会对修改做出变动<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Theme.MaterialComponents.DayNight.DarkActionBar</span><br><span class="line"></span><br><span class="line">修改为</span><br><span class="line"></span><br><span class="line">Theme.MaterialComponents.DayNight.DarkActionBar.Bridge</span><br></pre></td></tr></table></figure></p>
+<h4 id="gradle目录"><a href="#gradle目录" class="headerlink" title="gradle目录"></a>gradle目录</h4><p>构建器</p>
+<h5 id="gradle-wapper目录"><a href="#gradle-wapper目录" class="headerlink" title="gradle/wapper目录"></a>gradle/wapper目录</h5><p>存放gradle/wapper</p>
+<h4 id="gitignore文件"><a href="#gitignore文件" class="headerlink" title=".gitignore文件"></a>.gitignore文件</h4><p>项目版本控制文件</p>
+<h4 id="build-gradle文件"><a href="#build-gradle文件" class="headerlink" title="build.gradle文件"></a>build.gradle文件</h4><p>项目全局的gradle构建脚本</p>
+<h4 id="gradle-properties文件"><a href="#gradle-properties文件" class="headerlink" title="gradle.properties文件"></a>gradle.properties文件</h4><p>项目全局的gradle配置文件</p>
+<h4 id="gradlew和gradle-bat文件"><a href="#gradlew和gradle-bat文件" class="headerlink" title="gradlew和gradle.bat文件"></a>gradlew和gradle.bat文件</h4><p>执行gradle命令</p>
+<h4 id="local-properties文"><a href="#local-properties文" class="headerlink" title="local.properties文"></a>local.properties文</h4><p>指定安卓sdk路径</p>
+<h4 id="setting-gradle"><a href="#setting-gradle" class="headerlink" title="setting.gradle"></a>setting.gradle</h4><p>指定项目中所有引入的模块</p>
+<h4 id="External-Libraries"><a href="#External-Libraries" class="headerlink" title="External Libraries"></a>External Libraries</h4><p>第三方库</p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -400,33 +442,6 @@
 <h4 id="通过网格布局设置响应式工具栏"><a href="#通过网格布局设置响应式工具栏" class="headerlink" title="通过网格布局设置响应式工具栏"></a>通过网格布局设置响应式工具栏</h4><p>通过对GridLayouy的columnCount设置，达到响应式工具栏<br>1.当手机屏幕时，设置columnCount为4，此时显示两行四列<br>2.当平板电脑屏幕时，设置columnCount为6，此时显示一行六列</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">GridLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:background</span>=<span class="string">&quot;@color/sky&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/grid&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:columnCount</span>=<span class="string">&quot;4&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;120dp&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;0&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;1&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;2&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;3&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;4&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;5&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">GridLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/btn&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;修改行数&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="六、ConstraintLayout-约束布局"><a href="#六、ConstraintLayout-约束布局" class="headerlink" title="六、ConstraintLayout(约束布局)"></a>六、ConstraintLayout(约束布局)</h3><p>学尼玛，不学了</p>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android工程结构</title>
-    <url>/2021/09/07/Android%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<p><center><label style="color:red">注意：</label>下列所有目录均在Project目录模式下</center><br><img src="../Android工程结构/project.jpg"/></p>
-<h4 id="gradle和-idea目录"><a href="#gradle和-idea目录" class="headerlink" title=".gradle和.idea目录"></a>.gradle和.idea目录</h4><p>在创建项目时Android Studio自动生成的目录，移动源码时也会删掉这两个文件夹</p>
-<h4 id="app目录"><a href="#app目录" class="headerlink" title="app目录"></a>app目录</h4><p>项目中的代码、资源等，核心目录</p>
-<h5 id="app-build"><a href="#app-build" class="headerlink" title="app/build"></a>app/build</h5><p>make project生成的缓存文件</p>
-<h5 id="app-libs"><a href="#app-libs" class="headerlink" title="app/libs"></a>app/libs</h5><p>存放jar包</p>
-<h5 id="app-src"><a href="#app-src" class="headerlink" title="app/src/"></a>app/src/</h5><p>放置java代码、软件清单文件、xml布局文件、资源文件等。核心目录<br><br/><br>其中，app/src/main/res/values/themes.xml中style标签内的parent属性需要做出下面的修改，否则软件内的部分控件属性将不会对修改做出变动<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Theme.MaterialComponents.DayNight.DarkActionBar</span><br><span class="line"></span><br><span class="line">修改为</span><br><span class="line"></span><br><span class="line">Theme.MaterialComponents.DayNight.DarkActionBar.Bridge</span><br></pre></td></tr></table></figure></p>
-<h4 id="gradle目录"><a href="#gradle目录" class="headerlink" title="gradle目录"></a>gradle目录</h4><p>构建器</p>
-<h5 id="gradle-wapper目录"><a href="#gradle-wapper目录" class="headerlink" title="gradle/wapper目录"></a>gradle/wapper目录</h5><p>存放gradle/wapper</p>
-<h4 id="gitignore文件"><a href="#gitignore文件" class="headerlink" title=".gitignore文件"></a>.gitignore文件</h4><p>项目版本控制文件</p>
-<h4 id="build-gradle文件"><a href="#build-gradle文件" class="headerlink" title="build.gradle文件"></a>build.gradle文件</h4><p>项目全局的gradle构建脚本</p>
-<h4 id="gradle-properties文件"><a href="#gradle-properties文件" class="headerlink" title="gradle.properties文件"></a>gradle.properties文件</h4><p>项目全局的gradle配置文件</p>
-<h4 id="gradlew和gradle-bat文件"><a href="#gradlew和gradle-bat文件" class="headerlink" title="gradlew和gradle.bat文件"></a>gradlew和gradle.bat文件</h4><p>执行gradle命令</p>
-<h4 id="local-properties文"><a href="#local-properties文" class="headerlink" title="local.properties文"></a>local.properties文</h4><p>指定安卓sdk路径</p>
-<h4 id="setting-gradle"><a href="#setting-gradle" class="headerlink" title="setting.gradle"></a>setting.gradle</h4><p>指定项目中所有引入的模块</p>
-<h4 id="External-Libraries"><a href="#External-Libraries" class="headerlink" title="External Libraries"></a>External Libraries</h4><p>第三方库</p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -712,22 +727,6 @@
       </tags>
   </entry>
   <entry>
-    <title>单例模式</title>
-    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>调用时</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在服务器中搭建hexo博客</title>
     <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p><center>个人服务器搭建hexo(宝塔)</center><br><br></p>
@@ -758,6 +757,41 @@
       </tags>
   </entry>
   <entry>
+    <title>单例模式</title>
+    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>调用时</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>夜郎自大</title>
+    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
+<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”<br><span id="more"></span><br>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
+<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
+<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
+<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
+<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
+<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>小衅笔记</title>
     <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
@@ -785,28 +819,9 @@
         <category>我的文章</category>
       </categories>
       <tags>
-        <tag>毒鸡汤</tag>
         <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
         <tag>坏心情</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>夜郎自大</title>
-    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
-<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”<br><span id="more"></span><br>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
-<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
-<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
-<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
-<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
-<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>毒鸡汤</tag>
-        <tag>网抑云</tag>
       </tags>
   </entry>
   <entry>
@@ -830,8 +845,8 @@
         <category>我的文章</category>
       </categories>
       <tags>
-        <tag>毒鸡汤</tag>
         <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
       </tags>
   </entry>
   <entry>
@@ -903,6 +918,34 @@
       </tags>
   </entry>
   <entry>
+    <title>抽象类abstract</title>
+    <url>/2021/07/22/%E6%8A%BD%E8%B1%A1%E7%B1%BBabstract/</url>
+    <content><![CDATA[<ol>
+<li>抽象类与抽象方法必须用abstract修饰(与final互斥)，抽象方法不可有方法体</li>
+<li>抽象类不可被实例化，不能用于创建对象</li>
+<li>抽象类包括成员变量、方法(普通方法和抽象方法)、构造器、初始化块、内部类，主要用于派生子类</li>
+<li>抽象类的子类要么重写父类的全部抽象方法，要么只能定义为抽象类</li>
+</ol>
+<span id="more"></span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">abstractTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        用抽象类创建对象时，只能用其子类向上转型</span></span><br><span class="line">        铠甲勇士<span class="number">2</span> 炎龙技能类型 = <span class="keyword">new</span> 炎龙铠甲<span class="number">2</span>();</span><br><span class="line">        铠甲勇士<span class="number">2</span> 风鹰技能类型 = <span class="keyword">new</span> 风影铠甲<span class="number">2</span>();</span><br><span class="line">        炎龙技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">        风鹰技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>abstract抽象类最主要的功能：派生子类，abstract与final互斥</li>
+<li>相对于普通类，abstract类多了abstract方法，抽象类不可实例化，即不能被分配内存、不能创建对象</li>
+<li>static修饰的方法属于类本身，必须被分配内存，static和abstract不可同时修饰一个方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>();</span><br><span class="line"><span class="comment">//    public abstract static void main()&#123;</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;测试&quot;);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 非抽象()&#123;</span><br><span class="line"><span class="comment">//        非抽象方法，不必须重写</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抽象类的子类，要么重写父类的全部抽象方法，要么也是抽象类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 炎龙铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;封魔斩&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 风影铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;穿风刺&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 帝皇铠甲 <span class="keyword">extends</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>接口interface</title>
     <url>/2021/07/22/%E6%8E%A5%E5%8F%A3interface/</url>
     <content><![CDATA[<p>接口，比抽象类还要抽象的类:</p>
@@ -932,34 +975,6 @@
 <li>接口不能包含初始化块；抽象类能包含初始化块</li>
 <li>一个类只能继承一个类；一个类可以实现多个接口</li>
 </ol>
-]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>抽象类abstract</title>
-    <url>/2021/07/22/%E6%8A%BD%E8%B1%A1%E7%B1%BBabstract/</url>
-    <content><![CDATA[<ol>
-<li>抽象类与抽象方法必须用abstract修饰(与final互斥)，抽象方法不可有方法体</li>
-<li>抽象类不可被实例化，不能用于创建对象</li>
-<li>抽象类包括成员变量、方法(普通方法和抽象方法)、构造器、初始化块、内部类，主要用于派生子类</li>
-<li>抽象类的子类要么重写父类的全部抽象方法，要么只能定义为抽象类</li>
-</ol>
-<span id="more"></span>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">abstractTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        用抽象类创建对象时，只能用其子类向上转型</span></span><br><span class="line">        铠甲勇士<span class="number">2</span> 炎龙技能类型 = <span class="keyword">new</span> 炎龙铠甲<span class="number">2</span>();</span><br><span class="line">        铠甲勇士<span class="number">2</span> 风鹰技能类型 = <span class="keyword">new</span> 风影铠甲<span class="number">2</span>();</span><br><span class="line">        炎龙技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">        风鹰技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>abstract抽象类最主要的功能：派生子类，abstract与final互斥</li>
-<li>相对于普通类，abstract类多了abstract方法，抽象类不可实例化，即不能被分配内存、不能创建对象</li>
-<li>static修饰的方法属于类本身，必须被分配内存，static和abstract不可同时修饰一个方法</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>();</span><br><span class="line"><span class="comment">//    public abstract static void main()&#123;</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;测试&quot;);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 非抽象()&#123;</span><br><span class="line"><span class="comment">//        非抽象方法，不必须重写</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>抽象类的子类，要么重写父类的全部抽象方法，要么也是抽象类</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 炎龙铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;封魔斩&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 风影铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;穿风刺&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 帝皇铠甲 <span class="keyword">extends</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>java笔记</category>
