@@ -438,6 +438,13 @@
   </url>
   
   <url>
+    <loc>https://blog.xxin.xyz/tags/%E5%9D%8F%E5%BF%83%E6%83%85/</loc>
+    <lastmod>2021-09-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xxin.xyz/tags/%E5%A5%BD%E5%BF%83%E6%83%85/</loc>
     <lastmod>2021-09-15</lastmod>
     <changefreq>daily</changefreq>
@@ -446,13 +453,6 @@
   
   <url>
     <loc>https://blog.xxin.xyz/tags/%E7%AB%99%E7%82%B9%E6%97%A5%E5%BF%97/</loc>
-    <lastmod>2021-09-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xxin.xyz/tags/%E5%9D%8F%E5%BF%83%E6%83%85/</loc>
     <lastmod>2021-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -475,14 +475,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/categories/java%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://blog.xxin.xyz/categories/%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%BA%8B/</loc>
     <lastmod>2021-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/categories/%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%BA%8B/</loc>
+    <loc>https://blog.xxin.xyz/categories/java%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
