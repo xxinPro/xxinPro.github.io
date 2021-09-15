@@ -180,9 +180,9 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-Notification</title>
-    <url>/2021/09/09/Android-Notification/</url>
-    <content><![CDATA[<p>发送通知，后面再写</p>
+    <title>Android-PopupWindow</title>
+    <url>/2021/09/09/Android-PopupWindow/</url>
+    <content><![CDATA[<p>PopupWindow弹窗，后边再写</p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -193,9 +193,9 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-PopupWindow</title>
-    <url>/2021/09/09/Android-PopupWindow/</url>
-    <content><![CDATA[<p>PopupWindow弹窗，后边再写</p>
+    <title>Android-Notification</title>
+    <url>/2021/09/09/Android-Notification/</url>
+    <content><![CDATA[<p>发送通知，后面再写</p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -254,6 +254,19 @@
       </tags>
   </entry>
   <entry>
+    <title>Android-Toolbar</title>
+    <url>/2021/09/09/Android-Toolbar/</url>
+    <content><![CDATA[<p>菜单栏，后边在写</p>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android-TextView</title>
     <url>/2021/09/08/Android-TextView/</url>
     <content><![CDATA[<h4 id="TextView的基础属性"><a href="#TextView的基础属性" class="headerlink" title="TextView的基础属性"></a>TextView的基础属性</h4><ol>
@@ -287,19 +300,6 @@
 <p>4.将xml布局文件中的TextView修改为com.a.Smartcity.MyTextView(全类名)</p>
 <h5 id="方法二、修改xml标签"><a href="#方法二、修改xml标签" class="headerlink" title="方法二、修改xml标签"></a>方法二、修改xml标签</h5><p>1.将TextView单标签修改为双标签</p>
 <p>2.在TextView中添加<code>&lt;requestFocus/&gt;</code>单标签</p>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android-Toolbar</title>
-    <url>/2021/09/09/Android-Toolbar/</url>
-    <content><![CDATA[<p>菜单栏，后边在写</p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -454,21 +454,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android常用权限</title>
-    <url>/2021/09/09/Android%E5%B8%B8%E7%94%A8%E6%9D%83%E9%99%90/</url>
-    <content><![CDATA[<p>访问网络<br>android.permission.INTERNET，访问网络连接，可能产生GPRS流量<br>android.permission.CHANGE_WIFI_STATE  Wifi 改变状态<br>android.permission.ACCESS_WIFI_STATE WiFi 状态<br>android.permission.ACCESS_NETWORK_STATE 网络状态<br>录制视频<br>android.permission.CAMERA<br>android.permission.RECORD_AUDIO<br>android.permission.WRITE_EXTERNAL_STORAGE<br>底层访问权限<br>android.permission.CWJ_GROUP，允许CWJ账户组访问底层信息<br>手机优化大师扩展权限<br>android.permission.CELL_PHONE_MASTER_EX，手机优化大师扩展权限<br>控制定位更新<br>android.permission.CONTROL_LOCATION_UPDATES，允许获得移动网络定位信息改变<br>删除缓存文件<br>android.permission.DELETE_CACHE_FILES，允许应用删除缓存文件<br>删除应用<br>android.permission.DELETE_PACKAGES，允许程序删除应用<br>电源管理<br>android.permission.DEVICE_POWER，允许访问底层电源管理<br>应用诊断<br>android.permission.DIAGNOSTIC，允许程序到RW到诊断资源<br>禁用键盘锁<br>android.permission.DISABLE_KEYGUARD，允许程序禁用键盘锁<br>转存系统信息<br>android.permission.DUMP，允许程序获取系统dump信息从系统服务<br>状态栏控制<br>android.permission.EXPAND_STATUS_BAR，允许程序扩展或收缩状态栏<br>工厂测试模式<br>android.permission.FACTORY_TEST，允许程序运行工厂测试模式<br>使用闪光灯<br>android.permission.FLASHLIGHT，允许访问闪光灯<br>强制后退<br>android.permission.FORCE_BACK，允许程序强制使用back后退按键，无论Activity是否在顶层<br>访问账户Gmail列表<br>android.permission.GET_ACCOUNTS，访问GMail账户列表<br>获取应用大小<br>android.permission.GET_PACKAGE_SIZE，获取应用的文件大小<br>获取任务信息<br>android.permission.GET_TASKS，允许程序获取当前或最近运行的应用<br>允许全局搜索<br>android.permission.GLOBAL_SEARCH，允许程序使用全局搜索功能<br>硬件测试<br>android.permission.HARDWARE_TEST，访问硬件辅助设备，用于硬件测试<br>注射事件<br>android.permission.INJECT_EVENTS，允许访问本程序的底层事件，获取按键、轨迹球的事件流<br>安装定位提供<br>android.permission.INSTALL_LOCATION_PROVIDER，安装定位提供<br>安装应用程序<br>android.permission.INSTALL_PACKAGES，允许程序安装应用<br>内部系统窗口<br>android.permission.INTERNAL_SYSTEM_WINDOW，允许程序打开内部窗口，不对第三方应用程序开放此权限<br>结束后台进程<br>android.permission.KILL_BACKGROUND_PROCESSES，允许程序调用killBackgroundProcesses(String).方法结束后台进程<br>管理账户<br>android.permission.MANAGE_ACCOUNTS，允许程序管理AccountManager中的账户列表<br>管理程序引用<br>android.permission.MANAGE_APP_TOKENS，管理创建、摧毁、Z轴顺序，仅用于系统<br>高级权限<br>android.permission.MTWEAK_USER，允许mTweak用户访问高级系统权限<br>社区权限<br>android.permission.MTWEAK_FORUM，允许使用mTweak社区权限<br>软格式化<br>android.permission.MASTER_CLEAR，允许程序执行软格式化，删除系统配置信息<br>修改声音设置<br>android.permission.MODIFY_AUDIO_SETTINGS，修改声音设置信息<br>修改电话状态<br>android.permission.MODIFY_PHONE_STATE，修改电话状态，如飞行模式，但不包含替换系统拨号器界面<br>格式化文件系统<br>android.permission.MOUNT_FORMAT_FILESYSTEMS，格式化可移动文件系统，比如格式化清空SD卡<br>挂载文件系统<br>android.permission.MOUNT_UNMOUNT_FILESYSTEMS，挂载、反挂载外部文件系统<br>允许NFC通讯<br>android.permission.NFC，允许程序执行NFC近距离通讯操作，用于移动支持<br>永久Activity<br>android.permission.PERSISTENT_ACTIVITY，创建一个永久的Activity，该功能标记为将来将被移除<br>处理拨出电话<br>android.permission.PROCESS_OUTGOING_CALLS，允许程序监视，修改或放弃播出电话<br>读取日程提醒<br>android.permission.READ_CALENDAR，允许程序读取用户的日程信息<br>读取联系人<br>android.permission.READ_CONTACTS，允许应用访问联系人通讯录信息<br>屏幕截图<br>android.permission.READ_FRAME_BUFFER，读取帧缓存用于屏幕截图<br>读取收藏夹和历史记录<br>com.android.browser.permission.READ_HISTORY_BOOKMARKS，读取浏览器收藏夹和历史记录<br>读取输入状态<br>android.permission.READ_INPUT_STATE，读取当前键的输入状态，仅用于系统<br>读取系统日志<br>android.permission.READ_LOGS，读取系统底层日志<br>读取电话状态<br>android.permission.READ_PHONE_STATE，访问电话状态<br>读取短信内容<br>android.permission.READ_SMS，读取短信内容<br>读取同步设置<br>android.permission.READ_SYNC_SETTINGS，读取同步设置，读取Google在线同步设置<br>读取同步状态<br>android.permission.READ_SYNC_STATS，读取同步状态，获得Google在线同步状态<br>重启设备<br>android.permission.REBOOT，允许程序重新启动设备<br>开机自动允许<br>android.permission.RECEIVE_BOOT_COMPLETED，允许程序开机自动运行<br>接收彩信<br>android.permission.RECEIVE_MMS，接收彩信<br>接收短信<br>android.permission.RECEIVE_SMS，接收短信<br>接收Wap Push<br>android.permission.RECEIVE_WAP_PUSH，接收WAP PUSH信息<br>录音<br>android.permission.RECORD_AUDIO，录制声音通过手机或耳机的麦克<br>排序系统任务<br>android.permission.REORDER_TASKS，重新排序系统Z轴运行中的任务<br>结束系统任务<br>android.permission.RESTART_PACKAGES，结束任务通过restartPackage(String)方法，该方式将在外来放弃<br>发送短信<br>android.permission.SEND_SMS，发送短信<br>设置Activity观察其<br>android.permission.SET_ACTIVITY_WATCHER，设置Activity观察器一般用于monkey测试<br>设置闹铃提醒<br>com.android.alarm.permission.SET_ALARM，设置闹铃提醒<br>设置总是退出<br>android.permission.SET_ALWAYS_FINISH，设置程序在后台是否总是退出<br>设置动画缩放<br>android.permission.SET_ANIMATION_SCALE，设置全局动画缩放<br>设置调试程序<br>android.permission.SET_DEBUG_APP，设置调试程序，一般用于开发<br>设置屏幕方向<br>android.permission.SET_ORIENTATION，设置屏幕方向为横屏或标准方式显示，不用于普通应用<br>设置应用参数<br>android.permission.SET_PREFERRED_APPLICATIONS，设置应用的参数，已不再工作具体查看addPackageToPreferred(String)介绍<br>设置进程限制<br>android.permission.SET_PROCESS_LIMIT，允许程序设置最大的进程数量的限制<br>设置系统时间<br>android.permission.SET_TIME，设置系统时间<br>设置系统时区<br>android.permission.SET_TIME_ZONE，设置系统时区<br>设置桌面壁纸<br>android.permission.SET_WALLPAPER，设置桌面壁纸<br>设置壁纸建议<br>android.permission.SET_WALLPAPER_HINTS，设置壁纸建议<br>发送永久进程信号<br>android.permission.SIGNAL_PERSISTENT_PROCESSES，发送一个永久的进程信号<br>状态栏控制<br>android.permission.STATUS_BAR，允许程序打开、关闭、禁用状态栏<br>访问订阅内容<br>android.permission.SUBSCRIBED_FEEDS_READ，访问订阅信息的数据库<br>写入订阅内容<br>android.permission.SUBSCRIBED_FEEDS_WRITE，写入或修改订阅内容的数据库<br>显示系统窗口<br>android.permission.SYSTEM_ALERT_WINDOW，显示系统窗口<br>更新设备状态<br>android.permission.UPDATE_DEVICE_STATS，更新设备状态<br>使用证书<br>android.permission.USE_CREDENTIALS，允许程序请求验证从AccountManager<br>使用SIP视频<br>android.permission.USE_SIP，允许程序使用SIP视频服务<br>使用振动<br>android.permission.VIBRATE，允许振动<br>唤醒锁定<br>android.permission.WAKE_LOCK，允许程序在手机屏幕关闭后后台进程仍然运行<br>写入GPRS接入点设置<br>android.permission.WRITE_APN_SETTINGS，写入网络GPRS接入点设置<br>写入日程提醒<br>android.permission.WRITE_CALENDAR，写入日程，但不可读取<br>写入联系人<br>android.permission.WRITE_CONTACTS，写入联系人，但不可读取<br>写入外部存储<br>android.permission.WRITE_EXTERNAL_STORAGE，允许程序写入外部存储，如SD卡上写文件<br>写入Google地图数据<br>android.permission.WRITE_GSERVICES，允许程序写入Google Map服务数据<br>写入收藏夹和历史记录<br>com.android.browser.permission.WRITE_HISTORY_BOOKMARKS，写入浏览器历史记录或收藏夹，但不可读取<br>读写系统敏感设置<br>android.permission.WRITE_SECURE_SETTINGS，允许程序读写系统安全敏感的设置项<br>读写系统设置<br>android.permission.WRITE_SETTINGS，允许读写系统设置项<br>编写短信<br>android.permission.WRITE_SMS，允许编写短信<br>写入在线同步设置<br>android.permission.WRITE_SYNC_SETTINGS，写入Google在线同步设置</p>
-<p><uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/><br>访问登记属性<br>android.permission.ACCESS_CHECKIN_PROPERTIES ，读取或写入登记check-in数据库属性表的权限<br>获取错略位置<br>android.permission.ACCESS_COARSE_LOCATION，通过WiFi或移动基站的方式获取用户错略的经纬度信息，定位精度大概误差在30~1500米<br>获取精确位置<br>android.permission.ACCESS_FINE_LOCATION，通过GPS芯片接收卫星的定位信息，定位精度达10米以内<br>访问定位额外命令<br>android.permission.ACCESS_LOCATION_EXTRA_COMMANDS，允许程序访问额外的定位提供者指令<br>GPS定位获取模拟定位信息<br>android.permission.ACCESS_MOCK_LOCATION，获取模拟定位信息，一般用于帮助开发者调试应用<br>获取网络状态</p>
-<p>android.permission.ACCESS_NETWORK_STATE，获取网络信息状态，如当前的网络连接是否有效<br>访问Surface Flinger<br>android.permission.ACCESS_SURFACE_FLINGER，Android平台上底层的图形显示支持，一般用于游戏或照相机预览界面和底层模式的屏幕截图<br>获取WiFi状态<br>android.permission.ACCESS_WIFI_STATE，获取当前WiFi接入的状态以及WLAN热点的信息<br>账户管理<br>android.permission.ACCOUNT_MANAGER，获取账户验证信息，主要为GMail账户信息，只有系统级进程才能访问的权限<br>验证账户<br>android.permission.AUTHENTICATE_ACCOUNTS，允许一个程序通过账户验证方式访问账户管理ACCOUNT_MANAGER相关信息<br>电量统计<br>android.permission.BATTERY_STATS，获取电池电量统计信息<br>绑定小插件<br>android.permission.BIND_APPWIDGET，允许一个程序告诉appWidget服务需要访问小插件的数据库，只有非常少的应用才用到此权限<br>绑定设备管理<br>android.permission.BIND_DEVICE_ADMIN，请求系统管理员接收者receiver，只有系统才能使用<br>绑定输入法<br>android.permission.BIND_INPUT_METHOD ，请求InputMethodService服务，只有系统才能使用<br>绑定RemoteView<br>android.permission.BIND_REMOTEVIEWS，必须通过RemoteViewsService服务来请求，只有系统才能用<br>绑定壁纸<br>android.permission.BIND_WALLPAPER，必须通过WallpaperService服务来请求，只有系统才能用<br>使用蓝牙<br>android.permission.BLUETOOTH，允许程序连接配对过的蓝牙设备<br>蓝牙管理<br>android.permission.BLUETOOTH_ADMIN，允许程序进行发现和配对新的蓝牙设备<br>变成砖头<br>android.permission.BRICK，能够禁用手机，非常危险，顾名思义就是让手机变成砖头<br>应用删除时广播<br>android.permission.BROADCAST_PACKAGE_REMOVED，当一个应用在删除时触发一个广播<br>收到短信时广播<br>android.permission.BROADCAST_SMS，当收到短信时触发一个广播<br>连续广播<br>android.permission.BROADCAST_STICKY，允许一个程序收到广播后快速收到下一个广播<br>WAP PUSH广播<br>android.permission.BROADCAST_WAP_PUSH，WAP PUSH服务收到后触发一个广播<br>拨打电话<br>android.permission.CALL_PHONE，允许程序从非系统拨号器里输入电话号码<br>通话权限<br>android.permission.CALL_PRIVILEGED，允许程序拨打电话，替换系统的拨号器界面<br>拍照权限<br>android.permission.CAMERA，允许访问摄像头进行拍照<br>改变组件状态<br>android.permission.CHANGE_COMPONENT_ENABLED_STATE，改变组件是否启用状态<br>改变配置<br>android.permission.CHANGE_CONFIGURATION，允许当前应用改变配置，如定位<br>改变网络状态<br>android.permission.CHANGE_NETWORK_STATE，改变网络状态如是否能联网<br>改变WiFi多播状态<br>android.permission.CHANGE_WIFI_MULTICAST_STATE，改变WiFi多播状态<br>改变WiFi状态<br>android.permission.CHANGE_WIFI_STATE，改变WiFi状态<br>清除应用缓存<br>android.permission.CLEAR_APP_CACHE，清除应用缓存<br>清除用户数据<br>android.permission.CLEAR_APP_USER_DATA，清除应用的用户数据</p>
-]]></content>
-      <categories>
-        <category>随手记事</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Lambda</title>
     <url>/2021/07/24/Lambda/</url>
     <content><![CDATA[<p>匿名类</p>
@@ -481,6 +466,21 @@
       <tags>
         <tag>学习笔记</tag>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android常用权限</title>
+    <url>/2021/09/09/Android%E5%B8%B8%E7%94%A8%E6%9D%83%E9%99%90/</url>
+    <content><![CDATA[<p>访问网络<br>android.permission.INTERNET，访问网络连接，可能产生GPRS流量<br>android.permission.CHANGE_WIFI_STATE  Wifi 改变状态<br>android.permission.ACCESS_WIFI_STATE WiFi 状态<br>android.permission.ACCESS_NETWORK_STATE 网络状态<br>录制视频<br>android.permission.CAMERA<br>android.permission.RECORD_AUDIO<br>android.permission.WRITE_EXTERNAL_STORAGE<br>底层访问权限<br>android.permission.CWJ_GROUP，允许CWJ账户组访问底层信息<br>手机优化大师扩展权限<br>android.permission.CELL_PHONE_MASTER_EX，手机优化大师扩展权限<br>控制定位更新<br>android.permission.CONTROL_LOCATION_UPDATES，允许获得移动网络定位信息改变<br>删除缓存文件<br>android.permission.DELETE_CACHE_FILES，允许应用删除缓存文件<br>删除应用<br>android.permission.DELETE_PACKAGES，允许程序删除应用<br>电源管理<br>android.permission.DEVICE_POWER，允许访问底层电源管理<br>应用诊断<br>android.permission.DIAGNOSTIC，允许程序到RW到诊断资源<br>禁用键盘锁<br>android.permission.DISABLE_KEYGUARD，允许程序禁用键盘锁<br>转存系统信息<br>android.permission.DUMP，允许程序获取系统dump信息从系统服务<br>状态栏控制<br>android.permission.EXPAND_STATUS_BAR，允许程序扩展或收缩状态栏<br>工厂测试模式<br>android.permission.FACTORY_TEST，允许程序运行工厂测试模式<br>使用闪光灯<br>android.permission.FLASHLIGHT，允许访问闪光灯<br>强制后退<br>android.permission.FORCE_BACK，允许程序强制使用back后退按键，无论Activity是否在顶层<br>访问账户Gmail列表<br>android.permission.GET_ACCOUNTS，访问GMail账户列表<br>获取应用大小<br>android.permission.GET_PACKAGE_SIZE，获取应用的文件大小<br>获取任务信息<br>android.permission.GET_TASKS，允许程序获取当前或最近运行的应用<br>允许全局搜索<br>android.permission.GLOBAL_SEARCH，允许程序使用全局搜索功能<br>硬件测试<br>android.permission.HARDWARE_TEST，访问硬件辅助设备，用于硬件测试<br>注射事件<br>android.permission.INJECT_EVENTS，允许访问本程序的底层事件，获取按键、轨迹球的事件流<br>安装定位提供<br>android.permission.INSTALL_LOCATION_PROVIDER，安装定位提供<br>安装应用程序<br>android.permission.INSTALL_PACKAGES，允许程序安装应用<br>内部系统窗口<br>android.permission.INTERNAL_SYSTEM_WINDOW，允许程序打开内部窗口，不对第三方应用程序开放此权限<br>结束后台进程<br>android.permission.KILL_BACKGROUND_PROCESSES，允许程序调用killBackgroundProcesses(String).方法结束后台进程<br>管理账户<br>android.permission.MANAGE_ACCOUNTS，允许程序管理AccountManager中的账户列表<br>管理程序引用<br>android.permission.MANAGE_APP_TOKENS，管理创建、摧毁、Z轴顺序，仅用于系统<br>高级权限<br>android.permission.MTWEAK_USER，允许mTweak用户访问高级系统权限<br>社区权限<br>android.permission.MTWEAK_FORUM，允许使用mTweak社区权限<br>软格式化<br>android.permission.MASTER_CLEAR，允许程序执行软格式化，删除系统配置信息<br>修改声音设置<br>android.permission.MODIFY_AUDIO_SETTINGS，修改声音设置信息<br>修改电话状态<br>android.permission.MODIFY_PHONE_STATE，修改电话状态，如飞行模式，但不包含替换系统拨号器界面<br>格式化文件系统<br>android.permission.MOUNT_FORMAT_FILESYSTEMS，格式化可移动文件系统，比如格式化清空SD卡<br>挂载文件系统<br>android.permission.MOUNT_UNMOUNT_FILESYSTEMS，挂载、反挂载外部文件系统<br>允许NFC通讯<br>android.permission.NFC，允许程序执行NFC近距离通讯操作，用于移动支持<br>永久Activity<br>android.permission.PERSISTENT_ACTIVITY，创建一个永久的Activity，该功能标记为将来将被移除<br>处理拨出电话<br>android.permission.PROCESS_OUTGOING_CALLS，允许程序监视，修改或放弃播出电话<br>读取日程提醒<br>android.permission.READ_CALENDAR，允许程序读取用户的日程信息<br>读取联系人<br>android.permission.READ_CONTACTS，允许应用访问联系人通讯录信息<br>屏幕截图<br>android.permission.READ_FRAME_BUFFER，读取帧缓存用于屏幕截图<br>读取收藏夹和历史记录<br>com.android.browser.permission.READ_HISTORY_BOOKMARKS，读取浏览器收藏夹和历史记录<br>读取输入状态<br>android.permission.READ_INPUT_STATE，读取当前键的输入状态，仅用于系统<br>读取系统日志<br>android.permission.READ_LOGS，读取系统底层日志<br>读取电话状态<br>android.permission.READ_PHONE_STATE，访问电话状态<br>读取短信内容<br>android.permission.READ_SMS，读取短信内容<br>读取同步设置<br>android.permission.READ_SYNC_SETTINGS，读取同步设置，读取Google在线同步设置<br>读取同步状态<br>android.permission.READ_SYNC_STATS，读取同步状态，获得Google在线同步状态<br>重启设备<br>android.permission.REBOOT，允许程序重新启动设备<br>开机自动允许<br>android.permission.RECEIVE_BOOT_COMPLETED，允许程序开机自动运行<br>接收彩信<br>android.permission.RECEIVE_MMS，接收彩信<br>接收短信<br>android.permission.RECEIVE_SMS，接收短信<br>接收Wap Push<br>android.permission.RECEIVE_WAP_PUSH，接收WAP PUSH信息<br>录音<br>android.permission.RECORD_AUDIO，录制声音通过手机或耳机的麦克<br>排序系统任务<br>android.permission.REORDER_TASKS，重新排序系统Z轴运行中的任务<br>结束系统任务<br>android.permission.RESTART_PACKAGES，结束任务通过restartPackage(String)方法，该方式将在外来放弃<br>发送短信<br>android.permission.SEND_SMS，发送短信<br>设置Activity观察其<br>android.permission.SET_ACTIVITY_WATCHER，设置Activity观察器一般用于monkey测试<br>设置闹铃提醒<br>com.android.alarm.permission.SET_ALARM，设置闹铃提醒<br>设置总是退出<br>android.permission.SET_ALWAYS_FINISH，设置程序在后台是否总是退出<br>设置动画缩放<br>android.permission.SET_ANIMATION_SCALE，设置全局动画缩放<br>设置调试程序<br>android.permission.SET_DEBUG_APP，设置调试程序，一般用于开发<br>设置屏幕方向<br>android.permission.SET_ORIENTATION，设置屏幕方向为横屏或标准方式显示，不用于普通应用<br>设置应用参数<br>android.permission.SET_PREFERRED_APPLICATIONS，设置应用的参数，已不再工作具体查看addPackageToPreferred(String)介绍<br>设置进程限制<br>android.permission.SET_PROCESS_LIMIT，允许程序设置最大的进程数量的限制<br>设置系统时间<br>android.permission.SET_TIME，设置系统时间<br>设置系统时区<br>android.permission.SET_TIME_ZONE，设置系统时区<br>设置桌面壁纸<br>android.permission.SET_WALLPAPER，设置桌面壁纸<br>设置壁纸建议<br>android.permission.SET_WALLPAPER_HINTS，设置壁纸建议<br>发送永久进程信号<br>android.permission.SIGNAL_PERSISTENT_PROCESSES，发送一个永久的进程信号<br>状态栏控制<br>android.permission.STATUS_BAR，允许程序打开、关闭、禁用状态栏<br>访问订阅内容<br>android.permission.SUBSCRIBED_FEEDS_READ，访问订阅信息的数据库<br>写入订阅内容<br>android.permission.SUBSCRIBED_FEEDS_WRITE，写入或修改订阅内容的数据库<br>显示系统窗口<br>android.permission.SYSTEM_ALERT_WINDOW，显示系统窗口<br>更新设备状态<br>android.permission.UPDATE_DEVICE_STATS，更新设备状态<br>使用证书<br>android.permission.USE_CREDENTIALS，允许程序请求验证从AccountManager<br>使用SIP视频<br>android.permission.USE_SIP，允许程序使用SIP视频服务<br>使用振动<br>android.permission.VIBRATE，允许振动<br>唤醒锁定<br>android.permission.WAKE_LOCK，允许程序在手机屏幕关闭后后台进程仍然运行<br>写入GPRS接入点设置<br>android.permission.WRITE_APN_SETTINGS，写入网络GPRS接入点设置<br>写入日程提醒<br>android.permission.WRITE_CALENDAR，写入日程，但不可读取<br>写入联系人<br>android.permission.WRITE_CONTACTS，写入联系人，但不可读取<br>写入外部存储<br>android.permission.WRITE_EXTERNAL_STORAGE，允许程序写入外部存储，如SD卡上写文件<br>写入Google地图数据<br>android.permission.WRITE_GSERVICES，允许程序写入Google Map服务数据<br>写入收藏夹和历史记录<br>com.android.browser.permission.WRITE_HISTORY_BOOKMARKS，写入浏览器历史记录或收藏夹，但不可读取<br>读写系统敏感设置<br>android.permission.WRITE_SECURE_SETTINGS，允许程序读写系统安全敏感的设置项<br>读写系统设置<br>android.permission.WRITE_SETTINGS，允许读写系统设置项<br>编写短信<br>android.permission.WRITE_SMS，允许编写短信<br>写入在线同步设置<br>android.permission.WRITE_SYNC_SETTINGS，写入Google在线同步设置</p>
+<p><uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/><br>访问登记属性<br>android.permission.ACCESS_CHECKIN_PROPERTIES ，读取或写入登记check-in数据库属性表的权限<br>获取错略位置<br>android.permission.ACCESS_COARSE_LOCATION，通过WiFi或移动基站的方式获取用户错略的经纬度信息，定位精度大概误差在30~1500米<br>获取精确位置<br>android.permission.ACCESS_FINE_LOCATION，通过GPS芯片接收卫星的定位信息，定位精度达10米以内<br>访问定位额外命令<br>android.permission.ACCESS_LOCATION_EXTRA_COMMANDS，允许程序访问额外的定位提供者指令<br>GPS定位获取模拟定位信息<br>android.permission.ACCESS_MOCK_LOCATION，获取模拟定位信息，一般用于帮助开发者调试应用<br>获取网络状态</p>
+<p>android.permission.ACCESS_NETWORK_STATE，获取网络信息状态，如当前的网络连接是否有效<br>访问Surface Flinger<br>android.permission.ACCESS_SURFACE_FLINGER，Android平台上底层的图形显示支持，一般用于游戏或照相机预览界面和底层模式的屏幕截图<br>获取WiFi状态<br>android.permission.ACCESS_WIFI_STATE，获取当前WiFi接入的状态以及WLAN热点的信息<br>账户管理<br>android.permission.ACCOUNT_MANAGER，获取账户验证信息，主要为GMail账户信息，只有系统级进程才能访问的权限<br>验证账户<br>android.permission.AUTHENTICATE_ACCOUNTS，允许一个程序通过账户验证方式访问账户管理ACCOUNT_MANAGER相关信息<br>电量统计<br>android.permission.BATTERY_STATS，获取电池电量统计信息<br>绑定小插件<br>android.permission.BIND_APPWIDGET，允许一个程序告诉appWidget服务需要访问小插件的数据库，只有非常少的应用才用到此权限<br>绑定设备管理<br>android.permission.BIND_DEVICE_ADMIN，请求系统管理员接收者receiver，只有系统才能使用<br>绑定输入法<br>android.permission.BIND_INPUT_METHOD ，请求InputMethodService服务，只有系统才能使用<br>绑定RemoteView<br>android.permission.BIND_REMOTEVIEWS，必须通过RemoteViewsService服务来请求，只有系统才能用<br>绑定壁纸<br>android.permission.BIND_WALLPAPER，必须通过WallpaperService服务来请求，只有系统才能用<br>使用蓝牙<br>android.permission.BLUETOOTH，允许程序连接配对过的蓝牙设备<br>蓝牙管理<br>android.permission.BLUETOOTH_ADMIN，允许程序进行发现和配对新的蓝牙设备<br>变成砖头<br>android.permission.BRICK，能够禁用手机，非常危险，顾名思义就是让手机变成砖头<br>应用删除时广播<br>android.permission.BROADCAST_PACKAGE_REMOVED，当一个应用在删除时触发一个广播<br>收到短信时广播<br>android.permission.BROADCAST_SMS，当收到短信时触发一个广播<br>连续广播<br>android.permission.BROADCAST_STICKY，允许一个程序收到广播后快速收到下一个广播<br>WAP PUSH广播<br>android.permission.BROADCAST_WAP_PUSH，WAP PUSH服务收到后触发一个广播<br>拨打电话<br>android.permission.CALL_PHONE，允许程序从非系统拨号器里输入电话号码<br>通话权限<br>android.permission.CALL_PRIVILEGED，允许程序拨打电话，替换系统的拨号器界面<br>拍照权限<br>android.permission.CAMERA，允许访问摄像头进行拍照<br>改变组件状态<br>android.permission.CHANGE_COMPONENT_ENABLED_STATE，改变组件是否启用状态<br>改变配置<br>android.permission.CHANGE_CONFIGURATION，允许当前应用改变配置，如定位<br>改变网络状态<br>android.permission.CHANGE_NETWORK_STATE，改变网络状态如是否能联网<br>改变WiFi多播状态<br>android.permission.CHANGE_WIFI_MULTICAST_STATE，改变WiFi多播状态<br>改变WiFi状态<br>android.permission.CHANGE_WIFI_STATE，改变WiFi状态<br>清除应用缓存<br>android.permission.CLEAR_APP_CACHE，清除应用缓存<br>清除用户数据<br>android.permission.CLEAR_APP_USER_DATA，清除应用的用户数据</p>
+]]></content>
+      <categories>
+        <category>随手记事</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -560,6 +560,19 @@
       </tags>
   </entry>
   <entry>
+    <title>this和super</title>
+    <url>/2021/07/20/this%E5%92%8Csuper/</url>
+    <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>next主题优化</title>
     <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<p><center>hexo博客next主题主要优化修改方案</center></p>
@@ -600,19 +613,6 @@
       </tags>
   </entry>
   <entry>
-    <title>this和super</title>
-    <url>/2021/07/20/this%E5%92%8Csuper/</url>
-    <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
-]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>what is the &#39;inflate()&#39;?</title>
     <url>/2021/09/13/what-is-the-inflate/</url>
     <content><![CDATA[]]></content>
@@ -641,6 +641,22 @@
         <tag>学习笔记</tag>
         <tag>重点难点</tag>
         <tag>文件文档</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单例模式</title>
+    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>调用时</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -683,6 +699,36 @@
         <tag>学习笔记</tag>
         <tag>重点难点</tag>
         <tag>专升本数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在服务器中搭建hexo博客</title>
+    <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p><center>个人服务器搭建hexo(宝塔)</center><br><br></p>
+<p><center>环境：Linux、CentOS 7.6 64bit、宝塔、nginx</center><br><span id="more"></span><br><br><br>优点：相对于github或gitee，速度快，自定义程度高</p>
+<p>缺点：自己花钱买域名，自己花钱买服务器，没钱了ovo</p>
+<h3 id="一、环境安装"><a href="#一、环境安装" class="headerlink" title="一、环境安装"></a>一、环境安装</h3><h4 id="1-站点创建"><a href="#1-站点创建" class="headerlink" title="1.站点创建"></a>1.站点创建</h4><p>在宝塔中创建新的站点，该站点即为博客地址<br><img src="https://blog.xxin.xyz/pageImg/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/1.png" style="zoom:50%;" /></p>
+<h4 id="2-nginx配置"><a href="#2-nginx配置" class="headerlink" title="2.nginx配置"></a>2.nginx配置</h4><p>从宝塔的软件商店即可快捷安装nginx环境<br><img src="https://blog.xxin.xyz/pageImg/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/2.png" style="zoom:40%;" /></p>
+<h4 id="3-git工具下载"><a href="#3-git工具下载" class="headerlink" title="3.git工具下载"></a>3.git工具下载</h4><p>通过ssh连接服务器，并下载安装git工具<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum -y install git #yum安装git</span><br></pre></td></tr></table></figure><br>相关命令<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git --version #查看git安装版本</span><br><span class="line">yum remove git #卸载git工具</span><br></pre></td></tr></table></figure></p>
+<h3 id="二、git仓库搭建"><a href="#二、git仓库搭建" class="headerlink" title="二、git仓库搭建"></a>二、git仓库搭建</h3><p>和之前github的仓库一样，服务器也需要创建一个仓库用来实现静态文件储存</p>
+<h4 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1.创建用户"></a>1.创建用户</h4><p>在服务器端创建一个新用户git<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">adduser git #创建git用户</span><br><span class="line">chmod 740 /etc/sudoers #改变sudoers文件的权限为文件所有者可写</span><br><span class="line">vim /etc/sudoers #读取</span><br><span class="line">i #表示insert，从仅读取切换到编辑(插入)</span><br><span class="line"><span class="meta">#</span><span class="bash">在root ALL=(ALL) ALL 下方添加一行git ALL=(ALL) ALL</span></span><br><span class="line">:wq! #强制保存退出 :q! 强制不保存退出</span><br><span class="line">chmod 400 /etc/sudoers #改变sudoers文件的权限为文件所有者可读</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-给git用户添加ssh密钥"><a href="#2-给git用户添加ssh密钥" class="headerlink" title="2.给git用户添加ssh密钥"></a>2.给git用户添加ssh密钥</h4><p>建立主机与服务器连接，添连接后不需要密码也能登录服务器，方便我们日后的博客文件上传</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">本地打开Git Bash并进入到C:\Users\admin\.ssh目录</span></span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C &quot;blog.xxin.xyz&quot;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -t 指定密钥类型，默认是 rsa ，可以省略</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -C 用于识别这个密钥的注释，可以输入任何内容</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -f 指定密钥文件存储文件名，默认id\_rsa</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">服务器端打开终端命令行</span></span><br><span class="line">su git #切换到git用户</span><br><span class="line">mkdir -p ~/.ssh #在git用户(/home/git)下创建.ssh文件夹，用于储存ssh密钥文件</span><br><span class="line">touch ~/.ssh/authorized\_keys #创建authorized_keys文件</span><br><span class="line">chmod 600 ~/.ssh/authorized\_keys  #为authorized_keys文件赋予文件所有者可读可写的权限</span><br><span class="line">chmod 700 ~/.ssh  #为.ssh文件夹赋予文件夹所有者可读可写可执行的权限</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">复制C:\Users\admin\.ssh目录下，公匙id_rsa.pub内容到服务器/home/git/.ssh/authorized_keys，关闭终端</span></span><br><span class="line"><span class="meta">#</span><span class="bash">使用ssh git@server重新登录服务器，测试是否能不要密码登录到git用户</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-创建git仓库"><a href="#3-创建git仓库" class="headerlink" title="3.创建git仓库"></a>3.创建git仓库</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo mkdir /home/git/repos #在git用户目录下创建repos文件夹作为仓库位置</span><br><span class="line">cd /home/git/repos</span><br><span class="line">sudo git init --bare blog.git #初始化一个名叫blog.git的仓库</span><br></pre></td></tr></table></figure>
+<h4 id="4-配置钩子实现自动部署"><a href="#4-配置钩子实现自动部署" class="headerlink" title="4.配置钩子实现自动部署"></a>4.配置钩子实现自动部署</h4><p>找到 /home/git/repos/taiblog.git/hooks/post-update.sample 改名post-update，内容改为<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">git --work-tree=/www/wwwroot/blog.xxin.xyz --git-dir=/home/git/repos/blog.git checkout -f</span><br><span class="line">                  ↑博客静态文件储存的位置                 ↑仓库位置</span><br></pre></td></tr></table></figure><br>然后给权限<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd blog.git/hooks/</span><br><span class="line">sudo chmod +x post-update  #赋予其可执行权限</span><br><span class="line">sudo chown -R git:git /home/git/repos/ #仓库所有者改为git</span><br><span class="line">sudo chown -R git:git /www/wwwroot/blog.xxin.xyz/ #站点文件夹所有者改为git</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-测试可用性"><a href="#5-测试可用性" class="headerlink" title="5.测试可用性"></a>5.测试可用性</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">在主机端，如果能将仓库拉下来，说明Git仓库搭建成功</span></span><br><span class="line">git clone git@server\_ip:/home/git/repos/blog.git</span><br></pre></td></tr></table></figure>
+<h3 id="三、修改本地配置"><a href="#三、修改本地配置" class="headerlink" title="三、修改本地配置"></a>三、修改本地配置</h3><h4 id="1-本地config-yml配置"><a href="#1-本地config-yml配置" class="headerlink" title="1.本地config.yml配置"></a>1.本地config.yml配置</h4><p>本地Hexo博客文件夹中的_config.yml文件尾部<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@159.75.7.25:/home/git/repos/blog.git #仓库地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-测试"><a href="#2-测试" class="headerlink" title="2.测试"></a>2.测试</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean  #清除缓存</span><br><span class="line">hexo generate #生成静态页面</span><br><span class="line">hexo delopy  #将本地静态页面目录部署到云服务器</span><br></pre></td></tr></table></figure>
+<p>也可以在package.json 中添加 npm 脚本，这样就可以直接npm run dd一下执行<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;hexo generate&quot;,</span><br><span class="line">    &quot;clean&quot;: &quot;hexo clean&quot;,</span><br><span class="line">    &quot;deploy&quot;: &quot;hexo deploy&quot;,</span><br><span class="line">    &quot;dd&quot;: &quot;hexo clean &amp;&amp; hexo g -d&quot;,</span><br><span class="line">    &quot;server&quot;: &quot;hexo server&quot;,</span><br><span class="line">    &quot;ss&quot;: &quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-访问测试"><a href="#3-访问测试" class="headerlink" title="3.访问测试"></a>3.访问测试</h4><p><a href="https://blog.xxin.xyz">https://blog.xxin.xyz</a></p>
+<p>参考文章<a href="https://cloud.tencent.com/developer/article/1823096">https://cloud.tencent.com/developer/article/1823096</a></p>
+]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>hexo博客</tag>
+        <tag>小教程</tag>
       </tags>
   </entry>
   <entry>
@@ -729,49 +775,22 @@
       </tags>
   </entry>
   <entry>
-    <title>单例模式</title>
-    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>调用时</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在服务器中搭建hexo博客</title>
-    <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p><center>个人服务器搭建hexo(宝塔)</center><br><br></p>
-<p><center>环境：Linux、CentOS 7.6 64bit、宝塔、nginx</center><br><span id="more"></span><br><br><br>优点：相对于github或gitee，速度快，自定义程度高</p>
-<p>缺点：自己花钱买域名，自己花钱买服务器，没钱了ovo</p>
-<h3 id="一、环境安装"><a href="#一、环境安装" class="headerlink" title="一、环境安装"></a>一、环境安装</h3><h4 id="1-站点创建"><a href="#1-站点创建" class="headerlink" title="1.站点创建"></a>1.站点创建</h4><p>在宝塔中创建新的站点，该站点即为博客地址<br><img src="https://blog.xxin.xyz/pageImg/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/1.png" style="zoom:50%;" /></p>
-<h4 id="2-nginx配置"><a href="#2-nginx配置" class="headerlink" title="2.nginx配置"></a>2.nginx配置</h4><p>从宝塔的软件商店即可快捷安装nginx环境<br><img src="https://blog.xxin.xyz/pageImg/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/2.png" style="zoom:40%;" /></p>
-<h4 id="3-git工具下载"><a href="#3-git工具下载" class="headerlink" title="3.git工具下载"></a>3.git工具下载</h4><p>通过ssh连接服务器，并下载安装git工具<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum -y install git #yum安装git</span><br></pre></td></tr></table></figure><br>相关命令<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git --version #查看git安装版本</span><br><span class="line">yum remove git #卸载git工具</span><br></pre></td></tr></table></figure></p>
-<h3 id="二、git仓库搭建"><a href="#二、git仓库搭建" class="headerlink" title="二、git仓库搭建"></a>二、git仓库搭建</h3><p>和之前github的仓库一样，服务器也需要创建一个仓库用来实现静态文件储存</p>
-<h4 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1.创建用户"></a>1.创建用户</h4><p>在服务器端创建一个新用户git<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">adduser git #创建git用户</span><br><span class="line">chmod 740 /etc/sudoers #改变sudoers文件的权限为文件所有者可写</span><br><span class="line">vim /etc/sudoers #读取</span><br><span class="line">i #表示insert，从仅读取切换到编辑(插入)</span><br><span class="line"><span class="meta">#</span><span class="bash">在root ALL=(ALL) ALL 下方添加一行git ALL=(ALL) ALL</span></span><br><span class="line">:wq! #强制保存退出 :q! 强制不保存退出</span><br><span class="line">chmod 400 /etc/sudoers #改变sudoers文件的权限为文件所有者可读</span><br></pre></td></tr></table></figure></p>
-<h4 id="2-给git用户添加ssh密钥"><a href="#2-给git用户添加ssh密钥" class="headerlink" title="2.给git用户添加ssh密钥"></a>2.给git用户添加ssh密钥</h4><p>建立主机与服务器连接，添连接后不需要密码也能登录服务器，方便我们日后的博客文件上传</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">本地打开Git Bash并进入到C:\Users\admin\.ssh目录</span></span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C &quot;blog.xxin.xyz&quot;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -t 指定密钥类型，默认是 rsa ，可以省略</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -C 用于识别这个密钥的注释，可以输入任何内容</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -f 指定密钥文件存储文件名，默认id\_rsa</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">服务器端打开终端命令行</span></span><br><span class="line">su git #切换到git用户</span><br><span class="line">mkdir -p ~/.ssh #在git用户(/home/git)下创建.ssh文件夹，用于储存ssh密钥文件</span><br><span class="line">touch ~/.ssh/authorized\_keys #创建authorized_keys文件</span><br><span class="line">chmod 600 ~/.ssh/authorized\_keys  #为authorized_keys文件赋予文件所有者可读可写的权限</span><br><span class="line">chmod 700 ~/.ssh  #为.ssh文件夹赋予文件夹所有者可读可写可执行的权限</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">复制C:\Users\admin\.ssh目录下，公匙id_rsa.pub内容到服务器/home/git/.ssh/authorized_keys，关闭终端</span></span><br><span class="line"><span class="meta">#</span><span class="bash">使用ssh git@server重新登录服务器，测试是否能不要密码登录到git用户</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-创建git仓库"><a href="#3-创建git仓库" class="headerlink" title="3.创建git仓库"></a>3.创建git仓库</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo mkdir /home/git/repos #在git用户目录下创建repos文件夹作为仓库位置</span><br><span class="line">cd /home/git/repos</span><br><span class="line">sudo git init --bare blog.git #初始化一个名叫blog.git的仓库</span><br></pre></td></tr></table></figure>
-<h4 id="4-配置钩子实现自动部署"><a href="#4-配置钩子实现自动部署" class="headerlink" title="4.配置钩子实现自动部署"></a>4.配置钩子实现自动部署</h4><p>找到 /home/git/repos/taiblog.git/hooks/post-update.sample 改名post-update，内容改为<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">git --work-tree=/www/wwwroot/blog.xxin.xyz --git-dir=/home/git/repos/blog.git checkout -f</span><br><span class="line">                  ↑博客静态文件储存的位置                 ↑仓库位置</span><br></pre></td></tr></table></figure><br>然后给权限<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd blog.git/hooks/</span><br><span class="line">sudo chmod +x post-update  #赋予其可执行权限</span><br><span class="line">sudo chown -R git:git /home/git/repos/ #仓库所有者改为git</span><br><span class="line">sudo chown -R git:git /www/wwwroot/blog.xxin.xyz/ #站点文件夹所有者改为git</span><br></pre></td></tr></table></figure></p>
-<h4 id="5-测试可用性"><a href="#5-测试可用性" class="headerlink" title="5.测试可用性"></a>5.测试可用性</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">在主机端，如果能将仓库拉下来，说明Git仓库搭建成功</span></span><br><span class="line">git clone git@server\_ip:/home/git/repos/blog.git</span><br></pre></td></tr></table></figure>
-<h3 id="三、修改本地配置"><a href="#三、修改本地配置" class="headerlink" title="三、修改本地配置"></a>三、修改本地配置</h3><h4 id="1-本地config-yml配置"><a href="#1-本地config-yml配置" class="headerlink" title="1.本地config.yml配置"></a>1.本地config.yml配置</h4><p>本地Hexo博客文件夹中的_config.yml文件尾部<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@159.75.7.25:/home/git/repos/blog.git #仓库地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
-<h4 id="2-测试"><a href="#2-测试" class="headerlink" title="2.测试"></a>2.测试</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean  #清除缓存</span><br><span class="line">hexo generate #生成静态页面</span><br><span class="line">hexo delopy  #将本地静态页面目录部署到云服务器</span><br></pre></td></tr></table></figure>
-<p>也可以在package.json 中添加 npm 脚本，这样就可以直接npm run dd一下执行<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;hexo generate&quot;,</span><br><span class="line">    &quot;clean&quot;: &quot;hexo clean&quot;,</span><br><span class="line">    &quot;deploy&quot;: &quot;hexo deploy&quot;,</span><br><span class="line">    &quot;dd&quot;: &quot;hexo clean &amp;&amp; hexo g -d&quot;,</span><br><span class="line">    &quot;server&quot;: &quot;hexo server&quot;,</span><br><span class="line">    &quot;ss&quot;: &quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
-<h4 id="3-访问测试"><a href="#3-访问测试" class="headerlink" title="3.访问测试"></a>3.访问测试</h4><p><a href="https://blog.xxin.xyz">https://blog.xxin.xyz</a></p>
-<p>参考文章<a href="https://cloud.tencent.com/developer/article/1823096">https://cloud.tencent.com/developer/article/1823096</a></p>
+    <title>夜郎自大</title>
+    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
+<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”<br><span id="more"></span><br>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
+<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
+<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
+<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
+<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
+<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
 ]]></content>
       <categories>
-        <category>hexo博客</category>
+        <category>我的文章</category>
       </categories>
       <tags>
-        <tag>hexo博客</tag>
-        <tag>小教程</tag>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
       </tags>
   </entry>
   <entry>
@@ -789,25 +808,6 @@
       <tags>
         <tag>好心情</tag>
         <tag>站点日志</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>夜郎自大</title>
-    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
-<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”<br><span id="more"></span><br>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
-<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
-<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
-<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
-<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
-<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
       </tags>
   </entry>
   <entry>
@@ -987,6 +987,40 @@
       </tags>
   </entry>
   <entry>
+    <title>枚举</title>
+    <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
+    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>某巨人逆向分析</title>
+    <url>/2021/09/15/%E6%9F%90%E5%B7%A8%E4%BA%BA%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p>至猫兄：<br>&ensp;&ensp;近日，吾闻兄苦于学习之路，穷于破解之道，以至于茶余饭后、黄粱梦中，皆困扰于一软件，名唤巨人。见兄一心证道而不能思粥粟，不能睡高枕，吾胸中之痛若大疾也，特出此破解拙见，望抛砖引玉，对兄有所启发<br><span id="more"></span></p>
+<h4 id="①去除签名校验"><a href="#①去除签名校验" class="headerlink" title="①去除签名校验"></a>①去除签名校验</h4><p>&ensp;&ensp;一键去除，不再赘述<br><img src="../某巨人逆向分析/image1.png" /></p>
+<h4 id="②关键词查找"><a href="#②关键词查找" class="headerlink" title="②关键词查找"></a>②关键词查找</h4><p>打开dex搜索不再赘述，好多个版本了，巨人的关键词一直是“已经过期”<br><img src="../某巨人逆向分析/image2.png" /></p>
+<h4 id="③转成java，开始分析"><a href="#③转成java，开始分析" class="headerlink" title="③转成java，开始分析"></a>③转成java，开始分析</h4><p>1.由分析得，只要RouterUtil.c()返回true，会员破解成功<br><img src="../某巨人逆向分析/image3.png" /></p>
+<p>2.跳转过去看看<br><img src="../某巨人逆向分析/image4.png" /></p>
+<p>3.分析RouterUtil.c()<br><img src="../某巨人逆向分析/image5.png" /></p>
+<p>4.跳转a()方法<br><img src="../某巨人逆向分析/image6.png" /></p>
+<p>5.分析RouterUtil.a()<br><img src="../某巨人逆向分析/image7.png" /></p>
+<p>6.修改RouterUtil.a()<br><img src="../某巨人逆向分析/image8.png" /></p>
+<p>7.最终<br><img src="../某巨人逆向分析/image9.png" /></p>
+]]></content>
+      <categories>
+        <category>技术教程</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>Android逆向</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>程序开发常用的142个单词</title>
     <url>/2021/09/08/%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E7%9A%84142%E4%B8%AA%E5%8D%95%E8%AF%8D/</url>
     <content><![CDATA[<p>A. 6<br>abstract 抽象的<br>abstract class 抽象类<br>account 账户<br>address 地址<br>annotation 注解、评注<br>array 数组</p>
@@ -1023,37 +1057,16 @@
       </tags>
   </entry>
   <entry>
-    <title>枚举</title>
-    <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
-    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    <title>面向对象之toString和equals</title>
+    <url>/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString%E5%92%8Cequals/</url>
+    <content><![CDATA[<h4 id="重写toString"><a href="#重写toString" class="headerlink" title="重写toString"></a>重写toString</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        测试类 toStringTest = <span class="keyword">new</span> 测试类(<span class="string">&quot;测试&quot;</span>);</span><br><span class="line">        System.out.println(toStringTest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> 测试类</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String str;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;str：&quot;</span> + <span class="keyword">this</span>.str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> 测试类(String str)&#123;</span><br><span class="line">        <span class="keyword">this</span>.str = str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="重写equals"><a href="#重写equals" class="headerlink" title="重写equals"></a>重写equals</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        铠甲勇士 铠甲<span class="number">1</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;炎龙铠甲&quot;</span>,<span class="number">1</span>);</span><br><span class="line"><span class="comment">//        铠甲勇士 铠甲2 = new 铠甲勇士(&quot;炎龙铠甲&quot;,1);</span></span><br><span class="line">        铠甲勇士 铠甲<span class="number">2</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;风影铠甲&quot;</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(铠甲<span class="number">1.</span>equals(铠甲<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 铠甲勇士</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//重写equals</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        this即为Equals中&quot;.&quot;之前的对象，obj即为传入的对象类型参数，判断两个对象的引用地址是否为一致</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == obj)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * equals()中的实参在传入后其编译类型就变成了形参中Object类型（实际类型”铠甲勇士“，详见”多态“）</span></span><br><span class="line"><span class="comment">         * Object属于”铠甲勇士“类的父类，在Object类中没有name和id两个变量，因为要调用obj的两个变量，所以强制转换</span></span><br><span class="line"><span class="comment">         * 首先判断obj的实际类型是否为”铠甲勇士“，如果不是则返回false</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"><span class="comment">//        if (!(obj instanceof 铠甲勇士))&#123;</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        判断TestObj对象是否不为空，并且为当前”铠甲勇士“类型对象</span></span><br><span class="line">        <span class="keyword">if</span> (obj != <span class="keyword">null</span> &amp;&amp; obj.getClass() == 铠甲勇士.class)&#123;</span><br><span class="line"><span class="comment">//            强转</span></span><br><span class="line">            铠甲勇士 TestObj = (铠甲勇士)obj;</span><br><span class="line"><span class="comment">//            判断name，判断id</span></span><br><span class="line">            <span class="keyword">if</span> (TestObj.name.equals(<span class="keyword">this</span>.name) &amp;&amp; TestObj.id == <span class="keyword">this</span>.id)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//    构造器</span></span><br><span class="line">    <span class="keyword">public</span> 铠甲勇士(String name,<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>java笔记</category>
       </categories>
       <tags>
         <tag>学习笔记</tag>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>致憨猫兄-某巨人逆向分析</title>
-    <url>/2021/09/15/%E8%87%B4%E6%86%A8%E7%8C%AB%E5%85%84-%E6%9F%90%E5%B7%A8%E4%BA%BA%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p>至猫兄：<br>&ensp;&ensp;近日，吾闻兄苦于学习之路，穷于破解之道，以至于茶余饭后、黄粱梦中，皆困扰于一软件，名唤巨人。见兄一心证道而不能思粥粟，不能睡高枕，吾胸中之痛若大疾也，特出此破解拙见，望抛砖引玉，对兄有所启发<br><span id="more"></span></p>
-<h4 id="①去除签名校验"><a href="#①去除签名校验" class="headerlink" title="①去除签名校验"></a>①去除签名校验</h4><p>&ensp;&ensp;一键去除，不再赘述<br><img src="../致憨猫兄-某巨人逆向分析/image1.png" /></p>
-<h4 id="②关键词查找"><a href="#②关键词查找" class="headerlink" title="②关键词查找"></a>②关键词查找</h4><p>打开dex搜索不再赘述，好多个版本了，巨人的关键词一直是“已经过期”<br><img src="../致憨猫兄-某巨人逆向分析/image2.png" /></p>
-<h4 id="③转成java，开始分析"><a href="#③转成java，开始分析" class="headerlink" title="③转成java，开始分析"></a>③转成java，开始分析</h4><p>1.由分析得，只要RouterUtil.c()返回true，会员破解成功<br><img src="../致憨猫兄-某巨人逆向分析/image3.png" /></p>
-<p>2.跳转过去看看<br><img src="../致憨猫兄-某巨人逆向分析/image4.png" /></p>
-<p>3.分析RouterUtil.c()<br><img src="../致憨猫兄-某巨人逆向分析/image5.png" /></p>
-<p>4.跳转a()方法<br><img src="../致憨猫兄-某巨人逆向分析/image6.png" /></p>
-<p>5.分析RouterUtil.a()<br><img src="../致憨猫兄-某巨人逆向分析/image7.png" /></p>
-<p>6.修改RouterUtil.a()<br><img src="../致憨猫兄-某巨人逆向分析/image8.png" /></p>
-<p>7.最终<br><img src="../致憨猫兄-某巨人逆向分析/image9.png" /></p>
-]]></content>
-      <categories>
-        <category>技术教程</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>Android逆向</tag>
       </tags>
   </entry>
   <entry>
@@ -1082,19 +1095,6 @@
       </categories>
       <tags>
         <tag>小教程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面向对象之toString和equals</title>
-    <url>/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString%E5%92%8Cequals/</url>
-    <content><![CDATA[<h4 id="重写toString"><a href="#重写toString" class="headerlink" title="重写toString"></a>重写toString</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        测试类 toStringTest = <span class="keyword">new</span> 测试类(<span class="string">&quot;测试&quot;</span>);</span><br><span class="line">        System.out.println(toStringTest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> 测试类</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String str;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;str：&quot;</span> + <span class="keyword">this</span>.str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> 测试类(String str)&#123;</span><br><span class="line">        <span class="keyword">this</span>.str = str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="重写equals"><a href="#重写equals" class="headerlink" title="重写equals"></a>重写equals</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        铠甲勇士 铠甲<span class="number">1</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;炎龙铠甲&quot;</span>,<span class="number">1</span>);</span><br><span class="line"><span class="comment">//        铠甲勇士 铠甲2 = new 铠甲勇士(&quot;炎龙铠甲&quot;,1);</span></span><br><span class="line">        铠甲勇士 铠甲<span class="number">2</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;风影铠甲&quot;</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(铠甲<span class="number">1.</span>equals(铠甲<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 铠甲勇士</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//重写equals</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        this即为Equals中&quot;.&quot;之前的对象，obj即为传入的对象类型参数，判断两个对象的引用地址是否为一致</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == obj)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * equals()中的实参在传入后其编译类型就变成了形参中Object类型（实际类型”铠甲勇士“，详见”多态“）</span></span><br><span class="line"><span class="comment">         * Object属于”铠甲勇士“类的父类，在Object类中没有name和id两个变量，因为要调用obj的两个变量，所以强制转换</span></span><br><span class="line"><span class="comment">         * 首先判断obj的实际类型是否为”铠甲勇士“，如果不是则返回false</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"><span class="comment">//        if (!(obj instanceof 铠甲勇士))&#123;</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        判断TestObj对象是否不为空，并且为当前”铠甲勇士“类型对象</span></span><br><span class="line">        <span class="keyword">if</span> (obj != <span class="keyword">null</span> &amp;&amp; obj.getClass() == 铠甲勇士.class)&#123;</span><br><span class="line"><span class="comment">//            强转</span></span><br><span class="line">            铠甲勇士 TestObj = (铠甲勇士)obj;</span><br><span class="line"><span class="comment">//            判断name，判断id</span></span><br><span class="line">            <span class="keyword">if</span> (TestObj.name.equals(<span class="keyword">this</span>.name) &amp;&amp; TestObj.id == <span class="keyword">this</span>.id)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//    构造器</span></span><br><span class="line">    <span class="keyword">public</span> 铠甲勇士(String name,<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>

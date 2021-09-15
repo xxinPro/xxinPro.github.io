@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.xxin.xyz/2021/09/15/%E8%87%B4%E6%86%A8%E7%8C%AB%E5%85%84-%E6%9F%90%E5%B7%A8%E4%BA%BA%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/</loc>
+    <loc>https://blog.xxin.xyz/2021/09/15/%E6%9F%90%E5%B7%A8%E4%BA%BA%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/</loc>
     
     <lastmod>2021-09-15</lastmod>
     
@@ -424,20 +424,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/%E5%A5%BD%E5%BF%83%E6%83%85/</loc>
-    <lastmod>2021-09-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xxin.xyz/tags/%E7%AB%99%E7%82%B9%E6%97%A5%E5%BF%97/</loc>
-    <lastmod>2021-09-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xxin.xyz/tags/%E7%BD%91%E6%8A%91%E4%BA%91/</loc>
     <lastmod>2021-09-15</lastmod>
     <changefreq>daily</changefreq>
@@ -446,6 +432,20 @@
   
   <url>
     <loc>https://blog.xxin.xyz/tags/%E6%AF%92%E9%B8%A1%E6%B1%A4/</loc>
+    <lastmod>2021-09-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xxin.xyz/tags/%E5%A5%BD%E5%BF%83%E6%83%85/</loc>
+    <lastmod>2021-09-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xxin.xyz/tags/%E7%AB%99%E7%82%B9%E6%97%A5%E5%BF%97/</loc>
     <lastmod>2021-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -475,14 +475,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/categories/%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%BA%8B/</loc>
+    <loc>https://blog.xxin.xyz/categories/java%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/categories/java%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://blog.xxin.xyz/categories/%E9%9A%8F%E6%89%8B%E8%AE%B0%E4%BA%8B/</loc>
     <lastmod>2021-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -503,14 +503,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/categories/%E7%AB%99%E7%82%B9%E6%97%A5%E5%BF%97/</loc>
+    <loc>https://blog.xxin.xyz/categories/%E6%88%91%E7%9A%84%E6%96%87%E7%AB%A0/</loc>
     <lastmod>2021-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/categories/%E6%88%91%E7%9A%84%E6%96%87%E7%AB%A0/</loc>
+    <loc>https://blog.xxin.xyz/categories/%E7%AB%99%E7%82%B9%E6%97%A5%E5%BF%97/</loc>
     <lastmod>2021-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
