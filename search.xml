@@ -119,8 +119,18 @@
 <p>2、修改MainActivity布局<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center_horizontal&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">&quot;horizontal&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        添加BlankFragment--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginRight</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">&quot;@+id/btn1&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;blank&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        添加itemFragment--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginLeft</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">&quot;@+id/btn2&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;item&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">FrameLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:background</span>=<span class="string">&quot;#97ffda6a&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/frameLayout&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>3、创建至MainActivity<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//        获取v4包的FragmentManager管理类</span></span><br><span class="line">        FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"><span class="comment">//        获得FragmentManager管理类</span></span><br><span class="line">        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();</span><br><span class="line"><span class="comment">//        将传入的fragment对象替换至指定id的控件内</span></span><br><span class="line">        fragmentTransaction.replace(R.id.frameLayout,fragment);</span><br><span class="line"><span class="comment">//        执行</span></span><br><span class="line">        fragmentTransaction.commit();</span><br></pre></td></tr></table></figure></p>
 <p>4、fragment入栈<br>&ensp;&ensp;在FragmentManager.transaction.addToBackStack();向栈中添加Fragment,从而实现添加Fragment后,可以按返回键一个一个的返回Fragment<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//入栈</span></span><br><span class="line">fragmentTransaction.addToBackStack(<span class="keyword">null</span>);</span><br></pre></td></tr></table></figure></p>
-<p>5、完整代码<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> androidx.fragment.app.Fragment;</span><br><span class="line"><span class="keyword">import</span> androidx.fragment.app.FragmentManager;</span><br><span class="line"><span class="keyword">import</span> androidx.fragment.app.FragmentTransaction;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        findViewById(R.id.btn1).setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        findViewById(R.id.btn2).setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (v.getId())&#123;</span><br><span class="line">            <span class="keyword">case</span> R.id.btn1:</span><br><span class="line">                replaceFragment(<span class="keyword">new</span> BlankFragment());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> R.id.btn2:</span><br><span class="line">                replaceFragment(<span class="keyword">new</span> ItemFragment());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    创建fragment</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">replaceFragment</span><span class="params">(Fragment fragment)</span></span>&#123;</span><br><span class="line"><span class="comment">//        获取v4包的FragmentManager管理类</span></span><br><span class="line">        FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"><span class="comment">//        获得FragmentManager管理类</span></span><br><span class="line">        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();</span><br><span class="line"><span class="comment">//        将传入的fragment对象替换至指定id的控件内</span></span><br><span class="line">        fragmentTransaction.replace(R.id.frameLayout,fragment);</span><br><span class="line"><span class="comment">//        入栈</span></span><br><span class="line">        fragmentTransaction.addToBackStack(<span class="keyword">null</span>);</span><br><span class="line"><span class="comment">//        执行</span></span><br><span class="line">        fragmentTransaction.commit();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>5、完整代码<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> androidx.fragment.app.Fragment;</span><br><span class="line"><span class="keyword">import</span> androidx.fragment.app.FragmentManager;</span><br><span class="line"><span class="keyword">import</span> androidx.fragment.app.FragmentTransaction;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        findViewById(R.id.btn1).setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        findViewById(R.id.btn2).setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (v.getId())&#123;</span><br><span class="line">            <span class="keyword">case</span> R.id.btn1:</span><br><span class="line">                replaceFragment(<span class="keyword">new</span> BlankFragment());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> R.id.btn2:</span><br><span class="line">                replaceFragment(<span class="keyword">new</span> ItemFragment());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    创建fragment</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">replaceFragment</span><span class="params">(Fragment fragment)</span></span>&#123;</span><br><span class="line"><span class="comment">//        获取v4包的FragmentManager管理类</span></span><br><span class="line">        FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"><span class="comment">//        获得FragmentTransaction管理类</span></span><br><span class="line">        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();</span><br><span class="line"><span class="comment">//        将传入的fragment对象替换至指定id的控件内</span></span><br><span class="line">        fragmentTransaction.replace(R.id.frameLayout,fragment);</span><br><span class="line"><span class="comment">//        入栈</span></span><br><span class="line">        fragmentTransaction.addToBackStack(<span class="keyword">null</span>);</span><br><span class="line"><span class="comment">//        执行</span></span><br><span class="line">        fragmentTransaction.commit();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <p>Fragment入栈后在回退时可以一个一个的返回<br><img src="../Android-Fragment/fragment4.gif" height="40%" width="40%" /></p>
+<h3 id="fragment的数据传递"><a href="#fragment的数据传递" class="headerlink" title="fragment的数据传递"></a>fragment的数据传递</h3><p>fragment数据传递分三种模式，即</p>
+<ol>
+<li>Activity向Fragment传递数据(Activity发送，Fragment接收)</li>
+<li>Fragment向Activity传递数据(Fragment发送，Activity接收)</li>
+<li>Fragment向Fragment传递数据</li>
+</ol>
+<h4 id="①原生Bundle传递数据"><a href="#①原生Bundle传递数据" class="headerlink" title="①原生Bundle传递数据"></a>①原生Bundle传递数据</h4><p>&ensp;&ensp;Bundle传递的数据，是以key-value(键值对)的形式存在的；传递的数据可以是boolean、byte、int、long、float、double、string等基本类型或它们对应的数组，也可以是对象或对象数组；当Bundle传递的是对象或对象数组时，必须实现Serializable 或Parcelable接口</p>
+<h5 id="传递基本类型"><a href="#传递基本类型" class="headerlink" title="传递基本类型"></a>传递基本类型</h5><p><img src="../Android-Fragment/fragment5.jpg" height="50%" width="50%" /></p>
+<p>在MainActivity中发送<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建数据传递对象</span></span><br><span class="line">  Bundle bundle = <span class="keyword">new</span> Bundle();</span><br><span class="line"><span class="comment">//  写入键值对</span></span><br><span class="line">  bundle.putString(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;测试&quot;</span>);</span><br><span class="line"><span class="comment">//  创建Fragment对象</span></span><br><span class="line">  BlankFragment blankFragment = <span class="keyword">new</span> BlankFragment();</span><br><span class="line"><span class="comment">//  设置需要传递至Fragment的参数</span></span><br><span class="line">  blankFragment.setArguments(bundle);</span><br><span class="line"><span class="comment">//  获取v4包中的fragment管理类</span></span><br><span class="line">  FragmentManager fragmentManager = getSupportFragmentManager();</span><br><span class="line"><span class="comment">//  获得FragmentTransaction管理类</span></span><br><span class="line">  FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();</span><br><span class="line"><span class="comment">//  将创建的fragment替换至指定的控件</span></span><br><span class="line">  fragmentTransaction.replace(R.id.frameLayout,blankFragment);</span><br><span class="line"><span class="comment">//  开始执行</span></span><br><span class="line">  fragmentTransaction.commit();</span><br></pre></td></tr></table></figure></p>
+<p>在Fragment中接收<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建Bundle对象</span></span><br><span class="line">  Bundle bundle = <span class="keyword">this</span>.getArguments();</span><br><span class="line"><span class="comment">//  获取对应key的键值对</span></span><br><span class="line">  String str = bundle.getString(<span class="string">&quot;message&quot;</span>);</span><br><span class="line"><span class="comment">//  输出</span></span><br><span class="line">  Log.e(<span class="string">&quot;xin&quot;</span>,str);</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -579,6 +589,19 @@
       </tags>
   </entry>
   <entry>
+    <title>this和super</title>
+    <url>/2021/07/20/this%E5%92%8Csuper/</url>
+    <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>next主题优化</title>
     <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<p><center>hexo博客next主题主要优化修改方案</center></p>
@@ -619,19 +642,6 @@
       </tags>
   </entry>
   <entry>
-    <title>this和super</title>
-    <url>/2021/07/20/this%E5%92%8Csuper/</url>
-    <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
-]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>what is the &#39;inflate()&#39;?</title>
     <url>/2021/09/13/what-is-the-inflate/</url>
     <content><![CDATA[]]></content>
@@ -641,25 +651,6 @@
       <tags>
         <tag>Android</tag>
         <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>专升本试题集</title>
-    <url>/2021/08/07/%E4%B8%93%E5%8D%87%E6%9C%AC%E8%AF%95%E9%A2%98%E9%9B%86/</url>
-    <content><![CDATA[<h3 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h3><ol>
-<li><p><a href="https://blog.xxin.xyz/files/office/高中数学函数试题及答案.pdf">高中数学函数试题及答案.pdf</a></p>
-</li>
-<li><p><a href="https://blog.xxin.xyz/files/office/高中数学数列的极限试题及答案.pdf">高中数学数列的极限试题及答案.pdf</a></p>
-</li>
-</ol>
-<h3 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h3>]]></content>
-      <categories>
-        <category>专升本学习</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>重点难点</tag>
-        <tag>文件文档</tag>
       </tags>
   </entry>
   <entry>
@@ -703,6 +694,25 @@
         <tag>学习笔记</tag>
         <tag>重点难点</tag>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>专升本试题集</title>
+    <url>/2021/08/07/%E4%B8%93%E5%8D%87%E6%9C%AC%E8%AF%95%E9%A2%98%E9%9B%86/</url>
+    <content><![CDATA[<h3 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h3><ol>
+<li><p><a href="https://blog.xxin.xyz/files/office/高中数学函数试题及答案.pdf">高中数学函数试题及答案.pdf</a></p>
+</li>
+<li><p><a href="https://blog.xxin.xyz/files/office/高中数学数列的极限试题及答案.pdf">高中数学数列的极限试题及答案.pdf</a></p>
+</li>
+</ol>
+<h3 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h3>]]></content>
+      <categories>
+        <category>专升本学习</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>重点难点</tag>
+        <tag>文件文档</tag>
       </tags>
   </entry>
   <entry>

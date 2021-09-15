@@ -1810,16 +1810,6 @@ pre code {
   width: 100%;
   z-index: 1500;
 }
-.reading-progress-bar {
-  --progress: 0;
-  background: #000000;
-  height: 3px;
-  position: fixed;
-  z-index: 1500;
-  width: var(--progress);
-  left: 0;
-  top: 0;
-}
 .rtl.post-body p,
 .rtl.post-body a,
 .rtl.post-body h1,
