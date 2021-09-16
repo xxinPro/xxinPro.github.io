@@ -598,19 +598,6 @@
       </tags>
   </entry>
   <entry>
-    <title>this和super</title>
-    <url>/2021/07/20/this%E5%92%8Csuper/</url>
-    <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
-]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>next主题优化</title>
     <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<p><center>hexo博客next主题主要优化修改方案</center></p>
@@ -648,6 +635,19 @@
         <tag>小教程</tag>
         <tag>hexo博客</tag>
         <tag>next主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>this和super</title>
+    <url>/2021/07/20/this%E5%92%8Csuper/</url>
+    <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -767,6 +767,22 @@
       </tags>
   </entry>
   <entry>
+    <title>单例模式</title>
+    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>调用时</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在服务器中搭建hexo博客</title>
     <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p><center>个人服务器搭建hexo(宝塔)</center><br><br></p>
@@ -794,22 +810,6 @@
       <tags>
         <tag>小教程</tag>
         <tag>hexo博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>单例模式</title>
-    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>调用时</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -890,6 +890,34 @@
       </tags>
   </entry>
   <entry>
+    <title>抽象类abstract</title>
+    <url>/2021/07/22/%E6%8A%BD%E8%B1%A1%E7%B1%BBabstract/</url>
+    <content><![CDATA[<ol>
+<li>抽象类与抽象方法必须用abstract修饰(与final互斥)，抽象方法不可有方法体</li>
+<li>抽象类不可被实例化，不能用于创建对象</li>
+<li>抽象类包括成员变量、方法(普通方法和抽象方法)、构造器、初始化块、内部类，主要用于派生子类</li>
+<li>抽象类的子类要么重写父类的全部抽象方法，要么只能定义为抽象类</li>
+</ol>
+<span id="more"></span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">abstractTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        用抽象类创建对象时，只能用其子类向上转型</span></span><br><span class="line">        铠甲勇士<span class="number">2</span> 炎龙技能类型 = <span class="keyword">new</span> 炎龙铠甲<span class="number">2</span>();</span><br><span class="line">        铠甲勇士<span class="number">2</span> 风鹰技能类型 = <span class="keyword">new</span> 风影铠甲<span class="number">2</span>();</span><br><span class="line">        炎龙技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">        风鹰技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>abstract抽象类最主要的功能：派生子类，abstract与final互斥</li>
+<li>相对于普通类，abstract类多了abstract方法，抽象类不可实例化，即不能被分配内存、不能创建对象</li>
+<li>static修饰的方法属于类本身，必须被分配内存，static和abstract不可同时修饰一个方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>();</span><br><span class="line"><span class="comment">//    public abstract static void main()&#123;</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;测试&quot;);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 非抽象()&#123;</span><br><span class="line"><span class="comment">//        非抽象方法，不必须重写</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抽象类的子类，要么重写父类的全部抽象方法，要么也是抽象类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 炎龙铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;封魔斩&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 风影铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;穿风刺&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 帝皇铠甲 <span class="keyword">extends</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>手机调试代码</title>
     <url>/2021/09/09/%E6%89%8B%E6%9C%BA%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/</url>
     <content><![CDATA[<h4 id="Ⅰ-魅族"><a href="#Ⅰ-魅族" class="headerlink" title="Ⅰ 魅族"></a>Ⅰ 魅族</h4><p>*#*#4636#*#* – 显示手机信息、电池信息、电池记录、使用统计数据、WiFi 信息</p>
@@ -955,34 +983,6 @@
       <tags>
         <tag>小教程</tag>
         <tag>文件文档</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>抽象类abstract</title>
-    <url>/2021/07/22/%E6%8A%BD%E8%B1%A1%E7%B1%BBabstract/</url>
-    <content><![CDATA[<ol>
-<li>抽象类与抽象方法必须用abstract修饰(与final互斥)，抽象方法不可有方法体</li>
-<li>抽象类不可被实例化，不能用于创建对象</li>
-<li>抽象类包括成员变量、方法(普通方法和抽象方法)、构造器、初始化块、内部类，主要用于派生子类</li>
-<li>抽象类的子类要么重写父类的全部抽象方法，要么只能定义为抽象类</li>
-</ol>
-<span id="more"></span>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">abstractTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        用抽象类创建对象时，只能用其子类向上转型</span></span><br><span class="line">        铠甲勇士<span class="number">2</span> 炎龙技能类型 = <span class="keyword">new</span> 炎龙铠甲<span class="number">2</span>();</span><br><span class="line">        铠甲勇士<span class="number">2</span> 风鹰技能类型 = <span class="keyword">new</span> 风影铠甲<span class="number">2</span>();</span><br><span class="line">        炎龙技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">        风鹰技能类型.铠甲技能<span class="number">2</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>abstract抽象类最主要的功能：派生子类，abstract与final互斥</li>
-<li>相对于普通类，abstract类多了abstract方法，抽象类不可实例化，即不能被分配内存、不能创建对象</li>
-<li>static修饰的方法属于类本身，必须被分配内存，static和abstract不可同时修饰一个方法</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>();</span><br><span class="line"><span class="comment">//    public abstract static void main()&#123;</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;测试&quot;);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 非抽象()&#123;</span><br><span class="line"><span class="comment">//        非抽象方法，不必须重写</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>抽象类的子类，要么重写父类的全部抽象方法，要么也是抽象类</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 炎龙铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;封魔斩&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 风影铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;穿风刺&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 帝皇铠甲 <span class="keyword">extends</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>
