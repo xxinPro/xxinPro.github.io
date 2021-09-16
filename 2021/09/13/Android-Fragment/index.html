@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://blog.xxin.xyz/2021/09/13/Android-Fragment/fragment5.jpg">
 <meta property="og:image" content="https://blog.xxin.xyz/2021/09/13/Android-Fragment/fragment7.gif">
 <meta property="article:published_time" content="2021-09-13T11:26:20.000Z">
-<meta property="article:modified_time" content="2021-09-16T05:04:46.342Z">
+<meta property="article:modified_time" content="2021-09-16T05:11:00.249Z">
 <meta property="article:author" content="xxin">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="学习笔记">
@@ -311,6 +311,7 @@
 </ol>
 <p>&ensp;&ensp;<label style="color:red" >注意：</label><u>在3.0版本之前使用fragment需借助V4包的getSupportFragmentManager()方法来间接获取FragmentManager()对象，3.0版本之后，可以通过Fragment的api直接使用getFragmentManager()方法获取FragmentManager()对象</u></p>
 <p>&ensp;&ensp;<label style="color:red" >问：</label>为什么我的MainActivity布局中使用v4的fragment，却继承AppCompatActivity而不是FragmentActivity？<br>&ensp;&ensp;<label style="color:red" >答：</label>因为AppCompatActivity继承FragmentActivity，这样的话，MainActivity -继承-&gt; AppCompatActivity -继承-&gt; FragmentActivity</p>
+<p>&ensp;&ensp;<label style="color:red" >问：</label>Android studio创建MainActivity自动extends AppCompatActivity，为什么不extends Activity<br>&ensp;&ensp;<label style="color:red" >答：</label>AppCompatActivity继承v4包的FragmentAvtivity，并且加入了很多新特性，可以更好的兼容旧系统</p>
 <h4 id="②FragmentManager-Fragment的管理"><a href="#②FragmentManager-Fragment的管理" class="headerlink" title="②FragmentManager(Fragment的管理)"></a>②FragmentManager(Fragment的管理)</h4><ol>
 <li>顾名思义FragmentManager是Fragment的管理类</li>
 <li>getSupportFragmentManager()获取所在fragment 的父容器的管理器(getFragmentManager()同理)</li>
