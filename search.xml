@@ -293,23 +293,26 @@
 <p>执行如下代码，会闪退并报错，因为安卓中完成网络请求必须请求一个子线程<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  http请求的建造器</span></span><br><span class="line">  Request.Builder builder = <span class="keyword">new</span> Request.Builder();</span><br><span class="line"><span class="comment">//  通过建造器的url方法设置请求地址，并通过build方法返回一个Request请求对象</span></span><br><span class="line">  Request request = builder.url(<span class="string">&quot;https://www.httpbin.org/get&quot;</span>).build();</span><br><span class="line"><span class="comment">//  把request请求对象交给请求工具okHttpClient</span></span><br><span class="line">  Call call = okHttpClient.newCall(request);</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//      同步请求就调用call的execute方法，execute返回一个Response对象</span></span><br><span class="line"><span class="comment">//      完成请求后得到的响应封装在Response对象中</span></span><br><span class="line">      Response response = call.execute();</span><br><span class="line"><span class="comment">//      得到response的请求体，并得到其中的字符串数据</span></span><br><span class="line">      String str = response.body().string();</span><br><span class="line"><span class="comment">//      设置显示</span></span><br><span class="line">      code.setText(str);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
 <p>创建一个子线程<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建一个新线程</span></span><br><span class="line">  <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          <span class="keyword">super</span>.run();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;.start();</span><br></pre></td></tr></table></figure></p>
 <p>在线程中完成get请求<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建一个新线程</span></span><br><span class="line">  <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//      继承run方法，填入线程中执行的事件</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//          http请求的建造器</span></span><br><span class="line">          Request.Builder builder = <span class="keyword">new</span> Request.Builder();</span><br><span class="line"><span class="comment">//          通过建造器的url方法设置请求地址，并通过build方法返回一个Request请求对象</span></span><br><span class="line">          Request request = builder.url(<span class="string">&quot;https://www.httpbin.org/get&quot;</span>).build();</span><br><span class="line"><span class="comment">//          把request请求对象交给请求工具okHttpClient</span></span><br><span class="line">          Call call = okHttpClient.newCall(request);</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//              同步请求就调用call的execute方法，execute返回一个Response对象</span></span><br><span class="line"><span class="comment">//              完成请求后得到的响应封装在Response对象中</span></span><br><span class="line">              Response response = call.execute();</span><br><span class="line"><span class="comment">//              得到response的请求体，并得到其中的字符串数据</span></span><br><span class="line">              String str = response.body().string();</span><br><span class="line"><span class="comment">//              子线程中更新UI</span></span><br><span class="line">              runOnUiThread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                  <span class="meta">@Override</span></span><br><span class="line">                  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//                      设置请求的数据显示在text</span></span><br><span class="line">                      code.setText(str);</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;);</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;.start();</span><br></pre></td></tr></table></figure></p>
-<p>post请求</p>
-<h3 id="异步请求"><a href="#异步请求" class="headerlink" title="异步请求"></a>异步请求</h3><p>get请求</p>
-<p>post请求</p>
+<h4 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h4><p>同步post请求与同步get请求几乎一样，多了post数据而已<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建FormBody表单提交对象</span></span><br><span class="line">  FormBody formBody = <span class="keyword">new</span> FormBody.Builder().add(<span class="string">&quot;a&quot;</span>,<span class="string">&quot;1&quot;</span>).add(<span class="string">&quot;b&quot;</span>,<span class="string">&quot;2&quot;</span>).build();</span><br><span class="line"><span class="comment">//  创建post方式的请求对象,并把表单对象提交</span></span><br><span class="line">  Request request1 = <span class="keyword">new</span> Request.Builder().url(<span class="string">&quot;https://www.lxx6.com&quot;</span>).post(formBody).build();</span><br></pre></td></tr></table></figure></p>
+<p>完整代码<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//          创建FormBody表单提交对象</span></span><br><span class="line">          FormBody formBody = <span class="keyword">new</span> FormBody.Builder().add(<span class="string">&quot;a&quot;</span>,<span class="string">&quot;1&quot;</span>).add(<span class="string">&quot;b&quot;</span>,<span class="string">&quot;2&quot;</span>).build();</span><br><span class="line"><span class="comment">//          创建post方式的请求对象,并把表单对象提交</span></span><br><span class="line">          Request request1 = <span class="keyword">new</span> Request.Builder().url(<span class="string">&quot;https://www.lxx6.com&quot;</span>).post(formBody).build();</span><br><span class="line"><span class="comment">//          其余同get请求</span></span><br><span class="line">          Call call1 = okHttpClient.newCall(request1);</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              Response response = call1.execute();</span><br><span class="line">              String str = response.body().string();</span><br><span class="line">              runOnUiThread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                  <span class="meta">@Override</span></span><br><span class="line">                  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                      code.setText(str);</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;);</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;.start();</span><br></pre></td></tr></table></figure></p>
+<h3 id="异步请求"><a href="#异步请求" class="headerlink" title="异步请求"></a>异步请求</h3><h4 id="get请求-1"><a href="#get请求-1" class="headerlink" title="get请求"></a>get请求</h4><p>创建一个OkHttpClient对象作为请求器<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">OkHttpClient okHttpClient = <span class="keyword">new</span> OkHttpClient();</span><br></pre></td></tr></table></figure></p>
+<p>创建请求对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建请求对象</span></span><br><span class="line">  Request request = <span class="keyword">new</span> Request.Builder().url(<span class="string">&quot;https://blog.xxin.xyz&quot;</span>).build();</span><br><span class="line"><span class="comment">//  把请求对象提交给请求器发送请求</span></span><br><span class="line">  Call call = okHttpClient.newCall(request);</span><br></pre></td></tr></table></figure></p>
+<p>这里call调用enqueue()方法,不再是execute()<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  这里call调用enqueue()方法,不再是execute()</span></span><br><span class="line"><span class="comment">//  enqueue方法需要传入一个CallBack回调函数</span></span><br><span class="line">  call.enqueue(<span class="keyword">new</span> Callback() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//      当请求失败时调用onFailure</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(<span class="meta">@NotNull</span> Call call, <span class="meta">@NotNull</span> IOException e)</span> </span>&#123;</span><br><span class="line"><span class="comment">//          创建一个ui修改线程</span></span><br><span class="line">          runOnUiThread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">              <span class="meta">@Override</span></span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                  code.setText(<span class="string">&quot;请求失败&quot;</span>);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//      当请求结束时调用onResponse,请求结束并不代表请求成功,完成请求后得到的响应封装在Response对象中</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(<span class="meta">@NotNull</span> Call call, <span class="meta">@NotNull</span> Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"><span class="comment">//          调用Response类的isSuccessful()方法判断是否请求成功</span></span><br><span class="line"><span class="comment">//          打开isSuccessful()源码可知当请求码在200-299之间时请求成功</span></span><br><span class="line">          <span class="keyword">if</span> (response.isSuccessful())&#123;</span><br><span class="line"><span class="comment">//              得到response的请求体，并得到其中的字符串数据</span></span><br><span class="line">              String str = response.body().string();</span><br><span class="line"><span class="comment">//              创建一个ui修改线程</span></span><br><span class="line">              runOnUiThread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                  <span class="meta">@Override</span></span><br><span class="line">                  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                      code.setText(str);</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
+<p><lable style="color:red;font-weight:bold;cursor:auto">注意：</lable> </p>
+<ol>
+<li>异步请求不会阻塞后续代码的执行。</li>
+<li>异步请求不需要创建新线程，创建enqueue时已经创建了新的线程</li>
+</ol>
+<h4 id="post请求-1"><a href="#post请求-1" class="headerlink" title="post请求"></a>post请求</h4><p>异步post与异步get几乎相同，唯多了post数据而已<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建FormBody表单提交对象</span></span><br><span class="line">  FormBody formBody = <span class="keyword">new</span> FormBody.Builder().add(<span class="string">&quot;a&quot;</span>,<span class="string">&quot;1&quot;</span>).add(<span class="string">&quot;b&quot;</span>,<span class="string">&quot;2&quot;</span>).build();</span><br><span class="line"><span class="comment">//  创建post方式的请求对象,并把表单对象提交</span></span><br><span class="line">  Request request1 = <span class="keyword">new</span> Request.Builder().url(<span class="string">&quot;https://www.amyxiaoxin.top&quot;</span>).post(formBody).build();</span><br></pre></td></tr></table></figure></p>
+<p>这里call调用enqueue()方法<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  Call call1 = okHttpClient.newCall(request1);</span><br><span class="line">  call1.enqueue(<span class="keyword">new</span> Callback() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//      请求失败时</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(<span class="meta">@NotNull</span> Call call, <span class="meta">@NotNull</span> IOException e)</span> </span>&#123;</span><br><span class="line">          runOnUiThread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">              <span class="meta">@Override</span></span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                  code.setText(<span class="string">&quot;请求失败&quot;</span>);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//      请求结束时</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(<span class="meta">@NotNull</span> Call call, <span class="meta">@NotNull</span> Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (response.isSuccessful())&#123;</span><br><span class="line">              String str = response.body().string();</span><br><span class="line">              runOnUiThread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                  <span class="meta">@Override</span></span><br><span class="line">                  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                      code.setText(str);</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="post请求的数据格式"><a href="#post请求的数据格式" class="headerlink" title="post请求的数据格式"></a>post请求的数据格式</h3><ol>
+<li>Content-Type: application/x-www-form-urlencoded;数据被编码为“名称/键值对”，默认类型</li>
+<li>Content-Type: multipart/from-date;数据编码为一条消息，一般用于文件上传</li>
+<li>Content-Type: application/octet-stream;提交二进制数据，如果用于文件上传，只能上传一个文件</li>
+<li>Content-Type: application/json;提交json数据</li>
+</ol>
+<p>&ensp;&ensp;<a href="../../24/Android-HTTP-content-type-对照表/">常用数据编码方式</a></p>
 <h3 id="拓展：try-catch异常抛出与捕获"><a href="#拓展：try-catch异常抛出与捕获" class="headerlink" title="拓展：try/catch异常抛出与捕获"></a>拓展：try/catch异常抛出与捕获</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//    可能出现异常的代码</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">catch</span>（异常类名A e）&#123;</span><br><span class="line"><span class="comment">//    如果出现了异常类A类型的异常，那么执行该代码</span></span><br><span class="line">&#125;<span class="comment">//...（catch可以有多个）</span></span><br><span class="line"><span class="keyword">finally</span> &#123;</span><br><span class="line"><span class="comment">//    最终肯定必须要执行的代码（例如释放资源的代码）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android-PopupWindow</title>
-    <url>/2021/09/09/Android-PopupWindow/</url>
-    <content><![CDATA[<p>PopupWindow弹窗，后边再写</p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -328,6 +331,19 @@
 <li>indeterminate: 如果设置成true，则进度条不精确显示进度</li>
 <li>style=”@style/Widget.AppCompat.ProgressBar.Horizontal”: 水平进度条</li>
 </ol>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android-PopupWindow</title>
+    <url>/2021/09/09/Android-PopupWindow/</url>
+    <content><![CDATA[<p>PopupWindow弹窗，后边再写</p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -641,6 +657,21 @@
       </tags>
   </entry>
   <entry>
+    <title>Android常用权限</title>
+    <url>/2021/09/09/Android%E5%B8%B8%E7%94%A8%E6%9D%83%E9%99%90/</url>
+    <content><![CDATA[<p>访问网络<br>android.permission.INTERNET，访问网络连接，可能产生GPRS流量<br>android.permission.CHANGE_WIFI_STATE  Wifi 改变状态<br>android.permission.ACCESS_WIFI_STATE WiFi 状态<br>android.permission.ACCESS_NETWORK_STATE 网络状态<br>录制视频<br>android.permission.CAMERA<br>android.permission.RECORD_AUDIO<br>android.permission.WRITE_EXTERNAL_STORAGE<br>底层访问权限<br>android.permission.CWJ_GROUP，允许CWJ账户组访问底层信息<br>手机优化大师扩展权限<br>android.permission.CELL_PHONE_MASTER_EX，手机优化大师扩展权限<br>控制定位更新<br>android.permission.CONTROL_LOCATION_UPDATES，允许获得移动网络定位信息改变<br>删除缓存文件<br>android.permission.DELETE_CACHE_FILES，允许应用删除缓存文件<br>删除应用<br>android.permission.DELETE_PACKAGES，允许程序删除应用<br>电源管理<br>android.permission.DEVICE_POWER，允许访问底层电源管理<br>应用诊断<br>android.permission.DIAGNOSTIC，允许程序到RW到诊断资源<br>禁用键盘锁<br>android.permission.DISABLE_KEYGUARD，允许程序禁用键盘锁<br>转存系统信息<br>android.permission.DUMP，允许程序获取系统dump信息从系统服务<br>状态栏控制<br>android.permission.EXPAND_STATUS_BAR，允许程序扩展或收缩状态栏<br>工厂测试模式<br>android.permission.FACTORY_TEST，允许程序运行工厂测试模式<br>使用闪光灯<br>android.permission.FLASHLIGHT，允许访问闪光灯<br>强制后退<br>android.permission.FORCE_BACK，允许程序强制使用back后退按键，无论Activity是否在顶层<br>访问账户Gmail列表<br>android.permission.GET_ACCOUNTS，访问GMail账户列表<br>获取应用大小<br>android.permission.GET_PACKAGE_SIZE，获取应用的文件大小<br>获取任务信息<br>android.permission.GET_TASKS，允许程序获取当前或最近运行的应用<br>允许全局搜索<br>android.permission.GLOBAL_SEARCH，允许程序使用全局搜索功能<br>硬件测试<br>android.permission.HARDWARE_TEST，访问硬件辅助设备，用于硬件测试<br>注射事件<br>android.permission.INJECT_EVENTS，允许访问本程序的底层事件，获取按键、轨迹球的事件流<br>安装定位提供<br>android.permission.INSTALL_LOCATION_PROVIDER，安装定位提供<br>安装应用程序<br>android.permission.INSTALL_PACKAGES，允许程序安装应用<br>内部系统窗口<br>android.permission.INTERNAL_SYSTEM_WINDOW，允许程序打开内部窗口，不对第三方应用程序开放此权限<br>结束后台进程<br>android.permission.KILL_BACKGROUND_PROCESSES，允许程序调用killBackgroundProcesses(String).方法结束后台进程<br>管理账户<br>android.permission.MANAGE_ACCOUNTS，允许程序管理AccountManager中的账户列表<br>管理程序引用<br>android.permission.MANAGE_APP_TOKENS，管理创建、摧毁、Z轴顺序，仅用于系统<br>高级权限<br>android.permission.MTWEAK_USER，允许mTweak用户访问高级系统权限<br>社区权限<br>android.permission.MTWEAK_FORUM，允许使用mTweak社区权限<br>软格式化<br>android.permission.MASTER_CLEAR，允许程序执行软格式化，删除系统配置信息<br>修改声音设置<br>android.permission.MODIFY_AUDIO_SETTINGS，修改声音设置信息<br>修改电话状态<br>android.permission.MODIFY_PHONE_STATE，修改电话状态，如飞行模式，但不包含替换系统拨号器界面<br>格式化文件系统<br>android.permission.MOUNT_FORMAT_FILESYSTEMS，格式化可移动文件系统，比如格式化清空SD卡<br>挂载文件系统<br>android.permission.MOUNT_UNMOUNT_FILESYSTEMS，挂载、反挂载外部文件系统<br>允许NFC通讯<br>android.permission.NFC，允许程序执行NFC近距离通讯操作，用于移动支持<br>永久Activity<br>android.permission.PERSISTENT_ACTIVITY，创建一个永久的Activity，该功能标记为将来将被移除<br>处理拨出电话<br>android.permission.PROCESS_OUTGOING_CALLS，允许程序监视，修改或放弃播出电话<br>读取日程提醒<br>android.permission.READ_CALENDAR，允许程序读取用户的日程信息<br>读取联系人<br>android.permission.READ_CONTACTS，允许应用访问联系人通讯录信息<br>屏幕截图<br>android.permission.READ_FRAME_BUFFER，读取帧缓存用于屏幕截图<br>读取收藏夹和历史记录<br>com.android.browser.permission.READ_HISTORY_BOOKMARKS，读取浏览器收藏夹和历史记录<br>读取输入状态<br>android.permission.READ_INPUT_STATE，读取当前键的输入状态，仅用于系统<br>读取系统日志<br>android.permission.READ_LOGS，读取系统底层日志<br>读取电话状态<br>android.permission.READ_PHONE_STATE，访问电话状态<br>读取短信内容<br>android.permission.READ_SMS，读取短信内容<br>读取同步设置<br>android.permission.READ_SYNC_SETTINGS，读取同步设置，读取Google在线同步设置<br>读取同步状态<br>android.permission.READ_SYNC_STATS，读取同步状态，获得Google在线同步状态<br>重启设备<br>android.permission.REBOOT，允许程序重新启动设备<br>开机自动允许<br>android.permission.RECEIVE_BOOT_COMPLETED，允许程序开机自动运行<br>接收彩信<br>android.permission.RECEIVE_MMS，接收彩信<br>接收短信<br>android.permission.RECEIVE_SMS，接收短信<br>接收Wap Push<br>android.permission.RECEIVE_WAP_PUSH，接收WAP PUSH信息<br>录音<br>android.permission.RECORD_AUDIO，录制声音通过手机或耳机的麦克<br>排序系统任务<br>android.permission.REORDER_TASKS，重新排序系统Z轴运行中的任务<br>结束系统任务<br>android.permission.RESTART_PACKAGES，结束任务通过restartPackage(String)方法，该方式将在外来放弃<br>发送短信<br>android.permission.SEND_SMS，发送短信<br>设置Activity观察其<br>android.permission.SET_ACTIVITY_WATCHER，设置Activity观察器一般用于monkey测试<br>设置闹铃提醒<br>com.android.alarm.permission.SET_ALARM，设置闹铃提醒<br>设置总是退出<br>android.permission.SET_ALWAYS_FINISH，设置程序在后台是否总是退出<br>设置动画缩放<br>android.permission.SET_ANIMATION_SCALE，设置全局动画缩放<br>设置调试程序<br>android.permission.SET_DEBUG_APP，设置调试程序，一般用于开发<br>设置屏幕方向<br>android.permission.SET_ORIENTATION，设置屏幕方向为横屏或标准方式显示，不用于普通应用<br>设置应用参数<br>android.permission.SET_PREFERRED_APPLICATIONS，设置应用的参数，已不再工作具体查看addPackageToPreferred(String)介绍<br>设置进程限制<br>android.permission.SET_PROCESS_LIMIT，允许程序设置最大的进程数量的限制<br>设置系统时间<br>android.permission.SET_TIME，设置系统时间<br>设置系统时区<br>android.permission.SET_TIME_ZONE，设置系统时区<br>设置桌面壁纸<br>android.permission.SET_WALLPAPER，设置桌面壁纸<br>设置壁纸建议<br>android.permission.SET_WALLPAPER_HINTS，设置壁纸建议<br>发送永久进程信号<br>android.permission.SIGNAL_PERSISTENT_PROCESSES，发送一个永久的进程信号<br>状态栏控制<br>android.permission.STATUS_BAR，允许程序打开、关闭、禁用状态栏<br>访问订阅内容<br>android.permission.SUBSCRIBED_FEEDS_READ，访问订阅信息的数据库<br>写入订阅内容<br>android.permission.SUBSCRIBED_FEEDS_WRITE，写入或修改订阅内容的数据库<br>显示系统窗口<br>android.permission.SYSTEM_ALERT_WINDOW，显示系统窗口<br>更新设备状态<br>android.permission.UPDATE_DEVICE_STATS，更新设备状态<br>使用证书<br>android.permission.USE_CREDENTIALS，允许程序请求验证从AccountManager<br>使用SIP视频<br>android.permission.USE_SIP，允许程序使用SIP视频服务<br>使用振动<br>android.permission.VIBRATE，允许振动<br>唤醒锁定<br>android.permission.WAKE_LOCK，允许程序在手机屏幕关闭后后台进程仍然运行<br>写入GPRS接入点设置<br>android.permission.WRITE_APN_SETTINGS，写入网络GPRS接入点设置<br>写入日程提醒<br>android.permission.WRITE_CALENDAR，写入日程，但不可读取<br>写入联系人<br>android.permission.WRITE_CONTACTS，写入联系人，但不可读取<br>写入外部存储<br>android.permission.WRITE_EXTERNAL_STORAGE，允许程序写入外部存储，如SD卡上写文件<br>写入Google地图数据<br>android.permission.WRITE_GSERVICES，允许程序写入Google Map服务数据<br>写入收藏夹和历史记录<br>com.android.browser.permission.WRITE_HISTORY_BOOKMARKS，写入浏览器历史记录或收藏夹，但不可读取<br>读写系统敏感设置<br>android.permission.WRITE_SECURE_SETTINGS，允许程序读写系统安全敏感的设置项<br>读写系统设置<br>android.permission.WRITE_SETTINGS，允许读写系统设置项<br>编写短信<br>android.permission.WRITE_SMS，允许编写短信<br>写入在线同步设置<br>android.permission.WRITE_SYNC_SETTINGS，写入Google在线同步设置</p>
+<p><uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/><br>访问登记属性<br>android.permission.ACCESS_CHECKIN_PROPERTIES ，读取或写入登记check-in数据库属性表的权限<br>获取错略位置<br>android.permission.ACCESS_COARSE_LOCATION，通过WiFi或移动基站的方式获取用户错略的经纬度信息，定位精度大概误差在30~1500米<br>获取精确位置<br>android.permission.ACCESS_FINE_LOCATION，通过GPS芯片接收卫星的定位信息，定位精度达10米以内<br>访问定位额外命令<br>android.permission.ACCESS_LOCATION_EXTRA_COMMANDS，允许程序访问额外的定位提供者指令<br>GPS定位获取模拟定位信息<br>android.permission.ACCESS_MOCK_LOCATION，获取模拟定位信息，一般用于帮助开发者调试应用<br>获取网络状态</p>
+<p>android.permission.ACCESS_NETWORK_STATE，获取网络信息状态，如当前的网络连接是否有效<br>访问Surface Flinger<br>android.permission.ACCESS_SURFACE_FLINGER，Android平台上底层的图形显示支持，一般用于游戏或照相机预览界面和底层模式的屏幕截图<br>获取WiFi状态<br>android.permission.ACCESS_WIFI_STATE，获取当前WiFi接入的状态以及WLAN热点的信息<br>账户管理<br>android.permission.ACCOUNT_MANAGER，获取账户验证信息，主要为GMail账户信息，只有系统级进程才能访问的权限<br>验证账户<br>android.permission.AUTHENTICATE_ACCOUNTS，允许一个程序通过账户验证方式访问账户管理ACCOUNT_MANAGER相关信息<br>电量统计<br>android.permission.BATTERY_STATS，获取电池电量统计信息<br>绑定小插件<br>android.permission.BIND_APPWIDGET，允许一个程序告诉appWidget服务需要访问小插件的数据库，只有非常少的应用才用到此权限<br>绑定设备管理<br>android.permission.BIND_DEVICE_ADMIN，请求系统管理员接收者receiver，只有系统才能使用<br>绑定输入法<br>android.permission.BIND_INPUT_METHOD ，请求InputMethodService服务，只有系统才能使用<br>绑定RemoteView<br>android.permission.BIND_REMOTEVIEWS，必须通过RemoteViewsService服务来请求，只有系统才能用<br>绑定壁纸<br>android.permission.BIND_WALLPAPER，必须通过WallpaperService服务来请求，只有系统才能用<br>使用蓝牙<br>android.permission.BLUETOOTH，允许程序连接配对过的蓝牙设备<br>蓝牙管理<br>android.permission.BLUETOOTH_ADMIN，允许程序进行发现和配对新的蓝牙设备<br>变成砖头<br>android.permission.BRICK，能够禁用手机，非常危险，顾名思义就是让手机变成砖头<br>应用删除时广播<br>android.permission.BROADCAST_PACKAGE_REMOVED，当一个应用在删除时触发一个广播<br>收到短信时广播<br>android.permission.BROADCAST_SMS，当收到短信时触发一个广播<br>连续广播<br>android.permission.BROADCAST_STICKY，允许一个程序收到广播后快速收到下一个广播<br>WAP PUSH广播<br>android.permission.BROADCAST_WAP_PUSH，WAP PUSH服务收到后触发一个广播<br>拨打电话<br>android.permission.CALL_PHONE，允许程序从非系统拨号器里输入电话号码<br>通话权限<br>android.permission.CALL_PRIVILEGED，允许程序拨打电话，替换系统的拨号器界面<br>拍照权限<br>android.permission.CAMERA，允许访问摄像头进行拍照<br>改变组件状态<br>android.permission.CHANGE_COMPONENT_ENABLED_STATE，改变组件是否启用状态<br>改变配置<br>android.permission.CHANGE_CONFIGURATION，允许当前应用改变配置，如定位<br>改变网络状态<br>android.permission.CHANGE_NETWORK_STATE，改变网络状态如是否能联网<br>改变WiFi多播状态<br>android.permission.CHANGE_WIFI_MULTICAST_STATE，改变WiFi多播状态<br>改变WiFi状态<br>android.permission.CHANGE_WIFI_STATE，改变WiFi状态<br>清除应用缓存<br>android.permission.CLEAR_APP_CACHE，清除应用缓存<br>清除用户数据<br>android.permission.CLEAR_APP_USER_DATA，清除应用的用户数据</p>
+]]></content>
+      <categories>
+        <category>随手记事</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Lambda</title>
     <url>/2021/07/24/Lambda/</url>
     <content><![CDATA[<p>匿名类</p>
@@ -737,21 +768,6 @@
         <tag>小教程</tag>
         <tag>hexo博客</tag>
         <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android常用权限</title>
-    <url>/2021/09/09/Android%E5%B8%B8%E7%94%A8%E6%9D%83%E9%99%90/</url>
-    <content><![CDATA[<p>访问网络<br>android.permission.INTERNET，访问网络连接，可能产生GPRS流量<br>android.permission.CHANGE_WIFI_STATE  Wifi 改变状态<br>android.permission.ACCESS_WIFI_STATE WiFi 状态<br>android.permission.ACCESS_NETWORK_STATE 网络状态<br>录制视频<br>android.permission.CAMERA<br>android.permission.RECORD_AUDIO<br>android.permission.WRITE_EXTERNAL_STORAGE<br>底层访问权限<br>android.permission.CWJ_GROUP，允许CWJ账户组访问底层信息<br>手机优化大师扩展权限<br>android.permission.CELL_PHONE_MASTER_EX，手机优化大师扩展权限<br>控制定位更新<br>android.permission.CONTROL_LOCATION_UPDATES，允许获得移动网络定位信息改变<br>删除缓存文件<br>android.permission.DELETE_CACHE_FILES，允许应用删除缓存文件<br>删除应用<br>android.permission.DELETE_PACKAGES，允许程序删除应用<br>电源管理<br>android.permission.DEVICE_POWER，允许访问底层电源管理<br>应用诊断<br>android.permission.DIAGNOSTIC，允许程序到RW到诊断资源<br>禁用键盘锁<br>android.permission.DISABLE_KEYGUARD，允许程序禁用键盘锁<br>转存系统信息<br>android.permission.DUMP，允许程序获取系统dump信息从系统服务<br>状态栏控制<br>android.permission.EXPAND_STATUS_BAR，允许程序扩展或收缩状态栏<br>工厂测试模式<br>android.permission.FACTORY_TEST，允许程序运行工厂测试模式<br>使用闪光灯<br>android.permission.FLASHLIGHT，允许访问闪光灯<br>强制后退<br>android.permission.FORCE_BACK，允许程序强制使用back后退按键，无论Activity是否在顶层<br>访问账户Gmail列表<br>android.permission.GET_ACCOUNTS，访问GMail账户列表<br>获取应用大小<br>android.permission.GET_PACKAGE_SIZE，获取应用的文件大小<br>获取任务信息<br>android.permission.GET_TASKS，允许程序获取当前或最近运行的应用<br>允许全局搜索<br>android.permission.GLOBAL_SEARCH，允许程序使用全局搜索功能<br>硬件测试<br>android.permission.HARDWARE_TEST，访问硬件辅助设备，用于硬件测试<br>注射事件<br>android.permission.INJECT_EVENTS，允许访问本程序的底层事件，获取按键、轨迹球的事件流<br>安装定位提供<br>android.permission.INSTALL_LOCATION_PROVIDER，安装定位提供<br>安装应用程序<br>android.permission.INSTALL_PACKAGES，允许程序安装应用<br>内部系统窗口<br>android.permission.INTERNAL_SYSTEM_WINDOW，允许程序打开内部窗口，不对第三方应用程序开放此权限<br>结束后台进程<br>android.permission.KILL_BACKGROUND_PROCESSES，允许程序调用killBackgroundProcesses(String).方法结束后台进程<br>管理账户<br>android.permission.MANAGE_ACCOUNTS，允许程序管理AccountManager中的账户列表<br>管理程序引用<br>android.permission.MANAGE_APP_TOKENS，管理创建、摧毁、Z轴顺序，仅用于系统<br>高级权限<br>android.permission.MTWEAK_USER，允许mTweak用户访问高级系统权限<br>社区权限<br>android.permission.MTWEAK_FORUM，允许使用mTweak社区权限<br>软格式化<br>android.permission.MASTER_CLEAR，允许程序执行软格式化，删除系统配置信息<br>修改声音设置<br>android.permission.MODIFY_AUDIO_SETTINGS，修改声音设置信息<br>修改电话状态<br>android.permission.MODIFY_PHONE_STATE，修改电话状态，如飞行模式，但不包含替换系统拨号器界面<br>格式化文件系统<br>android.permission.MOUNT_FORMAT_FILESYSTEMS，格式化可移动文件系统，比如格式化清空SD卡<br>挂载文件系统<br>android.permission.MOUNT_UNMOUNT_FILESYSTEMS，挂载、反挂载外部文件系统<br>允许NFC通讯<br>android.permission.NFC，允许程序执行NFC近距离通讯操作，用于移动支持<br>永久Activity<br>android.permission.PERSISTENT_ACTIVITY，创建一个永久的Activity，该功能标记为将来将被移除<br>处理拨出电话<br>android.permission.PROCESS_OUTGOING_CALLS，允许程序监视，修改或放弃播出电话<br>读取日程提醒<br>android.permission.READ_CALENDAR，允许程序读取用户的日程信息<br>读取联系人<br>android.permission.READ_CONTACTS，允许应用访问联系人通讯录信息<br>屏幕截图<br>android.permission.READ_FRAME_BUFFER，读取帧缓存用于屏幕截图<br>读取收藏夹和历史记录<br>com.android.browser.permission.READ_HISTORY_BOOKMARKS，读取浏览器收藏夹和历史记录<br>读取输入状态<br>android.permission.READ_INPUT_STATE，读取当前键的输入状态，仅用于系统<br>读取系统日志<br>android.permission.READ_LOGS，读取系统底层日志<br>读取电话状态<br>android.permission.READ_PHONE_STATE，访问电话状态<br>读取短信内容<br>android.permission.READ_SMS，读取短信内容<br>读取同步设置<br>android.permission.READ_SYNC_SETTINGS，读取同步设置，读取Google在线同步设置<br>读取同步状态<br>android.permission.READ_SYNC_STATS，读取同步状态，获得Google在线同步状态<br>重启设备<br>android.permission.REBOOT，允许程序重新启动设备<br>开机自动允许<br>android.permission.RECEIVE_BOOT_COMPLETED，允许程序开机自动运行<br>接收彩信<br>android.permission.RECEIVE_MMS，接收彩信<br>接收短信<br>android.permission.RECEIVE_SMS，接收短信<br>接收Wap Push<br>android.permission.RECEIVE_WAP_PUSH，接收WAP PUSH信息<br>录音<br>android.permission.RECORD_AUDIO，录制声音通过手机或耳机的麦克<br>排序系统任务<br>android.permission.REORDER_TASKS，重新排序系统Z轴运行中的任务<br>结束系统任务<br>android.permission.RESTART_PACKAGES，结束任务通过restartPackage(String)方法，该方式将在外来放弃<br>发送短信<br>android.permission.SEND_SMS，发送短信<br>设置Activity观察其<br>android.permission.SET_ACTIVITY_WATCHER，设置Activity观察器一般用于monkey测试<br>设置闹铃提醒<br>com.android.alarm.permission.SET_ALARM，设置闹铃提醒<br>设置总是退出<br>android.permission.SET_ALWAYS_FINISH，设置程序在后台是否总是退出<br>设置动画缩放<br>android.permission.SET_ANIMATION_SCALE，设置全局动画缩放<br>设置调试程序<br>android.permission.SET_DEBUG_APP，设置调试程序，一般用于开发<br>设置屏幕方向<br>android.permission.SET_ORIENTATION，设置屏幕方向为横屏或标准方式显示，不用于普通应用<br>设置应用参数<br>android.permission.SET_PREFERRED_APPLICATIONS，设置应用的参数，已不再工作具体查看addPackageToPreferred(String)介绍<br>设置进程限制<br>android.permission.SET_PROCESS_LIMIT，允许程序设置最大的进程数量的限制<br>设置系统时间<br>android.permission.SET_TIME，设置系统时间<br>设置系统时区<br>android.permission.SET_TIME_ZONE，设置系统时区<br>设置桌面壁纸<br>android.permission.SET_WALLPAPER，设置桌面壁纸<br>设置壁纸建议<br>android.permission.SET_WALLPAPER_HINTS，设置壁纸建议<br>发送永久进程信号<br>android.permission.SIGNAL_PERSISTENT_PROCESSES，发送一个永久的进程信号<br>状态栏控制<br>android.permission.STATUS_BAR，允许程序打开、关闭、禁用状态栏<br>访问订阅内容<br>android.permission.SUBSCRIBED_FEEDS_READ，访问订阅信息的数据库<br>写入订阅内容<br>android.permission.SUBSCRIBED_FEEDS_WRITE，写入或修改订阅内容的数据库<br>显示系统窗口<br>android.permission.SYSTEM_ALERT_WINDOW，显示系统窗口<br>更新设备状态<br>android.permission.UPDATE_DEVICE_STATS，更新设备状态<br>使用证书<br>android.permission.USE_CREDENTIALS，允许程序请求验证从AccountManager<br>使用SIP视频<br>android.permission.USE_SIP，允许程序使用SIP视频服务<br>使用振动<br>android.permission.VIBRATE，允许振动<br>唤醒锁定<br>android.permission.WAKE_LOCK，允许程序在手机屏幕关闭后后台进程仍然运行<br>写入GPRS接入点设置<br>android.permission.WRITE_APN_SETTINGS，写入网络GPRS接入点设置<br>写入日程提醒<br>android.permission.WRITE_CALENDAR，写入日程，但不可读取<br>写入联系人<br>android.permission.WRITE_CONTACTS，写入联系人，但不可读取<br>写入外部存储<br>android.permission.WRITE_EXTERNAL_STORAGE，允许程序写入外部存储，如SD卡上写文件<br>写入Google地图数据<br>android.permission.WRITE_GSERVICES，允许程序写入Google Map服务数据<br>写入收藏夹和历史记录<br>com.android.browser.permission.WRITE_HISTORY_BOOKMARKS，写入浏览器历史记录或收藏夹，但不可读取<br>读写系统敏感设置<br>android.permission.WRITE_SECURE_SETTINGS，允许程序读写系统安全敏感的设置项<br>读写系统设置<br>android.permission.WRITE_SETTINGS，允许读写系统设置项<br>编写短信<br>android.permission.WRITE_SMS，允许编写短信<br>写入在线同步设置<br>android.permission.WRITE_SYNC_SETTINGS，写入Google在线同步设置</p>
-<p><uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/><br>访问登记属性<br>android.permission.ACCESS_CHECKIN_PROPERTIES ，读取或写入登记check-in数据库属性表的权限<br>获取错略位置<br>android.permission.ACCESS_COARSE_LOCATION，通过WiFi或移动基站的方式获取用户错略的经纬度信息，定位精度大概误差在30~1500米<br>获取精确位置<br>android.permission.ACCESS_FINE_LOCATION，通过GPS芯片接收卫星的定位信息，定位精度达10米以内<br>访问定位额外命令<br>android.permission.ACCESS_LOCATION_EXTRA_COMMANDS，允许程序访问额外的定位提供者指令<br>GPS定位获取模拟定位信息<br>android.permission.ACCESS_MOCK_LOCATION，获取模拟定位信息，一般用于帮助开发者调试应用<br>获取网络状态</p>
-<p>android.permission.ACCESS_NETWORK_STATE，获取网络信息状态，如当前的网络连接是否有效<br>访问Surface Flinger<br>android.permission.ACCESS_SURFACE_FLINGER，Android平台上底层的图形显示支持，一般用于游戏或照相机预览界面和底层模式的屏幕截图<br>获取WiFi状态<br>android.permission.ACCESS_WIFI_STATE，获取当前WiFi接入的状态以及WLAN热点的信息<br>账户管理<br>android.permission.ACCOUNT_MANAGER，获取账户验证信息，主要为GMail账户信息，只有系统级进程才能访问的权限<br>验证账户<br>android.permission.AUTHENTICATE_ACCOUNTS，允许一个程序通过账户验证方式访问账户管理ACCOUNT_MANAGER相关信息<br>电量统计<br>android.permission.BATTERY_STATS，获取电池电量统计信息<br>绑定小插件<br>android.permission.BIND_APPWIDGET，允许一个程序告诉appWidget服务需要访问小插件的数据库，只有非常少的应用才用到此权限<br>绑定设备管理<br>android.permission.BIND_DEVICE_ADMIN，请求系统管理员接收者receiver，只有系统才能使用<br>绑定输入法<br>android.permission.BIND_INPUT_METHOD ，请求InputMethodService服务，只有系统才能使用<br>绑定RemoteView<br>android.permission.BIND_REMOTEVIEWS，必须通过RemoteViewsService服务来请求，只有系统才能用<br>绑定壁纸<br>android.permission.BIND_WALLPAPER，必须通过WallpaperService服务来请求，只有系统才能用<br>使用蓝牙<br>android.permission.BLUETOOTH，允许程序连接配对过的蓝牙设备<br>蓝牙管理<br>android.permission.BLUETOOTH_ADMIN，允许程序进行发现和配对新的蓝牙设备<br>变成砖头<br>android.permission.BRICK，能够禁用手机，非常危险，顾名思义就是让手机变成砖头<br>应用删除时广播<br>android.permission.BROADCAST_PACKAGE_REMOVED，当一个应用在删除时触发一个广播<br>收到短信时广播<br>android.permission.BROADCAST_SMS，当收到短信时触发一个广播<br>连续广播<br>android.permission.BROADCAST_STICKY，允许一个程序收到广播后快速收到下一个广播<br>WAP PUSH广播<br>android.permission.BROADCAST_WAP_PUSH，WAP PUSH服务收到后触发一个广播<br>拨打电话<br>android.permission.CALL_PHONE，允许程序从非系统拨号器里输入电话号码<br>通话权限<br>android.permission.CALL_PRIVILEGED，允许程序拨打电话，替换系统的拨号器界面<br>拍照权限<br>android.permission.CAMERA，允许访问摄像头进行拍照<br>改变组件状态<br>android.permission.CHANGE_COMPONENT_ENABLED_STATE，改变组件是否启用状态<br>改变配置<br>android.permission.CHANGE_CONFIGURATION，允许当前应用改变配置，如定位<br>改变网络状态<br>android.permission.CHANGE_NETWORK_STATE，改变网络状态如是否能联网<br>改变WiFi多播状态<br>android.permission.CHANGE_WIFI_MULTICAST_STATE，改变WiFi多播状态<br>改变WiFi状态<br>android.permission.CHANGE_WIFI_STATE，改变WiFi状态<br>清除应用缓存<br>android.permission.CLEAR_APP_CACHE，清除应用缓存<br>清除用户数据<br>android.permission.CLEAR_APP_USER_DATA，清除应用的用户数据</p>
-]]></content>
-      <categories>
-        <category>随手记事</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1454,6 +1470,1153 @@
         <tag>Android</tag>
         <tag>学习笔记</tag>
         <tag>重点难点</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android-HTTP content-type 对照表</title>
+    <url>/2021/09/24/Android-HTTP-content-type-%E5%AF%B9%E7%85%A7%E8%A1%A8/</url>
+    <content><![CDATA[<table> 
+  <tbody>
+    <tr>
+      <th>文件扩展名</th>
+       <th>Content-Type(Mime-Type)</th>
+       <th>文件扩展名</th>
+       <th>Content-Type(Mime-Type)</th>
+     </tr>
+   </tbody>
+     <tbody>
+        <tr>
+            <td>.*（ 二进制流，不知道下载文件类型）</td>
+            <td>application/octet-stream</td>
+            <td>.tif</td>
+            <td>image/tiff</td> 
+        </tr>
+      <tr>
+       <td>.001</td>
+       <td>application/x-001</td> 
+       <td>.301</td>
+       <td>application/x-301</td>
+      </tr> 
+      <tr>
+       <td>.323</td>
+       <td>text/h323</td> 
+
+       <td>.906</td>
+       <td>application/x-906</td>
+      </tr> 
+      <tr>
+       <td>.907</td>
+       <td>drawing/907</td> 
+
+       <td>.a11</td>
+       <td>application/x-a11</td>
+      </tr> 
+      <tr>
+       <td>.acp</td>
+       <td>audio/x-mei-aac</td> 
+
+       <td>.ai</td>
+       <td>application/postscript</td>
+      </tr> 
+      <tr>
+       <td>.aif</td>
+       <td>audio/aiff</td> 
+
+       <td>.aifc</td>
+       <td>audio/aiff</td>
+      </tr> 
+      <tr>
+       <td>.aiff</td>
+       <td>audio/aiff</td> 
+
+       <td>.anv</td>
+       <td>application/x-anv</td>
+      </tr> 
+      <tr>
+       <td>.asa</td>
+       <td>text/asa</td> 
+
+       <td>.asf</td>
+       <td>video/x-ms-asf</td>
+      </tr> 
+      <tr>
+       <td>.asp</td>
+       <td>text/asp</td> 
+
+       <td>.asx</td>
+       <td>video/x-ms-asf</td>
+      </tr> 
+      <tr>
+       <td>.au</td>
+       <td>audio/basic</td> 
+
+       <td>.avi</td>
+       <td>video/avi</td>
+      </tr> 
+      <tr>
+       <td>.awf</td>
+       <td>application/vnd.adobe.workflow</td> 
+
+       <td>.biz</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.bmp</td>
+       <td>application/x-bmp</td> 
+
+       <td>.bot</td>
+       <td>application/x-bot</td>
+      </tr> 
+      <tr>
+       <td>.c4t</td>
+       <td>application/x-c4t</td> 
+
+       <td>.c90</td>
+       <td>application/x-c90</td>
+      </tr> 
+      <tr>
+       <td>.cal</td>
+       <td>application/x-cals</td> 
+
+       <td>.cat</td>
+       <td>application/vnd.ms-pki.seccat</td>
+      </tr> 
+      <tr>
+       <td>.cdf</td>
+       <td>application/x-netcdf</td> 
+
+       <td>.cdr</td>
+       <td>application/x-cdr</td>
+      </tr> 
+      <tr>
+       <td>.cel</td>
+       <td>application/x-cel</td> 
+
+       <td>.cer</td>
+       <td>application/x-x509-ca-cert</td>
+      </tr> 
+      <tr>
+       <td>.cg4</td>
+       <td>application/x-g4</td> 
+
+       <td>.cgm</td>
+       <td>application/x-cgm</td>
+      </tr> 
+      <tr>
+       <td>.cit</td>
+       <td>application/x-cit</td> 
+
+       <td>.class</td>
+       <td>java/*</td>
+      </tr> 
+      <tr>
+       <td>.cml</td>
+       <td>text/xml</td> 
+
+       <td>.cmp</td>
+       <td>application/x-cmp</td>
+      </tr> 
+      <tr>
+       <td>.cmx</td>
+       <td>application/x-cmx</td> 
+
+       <td>.cot</td>
+       <td>application/x-cot</td>
+      </tr> 
+      <tr>
+       <td>.crl</td>
+       <td>application/pkix-crl</td> 
+
+       <td>.crt</td>
+       <td>application/x-x509-ca-cert</td>
+      </tr> 
+      <tr>
+       <td>.csi</td>
+       <td>application/x-csi</td> 
+
+       <td>.css</td>
+       <td>text/css</td>
+      </tr> 
+      <tr>
+       <td>.cut</td>
+       <td>application/x-cut</td> 
+
+       <td>.dbf</td>
+       <td>application/x-dbf</td>
+      </tr> 
+      <tr>
+       <td>.dbm</td>
+       <td>application/x-dbm</td> 
+
+       <td>.dbx</td>
+       <td>application/x-dbx</td>
+      </tr> 
+      <tr>
+       <td>.dcd</td>
+       <td>text/xml</td> 
+
+       <td>.dcx</td>
+       <td>application/x-dcx</td>
+      </tr> 
+      <tr>
+       <td>.der</td>
+       <td>application/x-x509-ca-cert</td> 
+
+       <td>.dgn</td>
+       <td>application/x-dgn</td>
+      </tr> 
+      <tr>
+       <td>.dib</td>
+       <td>application/x-dib</td> 
+
+       <td>.dll</td>
+       <td>application/x-msdownload</td>
+      </tr> 
+      <tr>
+       <td>.doc</td>
+       <td>application/msword</td> 
+
+       <td>.dot</td>
+       <td>application/msword</td>
+      </tr> 
+      <tr>
+       <td>.drw</td>
+       <td>application/x-drw</td> 
+
+       <td>.dtd</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.dwf</td>
+       <td>Model/vnd.dwf</td> 
+
+       <td>.dwf</td>
+       <td>application/x-dwf</td>
+      </tr> 
+      <tr>
+       <td>.dwg</td>
+       <td>application/x-dwg</td> 
+
+       <td>.dxb</td>
+       <td>application/x-dxb</td>
+      </tr> 
+      <tr>
+       <td>.dxf</td>
+       <td>application/x-dxf</td> 
+
+       <td>.edn</td>
+       <td>application/vnd.adobe.edn</td>
+      </tr> 
+      <tr>
+       <td>.emf</td>
+       <td>application/x-emf</td> 
+
+       <td>.eml</td>
+       <td>message/rfc822</td>
+      </tr> 
+      <tr>
+       <td>.ent</td>
+       <td>text/xml</td> 
+
+       <td>.epi</td>
+       <td>application/x-epi</td>
+      </tr> 
+      <tr>
+       <td>.eps</td>
+       <td>application/x-ps</td> 
+
+       <td>.eps</td>
+       <td>application/postscript</td>
+      </tr> 
+      <tr>
+       <td>.etd</td>
+       <td>application/x-ebx</td> 
+
+       <td>.exe</td>
+       <td>application/x-msdownload</td>
+      </tr> 
+      <tr>
+       <td>.fax</td>
+       <td>image/fax</td> 
+
+       <td>.fdf</td>
+       <td>application/vnd.fdf</td>
+      </tr> 
+      <tr>
+       <td>.fif</td>
+       <td>application/fractals</td> 
+
+       <td>.fo</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.frm</td>
+       <td>application/x-frm</td> 
+
+       <td>.g4</td>
+       <td>application/x-g4</td>
+      </tr> 
+      <tr>
+       <td>.gbr</td>
+       <td>application/x-gbr</td> 
+
+       <td>.</td>
+       <td>application/x-</td>
+      </tr> 
+      <tr>
+       <td>.gif</td>
+       <td>image/gif</td> 
+
+       <td>.gl2</td>
+       <td>application/x-gl2</td>
+      </tr> 
+      <tr>
+       <td>.gp4</td>
+       <td>application/x-gp4</td> 
+
+       <td>.hgl</td>
+       <td>application/x-hgl</td>
+      </tr> 
+      <tr>
+       <td>.hmr</td>
+       <td>application/x-hmr</td> 
+
+       <td>.hpg</td>
+       <td>application/x-hpgl</td>
+      </tr> 
+      <tr>
+       <td>.hpl</td>
+       <td>application/x-hpl</td> 
+
+       <td>.hqx</td>
+       <td>application/mac-binhex40</td>
+      </tr> 
+      <tr>
+       <td>.hrf</td>
+       <td>application/x-hrf</td> 
+
+       <td>.hta</td>
+       <td>application/hta</td>
+      </tr> 
+      <tr>
+       <td>.htc</td>
+       <td>text/x-component</td> 
+
+       <td>.htm</td>
+       <td>text/html</td>
+      </tr> 
+      <tr>
+       <td>.html</td>
+       <td>text/html</td> 
+
+       <td>.htt</td>
+       <td>text/webviewhtml</td>
+      </tr> 
+      <tr>
+       <td>.htx</td>
+       <td>text/html</td> 
+
+       <td>.icb</td>
+       <td>application/x-icb</td>
+      </tr> 
+      <tr>
+       <td>.ico</td>
+       <td>image/x-icon</td> 
+
+       <td>.ico</td>
+       <td>application/x-ico</td>
+      </tr> 
+      <tr>
+       <td>.iff</td>
+       <td>application/x-iff</td> 
+
+       <td>.ig4</td>
+       <td>application/x-g4</td>
+      </tr> 
+      <tr>
+       <td>.igs</td>
+       <td>application/x-igs</td> 
+
+       <td>.iii</td>
+       <td>application/x-iphone</td>
+      </tr> 
+      <tr>
+       <td>.img</td>
+       <td>application/x-img</td> 
+
+       <td>.ins</td>
+       <td>application/x-internet-signup</td>
+      </tr> 
+      <tr>
+       <td>.isp</td>
+       <td>application/x-internet-signup</td> 
+
+       <td>.IVF</td>
+       <td>video/x-ivf</td>
+      </tr> 
+      <tr>
+       <td>.java</td>
+       <td>java/*</td> 
+
+       <td>.jfif</td>
+       <td>image/jpeg</td>
+      </tr> 
+      <tr>
+       <td>.jpe</td>
+       <td>image/jpeg</td> 
+
+       <td>.jpe</td>
+       <td>application/x-jpe</td>
+      </tr> 
+      <tr>
+       <td>.jpeg</td>
+       <td>image/jpeg</td> 
+
+       <td>.jpg</td>
+       <td>image/jpeg</td>
+      </tr> 
+      <tr>
+       <td>.jpg</td>
+       <td>application/x-jpg</td> 
+
+       <td>.js</td>
+       <td>application/x-javascript</td>
+      </tr> 
+      <tr>
+       <td>.jsp</td>
+       <td>text/html</td> 
+
+       <td>.la1</td>
+       <td>audio/x-liquid-file</td>
+      </tr> 
+      <tr>
+       <td>.lar</td>
+       <td>application/x-laplayer-reg</td> 
+
+       <td>.latex</td>
+       <td>application/x-latex</td>
+      </tr> 
+      <tr>
+       <td>.lavs</td>
+       <td>audio/x-liquid-secure</td> 
+
+       <td>.lbm</td>
+       <td>application/x-lbm</td>
+      </tr> 
+      <tr>
+       <td>.lmsff</td>
+       <td>audio/x-la-lms</td> 
+
+       <td>.ls</td>
+       <td>application/x-javascript</td>
+      </tr> 
+      <tr>
+       <td>.ltr</td>
+       <td>application/x-ltr</td> 
+
+       <td>.m1v</td>
+       <td>video/x-mpeg</td>
+      </tr> 
+      <tr>
+       <td>.m2v</td>
+       <td>video/x-mpeg</td> 
+
+       <td>.m3u</td>
+       <td>audio/mpegurl</td>
+      </tr> 
+      <tr>
+       <td>.m4e</td>
+       <td>video/mpeg4</td> 
+
+       <td>.mac</td>
+       <td>application/x-mac</td>
+      </tr> 
+      <tr>
+       <td>.man</td>
+       <td>application/x-troff-man</td> 
+
+       <td>.math</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.mdb</td>
+       <td>application/msaccess</td> 
+
+       <td>.mdb</td>
+       <td>application/x-mdb</td>
+      </tr> 
+      <tr>
+       <td>.mfp</td>
+       <td>application/x-shockwave-flash</td> 
+
+       <td>.mht</td>
+       <td>message/rfc822</td>
+      </tr> 
+      <tr>
+       <td>.mhtml</td>
+       <td>message/rfc822</td> 
+
+       <td>.mi</td>
+       <td>application/x-mi</td>
+      </tr> 
+      <tr>
+       <td>.mid</td>
+       <td>audio/mid</td> 
+
+       <td>.midi</td>
+       <td>audio/mid</td>
+      </tr> 
+      <tr>
+       <td>.mil</td>
+       <td>application/x-mil</td> 
+
+       <td>.mml</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.mnd</td>
+       <td>audio/x-musicnet-download</td> 
+
+       <td>.mns</td>
+       <td>audio/x-musicnet-stream</td>
+      </tr> 
+      <tr>
+       <td>.mocha</td>
+       <td>application/x-javascript</td> 
+
+       <td>.movie</td>
+       <td>video/x-sgi-movie</td>
+      </tr> 
+      <tr>
+       <td>.mp1</td>
+       <td>audio/mp1</td> 
+
+       <td>.mp2</td>
+       <td>audio/mp2</td>
+      </tr> 
+      <tr>
+       <td>.mp2v</td>
+       <td>video/mpeg</td> 
+
+       <td>.mp3</td>
+       <td>audio/mp3</td>
+      </tr> 
+      <tr>
+       <td>.mp4</td>
+       <td>video/mpeg4</td> 
+
+       <td>.mpa</td>
+       <td>video/x-mpg</td>
+      </tr> 
+      <tr>
+       <td>.mpd</td>
+       <td>application/vnd.ms-project</td> 
+
+       <td>.mpe</td>
+       <td>video/x-mpeg</td>
+      </tr> 
+      <tr>
+       <td>.mpeg</td>
+       <td>video/mpg</td> 
+
+       <td>.mpg</td>
+       <td>video/mpg</td>
+      </tr> 
+      <tr>
+       <td>.mpga</td>
+       <td>audio/rn-mpeg</td> 
+
+       <td>.mpp</td>
+       <td>application/vnd.ms-project</td>
+      </tr> 
+      <tr>
+       <td>.mps</td>
+       <td>video/x-mpeg</td> 
+
+       <td>.mpt</td>
+       <td>application/vnd.ms-project</td>
+      </tr> 
+      <tr>
+       <td>.mpv</td>
+       <td>video/mpg</td> 
+
+       <td>.mpv2</td>
+       <td>video/mpeg</td>
+      </tr> 
+      <tr>
+       <td>.mpw</td>
+       <td>application/vnd.ms-project</td> 
+
+       <td>.mpx</td>
+       <td>application/vnd.ms-project</td>
+      </tr> 
+      <tr>
+       <td>.mtx</td>
+       <td>text/xml</td> 
+
+       <td>.mxp</td>
+       <td>application/x-mmxp</td>
+      </tr> 
+      <tr>
+       <td>.net</td>
+       <td>image/pnetvue</td> 
+
+       <td>.nrf</td>
+       <td>application/x-nrf</td>
+      </tr> 
+      <tr>
+       <td>.nws</td>
+       <td>message/rfc822</td> 
+
+       <td>.odc</td>
+       <td>text/x-ms-odc</td>
+      </tr> 
+      <tr>
+       <td>.out</td>
+       <td>application/x-out</td> 
+
+       <td>.p10</td>
+       <td>application/pkcs10</td>
+      </tr> 
+      <tr>
+       <td>.p12</td>
+       <td>application/x-pkcs12</td> 
+
+       <td>.p7b</td>
+       <td>application/x-pkcs7-certificates</td>
+      </tr> 
+      <tr>
+       <td>.p7c</td>
+       <td>application/pkcs7-mime</td> 
+
+       <td>.p7m</td>
+       <td>application/pkcs7-mime</td>
+      </tr> 
+      <tr>
+       <td>.p7r</td>
+       <td>application/x-pkcs7-certreqresp</td> 
+
+       <td>.p7s</td>
+       <td>application/pkcs7-signature</td>
+      </tr> 
+      <tr>
+       <td>.pc5</td>
+       <td>application/x-pc5</td> 
+
+       <td>.pci</td>
+       <td>application/x-pci</td>
+      </tr> 
+      <tr>
+       <td>.pcl</td>
+       <td>application/x-pcl</td> 
+
+       <td>.pcx</td>
+       <td>application/x-pcx</td>
+      </tr> 
+      <tr>
+       <td>.pdf</td>
+       <td>application/pdf</td> 
+
+       <td>.pdf</td>
+       <td>application/pdf</td>
+      </tr> 
+      <tr>
+       <td>.pdx</td>
+       <td>application/vnd.adobe.pdx</td> 
+
+       <td>.pfx</td>
+       <td>application/x-pkcs12</td>
+      </tr> 
+      <tr>
+       <td>.pgl</td>
+       <td>application/x-pgl</td> 
+
+       <td>.pic</td>
+       <td>application/x-pic</td>
+      </tr> 
+      <tr>
+       <td>.pko</td>
+       <td>application/vnd.ms-pki.pko</td> 
+
+       <td>.pl</td>
+       <td>application/x-perl</td>
+      </tr> 
+      <tr>
+       <td>.plg</td>
+       <td>text/html</td> 
+       <td>.pls</td>
+       <td>audio/scpls</td>
+      </tr> 
+      <tr>
+       <td>.plt</td>
+       <td>application/x-plt</td> 
+       <td>.png</td>
+       <td>image/png</td>
+      </tr> 
+      <tr>
+       <td>.png</td>
+       <td>application/x-png</td> 
+       <td>.pot</td>
+       <td>application/vnd.ms-powerpoint</td>
+      </tr> 
+      <tr>
+       <td>.ppa</td>
+       <td>application/vnd.ms-powerpoint</td> 
+       <td>.ppm</td>
+       <td>application/x-ppm</td>
+      </tr> 
+      <tr>
+       <td>.pps</td>
+       <td>application/vnd.ms-powerpoint</td> 
+       <td>.ppt</td>
+       <td>application/vnd.ms-powerpoint</td>
+      </tr> 
+      <tr>
+       <td>.ppt</td>
+       <td>application/x-ppt</td> 
+       <td>.pr</td>
+       <td>application/x-pr</td>
+      </tr> 
+      <tr>
+       <td>.prf</td>
+       <td>application/pics-rules</td> 
+       <td>.prn</td>
+       <td>application/x-prn</td>
+      </tr> 
+      <tr>
+       <td>.prt</td>
+       <td>application/x-prt</td> 
+       <td>.ps</td>
+       <td>application/x-ps</td>
+      </tr> 
+      <tr>
+       <td>.ps</td>
+       <td>application/postscript</td> 
+       <td>.ptn</td>
+       <td>application/x-ptn</td>
+      </tr> 
+      <tr>
+       <td>.pwz</td>
+       <td>application/vnd.ms-powerpoint</td> 
+       <td>.r3t</td>
+       <td>text/vnd.rn-realtext3d</td>
+      </tr> 
+      <tr>
+       <td>.ra</td>
+       <td>audio/vnd.rn-realaudio</td> 
+       <td>.ram</td>
+       <td>audio/x-pn-realaudio</td>
+      </tr> 
+      <tr>
+       <td>.ras</td>
+       <td>application/x-ras</td> 
+       <td>.rat</td>
+       <td>application/rat-file</td>
+      </tr> 
+      <tr>
+       <td>.rdf</td>
+       <td>text/xml</td> 
+       <td>.rec</td>
+       <td>application/vnd.rn-recording</td>
+      </tr> 
+      <tr>
+       <td>.red</td>
+       <td>application/x-red</td> 
+       <td>.rgb</td>
+       <td>application/x-rgb</td>
+      </tr> 
+      <tr>
+       <td>.rjs</td>
+       <td>application/vnd.rn-realsystem-rjs</td> 
+       <td>.rjt</td>
+       <td>application/vnd.rn-realsystem-rjt</td>
+      </tr> 
+      <tr>
+       <td>.rlc</td>
+       <td>application/x-rlc</td> 
+       <td>.rle</td>
+       <td>application/x-rle</td>
+      </tr> 
+      <tr>
+       <td>.rm</td>
+       <td>application/vnd.rn-realmedia</td> 
+       <td>.rmf</td>
+       <td>application/vnd.adobe.rmf</td>
+      </tr> 
+      <tr>
+       <td>.rmi</td>
+       <td>audio/mid</td> 
+       <td>.rmj</td>
+       <td>application/vnd.rn-realsystem-rmj</td>
+      </tr> 
+      <tr>
+       <td>.rmm</td>
+       <td>audio/x-pn-realaudio</td> 
+       <td>.rmp</td>
+       <td>application/vnd.rn-rn_music_package</td>
+      </tr> 
+      <tr>
+       <td>.rms</td>
+       <td>application/vnd.rn-realmedia-secure</td> 
+       <td>.rmvb</td>
+       <td>application/vnd.rn-realmedia-vbr</td>
+      </tr> 
+      <tr>
+       <td>.rmx</td>
+       <td>application/vnd.rn-realsystem-rmx</td> 
+       <td>.rnx</td>
+       <td>application/vnd.rn-realplayer</td>
+      </tr> 
+      <tr>
+       <td>.rp</td>
+       <td>image/vnd.rn-realpix</td> 
+       <td>.rpm</td>
+       <td>audio/x-pn-realaudio-plugin</td>
+      </tr> 
+      <tr>
+       <td>.rsml</td>
+       <td>application/vnd.rn-rsml</td> 
+       <td>.rt</td>
+       <td>text/vnd.rn-realtext</td>
+      </tr> 
+      <tr>
+       <td>.rtf</td>
+       <td>application/msword</td> 
+       <td>.rtf</td>
+       <td>application/x-rtf</td>
+      </tr> 
+      <tr>
+       <td>.rv</td>
+       <td>video/vnd.rn-realvideo</td> 
+       <td>.sam</td>
+       <td>application/x-sam</td>
+      </tr> 
+      <tr>
+       <td>.sat</td>
+       <td>application/x-sat</td> 
+       <td>.sdp</td>
+       <td>application/sdp</td>
+      </tr> 
+      <tr>
+       <td>.sdw</td>
+       <td>application/x-sdw</td> 
+       <td>.sit</td>
+       <td>application/x-stuffit</td>
+      </tr> 
+      <tr>
+       <td>.slb</td>
+       <td>application/x-slb</td> 
+       <td>.sld</td>
+       <td>application/x-sld</td>
+      </tr> 
+      <tr>
+       <td>.slk</td>
+       <td>drawing/x-slk</td> 
+       <td>.smi</td>
+       <td>application/smil</td>
+      </tr> 
+      <tr>
+       <td>.smil</td>
+       <td>application/smil</td> 
+       <td>.smk</td>
+       <td>application/x-smk</td>
+      </tr> 
+      <tr>
+       <td>.snd</td>
+       <td>audio/basic</td> 
+       <td>.sol</td>
+       <td>text/plain</td>
+      </tr> 
+      <tr>
+       <td>.sor</td>
+       <td>text/plain</td> 
+       <td>.spc</td>
+       <td>application/x-pkcs7-certificates</td>
+      </tr> 
+      <tr>
+       <td>.spl</td>
+       <td>application/futuresplash</td> 
+       <td>.spp</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.ssm</td>
+       <td>application/streamingmedia</td> 
+       <td>.sst</td>
+       <td>application/vnd.ms-pki.certstore</td>
+      </tr> 
+      <tr>
+       <td>.stl</td>
+       <td>application/vnd.ms-pki.stl</td> 
+       <td>.stm</td>
+       <td>text/html</td>
+      </tr> 
+      <tr>
+       <td>.sty</td>
+       <td>application/x-sty</td> 
+       <td>.svg</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.swf</td>
+       <td>application/x-shockwave-flash</td> 
+       <td>.tdf</td>
+       <td>application/x-tdf</td>
+      </tr> 
+      <tr>
+       <td>.tg4</td>
+       <td>application/x-tg4</td> 
+       <td>.tga</td>
+       <td>application/x-tga</td>
+      </tr> 
+      <tr>
+       <td>.tif</td>
+       <td>image/tiff</td> 
+       <td>.tif</td>
+       <td>application/x-tif</td>
+      </tr> 
+      <tr>
+       <td>.tiff</td>
+       <td>image/tiff</td> 
+       <td>.tld</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.top</td>
+       <td>drawing/x-top</td> 
+       <td>.torrent</td>
+       <td>application/x-bittorrent</td>
+      </tr> 
+      <tr>
+       <td>.tsd</td>
+       <td>text/xml</td> 
+       <td>.txt</td>
+       <td>text/plain</td>
+      </tr> 
+      <tr>
+       <td>.uin</td>
+       <td>application/x-icq</td> 
+       <td>.uls</td>
+       <td>text/iuls</td>
+      </tr> 
+      <tr>
+       <td>.vcf</td>
+       <td>text/x-vcard</td> 
+       <td>.vda</td>
+       <td>application/x-vda</td>
+      </tr> 
+      <tr>
+       <td>.vdx</td>
+       <td>application/vnd.visio</td> 
+       <td>.vml</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.vpg</td>
+       <td>application/x-vpeg005</td> 
+       <td>.vsd</td>
+       <td>application/vnd.visio</td>
+      </tr> 
+      <tr>
+       <td>.vsd</td>
+       <td>application/x-vsd</td> 
+       <td>.vss</td>
+       <td>application/vnd.visio</td>
+      </tr> 
+      <tr>
+       <td>.vst</td>
+       <td>application/vnd.visio</td> 
+       <td>.vst</td>
+       <td>application/x-vst</td>
+      </tr> 
+      <tr>
+       <td>.vsw</td>
+       <td>application/vnd.visio</td> 
+       <td>.vsx</td>
+       <td>application/vnd.visio</td>
+      </tr> 
+      <tr>
+       <td>.vtx</td>
+       <td>application/vnd.visio</td> 
+       <td>.vxml</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.wav</td>
+       <td>audio/wav</td> 
+       <td>.wax</td>
+       <td>audio/x-ms-wax</td>
+      </tr> 
+      <tr>
+       <td>.wb1</td>
+       <td>application/x-wb1</td> 
+       <td>.wb2</td>
+       <td>application/x-wb2</td>
+      </tr> 
+      <tr>
+       <td>.wb3</td>
+       <td>application/x-wb3</td> 
+       <td>.wbmp</td>
+       <td>image/vnd.wap.wbmp</td>
+      </tr> 
+      <tr>
+       <td>.wiz</td>
+       <td>application/msword</td> 
+       <td>.wk3</td>
+       <td>application/x-wk3</td>
+      </tr> 
+      <tr>
+       <td>.wk4</td>
+       <td>application/x-wk4</td> 
+       <td>.wkq</td>
+       <td>application/x-wkq</td>
+      </tr> 
+      <tr>
+       <td>.wks</td>
+       <td>application/x-wks</td> 
+       <td>.wm</td>
+       <td>video/x-ms-wm</td>
+      </tr> 
+      <tr>
+       <td>.wma</td>
+       <td>audio/x-ms-wma</td> 
+       <td>.wmd</td>
+       <td>application/x-ms-wmd</td>
+      </tr> 
+      <tr>
+       <td>.wmf</td>
+       <td>application/x-wmf</td> 
+       <td>.wml</td>
+       <td>text/vnd.wap.wml</td>
+      </tr> 
+      <tr>
+       <td>.wmv</td>
+       <td>video/x-ms-wmv</td> 
+       <td>.wmx</td>
+       <td>video/x-ms-wmx</td>
+      </tr> 
+      <tr>
+       <td>.wmz</td>
+       <td>application/x-ms-wmz</td> 
+       <td>.wp6</td>
+       <td>application/x-wp6</td>
+      </tr> 
+      <tr>
+       <td>.wpd</td>
+       <td>application/x-wpd</td> 
+       <td>.wpg</td>
+       <td>application/x-wpg</td>
+      </tr> 
+      <tr>
+       <td>.wpl</td>
+       <td>application/vnd.ms-wpl</td> 
+       <td>.wq1</td>
+       <td>application/x-wq1</td>
+      </tr> 
+      <tr>
+       <td>.wr1</td>
+       <td>application/x-wr1</td> 
+       <td>.wri</td>
+       <td>application/x-wri</td>
+      </tr> 
+      <tr>
+       <td>.wrk</td>
+       <td>application/x-wrk</td> 
+       <td>.ws</td>
+       <td>application/x-ws</td>
+      </tr> 
+      <tr>
+       <td>.ws2</td>
+       <td>application/x-ws</td> 
+       <td>.wsc</td>
+       <td>text/scriptlet</td>
+      </tr> 
+      <tr>
+       <td>.wsdl</td>
+       <td>text/xml</td> 
+       <td>.wvx</td>
+       <td>video/x-ms-wvx</td>
+      </tr> 
+      <tr>
+       <td>.xdp</td>
+       <td>application/vnd.adobe.xdp</td> 
+       <td>.xdr</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.xfd</td>
+       <td>application/vnd.adobe.xfd</td> 
+       <td>.xfdf</td>
+       <td>application/vnd.adobe.xfdf</td>
+      </tr> 
+      <tr>
+       <td>.xhtml</td>
+       <td>text/html</td> 
+       <td>.xls</td>
+       <td>application/vnd.ms-excel</td>
+      </tr> 
+      <tr>
+       <td>.xls</td>
+       <td>application/x-xls</td> 
+       <td>.xlw</td>
+       <td>application/x-xlw</td>
+      </tr> 
+      <tr>
+       <td>.xml</td>
+       <td>text/xml</td> 
+       <td>.xpl</td>
+       <td>audio/scpls</td>
+      </tr> 
+      <tr>
+       <td>.xq</td>
+       <td>text/xml</td> 
+       <td>.xql</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.xquery</td>
+       <td>text/xml</td> 
+       <td>.xsd</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.xsl</td>
+       <td>text/xml</td> 
+       <td>.xslt</td>
+       <td>text/xml</td>
+      </tr> 
+      <tr>
+       <td>.xwd</td>
+       <td>application/x-xwd</td> 
+       <td>.x_b</td>
+       <td>application/x-x_b</td>
+      </tr>
+      <tr>
+       <td>.sis</td>
+       <td>application/vnd.symbian.install</td>
+       <td>.sisx</td>
+       <td>application/vnd.symbian.install</td>
+      </tr>
+      <tr>
+       <td>.x_t</td>
+       <td>application/x-x_t</td>
+       <td>.ipa</td>
+       <td>application/vnd.iphone</td>
+      </tr> 
+      <tr>
+       <td>.apk</td>
+       <td>application/vnd.android.package-archive</td>
+       <td>.xap</td>
+       <td>application/x-silverlight-app</td>
+      </tr>
+    </tbody>
+</table>]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
