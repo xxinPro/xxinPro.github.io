@@ -272,10 +272,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><center>网络框架</center></p>
+          <p>&ensp;&ensp;从Android4.4开始HttpURLConnection的底层实现采用OkHttp</p>
+<p>&ensp;&ensp;<lable style="color:red;cursor:auto;font-weight:bold">同步请求：</lable>发送方发出数据后，等接收方发回响应以后才发下一个数据包的通讯方式。同步通信方式要求通信双方以相同的时钟频率进行，而且准确协调，通过共享一个单个时钟或定时脉冲源保证发送方和接收方的准确同步，效率较高。</p>
+<p>&ensp;&ensp;<lable style="color:red;cursor:auto;font-weight:bold">异步请求：</lable>发送方发出数据后，不等接收方发回响应，接着发送下个数据包的通讯方式。异步通信方式不要求双方同步，收发方可采用各自的时钟源，双方遵循异步的通信协议，以字符为数据传输单位，发送方传送字符的时间间隔不确定，发送效率比同步传送效率低。</p>
+<p>&ensp;&ensp;测试URL: <a target="_blank" rel="noopener" href="https://www.httpbin.org/">https://www.httpbin.org/</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/09/23/Android-OkHttp/">
+              <a class="btn" href="/2021/09/23/Android-OkHttp/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
