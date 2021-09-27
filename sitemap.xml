@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.xxin.xyz/2021/09/27/Android-GSON/</loc>
+    
+    <lastmod>2021-09-27</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.xxin.xyz/2021/09/23/Android-OkHttp/</loc>
     
     <lastmod>2021-09-27</lastmod>
@@ -536,13 +543,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/%E4%B8%93%E5%8D%87%E6%9C%AC%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2021-09-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xxin.xyz/tags/%E7%BD%91%E6%8A%91%E4%BA%91/</loc>
     <lastmod>2021-09-27</lastmod>
     <changefreq>daily</changefreq>
@@ -565,6 +565,13 @@
   
   <url>
     <loc>https://blog.xxin.xyz/tags/%E7%AB%99%E7%82%B9%E6%97%A5%E5%BF%97/</loc>
+    <lastmod>2021-09-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xxin.xyz/tags/%E4%B8%93%E5%8D%87%E6%9C%AC%E6%95%B0%E5%AD%A6/</loc>
     <lastmod>2021-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
