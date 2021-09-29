@@ -28,15 +28,15 @@
 <meta property="og:site_name" content="小衅笔记">
 <meta property="og:description" content="hexo博客next主题主要优化修改方案 基于hexo5.x和next8.x">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.xxin.xyz/pageImg/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/1.png">
+<meta property="og:image" content="https://blog.xxin.xyz/2021/07/15/next主题优化/1.png">
 <meta property="article:published_time" content="2021-07-15T00:42:56.000Z">
-<meta property="article:modified_time" content="2021-07-19T08:10:15.533Z">
+<meta property="article:modified_time" content="2021-09-29T02:01:11.437Z">
 <meta property="article:author" content="xxin">
 <meta property="article:tag" content="小教程">
 <meta property="article:tag" content="hexo博客">
 <meta property="article:tag" content="next主题">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.xxin.xyz/pageImg/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/1.png">
+<meta name="twitter:image" content="https://blog.xxin.xyz/2021/07/15/next主题优化/1.png">
 
 
 <link rel="canonical" href="https://blog.xxin.xyz/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/">
@@ -96,7 +96,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">17</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">60</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a></li>
         <li class="menu-item menu-item-友链"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -171,7 +171,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -313,7 +313,7 @@
 </ol>
 <h3 id="二、美化"><a href="#二、美化" class="headerlink" title="二、美化"></a>二、美化</h3><h4 id="1-主题选择"><a href="#1-主题选择" class="headerlink" title="1.主题选择"></a>1.主题选择</h4><p>next的配置文件中搜索Scheme Settings<br>提供了四种主题:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br></pre></td></tr></table></figure><br>本博客使用第三种</p>
 <h4 id="2-网页icon设置"><a href="#2-网页icon设置" class="headerlink" title="2.网页icon设置"></a>2.网页icon设置</h4><p>next配置文件搜索favicon<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">favicon:</span><br><span class="line">  small: /images/favicon-16x16-next.png</span><br><span class="line">  medium: /images/favicon-32x32-next.png</span><br><span class="line">  apple_touch_icon: /images/apple-touch-icon-next.png</span><br><span class="line">  safari_pinned_tab: /images/logo.svg</span><br><span class="line">  #android_manifest: /manifest.json</span><br></pre></td></tr></table></figure><br>制作favicon.ico图标，并放置在themes/next/sources/images即可</p>
-<h4 id="3-博客底部的标签样式"><a href="#3-博客底部的标签样式" class="headerlink" title="3.博客底部的标签样式"></a>3.博客底部的标签样式</h4><p>修改后效果↓<br><img src="https://blog.xxin.xyz/pageImg/next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/1.png" style="zoom:100%;"><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">打开hexo\myblog\themes\next-old\layout\_macro\post.swig</span><br><span class="line"></span><br><span class="line">搜索rel=&quot;tag&quot;，将后面的&#123;&#123; tag_indicate &#125;&#125;修改为&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-博客底部的标签样式"><a href="#3-博客底部的标签样式" class="headerlink" title="3.博客底部的标签样式"></a>3.博客底部的标签样式</h4><p>修改后效果↓<br><img src="../next主题优化/1.png" style="zoom:100%;"><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">打开hexo\myblog\themes\next-old\layout\_macro\post.swig</span><br><span class="line"></span><br><span class="line">搜索rel=&quot;tag&quot;，将后面的&#123;&#123; tag_indicate &#125;&#125;修改为&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure></p>
 <h4 id="4-侧边栏头像"><a href="#4-侧边栏头像" class="headerlink" title="4.侧边栏头像"></a>4.侧边栏头像</h4><p>next配置文件搜索Sidebar Avatar<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: http://q1.qlogo.cn/g?b=qq&amp;nk=3033528136&amp;s=640 #头像的网络位置或相对路径(blog/themes/next/source/images)</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #鼠标放在头像上时是否旋转</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #头像是否设为圆形，否则为矩形</span><br><span class="line">  opacity: 2 #头像放缩指数</span><br></pre></td></tr></table></figure></p>
 <h4 id="5-侧边栏社交信息"><a href="#5-侧边栏社交信息" class="headerlink" title="5.侧边栏社交信息"></a>5.侧边栏社交信息</h4><p>next配置文件搜索Social Links<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">site_state: true # 是否在侧边栏加入日志、分类、标签等跳转链接</span><br><span class="line"></span><br><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/yourname || fab fa-github</span><br><span class="line">  E-Mail: mailto:x@xxin.xyz || fa fa-envelope</span><br><span class="line">  QQ: https://wpa.qq.com/msgrd?v=3&amp;uin=3033528136&amp;site=qq&amp;menu=yes || fab fa-qq</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br><span class="line">  </span><br><span class="line">social_icons:</span><br><span class="line">  enable: true #是否显示社交图标</span><br><span class="line">  icons_only: false #是否仅显示社交图标</span><br><span class="line">  transition: true</span><br></pre></td></tr></table></figure></p>
 <h4 id="6-侧边栏设置"><a href="#6-侧边栏设置" class="headerlink" title="6.侧边栏设置"></a>6.侧边栏设置</h4><p>next配置文件搜索Sidebar Settings</p>
@@ -388,7 +388,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:36</span>
+    <span title="站点阅读时长">2:35</span>
   </span>
 </div><script defer src="/lib/three.js"></script><script defer src="/lib/waves.js"></script>
 
