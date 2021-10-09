@@ -275,9 +275,9 @@
 <h6 id="添加动画效果"><a href="#添加动画效果" class="headerlink" title="添加动画效果"></a>添加动画效果</h6><p>进入动画，inview.xml<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    因为左进右出两张图片，所以这里的duration是java代码中ViewFlipper切换时间间隔的一半才恰好--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">translate</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:duration</span>=<span class="string">&quot;500&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromXDelta</span>=<span class="string">&quot;-100%p&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toXDelta</span>=<span class="string">&quot;0&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>退出动画，outview.xml<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    因为左进右出两张图片，所以这里的duration是java代码中ViewFlipper切换时间间隔的一半才恰好--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">translate</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:duration</span>=<span class="string">&quot;500&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fromXDelta</span>=<span class="string">&quot;0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:toXDelta</span>=<span class="string">&quot;100%p&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>在代码中添加动画<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  装载从左淡入动画</span></span><br><span class="line">  Animation animation = AnimationUtils.loadAnimation(HomeActivity2.<span class="keyword">this</span>, </span><br><span class="line">          R.anim.inview);</span><br><span class="line"><span class="comment">//  绑定进入动画</span></span><br><span class="line">  home2_viewFlipper1.setInAnimation(animation);</span><br><span class="line"><span class="comment">//  装载从右淡出效果</span></span><br><span class="line">  Animation animation1 = AnimationUtils.loadAnimation(HomeActivity2.<span class="keyword">this</span>,</span><br><span class="line">          R.anim.outview);</span><br><span class="line"><span class="comment">//  绑定退出动画</span></span><br><span class="line">  home2_viewFlipper1.setOutAnimation(animation1);</span><br><span class="line"><span class="comment">//  如果处于切换状态</span></span><br><span class="line">  <span class="keyword">if</span> (home2_viewFlipper1.isFlipping())&#123;</span><br><span class="line"><span class="comment">//      停止切换</span></span><br><span class="line">      home2_viewFlipper1.stopFlipping();</span><br><span class="line">      home2_btn2.setText(<span class="string">&quot;循环切换&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line"><span class="comment">//      设置循环切换时间间隔</span></span><br><span class="line">      home2_viewFlipper1.setFlipInterval(<span class="number">1000</span>);</span><br><span class="line"><span class="comment">//      开始循环切换</span></span><br><span class="line">      home2_viewFlipper1.startFlipping();</span><br><span class="line">      home2_btn2.setText(<span class="string">&quot;停止切换&quot;</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>效果图</p>
-<h4 id="扩展-animator动画"><a href="#扩展-animator动画" class="headerlink" title="扩展: animator动画"></a>扩展: animator动画</h4><p>创建anim文件夹</p>
-<p>在anim文件夹中创建动画资源文件</p>
+<p>效果图<br><img src="../Android-ImageView/img5.gif" height="40%" width="40%" /></p>
+<h4 id="扩展-创建anim动画"><a href="#扩展-创建anim动画" class="headerlink" title="扩展: 创建anim动画"></a>扩展: 创建anim动画</h4><p>1.创建anim文件夹<br><img src="../Android-ImageView/img1.png" height="70%" width="70%" /><br><img src="../Android-ImageView/img2.png" height="70%" width="70%" /></p>
+<p>2.在anim文件夹中创建动画资源文件<br><img src="../Android-ImageView/img3.png" height="70%" width="70%" /><br><img src="../Android-ImageView/img4.png" height="60%" width="60%" /></p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -382,7 +382,23 @@
   <entry>
     <title>Android-Receiver</title>
     <url>/2021/09/23/Android-Receiver/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h3 id="静态注册广播"><a href="#静态注册广播" class="headerlink" title="静态注册广播"></a>静态注册广播</h3><h4 id="①静态注册广播接收者"><a href="#①静态注册广播接收者" class="headerlink" title="①静态注册广播接收者"></a>①静态注册广播接收者</h4><p>创建一个MyReceiver类作为广播接收者<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>该类继承自BroadcastReceiver，并重写了onReceive方法<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.BroadcastReceiver;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="comment">//广播接收者</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    MyReceiver接收广播后，会调用onReceive方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        接收intent中的消息</span></span><br><span class="line">        String msg = intent.getStringExtra(<span class="string">&quot;message&quot;</span>);</span><br><span class="line">        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在清单文件的application中注册广播接收类<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--    注册广播接收类--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">&quot;.MyReceiver&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>清单文件中注册后，需要给它一个标记，通过这个标记找到广播接收类<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--    注册广播接收类--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">&quot;.MyReceiver&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            标记可以任意填写--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.test.myReceiver&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="②发送广播给接收者"><a href="#②发送广播给接收者" class="headerlink" title="②发送广播给接收者"></a>②发送广播给接收者</h4><p>在事件中<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建意图</span></span><br><span class="line">  Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line"><span class="comment">//  传入的action要和注册的广播接收类中的action保持一致</span></span><br><span class="line">  intent.setAction(<span class="string">&quot;com.test.myReceiver&quot;</span>);</span><br><span class="line"><span class="comment">//  发送消息</span></span><br><span class="line">  intent.putExtra(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;MainActivity发送的消息&quot;</span>);</span><br><span class="line"><span class="comment">//  在Android8.0以上，需要设置setComponent()传入ComponentName对象，ComponentName对象需要设置广播接收者所在的包名和广播接收者的完整类名</span></span><br><span class="line">  intent.setComponent(<span class="keyword">new</span> ComponentName(getPackageName(),getPackageName().toString()+<span class="string">&quot;.MyReceiver&quot;</span>));</span><br><span class="line"><span class="comment">//  发送广播</span></span><br><span class="line">  sendBroadcast(intent);</span><br></pre></td></tr></table></figure></p>
+<p><label style="color:red;cursor:auto">注意：</label>在Android8.0以上，静态广播必须设置<label style="color:red;cursor:auto">广播接收者所在的包名</label>和<label style="color:red;cursor:auto">广播接收者的完整类名</label><br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建ComponentName对象，传入广播接收者所在的包名、广播接收者的完整类名</span></span><br><span class="line">  ComponentName componentName = <span class="keyword">new</span> ComponentName(getPackageName(),getPackageName()+<span class="string">&quot;.MyReceiver&quot;</span>);</span><br><span class="line"><span class="comment">//  设置Component</span></span><br><span class="line">  intent.setComponent(componentName);</span><br></pre></td></tr></table></figure></p>
+<h3 id="动态注册广播"><a href="#动态注册广播" class="headerlink" title="动态注册广播"></a>动态注册广播</h3><h4 id="①动态注册广播接收者"><a href="#①动态注册广播接收者" class="headerlink" title="①动态注册广播接收者"></a>①动态注册广播接收者</h4><p>创建一个MyReceiver类作为广播接收者<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>该类继承自BroadcastReceiver，并重写了onReceive方法<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.BroadcastReceiver;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="comment">//广播接收者</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    MyReceiver接收广播后，会调用onReceive方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        接收intent中的消息</span></span><br><span class="line">        String msg = intent.getStringExtra(<span class="string">&quot;message&quot;</span>);</span><br><span class="line">        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>动态注册广播接收类<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  使用广播接收类创建对象</span></span><br><span class="line">  MyReceiver myReceiver = <span class="keyword">new</span> MyReceiver();</span><br><span class="line"><span class="comment">//  创建intentFilter</span></span><br><span class="line">  IntentFilter intentFilter = <span class="keyword">new</span> IntentFilter();</span><br><span class="line"><span class="comment">//  给intentFilter添加Action</span></span><br><span class="line">  intentFilter.addAction(<span class="string">&quot;com.test.myReceiver&quot;</span>);</span><br><span class="line"><span class="comment">//  注册Receiver</span></span><br><span class="line">  registerReceiver(myReceiver,intentFilter);</span><br></pre></td></tr></table></figure></p>
+<h4 id="②发送广播给接收者-1"><a href="#②发送广播给接收者-1" class="headerlink" title="②发送广播给接收者"></a>②发送广播给接收者</h4><p>在事件中<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建意图</span></span><br><span class="line">  Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line"><span class="comment">//  发送消息</span></span><br><span class="line">  intent.putExtra(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;MainActivity发送的消息&quot;</span>);</span><br><span class="line"><span class="comment">//  设置Action</span></span><br><span class="line">  intent.setAction(<span class="string">&quot;com.test.myReceiver&quot;</span>);</span><br><span class="line"><span class="comment">//  发送广播</span></span><br><span class="line">  sendBroadcast(intent);</span><br></pre></td></tr></table></figure></p>
+<p><label style="color:red;cursor:auto">注意：</label>动态注册广播一定不要设置setComponent()</p>
+<h3 id="发送广播的方式"><a href="#发送广播的方式" class="headerlink" title="发送广播的方式"></a>发送广播的方式</h3><h4 id="①sendBroadcast"><a href="#①sendBroadcast" class="headerlink" title="①sendBroadcast"></a>①sendBroadcast</h4><p>所有满足条件的广播接收者都会执行其onReceive()方法来处理响应，当有多个满足条件的广播接收者时，不能保证它们onReceive()的执行顺序</p>
+<h4 id="②sendStickyBroadcast"><a href="#②sendStickyBroadcast" class="headerlink" title="②sendStickyBroadcast"></a>②sendStickyBroadcast</h4><p>intent在发送后一直存在，并且在以后调用registerReceiver注册相匹配的Receive时会把这个intent直接返回给新注册的Receive</p>
+<p>通俗讲：先动态注册再发送广播，或者先发送广播再动态注册，intent都可以被接收器接收到并执行其onReceive方法。</p>
+<p>不过需要在manifest.xml文件中配置此类型广播权限<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&lt;uses-permissionandroid:name=&quot;android.permission.BROADCAST_STICKY&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="③sendOrderBroadcast"><a href="#③sendOrderBroadcast" class="headerlink" title="③sendOrderBroadcast"></a>③sendOrderBroadcast</h4><p>通过sendOrderBroadcast发送广播，当有多个满足条件的广播接收者，会根据广播接收者注册时intentFilter设置的优先级顺序来执行onReceive()方法，对于相同优先级的广播接收者则不能保证onReceive()的执行顺序</p>
+]]></content>
       <categories>
         <category>Android笔记</category>
       </categories>
@@ -810,21 +826,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Lambda</title>
-    <url>/2021/07/24/Lambda/</url>
-    <content><![CDATA[<p>匿名类</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 匿名类 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        匿名类 nm = <span class="keyword">new</span> 匿名类();</span><br><span class="line">        nm.test(<span class="keyword">new</span> price()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;测试&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(price name)</span></span>&#123;</span><br><span class="line">        System.out.println(name.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">price</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>lambda修改后</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 匿名类 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        匿名类 nm = <span class="keyword">new</span> 匿名类();</span><br><span class="line">        nm.test(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;测试&quot;</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(price name)</span></span>&#123;</span><br><span class="line">        System.out.println(name.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">price</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android版本号与API级别关系对应表</title>
     <url>/2021/09/25/Android%E7%89%88%E6%9C%AC%E5%8F%B7%E4%B8%8EAPI%E7%BA%A7%E5%88%AB%E5%85%B3%E7%B3%BB%E5%AF%B9%E5%BA%94%E8%A1%A8/</url>
     <content><![CDATA[<table>
@@ -1060,6 +1061,21 @@
       </tags>
   </entry>
   <entry>
+    <title>Lambda</title>
+    <url>/2021/07/24/Lambda/</url>
+    <content><![CDATA[<p>匿名类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 匿名类 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        匿名类 nm = <span class="keyword">new</span> 匿名类();</span><br><span class="line">        nm.test(<span class="keyword">new</span> price()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;测试&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(price name)</span></span>&#123;</span><br><span class="line">        System.out.println(name.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">price</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>lambda修改后</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 匿名类 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        匿名类 nm = <span class="keyword">new</span> 匿名类();</span><br><span class="line">        nm.test(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;测试&quot;</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(price name)</span></span>&#123;</span><br><span class="line">        System.out.println(name.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">price</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Tampermonkey的安装和使用</title>
     <url>/2021/09/16/Tampermonkey%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>&ensp;&ensp;Tampermonkey，又叫油猴脚本<br>&ensp;&ensp;油猴脚本是增强浏览器网页功能的扩展程序，我们通常使用的支持油猴脚本的浏览器：谷歌浏览器、QQ浏览器、360浏览器<br>&ensp;&ensp;教程中使用Chrome谷歌浏览器做演示</p>
@@ -1231,6 +1247,18 @@
       </tags>
   </entry>
   <entry>
+    <title>what is the &#39;inflate()&#39;?</title>
+    <url>/2021/09/13/what-is-the-inflate/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>内部类*</title>
     <url>/2021/07/23/%E5%86%85%E9%83%A8%E7%B1%BB/</url>
     <content><![CDATA[<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><ol>
@@ -1271,18 +1299,6 @@
         <tag>学习笔记</tag>
         <tag>重点难点</tag>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>what is the &#39;inflate()&#39;?</title>
-    <url>/2021/09/13/what-is-the-inflate/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1328,22 +1344,6 @@
       </tags>
   </entry>
   <entry>
-    <title>单例模式</title>
-    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>调用时</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在服务器中搭建hexo博客</title>
     <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p><center>个人服务器搭建hexo(宝塔)</center><br><br></p>
@@ -1374,6 +1374,22 @@
       </tags>
   </entry>
   <entry>
+    <title>单例模式</title>
+    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>调用时</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>夜郎自大</title>
     <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
     <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
@@ -1393,22 +1409,6 @@
       </tags>
   </entry>
   <entry>
-    <title>怂崽</title>
-    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
-<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
-<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
-        <tag>坏心情</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>小衅笔记</title>
     <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
@@ -1423,6 +1423,22 @@
       <tags>
         <tag>好心情</tag>
         <tag>站点日志</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>怂崽</title>
+    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
+<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
+<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+        <tag>坏心情</tag>
       </tags>
   </entry>
   <entry>
