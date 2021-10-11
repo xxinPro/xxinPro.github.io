@@ -28,12 +28,14 @@
 <meta property="og:site_name" content="小衅笔记">
 <meta property="og:description" content="service生命周期及作用">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.xxin.xyz/2021/09/21/Android-Service/img1.png">
 <meta property="article:published_time" content="2021-09-21T11:15:10.000Z">
-<meta property="article:modified_time" content="2021-09-23T07:09:12.477Z">
+<meta property="article:modified_time" content="2021-10-11T05:13:03.284Z">
 <meta property="article:author" content="xxin">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="学习笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.xxin.xyz/2021/09/21/Android-Service/img1.png">
 
 
 <link rel="canonical" href="https://blog.xxin.xyz/2021/09/21/Android-Service/">
@@ -151,7 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Service%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Service的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">创建服务类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service%E6%B3%A8%E5%86%8C"><span class="nav-number">3.</span> <span class="nav-text">Service注册</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAService"><span class="nav-number">1.</span> <span class="nav-text">创建Service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">2.</span> <span class="nav-text">Service生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8Service"><span class="nav-number">3.</span> <span class="nav-text">启动Service</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87startService-%E5%90%AF%E5%8A%A8"><span class="nav-number">3.1.</span> <span class="nav-text">通过startService()启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87bindService-%E5%90%AF%E5%8A%A8"><span class="nav-number">3.2.</span> <span class="nav-text">通过bindService()启动</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -275,14 +277,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>64</span>
+      <span>2.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -294,9 +296,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="Service的作用"><a href="#Service的作用" class="headerlink" title="Service的作用"></a>Service的作用</h3><p>在后台执行的事件</p>
-<h3 id="创建服务类"><a href="#创建服务类" class="headerlink" title="创建服务类"></a>创建服务类</h3><p>MyService类继承自Service</p>
-<h3 id="Service注册"><a href="#Service注册" class="headerlink" title="Service注册"></a>Service注册</h3><p>组件必须在清单文件中注册</p>
+        <p>Service是Android中实现程序后台运行的解决方案，适用于去执行那些不需要和用户交互而且还要求长期运行的任务</p>
+<h3 id="创建Service"><a href="#创建Service" class="headerlink" title="创建Service"></a>创建Service</h3><p>创建一个MyService类继承自Service，并重写onBind()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyService2</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyService2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> Return the communication channel to the service.</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="string">&quot;Not yet implemented&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在清单文件中注册Service类</p>
+<p>android:exported; 是否允许其他应用隐式调用该组件<br>android:enabled; 是否可以被系统实例化<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">service</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;.MyService2&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:enabled</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Service生命周期"><a href="#Service生命周期" class="headerlink" title="Service生命周期"></a>Service生命周期</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//启动服务</span></span><br><span class="line">  startService()</span><br><span class="line"><span class="comment">//关闭服务</span></span><br><span class="line">  stopService()</span><br><span class="line"><span class="comment">//绑定服务</span></span><br><span class="line">  bindService()</span><br><span class="line"><span class="comment">//解绑服务</span></span><br><span class="line">  unbindService()</span><br></pre></td></tr></table></figure>
+<p><img src="../Android-Service/img1.png" /></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.app.Service;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.os.IBinder;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyService2</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String TAG = <span class="string">&quot;xin&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    Service第一次被创建时调用</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onCreate()&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    startService()启动时调用</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onStartCommand()&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    Service不再使用时调用</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onDestroy()&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    必须实现的方法，返回一个绑定的接口给Service</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onBind()&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">//        throw new UnsupportedOperationException(&quot;Not yet implemented&quot;);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    解绑服务</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onUnbind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        Log.d(TAG, <span class="string">&quot;onUnbind()&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onUnbind(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="启动Service"><a href="#启动Service" class="headerlink" title="启动Service"></a>启动Service</h3><h4 id="通过startService-启动"><a href="#通过startService-启动" class="headerlink" title="通过startService()启动"></a>通过startService()启动</h4><p>启动状态：<br>&ensp;&ensp;&ensp;&ensp;当应用组件通过调用startService()启动服务时，服务即处于“启动”状态。一旦启动，服务即可在后台无期限运行，即使启动服务的组件已被销毁也不受影响，除非手动调用才能停止服务，已启动的服务通常是执行单一操作，而且不会将结果返回给调用方</p>
+<ol>
+<li>启动时，依次调用onCreate -&gt; onStartCommand</li>
+<li>如果Service已经被启动，再次启动时将不会执行onCreate，而是直接执行onStartCommand</li>
+<li>stopService时直接进入onDestory</li>
+<li>无论调用了几次startService，一次stopService就能结束该Service</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  Intent intent = <span class="keyword">new</span> Intent(MyService.<span class="keyword">this</span>,MyService2.class);</span><br><span class="line"><span class="comment">//  启动服务</span></span><br><span class="line">  startService(intent);</span><br><span class="line"><span class="comment">//  停止服务</span></span><br><span class="line">  stopService(intent);</span><br></pre></td></tr></table></figure>
+<h4 id="通过bindService-启动"><a href="#通过bindService-启动" class="headerlink" title="通过bindService()启动"></a>通过bindService()启动</h4><p>绑定状态：<br>&ensp;&ensp;&ensp;&ensp;当应用组件通过调用bindService()启动服务时，服务即处于“绑定”状态。绑定服务提供了一个端口—服务器接口，允许组件与服务进行交互、发送请求、获取结果，甚至是利用进程间通信跨进程执行这些操作。仅当与另一个应用组件绑定时，绑定服务才会运行。多个组件可以同时绑定到该服务，但全部取消绑定时，该服务即会销毁</p>
+<ol>
+<li>启动时只运行onCreate()</li>
+<li>停止时，依次调用onUnbind -&gt; onDestory</li>
+<li>当与之绑定的Activity被销毁时自动解绑Service</li>
+</ol>
+<p>Activity与Service绑定需要实例化一个ServiceConnection坐桥梁<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  通过一个桥梁给Activity和Service进行绑定</span></span><br><span class="line">  ServiceConnection serviceConnection = <span class="keyword">new</span> ServiceConnection() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//      传送在service的onBind()中返回的IBinder</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//      Services被不正常kill时调用</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName name)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>绑定Service<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  绑定服务，传入 intent、ServiceConnection、绑定模式</span></span><br><span class="line">  bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);</span><br><span class="line">  </span><br><span class="line"><span class="comment">//  解绑服务</span></span><br><span class="line">  unbindService(serviceConnection);</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -355,13 +378,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">205k</span>
+    <span title="站点总字数">208k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:07</span>
+    <span title="站点阅读时长">3:09</span>
   </span>
 </div><script defer src="/lib/three.js"></script><script defer src="/lib/waves.js"></script>
 
