@@ -192,6 +192,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Android-Glide</title>
+    <url>/2021/09/23/Android-Glide/</url>
+    <content><![CDATA[<p>Glide是一个快速高效的Android图片加载库，可以自动加载网络、本地文件，app资源文件中的图片，注重于平滑的滚动</p>
+<p>开源地址：<a href="https://github.com/bumptech/glide">https://github.com/bumptech/glide</a><br>中文文档：<a href="https://muyangmin.github.io/glide-docs-cn/">https://muyangmin.github.io/glide-docs-cn/</a></p>
+<span id="more"></span>
+<h3 id="①引入glide"><a href="#①引入glide" class="headerlink" title="①引入glide"></a>①引入glide</h3><p>在gradle文件中的dependencies添加依赖<br><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">&#x27;com.github.bumptech.glide:glide:4.11.0&#x27;</span></span><br><span class="line">annotationProcessor <span class="string">&#x27;com.github.bumptech.glide:compiler:4.11.0&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="②使用"><a href="#②使用" class="headerlink" title="②使用"></a>②使用</h3><h4 id="相应权限"><a href="#相应权限" class="headerlink" title="相应权限"></a>相应权限</h4><p>在清单文件中加入相应权限<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//    访问网络</span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.INTERNET&quot;</span>/&gt;</span></span><br><span class="line">//    本地储存</span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="简单的使用"><a href="#简单的使用" class="headerlink" title="简单的使用"></a>简单的使用</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="keyword">import</span> com.bumptech.glide.Glide;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ImageView img;</span><br><span class="line">    <span class="keyword">private</span> TextView text1;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        text1 = findViewById(R.id.text1);</span><br><span class="line">        img = findViewById(R.id.img1);</span><br><span class="line"></span><br><span class="line">        Glide.with(<span class="keyword">this</span>)</span><br><span class="line"><span class="comment">//                参数支持：url地址、file文件、文件对象、等等类型</span></span><br><span class="line"><span class="comment">//                .load(R.mipmap.shuai)</span></span><br><span class="line">                .load(<span class="string">&quot;https://img0.baidu.com/it/u=1548103423,3809755433&amp;fm=26&amp;fmt=auto&quot;</span>)</span><br><span class="line"><span class="comment">//                ImageView对象传入</span></span><br><span class="line">                .into(img);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Glide占位符"><a href="#Glide占位符" class="headerlink" title="Glide占位符"></a>Glide占位符</h4><p>Glide4中共有三种占位图</p>
+<ol>
+<li>placeholder: 正在请求图片时展示的图片</li>
+<li>error: 如果请求失败时展示的图片(如果没有设置，则展示placeholder)</li>
+<li>fallback: 请求的url/model为null时展示的图片(如果没有设置，则展示placeholder)</li>
+</ol>
+<p>创建RequestOptions对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  RequestOptions requestOptions = <span class="keyword">new</span> RequestOptions()</span><br><span class="line"><span class="comment">//          正在请求中</span></span><br><span class="line">          .placeholder(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          请求失败时</span></span><br><span class="line">          .error(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          请求地址为null时</span></span><br><span class="line">          .fallback(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          图片大小，若未指定则以80x80加载</span></span><br><span class="line">          .override(<span class="number">100</span>,<span class="number">100</span>);</span><br></pre></td></tr></table></figure></p>
+<p>应用RequestOptions对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  Glide.with(<span class="keyword">this</span>)</span><br><span class="line">          .load(<span class="string">&quot;https://img0.baidu.com/it/u=1548103423,3809755433&amp;fm=26&amp;fmt=auto&quot;</span>)</span><br><span class="line"><span class="comment">//          调用RequestOptions对象</span></span><br><span class="line">          .apply(requestOptions)</span><br><span class="line">          .into(img);</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android-GSON</title>
     <url>/2021/09/27/Android-GSON/</url>
     <content><![CDATA[<p>gson的github开源地址: <a href="https://github.com/google/gson">https://github.com/google/gson</a></p>
@@ -211,32 +237,6 @@
 <h4 id="反序列化-2"><a href="#反序列化-2" class="headerlink" title="反序列化"></a>反序列化</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建Gson对象</span></span><br><span class="line">  Gson gson4 = <span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">//  反序列化得到Girlfriend类型数组，数组中的每个值都是一个Girlfriend对象</span></span><br><span class="line">  Girlfriend[] girlfriends2 = gson4.fromJson(json,Girlfriend[].class);</span><br><span class="line"><span class="comment">//  调用它的getName</span></span><br><span class="line">  code.setText(girlfriend3.getName());</span><br></pre></td></tr></table></figure>
 <h3 id="List集合的序列化与反序列化"><a href="#List集合的序列化与反序列化" class="headerlink" title="List集合的序列化与反序列化"></a>List集合的序列化与反序列化</h3><h4 id="序列化-3"><a href="#序列化-3" class="headerlink" title="序列化"></a>序列化</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建Gson对象</span></span><br><span class="line">  Gson gson5 = <span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">//  把集合序列化为json</span></span><br><span class="line">  json = gson5.toJson(girlfriendList);</span><br><span class="line">  code.setText(json);</span><br></pre></td></tr></table></figure>
 <h4 id="反序列化-3"><a href="#反序列化-3" class="headerlink" title="反序列化"></a>反序列化</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  Gson gson6 = <span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">//  gson提供的数据类型转换器</span></span><br><span class="line">  Type type = <span class="keyword">new</span> TypeToken&lt;List&lt;Girlfriend&gt;&gt;()&#123;&#125;.getType();</span><br><span class="line"><span class="comment">//  反序列化，把Json格式的数据转换成List&lt;AppVersion&gt; 类型</span></span><br><span class="line">  List&lt;Girlfriend&gt; girlfriendList2 = gson6.fromJson(json,type);</span><br><span class="line">  code.setText(girlfriendList2.get(<span class="number">0</span>).getName());</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android-Glide</title>
-    <url>/2021/09/23/Android-Glide/</url>
-    <content><![CDATA[<p>Glide是一个快速高效的Android图片加载库，可以自动加载网络、本地文件，app资源文件中的图片，注重于平滑的滚动</p>
-<p>开源地址：<a href="https://github.com/bumptech/glide">https://github.com/bumptech/glide</a><br>中文文档：<a href="https://muyangmin.github.io/glide-docs-cn/">https://muyangmin.github.io/glide-docs-cn/</a></p>
-<span id="more"></span>
-<h3 id="①引入glide"><a href="#①引入glide" class="headerlink" title="①引入glide"></a>①引入glide</h3><p>在gradle文件中的dependencies添加依赖<br><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">&#x27;com.github.bumptech.glide:glide:4.11.0&#x27;</span></span><br><span class="line">annotationProcessor <span class="string">&#x27;com.github.bumptech.glide:compiler:4.11.0&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="②使用"><a href="#②使用" class="headerlink" title="②使用"></a>②使用</h3><h4 id="相应权限"><a href="#相应权限" class="headerlink" title="相应权限"></a>相应权限</h4><p>在清单文件中加入相应权限<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//    访问网络</span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.INTERNET&quot;</span>/&gt;</span></span><br><span class="line">//    本地储存</span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="简单的使用"><a href="#简单的使用" class="headerlink" title="简单的使用"></a>简单的使用</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="keyword">import</span> com.bumptech.glide.Glide;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ImageView img;</span><br><span class="line">    <span class="keyword">private</span> TextView text1;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        text1 = findViewById(R.id.text1);</span><br><span class="line">        img = findViewById(R.id.img1);</span><br><span class="line"></span><br><span class="line">        Glide.with(<span class="keyword">this</span>)</span><br><span class="line"><span class="comment">//                参数支持：url地址、file文件、文件对象、等等类型</span></span><br><span class="line"><span class="comment">//                .load(R.mipmap.shuai)</span></span><br><span class="line">                .load(<span class="string">&quot;https://img0.baidu.com/it/u=1548103423,3809755433&amp;fm=26&amp;fmt=auto&quot;</span>)</span><br><span class="line"><span class="comment">//                ImageView对象传入</span></span><br><span class="line">                .into(img);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Glide占位符"><a href="#Glide占位符" class="headerlink" title="Glide占位符"></a>Glide占位符</h4><p>Glide4中共有三种占位图</p>
-<ol>
-<li>placeholder: 正在请求图片时展示的图片</li>
-<li>error: 如果请求失败时展示的图片(如果没有设置，则展示placeholder)</li>
-<li>fallback: 请求的url/model为null时展示的图片(如果没有设置，则展示placeholder)</li>
-</ol>
-<p>创建RequestOptions对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  RequestOptions requestOptions = <span class="keyword">new</span> RequestOptions()</span><br><span class="line"><span class="comment">//          正在请求中</span></span><br><span class="line">          .placeholder(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          请求失败时</span></span><br><span class="line">          .error(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          请求地址为null时</span></span><br><span class="line">          .fallback(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          图片大小，若未指定则以80x80加载</span></span><br><span class="line">          .override(<span class="number">100</span>,<span class="number">100</span>);</span><br></pre></td></tr></table></figure></p>
-<p>应用RequestOptions对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  Glide.with(<span class="keyword">this</span>)</span><br><span class="line">          .load(<span class="string">&quot;https://img0.baidu.com/it/u=1548103423,3809755433&amp;fm=26&amp;fmt=auto&quot;</span>)</span><br><span class="line"><span class="comment">//          调用RequestOptions对象</span></span><br><span class="line">          .apply(requestOptions)</span><br><span class="line">          .into(img);</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -431,19 +431,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-PopupWindow</title>
-    <url>/2021/09/09/Android-PopupWindow/</url>
-    <content><![CDATA[<p>PopupWindow弹窗，后边再写</p>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android-ProgressBar</title>
     <url>/2021/09/09/Android-ProgressBar/</url>
     <content><![CDATA[<h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
@@ -462,24 +449,9 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-Receiver</title>
-    <url>/2021/09/23/Android-Receiver/</url>
-    <content><![CDATA[<h3 id="静态注册广播"><a href="#静态注册广播" class="headerlink" title="静态注册广播"></a>静态注册广播</h3><h4 id="①静态注册广播接收者"><a href="#①静态注册广播接收者" class="headerlink" title="①静态注册广播接收者"></a>①静态注册广播接收者</h4><p>创建一个MyReceiver类作为广播接收者<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>该类继承自BroadcastReceiver，并重写了onReceive方法<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.BroadcastReceiver;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="comment">//广播接收者</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    MyReceiver接收广播后，会调用onReceive方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        接收intent中的消息</span></span><br><span class="line">        String msg = intent.getStringExtra(<span class="string">&quot;message&quot;</span>);</span><br><span class="line">        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在清单文件的application中注册广播接收类<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--    注册广播接收类--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">&quot;.MyReceiver&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>清单文件中注册后，需要给它一个标记，通过这个标记找到广播接收类<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--    注册广播接收类--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">&quot;.MyReceiver&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            标记可以任意填写--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.test.myReceiver&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="②发送广播给接收者"><a href="#②发送广播给接收者" class="headerlink" title="②发送广播给接收者"></a>②发送广播给接收者</h4><p>在事件中<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建意图</span></span><br><span class="line">  Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line"><span class="comment">//  传入的action要和注册的广播接收类中的action保持一致</span></span><br><span class="line">  intent.setAction(<span class="string">&quot;com.test.myReceiver&quot;</span>);</span><br><span class="line"><span class="comment">//  发送消息</span></span><br><span class="line">  intent.putExtra(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;MainActivity发送的消息&quot;</span>);</span><br><span class="line"><span class="comment">//  在Android8.0以上，需要设置setComponent()传入ComponentName对象，ComponentName对象需要设置广播接收者所在的包名和广播接收者的完整类名</span></span><br><span class="line">  intent.setComponent(<span class="keyword">new</span> ComponentName(getPackageName(),getPackageName().toString()+<span class="string">&quot;.MyReceiver&quot;</span>));</span><br><span class="line"><span class="comment">//  发送广播</span></span><br><span class="line">  sendBroadcast(intent);</span><br></pre></td></tr></table></figure></p>
-<p><label style="color:red;cursor:auto">注意：</label>在Android8.0以上，静态广播必须设置<label style="color:red;cursor:auto">广播接收者所在的包名</label>和<label style="color:red;cursor:auto">广播接收者的完整类名</label><br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建ComponentName对象，传入广播接收者所在的包名、广播接收者的完整类名</span></span><br><span class="line">  ComponentName componentName = <span class="keyword">new</span> ComponentName(getPackageName(),getPackageName()+<span class="string">&quot;.MyReceiver&quot;</span>);</span><br><span class="line"><span class="comment">//  设置Component</span></span><br><span class="line">  intent.setComponent(componentName);</span><br></pre></td></tr></table></figure></p>
-<h3 id="动态注册广播"><a href="#动态注册广播" class="headerlink" title="动态注册广播"></a>动态注册广播</h3><h4 id="①动态注册广播接收者"><a href="#①动态注册广播接收者" class="headerlink" title="①动态注册广播接收者"></a>①动态注册广播接收者</h4><p>创建一个MyReceiver类作为广播接收者<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>该类继承自BroadcastReceiver，并重写了onReceive方法<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.BroadcastReceiver;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="comment">//广播接收者</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    MyReceiver接收广播后，会调用onReceive方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        接收intent中的消息</span></span><br><span class="line">        String msg = intent.getStringExtra(<span class="string">&quot;message&quot;</span>);</span><br><span class="line">        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>动态注册广播接收类<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  使用广播接收类创建对象</span></span><br><span class="line">  MyReceiver myReceiver = <span class="keyword">new</span> MyReceiver();</span><br><span class="line"><span class="comment">//  创建intentFilter</span></span><br><span class="line">  IntentFilter intentFilter = <span class="keyword">new</span> IntentFilter();</span><br><span class="line"><span class="comment">//  给intentFilter添加Action</span></span><br><span class="line">  intentFilter.addAction(<span class="string">&quot;com.test.myReceiver&quot;</span>);</span><br><span class="line"><span class="comment">//  注册Receiver</span></span><br><span class="line">  registerReceiver(myReceiver,intentFilter);</span><br></pre></td></tr></table></figure></p>
-<h4 id="②发送广播给接收者-1"><a href="#②发送广播给接收者-1" class="headerlink" title="②发送广播给接收者"></a>②发送广播给接收者</h4><p>在事件中<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建意图</span></span><br><span class="line">  Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line"><span class="comment">//  发送消息</span></span><br><span class="line">  intent.putExtra(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;MainActivity发送的消息&quot;</span>);</span><br><span class="line"><span class="comment">//  设置Action</span></span><br><span class="line">  intent.setAction(<span class="string">&quot;com.test.myReceiver&quot;</span>);</span><br><span class="line"><span class="comment">//  发送广播</span></span><br><span class="line">  sendBroadcast(intent);</span><br></pre></td></tr></table></figure></p>
-<p><label style="color:red;cursor:auto">注意：</label>动态注册广播一定不要设置setComponent()</p>
-<h3 id="发送广播的方式"><a href="#发送广播的方式" class="headerlink" title="发送广播的方式"></a>发送广播的方式</h3><h4 id="①sendBroadcast"><a href="#①sendBroadcast" class="headerlink" title="①sendBroadcast"></a>①sendBroadcast</h4><p>所有满足条件的广播接收者都会执行其onReceive()方法来处理响应，当有多个满足条件的广播接收者时，不能保证它们onReceive()的执行顺序</p>
-<h4 id="②sendStickyBroadcast"><a href="#②sendStickyBroadcast" class="headerlink" title="②sendStickyBroadcast"></a>②sendStickyBroadcast</h4><p>intent在发送后一直存在，并且在以后调用registerReceiver注册相匹配的Receive时会把这个intent直接返回给新注册的Receive</p>
-<p>通俗讲：先动态注册再发送广播，或者先发送广播再动态注册，intent都可以被接收器接收到并执行其onReceive方法。</p>
-<p>不过需要在manifest.xml文件中配置此类型广播权限<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&lt;uses-permissionandroid:name=&quot;android.permission.BROADCAST_STICKY&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="③sendOrderBroadcast"><a href="#③sendOrderBroadcast" class="headerlink" title="③sendOrderBroadcast"></a>③sendOrderBroadcast</h4><p>通过sendOrderBroadcast发送广播，当有多个满足条件的广播接收者，会根据广播接收者注册时intentFilter设置的优先级顺序来执行onReceive()方法，对于相同优先级的广播接收者则不能保证onReceive()的执行顺序</p>
+    <title>Android-PopupWindow</title>
+    <url>/2021/09/09/Android-PopupWindow/</url>
+    <content><![CDATA[<p>PopupWindow弹窗，后边再写</p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -510,6 +482,34 @@
 <hr/>
 
 <p>写的什么🐓8玩意</p>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android-Receiver</title>
+    <url>/2021/09/23/Android-Receiver/</url>
+    <content><![CDATA[<h3 id="静态注册广播"><a href="#静态注册广播" class="headerlink" title="静态注册广播"></a>静态注册广播</h3><h4 id="①静态注册广播接收者"><a href="#①静态注册广播接收者" class="headerlink" title="①静态注册广播接收者"></a>①静态注册广播接收者</h4><p>创建一个MyReceiver类作为广播接收者<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>该类继承自BroadcastReceiver，并重写了onReceive方法<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.BroadcastReceiver;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="comment">//广播接收者</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    MyReceiver接收广播后，会调用onReceive方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        接收intent中的消息</span></span><br><span class="line">        String msg = intent.getStringExtra(<span class="string">&quot;message&quot;</span>);</span><br><span class="line">        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在清单文件的application中注册广播接收类<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--    注册广播接收类--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">&quot;.MyReceiver&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>清单文件中注册后，需要给它一个标记，通过这个标记找到广播接收类<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--    注册广播接收类--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">&quot;.MyReceiver&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            标记可以任意填写--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.test.myReceiver&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="②发送广播给接收者"><a href="#②发送广播给接收者" class="headerlink" title="②发送广播给接收者"></a>②发送广播给接收者</h4><p>在事件中<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建意图</span></span><br><span class="line">  Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line"><span class="comment">//  传入的action要和注册的广播接收类中的action保持一致</span></span><br><span class="line">  intent.setAction(<span class="string">&quot;com.test.myReceiver&quot;</span>);</span><br><span class="line"><span class="comment">//  发送消息</span></span><br><span class="line">  intent.putExtra(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;MainActivity发送的消息&quot;</span>);</span><br><span class="line"><span class="comment">//  在Android8.0以上，需要设置setComponent()传入ComponentName对象，ComponentName对象需要设置广播接收者所在的包名和广播接收者的完整类名</span></span><br><span class="line">  intent.setComponent(<span class="keyword">new</span> ComponentName(getPackageName(),getPackageName().toString()+<span class="string">&quot;.MyReceiver&quot;</span>));</span><br><span class="line"><span class="comment">//  发送广播</span></span><br><span class="line">  sendBroadcast(intent);</span><br></pre></td></tr></table></figure></p>
+<p><label style="color:red;cursor:auto">注意：</label>在Android8.0以上，静态广播必须设置<label style="color:red;cursor:auto">广播接收者所在的包名</label>和<label style="color:red;cursor:auto">广播接收者的完整类名</label><br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建ComponentName对象，传入广播接收者所在的包名、广播接收者的完整类名</span></span><br><span class="line">  ComponentName componentName = <span class="keyword">new</span> ComponentName(getPackageName(),getPackageName()+<span class="string">&quot;.MyReceiver&quot;</span>);</span><br><span class="line"><span class="comment">//  设置Component</span></span><br><span class="line">  intent.setComponent(componentName);</span><br></pre></td></tr></table></figure></p>
+<h3 id="动态注册广播"><a href="#动态注册广播" class="headerlink" title="动态注册广播"></a>动态注册广播</h3><h4 id="①动态注册广播接收者"><a href="#①动态注册广播接收者" class="headerlink" title="①动态注册广播接收者"></a>①动态注册广播接收者</h4><p>创建一个MyReceiver类作为广播接收者<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>该类继承自BroadcastReceiver，并重写了onReceive方法<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.BroadcastReceiver;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="comment">//广播接收者</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    MyReceiver接收广播后，会调用onReceive方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        接收intent中的消息</span></span><br><span class="line">        String msg = intent.getStringExtra(<span class="string">&quot;message&quot;</span>);</span><br><span class="line">        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>动态注册广播接收类<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  使用广播接收类创建对象</span></span><br><span class="line">  MyReceiver myReceiver = <span class="keyword">new</span> MyReceiver();</span><br><span class="line"><span class="comment">//  创建intentFilter</span></span><br><span class="line">  IntentFilter intentFilter = <span class="keyword">new</span> IntentFilter();</span><br><span class="line"><span class="comment">//  给intentFilter添加Action</span></span><br><span class="line">  intentFilter.addAction(<span class="string">&quot;com.test.myReceiver&quot;</span>);</span><br><span class="line"><span class="comment">//  注册Receiver</span></span><br><span class="line">  registerReceiver(myReceiver,intentFilter);</span><br></pre></td></tr></table></figure></p>
+<h4 id="②发送广播给接收者-1"><a href="#②发送广播给接收者-1" class="headerlink" title="②发送广播给接收者"></a>②发送广播给接收者</h4><p>在事件中<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建意图</span></span><br><span class="line">  Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line"><span class="comment">//  发送消息</span></span><br><span class="line">  intent.putExtra(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;MainActivity发送的消息&quot;</span>);</span><br><span class="line"><span class="comment">//  设置Action</span></span><br><span class="line">  intent.setAction(<span class="string">&quot;com.test.myReceiver&quot;</span>);</span><br><span class="line"><span class="comment">//  发送广播</span></span><br><span class="line">  sendBroadcast(intent);</span><br></pre></td></tr></table></figure></p>
+<p><label style="color:red;cursor:auto">注意：</label>动态注册广播一定不要设置setComponent()</p>
+<h3 id="发送广播的方式"><a href="#发送广播的方式" class="headerlink" title="发送广播的方式"></a>发送广播的方式</h3><h4 id="①sendBroadcast"><a href="#①sendBroadcast" class="headerlink" title="①sendBroadcast"></a>①sendBroadcast</h4><p>所有满足条件的广播接收者都会执行其onReceive()方法来处理响应，当有多个满足条件的广播接收者时，不能保证它们onReceive()的执行顺序</p>
+<h4 id="②sendStickyBroadcast"><a href="#②sendStickyBroadcast" class="headerlink" title="②sendStickyBroadcast"></a>②sendStickyBroadcast</h4><p>intent在发送后一直存在，并且在以后调用registerReceiver注册相匹配的Receive时会把这个intent直接返回给新注册的Receive</p>
+<p>通俗讲：先动态注册再发送广播，或者先发送广播再动态注册，intent都可以被接收器接收到并执行其onReceive方法。</p>
+<p>不过需要在manifest.xml文件中配置此类型广播权限<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&lt;uses-permissionandroid:name=&quot;android.permission.BROADCAST_STICKY&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="③sendOrderBroadcast"><a href="#③sendOrderBroadcast" class="headerlink" title="③sendOrderBroadcast"></a>③sendOrderBroadcast</h4><p>通过sendOrderBroadcast发送广播，当有多个满足条件的广播接收者，会根据广播接收者注册时intentFilter设置的优先级顺序来执行onReceive()方法，对于相同优先级的广播接收者则不能保证onReceive()的执行顺序</p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -556,29 +556,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-SharedPreferences</title>
-    <url>/2021/10/11/Android-SharedPreferences/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;SharedPreferences用于储存轻量级数据在本地，可以保存的数据类型有：int、boolean、float、long、String、StringSet</p>
-<h4 id="访问模式"><a href="#访问模式" class="headerlink" title="访问模式"></a>访问模式</h4><p>SharedPreferences有三种访问模式</p>
-<ol>
-<li>MODE_PRIVATE: 私有，仅创建SharedPreferences的程序有权限对其进行读写</li>
-<li>MODE_WORLD_READABLE: 其他应用程序有读取权限，没有写入权限(Android 4.2中弃用)</li>
-<li>MODE_WORLD_WRITEABLE: 其他应用程序有写入权限，没有读取权限(Android 4.2中弃用)</li>
-</ol>
-<h4 id="读写本地配置文件"><a href="#读写本地配置文件" class="headerlink" title="读写本地配置文件"></a>读写本地配置文件</h4><p>得到一个SharedPreferences实例<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  getSharedPreferences返回一个SharedPreferences实例</span></span><br><span class="line"><span class="comment">//  传入两个参数: 本地配置文件名、访问模式</span></span><br><span class="line">  SharedPreferences sharedPreferences = getSharedPreferences(<span class="string">&quot;文件名&quot;</span>,MODE_PRIVATE);</span><br></pre></td></tr></table></figure></p>
-<p>从SharedPreferences中读取信息<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  读取配置信息，当对应的key值找不到便会返回默认值</span></span><br><span class="line"><span class="comment">//  传入两个参数: key、默认值</span></span><br><span class="line">  String str = sharedPreferences.getString(<span class="string">&quot;time&quot;</span>,<span class="string">&quot;首次读取&quot;</span>);</span><br></pre></td></tr></table></figure></p>
-<p>读取到默认值则写入配置文件<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="keyword">if</span> (str.equals(<span class="string">&quot;首次读取&quot;</span>))&#123;</span><br><span class="line"><span class="comment">//      使用sharedPreferences的edit()方法写入本地配置</span></span><br><span class="line">      SharedPreferences.Editor editor = sharedPreferences.edit();</span><br><span class="line"><span class="comment">//      写入值</span></span><br><span class="line">      editor.putString(<span class="string">&quot;time&quot;</span>,<span class="string">&quot;配置文件信息&quot;</span>);</span><br><span class="line"><span class="comment">//      提交以写入</span></span><br><span class="line">      editor.commit();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">      Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;读取到的值&quot;</span> + str,Toast.LENGTH_SHORT).show();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>完整代码<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.SharedPreferences;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.Nullable;</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCoffeeStore</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_coffee_store);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        getSharedPreferences返回一个SharedPreferences实例，配置文件名、访问模式</span></span><br><span class="line">        SharedPreferences sharedPreferences = getSharedPreferences(<span class="string">&quot;testName&quot;</span>,MODE_PRIVATE);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        读取配置信息，当对应的key值找不到便会返回默认值；传入key、默认值</span></span><br><span class="line">        String str = sharedPreferences.getString(<span class="string">&quot;testName&quot;</span>,<span class="string">&quot;首次读取&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (str.equals(<span class="string">&quot;首次读取&quot;</span>))&#123;</span><br><span class="line"><span class="comment">//            使用sharedPreferences的edit()方法写入本地配置</span></span><br><span class="line">            SharedPreferences.Editor editor = sharedPreferences.edit();</span><br><span class="line"><span class="comment">//            写入值</span></span><br><span class="line">            editor.putString(<span class="string">&quot;testName&quot;</span>,<span class="string">&quot;配置文件信息&quot;</span>);</span><br><span class="line"><span class="comment">//            提交以写入</span></span><br><span class="line">            editor.commit();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;读取到的值&quot;</span> + str,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android-SoundPool播放音效</title>
     <url>/2021/10/09/Android-SoundPool%E6%92%AD%E6%94%BE%E9%9F%B3%E6%95%88/</url>
     <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;MediaPalyer虽然可以播放音频，但是资源占用量较高、延迟时间较长、不支持多个音频同时播放等缺点，SoundPool一般用来播放密集、急促、短暂的音效</p>
@@ -602,6 +579,29 @@
 <li>将声音文件转换为ogg格式。</li>
 <li>确保经过这些过程后文件小于1mb。</li>
 </ol>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android-SharedPreferences</title>
+    <url>/2021/10/11/Android-SharedPreferences/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;SharedPreferences用于储存轻量级数据在本地，可以保存的数据类型有：int、boolean、float、long、String、StringSet</p>
+<h4 id="访问模式"><a href="#访问模式" class="headerlink" title="访问模式"></a>访问模式</h4><p>SharedPreferences有三种访问模式</p>
+<ol>
+<li>MODE_PRIVATE: 私有，仅创建SharedPreferences的程序有权限对其进行读写</li>
+<li>MODE_WORLD_READABLE: 其他应用程序有读取权限，没有写入权限(Android 4.2中弃用)</li>
+<li>MODE_WORLD_WRITEABLE: 其他应用程序有写入权限，没有读取权限(Android 4.2中弃用)</li>
+</ol>
+<h4 id="读写本地配置文件"><a href="#读写本地配置文件" class="headerlink" title="读写本地配置文件"></a>读写本地配置文件</h4><p>得到一个SharedPreferences实例<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  getSharedPreferences返回一个SharedPreferences实例</span></span><br><span class="line"><span class="comment">//  传入两个参数: 本地配置文件名、访问模式</span></span><br><span class="line">  SharedPreferences sharedPreferences = getSharedPreferences(<span class="string">&quot;文件名&quot;</span>,MODE_PRIVATE);</span><br></pre></td></tr></table></figure></p>
+<p>从SharedPreferences中读取信息<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  读取配置信息，当对应的key值找不到便会返回默认值</span></span><br><span class="line"><span class="comment">//  传入两个参数: key、默认值</span></span><br><span class="line">  String str = sharedPreferences.getString(<span class="string">&quot;time&quot;</span>,<span class="string">&quot;首次读取&quot;</span>);</span><br></pre></td></tr></table></figure></p>
+<p>读取到默认值则写入配置文件<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  <span class="keyword">if</span> (str.equals(<span class="string">&quot;首次读取&quot;</span>))&#123;</span><br><span class="line"><span class="comment">//      使用sharedPreferences的edit()方法写入本地配置</span></span><br><span class="line">      SharedPreferences.Editor editor = sharedPreferences.edit();</span><br><span class="line"><span class="comment">//      写入值</span></span><br><span class="line">      editor.putString(<span class="string">&quot;time&quot;</span>,<span class="string">&quot;配置文件信息&quot;</span>);</span><br><span class="line"><span class="comment">//      提交以写入</span></span><br><span class="line">      editor.commit();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">      Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;读取到的值&quot;</span> + str,Toast.LENGTH_SHORT).show();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>完整代码<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.SharedPreferences;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.Nullable;</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCoffeeStore</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_coffee_store);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        getSharedPreferences返回一个SharedPreferences实例，配置文件名、访问模式</span></span><br><span class="line">        SharedPreferences sharedPreferences = getSharedPreferences(<span class="string">&quot;testName&quot;</span>,MODE_PRIVATE);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        读取配置信息，当对应的key值找不到便会返回默认值；传入key、默认值</span></span><br><span class="line">        String str = sharedPreferences.getString(<span class="string">&quot;testName&quot;</span>,<span class="string">&quot;首次读取&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (str.equals(<span class="string">&quot;首次读取&quot;</span>))&#123;</span><br><span class="line"><span class="comment">//            使用sharedPreferences的edit()方法写入本地配置</span></span><br><span class="line">            SharedPreferences.Editor editor = sharedPreferences.edit();</span><br><span class="line"><span class="comment">//            写入值</span></span><br><span class="line">            editor.putString(<span class="string">&quot;testName&quot;</span>,<span class="string">&quot;配置文件信息&quot;</span>);</span><br><span class="line"><span class="comment">//            提交以写入</span></span><br><span class="line">            editor.commit();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;读取到的值&quot;</span> + str,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -735,80 +735,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-布局</title>
-    <url>/2021/09/09/Android-%E5%B8%83%E5%B1%80/</url>
-    <content><![CDATA[<h3 id="一、LinearLayout-线性布局"><a href="#一、LinearLayout-线性布局" class="headerlink" title="一、LinearLayout(线性布局)"></a>一、LinearLayout(线性布局)</h3><h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
-<li>orientation: 布局中组件的排列方式</li>
-<li>gravity: 控制组件所包含的子元素的对齐方式</li>
-<li>layout_gravity: 控制该组件在父容器里的对齐方式</li>
-<li>background: 设置背景，可以是颜色</li>
-<li>divider: 分割线</li>
-<li>showDivider: 设置分割线位置，none(无),beginning(开始),end结束),middle(每两个组件之间)</li>
-<li>dividerPadding: 设置分割线的padding</li>
-<li>layout_weight: 权重，按比例划分空间</li>
-</ol>
-<h3 id="二、RelativeLayout-相对布局"><a href="#二、RelativeLayout-相对布局" class="headerlink" title="二、RelativeLayout(相对布局)"></a>二、RelativeLayout(相对布局)</h3><h4 id="常用属性-1"><a href="#常用属性-1" class="headerlink" title="常用属性"></a>常用属性</h4><h5 id="根据父容器定位"><a href="#根据父容器定位" class="headerlink" title="根据父容器定位"></a>根据父容器定位</h5><ol>
-<li>layout_alignParentLeft: 与父容器左对齐</li>
-<li>layout_alignParentRight: 与父容器右对齐</li>
-<li>layout_alignParentTop: 与父容器顶部对齐</li>
-<li>layout_alignParentBottom: 与父容器底部对齐</li>
-<li>layout_centerHorizontal: 水平居中与父容器</li>
-<li>layout_centerVertical: 垂直居中于父容器</li>
-<li>layout_centerParent: 居中于父容器</li>
-</ol>
-<h5 id="根据兄弟组件定位"><a href="#根据兄弟组件定位" class="headerlink" title="根据兄弟组件定位"></a>根据兄弟组件定位</h5><ol>
-<li>layout_toLeftOf: 放置于参考组件左侧</li>
-<li>layout_tuRightOf: 放置于参考组件右侧</li>
-<li>layout_above: 放置于参考组件上方</li>
-<li>layout_below: 放置于参考组件下方</li>
-<li>layout_alignTop: 对齐参考组件上边界</li>
-<li>layout_alignBottom: 对齐参考组件下边界</li>
-<li>layout_alignLeft: 对齐参考组件左边界</li>
-<li>layout_alignRight: 对齐参考组件右边界</li>
-<li>layout_alignBaseline: 该控件的baseline(基线)和指定控件的baseline对齐</li>
-</ol>
-<h3 id="三、FrameLayout-帧布局"><a href="#三、FrameLayout-帧布局" class="headerlink" title="三、FrameLayout(帧布局)"></a>三、FrameLayout(帧布局)</h3><h4 id="常用属性-2"><a href="#常用属性-2" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
-<li>foreground: 设置前景</li>
-<li>foregroundGravity: 设置前景位置</li>
-</ol>
-<h3 id="四、TableLayout-表格布局"><a href="#四、TableLayout-表格布局" class="headerlink" title="四、TableLayout(表格布局)"></a>四、TableLayout(表格布局)</h3><p>一般和TableRow结合使用</p>
-<h4 id="常用属性-3"><a href="#常用属性-3" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
-<li>collapseColumns: 设置需要被隐藏的列的序号，从0开始</li>
-<li>stretchColumns: 设置允许被拉伸的列的序号，从0开始</li>
-<li>shrinkColumns: 设置允许被收缩的列的序号，从0开始</li>
-</ol>
-<h5 id="子控件设置属性"><a href="#子控件设置属性" class="headerlink" title="子控件设置属性"></a>子控件设置属性</h5><ol>
-<li>layout_column: 显示在第几列</li>
-<li>layout_ span: 横向跨几列</li>
-</ol>
-<h3 id="五、GridLayout-网格布局"><a href="#五、GridLayout-网格布局" class="headerlink" title="五、GridLayout(网格布局)"></a>五、GridLayout(网格布局)</h3><h4 id="常用属性-4"><a href="#常用属性-4" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
-<li>android:columnCount: 最大列数</li>
-<li>android:rowCount: 最大行数</li>
-<li>android:orientation: 布局方向</li>
-</ol>
-<h4 id="子控件设置属性-1"><a href="#子控件设置属性-1" class="headerlink" title="子控件设置属性"></a>子控件设置属性</h4><ol>
-<li>layout_column: 组件显示在第几列</li>
-<li>layout_columnSpan: 横向跨几列</li>
-<li>layout_columnWeight: 组件垂直方向权重</li>
-<li>layout_gravity: 组件的对齐方式</li>
-<li>layout_row: 组件显示在第几行</li>
-<li>layout_rowSpan: 横向跨几行</li>
-<li>layout_rowWeight: 组件向权重</li>
-</ol>
-<p>通过layout_rowSpan和layout_columnSpan设置跨越的列数和行数后，通过layout_gravity=”fill”即可将该组件填满所跨越的整行或整列</p>
-<h4 id="通过网格布局设置响应式工具栏"><a href="#通过网格布局设置响应式工具栏" class="headerlink" title="通过网格布局设置响应式工具栏"></a>通过网格布局设置响应式工具栏</h4><p>通过对GridLayouy的columnCount和rowCount设置，达到响应式工具栏<br>1.当手机屏幕时，设置columnCount为4，此时显示两行四列<br>2.当平板电脑屏幕时，设置columnCount为6，此时显示一行六列</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">GridLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:background</span>=<span class="string">&quot;#12fa21&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:columnCount</span>=<span class="string">&quot;4&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:rowCount</span>=<span class="string">&quot;2&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/grid&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;200dp&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">GridLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="六、ConstraintLayout-约束布局"><a href="#六、ConstraintLayout-约束布局" class="headerlink" title="六、ConstraintLayout(约束布局)"></a>六、ConstraintLayout(约束布局)</h3><p>学尼玛，不学了</p>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android-文件储存</title>
     <url>/2021/09/25/Android-%E6%96%87%E4%BB%B6%E5%82%A8%E5%AD%98/</url>
     <content><![CDATA[<p><a href="../Android版本号与API级别关系对应表/">Android版本与API级别关系对应表 <i class="fa fa-link"></i></a></p>
@@ -885,6 +811,80 @@
     <title>Android-热修复</title>
     <url>/2021/09/23/Android-%E7%83%AD%E4%BF%AE%E5%A4%8D/</url>
     <content><![CDATA[]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android-布局</title>
+    <url>/2021/09/09/Android-%E5%B8%83%E5%B1%80/</url>
+    <content><![CDATA[<h3 id="一、LinearLayout-线性布局"><a href="#一、LinearLayout-线性布局" class="headerlink" title="一、LinearLayout(线性布局)"></a>一、LinearLayout(线性布局)</h3><h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
+<li>orientation: 布局中组件的排列方式</li>
+<li>gravity: 控制组件所包含的子元素的对齐方式</li>
+<li>layout_gravity: 控制该组件在父容器里的对齐方式</li>
+<li>background: 设置背景，可以是颜色</li>
+<li>divider: 分割线</li>
+<li>showDivider: 设置分割线位置，none(无),beginning(开始),end结束),middle(每两个组件之间)</li>
+<li>dividerPadding: 设置分割线的padding</li>
+<li>layout_weight: 权重，按比例划分空间</li>
+</ol>
+<h3 id="二、RelativeLayout-相对布局"><a href="#二、RelativeLayout-相对布局" class="headerlink" title="二、RelativeLayout(相对布局)"></a>二、RelativeLayout(相对布局)</h3><h4 id="常用属性-1"><a href="#常用属性-1" class="headerlink" title="常用属性"></a>常用属性</h4><h5 id="根据父容器定位"><a href="#根据父容器定位" class="headerlink" title="根据父容器定位"></a>根据父容器定位</h5><ol>
+<li>layout_alignParentLeft: 与父容器左对齐</li>
+<li>layout_alignParentRight: 与父容器右对齐</li>
+<li>layout_alignParentTop: 与父容器顶部对齐</li>
+<li>layout_alignParentBottom: 与父容器底部对齐</li>
+<li>layout_centerHorizontal: 水平居中与父容器</li>
+<li>layout_centerVertical: 垂直居中于父容器</li>
+<li>layout_centerParent: 居中于父容器</li>
+</ol>
+<h5 id="根据兄弟组件定位"><a href="#根据兄弟组件定位" class="headerlink" title="根据兄弟组件定位"></a>根据兄弟组件定位</h5><ol>
+<li>layout_toLeftOf: 放置于参考组件左侧</li>
+<li>layout_tuRightOf: 放置于参考组件右侧</li>
+<li>layout_above: 放置于参考组件上方</li>
+<li>layout_below: 放置于参考组件下方</li>
+<li>layout_alignTop: 对齐参考组件上边界</li>
+<li>layout_alignBottom: 对齐参考组件下边界</li>
+<li>layout_alignLeft: 对齐参考组件左边界</li>
+<li>layout_alignRight: 对齐参考组件右边界</li>
+<li>layout_alignBaseline: 该控件的baseline(基线)和指定控件的baseline对齐</li>
+</ol>
+<h3 id="三、FrameLayout-帧布局"><a href="#三、FrameLayout-帧布局" class="headerlink" title="三、FrameLayout(帧布局)"></a>三、FrameLayout(帧布局)</h3><h4 id="常用属性-2"><a href="#常用属性-2" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
+<li>foreground: 设置前景</li>
+<li>foregroundGravity: 设置前景位置</li>
+</ol>
+<h3 id="四、TableLayout-表格布局"><a href="#四、TableLayout-表格布局" class="headerlink" title="四、TableLayout(表格布局)"></a>四、TableLayout(表格布局)</h3><p>一般和TableRow结合使用</p>
+<h4 id="常用属性-3"><a href="#常用属性-3" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
+<li>collapseColumns: 设置需要被隐藏的列的序号，从0开始</li>
+<li>stretchColumns: 设置允许被拉伸的列的序号，从0开始</li>
+<li>shrinkColumns: 设置允许被收缩的列的序号，从0开始</li>
+</ol>
+<h5 id="子控件设置属性"><a href="#子控件设置属性" class="headerlink" title="子控件设置属性"></a>子控件设置属性</h5><ol>
+<li>layout_column: 显示在第几列</li>
+<li>layout_ span: 横向跨几列</li>
+</ol>
+<h3 id="五、GridLayout-网格布局"><a href="#五、GridLayout-网格布局" class="headerlink" title="五、GridLayout(网格布局)"></a>五、GridLayout(网格布局)</h3><h4 id="常用属性-4"><a href="#常用属性-4" class="headerlink" title="常用属性"></a>常用属性</h4><ol>
+<li>android:columnCount: 最大列数</li>
+<li>android:rowCount: 最大行数</li>
+<li>android:orientation: 布局方向</li>
+</ol>
+<h4 id="子控件设置属性-1"><a href="#子控件设置属性-1" class="headerlink" title="子控件设置属性"></a>子控件设置属性</h4><ol>
+<li>layout_column: 组件显示在第几列</li>
+<li>layout_columnSpan: 横向跨几列</li>
+<li>layout_columnWeight: 组件垂直方向权重</li>
+<li>layout_gravity: 组件的对齐方式</li>
+<li>layout_row: 组件显示在第几行</li>
+<li>layout_rowSpan: 横向跨几行</li>
+<li>layout_rowWeight: 组件向权重</li>
+</ol>
+<p>通过layout_rowSpan和layout_columnSpan设置跨越的列数和行数后，通过layout_gravity=”fill”即可将该组件填满所跨越的整行或整列</p>
+<h4 id="通过网格布局设置响应式工具栏"><a href="#通过网格布局设置响应式工具栏" class="headerlink" title="通过网格布局设置响应式工具栏"></a>通过网格布局设置响应式工具栏</h4><p>通过对GridLayouy的columnCount和rowCount设置，达到响应式工具栏<br>1.当手机屏幕时，设置columnCount为4，此时显示两行四列<br>2.当平板电脑屏幕时，设置columnCount为6，此时显示一行六列</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">GridLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:background</span>=<span class="string">&quot;#12fa21&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:columnCount</span>=<span class="string">&quot;4&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:rowCount</span>=<span class="string">&quot;2&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/grid&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;200dp&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_columnWeight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_rowWeight</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">GridLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="六、ConstraintLayout-约束布局"><a href="#六、ConstraintLayout-约束布局" class="headerlink" title="六、ConstraintLayout(约束布局)"></a>六、ConstraintLayout(约束布局)</h3><p>学尼玛，不学了</p>
+]]></content>
       <categories>
         <category>Android笔记</category>
       </categories>
@@ -1401,6 +1401,40 @@
       </tags>
   </entry>
   <entry>
+    <title>hexo+next中数学公式的引用</title>
+    <url>/2021/08/08/hexo-next%E4%B8%AD%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BC%95%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="简单方程"><a href="#简单方程" class="headerlink" title="简单方程"></a>简单方程</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq1&#125; </span><br><span class="line">e=mc ^ 2 </span><br><span class="line">\end &#123;equation&#125; $ $</span><br></pre></td></tr></table></figure>
+<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {equation} \label {eq1}<br>e=mc ^ 2<br>\end {equation} $ $</p>
+<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">爱因斯坦提出的著名的物质-能量方程$ \eqref &#123;eq1&#125; $ ...</span><br></pre></td></tr></table></figure>
+<p>爱因斯坦提出的著名的物质-能量方程$ \eqref {eq1} $ …</p>
+<h3 id="多线方程"><a href="#多线方程" class="headerlink" title="多线方程"></a>多线方程</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq2&#125; </span><br><span class="line">\begin &#123;aligned&#125; </span><br><span class="line">a &amp; = b + c \\ &amp; = d + e + f + g \\ &amp; = h + i \end &#123;aligned&#125; \end &#123;equation &#125; $ $</span><br></pre></td></tr></table></figure>
+<h4 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {equation} \label {eq2}<br>\begin {aligned}<br>a &amp; = b + c \\ &amp; = d + e + f + g \\ &amp; = h + i<br>\end {aligned}<br>\end {equation} $ $</p>
+<h4 id="调用-1"><a href="#调用-1" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方程$ \eqref &#123;eq2&#125; $是一个多线方程。</span><br></pre></td></tr></table></figure>
+<p>方程$ \eqref {eq2} $是一个多线方程。</p>
+<h3 id="多重对齐方程"><a href="#多重对齐方程" class="headerlink" title="多重对齐方程"></a>多重对齐方程</h3><h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;align&#125; </span><br><span class="line">a &amp; = b + c \label &#123;eq3&#125; \\</span><br><span class="line"> x &amp; = yz \label &#123;eq4&#125; \\</span><br><span class="line"> l &amp; = m - n \label &#123;eq5&#125; </span><br><span class="line">\end &#123;align&#125; $ $</span><br></pre></td></tr></table></figure>
+<h4 id="效果-2"><a href="#效果-2" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {align}<br>a &amp; = b + c \label {eq3} \\<br> x &amp; = yz \label {eq4} \\<br> l &amp; = m - n \label {eq5}<br>\end {align} $ $</p>
+<h4 id="调用-2"><a href="#调用-2" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有三个对齐的方程：方程$ \eqref &#123;eq3&#125; $，方程$ \eqref &#123;eq4&#125; $和方程$ \eqref &#123;eq5&#125; $。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>有三个对齐的方程：方程$ \eqref {eq3} $，方程$ \eqref {eq4} $和方程$ \eqref {eq5} $。</p>
+<h3 id="行间公式"><a href="#行间公式" class="headerlink" title="行间公式"></a>行间公式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">行间公式$O(f(n))=log_2^&#123;n&#125;$测试</span><br></pre></td></tr></table></figure>
+<p>行间公式$O(f(n))=log_2^{n}$测试</p>
+<h3 id="更多参考"><a href="#更多参考" class="headerlink" title="更多参考"></a>更多参考</h3><ol>
+<li>官方配置教程<a href="https://theme-next.js.org/docs/third-party-services/math-equations">https://theme-next.js.org/docs/third-party-services/math-equations</a></li>
+<li>中文教程<a href="https://www.jianshu.com/p/8424da4dd673">https://www.jianshu.com/p/8424da4dd673</a></li>
+<li>修改本地文件<a href="https://www.cnblogs.com/iHeling/p/14095986.html">https://www.cnblogs.com/iHeling/p/14095986.html</a></li>
+<li>详细教程<a href="https://blog.csdn.net/weixin_45511189/article/details/115798563">https://blog.csdn.net/weixin_45511189/article/details/115798563</a></li>
+<li>LaTex在线编辑器<a href="https://www.latexlive.com/">https://www.latexlive.com/</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>小教程</tag>
+        <tag>hexo博客</tag>
+        <tag>next主题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>this和super</title>
     <url>/2021/07/20/this%E5%92%8Csuper/</url>
     <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
@@ -1466,40 +1500,6 @@
         <tag>学习笔记</tag>
         <tag>重点难点</tag>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo+next中数学公式的引用</title>
-    <url>/2021/08/08/hexo-next%E4%B8%AD%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BC%95%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="简单方程"><a href="#简单方程" class="headerlink" title="简单方程"></a>简单方程</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq1&#125; </span><br><span class="line">e=mc ^ 2 </span><br><span class="line">\end &#123;equation&#125; $ $</span><br></pre></td></tr></table></figure>
-<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {equation} \label {eq1}<br>e=mc ^ 2<br>\end {equation} $ $</p>
-<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">爱因斯坦提出的著名的物质-能量方程$ \eqref &#123;eq1&#125; $ ...</span><br></pre></td></tr></table></figure>
-<p>爱因斯坦提出的著名的物质-能量方程$ \eqref {eq1} $ …</p>
-<h3 id="多线方程"><a href="#多线方程" class="headerlink" title="多线方程"></a>多线方程</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq2&#125; </span><br><span class="line">\begin &#123;aligned&#125; </span><br><span class="line">a &amp; = b + c \\ &amp; = d + e + f + g \\ &amp; = h + i \end &#123;aligned&#125; \end &#123;equation &#125; $ $</span><br></pre></td></tr></table></figure>
-<h4 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {equation} \label {eq2}<br>\begin {aligned}<br>a &amp; = b + c \\ &amp; = d + e + f + g \\ &amp; = h + i<br>\end {aligned}<br>\end {equation} $ $</p>
-<h4 id="调用-1"><a href="#调用-1" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方程$ \eqref &#123;eq2&#125; $是一个多线方程。</span><br></pre></td></tr></table></figure>
-<p>方程$ \eqref {eq2} $是一个多线方程。</p>
-<h3 id="多重对齐方程"><a href="#多重对齐方程" class="headerlink" title="多重对齐方程"></a>多重对齐方程</h3><h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;align&#125; </span><br><span class="line">a &amp; = b + c \label &#123;eq3&#125; \\</span><br><span class="line"> x &amp; = yz \label &#123;eq4&#125; \\</span><br><span class="line"> l &amp; = m - n \label &#123;eq5&#125; </span><br><span class="line">\end &#123;align&#125; $ $</span><br></pre></td></tr></table></figure>
-<h4 id="效果-2"><a href="#效果-2" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {align}<br>a &amp; = b + c \label {eq3} \\<br> x &amp; = yz \label {eq4} \\<br> l &amp; = m - n \label {eq5}<br>\end {align} $ $</p>
-<h4 id="调用-2"><a href="#调用-2" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有三个对齐的方程：方程$ \eqref &#123;eq3&#125; $，方程$ \eqref &#123;eq4&#125; $和方程$ \eqref &#123;eq5&#125; $。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>有三个对齐的方程：方程$ \eqref {eq3} $，方程$ \eqref {eq4} $和方程$ \eqref {eq5} $。</p>
-<h3 id="行间公式"><a href="#行间公式" class="headerlink" title="行间公式"></a>行间公式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">行间公式$O(f(n))=log_2^&#123;n&#125;$测试</span><br></pre></td></tr></table></figure>
-<p>行间公式$O(f(n))=log_2^{n}$测试</p>
-<h3 id="更多参考"><a href="#更多参考" class="headerlink" title="更多参考"></a>更多参考</h3><ol>
-<li>官方配置教程<a href="https://theme-next.js.org/docs/third-party-services/math-equations">https://theme-next.js.org/docs/third-party-services/math-equations</a></li>
-<li>中文教程<a href="https://www.jianshu.com/p/8424da4dd673">https://www.jianshu.com/p/8424da4dd673</a></li>
-<li>修改本地文件<a href="https://www.cnblogs.com/iHeling/p/14095986.html">https://www.cnblogs.com/iHeling/p/14095986.html</a></li>
-<li>详细教程<a href="https://blog.csdn.net/weixin_45511189/article/details/115798563">https://blog.csdn.net/weixin_45511189/article/details/115798563</a></li>
-<li>LaTex在线编辑器<a href="https://www.latexlive.com/">https://www.latexlive.com/</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>hexo博客</category>
-      </categories>
-      <tags>
-        <tag>小教程</tag>
-        <tag>hexo博客</tag>
-        <tag>next主题</tag>
       </tags>
   </entry>
   <entry>
@@ -1610,6 +1610,22 @@
       </tags>
   </entry>
   <entry>
+    <title>怂崽</title>
+    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
+<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
+<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+        <tag>坏心情</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>小衅笔记</title>
     <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
@@ -1624,22 +1640,6 @@
       <tags>
         <tag>好心情</tag>
         <tag>站点日志</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>怂崽</title>
-    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
-<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
-<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
-        <tag>坏心情</tag>
       </tags>
   </entry>
   <entry>
@@ -1897,19 +1897,6 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象之toString和equals</title>
-    <url>/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString%E5%92%8Cequals/</url>
-    <content><![CDATA[<h4 id="重写toString"><a href="#重写toString" class="headerlink" title="重写toString"></a>重写toString</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        测试类 toStringTest = <span class="keyword">new</span> 测试类(<span class="string">&quot;测试&quot;</span>);</span><br><span class="line">        System.out.println(toStringTest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> 测试类</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String str;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;str：&quot;</span> + <span class="keyword">this</span>.str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> 测试类(String str)&#123;</span><br><span class="line">        <span class="keyword">this</span>.str = str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="重写equals"><a href="#重写equals" class="headerlink" title="重写equals"></a>重写equals</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        铠甲勇士 铠甲<span class="number">1</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;炎龙铠甲&quot;</span>,<span class="number">1</span>);</span><br><span class="line"><span class="comment">//        铠甲勇士 铠甲2 = new 铠甲勇士(&quot;炎龙铠甲&quot;,1);</span></span><br><span class="line">        铠甲勇士 铠甲<span class="number">2</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;风影铠甲&quot;</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(铠甲<span class="number">1.</span>equals(铠甲<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 铠甲勇士</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//重写equals</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        this即为Equals中&quot;.&quot;之前的对象，obj即为传入的对象类型参数，判断两个对象的引用地址是否为一致</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == obj)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * equals()中的实参在传入后其编译类型就变成了形参中Object类型（实际类型”铠甲勇士“，详见”多态“）</span></span><br><span class="line"><span class="comment">         * Object属于”铠甲勇士“类的父类，在Object类中没有name和id两个变量，因为要调用obj的两个变量，所以强制转换</span></span><br><span class="line"><span class="comment">         * 首先判断obj的实际类型是否为”铠甲勇士“，如果不是则返回false</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"><span class="comment">//        if (!(obj instanceof 铠甲勇士))&#123;</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        判断TestObj对象是否不为空，并且为当前”铠甲勇士“类型对象</span></span><br><span class="line">        <span class="keyword">if</span> (obj != <span class="keyword">null</span> &amp;&amp; obj.getClass() == 铠甲勇士.class)&#123;</span><br><span class="line"><span class="comment">//            强转</span></span><br><span class="line">            铠甲勇士 TestObj = (铠甲勇士)obj;</span><br><span class="line"><span class="comment">//            判断name，判断id</span></span><br><span class="line">            <span class="keyword">if</span> (TestObj.name.equals(<span class="keyword">this</span>.name) &amp;&amp; TestObj.id == <span class="keyword">this</span>.id)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//    构造器</span></span><br><span class="line">    <span class="keyword">public</span> 铠甲勇士(String name,<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>闪不动校园</title>
     <url>/2021/08/21/%E9%97%AA%E4%B8%8D%E5%8A%A8%E6%A0%A1%E5%9B%AD/</url>
     <content><![CDATA[<h3 id="温馨提示"><a href="#温馨提示" class="headerlink" title="温馨提示"></a>温馨提示</h3><p>&ensp;&ensp;教程很详细但是并不简单<br>&ensp;&ensp;教程中所使用的Fake Location需要9块钱一月会员，9块跟我一分钱关系没有，这软件不是我开发的，介意的话到这里就不要继续看了<br>&ensp;&ensp;教程中所用到的软件均采集自网络，以学习交流软件设计思路为主要目的，请勿用于任何商业及违法用途，并于下载后的24小时内删除</p>
@@ -1935,6 +1922,19 @@
       </categories>
       <tags>
         <tag>小教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象之toString和equals</title>
+    <url>/2021/07/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8BtoString%E5%92%8Cequals/</url>
+    <content><![CDATA[<h4 id="重写toString"><a href="#重写toString" class="headerlink" title="重写toString"></a>重写toString</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        测试类 toStringTest = <span class="keyword">new</span> 测试类(<span class="string">&quot;测试&quot;</span>);</span><br><span class="line">        System.out.println(toStringTest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> 测试类</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String str;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;str：&quot;</span> + <span class="keyword">this</span>.str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> 测试类(String str)&#123;</span><br><span class="line">        <span class="keyword">this</span>.str = str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="重写equals"><a href="#重写equals" class="headerlink" title="重写equals"></a>重写equals</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        铠甲勇士 铠甲<span class="number">1</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;炎龙铠甲&quot;</span>,<span class="number">1</span>);</span><br><span class="line"><span class="comment">//        铠甲勇士 铠甲2 = new 铠甲勇士(&quot;炎龙铠甲&quot;,1);</span></span><br><span class="line">        铠甲勇士 铠甲<span class="number">2</span> = <span class="keyword">new</span> 铠甲勇士(<span class="string">&quot;风影铠甲&quot;</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(铠甲<span class="number">1.</span>equals(铠甲<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 铠甲勇士</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//重写equals</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        this即为Equals中&quot;.&quot;之前的对象，obj即为传入的对象类型参数，判断两个对象的引用地址是否为一致</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == obj)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * equals()中的实参在传入后其编译类型就变成了形参中Object类型（实际类型”铠甲勇士“，详见”多态“）</span></span><br><span class="line"><span class="comment">         * Object属于”铠甲勇士“类的父类，在Object类中没有name和id两个变量，因为要调用obj的两个变量，所以强制转换</span></span><br><span class="line"><span class="comment">         * 首先判断obj的实际类型是否为”铠甲勇士“，如果不是则返回false</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"><span class="comment">//        if (!(obj instanceof 铠甲勇士))&#123;</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        判断TestObj对象是否不为空，并且为当前”铠甲勇士“类型对象</span></span><br><span class="line">        <span class="keyword">if</span> (obj != <span class="keyword">null</span> &amp;&amp; obj.getClass() == 铠甲勇士.class)&#123;</span><br><span class="line"><span class="comment">//            强转</span></span><br><span class="line">            铠甲勇士 TestObj = (铠甲勇士)obj;</span><br><span class="line"><span class="comment">//            判断name，判断id</span></span><br><span class="line">            <span class="keyword">if</span> (TestObj.name.equals(<span class="keyword">this</span>.name) &amp;&amp; TestObj.id == <span class="keyword">this</span>.id)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//    构造器</span></span><br><span class="line">    <span class="keyword">public</span> 铠甲勇士(String name,<span class="keyword">int</span> id)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
