@@ -29,7 +29,7 @@
 <meta property="og:description" content="修改Android物理按键的默认响应事件">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-12T02:08:00.000Z">
-<meta property="article:modified_time" content="2021-10-12T02:17:51.577Z">
+<meta property="article:modified_time" content="2021-10-12T02:25:43.128Z">
 <meta property="article:author" content="xxin">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="学习笔记">
@@ -296,29 +296,28 @@
         <p>Android常用的物理按键及其触发事件</p>
 <p>物理键</p>
 <ol>
-<li>KEYCODE_POWER 电源键 </li>
-<li>KEYCODE_MENU 菜单键 </li>
-<li>KEYCODE_BACK 后退键</li>
-<li>KEYCODE_HOME Home键 </li>
-<li>KEYCODE_CAMERA 相机键 </li>
-<li>KEYCODE_SEARCH 查找键 </li>
-<li>KEYCODE_VOLUME_UP 音量键+ </li>
-<li>KEYCODE_VOLUME_DOWN 音量键- </li>
-<li>KEYCODE_VOLUME_MUTE 静音 </li>
+<li>KEYCODE_POWER: 电源键</li>
+<li>KEYCODE_MENU: 菜单键</li>
+<li>KEYCODE_BACK: 后退键</li>
+<li>KEYCODE_HOME: Home键</li>
+<li>KEYCODE_CAMERA: 相机键</li>
+<li>KEYCODE_SEARCH: 查找键</li>
+<li>KEYCODE_VOLUME_UP: 音量键+</li>
+<li>KEYCODE_VOLUME_DOWN: 音量键-</li>
+<li>KEYCODE_VOLUME_MUTE: 静音</li>
 </ol>
 <p>方向键</p>
 <ol>
 <li>KEYCODE_DPAD_CENTER</li>
 <li>KEYCODE_DPAD_UP</li>
-<li>KEYCODE_DPAD_DOWN </li>
-<li>KEYCODE_DPAD_LEFT </li>
-<li>KEYCODE_DPAD_RIGHT </li>
+<li>KEYCODE_DPAD_DOWN</li>
+<li>KEYCODE_DPAD_LEFT</li>
+<li>KEYCODE_DPAD_RIGHT</li>
 </ol>
-<p>键盘键</p>
+<p>键盘键 </p>
 <ol>
-<li>数字0~9 字母A~Z </li>
-<li>KEYCODE_0 ~ KEYCODE_9 </li>
-<li>KEYCODE_A ~ KEYCODE_Z </li>
+<li>KEYCODE_0 ~ KEYCODE_9: 数字0~9</li>
+<li>KEYCODE_A ~ KEYCODE_Z: 字母A~Z</li>
 </ol>
 <p>提供的回调方法有<br>onKeyUp() 按键被按下，松开后触发<br>OnKeyDown() 按键被按下触发<br>onKeyLongPress() 按键被长按触发</p>
 <p><label style="color:red;cursor:auto">注意：</label>让系统调用onKeyLongPress方法，必须要在onKeyDown方法中调用event.startTracking()方法并返回true才可以。</p>
