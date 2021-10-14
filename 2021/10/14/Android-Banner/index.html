@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.xxin.xyz/2021/10/14/Android-Banner/img1.gif">
 <meta property="article:published_time" content="2021-10-14T03:35:27.000Z">
-<meta property="article:modified_time" content="2021-10-14T04:44:50.228Z">
+<meta property="article:modified_time" content="2021-10-14T05:54:41.352Z">
 <meta property="article:author" content="xxin">
 <meta property="article:tag" content="Android开发">
 <meta name="twitter:card" content="summary">
@@ -152,7 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5banner"><span class="nav-number">1.</span> <span class="nav-text">引入banner</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%B8%83%E5%B1%80%E4%B8%AD"><span class="nav-number">2.</span> <span class="nav-text">在布局中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Banner"><span class="nav-number">3.</span> <span class="nav-text">使用Banner</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%86%99ImageLoader%E7%B1%BB"><span class="nav-number">4.</span> <span class="nav-text">重写ImageLoader类</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5banner"><span class="nav-number">1.</span> <span class="nav-text">引入banner</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%B8%83%E5%B1%80%E4%B8%AD"><span class="nav-number">2.</span> <span class="nav-text">在布局中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Banner"><span class="nav-number">3.</span> <span class="nav-text">使用Banner</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%86%99ImageLoader%E7%B1%BB"><span class="nav-number">4.</span> <span class="nav-text">重写ImageLoader类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E4%B8%80%E4%BA%9B%E5%B1%9E%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">其它一些属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-number">5.1.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E5%B8%B8%E9%87%8F%E7%B1%BB%EF%BC%88setBannerAnimation%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%EF%BC%89"><span class="nav-number">5.2.</span> <span class="nav-text">动画常量类（setBannerAnimation方法调用）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">5.3.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Attributes%E5%B1%9E%E6%80%A7%EF%BC%88banner%E5%B8%83%E5%B1%80%E6%96%87%E4%BB%B6%E4%B8%AD%E8%B0%83%E7%94%A8%EF%BC%89"><span class="nav-number">5.4.</span> <span class="nav-text">Attributes属性（banner布局文件中调用）</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -276,14 +276,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.1k</span>
+      <span>6.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>6 分钟</span>
     </span>
 </div>
 
@@ -308,6 +308,340 @@
 <h3 id="重写ImageLoader类"><a href="#重写ImageLoader类" class="headerlink" title="重写ImageLoader类"></a>重写ImageLoader类</h3><p>如果想让代码清晰一点，可以重写图片加载器，继承ImageLoader类</p>
 <p>MysetImageLoader继承ImageLoader<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.a.practice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.bumptech.glide.Glide;</span><br><span class="line"><span class="keyword">import</span> com.youth.banner.loader.ImageLoader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MysetImageLoader</span> <span class="keyword">extends</span> <span class="title">ImageLoader</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    在这个方法中加载图片</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayImage</span><span class="params">(Context context, Object o, ImageView imageView)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        返回的图片路径为Object类型强转为Image</span></span><br><span class="line">        Glide.with(context).load(o).into((ImageView) imageView);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ImageView <span class="title">createImageView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        返回一个新的ImageView控件</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ImageView(context);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>那么再设置图片加载器时<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  设置图片加载器</span></span><br><span class="line">  MysetImageLoader mysetImageLoader = <span class="keyword">new</span> MysetImageLoader();</span><br><span class="line">  banner.setImageLoader(mysetImageLoader);</span><br></pre></td></tr></table></figure></p>
+<h3 id="其它一些属性"><a href="#其它一些属性" class="headerlink" title="其它一些属性"></a>其它一些属性</h3><h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><table>
+<thead>
+<tr>
+<th>常量名称</th>
+<th>描述</th>
+<th>所属方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BannerConfig.NOT_INDICATOR</td>
+<td>不显示指示器和标题</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.CIRCLE_INDICATOR</td>
+<td>显示圆形指示器</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.NUM_INDICATOR</td>
+<td>显示数字指示器</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.NUM_INDICATOR_TITLE</td>
+<td>显示数字指示器和标题</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.CIRCLE_INDICATOR_TITLE</td>
+<td>显示圆形指示器和标题（垂直显示）</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE</td>
+<td>显示圆形指示器和标题（水平显示）</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.LEFT</td>
+<td>指示器居左</td>
+<td>setIndicatorGravity</td>
+</tr>
+<tr>
+<td>BannerConfig.CENTER</td>
+<td>指示器居中</td>
+<td>setIndicatorGravity</td>
+</tr>
+<tr>
+<td>BannerConfig.RIGHT</td>
+<td>指示器居右</td>
+<td>setIndicatorGravity</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="动画常量类（setBannerAnimation方法调用）"><a href="#动画常量类（setBannerAnimation方法调用）" class="headerlink" title="动画常量类（setBannerAnimation方法调用）"></a>动画常量类（setBannerAnimation方法调用）</h4><table>
+<thead>
+<tr>
+<th>常量类名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transformer.Default</td>
+</tr>
+<tr>
+<td>Transformer.Accordion</td>
+</tr>
+<tr>
+<td>Transformer.BackgroundToForeground</td>
+</tr>
+<tr>
+<td>Transformer.ForegroundToBackground</td>
+</tr>
+<tr>
+<td>Transformer.CubeIn</td>
+</tr>
+<tr>
+<td>Transformer.CubeOut</td>
+</tr>
+<tr>
+<td>Transformer.DepthPage</td>
+</tr>
+<tr>
+<td>Transformer.FlipHorizontal</td>
+</tr>
+<tr>
+<td>Transformer.FlipVertical</td>
+</tr>
+<tr>
+<td>Transformer.RotateDown</td>
+</tr>
+<tr>
+<td>Transformer.RotateUp</td>
+</tr>
+<tr>
+<td>Transformer.ScaleInOut</td>
+</tr>
+<tr>
+<td>Transformer.Stack</td>
+</tr>
+<tr>
+<td>Transformer.Tablet</td>
+</tr>
+<tr>
+<td>Transformer.ZoomIn</td>
+</tr>
+<tr>
+<td>Transformer.ZoomOut</td>
+</tr>
+<tr>
+<td>Transformer.ZoomOutSlide</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>版本限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setBannerStyle(int bannerStyle)</td>
+<td>设置轮播样式（默认为CIRCLE_INDICATOR）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setIndicatorGravity(int type)</td>
+<td>设置指示器位置（没有标题默认为右边,有标题时默认左边）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>isAutoPlay(boolean isAutoPlay)</td>
+<td>设置是否自动轮播（默认自动）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setViewPagerIsScroll(boolean isScroll)</td>
+<td>设置是否允许手动滑动轮播图（默认true）</td>
+<td>1.4.5开始</td>
+</tr>
+<tr>
+<td>update(List&lt;?&gt; imageUrls,List titles)</td>
+<td>更新图片和标题</td>
+<td>1.4.5开始</td>
+</tr>
+<tr>
+<td>update(List&lt;?&gt; imageUrls)</td>
+<td>更新图片</td>
+<td>1.4.5开始</td>
+</tr>
+<tr>
+<td>startAutoPlay()</td>
+<td>开始轮播</td>
+<td>1.4开始，此方法只作用于banner加载完毕--&gt;需要在start()后执行</td>
+</tr>
+<tr>
+<td>stopAutoPlay()</td>
+<td>结束轮播</td>
+<td>1.4开始，此方法只作用于banner加载完毕--&gt;需要在start()后执行</td>
+</tr>
+<tr>
+<td>start()</td>
+<td>开始进行banner渲染（必须放到最后执行）</td>
+<td>1.4开始</td>
+</tr>
+<tr>
+<td>setOffscreenPageLimit(int limit)</td>
+<td>同viewpager的方法作用一样</td>
+<td>1.4.2开始</td>
+</tr>
+<tr>
+<td>setBannerTitle(String[] titles)</td>
+<td>设置轮播要显示的标题和图片对应（如果不传默认不显示标题）</td>
+<td>1.3.3结束</td>
+</tr>
+<tr>
+<td>setBannerTitleList(List titles)</td>
+<td>设置轮播要显示的标题和图片对应（如果不传默认不显示标题）</td>
+<td>1.3.3结束</td>
+</tr>
+<tr>
+<td>setBannerTitles(List titles)</td>
+<td>设置轮播要显示的标题和图片对应（如果不传默认不显示标题）</td>
+<td>1.4开始</td>
+</tr>
+<tr>
+<td>setDelayTime(int time)</td>
+<td>设置轮播图片间隔时间（单位毫秒，默认为2000）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setImages(Object[]/List&lt;?&gt; imagesUrl)</td>
+<td>设置轮播图片(所有设置参数方法都放在此方法之前执行)</td>
+<td>1.4后去掉数组传参</td>
+</tr>
+<tr>
+<td>setImages(Object[]/List&lt;?&gt; imagesUrl,OnLoadImageListener listener)</td>
+<td>设置轮播图片，并且自定义图片加载方式</td>
+<td>1.3.3结束</td>
+</tr>
+<tr>
+<td>setOnBannerClickListener(this)</td>
+<td>设置点击事件，下标是从1开始</td>
+<td>无（1.4.9以后废弃了）</td>
+</tr>
+<tr>
+<td>setOnBannerListener(this)</td>
+<td>设置点击事件，下标是从0开始</td>
+<td>1.4.9以后</td>
+</tr>
+<tr>
+<td>setOnLoadImageListener(this)</td>
+<td>设置图片加载事件，可以自定义图片加载方式</td>
+<td>1.3.3结束</td>
+</tr>
+<tr>
+<td>setImageLoader(Object implements ImageLoader)</td>
+<td>设置图片加载器</td>
+<td>1.4开始</td>
+</tr>
+<tr>
+<td>setOnPageChangeListener(this)</td>
+<td>设置viewpager的滑动监听</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setBannerAnimation(Class&lt;? extends PageTransformer&gt; transformer)</td>
+<td>设置viewpager的默认动画,传值见动画表</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setPageTransformer(boolean reverseDrawingOrder, ViewPager.PageTransformer transformer)</td>
+<td>设置viewpager的自定义动画</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="Attributes属性（banner布局文件中调用）"><a href="#Attributes属性（banner布局文件中调用）" class="headerlink" title="Attributes属性（banner布局文件中调用）"></a>Attributes属性（banner布局文件中调用）</h4><table>
+<thead>
+<tr>
+<th>Attributes</th>
+<th>forma</th>
+<th>describe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>delay_time</td>
+<td>integer</td>
+<td>轮播间隔时间，默认2000</td>
+</tr>
+<tr>
+<td>scroll_time</td>
+<td>integer</td>
+<td>轮播滑动执行时间，默认800</td>
+</tr>
+<tr>
+<td>is_auto_play</td>
+<td>boolean</td>
+<td>是否自动轮播，默认true</td>
+</tr>
+<tr>
+<td>title_background</td>
+<td>color</td>
+<td>reference</td>
+</tr>
+<tr>
+<td>title_textcolor</td>
+<td>color</td>
+<td>标题字体颜色</td>
+</tr>
+<tr>
+<td>title_textsize</td>
+<td>dimension</td>
+<td>标题字体大小</td>
+</tr>
+<tr>
+<td>title_height</td>
+<td>dimension</td>
+<td>标题栏高度</td>
+</tr>
+<tr>
+<td>indicator_width</td>
+<td>dimension</td>
+<td>指示器圆形按钮的宽度</td>
+</tr>
+<tr>
+<td>indicator_height</td>
+<td>dimension</td>
+<td>指示器圆形按钮的高度</td>
+</tr>
+<tr>
+<td>indicator_margin</td>
+<td>dimension</td>
+<td>指示器之间的间距</td>
+</tr>
+<tr>
+<td>indicator_drawable_selected</td>
+<td>reference</td>
+<td>指示器选中效果</td>
+</tr>
+<tr>
+<td>indicator_drawable_unselected</td>
+<td>reference</td>
+<td>指示器未选中效果</td>
+</tr>
+<tr>
+<td>image_scale_type</td>
+<td>enum</td>
+<td>和imageview的ScaleType作用一样</td>
+</tr>
+<tr>
+<td>banner_default_image</td>
+<td>reference</td>
+<td>当banner数据为空是显示的默认图片</td>
+</tr>
+<tr>
+<td>banner_layout</td>
+<td>reference</td>
+<td>自定义banner布局文件，但是必须保证id的名称一样（你可以将banner的布局文件复制出来进行修改）</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Banner github地址: <a target="_blank" rel="noopener" href="https://github.com/youth5201314/banner/tree/release-1.4.10">https://github.com/youth5201314/banner/tree/release-1.4.10</a></p>
 
     </div>
 
@@ -365,13 +699,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">215k</span>
+    <span title="站点总字数">218k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:16</span>
+    <span title="站点阅读时长">3:19</span>
   </span>
 </div><script defer src="/lib/three.js"></script><script defer src="/lib/waves.js"></script>
 

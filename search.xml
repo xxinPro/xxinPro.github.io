@@ -94,6 +94,340 @@
 <h3 id="重写ImageLoader类"><a href="#重写ImageLoader类" class="headerlink" title="重写ImageLoader类"></a>重写ImageLoader类</h3><p>如果想让代码清晰一点，可以重写图片加载器，继承ImageLoader类</p>
 <p>MysetImageLoader继承ImageLoader<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.a.practice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.bumptech.glide.Glide;</span><br><span class="line"><span class="keyword">import</span> com.youth.banner.loader.ImageLoader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MysetImageLoader</span> <span class="keyword">extends</span> <span class="title">ImageLoader</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    在这个方法中加载图片</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayImage</span><span class="params">(Context context, Object o, ImageView imageView)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        返回的图片路径为Object类型强转为Image</span></span><br><span class="line">        Glide.with(context).load(o).into((ImageView) imageView);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ImageView <span class="title">createImageView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        返回一个新的ImageView控件</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ImageView(context);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>那么再设置图片加载器时<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  设置图片加载器</span></span><br><span class="line">  MysetImageLoader mysetImageLoader = <span class="keyword">new</span> MysetImageLoader();</span><br><span class="line">  banner.setImageLoader(mysetImageLoader);</span><br></pre></td></tr></table></figure></p>
+<h3 id="其它一些属性"><a href="#其它一些属性" class="headerlink" title="其它一些属性"></a>其它一些属性</h3><h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><table>
+<thead>
+<tr>
+<th>常量名称</th>
+<th>描述</th>
+<th>所属方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BannerConfig.NOT_INDICATOR</td>
+<td>不显示指示器和标题</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.CIRCLE_INDICATOR</td>
+<td>显示圆形指示器</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.NUM_INDICATOR</td>
+<td>显示数字指示器</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.NUM_INDICATOR_TITLE</td>
+<td>显示数字指示器和标题</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.CIRCLE_INDICATOR_TITLE</td>
+<td>显示圆形指示器和标题（垂直显示）</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE</td>
+<td>显示圆形指示器和标题（水平显示）</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.LEFT</td>
+<td>指示器居左</td>
+<td>setIndicatorGravity</td>
+</tr>
+<tr>
+<td>BannerConfig.CENTER</td>
+<td>指示器居中</td>
+<td>setIndicatorGravity</td>
+</tr>
+<tr>
+<td>BannerConfig.RIGHT</td>
+<td>指示器居右</td>
+<td>setIndicatorGravity</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="动画常量类（setBannerAnimation方法调用）"><a href="#动画常量类（setBannerAnimation方法调用）" class="headerlink" title="动画常量类（setBannerAnimation方法调用）"></a>动画常量类（setBannerAnimation方法调用）</h4><table>
+<thead>
+<tr>
+<th>常量类名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transformer.Default</td>
+</tr>
+<tr>
+<td>Transformer.Accordion</td>
+</tr>
+<tr>
+<td>Transformer.BackgroundToForeground</td>
+</tr>
+<tr>
+<td>Transformer.ForegroundToBackground</td>
+</tr>
+<tr>
+<td>Transformer.CubeIn</td>
+</tr>
+<tr>
+<td>Transformer.CubeOut</td>
+</tr>
+<tr>
+<td>Transformer.DepthPage</td>
+</tr>
+<tr>
+<td>Transformer.FlipHorizontal</td>
+</tr>
+<tr>
+<td>Transformer.FlipVertical</td>
+</tr>
+<tr>
+<td>Transformer.RotateDown</td>
+</tr>
+<tr>
+<td>Transformer.RotateUp</td>
+</tr>
+<tr>
+<td>Transformer.ScaleInOut</td>
+</tr>
+<tr>
+<td>Transformer.Stack</td>
+</tr>
+<tr>
+<td>Transformer.Tablet</td>
+</tr>
+<tr>
+<td>Transformer.ZoomIn</td>
+</tr>
+<tr>
+<td>Transformer.ZoomOut</td>
+</tr>
+<tr>
+<td>Transformer.ZoomOutSlide</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>版本限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setBannerStyle(int bannerStyle)</td>
+<td>设置轮播样式（默认为CIRCLE_INDICATOR）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setIndicatorGravity(int type)</td>
+<td>设置指示器位置（没有标题默认为右边,有标题时默认左边）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>isAutoPlay(boolean isAutoPlay)</td>
+<td>设置是否自动轮播（默认自动）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setViewPagerIsScroll(boolean isScroll)</td>
+<td>设置是否允许手动滑动轮播图（默认true）</td>
+<td>1.4.5开始</td>
+</tr>
+<tr>
+<td>update(List&lt;?&gt; imageUrls,List titles)</td>
+<td>更新图片和标题</td>
+<td>1.4.5开始</td>
+</tr>
+<tr>
+<td>update(List&lt;?&gt; imageUrls)</td>
+<td>更新图片</td>
+<td>1.4.5开始</td>
+</tr>
+<tr>
+<td>startAutoPlay()</td>
+<td>开始轮播</td>
+<td>1.4开始，此方法只作用于banner加载完毕--&gt;需要在start()后执行</td>
+</tr>
+<tr>
+<td>stopAutoPlay()</td>
+<td>结束轮播</td>
+<td>1.4开始，此方法只作用于banner加载完毕--&gt;需要在start()后执行</td>
+</tr>
+<tr>
+<td>start()</td>
+<td>开始进行banner渲染（必须放到最后执行）</td>
+<td>1.4开始</td>
+</tr>
+<tr>
+<td>setOffscreenPageLimit(int limit)</td>
+<td>同viewpager的方法作用一样</td>
+<td>1.4.2开始</td>
+</tr>
+<tr>
+<td>setBannerTitle(String[] titles)</td>
+<td>设置轮播要显示的标题和图片对应（如果不传默认不显示标题）</td>
+<td>1.3.3结束</td>
+</tr>
+<tr>
+<td>setBannerTitleList(List titles)</td>
+<td>设置轮播要显示的标题和图片对应（如果不传默认不显示标题）</td>
+<td>1.3.3结束</td>
+</tr>
+<tr>
+<td>setBannerTitles(List titles)</td>
+<td>设置轮播要显示的标题和图片对应（如果不传默认不显示标题）</td>
+<td>1.4开始</td>
+</tr>
+<tr>
+<td>setDelayTime(int time)</td>
+<td>设置轮播图片间隔时间（单位毫秒，默认为2000）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setImages(Object[]/List&lt;?&gt; imagesUrl)</td>
+<td>设置轮播图片(所有设置参数方法都放在此方法之前执行)</td>
+<td>1.4后去掉数组传参</td>
+</tr>
+<tr>
+<td>setImages(Object[]/List&lt;?&gt; imagesUrl,OnLoadImageListener listener)</td>
+<td>设置轮播图片，并且自定义图片加载方式</td>
+<td>1.3.3结束</td>
+</tr>
+<tr>
+<td>setOnBannerClickListener(this)</td>
+<td>设置点击事件，下标是从1开始</td>
+<td>无（1.4.9以后废弃了）</td>
+</tr>
+<tr>
+<td>setOnBannerListener(this)</td>
+<td>设置点击事件，下标是从0开始</td>
+<td>1.4.9以后</td>
+</tr>
+<tr>
+<td>setOnLoadImageListener(this)</td>
+<td>设置图片加载事件，可以自定义图片加载方式</td>
+<td>1.3.3结束</td>
+</tr>
+<tr>
+<td>setImageLoader(Object implements ImageLoader)</td>
+<td>设置图片加载器</td>
+<td>1.4开始</td>
+</tr>
+<tr>
+<td>setOnPageChangeListener(this)</td>
+<td>设置viewpager的滑动监听</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setBannerAnimation(Class&lt;? extends PageTransformer&gt; transformer)</td>
+<td>设置viewpager的默认动画,传值见动画表</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setPageTransformer(boolean reverseDrawingOrder, ViewPager.PageTransformer transformer)</td>
+<td>设置viewpager的自定义动画</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="Attributes属性（banner布局文件中调用）"><a href="#Attributes属性（banner布局文件中调用）" class="headerlink" title="Attributes属性（banner布局文件中调用）"></a>Attributes属性（banner布局文件中调用）</h4><table>
+<thead>
+<tr>
+<th>Attributes</th>
+<th>forma</th>
+<th>describe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>delay_time</td>
+<td>integer</td>
+<td>轮播间隔时间，默认2000</td>
+</tr>
+<tr>
+<td>scroll_time</td>
+<td>integer</td>
+<td>轮播滑动执行时间，默认800</td>
+</tr>
+<tr>
+<td>is_auto_play</td>
+<td>boolean</td>
+<td>是否自动轮播，默认true</td>
+</tr>
+<tr>
+<td>title_background</td>
+<td>color</td>
+<td>reference</td>
+</tr>
+<tr>
+<td>title_textcolor</td>
+<td>color</td>
+<td>标题字体颜色</td>
+</tr>
+<tr>
+<td>title_textsize</td>
+<td>dimension</td>
+<td>标题字体大小</td>
+</tr>
+<tr>
+<td>title_height</td>
+<td>dimension</td>
+<td>标题栏高度</td>
+</tr>
+<tr>
+<td>indicator_width</td>
+<td>dimension</td>
+<td>指示器圆形按钮的宽度</td>
+</tr>
+<tr>
+<td>indicator_height</td>
+<td>dimension</td>
+<td>指示器圆形按钮的高度</td>
+</tr>
+<tr>
+<td>indicator_margin</td>
+<td>dimension</td>
+<td>指示器之间的间距</td>
+</tr>
+<tr>
+<td>indicator_drawable_selected</td>
+<td>reference</td>
+<td>指示器选中效果</td>
+</tr>
+<tr>
+<td>indicator_drawable_unselected</td>
+<td>reference</td>
+<td>指示器未选中效果</td>
+</tr>
+<tr>
+<td>image_scale_type</td>
+<td>enum</td>
+<td>和imageview的ScaleType作用一样</td>
+</tr>
+<tr>
+<td>banner_default_image</td>
+<td>reference</td>
+<td>当banner数据为空是显示的默认图片</td>
+</tr>
+<tr>
+<td>banner_layout</td>
+<td>reference</td>
+<td>自定义banner布局文件，但是必须保证id的名称一样（你可以将banner的布局文件复制出来进行修改）</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Banner github地址: <a href="https://github.com/youth5201314/banner/tree/release-1.4.10">https://github.com/youth5201314/banner/tree/release-1.4.10</a></p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -906,8 +1240,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-高德地图</title>
-    <url>/2021/09/23/Android-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/</url>
+    <title>Android-热修复</title>
+    <url>/2021/09/23/Android-%E7%83%AD%E4%BF%AE%E5%A4%8D/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Android笔记</category>
@@ -918,8 +1252,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-热修复</title>
-    <url>/2021/09/23/Android-%E7%83%AD%E4%BF%AE%E5%A4%8D/</url>
+    <title>Android-高德地图</title>
+    <url>/2021/09/23/Android-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Android笔记</category>
@@ -1510,18 +1844,6 @@
       </tags>
   </entry>
   <entry>
-    <title>what is the &#39;inflate()&#39;?</title>
-    <url>/2021/09/13/what-is-the-inflate/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>内部类*</title>
     <url>/2021/07/23/%E5%86%85%E9%83%A8%E7%B1%BB/</url>
     <content><![CDATA[<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><ol>
@@ -1562,6 +1884,18 @@
         <tag>学习笔记</tag>
         <tag>重点难点</tag>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>what is the &#39;inflate()&#39;?</title>
+    <url>/2021/09/13/what-is-the-inflate/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1623,6 +1957,25 @@
       </tags>
   </entry>
   <entry>
+    <title>夜郎自大</title>
+    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
+<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”<br><span id="more"></span><br>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
+<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
+<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
+<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
+<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
+<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在服务器中搭建hexo博客</title>
     <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p><center>个人服务器搭建hexo(宝塔)</center><br><br></p>
@@ -1653,15 +2006,11 @@
       </tags>
   </entry>
   <entry>
-    <title>夜郎自大</title>
-    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
-<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”<br><span id="more"></span><br>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
-<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
-<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
-<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
-<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
-<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
+    <title>怂崽</title>
+    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
+<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
+<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
 ]]></content>
       <categories>
         <category>我的文章</category>
@@ -1669,6 +2018,7 @@
       <tags>
         <tag>网抑云</tag>
         <tag>毒鸡汤</tag>
+        <tag>坏心情</tag>
       </tags>
   </entry>
   <entry>
@@ -1686,22 +2036,6 @@
       <tags>
         <tag>好心情</tag>
         <tag>站点日志</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>怂崽</title>
-    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
-<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
-<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
-        <tag>坏心情</tag>
       </tags>
   </entry>
   <entry>
