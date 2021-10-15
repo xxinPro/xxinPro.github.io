@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.xxin.xyz/2021/10/15/ScrollView-RecyclerView%E5%AE%9E%E7%8E%B0%E6%82%AC%E5%81%9C%E5%AF%BC%E8%88%AA%E6%A0%8F/</loc>
+    <lastmod>2021-10-15</lastmod>
+  </url>
+  <url>
     <loc>https://blog.xxin.xyz/2021/10/14/Android-Banner/</loc>
     <lastmod>2021-10-14</lastmod>
   </url>
