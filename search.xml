@@ -1167,18 +1167,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-热修复</title>
-    <url>/2021/09/23/Android-%E7%83%AD%E4%BF%AE%E5%A4%8D/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android-文件储存</title>
     <url>/2021/09/25/Android-%E6%96%87%E4%BB%B6%E5%82%A8%E5%AD%98/</url>
     <content><![CDATA[<p><a href="../Android版本号与API级别关系对应表/">Android版本与API级别关系对应表 <i class="fa fa-link"></i></a></p>
@@ -1243,6 +1231,18 @@
 <p>外部储存使用new FileOutputStream创建输出流，而非打开<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  String str = <span class="string">&quot;外部储存&quot;</span>;</span><br><span class="line"><span class="comment">//          创建输出流变量</span></span><br><span class="line">  FileOutputStream fileOutputStream = <span class="keyword">null</span>;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//      获取外部储存根目录/文件夹路径作为对象</span></span><br><span class="line">      File path = <span class="keyword">new</span> File(Environment.getExternalStorageDirectory(),<span class="string">&quot;lxx/gqtx&quot;</span>);</span><br><span class="line"><span class="comment">//      path路径下的文件</span></span><br><span class="line">      File file = <span class="keyword">new</span> File(path,<span class="string">&quot;test.txt&quot;</span>);</span><br><span class="line"><span class="comment">//      路径是否存在，不存在则创建路径文件夹</span></span><br><span class="line">      <span class="keyword">if</span> (!path.exists())&#123;</span><br><span class="line">          path.mkdirs();</span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">//      文件是否存在，不存在则创建文件</span></span><br><span class="line">      <span class="keyword">if</span> (!file.exists())&#123;</span><br><span class="line">          file.createNewFile();</span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">//      创建输出流对象，打开输出流</span></span><br><span class="line">      fileOutputStream = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line"><span class="comment">//      写入字节</span></span><br><span class="line">      fileOutputStream.write(str.getBytes());</span><br><span class="line">  &#125;<span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line"><span class="comment">//      关闭输出流</span></span><br><span class="line">      <span class="keyword">if</span> (fileOutputStream != <span class="keyword">null</span>)&#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              fileOutputStream.close();</span><br><span class="line">          &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="FileInputStream-读取数据-1"><a href="#FileInputStream-读取数据-1" class="headerlink" title="FileInputStream(读取数据)"></a>FileInputStream(读取数据)</h4><p>外部储存使用new FileInputStream创建输入流，而非打开<br>getAbsolutePath()会将Environment.getExternalStorageDirectory()的File文件对象类型转换为String<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建输入流变量</span></span><br><span class="line">  FileInputStream fileInputStream = <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">//  获取外部储存根目录/文件夹路径作为对象</span></span><br><span class="line">  File file = <span class="keyword">new</span> File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + <span class="string">&quot;lxx/gqtx&quot;</span>,<span class="string">&quot;test.txt&quot;</span>);</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//      创建输入流对象，打开输入流</span></span><br><span class="line">      fileInputStream = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line"><span class="comment">//      创建字节组</span></span><br><span class="line">      <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line"><span class="comment">//      字符串缓冲区</span></span><br><span class="line">      StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">//      长度</span></span><br><span class="line">      <span class="keyword">int</span> len;</span><br><span class="line"><span class="comment">//      循环读取字符串</span></span><br><span class="line">      <span class="keyword">while</span> ((len = fileInputStream.read(bytes)) &gt; <span class="number">0</span>)&#123;</span><br><span class="line"><span class="comment">//          进入缓冲区</span></span><br><span class="line">          stringBuilder.append(<span class="keyword">new</span> String(bytes,<span class="number">0</span>,len));</span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">//      Toast提示</span></span><br><span class="line">      Toast.makeText(<span class="keyword">this</span>,stringBuilder.toString(),Toast.LENGTH_SHORT).show();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android-热修复</title>
+    <url>/2021/09/23/Android-%E7%83%AD%E4%BF%AE%E5%A4%8D/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>Android笔记</category>
       </categories>
@@ -1667,6 +1667,7 @@
 <p>MyAdapter.java<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xin.FixBar;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.recyclerview.widget.RecyclerView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">MyAdapter</span>.<span class="title">MyViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Context context;</span><br><span class="line">    <span class="keyword">private</span> String[] data;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(Context context,String[] data)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.context = context;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MyViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        View view = View.inflate(context,R.layout.item,<span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyViewHolder(view);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> MyViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        holder.item_view.setText(data[position]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> data.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> TextView item_view;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyViewHolder</span><span class="params">(<span class="meta">@NonNull</span> View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            item_view =itemView.findViewById(R.id.item_text);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="在MainActivity中调用"><a href="#在MainActivity中调用" class="headerlink" title="在MainActivity中调用"></a>在MainActivity中调用</h3><p>都在注释里了，啥也不想写。。。<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xin.FixBar;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> androidx.recyclerview.widget.LinearLayoutManager;</span><br><span class="line"><span class="keyword">import</span> androidx.recyclerview.widget.RecyclerView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MyScrollView myScrollView;</span><br><span class="line">    <span class="keyword">private</span> RecyclerView recyclerView;</span><br><span class="line">    <span class="keyword">private</span> String[] data;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> navBar = <span class="keyword">false</span>;<span class="comment">//navbar的悬浮状态</span></span><br><span class="line">    <span class="keyword">private</span> MyAdapter myAdapter;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> recyclerDisable = <span class="keyword">false</span>;<span class="comment">//是否下拉进入过RecyclerView</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        init();<span class="comment">//初始化</span></span><br><span class="line">        setRecycler();<span class="comment">//设置列表</span></span><br><span class="line">        setScroll();<span class="comment">//设置滚动</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    设置滚动</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setScroll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        myScrollView.setOnNavBarListener(<span class="keyword">new</span> MyScrollView.OnNavBarListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//            设置为悬浮状态</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnFix</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (!navBar)&#123;</span><br><span class="line">                    navBar = <span class="keyword">true</span>;</span><br><span class="line">                    recyclerView.setNestedScrollingEnabled(<span class="keyword">true</span>);<span class="comment">//允许recyclerView滑动</span></span><br><span class="line">                    Log.d(<span class="string">&quot;setScroll&quot;</span>, <span class="string">&quot;OnReset: recyclerView已允许&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//            取消悬浮状态</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnReset</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (navBar)&#123;</span><br><span class="line">                    navBar = <span class="keyword">false</span>;</span><br><span class="line">                    recyclerView.setNestedScrollingEnabled(<span class="keyword">false</span>);<span class="comment">//禁止recyclerView滑动</span></span><br><span class="line">                    Log.d(<span class="string">&quot;setScroll&quot;</span>, <span class="string">&quot;OnReset: recyclerView已禁止&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    设置列表</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setRecycler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        LinearLayoutManager layoutManager = <span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>);<span class="comment">//实例化一个布局管理器</span></span><br><span class="line">        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);<span class="comment">//设置布局方向</span></span><br><span class="line">        recyclerView.setLayoutManager(layoutManager);<span class="comment">//给Recycler添加布局</span></span><br><span class="line"><span class="comment">//        设置RecyclerView的高度</span></span><br><span class="line">        <span class="keyword">int</span> pxHeight = <span class="keyword">this</span>.getResources().getDisplayMetrics().heightPixels;<span class="comment">//获取屏幕高度的px</span></span><br><span class="line">        <span class="keyword">int</span> StatusBarHeight = (<span class="keyword">int</span>) (<span class="number">60</span> * <span class="keyword">this</span>.getResources().getDisplayMetrics().density + <span class="number">0.5f</span>);<span class="comment">//状态栏的px高度</span></span><br><span class="line">        recyclerView.getLayoutParams().height = pxHeight - StatusBarHeight;<span class="comment">//得到RecyclerView的高度并设置</span></span><br><span class="line">        myAdapter = <span class="keyword">new</span> MyAdapter(<span class="keyword">this</span>,data);<span class="comment">//实例化适配器</span></span><br><span class="line">        recyclerView.setAdapter(myAdapter);<span class="comment">//设置适配器</span></span><br><span class="line"></span><br><span class="line">        recyclerView.setNestedScrollingEnabled(<span class="keyword">false</span>);<span class="comment">//设置recycler为不可滑动，解决滑动冲突</span></span><br><span class="line"><span class="comment">//        给RecyclerView添加滑动监听，当滑动至顶部时，禁用RecyclerView滑动</span></span><br><span class="line">        recyclerView.addOnScrollListener(<span class="keyword">new</span> RecyclerView.OnScrollListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//            滑动停止时调用</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(<span class="meta">@NonNull</span> RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy);</span><br><span class="line"><span class="comment">//                如果rcyclerView滑动到顶部，recyclerView.canScrollVertically(-1)为true，则禁用它的滑动</span></span><br><span class="line"><span class="comment">//                因为Recycler初始状态为顶部，所以用recyclerDisable判断是否下拉进入过RecyclerView</span></span><br><span class="line">                <span class="keyword">if</span> (!recyclerView.canScrollVertically(-<span class="number">1</span>))&#123;</span><br><span class="line">                    <span class="keyword">if</span> (recyclerDisable)&#123;</span><br><span class="line">                        recyclerView.setNestedScrollingEnabled(<span class="keyword">false</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    recyclerDisable = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        myScrollView = findViewById(R.id.myScrollView);</span><br><span class="line">        recyclerView = findViewById(R.id.recyclerView);</span><br><span class="line">        data = <span class="keyword">new</span> String[]&#123;</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span>,</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span>,</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span>,</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span>,</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>到这里就搞定了</p>
+<p>源代码的话，github地址：<a href="https://github.com/xxinPro/fixNavBar">https://github.com/xxinPro/fixNavBar</a></p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -1814,19 +1815,6 @@
       </tags>
   </entry>
   <entry>
-    <title>this和super</title>
-    <url>/2021/07/20/this%E5%92%8Csuper/</url>
-    <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
-]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>next主题优化</title>
     <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<p><center>hexo博客next主题主要优化修改方案</center></p>
@@ -1864,6 +1852,54 @@
         <tag>小教程</tag>
         <tag>hexo博客</tag>
         <tag>next主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>this和super</title>
+    <url>/2021/07/20/this%E5%92%8Csuper/</url>
+    <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>what is the &#39;inflate()&#39;?</title>
+    <url>/2021/09/13/what-is-the-inflate/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>上传项目至github</title>
+    <url>/2021/10/17/%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E8%87%B3github/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">创建仓库</label><br><img src="../上传项目至github/img1.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">复制仓库的ssh链接</label><br><img src="../上传项目至github/img2.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">在本地，把预备上传至github的项目文件夹存放在一个文件夹中，例如现在我将fix文件夹放在myProject文件夹中，fix文件夹内就是我想上传的文件</label><br><img src="../上传项目至github/img3.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">鼠标右键myProject文件夹，并选择Git Bash Here，然后在出现的窗口中输入“git clone 复制的ssh链接”从github下载项目</label><br><img src="../上传项目至github/img4.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">在myProject文件夹下，会发现多了一个与github仓库名一样的文件夹(比如我的多了一个fixNavbBar文件夹)</label><br><img src="../上传项目至github/img5.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">接着手动把fix文件夹下的所有文件复制粘贴至fixNavBar</label><br><img src="../上传项目至github/img6.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">然后在命令窗口中“输入cd 文件夹名”进入新文件夹</label><br><img src="../上传项目至github/img7.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入git add .(注意有个小点)，会把fixNavbBar文件夹下面新的文件或修改过的文件添加进来，如果之前已经添加了，它会自动省略</label><br><img src="../上传项目至github/img8.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入 git commit -m “logs”提交项目说明</label><br><img src="../上传项目至github/img9.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入 git push -u origin main，上传项目</label><br>&ensp;&ensp;&ensp;&ensp;<label style="color:red;cursor:auto">注意：</label>在2021年8月13号之后，github不允许用账号密码上传项目，必须使用token，如果没有token&ensp;<a href="">点击这里</a><br><img src="../上传项目至github/img10.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">上传完成后到github查看项目即可</label><br><img src="../上传项目至github/img11.png" width="70%" height="70%" ></p>
+]]></content>
+      <categories>
+        <category>技术教程</category>
+      </categories>
+      <tags>
+        <tag>小教程</tag>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -1910,18 +1946,6 @@
       </tags>
   </entry>
   <entry>
-    <title>what is the &#39;inflate()&#39;?</title>
-    <url>/2021/09/13/what-is-the-inflate/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>函数概念</title>
     <url>/2021/08/08/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><h4 id="一-、绝对值"><a href="#一-、绝对值" class="headerlink" title="(一)、绝对值"></a>(一)、绝对值</h4><p>$ $<br>\begin{align}<br>\left | a \right | &amp; = \begin{Bmatrix}  \notag<br> a &amp; a\ge 0\\<br> -a &amp; a&lt; 0<br>\end{Bmatrix}\quad \quad (\left | a \right | \ge 0)<br>\end{align}<br>$ $</p>
@@ -1964,6 +1988,22 @@
       </tags>
   </entry>
   <entry>
+    <title>单例模式</title>
+    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>调用时</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在服务器中搭建hexo博客</title>
     <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p><center>个人服务器搭建hexo(宝塔)</center><br><br></p>
@@ -1994,19 +2034,20 @@
       </tags>
   </entry>
   <entry>
-    <title>单例模式</title>
-    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<p>解决某些场景下只需要创建该类的一个实例</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>调用时</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <title>小衅笔记</title>
+    <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+]]></content>
       <categories>
-        <category>java笔记</category>
+        <category>站点日志</category>
       </categories>
       <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
+        <tag>好心情</tag>
+        <tag>站点日志</tag>
       </tags>
   </entry>
   <entry>
@@ -2029,20 +2070,19 @@
       </tags>
   </entry>
   <entry>
-    <title>小衅笔记</title>
-    <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
+    <title>怂崽</title>
+    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
+<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
+<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
 ]]></content>
       <categories>
-        <category>站点日志</category>
+        <category>我的文章</category>
       </categories>
       <tags>
-        <tag>好心情</tag>
-        <tag>站点日志</tag>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+        <tag>坏心情</tag>
       </tags>
   </entry>
   <entry>
@@ -2068,22 +2108,6 @@
       <tags>
         <tag>网抑云</tag>
         <tag>毒鸡汤</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>怂崽</title>
-    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
-<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
-<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
-        <tag>坏心情</tag>
       </tags>
   </entry>
   <entry>
