@@ -550,6 +550,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Android-Glide</title>
+    <url>/2021/09/23/Android-Glide/</url>
+    <content><![CDATA[<p>Glide是一个快速高效的Android图片加载库，可以自动加载网络、本地文件，app资源文件中的图片，注重于平滑的滚动</p>
+<p>开源地址：<a href="https://github.com/bumptech/glide">https://github.com/bumptech/glide</a><br>中文文档：<a href="https://muyangmin.github.io/glide-docs-cn/">https://muyangmin.github.io/glide-docs-cn/</a></p>
+<span id="more"></span>
+<h3 id="①引入glide"><a href="#①引入glide" class="headerlink" title="①引入glide"></a>①引入glide</h3><p>在gradle文件中的dependencies添加依赖<br><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">&#x27;com.github.bumptech.glide:glide:4.11.0&#x27;</span></span><br><span class="line">annotationProcessor <span class="string">&#x27;com.github.bumptech.glide:compiler:4.11.0&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="②使用"><a href="#②使用" class="headerlink" title="②使用"></a>②使用</h3><h4 id="相应权限"><a href="#相应权限" class="headerlink" title="相应权限"></a>相应权限</h4><p>在清单文件中加入相应权限<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//    访问网络</span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.INTERNET&quot;</span>/&gt;</span></span><br><span class="line">//    本地储存</span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="简单的使用"><a href="#简单的使用" class="headerlink" title="简单的使用"></a>简单的使用</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="keyword">import</span> com.bumptech.glide.Glide;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ImageView img;</span><br><span class="line">    <span class="keyword">private</span> TextView text1;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        text1 = findViewById(R.id.text1);</span><br><span class="line">        img = findViewById(R.id.img1);</span><br><span class="line"></span><br><span class="line">        Glide.with(<span class="keyword">this</span>)</span><br><span class="line"><span class="comment">//                参数支持：url地址、file文件、文件对象、等等类型</span></span><br><span class="line"><span class="comment">//                .load(R.mipmap.shuai)</span></span><br><span class="line">                .load(<span class="string">&quot;https://img0.baidu.com/it/u=1548103423,3809755433&amp;fm=26&amp;fmt=auto&quot;</span>)</span><br><span class="line"><span class="comment">//                ImageView对象传入</span></span><br><span class="line">                .into(img);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Glide占位符"><a href="#Glide占位符" class="headerlink" title="Glide占位符"></a>Glide占位符</h4><p>Glide4中共有三种占位图</p>
+<ol>
+<li>placeholder: 正在请求图片时展示的图片</li>
+<li>error: 如果请求失败时展示的图片(如果没有设置，则展示placeholder)</li>
+<li>fallback: 请求的url/model为null时展示的图片(如果没有设置，则展示placeholder)</li>
+</ol>
+<p>创建RequestOptions对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  RequestOptions requestOptions = <span class="keyword">new</span> RequestOptions()</span><br><span class="line"><span class="comment">//          正在请求中</span></span><br><span class="line">          .placeholder(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          请求失败时</span></span><br><span class="line">          .error(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          请求地址为null时</span></span><br><span class="line">          .fallback(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          图片大小，若未指定则以80x80加载</span></span><br><span class="line">          .override(<span class="number">100</span>,<span class="number">100</span>);</span><br></pre></td></tr></table></figure></p>
+<p>应用RequestOptions对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  Glide.with(<span class="keyword">this</span>)</span><br><span class="line">          .load(<span class="string">&quot;https://img0.baidu.com/it/u=1548103423,3809755433&amp;fm=26&amp;fmt=auto&quot;</span>)</span><br><span class="line"><span class="comment">//          调用RequestOptions对象</span></span><br><span class="line">          .apply(requestOptions)</span><br><span class="line">          .into(img);</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android-GSON</title>
     <url>/2021/09/27/Android-GSON/</url>
     <content><![CDATA[<p>gson的github开源地址: <a href="https://github.com/google/gson">https://github.com/google/gson</a></p>
@@ -569,32 +595,6 @@
 <h4 id="反序列化-2"><a href="#反序列化-2" class="headerlink" title="反序列化"></a>反序列化</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建Gson对象</span></span><br><span class="line">  Gson gson4 = <span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">//  反序列化得到Girlfriend类型数组，数组中的每个值都是一个Girlfriend对象</span></span><br><span class="line">  Girlfriend[] girlfriends2 = gson4.fromJson(json,Girlfriend[].class);</span><br><span class="line"><span class="comment">//  调用它的getName</span></span><br><span class="line">  code.setText(girlfriend3.getName());</span><br></pre></td></tr></table></figure>
 <h3 id="List集合的序列化与反序列化"><a href="#List集合的序列化与反序列化" class="headerlink" title="List集合的序列化与反序列化"></a>List集合的序列化与反序列化</h3><h4 id="序列化-3"><a href="#序列化-3" class="headerlink" title="序列化"></a>序列化</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建Gson对象</span></span><br><span class="line">  Gson gson5 = <span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">//  把集合序列化为json</span></span><br><span class="line">  json = gson5.toJson(girlfriendList);</span><br><span class="line">  code.setText(json);</span><br></pre></td></tr></table></figure>
 <h4 id="反序列化-3"><a href="#反序列化-3" class="headerlink" title="反序列化"></a>反序列化</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  Gson gson6 = <span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">//  gson提供的数据类型转换器</span></span><br><span class="line">  Type type = <span class="keyword">new</span> TypeToken&lt;List&lt;Girlfriend&gt;&gt;()&#123;&#125;.getType();</span><br><span class="line"><span class="comment">//  反序列化，把Json格式的数据转换成List&lt;AppVersion&gt; 类型</span></span><br><span class="line">  List&lt;Girlfriend&gt; girlfriendList2 = gson6.fromJson(json,type);</span><br><span class="line">  code.setText(girlfriendList2.get(<span class="number">0</span>).getName());</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android-Glide</title>
-    <url>/2021/09/23/Android-Glide/</url>
-    <content><![CDATA[<p>Glide是一个快速高效的Android图片加载库，可以自动加载网络、本地文件，app资源文件中的图片，注重于平滑的滚动</p>
-<p>开源地址：<a href="https://github.com/bumptech/glide">https://github.com/bumptech/glide</a><br>中文文档：<a href="https://muyangmin.github.io/glide-docs-cn/">https://muyangmin.github.io/glide-docs-cn/</a></p>
-<span id="more"></span>
-<h3 id="①引入glide"><a href="#①引入glide" class="headerlink" title="①引入glide"></a>①引入glide</h3><p>在gradle文件中的dependencies添加依赖<br><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">&#x27;com.github.bumptech.glide:glide:4.11.0&#x27;</span></span><br><span class="line">annotationProcessor <span class="string">&#x27;com.github.bumptech.glide:compiler:4.11.0&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="②使用"><a href="#②使用" class="headerlink" title="②使用"></a>②使用</h3><h4 id="相应权限"><a href="#相应权限" class="headerlink" title="相应权限"></a>相应权限</h4><p>在清单文件中加入相应权限<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//    访问网络</span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.INTERNET&quot;</span>/&gt;</span></span><br><span class="line">//    本地储存</span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="简单的使用"><a href="#简单的使用" class="headerlink" title="简单的使用"></a>简单的使用</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="keyword">import</span> com.bumptech.glide.Glide;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ImageView img;</span><br><span class="line">    <span class="keyword">private</span> TextView text1;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        text1 = findViewById(R.id.text1);</span><br><span class="line">        img = findViewById(R.id.img1);</span><br><span class="line"></span><br><span class="line">        Glide.with(<span class="keyword">this</span>)</span><br><span class="line"><span class="comment">//                参数支持：url地址、file文件、文件对象、等等类型</span></span><br><span class="line"><span class="comment">//                .load(R.mipmap.shuai)</span></span><br><span class="line">                .load(<span class="string">&quot;https://img0.baidu.com/it/u=1548103423,3809755433&amp;fm=26&amp;fmt=auto&quot;</span>)</span><br><span class="line"><span class="comment">//                ImageView对象传入</span></span><br><span class="line">                .into(img);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Glide占位符"><a href="#Glide占位符" class="headerlink" title="Glide占位符"></a>Glide占位符</h4><p>Glide4中共有三种占位图</p>
-<ol>
-<li>placeholder: 正在请求图片时展示的图片</li>
-<li>error: 如果请求失败时展示的图片(如果没有设置，则展示placeholder)</li>
-<li>fallback: 请求的url/model为null时展示的图片(如果没有设置，则展示placeholder)</li>
-</ol>
-<p>创建RequestOptions对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  RequestOptions requestOptions = <span class="keyword">new</span> RequestOptions()</span><br><span class="line"><span class="comment">//          正在请求中</span></span><br><span class="line">          .placeholder(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          请求失败时</span></span><br><span class="line">          .error(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          请求地址为null时</span></span><br><span class="line">          .fallback(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          图片大小，若未指定则以80x80加载</span></span><br><span class="line">          .override(<span class="number">100</span>,<span class="number">100</span>);</span><br></pre></td></tr></table></figure></p>
-<p>应用RequestOptions对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  Glide.with(<span class="keyword">this</span>)</span><br><span class="line">          .load(<span class="string">&quot;https://img0.baidu.com/it/u=1548103423,3809755433&amp;fm=26&amp;fmt=auto&quot;</span>)</span><br><span class="line"><span class="comment">//          调用RequestOptions对象</span></span><br><span class="line">          .apply(requestOptions)</span><br><span class="line">          .into(img);</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -1362,6 +1362,47 @@
       </tags>
   </entry>
   <entry>
+    <title>Android物理按键事件</title>
+    <url>/2021/10/12/Android%E7%89%A9%E7%90%86%E6%8C%89%E9%94%AE%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<p>Android常用的物理按键及其触发事件</p>
+<p>物理键</p>
+<ol>
+<li>KEYCODE_POWER: 电源键</li>
+<li>KEYCODE_MENU: 菜单键</li>
+<li>KEYCODE_BACK: 后退键</li>
+<li>KEYCODE_HOME: Home键</li>
+<li>KEYCODE_CAMERA: 相机键</li>
+<li>KEYCODE_SEARCH: 查找键</li>
+<li>KEYCODE_VOLUME_UP: 音量键+</li>
+<li>KEYCODE_VOLUME_DOWN: 音量键-</li>
+<li>KEYCODE_VOLUME_MUTE: 静音</li>
+</ol>
+<p>方向键</p>
+<ol>
+<li>KEYCODE_DPAD_CENTER</li>
+<li>KEYCODE_DPAD_UP</li>
+<li>KEYCODE_DPAD_DOWN</li>
+<li>KEYCODE_DPAD_LEFT</li>
+<li>KEYCODE_DPAD_RIGHT</li>
+</ol>
+<p>键盘键 </p>
+<ol>
+<li>KEYCODE_0 ~ KEYCODE_9: 数字0~9</li>
+<li>KEYCODE_A ~ KEYCODE_Z: 字母A~Z</li>
+</ol>
+<p>提供的回调方法有<br>onKeyUp() 按键被按下，松开后触发<br>OnKeyDown() 按键被按下触发<br>onKeyLongPress() 按键被长按触发</p>
+<p><label style="color:red;cursor:auto">注意：</label>让系统调用onKeyLongPress方法，必须要在onKeyDown方法中调用event.startTracking()方法并返回true才可以。</p>
+<p>例如这个例子，按下两次返回键退出页面<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    重写onKeyDown方法可以拦截系统默认的处理</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCode, KeyEvent event)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        后退键将不再响应系统默认事件</span></span><br><span class="line">        <span class="keyword">if</span> (keyCode == KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">            exitActivity();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onKeyDown(keyCode, event);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">exitActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//        System.currentTimeMillis()相当于new Date()的毫秒数</span></span><br><span class="line">        <span class="keyword">if</span> (System.currentTimeMillis() - exitTime &gt; <span class="number">2000</span>)&#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;再次点击返回键退出&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">            exitTime = System.currentTimeMillis();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            finish();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android版本号与API级别关系对应表</title>
     <url>/2021/09/25/Android%E7%89%88%E6%9C%AC%E5%8F%B7%E4%B8%8EAPI%E7%BA%A7%E5%88%AB%E5%85%B3%E7%B3%BB%E5%AF%B9%E5%BA%94%E8%A1%A8/</url>
     <content><![CDATA[<table>
@@ -1597,44 +1638,18 @@
       </tags>
   </entry>
   <entry>
-    <title>Android物理按键事件</title>
-    <url>/2021/10/12/Android%E7%89%A9%E7%90%86%E6%8C%89%E9%94%AE%E4%BA%8B%E4%BB%B6/</url>
-    <content><![CDATA[<p>Android常用的物理按键及其触发事件</p>
-<p>物理键</p>
-<ol>
-<li>KEYCODE_POWER: 电源键</li>
-<li>KEYCODE_MENU: 菜单键</li>
-<li>KEYCODE_BACK: 后退键</li>
-<li>KEYCODE_HOME: Home键</li>
-<li>KEYCODE_CAMERA: 相机键</li>
-<li>KEYCODE_SEARCH: 查找键</li>
-<li>KEYCODE_VOLUME_UP: 音量键+</li>
-<li>KEYCODE_VOLUME_DOWN: 音量键-</li>
-<li>KEYCODE_VOLUME_MUTE: 静音</li>
-</ol>
-<p>方向键</p>
-<ol>
-<li>KEYCODE_DPAD_CENTER</li>
-<li>KEYCODE_DPAD_UP</li>
-<li>KEYCODE_DPAD_DOWN</li>
-<li>KEYCODE_DPAD_LEFT</li>
-<li>KEYCODE_DPAD_RIGHT</li>
-</ol>
-<p>键盘键 </p>
-<ol>
-<li>KEYCODE_0 ~ KEYCODE_9: 数字0~9</li>
-<li>KEYCODE_A ~ KEYCODE_Z: 字母A~Z</li>
-</ol>
-<p>提供的回调方法有<br>onKeyUp() 按键被按下，松开后触发<br>OnKeyDown() 按键被按下触发<br>onKeyLongPress() 按键被长按触发</p>
-<p><label style="color:red;cursor:auto">注意：</label>让系统调用onKeyLongPress方法，必须要在onKeyDown方法中调用event.startTracking()方法并返回true才可以。</p>
-<p>例如这个例子，按下两次返回键退出页面<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    重写onKeyDown方法可以拦截系统默认的处理</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCode, KeyEvent event)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        后退键将不再响应系统默认事件</span></span><br><span class="line">        <span class="keyword">if</span> (keyCode == KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">            exitActivity();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onKeyDown(keyCode, event);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">exitActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//        System.currentTimeMillis()相当于new Date()的毫秒数</span></span><br><span class="line">        <span class="keyword">if</span> (System.currentTimeMillis() - exitTime &gt; <span class="number">2000</span>)&#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;再次点击返回键退出&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">            exitTime = System.currentTimeMillis();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            finish();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-]]></content>
+    <title>Lambda</title>
+    <url>/2021/07/24/Lambda/</url>
+    <content><![CDATA[<p>匿名类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 匿名类 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        匿名类 nm = <span class="keyword">new</span> 匿名类();</span><br><span class="line">        nm.test(<span class="keyword">new</span> price()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;测试&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(price name)</span></span>&#123;</span><br><span class="line">        System.out.println(name.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">price</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>lambda修改后</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 匿名类 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        匿名类 nm = <span class="keyword">new</span> 匿名类();</span><br><span class="line">        nm.test(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;测试&quot;</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(price name)</span></span>&#123;</span><br><span class="line">        System.out.println(name.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">price</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Android笔记</category>
+        <category>java笔记</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>学习笔记</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1659,21 +1674,6 @@
       </categories>
       <tags>
         <tag>Android开发</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Lambda</title>
-    <url>/2021/07/24/Lambda/</url>
-    <content><![CDATA[<p>匿名类</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 匿名类 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        匿名类 nm = <span class="keyword">new</span> 匿名类();</span><br><span class="line">        nm.test(<span class="keyword">new</span> price()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;测试&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(price name)</span></span>&#123;</span><br><span class="line">        System.out.println(name.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">price</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>lambda修改后</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 匿名类 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        匿名类 nm = <span class="keyword">new</span> 匿名类();</span><br><span class="line">        nm.test(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;测试&quot;</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(price name)</span></span>&#123;</span><br><span class="line">        System.out.println(name.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">price</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1754,6 +1754,25 @@
       </tags>
   </entry>
   <entry>
+    <title>github SSH令牌解决</title>
+    <url>/2021/10/17/github-SSH%E4%BB%A4%E7%89%8C%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;登录到github，进入账户设置<br><img src="../github-SSH令牌解决/img1.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;往下拉，找到开发者设置(Developer Setting)<br><img src="../github-SSH令牌解决/img2.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;创建一个token<br><img src="../github-SSH令牌解决/img3.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;Note随便填，Expiration表示设置到期日期，repo表示对仓库的完全控制，delete_repo表示删除仓库，填写完数据点击Generate token创建token了<br><img src="../github-SSH令牌解决/img4.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;创建完成后，马上将token复制并记下来，它只显示这一次<br><img src="../github-SSH令牌解决/img5.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;然后用git工具在本地打开对应项目，输入<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin  https://[你的token]@github.com/[你的用户名]/[仓库名].git</span><br><span class="line">//例如</span><br><span class="line">git remote set-url origin  https://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@github.com/xxinPro/fixNavBar.git</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;一个回车，之后就可以git push origin main了<br><img src="../github-SSH令牌解决/img6.png" width="70%" height="70%" ></p>
+]]></content>
+      <categories>
+        <category>技术教程</category>
+      </categories>
+      <tags>
+        <tag>小教程</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>gitee+hexo博客</title>
     <url>/2021/07/15/github-hexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p><center>gitee等代码托管平台搭建hexo博客</center><br><span id="more"></span></p>
@@ -1776,8 +1795,8 @@
       </categories>
       <tags>
         <tag>小教程</tag>
-        <tag>hexo博客</tag>
         <tag>github</tag>
+        <tag>hexo博客</tag>
       </tags>
   </entry>
   <entry>
@@ -1812,19 +1831,6 @@
         <tag>小教程</tag>
         <tag>hexo博客</tag>
         <tag>next主题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>this和super</title>
-    <url>/2021/07/20/this%E5%92%8Csuper/</url>
-    <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
-]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1880,6 +1886,42 @@
       </tags>
   </entry>
   <entry>
+    <title>this和super</title>
+    <url>/2021/07/20/this%E5%92%8Csuper/</url>
+    <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
+]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>上传项目至github</title>
+    <url>/2021/10/17/%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E8%87%B3github/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">创建仓库</label><br><img src="../上传项目至github/img1.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">复制仓库的ssh链接</label><br><img src="../上传项目至github/img2.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">在本地，把预备上传至github的项目文件夹存放在一个文件夹中，例如现在我将fix文件夹放在myProject文件夹中，fix文件夹内就是我想上传的文件</label><br><img src="../上传项目至github/img3.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">鼠标右键myProject文件夹，并选择Git Bash Here，然后在出现的窗口中输入“git clone 复制的ssh链接”从github下载项目</label><br><img src="../上传项目至github/img4.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">在myProject文件夹下，会发现多了一个与github仓库名一样的文件夹(比如我的多了一个fixNavbBar文件夹)</label><br><img src="../上传项目至github/img5.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">接着手动把fix文件夹下的所有文件复制粘贴至fixNavBar</label><br><img src="../上传项目至github/img6.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">然后在命令窗口中“输入cd 文件夹名”进入新文件夹</label><br><img src="../上传项目至github/img7.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入git add .(注意有个小点)，会把fixNavbBar文件夹下面新的文件或修改过的文件添加进来，如果之前已经添加了，它会自动省略</label><br><img src="../上传项目至github/img8.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入 git commit -m “logs”提交项目说明</label><br><img src="../上传项目至github/img9.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入 git push -u origin main，上传项目</label><br>&ensp;&ensp;&ensp;&ensp;<label style="color:red;cursor:auto">注意：</label>在2021年8月13号之后，github不允许用账号密码上传项目，必须使用token，如果没有token&ensp;<a href="">点击这里</a><br><img src="../上传项目至github/img10.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">上传完成后到github查看项目即可</label><br><img src="../上传项目至github/img11.png" width="70%" height="70%" ></p>
+]]></content>
+      <categories>
+        <category>技术教程</category>
+      </categories>
+      <tags>
+        <tag>小教程</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>内部类*</title>
     <url>/2021/07/23/%E5%86%85%E9%83%A8%E7%B1%BB/</url>
     <content><![CDATA[<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><ol>
@@ -1920,29 +1962,6 @@
         <tag>学习笔记</tag>
         <tag>重点难点</tag>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>上传项目至github</title>
-    <url>/2021/10/17/%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E8%87%B3github/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">创建仓库</label><br><img src="../上传项目至github/img1.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">复制仓库的ssh链接</label><br><img src="../上传项目至github/img2.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">在本地，把预备上传至github的项目文件夹存放在一个文件夹中，例如现在我将fix文件夹放在myProject文件夹中，fix文件夹内就是我想上传的文件</label><br><img src="../上传项目至github/img3.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">鼠标右键myProject文件夹，并选择Git Bash Here，然后在出现的窗口中输入“git clone 复制的ssh链接”从github下载项目</label><br><img src="../上传项目至github/img4.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">在myProject文件夹下，会发现多了一个与github仓库名一样的文件夹(比如我的多了一个fixNavbBar文件夹)</label><br><img src="../上传项目至github/img5.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">接着手动把fix文件夹下的所有文件复制粘贴至fixNavBar</label><br><img src="../上传项目至github/img6.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">然后在命令窗口中“输入cd 文件夹名”进入新文件夹</label><br><img src="../上传项目至github/img7.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入git add .(注意有个小点)，会把fixNavbBar文件夹下面新的文件或修改过的文件添加进来，如果之前已经添加了，它会自动省略</label><br><img src="../上传项目至github/img8.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入 git commit -m “logs”提交项目说明</label><br><img src="../上传项目至github/img9.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入 git push -u origin main，上传项目</label><br>&ensp;&ensp;&ensp;&ensp;<label style="color:red;cursor:auto">注意：</label>在2021年8月13号之后，github不允许用账号密码上传项目，必须使用token，如果没有token&ensp;<a href="">点击这里</a><br><img src="../上传项目至github/img10.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">上传完成后到github查看项目即可</label><br><img src="../上传项目至github/img11.png" width="70%" height="70%" ></p>
-]]></content>
-      <categories>
-        <category>技术教程</category>
-      </categories>
-      <tags>
-        <tag>小教程</tag>
-        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -2053,6 +2072,22 @@
       </tags>
   </entry>
   <entry>
+    <title>怂崽</title>
+    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
+<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
+<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+        <tag>坏心情</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>小衅笔记</title>
     <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
@@ -2067,22 +2102,6 @@
       <tags>
         <tag>好心情</tag>
         <tag>站点日志</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>怂崽</title>
-    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
-<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
-<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
-        <tag>坏心情</tag>
       </tags>
   </entry>
   <entry>
@@ -2207,6 +2226,18 @@
       </tags>
   </entry>
   <entry>
+    <title>枚举</title>
+    <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
+    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>接口interface</title>
     <url>/2021/07/22/%E6%8E%A5%E5%8F%A3interface/</url>
     <content><![CDATA[<p>接口，比抽象类还要抽象的类:</p>
@@ -2237,18 +2268,6 @@
 <li>一个类只能继承一个类；一个类可以实现多个接口</li>
 </ol>
 ]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>枚举</title>
-    <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
-    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>java笔记</category>
       </categories>
