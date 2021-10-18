@@ -550,32 +550,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-Glide</title>
-    <url>/2021/09/23/Android-Glide/</url>
-    <content><![CDATA[<p>Glide是一个快速高效的Android图片加载库，可以自动加载网络、本地文件，app资源文件中的图片，注重于平滑的滚动</p>
-<p>开源地址：<a href="https://github.com/bumptech/glide">https://github.com/bumptech/glide</a><br>中文文档：<a href="https://muyangmin.github.io/glide-docs-cn/">https://muyangmin.github.io/glide-docs-cn/</a></p>
-<span id="more"></span>
-<h3 id="①引入glide"><a href="#①引入glide" class="headerlink" title="①引入glide"></a>①引入glide</h3><p>在gradle文件中的dependencies添加依赖<br><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">&#x27;com.github.bumptech.glide:glide:4.11.0&#x27;</span></span><br><span class="line">annotationProcessor <span class="string">&#x27;com.github.bumptech.glide:compiler:4.11.0&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="②使用"><a href="#②使用" class="headerlink" title="②使用"></a>②使用</h3><h4 id="相应权限"><a href="#相应权限" class="headerlink" title="相应权限"></a>相应权限</h4><p>在清单文件中加入相应权限<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//    访问网络</span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.INTERNET&quot;</span>/&gt;</span></span><br><span class="line">//    本地储存</span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="简单的使用"><a href="#简单的使用" class="headerlink" title="简单的使用"></a>简单的使用</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="keyword">import</span> com.bumptech.glide.Glide;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ImageView img;</span><br><span class="line">    <span class="keyword">private</span> TextView text1;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        text1 = findViewById(R.id.text1);</span><br><span class="line">        img = findViewById(R.id.img1);</span><br><span class="line"></span><br><span class="line">        Glide.with(<span class="keyword">this</span>)</span><br><span class="line"><span class="comment">//                参数支持：url地址、file文件、文件对象、等等类型</span></span><br><span class="line"><span class="comment">//                .load(R.mipmap.shuai)</span></span><br><span class="line">                .load(<span class="string">&quot;https://img0.baidu.com/it/u=1548103423,3809755433&amp;fm=26&amp;fmt=auto&quot;</span>)</span><br><span class="line"><span class="comment">//                ImageView对象传入</span></span><br><span class="line">                .into(img);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Glide占位符"><a href="#Glide占位符" class="headerlink" title="Glide占位符"></a>Glide占位符</h4><p>Glide4中共有三种占位图</p>
-<ol>
-<li>placeholder: 正在请求图片时展示的图片</li>
-<li>error: 如果请求失败时展示的图片(如果没有设置，则展示placeholder)</li>
-<li>fallback: 请求的url/model为null时展示的图片(如果没有设置，则展示placeholder)</li>
-</ol>
-<p>创建RequestOptions对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  RequestOptions requestOptions = <span class="keyword">new</span> RequestOptions()</span><br><span class="line"><span class="comment">//          正在请求中</span></span><br><span class="line">          .placeholder(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          请求失败时</span></span><br><span class="line">          .error(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          请求地址为null时</span></span><br><span class="line">          .fallback(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          图片大小，若未指定则以80x80加载</span></span><br><span class="line">          .override(<span class="number">100</span>,<span class="number">100</span>);</span><br></pre></td></tr></table></figure></p>
-<p>应用RequestOptions对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  Glide.with(<span class="keyword">this</span>)</span><br><span class="line">          .load(<span class="string">&quot;https://img0.baidu.com/it/u=1548103423,3809755433&amp;fm=26&amp;fmt=auto&quot;</span>)</span><br><span class="line"><span class="comment">//          调用RequestOptions对象</span></span><br><span class="line">          .apply(requestOptions)</span><br><span class="line">          .into(img);</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android-GSON</title>
     <url>/2021/09/27/Android-GSON/</url>
     <content><![CDATA[<p>gson的github开源地址: <a href="https://github.com/google/gson">https://github.com/google/gson</a></p>
@@ -595,6 +569,32 @@
 <h4 id="反序列化-2"><a href="#反序列化-2" class="headerlink" title="反序列化"></a>反序列化</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建Gson对象</span></span><br><span class="line">  Gson gson4 = <span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">//  反序列化得到Girlfriend类型数组，数组中的每个值都是一个Girlfriend对象</span></span><br><span class="line">  Girlfriend[] girlfriends2 = gson4.fromJson(json,Girlfriend[].class);</span><br><span class="line"><span class="comment">//  调用它的getName</span></span><br><span class="line">  code.setText(girlfriend3.getName());</span><br></pre></td></tr></table></figure>
 <h3 id="List集合的序列化与反序列化"><a href="#List集合的序列化与反序列化" class="headerlink" title="List集合的序列化与反序列化"></a>List集合的序列化与反序列化</h3><h4 id="序列化-3"><a href="#序列化-3" class="headerlink" title="序列化"></a>序列化</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  创建Gson对象</span></span><br><span class="line">  Gson gson5 = <span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">//  把集合序列化为json</span></span><br><span class="line">  json = gson5.toJson(girlfriendList);</span><br><span class="line">  code.setText(json);</span><br></pre></td></tr></table></figure>
 <h4 id="反序列化-3"><a href="#反序列化-3" class="headerlink" title="反序列化"></a>反序列化</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  Gson gson6 = <span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">//  gson提供的数据类型转换器</span></span><br><span class="line">  Type type = <span class="keyword">new</span> TypeToken&lt;List&lt;Girlfriend&gt;&gt;()&#123;&#125;.getType();</span><br><span class="line"><span class="comment">//  反序列化，把Json格式的数据转换成List&lt;AppVersion&gt; 类型</span></span><br><span class="line">  List&lt;Girlfriend&gt; girlfriendList2 = gson6.fromJson(json,type);</span><br><span class="line">  code.setText(girlfriendList2.get(<span class="number">0</span>).getName());</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android-Glide</title>
+    <url>/2021/09/23/Android-Glide/</url>
+    <content><![CDATA[<p>Glide是一个快速高效的Android图片加载库，可以自动加载网络、本地文件，app资源文件中的图片，注重于平滑的滚动</p>
+<p>开源地址：<a href="https://github.com/bumptech/glide">https://github.com/bumptech/glide</a><br>中文文档：<a href="https://muyangmin.github.io/glide-docs-cn/">https://muyangmin.github.io/glide-docs-cn/</a></p>
+<span id="more"></span>
+<h3 id="①引入glide"><a href="#①引入glide" class="headerlink" title="①引入glide"></a>①引入glide</h3><p>在gradle文件中的dependencies添加依赖<br><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">&#x27;com.github.bumptech.glide:glide:4.11.0&#x27;</span></span><br><span class="line">annotationProcessor <span class="string">&#x27;com.github.bumptech.glide:compiler:4.11.0&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="②使用"><a href="#②使用" class="headerlink" title="②使用"></a>②使用</h3><h4 id="相应权限"><a href="#相应权限" class="headerlink" title="相应权限"></a>相应权限</h4><p>在清单文件中加入相应权限<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//    访问网络</span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.INTERNET&quot;</span>/&gt;</span></span><br><span class="line">//    本地储存</span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="简单的使用"><a href="#简单的使用" class="headerlink" title="简单的使用"></a>简单的使用</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="keyword">import</span> com.bumptech.glide.Glide;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ImageView img;</span><br><span class="line">    <span class="keyword">private</span> TextView text1;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        text1 = findViewById(R.id.text1);</span><br><span class="line">        img = findViewById(R.id.img1);</span><br><span class="line"></span><br><span class="line">        Glide.with(<span class="keyword">this</span>)</span><br><span class="line"><span class="comment">//                参数支持：url地址、file文件、文件对象、等等类型</span></span><br><span class="line"><span class="comment">//                .load(R.mipmap.shuai)</span></span><br><span class="line">                .load(<span class="string">&quot;https://img0.baidu.com/it/u=1548103423,3809755433&amp;fm=26&amp;fmt=auto&quot;</span>)</span><br><span class="line"><span class="comment">//                ImageView对象传入</span></span><br><span class="line">                .into(img);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Glide占位符"><a href="#Glide占位符" class="headerlink" title="Glide占位符"></a>Glide占位符</h4><p>Glide4中共有三种占位图</p>
+<ol>
+<li>placeholder: 正在请求图片时展示的图片</li>
+<li>error: 如果请求失败时展示的图片(如果没有设置，则展示placeholder)</li>
+<li>fallback: 请求的url/model为null时展示的图片(如果没有设置，则展示placeholder)</li>
+</ol>
+<p>创建RequestOptions对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  RequestOptions requestOptions = <span class="keyword">new</span> RequestOptions()</span><br><span class="line"><span class="comment">//          正在请求中</span></span><br><span class="line">          .placeholder(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          请求失败时</span></span><br><span class="line">          .error(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          请求地址为null时</span></span><br><span class="line">          .fallback(R.mipmap.shuai)</span><br><span class="line"><span class="comment">//          图片大小，若未指定则以80x80加载</span></span><br><span class="line">          .override(<span class="number">100</span>,<span class="number">100</span>);</span><br></pre></td></tr></table></figure></p>
+<p>应用RequestOptions对象<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  Glide.with(<span class="keyword">this</span>)</span><br><span class="line">          .load(<span class="string">&quot;https://img0.baidu.com/it/u=1548103423,3809755433&amp;fm=26&amp;fmt=auto&quot;</span>)</span><br><span class="line"><span class="comment">//          调用RequestOptions对象</span></span><br><span class="line">          .apply(requestOptions)</span><br><span class="line">          .into(img);</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -1310,7 +1310,8 @@
 <p>在清单文件的application中引入xml文件<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">android:networkSecurityConfig=&quot;@xml/http_request&quot;</span><br></pre></td></tr></table></figure></p>
 <p>2.在一个Activity中关闭另一个Activity</p>
 <p>3.线程等待</p>
-<p>4.ViewPager2不引入也能用？</p>
+<p>4.ViewPager2和RecyclerView不引入也能用？</p>
+<p>5.在Fragment中，无法自定义RecyclerView的onClick</p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -1355,47 +1356,6 @@
 ]]></content>
       <categories>
         <category>随手记事</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android物理按键事件</title>
-    <url>/2021/10/12/Android%E7%89%A9%E7%90%86%E6%8C%89%E9%94%AE%E4%BA%8B%E4%BB%B6/</url>
-    <content><![CDATA[<p>Android常用的物理按键及其触发事件</p>
-<p>物理键</p>
-<ol>
-<li>KEYCODE_POWER: 电源键</li>
-<li>KEYCODE_MENU: 菜单键</li>
-<li>KEYCODE_BACK: 后退键</li>
-<li>KEYCODE_HOME: Home键</li>
-<li>KEYCODE_CAMERA: 相机键</li>
-<li>KEYCODE_SEARCH: 查找键</li>
-<li>KEYCODE_VOLUME_UP: 音量键+</li>
-<li>KEYCODE_VOLUME_DOWN: 音量键-</li>
-<li>KEYCODE_VOLUME_MUTE: 静音</li>
-</ol>
-<p>方向键</p>
-<ol>
-<li>KEYCODE_DPAD_CENTER</li>
-<li>KEYCODE_DPAD_UP</li>
-<li>KEYCODE_DPAD_DOWN</li>
-<li>KEYCODE_DPAD_LEFT</li>
-<li>KEYCODE_DPAD_RIGHT</li>
-</ol>
-<p>键盘键 </p>
-<ol>
-<li>KEYCODE_0 ~ KEYCODE_9: 数字0~9</li>
-<li>KEYCODE_A ~ KEYCODE_Z: 字母A~Z</li>
-</ol>
-<p>提供的回调方法有<br>onKeyUp() 按键被按下，松开后触发<br>OnKeyDown() 按键被按下触发<br>onKeyLongPress() 按键被长按触发</p>
-<p><label style="color:red;cursor:auto">注意：</label>让系统调用onKeyLongPress方法，必须要在onKeyDown方法中调用event.startTracking()方法并返回true才可以。</p>
-<p>例如这个例子，按下两次返回键退出页面<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    重写onKeyDown方法可以拦截系统默认的处理</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCode, KeyEvent event)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        后退键将不再响应系统默认事件</span></span><br><span class="line">        <span class="keyword">if</span> (keyCode == KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">            exitActivity();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onKeyDown(keyCode, event);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">exitActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//        System.currentTimeMillis()相当于new Date()的毫秒数</span></span><br><span class="line">        <span class="keyword">if</span> (System.currentTimeMillis() - exitTime &gt; <span class="number">2000</span>)&#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;再次点击返回键退出&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">            exitTime = System.currentTimeMillis();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            finish();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
       </categories>
       <tags>
         <tag>Android</tag>
@@ -1638,18 +1598,44 @@
       </tags>
   </entry>
   <entry>
-    <title>Lambda</title>
-    <url>/2021/07/24/Lambda/</url>
-    <content><![CDATA[<p>匿名类</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 匿名类 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        匿名类 nm = <span class="keyword">new</span> 匿名类();</span><br><span class="line">        nm.test(<span class="keyword">new</span> price()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;测试&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(price name)</span></span>&#123;</span><br><span class="line">        System.out.println(name.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">price</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>lambda修改后</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 匿名类 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        匿名类 nm = <span class="keyword">new</span> 匿名类();</span><br><span class="line">        nm.test(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;测试&quot;</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(price name)</span></span>&#123;</span><br><span class="line">        System.out.println(name.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">price</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <title>Android物理按键事件</title>
+    <url>/2021/10/12/Android%E7%89%A9%E7%90%86%E6%8C%89%E9%94%AE%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<p>Android常用的物理按键及其触发事件</p>
+<p>物理键</p>
+<ol>
+<li>KEYCODE_POWER: 电源键</li>
+<li>KEYCODE_MENU: 菜单键</li>
+<li>KEYCODE_BACK: 后退键</li>
+<li>KEYCODE_HOME: Home键</li>
+<li>KEYCODE_CAMERA: 相机键</li>
+<li>KEYCODE_SEARCH: 查找键</li>
+<li>KEYCODE_VOLUME_UP: 音量键+</li>
+<li>KEYCODE_VOLUME_DOWN: 音量键-</li>
+<li>KEYCODE_VOLUME_MUTE: 静音</li>
+</ol>
+<p>方向键</p>
+<ol>
+<li>KEYCODE_DPAD_CENTER</li>
+<li>KEYCODE_DPAD_UP</li>
+<li>KEYCODE_DPAD_DOWN</li>
+<li>KEYCODE_DPAD_LEFT</li>
+<li>KEYCODE_DPAD_RIGHT</li>
+</ol>
+<p>键盘键 </p>
+<ol>
+<li>KEYCODE_0 ~ KEYCODE_9: 数字0~9</li>
+<li>KEYCODE_A ~ KEYCODE_Z: 字母A~Z</li>
+</ol>
+<p>提供的回调方法有<br>onKeyUp() 按键被按下，松开后触发<br>OnKeyDown() 按键被按下触发<br>onKeyLongPress() 按键被长按触发</p>
+<p><label style="color:red;cursor:auto">注意：</label>让系统调用onKeyLongPress方法，必须要在onKeyDown方法中调用event.startTracking()方法并返回true才可以。</p>
+<p>例如这个例子，按下两次返回键退出页面<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    重写onKeyDown方法可以拦截系统默认的处理</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCode, KeyEvent event)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        后退键将不再响应系统默认事件</span></span><br><span class="line">        <span class="keyword">if</span> (keyCode == KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">            exitActivity();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onKeyDown(keyCode, event);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">exitActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//        System.currentTimeMillis()相当于new Date()的毫秒数</span></span><br><span class="line">        <span class="keyword">if</span> (System.currentTimeMillis() - exitTime &gt; <span class="number">2000</span>)&#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,<span class="string">&quot;再次点击返回键退出&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">            exitTime = System.currentTimeMillis();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            finish();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
       <categories>
-        <category>java笔记</category>
+        <category>Android笔记</category>
       </categories>
       <tags>
+        <tag>Android</tag>
         <tag>学习笔记</tag>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1674,6 +1660,21 @@
       </categories>
       <tags>
         <tag>Android开发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Lambda</title>
+    <url>/2021/07/24/Lambda/</url>
+    <content><![CDATA[<p>匿名类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 匿名类 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        匿名类 nm = <span class="keyword">new</span> 匿名类();</span><br><span class="line">        nm.test(<span class="keyword">new</span> price()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;测试&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(price name)</span></span>&#123;</span><br><span class="line">        System.out.println(name.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">price</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>lambda修改后</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> July_2021.demo2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 匿名类 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        匿名类 nm = <span class="keyword">new</span> 匿名类();</span><br><span class="line">        nm.test(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;测试&quot;</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(price name)</span></span>&#123;</span><br><span class="line">        System.out.println(name.name());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">price</span></span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1874,18 +1875,6 @@
       </tags>
   </entry>
   <entry>
-    <title>what is the &#39;inflate()&#39;?</title>
-    <url>/2021/09/13/what-is-the-inflate/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>this和super</title>
     <url>/2021/07/20/this%E5%92%8Csuper/</url>
     <content><![CDATA[<p>this()重载构造器和super()限定<br><span id="more"></span></p>
@@ -1896,6 +1885,18 @@
       <tags>
         <tag>学习笔记</tag>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>what is the &#39;inflate()&#39;?</title>
+    <url>/2021/09/13/what-is-the-inflate/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -2226,18 +2227,6 @@
       </tags>
   </entry>
   <entry>
-    <title>枚举</title>
-    <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
-    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java笔记</category>
-      </categories>
-      <tags>
-        <tag>学习笔记</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>接口interface</title>
     <url>/2021/07/22/%E6%8E%A5%E5%8F%A3interface/</url>
     <content><![CDATA[<p>接口，比抽象类还要抽象的类:</p>
@@ -2268,6 +2257,18 @@
 <li>一个类只能继承一个类；一个类可以实现多个接口</li>
 </ol>
 ]]></content>
+      <categories>
+        <category>java笔记</category>
+      </categories>
+      <tags>
+        <tag>学习笔记</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>枚举</title>
+    <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
+    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>java笔记</category>
       </categories>
@@ -2323,6 +2324,34 @@
       </tags>
   </entry>
   <entry>
+    <title>闪不动校园</title>
+    <url>/2021/08/21/%E9%97%AA%E4%B8%8D%E5%8A%A8%E6%A0%A1%E5%9B%AD/</url>
+    <content><![CDATA[<h3 id="温馨提示"><a href="#温馨提示" class="headerlink" title="温馨提示"></a>温馨提示</h3><p>&ensp;&ensp;教程很详细但是并不简单<br>&ensp;&ensp;教程中所使用的Fake Location需要9块钱一月会员，9块跟我一分钱关系没有，这软件不是我开发的，介意的话到这里就不要继续看了<br>&ensp;&ensp;教程中所用到的软件均采集自网络，以学习交流软件设计思路为主要目的，请勿用于任何商业及违法用途，并于下载后的24小时内删除</p>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>&ensp;&ensp;硬件准备：电脑<br>&ensp;&ensp;软件准备：安卓模拟器（推荐与教程中同步使用雷电模拟器，<a href="https://www.ldmnq.com/?n=6050&amp;bd_vid=9028294708695349470">点击下载</a>）<br>&ensp;&ensp;环境准备：开启vt虚拟化技术<a href="https://www.ldmnq.com/article/290.html">https://www.ldmnq.com/article/290.html</a></p>
+<h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><p>&ensp;&ensp;1.下载完毕后双击<label style="color:red">雷电模拟器</label>安装包<br>&ensp;&ensp;请点击右下角“<label style="color:red">自定义安装</label>”尽量不要安装在C盘<br><img src="../闪不动校园/1907333349.png" width="85%" height="85%" /><br/></p>
+<p>&ensp;&ensp;2.等待程序自动下载扩展文件，下载完毕后会自动执行安装<br><img src="../闪不动校园/1177298449.png" width="85%" height="85%" /><br/></p>
+<p>&ensp;&ensp;3.安装完毕后双击打开雷电模拟器，将其运行在后台<br><img src="../闪不动校园/3015939686.jpg" width="50%" height="50%" /><br/></p>
+<h3 id="配置雷电"><a href="#配置雷电" class="headerlink" title="配置雷电"></a>配置雷电</h3><h4 id="配置文件下载"><a href="#配置文件下载" class="headerlink" title="配置文件下载"></a>配置文件下载</h4><p>&ensp;&ensp;1. 闪不动校园：<a href="https://lxx6.lanzoui.com/ivN5Bun5pxg">点击下载</a><br>&ensp;&ensp;2. fakeLocation：<a href="https://lxx6.lanzoui.com/iF9o2un5pad">点击下载</a><br>&ensp;&ensp;3. 配置文件：<a href="../闪不动校园/fakeLocationConfig.bak">点击下载</a><br/><br><img src="../闪不动校园/1168288778.png" width="40%" height="40%" /><br/></p>
+<h4 id="导入至雷电"><a href="#导入至雷电" class="headerlink" title="导入至雷电"></a>导入至雷电</h4><p>&ensp;&ensp;将三个文件依次拖入到雷电模拟器的屏幕上<br><img src="../闪不动校园/2493887147.png" width="55%" height="55%" /><br/></p>
+<h4 id="导入完毕"><a href="#导入完毕" class="headerlink" title="导入完毕"></a>导入完毕</h4><p>&ensp;&ensp;三个文件中有两个安装包和一个配置文件，配置文件不会显示在雷电模拟器的桌面，所以桌面仅显示两个图标<br><img src="../闪不动校园/3006596058.png" width="50%" height="50%" /><br/></p>
+<h3 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h3><p>&ensp;&ensp;1.首先打开fake Location(软件别人开发的，VIP得自己花钱开)<br><img src="../闪不动校园/3946829225.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;2.点击左上角，登录账号<br/><br>&ensp;&ensp;3.点击右上角按钮→点击Settings→向下滑到低，点击数据导入<br><img src="../闪不动校园/3362248827.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;4.点击中间空白部位<br><img src="../闪不动校园/4240035105.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;5.找到Pictures，点击<br><img src="../闪不动校园/200270087.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;6.找到fakeLocationConfig.bak，点击<br><img src="../闪不动校园/4051480541.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;7.这时候会弹出一个新窗口，所有的对号默认是全选的，不要动它，直接点击右下角的“导入”<br><br>&ensp;&ensp;8.提示“导入操作会覆盖现有已勾选的数据…”，不要理会，点击右下角继续导入<br/><br>&ensp;&ensp;9.退出清理fake Location后台并重新打开<br/><br>&ensp;&ensp;10.点击左上角，点击“路线模拟”<br><img src="../闪不动校园/1585825602.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;11.打开“闪不动校园”，正常登录即可，然后打开fake Location，同时闪不动校园的后台不要关，一定要用我提供给你的经过特殊处理这个版本，否则无法使用<br>&ensp;&ensp;12.在fake Location中点击启动模拟<br><img src="../闪不动校园/1641389276.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;13.不管它要什么权限，我们都给它<br><img src="../闪不动校园/4262802683.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;14.点击启动模拟之后，稍等片刻会出现这个，说明已经开始运行了，马上切到闪动校园，点击中间的“Go”<br><img src="../闪不动校园/1353890881.png" width="50%" height="50%" /><br/><br><img src="../闪不动校园/1980040640.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;15.看一下我的电脑全屏，说明它正在自动执行<br><img src="../闪不动校园/2500991956.png" width="80%" height="80%" /><br/><br>&ensp;&ensp;16.OK，这个时候已经在自动执行了，尽量不要进行任何操作，并且千万不要点击“暂停”，千万不要点击“暂停”，程序会自动跑遍每一个打卡点，执行完毕后会自动暂停，大概15分钟左右，等待执行完毕后点击“结束”即可，如果想要刷多号，去到fake Location中点击“停止模拟”，然后点击“启动模拟”就好了<br/><br>&ensp;&ensp;17.效果图<br><img src="../闪不动校园/2340524516.png" width="80%" height="80%" /><br/></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><label style="font-weight:700">不要点击闪动校园内的“暂停”，不要点击闪动校园内的“暂停”，会闪退</label></li>
+<li><label style="font-weight:700">一个虚拟设备累计登录不要超过3个账号，否则会锁imei，想一台电脑运行多个账号，可以通过“雷电多开器”多开几个虚拟设备</label></li>
+<li><label style="font-weight:700">一个账号同一天不要来回反复的登录，否则会封号</label></li>
+<li><label style="font-weight:700">一定要在雷电中使用我提供的“闪不动校园”，不要尝试你的正版，正版会封号</label></li>
+<li><label style="font-weight:700">教程中所用到的软件均采集自网络，以学习交流软件设计思路为主要目的，请勿用于任何商业及违法用途，并于下载后的24小时内删除</label></li>
+<li><label style="font-weight:700;font-size:30px">我&ensp;</label><label style="font-weight:700;font-size:40px">真&ensp;</label><label style="font-weight:700;font-size:50px">帅</label></li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术教程</category>
+      </categories>
+      <tags>
+        <tag>小教程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>程序开发常用的142个单词</title>
     <url>/2021/09/08/%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E7%9A%84142%E4%B8%AA%E5%8D%95%E8%AF%8D/</url>
     <content><![CDATA[<p>A. 6<br>abstract 抽象的<br>abstract class 抽象类<br>account 账户<br>address 地址<br>annotation 注解、评注<br>array 数组</p>
@@ -2356,34 +2385,6 @@
         <tag>学习笔记</tag>
         <tag>好心情</tag>
         <tag>文件文档</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>闪不动校园</title>
-    <url>/2021/08/21/%E9%97%AA%E4%B8%8D%E5%8A%A8%E6%A0%A1%E5%9B%AD/</url>
-    <content><![CDATA[<h3 id="温馨提示"><a href="#温馨提示" class="headerlink" title="温馨提示"></a>温馨提示</h3><p>&ensp;&ensp;教程很详细但是并不简单<br>&ensp;&ensp;教程中所使用的Fake Location需要9块钱一月会员，9块跟我一分钱关系没有，这软件不是我开发的，介意的话到这里就不要继续看了<br>&ensp;&ensp;教程中所用到的软件均采集自网络，以学习交流软件设计思路为主要目的，请勿用于任何商业及违法用途，并于下载后的24小时内删除</p>
-<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>&ensp;&ensp;硬件准备：电脑<br>&ensp;&ensp;软件准备：安卓模拟器（推荐与教程中同步使用雷电模拟器，<a href="https://www.ldmnq.com/?n=6050&amp;bd_vid=9028294708695349470">点击下载</a>）<br>&ensp;&ensp;环境准备：开启vt虚拟化技术<a href="https://www.ldmnq.com/article/290.html">https://www.ldmnq.com/article/290.html</a></p>
-<h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><p>&ensp;&ensp;1.下载完毕后双击<label style="color:red">雷电模拟器</label>安装包<br>&ensp;&ensp;请点击右下角“<label style="color:red">自定义安装</label>”尽量不要安装在C盘<br><img src="../闪不动校园/1907333349.png" width="85%" height="85%" /><br/></p>
-<p>&ensp;&ensp;2.等待程序自动下载扩展文件，下载完毕后会自动执行安装<br><img src="../闪不动校园/1177298449.png" width="85%" height="85%" /><br/></p>
-<p>&ensp;&ensp;3.安装完毕后双击打开雷电模拟器，将其运行在后台<br><img src="../闪不动校园/3015939686.jpg" width="50%" height="50%" /><br/></p>
-<h3 id="配置雷电"><a href="#配置雷电" class="headerlink" title="配置雷电"></a>配置雷电</h3><h4 id="配置文件下载"><a href="#配置文件下载" class="headerlink" title="配置文件下载"></a>配置文件下载</h4><p>&ensp;&ensp;1. 闪不动校园：<a href="https://lxx6.lanzoui.com/ivN5Bun5pxg">点击下载</a><br>&ensp;&ensp;2. fakeLocation：<a href="https://lxx6.lanzoui.com/iF9o2un5pad">点击下载</a><br>&ensp;&ensp;3. 配置文件：<a href="../闪不动校园/fakeLocationConfig.bak">点击下载</a><br/><br><img src="../闪不动校园/1168288778.png" width="40%" height="40%" /><br/></p>
-<h4 id="导入至雷电"><a href="#导入至雷电" class="headerlink" title="导入至雷电"></a>导入至雷电</h4><p>&ensp;&ensp;将三个文件依次拖入到雷电模拟器的屏幕上<br><img src="../闪不动校园/2493887147.png" width="55%" height="55%" /><br/></p>
-<h4 id="导入完毕"><a href="#导入完毕" class="headerlink" title="导入完毕"></a>导入完毕</h4><p>&ensp;&ensp;三个文件中有两个安装包和一个配置文件，配置文件不会显示在雷电模拟器的桌面，所以桌面仅显示两个图标<br><img src="../闪不动校园/3006596058.png" width="50%" height="50%" /><br/></p>
-<h3 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h3><p>&ensp;&ensp;1.首先打开fake Location(软件别人开发的，VIP得自己花钱开)<br><img src="../闪不动校园/3946829225.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;2.点击左上角，登录账号<br/><br>&ensp;&ensp;3.点击右上角按钮→点击Settings→向下滑到低，点击数据导入<br><img src="../闪不动校园/3362248827.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;4.点击中间空白部位<br><img src="../闪不动校园/4240035105.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;5.找到Pictures，点击<br><img src="../闪不动校园/200270087.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;6.找到fakeLocationConfig.bak，点击<br><img src="../闪不动校园/4051480541.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;7.这时候会弹出一个新窗口，所有的对号默认是全选的，不要动它，直接点击右下角的“导入”<br><br>&ensp;&ensp;8.提示“导入操作会覆盖现有已勾选的数据…”，不要理会，点击右下角继续导入<br/><br>&ensp;&ensp;9.退出清理fake Location后台并重新打开<br/><br>&ensp;&ensp;10.点击左上角，点击“路线模拟”<br><img src="../闪不动校园/1585825602.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;11.打开“闪不动校园”，正常登录即可，然后打开fake Location，同时闪不动校园的后台不要关，一定要用我提供给你的经过特殊处理这个版本，否则无法使用<br>&ensp;&ensp;12.在fake Location中点击启动模拟<br><img src="../闪不动校园/1641389276.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;13.不管它要什么权限，我们都给它<br><img src="../闪不动校园/4262802683.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;14.点击启动模拟之后，稍等片刻会出现这个，说明已经开始运行了，马上切到闪动校园，点击中间的“Go”<br><img src="../闪不动校园/1353890881.png" width="50%" height="50%" /><br/><br><img src="../闪不动校园/1980040640.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;15.看一下我的电脑全屏，说明它正在自动执行<br><img src="../闪不动校园/2500991956.png" width="80%" height="80%" /><br/><br>&ensp;&ensp;16.OK，这个时候已经在自动执行了，尽量不要进行任何操作，并且千万不要点击“暂停”，千万不要点击“暂停”，程序会自动跑遍每一个打卡点，执行完毕后会自动暂停，大概15分钟左右，等待执行完毕后点击“结束”即可，如果想要刷多号，去到fake Location中点击“停止模拟”，然后点击“启动模拟”就好了<br/><br>&ensp;&ensp;17.效果图<br><img src="../闪不动校园/2340524516.png" width="80%" height="80%" /><br/></p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
-<li><label style="font-weight:700">不要点击闪动校园内的“暂停”，不要点击闪动校园内的“暂停”，会闪退</label></li>
-<li><label style="font-weight:700">一个虚拟设备累计登录不要超过3个账号，否则会锁imei，想一台电脑运行多个账号，可以通过“雷电多开器”多开几个虚拟设备</label></li>
-<li><label style="font-weight:700">一个账号同一天不要来回反复的登录，否则会封号</label></li>
-<li><label style="font-weight:700">一定要在雷电中使用我提供的“闪不动校园”，不要尝试你的正版，正版会封号</label></li>
-<li><label style="font-weight:700">教程中所用到的软件均采集自网络，以学习交流软件设计思路为主要目的，请勿用于任何商业及违法用途，并于下载后的24小时内删除</label></li>
-<li><label style="font-weight:700;font-size:30px">我&ensp;</label><label style="font-weight:700;font-size:40px">真&ensp;</label><label style="font-weight:700;font-size:50px">帅</label></li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术教程</category>
-      </categories>
-      <tags>
-        <tag>小教程</tag>
       </tags>
   </entry>
   <entry>
