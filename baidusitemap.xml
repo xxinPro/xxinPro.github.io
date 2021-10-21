@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.xxin.xyz/2021/10/21/CountDownLatch%E7%BA%BF%E7%A8%8B%E7%AD%89%E5%BE%85/</loc>
+    <lastmod>2021-10-21</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2021/10/14/Android-Banner/</loc>
+    <lastmod>2021-10-21</lastmod>
+  </url>
+  <url>
     <loc>https://blog.xxin.xyz/2021/10/12/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82/</loc>
     <lastmod>2021-10-18</lastmod>
   </url>
@@ -15,10 +23,6 @@
   <url>
     <loc>https://blog.xxin.xyz/2021/10/15/ScrollView-RecyclerView%E5%AE%9E%E7%8E%B0%E6%82%AC%E5%81%9C%E5%AF%BC%E8%88%AA%E6%A0%8F/</loc>
     <lastmod>2021-10-17</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.xxin.xyz/2021/10/14/Android-Banner/</loc>
-    <lastmod>2021-10-14</lastmod>
   </url>
   <url>
     <loc>https://blog.xxin.xyz/2021/10/14/arr%E5%BC%95%E5%85%A5AndroidStudio/</loc>

@@ -79,364 +79,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-Banner</title>
-    <url>/2021/10/14/Android-Banner/</url>
-    <content><![CDATA[<p>github地址: <a href="https://github.com/youth5201314/banner/tree/release-1.4.10">https://github.com/youth5201314/banner/tree/release-1.4.10</a></p>
-<h3 id="引入banner"><a href="#引入banner" class="headerlink" title="引入banner"></a>引入banner</h3><p>在build.gradle的dependencies中加入<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">dependencies&#123;</span><br><span class="line">    compile <span class="string">&#x27;com.youth.banner:banner:1.4.10&#x27;</span>  <span class="comment">//最新版本</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果是本地arr文件文件<br><a href="../arr引入AndroidStudio/">如何引入arr文件</a></p>
-<h3 id="在布局中"><a href="#在布局中" class="headerlink" title="在布局中"></a>在布局中</h3><p>在布局中插入Banner控件<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/linear1&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">com.youth.banner.Banner</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/banner&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginLeft</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginRight</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;160dp&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="使用Banner"><a href="#使用Banner" class="headerlink" title="使用Banner"></a>使用Banner</h3><p>1.首先一系列初始化<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> Banner banner;<span class="comment">//初始化banner</span></span><br><span class="line"><span class="keyword">private</span> List&lt;String&gt; urls = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//图片地址的集合</span></span><br><span class="line"><span class="keyword">private</span> List&lt;String&gt; titles = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//图片标题的集合</span></span><br></pre></td></tr></table></figure><br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">urls.add(<span class="string">&quot;https://pics2.baidu.com/feed/a8014c086e061d95bae4a9350d7a45d763d9cab6.png?token=a817a8157f425a71e0730e89fba08644&amp;s=EC3807D166031CF67E2D059B0300E012&quot;</span>);</span><br><span class="line">urls.add(<span class="string">&quot;https://img1.baidu.com/it/u=2837730020,691715572&amp;fm=26&amp;fmt=auto&quot;</span>);</span><br><span class="line">urls.add(<span class="string">&quot;https://img0.baidu.com/it/u=1768887447,1227450589&amp;fm=26&amp;fmt=auto&quot;</span>);</span><br><span class="line">titles.add(<span class="string">&quot;刑天铠甲&quot;</span>);</span><br><span class="line">titles.add(<span class="string">&quot;飞影铠甲&quot;</span>);</span><br><span class="line">titles.add(<span class="string">&quot;金刚铠甲&quot;</span>);</span><br><span class="line">banner = findViewById(R.id.banner);</span><br></pre></td></tr></table></figure></p>
-<p>2.设置图片加载器<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//        设置图片加载器</span></span><br><span class="line">        banner.setImageLoader(<span class="keyword">new</span> ImageLoader() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//            在这个方法中加载图片</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayImage</span><span class="params">(Context context, Object o, ImageView imageView)</span> </span>&#123;</span><br><span class="line"><span class="comment">//                返回的图片路径为Object类型强转为Image</span></span><br><span class="line">                Glide.with(context).load(o).into((ImageView) imageView);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> ImageView <span class="title">createImageView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line"><span class="comment">//                返回一个新的ImageView控件</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> ImageView(context);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>3.设置banner的其它一些属性</p>
-<p>banner.start()一定要放在最后<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);<span class="comment">//设置banner的样式</span></span><br><span class="line">banner.setImages(urls);<span class="comment">//设置图片的数据源</span></span><br><span class="line">banner.setBannerTitles(titles);<span class="comment">//设置标题集合</span></span><br><span class="line">banner.setBannerAnimation(Transformer.DepthPage);<span class="comment">//设置banner的动画效果</span></span><br><span class="line">banner.isAutoPlay(<span class="keyword">true</span>);<span class="comment">//设置自动轮播</span></span><br><span class="line">banner.setDelayTime(<span class="number">1500</span>);<span class="comment">//设置轮播时间</span></span><br><span class="line">banner.setIndicatorGravity(BannerConfig.CENTER);<span class="comment">//设置指示器位置</span></span><br><span class="line">banner.start();<span class="comment">//开始渲染</span></span><br></pre></td></tr></table></figure></p>
-<p>4.记得在清单文件中添加网络权限<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.INTERNET&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>5.现在就可以使用了<br><img src="../Android-Banner/img1.gif" width="40%" height="40%" /></p>
-<h3 id="重写ImageLoader类"><a href="#重写ImageLoader类" class="headerlink" title="重写ImageLoader类"></a>重写ImageLoader类</h3><p>如果想让代码清晰一点，可以重写图片加载器，继承ImageLoader类</p>
-<p>MysetImageLoader继承ImageLoader<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.a.practice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.bumptech.glide.Glide;</span><br><span class="line"><span class="keyword">import</span> com.youth.banner.loader.ImageLoader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MysetImageLoader</span> <span class="keyword">extends</span> <span class="title">ImageLoader</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    在这个方法中加载图片</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayImage</span><span class="params">(Context context, Object o, ImageView imageView)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        返回的图片路径为Object类型强转为Image</span></span><br><span class="line">        Glide.with(context).load(o).into((ImageView) imageView);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ImageView <span class="title">createImageView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        返回一个新的ImageView控件</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ImageView(context);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>那么再设置图片加载器时<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  设置图片加载器</span></span><br><span class="line">  MysetImageLoader mysetImageLoader = <span class="keyword">new</span> MysetImageLoader();</span><br><span class="line">  banner.setImageLoader(mysetImageLoader);</span><br></pre></td></tr></table></figure></p>
-<h3 id="其它一些属性"><a href="#其它一些属性" class="headerlink" title="其它一些属性"></a>其它一些属性</h3><h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><table>
-<thead>
-<tr>
-<th>常量名称</th>
-<th>描述</th>
-<th>所属方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BannerConfig.NOT_INDICATOR</td>
-<td>不显示指示器和标题</td>
-<td>setBannerStyle</td>
-</tr>
-<tr>
-<td>BannerConfig.CIRCLE_INDICATOR</td>
-<td>显示圆形指示器</td>
-<td>setBannerStyle</td>
-</tr>
-<tr>
-<td>BannerConfig.NUM_INDICATOR</td>
-<td>显示数字指示器</td>
-<td>setBannerStyle</td>
-</tr>
-<tr>
-<td>BannerConfig.NUM_INDICATOR_TITLE</td>
-<td>显示数字指示器和标题</td>
-<td>setBannerStyle</td>
-</tr>
-<tr>
-<td>BannerConfig.CIRCLE_INDICATOR_TITLE</td>
-<td>显示圆形指示器和标题（垂直显示）</td>
-<td>setBannerStyle</td>
-</tr>
-<tr>
-<td>BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE</td>
-<td>显示圆形指示器和标题（水平显示）</td>
-<td>setBannerStyle</td>
-</tr>
-<tr>
-<td>BannerConfig.LEFT</td>
-<td>指示器居左</td>
-<td>setIndicatorGravity</td>
-</tr>
-<tr>
-<td>BannerConfig.CENTER</td>
-<td>指示器居中</td>
-<td>setIndicatorGravity</td>
-</tr>
-<tr>
-<td>BannerConfig.RIGHT</td>
-<td>指示器居右</td>
-<td>setIndicatorGravity</td>
-</tr>
-</tbody>
-</table>
-
-<h4 id="动画常量类（setBannerAnimation方法调用）"><a href="#动画常量类（setBannerAnimation方法调用）" class="headerlink" title="动画常量类（setBannerAnimation方法调用）"></a>动画常量类（setBannerAnimation方法调用）</h4><table>
-<thead>
-<tr>
-<th>常量类名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Transformer.Default</td>
-</tr>
-<tr>
-<td>Transformer.Accordion</td>
-</tr>
-<tr>
-<td>Transformer.BackgroundToForeground</td>
-</tr>
-<tr>
-<td>Transformer.ForegroundToBackground</td>
-</tr>
-<tr>
-<td>Transformer.CubeIn</td>
-</tr>
-<tr>
-<td>Transformer.CubeOut</td>
-</tr>
-<tr>
-<td>Transformer.DepthPage</td>
-</tr>
-<tr>
-<td>Transformer.FlipHorizontal</td>
-</tr>
-<tr>
-<td>Transformer.FlipVertical</td>
-</tr>
-<tr>
-<td>Transformer.RotateDown</td>
-</tr>
-<tr>
-<td>Transformer.RotateUp</td>
-</tr>
-<tr>
-<td>Transformer.ScaleInOut</td>
-</tr>
-<tr>
-<td>Transformer.Stack</td>
-</tr>
-<tr>
-<td>Transformer.Tablet</td>
-</tr>
-<tr>
-<td>Transformer.ZoomIn</td>
-</tr>
-<tr>
-<td>Transformer.ZoomOut</td>
-</tr>
-<tr>
-<td>Transformer.ZoomOutSlide</td>
-</tr>
-</tbody>
-</table>
-
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>描述</th>
-<th>版本限制</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>setBannerStyle(int bannerStyle)</td>
-<td>设置轮播样式（默认为CIRCLE_INDICATOR）</td>
-<td>无</td>
-</tr>
-<tr>
-<td>setIndicatorGravity(int type)</td>
-<td>设置指示器位置（没有标题默认为右边,有标题时默认左边）</td>
-<td>无</td>
-</tr>
-<tr>
-<td>isAutoPlay(boolean isAutoPlay)</td>
-<td>设置是否自动轮播（默认自动）</td>
-<td>无</td>
-</tr>
-<tr>
-<td>setViewPagerIsScroll(boolean isScroll)</td>
-<td>设置是否允许手动滑动轮播图（默认true）</td>
-<td>1.4.5开始</td>
-</tr>
-<tr>
-<td>update(List&lt;?&gt; imageUrls,List titles)</td>
-<td>更新图片和标题</td>
-<td>1.4.5开始</td>
-</tr>
-<tr>
-<td>update(List&lt;?&gt; imageUrls)</td>
-<td>更新图片</td>
-<td>1.4.5开始</td>
-</tr>
-<tr>
-<td>startAutoPlay()</td>
-<td>开始轮播</td>
-<td>1.4开始，此方法只作用于banner加载完毕--&gt;需要在start()后执行</td>
-</tr>
-<tr>
-<td>stopAutoPlay()</td>
-<td>结束轮播</td>
-<td>1.4开始，此方法只作用于banner加载完毕--&gt;需要在start()后执行</td>
-</tr>
-<tr>
-<td>start()</td>
-<td>开始进行banner渲染（必须放到最后执行）</td>
-<td>1.4开始</td>
-</tr>
-<tr>
-<td>setOffscreenPageLimit(int limit)</td>
-<td>同viewpager的方法作用一样</td>
-<td>1.4.2开始</td>
-</tr>
-<tr>
-<td>setBannerTitle(String[] titles)</td>
-<td>设置轮播要显示的标题和图片对应（如果不传默认不显示标题）</td>
-<td>1.3.3结束</td>
-</tr>
-<tr>
-<td>setBannerTitleList(List titles)</td>
-<td>设置轮播要显示的标题和图片对应（如果不传默认不显示标题）</td>
-<td>1.3.3结束</td>
-</tr>
-<tr>
-<td>setBannerTitles(List titles)</td>
-<td>设置轮播要显示的标题和图片对应（如果不传默认不显示标题）</td>
-<td>1.4开始</td>
-</tr>
-<tr>
-<td>setDelayTime(int time)</td>
-<td>设置轮播图片间隔时间（单位毫秒，默认为2000）</td>
-<td>无</td>
-</tr>
-<tr>
-<td>setImages(Object[]/List&lt;?&gt; imagesUrl)</td>
-<td>设置轮播图片(所有设置参数方法都放在此方法之前执行)</td>
-<td>1.4后去掉数组传参</td>
-</tr>
-<tr>
-<td>setImages(Object[]/List&lt;?&gt; imagesUrl,OnLoadImageListener listener)</td>
-<td>设置轮播图片，并且自定义图片加载方式</td>
-<td>1.3.3结束</td>
-</tr>
-<tr>
-<td>setOnBannerClickListener(this)</td>
-<td>设置点击事件，下标是从1开始</td>
-<td>无（1.4.9以后废弃了）</td>
-</tr>
-<tr>
-<td>setOnBannerListener(this)</td>
-<td>设置点击事件，下标是从0开始</td>
-<td>1.4.9以后</td>
-</tr>
-<tr>
-<td>setOnLoadImageListener(this)</td>
-<td>设置图片加载事件，可以自定义图片加载方式</td>
-<td>1.3.3结束</td>
-</tr>
-<tr>
-<td>setImageLoader(Object implements ImageLoader)</td>
-<td>设置图片加载器</td>
-<td>1.4开始</td>
-</tr>
-<tr>
-<td>setOnPageChangeListener(this)</td>
-<td>设置viewpager的滑动监听</td>
-<td>无</td>
-</tr>
-<tr>
-<td>setBannerAnimation(Class&lt;? extends PageTransformer&gt; transformer)</td>
-<td>设置viewpager的默认动画,传值见动画表</td>
-<td>无</td>
-</tr>
-<tr>
-<td>setPageTransformer(boolean reverseDrawingOrder, ViewPager.PageTransformer transformer)</td>
-<td>设置viewpager的自定义动画</td>
-<td>无</td>
-</tr>
-</tbody>
-</table>
-
-<h4 id="Attributes属性（banner布局文件中调用）"><a href="#Attributes属性（banner布局文件中调用）" class="headerlink" title="Attributes属性（banner布局文件中调用）"></a>Attributes属性（banner布局文件中调用）</h4><table>
-<thead>
-<tr>
-<th>Attributes</th>
-<th>forma</th>
-<th>describe</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>delay_time</td>
-<td>integer</td>
-<td>轮播间隔时间，默认2000</td>
-</tr>
-<tr>
-<td>scroll_time</td>
-<td>integer</td>
-<td>轮播滑动执行时间，默认800</td>
-</tr>
-<tr>
-<td>is_auto_play</td>
-<td>boolean</td>
-<td>是否自动轮播，默认true</td>
-</tr>
-<tr>
-<td>title_background</td>
-<td>color</td>
-<td>reference</td>
-</tr>
-<tr>
-<td>title_textcolor</td>
-<td>color</td>
-<td>标题字体颜色</td>
-</tr>
-<tr>
-<td>title_textsize</td>
-<td>dimension</td>
-<td>标题字体大小</td>
-</tr>
-<tr>
-<td>title_height</td>
-<td>dimension</td>
-<td>标题栏高度</td>
-</tr>
-<tr>
-<td>indicator_width</td>
-<td>dimension</td>
-<td>指示器圆形按钮的宽度</td>
-</tr>
-<tr>
-<td>indicator_height</td>
-<td>dimension</td>
-<td>指示器圆形按钮的高度</td>
-</tr>
-<tr>
-<td>indicator_margin</td>
-<td>dimension</td>
-<td>指示器之间的间距</td>
-</tr>
-<tr>
-<td>indicator_drawable_selected</td>
-<td>reference</td>
-<td>指示器选中效果</td>
-</tr>
-<tr>
-<td>indicator_drawable_unselected</td>
-<td>reference</td>
-<td>指示器未选中效果</td>
-</tr>
-<tr>
-<td>image_scale_type</td>
-<td>enum</td>
-<td>和imageview的ScaleType作用一样</td>
-</tr>
-<tr>
-<td>banner_default_image</td>
-<td>reference</td>
-<td>当banner数据为空是显示的默认图片</td>
-</tr>
-<tr>
-<td>banner_layout</td>
-<td>reference</td>
-<td>自定义banner布局文件，但是必须保证id的名称一样（你可以将banner的布局文件复制出来进行修改）</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>Banner github地址: <a href="https://github.com/youth5201314/banner/tree/release-1.4.10">https://github.com/youth5201314/banner/tree/release-1.4.10</a></p>
-]]></content>
-      <categories>
-        <category>Android笔记</category>
-      </categories>
-      <tags>
-        <tag>Android开发</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android-Button</title>
     <url>/2021/09/08/Android-Button/</url>
     <content><![CDATA[<h3 id="StateListDrawable"><a href="#StateListDrawable" class="headerlink" title="StateListDrawable"></a>StateListDrawable</h3><p>&ensp;&ensp;StateListDrawable：StateListDrawable就是对应于selector标签，也是表示一个Drawable集合，每个Drawable都对应View的一种状态<br>&ensp;&ensp;StateListDrawable用途：设置可单击的View的背景，常和ShapeDrawable一起使用</p>
@@ -1639,21 +1281,22 @@
       </tags>
   </entry>
   <entry>
-    <title>ScrollView+RecyclerView实现悬停导航栏</title>
-    <url>/2021/10/15/ScrollView-RecyclerView%E5%AE%9E%E7%8E%B0%E6%82%AC%E5%81%9C%E5%AF%BC%E8%88%AA%E6%A0%8F/</url>
-    <content><![CDATA[<h3 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h3><p><img src="../ScrollView-RecyclerView实现悬停导航栏/img1.gif" width="30%" width="30%" /></p>
-<h3 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h3><p><img src="../ScrollView-RecyclerView实现悬停导航栏/img2.png" width="70%" width="70%" /></p>
-<h3 id="主页布局"><a href="#主页布局" class="headerlink" title="主页布局"></a>主页布局</h3><p>&ensp;&ensp;&ensp;&ensp;个人喜欢用LinearLayout做最外层布局，任何情况下。。。<br>&ensp;&ensp;&ensp;&ensp;这里需要先用到ScrollView，等下再使用重写的ScrollView类来取代它</p>
-<p>activity_main.xml<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ScrollView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/myScrollView&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            顶部--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:background</span>=<span class="string">&quot;#0000FF&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;200dp&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:text</span>=<span class="string">&quot;顶部&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:textColor</span>=<span class="string">&quot;@color/white&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:textStyle</span>=<span class="string">&quot;bold&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            导航栏--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            这里给导航栏加了tag标签，方便找到它--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:background</span>=<span class="string">&quot;#FFFFE0&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:tag</span>=<span class="string">&quot;NavBar&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:text</span>=<span class="string">&quot;顶部&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:textColor</span>=<span class="string">&quot;@color/black&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:textStyle</span>=<span class="string">&quot;bold&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            列表--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">androidx.recyclerview.widget.RecyclerView</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">&quot;@+id/recyclerView&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ScrollView</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="重写ScrollView"><a href="#重写ScrollView" class="headerlink" title="重写ScrollView"></a>重写ScrollView</h3><p>&ensp;&ensp;&ensp;&ensp;创建MyScrollView类并继承ScrollView，重写ScrollView的前三个构造器，重写onLayout()方法，重写dispatchDraw()方法，在类中创建接口供外部继承调用</p>
-<p>MyScrollView.java<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xin.FixBar;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Canvas;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.LinearLayout;</span><br><span class="line"><span class="keyword">import</span> android.widget.ScrollView;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyScrollView</span> <span class="keyword">extends</span> <span class="title">ScrollView</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyScrollView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyScrollView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyScrollView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> View view;<span class="comment">//用作储存状态栏的View</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLayout</span><span class="params">(<span class="keyword">boolean</span> changed, <span class="keyword">int</span> l, <span class="keyword">int</span> t, <span class="keyword">int</span> r, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onLayout(changed, l, t, r, b);</span><br><span class="line">        <span class="keyword">if</span> (changed)&#123;</span><br><span class="line"><span class="comment">//            得到滚动布局中的LinearLayout</span></span><br><span class="line">            LinearLayout linearLayout = (LinearLayout) getChildAt(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span> (linearLayout != <span class="keyword">null</span>)&#123;</span><br><span class="line"><span class="comment">//                遍历滚动布局子View LinearLayout的所有子View</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; linearLayout.getChildCount(); i++)&#123;</span><br><span class="line"><span class="comment">//                    将标签为NavBar的View赋值给实例变量view</span></span><br><span class="line">                    <span class="keyword">if</span> (linearLayout.getChildAt(i).getTag() != <span class="keyword">null</span> &amp;&amp; linearLayout.getChildAt(i).getTag().toString().equals(<span class="string">&quot;NavBar&quot;</span>))&#123;</span><br><span class="line">                        view = linearLayout.getChildAt(i);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                Toast.makeText(getContext(),<span class="string">&quot;至少有一个LinearLayout作为ScrollView的子View&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">dispatchDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.dispatchDraw(canvas);</span><br><span class="line"><span class="comment">//        当getScrollY()与view.getTop()相等时，说明状态栏滑动到了顶部</span></span><br><span class="line">        <span class="keyword">if</span> (getScrollY() &gt;= view.getTop())&#123;</span><br><span class="line">            <span class="keyword">if</span> (onNavBarListener != <span class="keyword">null</span>)&#123;</span><br><span class="line">                onNavBarListener.OnFix();<span class="comment">//固定状态栏</span></span><br><span class="line">            &#125;</span><br><span class="line">            canvas.save();</span><br><span class="line">            canvas.translate(<span class="number">0</span>,getScrollY());</span><br><span class="line">            canvas.clipRect(<span class="number">0</span>,<span class="number">0</span>,view.getMeasuredWidth(),view.getMeasuredHeight());<span class="comment">//设置画布的显示范围</span></span><br><span class="line">            view.draw(canvas);<span class="comment">//绘制设置的canvas</span></span><br><span class="line">            canvas.restore();<span class="comment">//恢复到canvas.save()保存时的状态</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        状态栏未接触到顶部，则不设置为其固定</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (onNavBarListener != <span class="keyword">null</span>)&#123;</span><br><span class="line">                onNavBarListener.OnReset();<span class="comment">//取消固定状态栏</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    使在Activity中可以继承或直接调用接口对悬浮状态栏进行设置</span></span><br><span class="line">    <span class="keyword">private</span> OnNavBarListener onNavBarListener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnNavBarListener</span><span class="params">(OnNavBarListener onNavBarListener)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.onNavBarListener = onNavBarListener;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnNavBarListener</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">OnFix</span><span class="params">()</span></span>;<span class="comment">//固定状态栏</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">OnReset</span><span class="params">()</span></span>;<span class="comment">//取消固定状态栏</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>&ensp;&ensp;&ensp;&ensp;然后把activity_main.xml中的ScrollView控件替换为我们重写后的MyScrollView，注意使用完整的类名<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">com.xin.FixBar.MyScrollView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/myScrollView&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">com.xin.FixBar.MyScrollView</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="创建item的布局"><a href="#创建item的布局" class="headerlink" title="创建item的布局"></a>创建item的布局</h3><p>item.xml<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center_vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;horizontal&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;文本&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/item_text&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginLeft</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;16sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;@color/black&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textStyle</span>=<span class="string">&quot;bold&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="创建MyAdapter"><a href="#创建MyAdapter" class="headerlink" title="创建MyAdapter"></a>创建MyAdapter</h3><p>&ensp;&ensp;&ensp;&ensp;创建MyAdapter类，继承Recycler.Adapter给RecylcerView创建适配器</p>
-<p>MyAdapter.java<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xin.FixBar;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.recyclerview.widget.RecyclerView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">MyAdapter</span>.<span class="title">MyViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Context context;</span><br><span class="line">    <span class="keyword">private</span> String[] data;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(Context context,String[] data)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.context = context;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MyViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        View view = View.inflate(context,R.layout.item,<span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyViewHolder(view);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> MyViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        holder.item_view.setText(data[position]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> data.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> TextView item_view;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyViewHolder</span><span class="params">(<span class="meta">@NonNull</span> View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            item_view =itemView.findViewById(R.id.item_text);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="在MainActivity中调用"><a href="#在MainActivity中调用" class="headerlink" title="在MainActivity中调用"></a>在MainActivity中调用</h3><p>都在注释里了，啥也不想写。。。<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xin.FixBar;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> androidx.recyclerview.widget.LinearLayoutManager;</span><br><span class="line"><span class="keyword">import</span> androidx.recyclerview.widget.RecyclerView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MyScrollView myScrollView;</span><br><span class="line">    <span class="keyword">private</span> RecyclerView recyclerView;</span><br><span class="line">    <span class="keyword">private</span> String[] data;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> navBar = <span class="keyword">false</span>;<span class="comment">//navbar的悬浮状态</span></span><br><span class="line">    <span class="keyword">private</span> MyAdapter myAdapter;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> recyclerDisable = <span class="keyword">false</span>;<span class="comment">//是否下拉进入过RecyclerView</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        init();<span class="comment">//初始化</span></span><br><span class="line">        setRecycler();<span class="comment">//设置列表</span></span><br><span class="line">        setScroll();<span class="comment">//设置滚动</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    设置滚动</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setScroll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        myScrollView.setOnNavBarListener(<span class="keyword">new</span> MyScrollView.OnNavBarListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//            设置为悬浮状态</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnFix</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (!navBar)&#123;</span><br><span class="line">                    navBar = <span class="keyword">true</span>;</span><br><span class="line">                    recyclerView.setNestedScrollingEnabled(<span class="keyword">true</span>);<span class="comment">//允许recyclerView滑动</span></span><br><span class="line">                    Log.d(<span class="string">&quot;setScroll&quot;</span>, <span class="string">&quot;OnReset: recyclerView已允许&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//            取消悬浮状态</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnReset</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (navBar)&#123;</span><br><span class="line">                    navBar = <span class="keyword">false</span>;</span><br><span class="line">                    recyclerView.setNestedScrollingEnabled(<span class="keyword">false</span>);<span class="comment">//禁止recyclerView滑动</span></span><br><span class="line">                    Log.d(<span class="string">&quot;setScroll&quot;</span>, <span class="string">&quot;OnReset: recyclerView已禁止&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    设置列表</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setRecycler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        LinearLayoutManager layoutManager = <span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>);<span class="comment">//实例化一个布局管理器</span></span><br><span class="line">        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);<span class="comment">//设置布局方向</span></span><br><span class="line">        recyclerView.setLayoutManager(layoutManager);<span class="comment">//给Recycler添加布局</span></span><br><span class="line"><span class="comment">//        设置RecyclerView的高度</span></span><br><span class="line">        <span class="keyword">int</span> pxHeight = <span class="keyword">this</span>.getResources().getDisplayMetrics().heightPixels;<span class="comment">//获取屏幕高度的px</span></span><br><span class="line">        <span class="keyword">int</span> StatusBarHeight = (<span class="keyword">int</span>) (<span class="number">60</span> * <span class="keyword">this</span>.getResources().getDisplayMetrics().density + <span class="number">0.5f</span>);<span class="comment">//状态栏的px高度</span></span><br><span class="line">        recyclerView.getLayoutParams().height = pxHeight - StatusBarHeight;<span class="comment">//得到RecyclerView的高度并设置</span></span><br><span class="line">        myAdapter = <span class="keyword">new</span> MyAdapter(<span class="keyword">this</span>,data);<span class="comment">//实例化适配器</span></span><br><span class="line">        recyclerView.setAdapter(myAdapter);<span class="comment">//设置适配器</span></span><br><span class="line"></span><br><span class="line">        recyclerView.setNestedScrollingEnabled(<span class="keyword">false</span>);<span class="comment">//设置recycler为不可滑动，解决滑动冲突</span></span><br><span class="line"><span class="comment">//        给RecyclerView添加滑动监听，当滑动至顶部时，禁用RecyclerView滑动</span></span><br><span class="line">        recyclerView.addOnScrollListener(<span class="keyword">new</span> RecyclerView.OnScrollListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//            滑动停止时调用</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(<span class="meta">@NonNull</span> RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy);</span><br><span class="line"><span class="comment">//                如果rcyclerView滑动到顶部，recyclerView.canScrollVertically(-1)为true，则禁用它的滑动</span></span><br><span class="line"><span class="comment">//                因为Recycler初始状态为顶部，所以用recyclerDisable判断是否下拉进入过RecyclerView</span></span><br><span class="line">                <span class="keyword">if</span> (!recyclerView.canScrollVertically(-<span class="number">1</span>))&#123;</span><br><span class="line">                    <span class="keyword">if</span> (recyclerDisable)&#123;</span><br><span class="line">                        recyclerView.setNestedScrollingEnabled(<span class="keyword">false</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    recyclerDisable = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        myScrollView = findViewById(R.id.myScrollView);</span><br><span class="line">        recyclerView = findViewById(R.id.recyclerView);</span><br><span class="line">        data = <span class="keyword">new</span> String[]&#123;</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span>,</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span>,</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span>,</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span>,</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>到这里就搞定了</p>
-<p>源代码的话，github地址：<a href="https://github.com/xxinPro/fixNavBar">https://github.com/xxinPro/fixNavBar</a></p>
+    <title>CountDownLatch线程等待</title>
+    <url>/2021/10/21/CountDownLatch%E7%BA%BF%E7%A8%8B%E7%AD%89%E5%BE%85/</url>
+    <content><![CDATA[<h3 id="事发"><a href="#事发" class="headerlink" title="事发"></a>事发</h3><p>&ensp;&ensp;&ensp;&ensp;这是一个封装的okhttp get异步请求，如果请求成功，返回值为请求到的值，如果请求失败，则返回noValue<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.jetbrains.annotations.NotNull;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CountDownLatch;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> okhttp3.Call;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Callback;</span><br><span class="line"><span class="keyword">import</span> okhttp3.MediaType;</span><br><span class="line"><span class="keyword">import</span> okhttp3.OkHttpClient;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Request;</span><br><span class="line"><span class="keyword">import</span> okhttp3.RequestBody;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Response;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHttpRequest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String value;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">myGet</span><span class="params">(String url)</span></span>&#123;</span><br><span class="line">        OkHttpClient okHttpClient = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">        Request request = <span class="keyword">new</span> Request.Builder().url(url).build();</span><br><span class="line">        Call call = okHttpClient.newCall(request);</span><br><span class="line">        call.enqueue(<span class="keyword">new</span> Callback() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(<span class="meta">@NotNull</span> Call call, <span class="meta">@NotNull</span> IOException e)</span> </span>&#123;</span><br><span class="line">                value = <span class="string">&quot;noValue&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(<span class="meta">@NotNull</span> Call call, <span class="meta">@NotNull</span> Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                value = response.body().string();\</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;我们编写一个测试类并调用它<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">countDownLatchTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> MyHttpRequest myHttpRequest = <span class="keyword">new</span> MyHttpRequest();</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String value = myHttpRequest.myGet(<span class="string">&quot;https://www.baidu.com&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (value.equals(<span class="string">&quot;noValue&quot;</span>))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;请求失败&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;请求成功\n&quot;</span> + value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;运行测试单元类，会输出什么？请求成功？请求失败？不，它会报错，指针异常，if那一行指针异常<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java.lang.NullPointerException</span><br></pre></td></tr></table></figure><br>&ensp;&ensp;&ensp;&ensp;谁的指针异常？value变量的指针异常。<br>&ensp;&ensp;&ensp;&ensp;value的指针为什么异常？value没有值，或者说value的值为null。<br>&ensp;&ensp;&ensp;&ensp;输出一下value试试<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(value);</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;果不其然<br><img src="../CountDownLatch线程等待/img1.png" width="50%" height="50%" /></p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>&ensp;&ensp;&ensp;&ensp;出现这个问题，是什么原因？先看一下异步的概念<br>&ensp;&ensp;&ensp;&ensp;异步：异步与同步相对，当一个异步过程调用发出后，调用者在没有得到结果之前，就可以继续执行后续操作。也就是说无论异步方法执行代码需要多长时间，跟主线程没有任何影响，主线程可以继续向下执行。</p>
+<p>&ensp;&ensp;&ensp;&ensp;这下很简单了，我们在发起异步请求后，并没有马上返回响应值，所以Test方法中的value没有被赋值，异步请求下主线程继续执行，当后面if判断中调用value变量时，它依然是初始值null，所以这行代码报错<br><img src="../CountDownLatch线程等待/img2.png" width="70%" height="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;如果这个异步请求能像同步请求一样等待就好了</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>&ensp;&ensp;&ensp;&ensp;countDownLatch类使一个线程等待其他线程各自执行完毕后再执行。通过一个计数器来实现，计数器的初始值是线程的数量。每当一个线程执行完毕后，计数器的值就-1，当计数器的值为0时，表示所有线程都执行完毕，然后在闭锁上等待的线程就可以恢复工作了。</p>
+<p>创建同步工具类，设置计数器初始值<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">CountDownLatch countDownLatch = <span class="keyword">new</span> CountDownLatch(<span class="number">1</span>);</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;当请求失败或者请求成功时，计数器减一<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">countDownLatch.countDown();</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;请求完毕后，执行await()阻塞线程，只有当计数器的值为0时，退出阻塞结束线程等待<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    countDownLatch.await();</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;看一下完整的myGet()方法<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">myGet</span><span class="params">(String url)</span></span>&#123;</span><br><span class="line">    CountDownLatch countDownLatch = <span class="keyword">new</span> CountDownLatch(<span class="number">1</span>);<span class="comment">//创建同步工具类，设置计数器初始值</span></span><br><span class="line">    OkHttpClient okHttpClient = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder().url(url).build();</span><br><span class="line">    Call call = okHttpClient.newCall(request);</span><br><span class="line">    call.enqueue(<span class="keyword">new</span> Callback() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(<span class="meta">@NotNull</span> Call call, <span class="meta">@NotNull</span> IOException e)</span> </span>&#123;</span><br><span class="line">            value = <span class="string">&quot;noValue&quot;</span>;</span><br><span class="line">            countDownLatch.countDown();<span class="comment">//计数器减一</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(<span class="meta">@NotNull</span> Call call, <span class="meta">@NotNull</span> Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">            value = response.body().string();</span><br><span class="line">            countDownLatch.countDown();<span class="comment">//计数器减一</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        countDownLatch.await();<span class="comment">//阻塞当前线程，直到计数器为0退出</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;再次从测试类中调用，一模一样的代码<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">countDownLatchTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> MyHttpRequest myHttpRequest = <span class="keyword">new</span> MyHttpRequest();</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String value = myHttpRequest.myGet(<span class="string">&quot;https://www.baidu.com&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (value.equals(<span class="string">&quot;noValue&quot;</span>))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;请求失败&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;请求成功\n&quot;</span> + value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;可见请求成功，并输出了请求值<br><img src="../CountDownLatch线程等待/img3.png" width="70%" height="70%" /></p>
 ]]></content>
       <categories>
         <category>Android笔记</category>
@@ -1675,6 +1318,30 @@
       <tags>
         <tag>学习笔记</tag>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ScrollView+RecyclerView实现悬停导航栏</title>
+    <url>/2021/10/15/ScrollView-RecyclerView%E5%AE%9E%E7%8E%B0%E6%82%AC%E5%81%9C%E5%AF%BC%E8%88%AA%E6%A0%8F/</url>
+    <content><![CDATA[<h3 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h3><p><img src="../ScrollView-RecyclerView实现悬停导航栏/img1.gif" width="30%" width="30%" /></p>
+<h3 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h3><p><img src="../ScrollView-RecyclerView实现悬停导航栏/img2.png" width="70%" width="70%" /></p>
+<h3 id="主页布局"><a href="#主页布局" class="headerlink" title="主页布局"></a>主页布局</h3><p>&ensp;&ensp;&ensp;&ensp;个人喜欢用LinearLayout做最外层布局，任何情况下。。。<br>&ensp;&ensp;&ensp;&ensp;这里需要先用到ScrollView，等下再使用重写的ScrollView类来取代它</p>
+<p>activity_main.xml<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ScrollView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/myScrollView&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            顶部--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:background</span>=<span class="string">&quot;#0000FF&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;200dp&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:text</span>=<span class="string">&quot;顶部&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:textColor</span>=<span class="string">&quot;@color/white&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:textStyle</span>=<span class="string">&quot;bold&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            导航栏--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            这里给导航栏加了tag标签，方便找到它--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:background</span>=<span class="string">&quot;#FFFFE0&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:tag</span>=<span class="string">&quot;NavBar&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:text</span>=<span class="string">&quot;顶部&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:textColor</span>=<span class="string">&quot;@color/black&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:textStyle</span>=<span class="string">&quot;bold&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            列表--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">androidx.recyclerview.widget.RecyclerView</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">&quot;@+id/recyclerView&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ScrollView</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="重写ScrollView"><a href="#重写ScrollView" class="headerlink" title="重写ScrollView"></a>重写ScrollView</h3><p>&ensp;&ensp;&ensp;&ensp;创建MyScrollView类并继承ScrollView，重写ScrollView的前三个构造器，重写onLayout()方法，重写dispatchDraw()方法，在类中创建接口供外部继承调用</p>
+<p>MyScrollView.java<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xin.FixBar;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Canvas;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.LinearLayout;</span><br><span class="line"><span class="keyword">import</span> android.widget.ScrollView;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyScrollView</span> <span class="keyword">extends</span> <span class="title">ScrollView</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyScrollView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyScrollView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyScrollView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> View view;<span class="comment">//用作储存状态栏的View</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLayout</span><span class="params">(<span class="keyword">boolean</span> changed, <span class="keyword">int</span> l, <span class="keyword">int</span> t, <span class="keyword">int</span> r, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onLayout(changed, l, t, r, b);</span><br><span class="line">        <span class="keyword">if</span> (changed)&#123;</span><br><span class="line"><span class="comment">//            得到滚动布局中的LinearLayout</span></span><br><span class="line">            LinearLayout linearLayout = (LinearLayout) getChildAt(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span> (linearLayout != <span class="keyword">null</span>)&#123;</span><br><span class="line"><span class="comment">//                遍历滚动布局子View LinearLayout的所有子View</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; linearLayout.getChildCount(); i++)&#123;</span><br><span class="line"><span class="comment">//                    将标签为NavBar的View赋值给实例变量view</span></span><br><span class="line">                    <span class="keyword">if</span> (linearLayout.getChildAt(i).getTag() != <span class="keyword">null</span> &amp;&amp; linearLayout.getChildAt(i).getTag().toString().equals(<span class="string">&quot;NavBar&quot;</span>))&#123;</span><br><span class="line">                        view = linearLayout.getChildAt(i);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                Toast.makeText(getContext(),<span class="string">&quot;至少有一个LinearLayout作为ScrollView的子View&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">dispatchDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.dispatchDraw(canvas);</span><br><span class="line"><span class="comment">//        当getScrollY()与view.getTop()相等时，说明状态栏滑动到了顶部</span></span><br><span class="line">        <span class="keyword">if</span> (getScrollY() &gt;= view.getTop())&#123;</span><br><span class="line">            <span class="keyword">if</span> (onNavBarListener != <span class="keyword">null</span>)&#123;</span><br><span class="line">                onNavBarListener.OnFix();<span class="comment">//固定状态栏</span></span><br><span class="line">            &#125;</span><br><span class="line">            canvas.save();</span><br><span class="line">            canvas.translate(<span class="number">0</span>,getScrollY());</span><br><span class="line">            canvas.clipRect(<span class="number">0</span>,<span class="number">0</span>,view.getMeasuredWidth(),view.getMeasuredHeight());<span class="comment">//设置画布的显示范围</span></span><br><span class="line">            view.draw(canvas);<span class="comment">//绘制设置的canvas</span></span><br><span class="line">            canvas.restore();<span class="comment">//恢复到canvas.save()保存时的状态</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        状态栏未接触到顶部，则不设置为其固定</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (onNavBarListener != <span class="keyword">null</span>)&#123;</span><br><span class="line">                onNavBarListener.OnReset();<span class="comment">//取消固定状态栏</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    使在Activity中可以继承或直接调用接口对悬浮状态栏进行设置</span></span><br><span class="line">    <span class="keyword">private</span> OnNavBarListener onNavBarListener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnNavBarListener</span><span class="params">(OnNavBarListener onNavBarListener)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.onNavBarListener = onNavBarListener;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnNavBarListener</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">OnFix</span><span class="params">()</span></span>;<span class="comment">//固定状态栏</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">OnReset</span><span class="params">()</span></span>;<span class="comment">//取消固定状态栏</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;然后把activity_main.xml中的ScrollView控件替换为我们重写后的MyScrollView，注意使用完整的类名<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">com.xin.FixBar.MyScrollView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/myScrollView&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">com.xin.FixBar.MyScrollView</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="创建item的布局"><a href="#创建item的布局" class="headerlink" title="创建item的布局"></a>创建item的布局</h3><p>item.xml<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center_vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;horizontal&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;文本&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/item_text&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginLeft</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;16sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;@color/black&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textStyle</span>=<span class="string">&quot;bold&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="创建MyAdapter"><a href="#创建MyAdapter" class="headerlink" title="创建MyAdapter"></a>创建MyAdapter</h3><p>&ensp;&ensp;&ensp;&ensp;创建MyAdapter类，继承Recycler.Adapter给RecylcerView创建适配器</p>
+<p>MyAdapter.java<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xin.FixBar;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.recyclerview.widget.RecyclerView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">MyAdapter</span>.<span class="title">MyViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Context context;</span><br><span class="line">    <span class="keyword">private</span> String[] data;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(Context context,String[] data)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.context = context;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MyViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        View view = View.inflate(context,R.layout.item,<span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyViewHolder(view);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> MyViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        holder.item_view.setText(data[position]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> data.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> TextView item_view;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyViewHolder</span><span class="params">(<span class="meta">@NonNull</span> View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            item_view =itemView.findViewById(R.id.item_text);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="在MainActivity中调用"><a href="#在MainActivity中调用" class="headerlink" title="在MainActivity中调用"></a>在MainActivity中调用</h3><p>都在注释里了，啥也不想写。。。<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xin.FixBar;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> androidx.recyclerview.widget.LinearLayoutManager;</span><br><span class="line"><span class="keyword">import</span> androidx.recyclerview.widget.RecyclerView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MyScrollView myScrollView;</span><br><span class="line">    <span class="keyword">private</span> RecyclerView recyclerView;</span><br><span class="line">    <span class="keyword">private</span> String[] data;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> navBar = <span class="keyword">false</span>;<span class="comment">//navbar的悬浮状态</span></span><br><span class="line">    <span class="keyword">private</span> MyAdapter myAdapter;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> recyclerDisable = <span class="keyword">false</span>;<span class="comment">//是否下拉进入过RecyclerView</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        init();<span class="comment">//初始化</span></span><br><span class="line">        setRecycler();<span class="comment">//设置列表</span></span><br><span class="line">        setScroll();<span class="comment">//设置滚动</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    设置滚动</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setScroll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        myScrollView.setOnNavBarListener(<span class="keyword">new</span> MyScrollView.OnNavBarListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//            设置为悬浮状态</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnFix</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (!navBar)&#123;</span><br><span class="line">                    navBar = <span class="keyword">true</span>;</span><br><span class="line">                    recyclerView.setNestedScrollingEnabled(<span class="keyword">true</span>);<span class="comment">//允许recyclerView滑动</span></span><br><span class="line">                    Log.d(<span class="string">&quot;setScroll&quot;</span>, <span class="string">&quot;OnReset: recyclerView已允许&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//            取消悬浮状态</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnReset</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (navBar)&#123;</span><br><span class="line">                    navBar = <span class="keyword">false</span>;</span><br><span class="line">                    recyclerView.setNestedScrollingEnabled(<span class="keyword">false</span>);<span class="comment">//禁止recyclerView滑动</span></span><br><span class="line">                    Log.d(<span class="string">&quot;setScroll&quot;</span>, <span class="string">&quot;OnReset: recyclerView已禁止&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    设置列表</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setRecycler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        LinearLayoutManager layoutManager = <span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>);<span class="comment">//实例化一个布局管理器</span></span><br><span class="line">        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);<span class="comment">//设置布局方向</span></span><br><span class="line">        recyclerView.setLayoutManager(layoutManager);<span class="comment">//给Recycler添加布局</span></span><br><span class="line"><span class="comment">//        设置RecyclerView的高度</span></span><br><span class="line">        <span class="keyword">int</span> pxHeight = <span class="keyword">this</span>.getResources().getDisplayMetrics().heightPixels;<span class="comment">//获取屏幕高度的px</span></span><br><span class="line">        <span class="keyword">int</span> StatusBarHeight = (<span class="keyword">int</span>) (<span class="number">60</span> * <span class="keyword">this</span>.getResources().getDisplayMetrics().density + <span class="number">0.5f</span>);<span class="comment">//状态栏的px高度</span></span><br><span class="line">        recyclerView.getLayoutParams().height = pxHeight - StatusBarHeight;<span class="comment">//得到RecyclerView的高度并设置</span></span><br><span class="line">        myAdapter = <span class="keyword">new</span> MyAdapter(<span class="keyword">this</span>,data);<span class="comment">//实例化适配器</span></span><br><span class="line">        recyclerView.setAdapter(myAdapter);<span class="comment">//设置适配器</span></span><br><span class="line"></span><br><span class="line">        recyclerView.setNestedScrollingEnabled(<span class="keyword">false</span>);<span class="comment">//设置recycler为不可滑动，解决滑动冲突</span></span><br><span class="line"><span class="comment">//        给RecyclerView添加滑动监听，当滑动至顶部时，禁用RecyclerView滑动</span></span><br><span class="line">        recyclerView.addOnScrollListener(<span class="keyword">new</span> RecyclerView.OnScrollListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//            滑动停止时调用</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(<span class="meta">@NonNull</span> RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy);</span><br><span class="line"><span class="comment">//                如果rcyclerView滑动到顶部，recyclerView.canScrollVertically(-1)为true，则禁用它的滑动</span></span><br><span class="line"><span class="comment">//                因为Recycler初始状态为顶部，所以用recyclerDisable判断是否下拉进入过RecyclerView</span></span><br><span class="line">                <span class="keyword">if</span> (!recyclerView.canScrollVertically(-<span class="number">1</span>))&#123;</span><br><span class="line">                    <span class="keyword">if</span> (recyclerDisable)&#123;</span><br><span class="line">                        recyclerView.setNestedScrollingEnabled(<span class="keyword">false</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    recyclerDisable = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        myScrollView = findViewById(R.id.myScrollView);</span><br><span class="line">        recyclerView = findViewById(R.id.recyclerView);</span><br><span class="line">        data = <span class="keyword">new</span> String[]&#123;</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span>,</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span>,</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span>,</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span>,</span><br><span class="line">                <span class="string">&quot;测试1&quot;</span>,<span class="string">&quot;测试2&quot;</span>,<span class="string">&quot;测试3&quot;</span>,<span class="string">&quot;测试4&quot;</span>,<span class="string">&quot;测试5&quot;</span>,<span class="string">&quot;测试6&quot;</span>,<span class="string">&quot;测试7&quot;</span>,<span class="string">&quot;测试8&quot;</span>,<span class="string">&quot;测试9&quot;</span>,<span class="string">&quot;测试10&quot;</span>,<span class="string">&quot;测试11&quot;</span>,<span class="string">&quot;测试12&quot;</span>,<span class="string">&quot;测试13&quot;</span>,<span class="string">&quot;测试14&quot;</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>到这里就搞定了</p>
+<p>源代码的话，github地址：<a href="https://github.com/xxinPro/fixNavBar">https://github.com/xxinPro/fixNavBar</a></p>
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android开发</tag>
       </tags>
   </entry>
   <entry>
@@ -1801,40 +1468,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo+next中数学公式的引用</title>
-    <url>/2021/08/08/hexo-next%E4%B8%AD%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BC%95%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="简单方程"><a href="#简单方程" class="headerlink" title="简单方程"></a>简单方程</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq1&#125; </span><br><span class="line">e=mc ^ 2 </span><br><span class="line">\end &#123;equation&#125; $ $</span><br></pre></td></tr></table></figure>
-<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {equation} \label {eq1}<br>e=mc ^ 2<br>\end {equation} $ $</p>
-<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">爱因斯坦提出的著名的物质-能量方程$ \eqref &#123;eq1&#125; $ ...</span><br></pre></td></tr></table></figure>
-<p>爱因斯坦提出的著名的物质-能量方程$ \eqref {eq1} $ …</p>
-<h3 id="多线方程"><a href="#多线方程" class="headerlink" title="多线方程"></a>多线方程</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq2&#125; </span><br><span class="line">\begin &#123;aligned&#125; </span><br><span class="line">a &amp; = b + c \\ &amp; = d + e + f + g \\ &amp; = h + i \end &#123;aligned&#125; \end &#123;equation &#125; $ $</span><br></pre></td></tr></table></figure>
-<h4 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {equation} \label {eq2}<br>\begin {aligned}<br>a &amp; = b + c \\ &amp; = d + e + f + g \\ &amp; = h + i<br>\end {aligned}<br>\end {equation} $ $</p>
-<h4 id="调用-1"><a href="#调用-1" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方程$ \eqref &#123;eq2&#125; $是一个多线方程。</span><br></pre></td></tr></table></figure>
-<p>方程$ \eqref {eq2} $是一个多线方程。</p>
-<h3 id="多重对齐方程"><a href="#多重对齐方程" class="headerlink" title="多重对齐方程"></a>多重对齐方程</h3><h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;align&#125; </span><br><span class="line">a &amp; = b + c \label &#123;eq3&#125; \\</span><br><span class="line"> x &amp; = yz \label &#123;eq4&#125; \\</span><br><span class="line"> l &amp; = m - n \label &#123;eq5&#125; </span><br><span class="line">\end &#123;align&#125; $ $</span><br></pre></td></tr></table></figure>
-<h4 id="效果-2"><a href="#效果-2" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {align}<br>a &amp; = b + c \label {eq3} \\<br> x &amp; = yz \label {eq4} \\<br> l &amp; = m - n \label {eq5}<br>\end {align} $ $</p>
-<h4 id="调用-2"><a href="#调用-2" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有三个对齐的方程：方程$ \eqref &#123;eq3&#125; $，方程$ \eqref &#123;eq4&#125; $和方程$ \eqref &#123;eq5&#125; $。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>有三个对齐的方程：方程$ \eqref {eq3} $，方程$ \eqref {eq4} $和方程$ \eqref {eq5} $。</p>
-<h3 id="行间公式"><a href="#行间公式" class="headerlink" title="行间公式"></a>行间公式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">行间公式$O(f(n))=log_2^&#123;n&#125;$测试</span><br></pre></td></tr></table></figure>
-<p>行间公式$O(f(n))=log_2^{n}$测试</p>
-<h3 id="更多参考"><a href="#更多参考" class="headerlink" title="更多参考"></a>更多参考</h3><ol>
-<li>官方配置教程<a href="https://theme-next.js.org/docs/third-party-services/math-equations">https://theme-next.js.org/docs/third-party-services/math-equations</a></li>
-<li>中文教程<a href="https://www.jianshu.com/p/8424da4dd673">https://www.jianshu.com/p/8424da4dd673</a></li>
-<li>修改本地文件<a href="https://www.cnblogs.com/iHeling/p/14095986.html">https://www.cnblogs.com/iHeling/p/14095986.html</a></li>
-<li>详细教程<a href="https://blog.csdn.net/weixin_45511189/article/details/115798563">https://blog.csdn.net/weixin_45511189/article/details/115798563</a></li>
-<li>LaTex在线编辑器<a href="https://www.latexlive.com/">https://www.latexlive.com/</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>hexo博客</category>
-      </categories>
-      <tags>
-        <tag>小教程</tag>
-        <tag>hexo博客</tag>
-        <tag>next主题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>next主题优化</title>
     <url>/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<p><center>hexo博客next主题主要优化修改方案</center></p>
@@ -1885,6 +1518,40 @@
       <tags>
         <tag>学习笔记</tag>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo+next中数学公式的引用</title>
+    <url>/2021/08/08/hexo-next%E4%B8%AD%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BC%95%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="简单方程"><a href="#简单方程" class="headerlink" title="简单方程"></a>简单方程</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq1&#125; </span><br><span class="line">e=mc ^ 2 </span><br><span class="line">\end &#123;equation&#125; $ $</span><br></pre></td></tr></table></figure>
+<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {equation} \label {eq1}<br>e=mc ^ 2<br>\end {equation} $ $</p>
+<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">爱因斯坦提出的著名的物质-能量方程$ \eqref &#123;eq1&#125; $ ...</span><br></pre></td></tr></table></figure>
+<p>爱因斯坦提出的著名的物质-能量方程$ \eqref {eq1} $ …</p>
+<h3 id="多线方程"><a href="#多线方程" class="headerlink" title="多线方程"></a>多线方程</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq2&#125; </span><br><span class="line">\begin &#123;aligned&#125; </span><br><span class="line">a &amp; = b + c \\ &amp; = d + e + f + g \\ &amp; = h + i \end &#123;aligned&#125; \end &#123;equation &#125; $ $</span><br></pre></td></tr></table></figure>
+<h4 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {equation} \label {eq2}<br>\begin {aligned}<br>a &amp; = b + c \\ &amp; = d + e + f + g \\ &amp; = h + i<br>\end {aligned}<br>\end {equation} $ $</p>
+<h4 id="调用-1"><a href="#调用-1" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方程$ \eqref &#123;eq2&#125; $是一个多线方程。</span><br></pre></td></tr></table></figure>
+<p>方程$ \eqref {eq2} $是一个多线方程。</p>
+<h3 id="多重对齐方程"><a href="#多重对齐方程" class="headerlink" title="多重对齐方程"></a>多重对齐方程</h3><h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;align&#125; </span><br><span class="line">a &amp; = b + c \label &#123;eq3&#125; \\</span><br><span class="line"> x &amp; = yz \label &#123;eq4&#125; \\</span><br><span class="line"> l &amp; = m - n \label &#123;eq5&#125; </span><br><span class="line">\end &#123;align&#125; $ $</span><br></pre></td></tr></table></figure>
+<h4 id="效果-2"><a href="#效果-2" class="headerlink" title="效果"></a>效果</h4><p>$ $ \begin {align}<br>a &amp; = b + c \label {eq3} \\<br> x &amp; = yz \label {eq4} \\<br> l &amp; = m - n \label {eq5}<br>\end {align} $ $</p>
+<h4 id="调用-2"><a href="#调用-2" class="headerlink" title="调用"></a>调用</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有三个对齐的方程：方程$ \eqref &#123;eq3&#125; $，方程$ \eqref &#123;eq4&#125; $和方程$ \eqref &#123;eq5&#125; $。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>有三个对齐的方程：方程$ \eqref {eq3} $，方程$ \eqref {eq4} $和方程$ \eqref {eq5} $。</p>
+<h3 id="行间公式"><a href="#行间公式" class="headerlink" title="行间公式"></a>行间公式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">行间公式$O(f(n))=log_2^&#123;n&#125;$测试</span><br></pre></td></tr></table></figure>
+<p>行间公式$O(f(n))=log_2^{n}$测试</p>
+<h3 id="更多参考"><a href="#更多参考" class="headerlink" title="更多参考"></a>更多参考</h3><ol>
+<li>官方配置教程<a href="https://theme-next.js.org/docs/third-party-services/math-equations">https://theme-next.js.org/docs/third-party-services/math-equations</a></li>
+<li>中文教程<a href="https://www.jianshu.com/p/8424da4dd673">https://www.jianshu.com/p/8424da4dd673</a></li>
+<li>修改本地文件<a href="https://www.cnblogs.com/iHeling/p/14095986.html">https://www.cnblogs.com/iHeling/p/14095986.html</a></li>
+<li>详细教程<a href="https://blog.csdn.net/weixin_45511189/article/details/115798563">https://blog.csdn.net/weixin_45511189/article/details/115798563</a></li>
+<li>LaTex在线编辑器<a href="https://www.latexlive.com/">https://www.latexlive.com/</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>小教程</tag>
+        <tag>hexo博客</tag>
+        <tag>next主题</tag>
       </tags>
   </entry>
   <entry>
@@ -2073,22 +1740,6 @@
       </tags>
   </entry>
   <entry>
-    <title>怂崽</title>
-    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
-<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
-<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>网抑云</tag>
-        <tag>毒鸡汤</tag>
-        <tag>坏心情</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>小衅笔记</title>
     <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<center>啦啦啦，啥也没有🌟写</center>
@@ -2103,6 +1754,22 @@
       <tags>
         <tag>好心情</tag>
         <tag>站点日志</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>怂崽</title>
+    <url>/2021/07/23/%E6%80%82%E5%B4%BD/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;“我谈恋爱了”<br>&ensp;&ensp;&ensp;&ensp;五个字的一句话换来多方错愕，关于这些失望到扭曲的目光我并未感到诧异，反而有一丝窃喜：没有考虑任何后果，我做了一件我真正想做的事，只因为我喜欢</p>
+<p>&ensp;&ensp;&ensp;&ensp;失了智似的嘈杂声不绝入耳，静下来后的片刻沉思才恍然意识到——我靠，手里这么多必须我亲自去搞定的东西，我似乎是真的有些怕了</p>
+<p>&ensp;&ensp;&ensp;&ensp;有太多时候，我不止一次的想：“如果废物蜕变为良材的代价是失去选择，我宁愿当个废物”，后悔抛弃了我的自由与潇洒，后悔选择了所谓的责任与上进，可惜回不去的再也回不去，我也再找不回我的暴戾与脾气</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+        <tag>坏心情</tag>
       </tags>
   </entry>
   <entry>
@@ -2324,34 +1991,6 @@
       </tags>
   </entry>
   <entry>
-    <title>闪不动校园</title>
-    <url>/2021/08/21/%E9%97%AA%E4%B8%8D%E5%8A%A8%E6%A0%A1%E5%9B%AD/</url>
-    <content><![CDATA[<h3 id="温馨提示"><a href="#温馨提示" class="headerlink" title="温馨提示"></a>温馨提示</h3><p>&ensp;&ensp;教程很详细但是并不简单<br>&ensp;&ensp;教程中所使用的Fake Location需要9块钱一月会员，9块跟我一分钱关系没有，这软件不是我开发的，介意的话到这里就不要继续看了<br>&ensp;&ensp;教程中所用到的软件均采集自网络，以学习交流软件设计思路为主要目的，请勿用于任何商业及违法用途，并于下载后的24小时内删除</p>
-<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>&ensp;&ensp;硬件准备：电脑<br>&ensp;&ensp;软件准备：安卓模拟器（推荐与教程中同步使用雷电模拟器，<a href="https://www.ldmnq.com/?n=6050&amp;bd_vid=9028294708695349470">点击下载</a>）<br>&ensp;&ensp;环境准备：开启vt虚拟化技术<a href="https://www.ldmnq.com/article/290.html">https://www.ldmnq.com/article/290.html</a></p>
-<h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><p>&ensp;&ensp;1.下载完毕后双击<label style="color:red">雷电模拟器</label>安装包<br>&ensp;&ensp;请点击右下角“<label style="color:red">自定义安装</label>”尽量不要安装在C盘<br><img src="../闪不动校园/1907333349.png" width="85%" height="85%" /><br/></p>
-<p>&ensp;&ensp;2.等待程序自动下载扩展文件，下载完毕后会自动执行安装<br><img src="../闪不动校园/1177298449.png" width="85%" height="85%" /><br/></p>
-<p>&ensp;&ensp;3.安装完毕后双击打开雷电模拟器，将其运行在后台<br><img src="../闪不动校园/3015939686.jpg" width="50%" height="50%" /><br/></p>
-<h3 id="配置雷电"><a href="#配置雷电" class="headerlink" title="配置雷电"></a>配置雷电</h3><h4 id="配置文件下载"><a href="#配置文件下载" class="headerlink" title="配置文件下载"></a>配置文件下载</h4><p>&ensp;&ensp;1. 闪不动校园：<a href="https://lxx6.lanzoui.com/ivN5Bun5pxg">点击下载</a><br>&ensp;&ensp;2. fakeLocation：<a href="https://lxx6.lanzoui.com/iF9o2un5pad">点击下载</a><br>&ensp;&ensp;3. 配置文件：<a href="../闪不动校园/fakeLocationConfig.bak">点击下载</a><br/><br><img src="../闪不动校园/1168288778.png" width="40%" height="40%" /><br/></p>
-<h4 id="导入至雷电"><a href="#导入至雷电" class="headerlink" title="导入至雷电"></a>导入至雷电</h4><p>&ensp;&ensp;将三个文件依次拖入到雷电模拟器的屏幕上<br><img src="../闪不动校园/2493887147.png" width="55%" height="55%" /><br/></p>
-<h4 id="导入完毕"><a href="#导入完毕" class="headerlink" title="导入完毕"></a>导入完毕</h4><p>&ensp;&ensp;三个文件中有两个安装包和一个配置文件，配置文件不会显示在雷电模拟器的桌面，所以桌面仅显示两个图标<br><img src="../闪不动校园/3006596058.png" width="50%" height="50%" /><br/></p>
-<h3 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h3><p>&ensp;&ensp;1.首先打开fake Location(软件别人开发的，VIP得自己花钱开)<br><img src="../闪不动校园/3946829225.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;2.点击左上角，登录账号<br/><br>&ensp;&ensp;3.点击右上角按钮→点击Settings→向下滑到低，点击数据导入<br><img src="../闪不动校园/3362248827.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;4.点击中间空白部位<br><img src="../闪不动校园/4240035105.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;5.找到Pictures，点击<br><img src="../闪不动校园/200270087.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;6.找到fakeLocationConfig.bak，点击<br><img src="../闪不动校园/4051480541.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;7.这时候会弹出一个新窗口，所有的对号默认是全选的，不要动它，直接点击右下角的“导入”<br><br>&ensp;&ensp;8.提示“导入操作会覆盖现有已勾选的数据…”，不要理会，点击右下角继续导入<br/><br>&ensp;&ensp;9.退出清理fake Location后台并重新打开<br/><br>&ensp;&ensp;10.点击左上角，点击“路线模拟”<br><img src="../闪不动校园/1585825602.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;11.打开“闪不动校园”，正常登录即可，然后打开fake Location，同时闪不动校园的后台不要关，一定要用我提供给你的经过特殊处理这个版本，否则无法使用<br>&ensp;&ensp;12.在fake Location中点击启动模拟<br><img src="../闪不动校园/1641389276.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;13.不管它要什么权限，我们都给它<br><img src="../闪不动校园/4262802683.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;14.点击启动模拟之后，稍等片刻会出现这个，说明已经开始运行了，马上切到闪动校园，点击中间的“Go”<br><img src="../闪不动校园/1353890881.png" width="50%" height="50%" /><br/><br><img src="../闪不动校园/1980040640.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;15.看一下我的电脑全屏，说明它正在自动执行<br><img src="../闪不动校园/2500991956.png" width="80%" height="80%" /><br/><br>&ensp;&ensp;16.OK，这个时候已经在自动执行了，尽量不要进行任何操作，并且千万不要点击“暂停”，千万不要点击“暂停”，程序会自动跑遍每一个打卡点，执行完毕后会自动暂停，大概15分钟左右，等待执行完毕后点击“结束”即可，如果想要刷多号，去到fake Location中点击“停止模拟”，然后点击“启动模拟”就好了<br/><br>&ensp;&ensp;17.效果图<br><img src="../闪不动校园/2340524516.png" width="80%" height="80%" /><br/></p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
-<li><label style="font-weight:700">不要点击闪动校园内的“暂停”，不要点击闪动校园内的“暂停”，会闪退</label></li>
-<li><label style="font-weight:700">一个虚拟设备累计登录不要超过3个账号，否则会锁imei，想一台电脑运行多个账号，可以通过“雷电多开器”多开几个虚拟设备</label></li>
-<li><label style="font-weight:700">一个账号同一天不要来回反复的登录，否则会封号</label></li>
-<li><label style="font-weight:700">一定要在雷电中使用我提供的“闪不动校园”，不要尝试你的正版，正版会封号</label></li>
-<li><label style="font-weight:700">教程中所用到的软件均采集自网络，以学习交流软件设计思路为主要目的，请勿用于任何商业及违法用途，并于下载后的24小时内删除</label></li>
-<li><label style="font-weight:700;font-size:30px">我&ensp;</label><label style="font-weight:700;font-size:40px">真&ensp;</label><label style="font-weight:700;font-size:50px">帅</label></li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术教程</category>
-      </categories>
-      <tags>
-        <tag>小教程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>程序开发常用的142个单词</title>
     <url>/2021/09/08/%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E7%9A%84142%E4%B8%AA%E5%8D%95%E8%AF%8D/</url>
     <content><![CDATA[<p>A. 6<br>abstract 抽象的<br>abstract class 抽象类<br>account 账户<br>address 地址<br>annotation 注解、评注<br>array 数组</p>
@@ -2385,6 +2024,34 @@
         <tag>学习笔记</tag>
         <tag>好心情</tag>
         <tag>文件文档</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>闪不动校园</title>
+    <url>/2021/08/21/%E9%97%AA%E4%B8%8D%E5%8A%A8%E6%A0%A1%E5%9B%AD/</url>
+    <content><![CDATA[<h3 id="温馨提示"><a href="#温馨提示" class="headerlink" title="温馨提示"></a>温馨提示</h3><p>&ensp;&ensp;教程很详细但是并不简单<br>&ensp;&ensp;教程中所使用的Fake Location需要9块钱一月会员，9块跟我一分钱关系没有，这软件不是我开发的，介意的话到这里就不要继续看了<br>&ensp;&ensp;教程中所用到的软件均采集自网络，以学习交流软件设计思路为主要目的，请勿用于任何商业及违法用途，并于下载后的24小时内删除</p>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>&ensp;&ensp;硬件准备：电脑<br>&ensp;&ensp;软件准备：安卓模拟器（推荐与教程中同步使用雷电模拟器，<a href="https://www.ldmnq.com/?n=6050&amp;bd_vid=9028294708695349470">点击下载</a>）<br>&ensp;&ensp;环境准备：开启vt虚拟化技术<a href="https://www.ldmnq.com/article/290.html">https://www.ldmnq.com/article/290.html</a></p>
+<h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><p>&ensp;&ensp;1.下载完毕后双击<label style="color:red">雷电模拟器</label>安装包<br>&ensp;&ensp;请点击右下角“<label style="color:red">自定义安装</label>”尽量不要安装在C盘<br><img src="../闪不动校园/1907333349.png" width="85%" height="85%" /><br/></p>
+<p>&ensp;&ensp;2.等待程序自动下载扩展文件，下载完毕后会自动执行安装<br><img src="../闪不动校园/1177298449.png" width="85%" height="85%" /><br/></p>
+<p>&ensp;&ensp;3.安装完毕后双击打开雷电模拟器，将其运行在后台<br><img src="../闪不动校园/3015939686.jpg" width="50%" height="50%" /><br/></p>
+<h3 id="配置雷电"><a href="#配置雷电" class="headerlink" title="配置雷电"></a>配置雷电</h3><h4 id="配置文件下载"><a href="#配置文件下载" class="headerlink" title="配置文件下载"></a>配置文件下载</h4><p>&ensp;&ensp;1. 闪不动校园：<a href="https://lxx6.lanzoui.com/ivN5Bun5pxg">点击下载</a><br>&ensp;&ensp;2. fakeLocation：<a href="https://lxx6.lanzoui.com/iF9o2un5pad">点击下载</a><br>&ensp;&ensp;3. 配置文件：<a href="../闪不动校园/fakeLocationConfig.bak">点击下载</a><br/><br><img src="../闪不动校园/1168288778.png" width="40%" height="40%" /><br/></p>
+<h4 id="导入至雷电"><a href="#导入至雷电" class="headerlink" title="导入至雷电"></a>导入至雷电</h4><p>&ensp;&ensp;将三个文件依次拖入到雷电模拟器的屏幕上<br><img src="../闪不动校园/2493887147.png" width="55%" height="55%" /><br/></p>
+<h4 id="导入完毕"><a href="#导入完毕" class="headerlink" title="导入完毕"></a>导入完毕</h4><p>&ensp;&ensp;三个文件中有两个安装包和一个配置文件，配置文件不会显示在雷电模拟器的桌面，所以桌面仅显示两个图标<br><img src="../闪不动校园/3006596058.png" width="50%" height="50%" /><br/></p>
+<h3 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h3><p>&ensp;&ensp;1.首先打开fake Location(软件别人开发的，VIP得自己花钱开)<br><img src="../闪不动校园/3946829225.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;2.点击左上角，登录账号<br/><br>&ensp;&ensp;3.点击右上角按钮→点击Settings→向下滑到低，点击数据导入<br><img src="../闪不动校园/3362248827.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;4.点击中间空白部位<br><img src="../闪不动校园/4240035105.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;5.找到Pictures，点击<br><img src="../闪不动校园/200270087.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;6.找到fakeLocationConfig.bak，点击<br><img src="../闪不动校园/4051480541.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;7.这时候会弹出一个新窗口，所有的对号默认是全选的，不要动它，直接点击右下角的“导入”<br><br>&ensp;&ensp;8.提示“导入操作会覆盖现有已勾选的数据…”，不要理会，点击右下角继续导入<br/><br>&ensp;&ensp;9.退出清理fake Location后台并重新打开<br/><br>&ensp;&ensp;10.点击左上角，点击“路线模拟”<br><img src="../闪不动校园/1585825602.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;11.打开“闪不动校园”，正常登录即可，然后打开fake Location，同时闪不动校园的后台不要关，一定要用我提供给你的经过特殊处理这个版本，否则无法使用<br>&ensp;&ensp;12.在fake Location中点击启动模拟<br><img src="../闪不动校园/1641389276.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;13.不管它要什么权限，我们都给它<br><img src="../闪不动校园/4262802683.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;14.点击启动模拟之后，稍等片刻会出现这个，说明已经开始运行了，马上切到闪动校园，点击中间的“Go”<br><img src="../闪不动校园/1353890881.png" width="50%" height="50%" /><br/><br><img src="../闪不动校园/1980040640.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;15.看一下我的电脑全屏，说明它正在自动执行<br><img src="../闪不动校园/2500991956.png" width="80%" height="80%" /><br/><br>&ensp;&ensp;16.OK，这个时候已经在自动执行了，尽量不要进行任何操作，并且千万不要点击“暂停”，千万不要点击“暂停”，程序会自动跑遍每一个打卡点，执行完毕后会自动暂停，大概15分钟左右，等待执行完毕后点击“结束”即可，如果想要刷多号，去到fake Location中点击“停止模拟”，然后点击“启动模拟”就好了<br/><br>&ensp;&ensp;17.效果图<br><img src="../闪不动校园/2340524516.png" width="80%" height="80%" /><br/></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><label style="font-weight:700">不要点击闪动校园内的“暂停”，不要点击闪动校园内的“暂停”，会闪退</label></li>
+<li><label style="font-weight:700">一个虚拟设备累计登录不要超过3个账号，否则会锁imei，想一台电脑运行多个账号，可以通过“雷电多开器”多开几个虚拟设备</label></li>
+<li><label style="font-weight:700">一个账号同一天不要来回反复的登录，否则会封号</label></li>
+<li><label style="font-weight:700">一定要在雷电中使用我提供的“闪不动校园”，不要尝试你的正版，正版会封号</label></li>
+<li><label style="font-weight:700">教程中所用到的软件均采集自网络，以学习交流软件设计思路为主要目的，请勿用于任何商业及违法用途，并于下载后的24小时内删除</label></li>
+<li><label style="font-weight:700;font-size:30px">我&ensp;</label><label style="font-weight:700;font-size:40px">真&ensp;</label><label style="font-weight:700;font-size:50px">帅</label></li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术教程</category>
+      </categories>
+      <tags>
+        <tag>小教程</tag>
       </tags>
   </entry>
   <entry>
@@ -2452,6 +2119,713 @@
       <tags>
         <tag>学习笔记</tag>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android-Banner</title>
+    <url>/2021/10/14/Android-Banner/</url>
+    <content><![CDATA[<h2 id="Banner1-4-10"><a href="#Banner1-4-10" class="headerlink" title="Banner1.4.10"></a>Banner1.4.10</h2><p>github地址: <a href="https://github.com/youth5201314/banner/tree/release-1.4.10">https://github.com/youth5201314/banner/tree/release-1.4.10</a></p>
+<h3 id="引入Banner1"><a href="#引入Banner1" class="headerlink" title="引入Banner1"></a>引入Banner1</h3><p>在build.gradle的dependencies中加入<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">dependencies&#123;</span><br><span class="line">    compile <span class="string">&#x27;com.youth.banner:banner:1.4.10&#x27;</span>  <span class="comment">//最新版本</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果是本地arr文件文件<br><a href="../arr引入AndroidStudio/">如何引入arr文件</a></p>
+<h3 id="使用Banner1"><a href="#使用Banner1" class="headerlink" title="使用Banner1"></a>使用Banner1</h3><h4 id="在布局中添加"><a href="#在布局中添加" class="headerlink" title="在布局中添加"></a>在布局中添加</h4><p>在布局中插入Banner控件<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/linear1&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">com.youth.banner.Banner</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/banner&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginLeft</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginRight</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;160dp&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="创建图片加载器"><a href="#创建图片加载器" class="headerlink" title="创建图片加载器"></a>创建图片加载器</h4><p>重写图片加载器，继承ImageLoader类</p>
+<p>MysetImageLoader继承ImageLoader<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.a.practice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.bumptech.glide.Glide;</span><br><span class="line"><span class="keyword">import</span> com.youth.banner.loader.ImageLoader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MysetImageLoader</span> <span class="keyword">extends</span> <span class="title">ImageLoader</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    在这个方法中加载图片</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayImage</span><span class="params">(Context context, Object o, ImageView imageView)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        返回的图片路径为Object类型强转为Image</span></span><br><span class="line">        Glide.with(context).load(o).into((ImageView) imageView);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ImageView <span class="title">createImageView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        返回一个新的ImageView控件</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ImageView(context);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="调用图片加载器"><a href="#调用图片加载器" class="headerlink" title="调用图片加载器"></a>调用图片加载器</h4><p>在Activity中调用图片加载器</p>
+<p>1.初始化Banner控件，创建Banner所需的List集合<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> Banner banner;<span class="comment">//初始化banner控件</span></span><br><span class="line"><span class="keyword">private</span> List&lt;String&gt; urls = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//图片地址的集合</span></span><br><span class="line"><span class="keyword">private</span> List&lt;String&gt; titles = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//图片标题的集合</span></span><br></pre></td></tr></table></figure><br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">urls.add(<span class="string">&quot;https://pics2.baidu.com/feed/a8014c086e061d95bae4a9350d7a45d763d9cab6.png?token=a817a8157f425a71e0730e89fba08644&amp;s=EC3807D166031CF67E2D059B0300E012&quot;</span>);</span><br><span class="line">urls.add(<span class="string">&quot;https://img1.baidu.com/it/u=2837730020,691715572&amp;fm=26&amp;fmt=auto&quot;</span>);</span><br><span class="line">urls.add(<span class="string">&quot;https://img0.baidu.com/it/u=1768887447,1227450589&amp;fm=26&amp;fmt=auto&quot;</span>);</span><br><span class="line">titles.add(<span class="string">&quot;刑天铠甲&quot;</span>);</span><br><span class="line">titles.add(<span class="string">&quot;飞影铠甲&quot;</span>);</span><br><span class="line">titles.add(<span class="string">&quot;金刚铠甲&quot;</span>);</span><br><span class="line">banner = findViewById(R.id.banner);</span><br></pre></td></tr></table></figure></p>
+<p>2.调用图片加载器<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  设置图片加载器</span></span><br><span class="line">  MysetImageLoader mysetImageLoader = <span class="keyword">new</span> MysetImageLoader();</span><br><span class="line">  banner.setImageLoader(mysetImageLoader);</span><br></pre></td></tr></table></figure></p>
+<p>3.设置banner的其它一些属性</p>
+<p>banner.start()一定要放在最后<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);<span class="comment">//设置banner的样式</span></span><br><span class="line">banner.setImages(urls);<span class="comment">//设置图片的数据源</span></span><br><span class="line">banner.setBannerTitles(titles);<span class="comment">//设置标题集合</span></span><br><span class="line">banner.setBannerAnimation(Transformer.DepthPage);<span class="comment">//设置banner的动画效果</span></span><br><span class="line">banner.isAutoPlay(<span class="keyword">true</span>);<span class="comment">//设置自动轮播</span></span><br><span class="line">banner.setDelayTime(<span class="number">1500</span>);<span class="comment">//设置轮播时间</span></span><br><span class="line">banner.setIndicatorGravity(BannerConfig.CENTER);<span class="comment">//设置指示器位置</span></span><br><span class="line">banner.start();<span class="comment">//开始渲染</span></span><br></pre></td></tr></table></figure></p>
+<p>4.记得在清单文件中添加网络权限<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.INTERNET&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="默认图片加载器"><a href="#默认图片加载器" class="headerlink" title="默认图片加载器"></a>默认图片加载器</h4><p>如果只想实现图片轮播功能，那大可不必继承，直接调用ImageLoader</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//        设置图片加载器</span></span><br><span class="line">        banner.setImageLoader(<span class="keyword">new</span> ImageLoader() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//            在这个方法中加载图片</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayImage</span><span class="params">(Context context, Object o, ImageView imageView)</span> </span>&#123;</span><br><span class="line"><span class="comment">//                返回的图片路径为Object类型强转为Image</span></span><br><span class="line">                Glide.with(context).load(o).into((ImageView) imageView);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> ImageView <span class="title">createImageView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line"><span class="comment">//                返回一个新的ImageView控件</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> ImageView(context);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h4><p><img src="../Android-Banner/img1.gif" width="40%" height="40%" /></p>
+<h3 id="其它相关设置"><a href="#其它相关设置" class="headerlink" title="其它相关设置"></a>其它相关设置</h3><h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><table>
+<thead>
+<tr>
+<th>常量名称</th>
+<th>描述</th>
+<th>所属方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BannerConfig.NOT_INDICATOR</td>
+<td>不显示指示器和标题</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.CIRCLE_INDICATOR</td>
+<td>显示圆形指示器</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.NUM_INDICATOR</td>
+<td>显示数字指示器</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.NUM_INDICATOR_TITLE</td>
+<td>显示数字指示器和标题</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.CIRCLE_INDICATOR_TITLE</td>
+<td>显示圆形指示器和标题（垂直显示）</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE</td>
+<td>显示圆形指示器和标题（水平显示）</td>
+<td>setBannerStyle</td>
+</tr>
+<tr>
+<td>BannerConfig.LEFT</td>
+<td>指示器居左</td>
+<td>setIndicatorGravity</td>
+</tr>
+<tr>
+<td>BannerConfig.CENTER</td>
+<td>指示器居中</td>
+<td>setIndicatorGravity</td>
+</tr>
+<tr>
+<td>BannerConfig.RIGHT</td>
+<td>指示器居右</td>
+<td>setIndicatorGravity</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="动画常量类（setBannerAnimation方法调用）"><a href="#动画常量类（setBannerAnimation方法调用）" class="headerlink" title="动画常量类（setBannerAnimation方法调用）"></a>动画常量类（setBannerAnimation方法调用）</h4><table>
+<thead>
+<tr>
+<th>常量类名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transformer.Default</td>
+</tr>
+<tr>
+<td>Transformer.Accordion</td>
+</tr>
+<tr>
+<td>Transformer.BackgroundToForeground</td>
+</tr>
+<tr>
+<td>Transformer.ForegroundToBackground</td>
+</tr>
+<tr>
+<td>Transformer.CubeIn</td>
+</tr>
+<tr>
+<td>Transformer.CubeOut</td>
+</tr>
+<tr>
+<td>Transformer.DepthPage</td>
+</tr>
+<tr>
+<td>Transformer.FlipHorizontal</td>
+</tr>
+<tr>
+<td>Transformer.FlipVertical</td>
+</tr>
+<tr>
+<td>Transformer.RotateDown</td>
+</tr>
+<tr>
+<td>Transformer.RotateUp</td>
+</tr>
+<tr>
+<td>Transformer.ScaleInOut</td>
+</tr>
+<tr>
+<td>Transformer.Stack</td>
+</tr>
+<tr>
+<td>Transformer.Tablet</td>
+</tr>
+<tr>
+<td>Transformer.ZoomIn</td>
+</tr>
+<tr>
+<td>Transformer.ZoomOut</td>
+</tr>
+<tr>
+<td>Transformer.ZoomOutSlide</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>版本限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setBannerStyle(int bannerStyle)</td>
+<td>设置轮播样式（默认为CIRCLE_INDICATOR）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setIndicatorGravity(int type)</td>
+<td>设置指示器位置（没有标题默认为右边,有标题时默认左边）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>isAutoPlay(boolean isAutoPlay)</td>
+<td>设置是否自动轮播（默认自动）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setViewPagerIsScroll(boolean isScroll)</td>
+<td>设置是否允许手动滑动轮播图（默认true）</td>
+<td>1.4.5开始</td>
+</tr>
+<tr>
+<td>update(List&lt;?&gt; imageUrls,List titles)</td>
+<td>更新图片和标题</td>
+<td>1.4.5开始</td>
+</tr>
+<tr>
+<td>update(List&lt;?&gt; imageUrls)</td>
+<td>更新图片</td>
+<td>1.4.5开始</td>
+</tr>
+<tr>
+<td>startAutoPlay()</td>
+<td>开始轮播</td>
+<td>1.4开始，此方法只作用于banner加载完毕--&gt;需要在start()后执行</td>
+</tr>
+<tr>
+<td>stopAutoPlay()</td>
+<td>结束轮播</td>
+<td>1.4开始，此方法只作用于banner加载完毕--&gt;需要在start()后执行</td>
+</tr>
+<tr>
+<td>start()</td>
+<td>开始进行banner渲染（必须放到最后执行）</td>
+<td>1.4开始</td>
+</tr>
+<tr>
+<td>setOffscreenPageLimit(int limit)</td>
+<td>同viewpager的方法作用一样</td>
+<td>1.4.2开始</td>
+</tr>
+<tr>
+<td>setBannerTitle(String[] titles)</td>
+<td>设置轮播要显示的标题和图片对应（如果不传默认不显示标题）</td>
+<td>1.3.3结束</td>
+</tr>
+<tr>
+<td>setBannerTitleList(List titles)</td>
+<td>设置轮播要显示的标题和图片对应（如果不传默认不显示标题）</td>
+<td>1.3.3结束</td>
+</tr>
+<tr>
+<td>setBannerTitles(List titles)</td>
+<td>设置轮播要显示的标题和图片对应（如果不传默认不显示标题）</td>
+<td>1.4开始</td>
+</tr>
+<tr>
+<td>setDelayTime(int time)</td>
+<td>设置轮播图片间隔时间（单位毫秒，默认为2000）</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setImages(Object[]/List&lt;?&gt; imagesUrl)</td>
+<td>设置轮播图片(所有设置参数方法都放在此方法之前执行)</td>
+<td>1.4后去掉数组传参</td>
+</tr>
+<tr>
+<td>setImages(Object[]/List&lt;?&gt; imagesUrl,OnLoadImageListener listener)</td>
+<td>设置轮播图片，并且自定义图片加载方式</td>
+<td>1.3.3结束</td>
+</tr>
+<tr>
+<td>setOnBannerClickListener(this)</td>
+<td>设置点击事件，下标是从1开始</td>
+<td>无（1.4.9以后废弃了）</td>
+</tr>
+<tr>
+<td>setOnBannerListener(this)</td>
+<td>设置点击事件，下标是从0开始</td>
+<td>1.4.9以后</td>
+</tr>
+<tr>
+<td>setOnLoadImageListener(this)</td>
+<td>设置图片加载事件，可以自定义图片加载方式</td>
+<td>1.3.3结束</td>
+</tr>
+<tr>
+<td>setImageLoader(Object implements ImageLoader)</td>
+<td>设置图片加载器</td>
+<td>1.4开始</td>
+</tr>
+<tr>
+<td>setOnPageChangeListener(this)</td>
+<td>设置viewpager的滑动监听</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setBannerAnimation(Class&lt;? extends PageTransformer&gt; transformer)</td>
+<td>设置viewpager的默认动画,传值见动画表</td>
+<td>无</td>
+</tr>
+<tr>
+<td>setPageTransformer(boolean reverseDrawingOrder, ViewPager.PageTransformer transformer)</td>
+<td>设置viewpager的自定义动画</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="Attributes属性（banner布局文件中调用）"><a href="#Attributes属性（banner布局文件中调用）" class="headerlink" title="Attributes属性（banner布局文件中调用）"></a>Attributes属性（banner布局文件中调用）</h4><table>
+<thead>
+<tr>
+<th>Attributes</th>
+<th>forma</th>
+<th>describe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>delay_time</td>
+<td>integer</td>
+<td>轮播间隔时间，默认2000</td>
+</tr>
+<tr>
+<td>scroll_time</td>
+<td>integer</td>
+<td>轮播滑动执行时间，默认800</td>
+</tr>
+<tr>
+<td>is_auto_play</td>
+<td>boolean</td>
+<td>是否自动轮播，默认true</td>
+</tr>
+<tr>
+<td>title_background</td>
+<td>color</td>
+<td>reference</td>
+</tr>
+<tr>
+<td>title_textcolor</td>
+<td>color</td>
+<td>标题字体颜色</td>
+</tr>
+<tr>
+<td>title_textsize</td>
+<td>dimension</td>
+<td>标题字体大小</td>
+</tr>
+<tr>
+<td>title_height</td>
+<td>dimension</td>
+<td>标题栏高度</td>
+</tr>
+<tr>
+<td>indicator_width</td>
+<td>dimension</td>
+<td>指示器圆形按钮的宽度</td>
+</tr>
+<tr>
+<td>indicator_height</td>
+<td>dimension</td>
+<td>指示器圆形按钮的高度</td>
+</tr>
+<tr>
+<td>indicator_margin</td>
+<td>dimension</td>
+<td>指示器之间的间距</td>
+</tr>
+<tr>
+<td>indicator_drawable_selected</td>
+<td>reference</td>
+<td>指示器选中效果</td>
+</tr>
+<tr>
+<td>indicator_drawable_unselected</td>
+<td>reference</td>
+<td>指示器未选中效果</td>
+</tr>
+<tr>
+<td>image_scale_type</td>
+<td>enum</td>
+<td>和imageview的ScaleType作用一样</td>
+</tr>
+<tr>
+<td>banner_default_image</td>
+<td>reference</td>
+<td>当banner数据为空是显示的默认图片</td>
+</tr>
+<tr>
+<td>banner_layout</td>
+<td>reference</td>
+<td>自定义banner布局文件，但是必须保证id的名称一样（你可以将banner的布局文件复制出来进行修改）</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2 id="Banner2-0"><a href="#Banner2-0" class="headerlink" title="Banner2.0"></a>Banner2.0</h2><p>github地址:<a href="https://github.com/youth5201314/banner">https://github.com/youth5201314/banner</a></p>
+<h3 id="在gradle文件中引入"><a href="#在gradle文件中引入" class="headerlink" title="在gradle文件中引入"></a>在gradle文件中引入</h3><p>注意，使用了阿里云maven，所以下面引入的banner是在阿里云maven中的地址<br><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">&#x27;io.github.youth5201314:banner:2.2.2&#x27;</span><span class="comment">//Banner</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="使用Banner2"><a href="#使用Banner2" class="headerlink" title="使用Banner2"></a>使用Banner2</h3><h4 id="插入Banner控件"><a href="#插入Banner控件" class="headerlink" title="插入Banner控件"></a>插入Banner控件</h4><p>在布局中插入Banner控件<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">&quot;center_horizontal&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">com.youth.banner.Banner</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/banner&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_margin</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;160dp&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="创建适配器"><a href="#创建适配器" class="headerlink" title="创建适配器"></a>创建适配器</h4><p>创建MyBannerAdapter类继承BannerAdapter，BannerAdapter定义了一个泛型类，并强制进行ViewHolder优化，泛型类的类型决定了适配器的构造器中参数的类型<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.recyclerview.widget.RecyclerView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.youth.banner.adapter.BannerAdapter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">//MyBannerAdapter定义了一个泛型类，并强制进行ViewHolder优化，泛型类的类型决定了适配器的构造器中参数的类型</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBannerAdapter</span> <span class="keyword">extends</span> <span class="title">BannerAdapter</span>&lt;<span class="title">String</span>,<span class="title">MyBannerAdapter</span>.<span class="title">MyViewHolder</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    集合List的类型由泛型类中的类型决定，集合List的长度决定了轮播图的个数</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyBannerAdapter</span><span class="params">(List&lt;String&gt; datas)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(datas);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    创建ViewHolder</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> MyBannerAdapter.<span class="function">MyViewHolder <span class="title">onCreateHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    绑定图片源，设置要显示的图片</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindView</span><span class="params">(MyBannerAdapter.MyViewHolder holder, String data, <span class="keyword">int</span> position, <span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    在ViewHolder中初始化Banner中的轮播图</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyViewHolder</span><span class="params">(<span class="meta">@NonNull</span> View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h4 id="配置适配器"><a href="#配置适配器" class="headerlink" title="配置适配器"></a>配置适配器</h4><p>使用了Glide动态设置图片<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.recyclerview.widget.RecyclerView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.bumptech.glide.Glide;</span><br><span class="line"><span class="keyword">import</span> com.youth.banner.adapter.BannerAdapter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">//MyBannerAdapter定义了一个泛型类，并强制进行ViewHolder优化，泛型类的类型决定了适配器的构造器中参数的类型</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBannerAdapter</span> <span class="keyword">extends</span> <span class="title">BannerAdapter</span>&lt;<span class="title">String</span>,<span class="title">MyBannerAdapter</span>.<span class="title">MyViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Context context;</span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; datas;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    集合List的类型由泛型类中的类型决定，集合List的长度决定了轮播图的个数</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyBannerAdapter</span><span class="params">(List&lt;String&gt; datas, Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(datas);</span><br><span class="line">        <span class="keyword">this</span>.context = context;</span><br><span class="line">        <span class="keyword">this</span>.datas = datas;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    创建ViewHolder</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> MyBannerAdapter.<span class="function">MyViewHolder <span class="title">onCreateHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        ImageView imageView = <span class="keyword">new</span> ImageView(parent.getContext());<span class="comment">//创建图片控件</span></span><br><span class="line"><span class="comment">//        设置图片宽高属性</span></span><br><span class="line">        imageView.setLayoutParams(<span class="keyword">new</span> ViewGroup.LayoutParams(</span><br><span class="line">                ViewGroup.LayoutParams.MATCH_PARENT,</span><br><span class="line">                ViewGroup.LayoutParams.MATCH_PARENT</span><br><span class="line">        ));</span><br><span class="line">        imageView.setScaleType(ImageView.ScaleType.FIT_XY);<span class="comment">//设置图片显示方式，此处强制铺满控件</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyViewHolder(imageView);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    绑定图片源，设置要显示的图片</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindView</span><span class="params">(MyBannerAdapter.MyViewHolder holder, String data, <span class="keyword">int</span> position, <span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        使用Glide动态加载图片</span></span><br><span class="line">        Glide.with(context).load(datas.get(position)).into(holder.imageView);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    在ViewHolder中初始化Banner中的轮播图</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        ImageView imageView;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyViewHolder</span><span class="params">(<span class="meta">@NonNull</span> View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            <span class="keyword">this</span>.imageView = (ImageView) itemView;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="调用适配器"><a href="#调用适配器" class="headerlink" title="调用适配器"></a>调用适配器</h4><p>具体调用请看setBanner()方法<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.youth.banner.Banner;</span><br><span class="line"><span class="keyword">import</span> com.youth.banner.indicator.CircleIndicator;</span><br><span class="line"><span class="keyword">import</span> com.youth.banner.listener.OnBannerListener;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BannerActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Banner banner;</span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; datas;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_banner);</span><br><span class="line"></span><br><span class="line">        init();</span><br><span class="line">        setBanner();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setBanner</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//        实例化banner适配器</span></span><br><span class="line">        MyBannerAdapter myBannerAdapter = <span class="keyword">new</span> MyBannerAdapter(datas, <span class="keyword">this</span>);</span><br><span class="line">        banner.setAdapter(myBannerAdapter) <span class="comment">//添加适配器</span></span><br><span class="line">                .addBannerLifecycleObserver(<span class="keyword">this</span>) <span class="comment">//添加生命周期观察者</span></span><br><span class="line">                .setIndicator(<span class="keyword">new</span> CircleIndicator(<span class="keyword">this</span>)) <span class="comment">//添加指示器(小圆点)</span></span><br><span class="line">                .isAutoLoop(<span class="keyword">true</span>) <span class="comment">//是否允许自动轮播</span></span><br><span class="line">                .setLoopTime(<span class="number">1500</span>); <span class="comment">//自动轮播切换时间</span></span><br><span class="line"><span class="comment">//        设置点击事件，下标从0开始</span></span><br><span class="line">        banner.setOnBannerListener(<span class="keyword">new</span> OnBannerListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnBannerClick</span><span class="params">(Object data, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">                Toast.makeText(BannerActivity.<span class="keyword">this</span>,<span class="string">&quot;点击了&quot;</span> + position, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        banner = findViewById(R.id.banner);<span class="comment">//初始化banner</span></span><br><span class="line"><span class="comment">//        设置数据源</span></span><br><span class="line">        datas = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        datas.add(<span class="string">&quot;https://pics2.baidu.com/feed/a8014c086e061d95bae4a9350d7a45d763d9cab6.png?token=a817a8157f425a71e0730e89fba08644&amp;s=EC3807D166031CF67E2D059B0300E012&quot;</span>);</span><br><span class="line">        datas.add(<span class="string">&quot;https://img1.baidu.com/it/u=2837730020,691715572&amp;fm=26&amp;fmt=auto&quot;</span>);</span><br><span class="line">        datas.add(<span class="string">&quot;https://img0.baidu.com/it/u=1768887447,1227450589&amp;fm=26&amp;fmt=auto&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="默认Banner适配器"><a href="#默认Banner适配器" class="headerlink" title="默认Banner适配器"></a>默认Banner适配器</h4><p>如果仅想实现简单的图片轮播，就使用默认的Banner适配器，具体改动请看setBanner()方法<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.bumptech.glide.Glide;</span><br><span class="line"><span class="keyword">import</span> com.youth.banner.Banner;</span><br><span class="line"><span class="keyword">import</span> com.youth.banner.adapter.BannerImageAdapter;</span><br><span class="line"><span class="keyword">import</span> com.youth.banner.holder.BannerImageHolder;</span><br><span class="line"><span class="keyword">import</span> com.youth.banner.indicator.CircleIndicator;</span><br><span class="line"><span class="keyword">import</span> com.youth.banner.listener.OnBannerListener;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BannerActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Banner banner;</span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; datas;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_banner);</span><br><span class="line">        init();</span><br><span class="line">        setBanner();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    如果仅仅想实现图片轮播，那就是用默认的Banner适配器BannerImageAdapter</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setBanner</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//        使用默认适配器</span></span><br><span class="line">        banner.setAdapter(<span class="keyword">new</span> BannerImageAdapter&lt;String&gt;(datas) &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindView</span><span class="params">(BannerImageHolder holder, String data, <span class="keyword">int</span> position, <span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line"><span class="comment">//                使用Glide动态加载图片</span></span><br><span class="line">                Glide.with(BannerActivity.<span class="keyword">this</span>).load(datas.get(position)).into(holder.imageView);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        banner.addBannerLifecycleObserver(<span class="keyword">this</span>) <span class="comment">//添加生命周期观察者</span></span><br><span class="line">                .setIndicator(<span class="keyword">new</span> CircleIndicator(<span class="keyword">this</span>)) <span class="comment">//添加指示器(小圆点)</span></span><br><span class="line">                .isAutoLoop(<span class="keyword">true</span>) <span class="comment">//是否允许自动轮播</span></span><br><span class="line">                .setLoopTime(<span class="number">1500</span>); <span class="comment">//自动轮播切换时间</span></span><br><span class="line"><span class="comment">//        设置点击事件，下标从0开始</span></span><br><span class="line">        banner.setOnBannerListener(<span class="keyword">new</span> OnBannerListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnBannerClick</span><span class="params">(Object data, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">                Toast.makeText(BannerActivity.<span class="keyword">this</span>,<span class="string">&quot;点击了&quot;</span> + position, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        banner = findViewById(R.id.banner);<span class="comment">//初始化banner</span></span><br><span class="line"><span class="comment">//        设置数据源</span></span><br><span class="line">        datas = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        datas.add(<span class="string">&quot;https://pics2.baidu.com/feed/a8014c086e061d95bae4a9350d7a45d763d9cab6.png?token=a817a8157f425a71e0730e89fba08644&amp;s=EC3807D166031CF67E2D059B0300E012&quot;</span>);</span><br><span class="line">        datas.add(<span class="string">&quot;https://img1.baidu.com/it/u=2837730020,691715572&amp;fm=26&amp;fmt=auto&quot;</span>);</span><br><span class="line">        datas.add(<span class="string">&quot;https://img0.baidu.com/it/u=1768887447,1227450589&amp;fm=26&amp;fmt=auto&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="网络权限"><a href="#网络权限" class="headerlink" title="网络权限"></a>网络权限</h4><p>不要忘记在清单文件中添加网络权限<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 网络权限 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.INTERNET&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="效果展示-1"><a href="#效果展示-1" class="headerlink" title="效果展示"></a>效果展示</h3><p><img src="../Android-Banner/img2.gif" height="40%" width="40%" /></p>
+<h3 id="Banner2方法"><a href="#Banner2方法" class="headerlink" title="Banner2方法"></a>Banner2方法</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>返回类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getAdapter()</td>
+<td>extends BannerAdapter</td>
+<td>获取你设置的BannerAdapter</td>
+</tr>
+<tr>
+<td>getViewPager2()</td>
+<td>ViewPager2</td>
+<td>获取ViewPager2</td>
+</tr>
+<tr>
+<td>getIndicator()</td>
+<td>Indicator</td>
+<td>获取你设置的指示器（没有设置直接获取会抛异常哦）</td>
+</tr>
+<tr>
+<td>getIndicatorConfig()</td>
+<td>IndicatorConfig</td>
+<td>获取你设置的指示器配置信息（没有设置直接获取会抛异常哦）</td>
+</tr>
+<tr>
+<td>getRealCount()</td>
+<td>int</td>
+<td>返回banner真实总数</td>
+</tr>
+<tr>
+<td>setUserInputEnabled(boolean)</td>
+<td>this</td>
+<td>禁止手动滑动Banner;true 允许，false 禁止</td>
+</tr>
+<tr>
+<td>setDatas(List)</td>
+<td>this</td>
+<td>重新设置banner数据</td>
+</tr>
+<tr>
+<td>isAutoLoop(boolean)</td>
+<td>this</td>
+<td>是否允许自动轮播</td>
+</tr>
+<tr>
+<td>setLoopTime(long)</td>
+<td>this</td>
+<td>设置轮播间隔时间（默认3000毫秒）</td>
+</tr>
+<tr>
+<td>setScrollTime(long)</td>
+<td>this</td>
+<td>设置轮播滑动的时间（默认800毫秒）</td>
+</tr>
+<tr>
+<td>start()</td>
+<td>this</td>
+<td>开始轮播(主要配合生命周期使用)，或者你手动暂停再次启动</td>
+</tr>
+<tr>
+<td>stop()</td>
+<td>this</td>
+<td>停止轮播(主要配合生命周期使用)，或者你需要手动暂停</td>
+</tr>
+<tr>
+<td>setAdapter(T extends BannerAdapter)</td>
+<td>this</td>
+<td>设置banner的适配器</td>
+</tr>
+<tr>
+<td>setAdapter(T extends BannerAdapter,boolean)</td>
+<td>this</td>
+<td>设置banner的适配器,是否支持无限循环</td>
+</tr>
+<tr>
+<td>setOrientation(@Orientation)</td>
+<td>this</td>
+<td>设置banner轮播方向(垂直or水平)</td>
+</tr>
+<tr>
+<td>setOnBannerListener(this)</td>
+<td>this</td>
+<td>设置点击事件，下标是从0开始</td>
+</tr>
+<tr>
+<td>addOnPageChangeListener(this)</td>
+<td>this</td>
+<td>添加viewpager2的滑动监听</td>
+</tr>
+<tr>
+<td>setPageTransformer(PageTransformer)</td>
+<td>this</td>
+<td>设置viewpager的切换效果</td>
+</tr>
+<tr>
+<td>addPageTransformer(PageTransformer)</td>
+<td>this</td>
+<td>添加viewpager的切换效果（可以设置多个）</td>
+</tr>
+<tr>
+<td>setIndicator(Indicator)</td>
+<td>this</td>
+<td>设置banner轮播指示器(提供有base和接口，可以自定义)</td>
+</tr>
+<tr>
+<td>setIndicator(Indicator,boolean)</td>
+<td>this</td>
+<td>设置指示器（传false代表不将指示器添加到banner上，配合布局文件，可以自我发挥）</td>
+</tr>
+<tr>
+<td>setIndicatorSelectedColor(@ColorInt)</td>
+<td>this</td>
+<td>设置指示器选中颜色</td>
+</tr>
+<tr>
+<td>setIndicatorSelectedColorRes(@ColorRes)</td>
+<td>this</td>
+<td>设置指示器选中颜色</td>
+</tr>
+<tr>
+<td>setIndicatorNormalColor(@ColorInt)</td>
+<td>this</td>
+<td>设置指示器默认颜色</td>
+</tr>
+<tr>
+<td>setIndicatorNormalColorRes(@ColorRes)</td>
+<td>this</td>
+<td>设置指示器默认颜色</td>
+</tr>
+<tr>
+<td>setIndicatorGravity(@IndicatorConfig.Direction)</td>
+<td>this</td>
+<td>设置指示器位置（左，中，右）</td>
+</tr>
+<tr>
+<td>setIndicatorSpace(int)</td>
+<td>this</td>
+<td>设置指示器之间的间距</td>
+</tr>
+<tr>
+<td>setIndicatorMargins(IndicatorConfig.Margins)</td>
+<td>this</td>
+<td>设置指示器的Margins</td>
+</tr>
+<tr>
+<td>setIndicatorWidth(int,int)</td>
+<td>this</td>
+<td>设置指示器选中和未选中的宽度，直接影响绘制指示器的大小</td>
+</tr>
+<tr>
+<td>setIndicatorNormalWidth(int)</td>
+<td>this</td>
+<td>设置指示器未选中的宽度</td>
+</tr>
+<tr>
+<td>setIndicatorSelectedWidth(int)</td>
+<td>this</td>
+<td>设置指示器选中的宽度</td>
+</tr>
+<tr>
+<td>setIndicatorRadius(int)</td>
+<td>this</td>
+<td>设置指示器圆角，不要圆角可以设置为0</td>
+</tr>
+<tr>
+<td>setIndicatorHeight(int)</td>
+<td>this</td>
+<td>设置指示器高度</td>
+</tr>
+<tr>
+<td>setBannerRound(float)</td>
+<td>this</td>
+<td>设置banner圆角（还有一种setBannerRound2方法，需要5.0以上）</td>
+</tr>
+<tr>
+<td>setBannerGalleryEffect(int,int,float)</td>
+<td>this</td>
+<td>画廊效果</td>
+</tr>
+<tr>
+<td>setBannerGalleryMZ(int,float)</td>
+<td>this</td>
+<td>魅族效果</td>
+</tr>
+<tr>
+<td>setStartPosition(int)</td>
+<td>this</td>
+<td>设置开始的位置 (需要在setAdapter或者setDatas之前调用才有效哦)</td>
+</tr>
+<tr>
+<td>setIndicatorPageChange()</td>
+<td>this</td>
+<td>设置指示器改变监听 (一般是为了配合数据操作使用，看情况自己发挥)</td>
+</tr>
+<tr>
+<td>setCurrentItem()</td>
+<td>this</td>
+<td>设置当前位置，和原生使用效果一样</td>
+</tr>
+<tr>
+<td>addBannerLifecycleObserver()</td>
+<td>this</td>
+<td>给banner添加生命周期观察者，内部自动管理banner的生命周期</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="Banner2属性"><a href="#Banner2属性" class="headerlink" title="Banner2属性"></a>Banner2属性</h3><table>
+<thead>
+<tr>
+<th>Attributes</th>
+<th>format</th>
+<th>describe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>banner_loop_time</td>
+<td>integer</td>
+<td>轮播间隔时间，默认3000</td>
+</tr>
+<tr>
+<td>banner_auto_loop</td>
+<td>boolean</td>
+<td>是否自动轮播，默认true</td>
+</tr>
+<tr>
+<td>banner_infinite_loop</td>
+<td>boolean</td>
+<td>是否支持无限循环（即首尾直接过渡），默认true</td>
+</tr>
+<tr>
+<td>banner_orientation</td>
+<td>enum</td>
+<td>轮播方向：horizontal（默认） or vertical</td>
+</tr>
+<tr>
+<td>banner_radius</td>
+<td>dimension</td>
+<td>banner圆角半径，默认0（不绘制圆角）</td>
+</tr>
+<tr>
+<td>banner_indicator_normal_width</td>
+<td>dimension</td>
+<td>指示器默认的宽度，默认5dp （对RoundLinesIndicator无效）</td>
+</tr>
+<tr>
+<td>banner_indicator_selected_width</td>
+<td>dimension</td>
+<td>指示器选中的宽度，默认7dp</td>
+</tr>
+<tr>
+<td>banner_indicator_normal_color</td>
+<td>color</td>
+<td>指示器默认颜色，默认0x88ffffff</td>
+</tr>
+<tr>
+<td>banner_indicator_selected_color</td>
+<td>color</td>
+<td>指示器选中颜色，默认0x88000000</td>
+</tr>
+<tr>
+<td>banner_indicator_space</td>
+<td>dimension</td>
+<td>指示器之间的间距，默认5dp （对RoundLinesIndicator无效）</td>
+</tr>
+<tr>
+<td>banner_indicator_gravity</td>
+<td>dimension</td>
+<td>指示器位置，默认center</td>
+</tr>
+<tr>
+<td>banner_indicator_margin</td>
+<td>dimension</td>
+<td>指示器的margin,默认5dp，不能和下面的同时使用</td>
+</tr>
+<tr>
+<td>banner_indicator_marginLeft</td>
+<td>dimension</td>
+<td>指示器左边的margin</td>
+</tr>
+<tr>
+<td>banner_indicator_marginTop</td>
+<td>dimension</td>
+<td>指示器上边的margin</td>
+</tr>
+<tr>
+<td>banner_indicator_marginRight</td>
+<td>dimension</td>
+<td>指示器右边的margin</td>
+</tr>
+<tr>
+<td>banner_indicator_marginBottom</td>
+<td>dimension</td>
+<td>指示器下边的margin</td>
+</tr>
+<tr>
+<td>banner_indicator_height</td>
+<td>dimension</td>
+<td>指示器高度（对CircleIndicator无效）</td>
+</tr>
+<tr>
+<td>banner_indicator_radius</td>
+<td>dimension</td>
+<td>指示器圆角（对CircleIndicator无效）</td>
+</tr>
+<tr>
+<td>banner_round_top_left</td>
+<td>boolean</td>
+<td>设置要绘制的banner圆角方向（如果都不设置默认全部）</td>
+</tr>
+<tr>
+<td>banner_round_top_right</td>
+<td>boolean</td>
+<td>设置要绘制的banner圆角方向（如果都不设置默认全部）</td>
+</tr>
+<tr>
+<td>banner_round_bottom_left</td>
+<td>boolean</td>
+<td>设置要绘制的banner圆角方向（如果都不设置默认全部）</td>
+</tr>
+<tr>
+<td>banner_round_bottom_right</td>
+<td>boolean</td>
+<td>设置要绘制的banner圆角方向（如果都不设置默认全部）</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Android笔记</category>
+      </categories>
+      <tags>
+        <tag>Android开发</tag>
       </tags>
   </entry>
   <entry>
