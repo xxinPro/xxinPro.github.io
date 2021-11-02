@@ -1581,6 +1581,29 @@
       </tags>
   </entry>
   <entry>
+    <title>上传项目至github</title>
+    <url>/2021/10/17/%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E8%87%B3github/</url>
+    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">创建仓库</label><br><img src="../上传项目至github/img1.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">复制仓库的ssh链接</label><br><img src="../上传项目至github/img2.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">在本地，把预备上传至github的项目文件夹存放在一个文件夹中，例如现在我将fix文件夹放在myProject文件夹中，fix文件夹内就是我想上传的文件</label><br><img src="../上传项目至github/img3.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">鼠标右键myProject文件夹，并选择Git Bash Here，然后在出现的窗口中输入“git clone 复制的ssh链接”从github下载项目</label><br><img src="../上传项目至github/img4.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">在myProject文件夹下，会发现多了一个与github仓库名一样的文件夹(比如我的多了一个fixNavbBar文件夹)</label><br><img src="../上传项目至github/img5.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">接着手动把fix文件夹下的所有文件复制粘贴至fixNavBar</label><br><img src="../上传项目至github/img6.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">然后在命令窗口中“输入cd 文件夹名”进入新文件夹</label><br><img src="../上传项目至github/img7.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入git add .(注意有个小点)，会把fixNavbBar文件夹下面新的文件或修改过的文件添加进来，如果之前已经添加了，它会自动省略</label><br><img src="../上传项目至github/img8.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入 git commit -m “logs”提交项目说明</label><br><img src="../上传项目至github/img9.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入 git push -u origin main，上传项目</label><br>&ensp;&ensp;&ensp;&ensp;<label style="color:red;cursor:auto">注意：</label>在2021年8月13号之后，github不允许用账号密码上传项目，必须使用token，如果没有token&ensp;<a href="">点击这里</a><br><img src="../上传项目至github/img10.png" width="70%" height="70%" ></p>
+<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">上传完成后到github查看项目即可</label><br><img src="../上传项目至github/img11.png" width="70%" height="70%" ></p>
+]]></content>
+      <categories>
+        <category>技术教程</category>
+      </categories>
+      <tags>
+        <tag>小教程</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>内部类*</title>
     <url>/2021/07/23/%E5%86%85%E9%83%A8%E7%B1%BB/</url>
     <content><![CDATA[<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><ol>
@@ -1621,29 +1644,6 @@
         <tag>学习笔记</tag>
         <tag>重点难点</tag>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>上传项目至github</title>
-    <url>/2021/10/17/%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E8%87%B3github/</url>
-    <content><![CDATA[<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">创建仓库</label><br><img src="../上传项目至github/img1.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">复制仓库的ssh链接</label><br><img src="../上传项目至github/img2.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">在本地，把预备上传至github的项目文件夹存放在一个文件夹中，例如现在我将fix文件夹放在myProject文件夹中，fix文件夹内就是我想上传的文件</label><br><img src="../上传项目至github/img3.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">鼠标右键myProject文件夹，并选择Git Bash Here，然后在出现的窗口中输入“git clone 复制的ssh链接”从github下载项目</label><br><img src="../上传项目至github/img4.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">在myProject文件夹下，会发现多了一个与github仓库名一样的文件夹(比如我的多了一个fixNavbBar文件夹)</label><br><img src="../上传项目至github/img5.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">接着手动把fix文件夹下的所有文件复制粘贴至fixNavBar</label><br><img src="../上传项目至github/img6.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">然后在命令窗口中“输入cd 文件夹名”进入新文件夹</label><br><img src="../上传项目至github/img7.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入git add .(注意有个小点)，会把fixNavbBar文件夹下面新的文件或修改过的文件添加进来，如果之前已经添加了，它会自动省略</label><br><img src="../上传项目至github/img8.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入 git commit -m “logs”提交项目说明</label><br><img src="../上传项目至github/img9.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入 git push -u origin main，上传项目</label><br>&ensp;&ensp;&ensp;&ensp;<label style="color:red;cursor:auto">注意：</label>在2021年8月13号之后，github不允许用账号密码上传项目，必须使用token，如果没有token&ensp;<a href="">点击这里</a><br><img src="../上传项目至github/img10.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">上传完成后到github查看项目即可</label><br><img src="../上传项目至github/img11.png" width="70%" height="70%" ></p>
-]]></content>
-      <categories>
-        <category>技术教程</category>
-      </categories>
-      <tags>
-        <tag>小教程</tag>
-        <tag>github</tag>
       </tags>
   </entry>
   <entry>
