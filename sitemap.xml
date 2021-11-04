@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.xxin.xyz/2021/10/30/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82/</loc>
+    <loc>https://blog.xxin.xyz/2021/11/02/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82-3/</loc>
     
     <lastmod>2021-11-04</lastmod>
     
@@ -16,7 +16,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/2021/11/02/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82-3/</loc>
+    <loc>https://blog.xxin.xyz/2021/10/30/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82/</loc>
     
     <lastmod>2021-11-04</lastmod>
     
@@ -627,14 +627,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/java/</loc>
+    <loc>https://blog.xxin.xyz/tags/%E9%BB%98%E8%AE%A4%E6%A0%87%E7%AD%BE/</loc>
     <lastmod>2021-11-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/%E9%BB%98%E8%AE%A4%E6%A0%87%E7%AD%BE/</loc>
+    <loc>https://blog.xxin.xyz/tags/java/</loc>
     <lastmod>2021-11-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -697,13 +697,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/%E5%9D%8F%E5%BF%83%E6%83%85/</loc>
-    <lastmod>2021-11-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xxin.xyz/tags/%E5%A5%BD%E5%BF%83%E6%83%85/</loc>
     <lastmod>2021-11-04</lastmod>
     <changefreq>daily</changefreq>
@@ -712,6 +705,13 @@
   
   <url>
     <loc>https://blog.xxin.xyz/tags/%E7%AB%99%E7%82%B9%E6%97%A5%E5%BF%97/</loc>
+    <lastmod>2021-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xxin.xyz/tags/%E5%9D%8F%E5%BF%83%E6%83%85/</loc>
     <lastmod>2021-11-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -748,14 +748,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/categories/java%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://blog.xxin.xyz/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/</loc>
     <lastmod>2021-11-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/</loc>
+    <loc>https://blog.xxin.xyz/categories/java%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-11-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
