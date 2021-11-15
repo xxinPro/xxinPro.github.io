@@ -1261,6 +1261,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Apktool</title>
+    <url>/2021/08/15/Apktool/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>开源地址: <a href="https://github.com/iBotPeaches/Apktool">https://github.com/iBotPeaches/Apktool</a><br>官方地址: <a href="https://ibotpeaches.github.io/Apktool/">https://ibotpeaches.github.io/Apktool/</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="JDK-1-8"><a href="#JDK-1-8" class="headerlink" title="JDK 1.8"></a>JDK 1.8</h4><p>&ensp;&ensp;&ensp;&ensp;至少安装了java jdk1.8<br><img src="../Apktool/img1.png" width="70%" height="70%" /></p>
+<h4 id="apktool-bat"><a href="#apktool-bat" class="headerlink" title="apktool.bat"></a>apktool.bat</h4><p>&ensp;&ensp;&ensp;&ensp;下载包装器脚本<a href="../Apktool/apktool.bat">点击下载</a></p>
+<h4 id="apktool-jar"><a href="#apktool-jar" class="headerlink" title="apktool.jar"></a>apktool.jar</h4><p>&ensp;&ensp;&ensp;&ensp;下载apktool工具(2.6.0)<a href="../Apktool/apktool.jar">点击下载</a></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="反编译"><a href="#反编译" class="headerlink" title="反编译"></a>反编译</h4><p>&ensp;&ensp;&ensp;&ensp;将apktool.bat和apktool.jar放在同一目录下，并将想要解码的apk也放在该目录下<br><img src="../Apktool/img2.png" width="70%" height="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;打开cmd窗口，进入该目录，并执行<br><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">apktool decode test.apk</span><br><span class="line">// 将目录下的test.apk解码到test文件夹</span><br><span class="line"></span><br><span class="line">apktool d test.apk</span><br><span class="line">// 将目录下的test.apk解码到test文件夹，简写</span><br><span class="line"></span><br><span class="line">apktool d test.apk -o bar\test</span><br><span class="line">// 将目录下的test.apk解码到bar\test文件夹</span><br><span class="line"></span><br><span class="line">// 当然，apk的路径你也可以指定，比如</span><br><span class="line">apktool d bar\test.apk -o bar\test</span><br></pre></td></tr></table></figure></p>
+<p><img src="../Apktool/img3.png" width="70%" height="70%" /><br><img src="../Apktool/img4.png" width="70%" height="70%" /></p>
+<h4 id="回编译"><a href="#回编译" class="headerlink" title="回编译"></a>回编译</h4><figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">apktool build test</span><br><span class="line">// 回编译指定文件夹，回编译后的apk文件存放在test\dist\test.apk</span><br><span class="line"></span><br><span class="line">apktool b test</span><br><span class="line">// 回编译指定文件夹，回编译后的apk文件存放在test\dist\test.apk，简写</span><br><span class="line"></span><br><span class="line">apktool b .</span><br><span class="line">// 将当前目录编译到dist文件夹中</span><br><span class="line"></span><br><span class="line">apktool b test -o new_test.apk</span><br><span class="line">// 回编译指定文件夹，回编译后的apk文件重命名为new_test.apk并存放在当前目录下</span><br></pre></td></tr></table></figure>
+<p><img src="../Apktool/img5.png" width="70%" height="70%" /><br><img src="../Apktool/img6.png" width="70%" height="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;<br>&ensp;&ensp;&ensp;&ensp;<br>&ensp;&ensp;&ensp;&ensp;<br>&ensp;&ensp;&ensp;&ensp;<br>&ensp;&ensp;&ensp;&ensp;<br>&ensp;&ensp;&ensp;&ensp;</p>
+]]></content>
+      <categories>
+        <category>逆向日志</category>
+      </categories>
+      <tags>
+        <tag>逆向日志</tag>
+        <tag>技术流</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CountDownLatch线程等待</title>
     <url>/2021/10/21/CountDownLatch%E7%BA%BF%E7%A8%8B%E7%AD%89%E5%BE%85/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="事发"><a href="#事发" class="headerlink" title="事发"></a>事发</h3><p>&ensp;&ensp;&ensp;&ensp;这是一个封装的okhttp get异步请求，如果请求成功，返回值为请求到的值，如果请求失败，则返回noValue<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.jetbrains.annotations.NotNull;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CountDownLatch;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> okhttp3.Call;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Callback;</span><br><span class="line"><span class="keyword">import</span> okhttp3.MediaType;</span><br><span class="line"><span class="keyword">import</span> okhttp3.OkHttpClient;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Request;</span><br><span class="line"><span class="keyword">import</span> okhttp3.RequestBody;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Response;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHttpRequest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String value;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">myGet</span><span class="params">(String url)</span></span>&#123;</span><br><span class="line">        OkHttpClient okHttpClient = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">        Request request = <span class="keyword">new</span> Request.Builder().url(url).build();</span><br><span class="line">        Call call = okHttpClient.newCall(request);</span><br><span class="line">        call.enqueue(<span class="keyword">new</span> Callback() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(<span class="meta">@NotNull</span> Call call, <span class="meta">@NotNull</span> IOException e)</span> </span>&#123;</span><br><span class="line">                value = <span class="string">&quot;noValue&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(<span class="meta">@NotNull</span> Call call, <span class="meta">@NotNull</span> Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                value = response.body().string();\</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -1794,6 +1816,25 @@
       </tags>
   </entry>
   <entry>
+    <title>夜郎自大</title>
+    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
+<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”<br><span id="more"></span><br>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
+<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
+<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
+<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
+<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
+<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+      <tags>
+        <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>小衅笔记</title>
     <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><center>啦啦啦，啥也没有🌟写</center>
@@ -1821,28 +1862,9 @@
         <category>我的文章</category>
       </categories>
       <tags>
-        <tag>毒鸡汤</tag>
         <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
         <tag>坏心情</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>夜郎自大</title>
-    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
-<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”<br><span id="more"></span><br>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
-<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
-<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
-<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
-<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
-<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
-      <tags>
-        <tag>毒鸡汤</tag>
-        <tag>网抑云</tag>
       </tags>
   </entry>
   <entry>
@@ -1866,8 +1888,8 @@
         <category>我的文章</category>
       </categories>
       <tags>
-        <tag>毒鸡汤</tag>
         <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
       </tags>
   </entry>
   <entry>
@@ -2059,8 +2081,8 @@
         <category>我的文章</category>
       </categories>
       <tags>
-        <tag>毒鸡汤</tag>
         <tag>网抑云</tag>
+        <tag>毒鸡汤</tag>
       </tags>
   </entry>
   <entry>
@@ -2103,6 +2125,31 @@
     <title>记录一次逆向某校园软件</title>
     <url>/2021/11/05/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E9%80%86%E5%90%91%E6%9F%90%E6%A0%A1%E5%9B%AD%E8%BD%AF%E4%BB%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&ensp;&ensp;&ensp;&ensp;教程仅供学习交流，学习研究软件设计思路，请勿用于任何非法用途</p>
+<h2 id="去更新"><a href="#去更新" class="headerlink" title="去更新"></a>去更新</h2><p>&ensp;&ensp;&ensp;&ensp;在解包后的软件文件夹中，从smali代码中查找“1.2.0”，将其全部替换为9.9.9<br><img src="../记录一次逆向某校园软件/img1.png" width="70%" width="70%" /><br><img src="../记录一次逆向某校园软件/img2.png" width="70%" width="70%" /></p>
+<h2 id="修改登录接口"><a href="#修改登录接口" class="headerlink" title="修改登录接口"></a>修改登录接口</h2><p>&ensp;&ensp;&ensp;&ensp;自v2版本更新后，v1版本的登录接口就无法登陆了，但是想开挂只能用v1，所以通过抓包拿到v2版本的登录接口替换给v1</p>
+<p>&ensp;&ensp;&ensp;&ensp;抓包拿到v2的登录接口<br><img src="../记录一次逆向某校园软件/img3.png" width="40%" width="40%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;去除域名，得到剩余的接口地址<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">run-front/account/login_v2</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;同理，再抓到v1版本的登录接口，将v1接口替换为v2即可<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// v1</span><br><span class="line">  run-front/account/login</span><br><span class="line">  </span><br><span class="line">// v2</span><br><span class="line">  run-front/account/login_v2</span><br></pre></td></tr></table></figure><br><img src="../记录一次逆向某校园软件/img4.png" width="70%" width="70%" /><br><img src="../记录一次逆向某校园软件/img5.png" width="70%" width="70%" /></p>
+<h2 id="过wi-fi检测"><a href="#过wi-fi检测" class="headerlink" title="过wi-fi检测"></a>过wi-fi检测</h2><p>&ensp;&ensp;&ensp;&ensp;搜索关键词，并复制搜索到的关键词变量名<br><img src="../记录一次逆向某校园软件/img6.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;搜索变量名，查找调用处，在RunningSettingsActivity和GPSOptimizeActivity类中调用了该字符串<br><img src="../记录一次逆向某校园软件/img7.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;分析RunningSettingsActivity类中的代码<br><img src="../记录一次逆向某校园软件/img8.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;跳转到isForbiddenWiFi()方法所在的类，分析发现isForbiddenWiFi()返回this.forbiddenWiFi，而setForbiddenWiFi()给this.forbiddenWiFi赋值，只要在setForbiddenWiFi()方法中永远给this.forbiddenWiFi赋值为false就好了<br><img src="../记录一次逆向某校园软件/img9.png" width="70%" width="70%" /></p>
+<p><img src="../记录一次逆向某校园软件/img10.png" width="70%" width="70%" /></p>
+<h2 id="过root检测"><a href="#过root检测" class="headerlink" title="过root检测"></a>过root检测</h2><p>&ensp;&ensp;&ensp;&ensp;说实话在这里卡了有一整天<br>&ensp;&ensp;&ensp;&ensp;搜索关键词，并复制搜索到的关键词变量名，留意一下上边的cheat_warn_1到cheat_warn_5<br><img src="../记录一次逆向某校园软件/img11.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;搜索变量名cheat_warn_running，发现HomeActivity和RunningDetailActivity两个类调用了它，很可惜两个类都和过root检测没有直接关系，但是两个类中的代码可以确定，cheat_warn_running和cheat_warn_1到cheat_warn_5是有直接关系的，二者必定同时出现<br><img src="../记录一次逆向某校园软件/img12.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;通过第一部的搜索可知，cheat_warn_1 = “在root环境下使用闪动校园”，所以去到代码中搜索cheat_warn_1，发现SunshineRunningFragment类和FreeRunningFragment类也在调用它，把这两个类名翻译为中文，又刚好对应软件的“阳光跑”和“自由跑”，这个布局不和我新开发的软件一模一样吗，这不是给我送人头吗？？<br><img src="../记录一次逆向某校园软件/img13.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;打开对应阳光跑的类看下，一目了然，而自由跑中除了没有wifi检测外，也一模一样<br><img src="../记录一次逆向某校园软件/img14.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;也就是说，只要RootDetectUtil.b().a()永远返回false，将不会检测root环境<br><img src="../记录一次逆向某校园软件/img15.png" width="70%" width="70%" /></p>
+<h2 id="过虚拟机检测"><a href="#过虚拟机检测" class="headerlink" title="过虚拟机检测"></a>过虚拟机检测</h2><p>&ensp;&ensp;&ensp;&ensp;有了上面的经验，过虚拟机检测就比较简单了，只要让这个判断不进入if代码块就好<br><img src="../记录一次逆向某校园软件/img16.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;在SunshineRunningFragment中加入一行const/4 v0, 0x0<br><img src="../记录一次逆向某校园软件/img17.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;同理，FreeRunningFragment中，但是我的完成品中并没有过掉自由跑的虚拟机检测，因为我忘了<br><img src="../记录一次逆向某校园软件/img18.png" width="70%" width="70%" /></p>
+<h2 id="违规时不记录"><a href="#违规时不记录" class="headerlink" title="违规时不记录"></a>违规时不记录</h2><p>&ensp;&ensp;&ensp;&ensp;搜索字符串cheat_warn_running，在HomeActivity的onEvent方法中<br><img src="../记录一次逆向某校园软件/img19.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;使paramCheatStopEvent值为null，则不进入方法体<br><img src="../记录一次逆向某校园软件/img20.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;搜索字符串cheat_warn_running，在RunningDetailActivity的O方法中，使i = 0<br><img src="../记录一次逆向某校园软件/img21.png" width="70%" width="70%" /></p>
+<p><img src="../记录一次逆向某校园软件/img22.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;搜索字符串cheat_warn_1，在SunshineRunActivity类的e方法中<br><img src="../记录一次逆向某校园软件/img23.png" width="70%" width="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;使schoolRule变量值为null<br><img src="../记录一次逆向某校园软件/img24.png" width="70%" width="70%" /></p>
+<h2 id="过35秒检测"><a href="#过35秒检测" class="headerlink" title="过35秒检测"></a>过35秒检测</h2><p>&ensp;&ensp;&ensp;&ensp;闪动校园在开始运动的第35秒必定会有一次检测，这里提供一个简单的解决思路<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">35s == 35000ms</span><br><span class="line">35000(10进制) == 88B8(16进制)</span><br><span class="line"></span><br><span class="line">1h == 3600s == 3600000ms</span><br><span class="line">3600000(10进制) == 36EE80(16进制)</span><br><span class="line"></span><br><span class="line">找到88B8修改为36EE80就好了</span><br></pre></td></tr></table></figure><br><img src="../记录一次逆向某校园软件/img25.png" width="70%" width="70%" /></p>
 ]]></content>
       <categories>
         <category>逆向日志</category>
