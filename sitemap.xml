@@ -711,14 +711,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/hexo%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://blog.xxin.xyz/tags/github/</loc>
     <lastmod>2021-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/github/</loc>
+    <loc>https://blog.xxin.xyz/tags/hexo%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2021-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -739,13 +739,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/%E6%AF%92%E9%B8%A1%E6%B1%A4/</loc>
-    <lastmod>2021-11-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xxin.xyz/tags/%E7%BD%91%E6%8A%91%E4%BA%91/</loc>
     <lastmod>2021-11-16</lastmod>
     <changefreq>daily</changefreq>
@@ -753,7 +746,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/%E5%9D%8F%E5%BF%83%E6%83%85/</loc>
+    <loc>https://blog.xxin.xyz/tags/%E6%AF%92%E9%B8%A1%E6%B1%A4/</loc>
     <lastmod>2021-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -768,6 +761,13 @@
   
   <url>
     <loc>https://blog.xxin.xyz/tags/%E7%AB%99%E7%82%B9%E6%97%A5%E5%BF%97/</loc>
+    <lastmod>2021-11-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xxin.xyz/tags/%E5%9D%8F%E5%BF%83%E6%83%85/</loc>
     <lastmod>2021-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
