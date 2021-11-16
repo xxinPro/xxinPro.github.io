@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.xxin.xyz/about/index.html</loc>
+    
+    <lastmod>2021-11-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.xxin.xyz/2021/11/05/%E9%97%AA%E4%B8%8D%E5%8A%A8%E6%A0%A1%E5%9B%AD/</loc>
     
     <lastmod>2021-11-16</lastmod>
@@ -17,13 +24,6 @@
   
   <url>
     <loc>https://blog.xxin.xyz/2021/08/15/Apktool/</loc>
-    
-    <lastmod>2021-11-15</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.xxin.xyz/about/index.html</loc>
     
     <lastmod>2021-11-15</lastmod>
     
@@ -669,6 +669,13 @@
   </url>
   
   <url>
+    <loc>https://blog.xxin.xyz/tags/java/</loc>
+    <lastmod>2021-11-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xxin.xyz/tags/%E9%80%86%E5%90%91%E6%97%A5%E5%BF%97/</loc>
     <lastmod>2021-11-16</lastmod>
     <changefreq>daily</changefreq>
@@ -690,13 +697,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/java/</loc>
-    <lastmod>2021-11-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xxin.xyz/tags/%E9%AA%9A%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2021-11-16</lastmod>
     <changefreq>daily</changefreq>
@@ -711,14 +711,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/github/</loc>
+    <loc>https://blog.xxin.xyz/tags/hexo%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2021-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/hexo%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://blog.xxin.xyz/tags/github/</loc>
     <lastmod>2021-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -804,14 +804,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/categories/%E9%80%86%E5%90%91%E6%97%A5%E5%BF%97/</loc>
+    <loc>https://blog.xxin.xyz/categories/java%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/categories/java%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://blog.xxin.xyz/categories/%E9%80%86%E5%90%91%E6%97%A5%E5%BF%97/</loc>
     <lastmod>2021-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
