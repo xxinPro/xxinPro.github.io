@@ -21,35 +21,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xxin.xyz","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="remote:Support&amp;ensp;for&amp;ensp;password&amp;ensp;authentication&amp;ensp;was&amp;ensp;removed&amp;ensp;on&amp;ensp;August&amp;ensp;13&amp;ensp;,&amp;ensp;2021&amp;ensp;.大意：远程：2021&amp;ensp;年&amp;ensp;8&amp;ensp;月&amp;ensp;13&amp;ensp;日移除了对密码身份验证的支持。请改用个人访问令牌">
+<meta name="description" content="EditText获得焦点时，软键盘右下角显示“搜索”按钮">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github SSH令牌解决">
-<meta property="og:url" content="https://blog.xxin.xyz/2021/10/17/github-SSH%E4%BB%A4%E7%89%8C%E8%A7%A3%E5%86%B3/index.html">
+<meta property="og:title" content="Android软键盘显示“搜索”">
+<meta property="og:url" content="https://blog.xxin.xyz/2021/11/17/Android%E8%BD%AF%E9%94%AE%E7%9B%98%E6%98%BE%E7%A4%BA%E2%80%9C%E6%90%9C%E7%B4%A2%E2%80%9D/index.html">
 <meta property="og:site_name" content="小衅笔记">
-<meta property="og:description" content="remote:Support&amp;ensp;for&amp;ensp;password&amp;ensp;authentication&amp;ensp;was&amp;ensp;removed&amp;ensp;on&amp;ensp;August&amp;ensp;13&amp;ensp;,&amp;ensp;2021&amp;ensp;.大意：远程：2021&amp;ensp;年&amp;ensp;8&amp;ensp;月&amp;ensp;13&amp;ensp;日移除了对密码身份验证的支持。请改用个人访问令牌">
+<meta property="og:description" content="EditText获得焦点时，软键盘右下角显示“搜索”按钮">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/github-SSH令牌解决/img1.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/github-SSH令牌解决/img2.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/github-SSH令牌解决/img3.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/github-SSH令牌解决/img4.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/github-SSH令牌解决/img5.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/github-SSH令牌解决/img6.png">
-<meta property="article:published_time" content="2021-10-17T13:32:53.000Z">
-<meta property="article:modified_time" content="2021-11-16T07:49:52.017Z">
+<meta property="og:image" content="https://blog.xxin.xyz/2021/11/17/Android软键盘显示“搜索”/img1.gif">
+<meta property="article:published_time" content="2021-11-17T11:02:32.000Z">
+<meta property="article:modified_time" content="2021-11-17T11:42:45.570Z">
 <meta property="article:author" content="xxin">
-<meta property="article:tag" content="github">
+<meta property="article:tag" content="java学习笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.xxin.xyz/2021/10/17/github-SSH令牌解决/img1.png">
+<meta name="twitter:image" content="https://blog.xxin.xyz/2021/11/17/Android软键盘显示“搜索”/img1.gif">
 
 
-<link rel="canonical" href="https://blog.xxin.xyz/2021/10/17/github-SSH%E4%BB%A4%E7%89%8C%E8%A7%A3%E5%86%B3/">
+<link rel="canonical" href="https://blog.xxin.xyz/2021/11/17/Android%E8%BD%AF%E9%94%AE%E7%9B%98%E6%98%BE%E7%A4%BA%E2%80%9C%E6%90%9C%E7%B4%A2%E2%80%9D/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xxin.xyz/2021/10/17/github-SSH%E4%BB%A4%E7%89%8C%E8%A7%A3%E5%86%B3/","path":"2021/10/17/github-SSH令牌解决/","title":"github SSH令牌解决"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xxin.xyz/2021/11/17/Android%E8%BD%AF%E9%94%AE%E7%9B%98%E6%98%BE%E7%A4%BA%E2%80%9C%E6%90%9C%E7%B4%A2%E2%80%9D/","path":"2021/11/17/Android软键盘显示“搜索”/","title":"Android软键盘显示“搜索”"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>github SSH令牌解决 | 小衅笔记</title>
+<title>Android软键盘显示“搜索” | 小衅笔记</title>
   
 
 
@@ -144,7 +139,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -157,6 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">效果预览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%83%E5%B1%80%E5%B1%9E%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">布局属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">程序实现</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -236,7 +232,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.xxin.xyz/2021/10/17/github-SSH%E4%BB%A4%E7%89%8C%E8%A7%A3%E5%86%B3/">
+    <link itemprop="mainEntityOfPage" href="https://blog.xxin.xyz/2021/11/17/Android%E8%BD%AF%E9%94%AE%E7%9B%98%E6%98%BE%E7%A4%BA%E2%80%9C%E6%90%9C%E7%B4%A2%E2%80%9D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="http://q1.qlogo.cn/g?b=qq&nk=3033528136&s=640">
@@ -249,7 +245,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          github SSH令牌解决
+          Android软键盘显示“搜索”
         </h1>
 
         <div class="post-meta-container">
@@ -260,7 +256,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-10-17 21:32:53" itemprop="dateCreated datePublished" datetime="2021-10-17T21:32:53+08:00">2021-10-17</time>
+      <time title="创建时间：2021-11-17 19:02:32" itemprop="dateCreated datePublished" datetime="2021-11-17T19:02:32+08:00">2021-11-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -268,7 +264,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9A%8F%E6%89%8B%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">随手记</span></a>
+          <a href="/categories/%E5%85%B3%E4%BA%8Ejava/" itemprop="url" rel="index"><span itemprop="name">关于java</span></a>
         </span>
     </span>
 
@@ -280,7 +276,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>564</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -291,7 +287,7 @@
     </span>
 </div>
 
-            <div class="post-description"><center>remote:Support&ensp;for&ensp;password&ensp;authentication&ensp;was&ensp;removed&ensp;on&ensp;August&ensp;13&ensp;,&ensp;2021&ensp;.<br>大意：远程：2021&ensp;年&ensp;8&ensp;月&ensp;13&ensp;日移除了对密码身份验证的支持。请改用个人访问令牌。</center></div>
+            <div class="post-description"><center>EditText获得焦点时，软键盘右下角显示“搜索”按钮</center></div>
         </div>
       </header>
 
@@ -299,13 +295,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>&ensp;&ensp;&ensp;&ensp;登录到github，进入账户设置<br><img src="../github-SSH令牌解决/img1.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;往下拉，找到开发者设置(Developer Setting)<br><img src="../github-SSH令牌解决/img2.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;创建一个token<br><img src="../github-SSH令牌解决/img3.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;Note随便填，Expiration表示设置到期日期，repo表示对仓库的完全控制，delete_repo表示删除仓库，填写完数据点击Generate token创建token了<br><img src="../github-SSH令牌解决/img4.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;创建完成后，马上将token复制并记下来，它只显示这一次<br><img src="../github-SSH令牌解决/img5.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;然后用git工具在本地打开对应项目，输入<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin  https://[你的token]@github.com/[你的用户名]/[仓库名].git</span><br><span class="line">//例如</span><br><span class="line">git remote set-url origin  https://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@github.com/xxinPro/fixNavBar.git</span><br></pre></td></tr></table></figure></p>
-<p>&ensp;&ensp;&ensp;&ensp;一个回车，之后就可以git push origin main了<br><img src="../github-SSH令牌解决/img6.png" width="70%" height="70%" ></p>
+        <h4 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h4><p><img src="../Android软键盘显示“搜索”/img1.gif" width="40%" height="40%" /></p>
+<h4 id="布局属性"><a href="#布局属性" class="headerlink" title="布局属性"></a>布局属性</h4><p>&ensp;&ensp;&ensp;&ensp;首先需要在EditText的布局中插入android:imeOptions=”actionSearch”和android:inputType=”text”属性，使键盘右下角显示搜索按钮<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:hint</span>=<span class="string">&quot;新闻搜索&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/edit_newsSearch&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:inputType</span>=<span class="string">&quot;text&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:lines</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:imeOptions</span>=<span class="string">&quot;actionSearch&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:paddingRight</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:paddingLeft</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_marginRight</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_marginLeft</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;48dp&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>注意：这里一定不要添加android:maxLength=”1”，添加后会无视android:imeOptions=”actionSearch”的效果</p>
+<h4 id="程序实现"><a href="#程序实现" class="headerlink" title="程序实现"></a>程序实现</h4><p>&ensp;&ensp;&ensp;&ensp;然后在java代码中给软键盘添加监听事件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//    给键盘添加监听</span></span><br><span class="line">    edit_newsSearch.setOnKeyListener(<span class="keyword">new</span> View.OnKeyListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKey</span><span class="params">(View view, <span class="keyword">int</span> i, KeyEvent keyEvent)</span> </span>&#123;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             * i就是actionId或者keyId，通过actionId判断点击的按钮是否是软键盘的搜索</span></span><br><span class="line"><span class="comment">             * 这里有一个坑，应该算是sdk版本不同留下的坑</span></span><br><span class="line"><span class="comment">             * 在sdk30开发中，i的变量名叫做actionId，</span></span><br><span class="line"><span class="comment">             * 我非常确定，当点击搜索按钮时actionId和EditorInfo.IME_ACTION_SEARCH是相等的，</span></span><br><span class="line"><span class="comment">             * 即action == EditorInfo.IME_ACTION_SEARCH == 3</span></span><br><span class="line"><span class="comment">             * 但是在sdk26中i = 66，EditorInfo.IME_ACTION_SEARCH = 3</span></span><br><span class="line"><span class="comment">             * 不过keyEvent.KEYCODE_ENTER = 66，所以我要他妈使用keyEvent.KEYCODE_ENTER？</span></span><br><span class="line"><span class="comment">             * 原理是因为搜索按钮把回车按钮取代了吗？？？？</span></span><br><span class="line"><span class="comment">             * */</span></span><br><span class="line">            <span class="keyword">if</span> (i == keyEvent.KEYCODE_ENTER)&#123;</span><br><span class="line"><span class="comment">//                执行的事件</span></span><br><span class="line">                Toast.makeText(getContext(),edit_newsSearch.getText().toString(),Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -315,21 +308,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/github/" rel="tag"><i class="fa fa-tag"></i> github</a>
+              <a href="/tags/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> java学习笔记</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/17/%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E8%87%B3github/" rel="prev" title="上传项目至github">
-                  <i class="fa fa-chevron-left"></i> 上传项目至github
+                <a href="/2021/11/13/%E4%BF%AE%E6%94%B9Android%E9%A1%B9%E7%9B%AEsdk%E7%89%88%E6%9C%AC/" rel="prev" title="修改Android项目sdk版本">
+                  <i class="fa fa-chevron-left"></i> 修改Android项目sdk版本
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/21/CountDownLatch%E7%BA%BF%E7%A8%8B%E7%AD%89%E5%BE%85/" rel="next" title="CountDownLatch线程等待">
-                  CountDownLatch线程等待 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
