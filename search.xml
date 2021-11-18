@@ -1639,6 +1639,46 @@
       </tags>
   </entry>
   <entry>
+    <title>函数概念</title>
+    <url>/2021/08/08/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><h4 id="一-、绝对值"><a href="#一-、绝对值" class="headerlink" title="(一)、绝对值"></a>(一)、绝对值</h4><p>$ $<br>\begin{align}<br>\left | a \right | &amp; = \begin{Bmatrix}  \notag<br> a &amp; a\ge 0\\<br> -a &amp; a&lt; 0<br>\end{Bmatrix}\quad \quad (\left | a \right | \ge 0)<br>\end{align}<br>$ $</p>
+<h5 id="绝对值不等式"><a href="#绝对值不等式" class="headerlink" title="绝对值不等式"></a>绝对值不等式</h5><p>$ $<br>\begin{align}<br>&amp; \left | x \right | \le a \quad (a&gt;0) \Longleftrightarrow -a \le x \le a; \notag \\<br>&amp; \left | x \right | \ge a \quad (a&gt;0) \Longleftrightarrow x \ge a 或 x \le -a; \notag<br>\end{align}<br>$ $</p>
+<h4 id="二-、区间"><a href="#二-、区间" class="headerlink" title="(二)、区间"></a>(二)、区间</h4><p>是介于某两个实数之间的全体实数，这两个实数叫做区间的端点</p>
+<center> $ \left \{ x|a < x < b \right \} $称为$\color{red}{\text{开区间}}$，记作$ (a,b) $ </center>
+<br>
+<center> <img src="../函数概念/%E5%9B%BE%E7%89%871.png" style="zoom:60%;"> </center>
+<br>
+<center> $\left \{ x|a \le x \le b \right \} $称为$\color{red}{\text{闭区间}}$，记作$ [a,b] $</center>
+<br>
+<center> <img src="../函数概念/%E5%9B%BE%E7%89%872.png" style="zoom:60%;"> </center>
+
+<center> $ \left \{ x|a \le x < b \right \} $称为半开半闭区间，记作$ [a,b) $ </center>
+<center> $ \left \{ x|a < x \le b \right \} $称为半开半闭区间，记作$ (a,b] $ </center>
+<br>
+<center> $ [a,+\infty ) = \left \{ x \mid a \le x \right \} $ </center>
+
+<center> $ \left ( -\infty ,b \right ) =\left \{ x \mid x < b \right \}  $ </center>
+
+<!-- \] -->
+<p><br></p>
+<center> <img src="../函数概念/%E5%9B%BE%E7%89%874.png" style="zoom:60%;"> </center>
+<br>
+<center> <img src="../函数概念/%E5%9B%BE%E7%89%875.png" style="zoom:60%;"> </center>
+
+<p>&ensp;&ensp;区间长度的定义:（上限-下限）<br>&ensp;&ensp;两端点间的距离(线段的长度)称为区间的长度</p>
+<h5 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h5><p>用区间表示下列不等式的解</p>
+<p>$ $<br>\begin{align}<br>&amp; x^2 &lt; 9\\<br>解: \notag \\<br>&amp; \left ( -\infty ,-3 \right ) \cup \left ( 3 ,+\infty  \right ) \notag \\<br>\notag \\<br>&amp; \left | x-2&lt;1 \right | \\<br>解: \notag \\<br>&amp; \left ( 1,3 \right ) \notag \\<br>\notag \\<br>&amp; x^2-5x-6&lt;0 \\<br>解: \notag \\<br>&amp; \left ( -1,6 \right ) \notag<br>\end{align}<br>$ $</p>
+<h4 id="邻域"><a href="#邻域" class="headerlink" title="邻域"></a>邻域</h4><p><center> <img src="../函数概念/%E5%9B%BE%E7%89%876.png" style="zoom:60%;"> </center><br><br><br>&ensp;&ensp;设a与δ是两个实数，且δ&gt;0<br>&ensp;&ensp;数集$\left \{ x\mid \left | x-a \right | &lt; \delta \right \}$称为点a的δ邻域，点a叫做邻域的中心，δ叫做邻域的半径<br>$ $<br>\begin{align}<br>U_{\delta }{(a)} = \left \{ x\mid a-\delta &lt;x&lt;a+\delta \right \}\notag<br>\end{align}<br>$ $</p>
+<p>&ensp;&ensp;点a的去心邻域，记作$U_{\delta }^{0}{(a)}$<br>$ $<br>\begin{align}<br>U_{\delta }^{0}{(a)} = \left \{ x\mid 0 &lt; \left | x-a \right | &lt; \delta \right \}\notag<br>\end{align}<br>$ $</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>内部类*</title>
     <url>/2021/07/23/%E5%86%85%E9%83%A8%E7%B1%BB/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><ol>
@@ -1677,46 +1717,6 @@
       </categories>
       <tags>
         <tag>java学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>函数概念</title>
-    <url>/2021/08/08/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><h4 id="一-、绝对值"><a href="#一-、绝对值" class="headerlink" title="(一)、绝对值"></a>(一)、绝对值</h4><p>$ $<br>\begin{align}<br>\left | a \right | &amp; = \begin{Bmatrix}  \notag<br> a &amp; a\ge 0\\<br> -a &amp; a&lt; 0<br>\end{Bmatrix}\quad \quad (\left | a \right | \ge 0)<br>\end{align}<br>$ $</p>
-<h5 id="绝对值不等式"><a href="#绝对值不等式" class="headerlink" title="绝对值不等式"></a>绝对值不等式</h5><p>$ $<br>\begin{align}<br>&amp; \left | x \right | \le a \quad (a&gt;0) \Longleftrightarrow -a \le x \le a; \notag \\<br>&amp; \left | x \right | \ge a \quad (a&gt;0) \Longleftrightarrow x \ge a 或 x \le -a; \notag<br>\end{align}<br>$ $</p>
-<h4 id="二-、区间"><a href="#二-、区间" class="headerlink" title="(二)、区间"></a>(二)、区间</h4><p>是介于某两个实数之间的全体实数，这两个实数叫做区间的端点</p>
-<center> $ \left \{ x|a < x < b \right \} $称为$\color{red}{\text{开区间}}$，记作$ (a,b) $ </center>
-<br>
-<center> <img src="../函数概念/%E5%9B%BE%E7%89%871.png" style="zoom:60%;"> </center>
-<br>
-<center> $\left \{ x|a \le x \le b \right \} $称为$\color{red}{\text{闭区间}}$，记作$ [a,b] $</center>
-<br>
-<center> <img src="../函数概念/%E5%9B%BE%E7%89%872.png" style="zoom:60%;"> </center>
-
-<center> $ \left \{ x|a \le x < b \right \} $称为半开半闭区间，记作$ [a,b) $ </center>
-<center> $ \left \{ x|a < x \le b \right \} $称为半开半闭区间，记作$ (a,b] $ </center>
-<br>
-<center> $ [a,+\infty ) = \left \{ x \mid a \le x \right \} $ </center>
-
-<center> $ \left ( -\infty ,b \right ) =\left \{ x \mid x < b \right \}  $ </center>
-
-<!-- \] -->
-<p><br></p>
-<center> <img src="../函数概念/%E5%9B%BE%E7%89%874.png" style="zoom:60%;"> </center>
-<br>
-<center> <img src="../函数概念/%E5%9B%BE%E7%89%875.png" style="zoom:60%;"> </center>
-
-<p>&ensp;&ensp;区间长度的定义:（上限-下限）<br>&ensp;&ensp;两端点间的距离(线段的长度)称为区间的长度</p>
-<h5 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h5><p>用区间表示下列不等式的解</p>
-<p>$ $<br>\begin{align}<br>&amp; x^2 &lt; 9\\<br>解: \notag \\<br>&amp; \left ( -\infty ,-3 \right ) \cup \left ( 3 ,+\infty  \right ) \notag \\<br>\notag \\<br>&amp; \left | x-2&lt;1 \right | \\<br>解: \notag \\<br>&amp; \left ( 1,3 \right ) \notag \\<br>\notag \\<br>&amp; x^2-5x-6&lt;0 \\<br>解: \notag \\<br>&amp; \left ( -1,6 \right ) \notag<br>\end{align}<br>$ $</p>
-<h4 id="邻域"><a href="#邻域" class="headerlink" title="邻域"></a>邻域</h4><p><center> <img src="../函数概念/%E5%9B%BE%E7%89%876.png" style="zoom:60%;"> </center><br><br><br>&ensp;&ensp;设a与δ是两个实数，且δ&gt;0<br>&ensp;&ensp;数集$\left \{ x\mid \left | x-a \right | &lt; \delta \right \}$称为点a的δ邻域，点a叫做邻域的中心，δ叫做邻域的半径<br>$ $<br>\begin{align}<br>U_{\delta }{(a)} = \left \{ x\mid a-\delta &lt;x&lt;a+\delta \right \}\notag<br>\end{align}<br>$ $</p>
-<p>&ensp;&ensp;点a的去心邻域，记作$U_{\delta }^{0}{(a)}$<br>$ $<br>\begin{align}<br>U_{\delta }^{0}{(a)} = \left \{ x\mid 0 &lt; \left | x-a \right | &lt; \delta \right \}\notag<br>\end{align}<br>$ $</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
