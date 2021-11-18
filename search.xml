@@ -1206,6 +1206,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Android软键盘显示“搜索”</title>
+    <url>/2021/11/17/Android%E8%BD%AF%E9%94%AE%E7%9B%98%E6%98%BE%E7%A4%BA%E2%80%9C%E6%90%9C%E7%B4%A2%E2%80%9D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h4 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h4><p><img src="../Android软键盘显示“搜索”/img1.gif" width="40%" height="40%" /></p>
+<h4 id="布局属性"><a href="#布局属性" class="headerlink" title="布局属性"></a>布局属性</h4><p>&ensp;&ensp;&ensp;&ensp;首先需要在EditText的布局中插入android:imeOptions=”actionSearch”和android:inputType=”text”属性，使键盘右下角显示搜索按钮<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:hint</span>=<span class="string">&quot;新闻搜索&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/edit_newsSearch&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:inputType</span>=<span class="string">&quot;text&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:lines</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:imeOptions</span>=<span class="string">&quot;actionSearch&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:paddingRight</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:paddingLeft</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_marginRight</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_marginLeft</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;48dp&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>注意：这里一定不要添加android:maxLength=”1”，添加后会无视android:imeOptions=”actionSearch”的效果</p>
+<h4 id="程序实现"><a href="#程序实现" class="headerlink" title="程序实现"></a>程序实现</h4><p>&ensp;&ensp;&ensp;&ensp;然后在java代码中给软键盘添加监听事件<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//    给键盘添加监听</span></span><br><span class="line">    edit_newsSearch.setOnKeyListener(<span class="keyword">new</span> View.OnKeyListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKey</span><span class="params">(View view, <span class="keyword">int</span> i, KeyEvent keyEvent)</span> </span>&#123;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             * i就是actionId或者keyId，通过actionId判断点击的按钮是否是软键盘的搜索</span></span><br><span class="line"><span class="comment">             * 这里有一个坑，应该算是sdk版本不同留下的坑</span></span><br><span class="line"><span class="comment">             * 在sdk30开发中，i的变量名叫做actionId，</span></span><br><span class="line"><span class="comment">             * 我非常确定，当点击搜索按钮时actionId和EditorInfo.IME_ACTION_SEARCH是相等的，</span></span><br><span class="line"><span class="comment">             * 即action == EditorInfo.IME_ACTION_SEARCH == 3</span></span><br><span class="line"><span class="comment">             * 但是在sdk26中i = 66，EditorInfo.IME_ACTION_SEARCH = 3</span></span><br><span class="line"><span class="comment">             * 不过keyEvent.KEYCODE_ENTER = 66，所以我要他妈使用keyEvent.KEYCODE_ENTER？</span></span><br><span class="line"><span class="comment">             * 原理是因为搜索按钮把回车按钮取代了吗？？？？</span></span><br><span class="line"><span class="comment">             * */</span></span><br><span class="line">            <span class="keyword">if</span> (i == keyEvent.KEYCODE_ENTER)&#123;</span><br><span class="line"><span class="comment">//                执行的事件</span></span><br><span class="line">                Toast.makeText(getContext(),edit_newsSearch.getText().toString(),Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>拓展：在EditText的父布局或者顶层布局中添加属性android:focusableInTouchMode=”true”和android:focusable=”true”，可以禁止EditText自动获取焦点</p>
+]]></content>
+      <categories>
+        <category>关于Android</category>
+      </categories>
+      <tags>
+        <tag>Android学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android物理按键事件</title>
     <url>/2021/10/12/Android%E7%89%A9%E7%90%86%E6%8C%89%E9%94%AE%E4%BA%8B%E4%BB%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>Android常用的物理按键及其触发事件</p>
@@ -1243,22 +1259,6 @@
       </categories>
       <tags>
         <tag>Android记事本</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android软键盘显示“搜索”</title>
-    <url>/2021/11/17/Android%E8%BD%AF%E9%94%AE%E7%9B%98%E6%98%BE%E7%A4%BA%E2%80%9C%E6%90%9C%E7%B4%A2%E2%80%9D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h4 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h4><p><img src="../Android软键盘显示“搜索”/img1.gif" width="40%" height="40%" /></p>
-<h4 id="布局属性"><a href="#布局属性" class="headerlink" title="布局属性"></a>布局属性</h4><p>&ensp;&ensp;&ensp;&ensp;首先需要在EditText的布局中插入android:imeOptions=”actionSearch”和android:inputType=”text”属性，使键盘右下角显示搜索按钮<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:hint</span>=<span class="string">&quot;新闻搜索&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/edit_newsSearch&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:inputType</span>=<span class="string">&quot;text&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:lines</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:imeOptions</span>=<span class="string">&quot;actionSearch&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:paddingRight</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:paddingLeft</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_marginRight</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_marginLeft</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;48dp&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>注意：这里一定不要添加android:maxLength=”1”，添加后会无视android:imeOptions=”actionSearch”的效果</p>
-<h4 id="程序实现"><a href="#程序实现" class="headerlink" title="程序实现"></a>程序实现</h4><p>&ensp;&ensp;&ensp;&ensp;然后在java代码中给软键盘添加监听事件<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//    给键盘添加监听</span></span><br><span class="line">    edit_newsSearch.setOnKeyListener(<span class="keyword">new</span> View.OnKeyListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKey</span><span class="params">(View view, <span class="keyword">int</span> i, KeyEvent keyEvent)</span> </span>&#123;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             * i就是actionId或者keyId，通过actionId判断点击的按钮是否是软键盘的搜索</span></span><br><span class="line"><span class="comment">             * 这里有一个坑，应该算是sdk版本不同留下的坑</span></span><br><span class="line"><span class="comment">             * 在sdk30开发中，i的变量名叫做actionId，</span></span><br><span class="line"><span class="comment">             * 我非常确定，当点击搜索按钮时actionId和EditorInfo.IME_ACTION_SEARCH是相等的，</span></span><br><span class="line"><span class="comment">             * 即action == EditorInfo.IME_ACTION_SEARCH == 3</span></span><br><span class="line"><span class="comment">             * 但是在sdk26中i = 66，EditorInfo.IME_ACTION_SEARCH = 3</span></span><br><span class="line"><span class="comment">             * 不过keyEvent.KEYCODE_ENTER = 66，所以我要他妈使用keyEvent.KEYCODE_ENTER？</span></span><br><span class="line"><span class="comment">             * 原理是因为搜索按钮把回车按钮取代了吗？？？？</span></span><br><span class="line"><span class="comment">             * */</span></span><br><span class="line">            <span class="keyword">if</span> (i == keyEvent.KEYCODE_ENTER)&#123;</span><br><span class="line"><span class="comment">//                执行的事件</span></span><br><span class="line">                Toast.makeText(getContext(),edit_newsSearch.getText().toString(),Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>拓展：在EditText的父布局或者顶层布局中添加属性android:focusableInTouchMode=”true”和android:focusable=”true”，可以禁止EditText自动获取焦点</p>
-]]></content>
-      <categories>
-        <category>关于Android</category>
-      </categories>
-      <tags>
-        <tag>Android学习笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1473,32 +1473,6 @@
       </tags>
   </entry>
   <entry>
-    <title>gitee+hexo博客</title>
-    <url>/2021/07/15/github-hexo%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><center>gitee等代码托管平台搭建hexo博客</center><br><span id="more"></span></p>
-<p>1.工具安装<br>安装node.js，<a href="https://nodejs.org/zh-cn/">下载</a><br>安装git工具，<a href="https://git-scm.com/">下载</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看node是否安装成功</span><br><span class="line">node -v</span><br><span class="line">npm -v </span><br></pre></td></tr></table></figure>
-<p>2.安装hexo<br>&ensp;&ensp;创建一个文件夹作为博客目录，右键 → Git Bsah Here打开<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 在新打开的命令窗口中执行</span><br><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure></p>
-<p>3.初始化环境<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 进入博客目录下</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
-<p>4.启动本地服务<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server # 或简写hexo s</span><br><span class="line"># 提示Start processing后，浏览器打开http://localhost:4000</span><br></pre></td></tr></table></figure></p>
-<p>5.gitee项目仓库地址<br>&ensp;&ensp;得到gitee中项目仓库的地址<a href="https://gitee.com/xxinin/blog">https://gitee.com/xxinin/blog</a></p>
-<p>6.打开博客目录下的_config.yml文件<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改以下配置：</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://gitee.com/xxinin/blog    #将地址换成自己的地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
-<p>7.同步至gitee仓库<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 首次要安装一个部署插件</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean     # 清空旧缓存</span><br><span class="line">hexo generate  # 生成静态文件，可以用简写hexo g</span><br><span class="line">hexo deploy    # 推送到gitee，可以用简写hexo d</span><br><span class="line"># 输入gitee的用户名和密码（本人在这边出现问题用户名登录好像只能使用邮箱，用户名登录不上去）</span><br></pre></td></tr></table></figure></p>
-<p>8.登录<br>首次同步会要求登录gitee的账户，正常输入即可，通常情况下登陆一次就会有在本地保存凭据</p>
-<p>若hexo d同步时报错<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unable to access &#x27;https://gitee.com/xxinin/blog/&#x27;: The requested URL returned error: 403</span><br></pre></td></tr></table></figure><br>说明本地存在其他账户的凭据，打开控制面板→用户账户→管理windows凭据→删除和gitee相关的凭据即可</p>
-<p>9.开启gitee pages服务</p>
-<p>开启后得到域名<a href="https://xxinin.gitee.io/blog">https://xxinin.gitee.io/blog</a><br>填入_config.yml中url</p>
-<p>10.其它配置不作详细描述<br><a href="https://hexo.io/zh-cn/docs/">hexo 官方中文文档</a></p>
-]]></content>
-      <categories>
-        <category>随手记</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-        <tag>hexo博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo+next中数学公式的引用</title>
     <url>/2021/08/08/hexo-next%E4%B8%AD%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BC%95%E7%94%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="简单方程"><a href="#简单方程" class="headerlink" title="简单方程"></a>简单方程</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq1&#125; </span><br><span class="line">e=mc ^ 2 </span><br><span class="line">\end &#123;equation&#125; $ $</span><br></pre></td></tr></table></figure>
@@ -1527,6 +1501,32 @@
         <category>随手记</category>
       </categories>
       <tags>
+        <tag>hexo博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>gitee+hexo博客</title>
+    <url>/2021/07/15/github-hexo%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><center>gitee等代码托管平台搭建hexo博客</center><br><span id="more"></span></p>
+<p>1.工具安装<br>安装node.js，<a href="https://nodejs.org/zh-cn/">下载</a><br>安装git工具，<a href="https://git-scm.com/">下载</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看node是否安装成功</span><br><span class="line">node -v</span><br><span class="line">npm -v </span><br></pre></td></tr></table></figure>
+<p>2.安装hexo<br>&ensp;&ensp;创建一个文件夹作为博客目录，右键 → Git Bsah Here打开<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 在新打开的命令窗口中执行</span><br><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure></p>
+<p>3.初始化环境<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 进入博客目录下</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
+<p>4.启动本地服务<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server # 或简写hexo s</span><br><span class="line"># 提示Start processing后，浏览器打开http://localhost:4000</span><br></pre></td></tr></table></figure></p>
+<p>5.gitee项目仓库地址<br>&ensp;&ensp;得到gitee中项目仓库的地址<a href="https://gitee.com/xxinin/blog">https://gitee.com/xxinin/blog</a></p>
+<p>6.打开博客目录下的_config.yml文件<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改以下配置：</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://gitee.com/xxinin/blog    #将地址换成自己的地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p>7.同步至gitee仓库<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 首次要安装一个部署插件</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean     # 清空旧缓存</span><br><span class="line">hexo generate  # 生成静态文件，可以用简写hexo g</span><br><span class="line">hexo deploy    # 推送到gitee，可以用简写hexo d</span><br><span class="line"># 输入gitee的用户名和密码（本人在这边出现问题用户名登录好像只能使用邮箱，用户名登录不上去）</span><br></pre></td></tr></table></figure></p>
+<p>8.登录<br>首次同步会要求登录gitee的账户，正常输入即可，通常情况下登陆一次就会有在本地保存凭据</p>
+<p>若hexo d同步时报错<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unable to access &#x27;https://gitee.com/xxinin/blog/&#x27;: The requested URL returned error: 403</span><br></pre></td></tr></table></figure><br>说明本地存在其他账户的凭据，打开控制面板→用户账户→管理windows凭据→删除和gitee相关的凭据即可</p>
+<p>9.开启gitee pages服务</p>
+<p>开启后得到域名<a href="https://xxinin.gitee.io/blog">https://xxinin.gitee.io/blog</a><br>填入_config.yml中url</p>
+<p>10.其它配置不作详细描述<br><a href="https://hexo.io/zh-cn/docs/">hexo 官方中文文档</a></p>
+]]></content>
+      <categories>
+        <category>随手记</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
         <tag>hexo博客</tag>
       </tags>
   </entry>
@@ -1639,6 +1639,46 @@
       </tags>
   </entry>
   <entry>
+    <title>函数概念</title>
+    <url>/2021/08/08/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><h4 id="一-、绝对值"><a href="#一-、绝对值" class="headerlink" title="(一)、绝对值"></a>(一)、绝对值</h4><p>$ $<br>\begin{align}<br>\left | a \right | &amp; = \begin{Bmatrix}  \notag<br> a &amp; a\ge 0\\<br> -a &amp; a&lt; 0<br>\end{Bmatrix}\quad \quad (\left | a \right | \ge 0)<br>\end{align}<br>$ $</p>
+<h5 id="绝对值不等式"><a href="#绝对值不等式" class="headerlink" title="绝对值不等式"></a>绝对值不等式</h5><p>$ $<br>\begin{align}<br>&amp; \left | x \right | \le a \quad (a&gt;0) \Longleftrightarrow -a \le x \le a; \notag \\<br>&amp; \left | x \right | \ge a \quad (a&gt;0) \Longleftrightarrow x \ge a 或 x \le -a; \notag<br>\end{align}<br>$ $</p>
+<h4 id="二-、区间"><a href="#二-、区间" class="headerlink" title="(二)、区间"></a>(二)、区间</h4><p>是介于某两个实数之间的全体实数，这两个实数叫做区间的端点</p>
+<center> $ \left \{ x|a < x < b \right \} $称为$\color{red}{\text{开区间}}$，记作$ (a,b) $ </center>
+<br>
+<center> <img src="../函数概念/%E5%9B%BE%E7%89%871.png" style="zoom:60%;"> </center>
+<br>
+<center> $\left \{ x|a \le x \le b \right \} $称为$\color{red}{\text{闭区间}}$，记作$ [a,b] $</center>
+<br>
+<center> <img src="../函数概念/%E5%9B%BE%E7%89%872.png" style="zoom:60%;"> </center>
+
+<center> $ \left \{ x|a \le x < b \right \} $称为半开半闭区间，记作$ [a,b) $ </center>
+<center> $ \left \{ x|a < x \le b \right \} $称为半开半闭区间，记作$ (a,b] $ </center>
+<br>
+<center> $ [a,+\infty ) = \left \{ x \mid a \le x \right \} $ </center>
+
+<center> $ \left ( -\infty ,b \right ) =\left \{ x \mid x < b \right \}  $ </center>
+
+<!-- \] -->
+<p><br></p>
+<center> <img src="../函数概念/%E5%9B%BE%E7%89%874.png" style="zoom:60%;"> </center>
+<br>
+<center> <img src="../函数概念/%E5%9B%BE%E7%89%875.png" style="zoom:60%;"> </center>
+
+<p>&ensp;&ensp;区间长度的定义:（上限-下限）<br>&ensp;&ensp;两端点间的距离(线段的长度)称为区间的长度</p>
+<h5 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h5><p>用区间表示下列不等式的解</p>
+<p>$ $<br>\begin{align}<br>&amp; x^2 &lt; 9\\<br>解: \notag \\<br>&amp; \left ( -\infty ,-3 \right ) \cup \left ( 3 ,+\infty  \right ) \notag \\<br>\notag \\<br>&amp; \left | x-2&lt;1 \right | \\<br>解: \notag \\<br>&amp; \left ( 1,3 \right ) \notag \\<br>\notag \\<br>&amp; x^2-5x-6&lt;0 \\<br>解: \notag \\<br>&amp; \left ( -1,6 \right ) \notag<br>\end{align}<br>$ $</p>
+<h4 id="邻域"><a href="#邻域" class="headerlink" title="邻域"></a>邻域</h4><p><center> <img src="../函数概念/%E5%9B%BE%E7%89%876.png" style="zoom:60%;"> </center><br><br><br>&ensp;&ensp;设a与δ是两个实数，且δ&gt;0<br>&ensp;&ensp;数集$\left \{ x\mid \left | x-a \right | &lt; \delta \right \}$称为点a的δ邻域，点a叫做邻域的中心，δ叫做邻域的半径<br>$ $<br>\begin{align}<br>U_{\delta }{(a)} = \left \{ x\mid a-\delta &lt;x&lt;a+\delta \right \}\notag<br>\end{align}<br>$ $</p>
+<p>&ensp;&ensp;点a的去心邻域，记作$U_{\delta }^{0}{(a)}$<br>$ $<br>\begin{align}<br>U_{\delta }^{0}{(a)} = \left \{ x\mid 0 &lt; \left | x-a \right | &lt; \delta \right \}\notag<br>\end{align}<br>$ $</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>内部类*</title>
     <url>/2021/07/23/%E5%86%85%E9%83%A8%E7%B1%BB/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><ol>
@@ -1677,46 +1717,6 @@
       </categories>
       <tags>
         <tag>java学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>函数概念</title>
-    <url>/2021/08/08/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><h4 id="一-、绝对值"><a href="#一-、绝对值" class="headerlink" title="(一)、绝对值"></a>(一)、绝对值</h4><p>$ $<br>\begin{align}<br>\left | a \right | &amp; = \begin{Bmatrix}  \notag<br> a &amp; a\ge 0\\<br> -a &amp; a&lt; 0<br>\end{Bmatrix}\quad \quad (\left | a \right | \ge 0)<br>\end{align}<br>$ $</p>
-<h5 id="绝对值不等式"><a href="#绝对值不等式" class="headerlink" title="绝对值不等式"></a>绝对值不等式</h5><p>$ $<br>\begin{align}<br>&amp; \left | x \right | \le a \quad (a&gt;0) \Longleftrightarrow -a \le x \le a; \notag \\<br>&amp; \left | x \right | \ge a \quad (a&gt;0) \Longleftrightarrow x \ge a 或 x \le -a; \notag<br>\end{align}<br>$ $</p>
-<h4 id="二-、区间"><a href="#二-、区间" class="headerlink" title="(二)、区间"></a>(二)、区间</h4><p>是介于某两个实数之间的全体实数，这两个实数叫做区间的端点</p>
-<center> $ \left \{ x|a < x < b \right \} $称为$\color{red}{\text{开区间}}$，记作$ (a,b) $ </center>
-<br>
-<center> <img src="../函数概念/%E5%9B%BE%E7%89%871.png" style="zoom:60%;"> </center>
-<br>
-<center> $\left \{ x|a \le x \le b \right \} $称为$\color{red}{\text{闭区间}}$，记作$ [a,b] $</center>
-<br>
-<center> <img src="../函数概念/%E5%9B%BE%E7%89%872.png" style="zoom:60%;"> </center>
-
-<center> $ \left \{ x|a \le x < b \right \} $称为半开半闭区间，记作$ [a,b) $ </center>
-<center> $ \left \{ x|a < x \le b \right \} $称为半开半闭区间，记作$ (a,b] $ </center>
-<br>
-<center> $ [a,+\infty ) = \left \{ x \mid a \le x \right \} $ </center>
-
-<center> $ \left ( -\infty ,b \right ) =\left \{ x \mid x < b \right \}  $ </center>
-
-<!-- \] -->
-<p><br></p>
-<center> <img src="../函数概念/%E5%9B%BE%E7%89%874.png" style="zoom:60%;"> </center>
-<br>
-<center> <img src="../函数概念/%E5%9B%BE%E7%89%875.png" style="zoom:60%;"> </center>
-
-<p>&ensp;&ensp;区间长度的定义:（上限-下限）<br>&ensp;&ensp;两端点间的距离(线段的长度)称为区间的长度</p>
-<h5 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h5><p>用区间表示下列不等式的解</p>
-<p>$ $<br>\begin{align}<br>&amp; x^2 &lt; 9\\<br>解: \notag \\<br>&amp; \left ( -\infty ,-3 \right ) \cup \left ( 3 ,+\infty  \right ) \notag \\<br>\notag \\<br>&amp; \left | x-2&lt;1 \right | \\<br>解: \notag \\<br>&amp; \left ( 1,3 \right ) \notag \\<br>\notag \\<br>&amp; x^2-5x-6&lt;0 \\<br>解: \notag \\<br>&amp; \left ( -1,6 \right ) \notag<br>\end{align}<br>$ $</p>
-<h4 id="邻域"><a href="#邻域" class="headerlink" title="邻域"></a>邻域</h4><p><center> <img src="../函数概念/%E5%9B%BE%E7%89%876.png" style="zoom:60%;"> </center><br><br><br>&ensp;&ensp;设a与δ是两个实数，且δ&gt;0<br>&ensp;&ensp;数集$\left \{ x\mid \left | x-a \right | &lt; \delta \right \}$称为点a的δ邻域，点a叫做邻域的中心，δ叫做邻域的半径<br>$ $<br>\begin{align}<br>U_{\delta }{(a)} = \left \{ x\mid a-\delta &lt;x&lt;a+\delta \right \}\notag<br>\end{align}<br>$ $</p>
-<p>&ensp;&ensp;点a的去心邻域，记作$U_{\delta }^{0}{(a)}$<br>$ $<br>\begin{align}<br>U_{\delta }^{0}{(a)} = \left \{ x\mid 0 &lt; \left | x-a \right | &lt; \delta \right \}\notag<br>\end{align}<br>$ $</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -1811,22 +1811,6 @@
       <categories>
         <category>我的文章</category>
       </categories>
-  </entry>
-  <entry>
-    <title>小衅笔记</title>
-    <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-<center>啦啦啦，啥也没有🌟写</center>
-]]></content>
-      <categories>
-        <category>随手记</category>
-      </categories>
-      <tags>
-        <tag>站点日志</tag>
-      </tags>
   </entry>
   <entry>
     <title>怂崽</title>
@@ -1928,6 +1912,22 @@
       </tags>
   </entry>
   <entry>
+    <title>小衅笔记</title>
+    <url>/2021/07/12/%E5%B0%8F%E8%A1%85%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+<center>啦啦啦，啥也没有🌟写</center>
+]]></content>
+      <categories>
+        <category>随手记</category>
+      </categories>
+      <tags>
+        <tag>站点日志</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>抽象类abstract</title>
     <url>/2021/07/22/%E6%8A%BD%E8%B1%A1%E7%B1%BBabstract/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><ol>
@@ -1947,6 +1947,17 @@
 <p>抽象类的子类，要么重写父类的全部抽象方法，要么也是抽象类</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 炎龙铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;封魔斩&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 风影铠甲2 <span class="keyword">extends</span> 铠甲勇士2 </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 铠甲技能<span class="number">2</span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;穿风刺&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 帝皇铠甲 <span class="keyword">extends</span> 铠甲勇士2</span>&#123;</span><br><span class="line"><span class="comment">//    抽象类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>关于java</category>
+      </categories>
+      <tags>
+        <tag>java学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>枚举</title>
+    <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>关于java</category>
       </categories>
@@ -1985,17 +1996,6 @@
 <li>一个类只能继承一个类；一个类可以实现多个接口</li>
 </ol>
 ]]></content>
-      <categories>
-        <category>关于java</category>
-      </categories>
-      <tags>
-        <tag>java学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>枚举</title>
-    <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>关于java</category>
       </categories>
