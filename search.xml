@@ -912,6 +912,25 @@
       </tags>
   </entry>
   <entry>
+    <title>Android判断当前设备</title>
+    <url>/2021/11/17/Android%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8D%E8%AE%BE%E5%A4%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><a href="../../Configuration类的常量与变量">Configuration类的常量与变量</a></p>
+<h4 id="屏幕大小判断"><a href="#屏幕大小判断" class="headerlink" title="屏幕大小判断"></a>屏幕大小判断</h4><p>&ensp;&ensp;&ensp;&ensp;Configuration类用于描述手机设备上的配置信息<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  获得Configuration对象</span></span><br><span class="line">  Configuration configuration = getResources().getConfiguration();</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;通过Configuration对象就可以获取系统的配置信息，例如<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  获取屏幕bit大小，是一个变量</span></span><br><span class="line">   <span class="keyword">int</span> a = <span class="keyword">this</span>.getResources().getConfiguration().screenLayout;</span><br><span class="line">  </span><br><span class="line"><span class="comment">//  作为一个单位，可以对屏幕的bit大小进行位运算，位运算后得到一个“代表值”</span></span><br><span class="line">  <span class="keyword">int</span> b = Configuration.SCREENLAYOUT_SIZE_MASK;</span><br><span class="line">  </span><br><span class="line"><span class="comment">//  位运算方式</span></span><br><span class="line">  <span class="keyword">int</span> c = a &amp; b;</span><br><span class="line">  </span><br><span class="line"><span class="comment">//  获取一个“代表值”，表示屏幕至少约为480x640(dp单位)，常量</span></span><br><span class="line">  <span class="keyword">int</span> d = Configuration.SCREENLAYOUT_SIZE_LARGE</span><br><span class="line">  </span><br><span class="line"><span class="comment">//  获取一个“代表值”，表示屏幕至少约为320x470(dp单位)，常量</span></span><br><span class="line">  <span class="keyword">int</span> d = Configuration.SCREENLAYOUT_SIZE_NORMAL</span><br><span class="line">  </span><br><span class="line"><span class="comment">//  获取一个“代表值”，表示屏幕至少约为320x426(dp单位)，常量</span></span><br><span class="line">  <span class="keyword">int</span> d = Configuration.SCREENLAYOUT_SIZE_SMALL</span><br><span class="line">  </span><br><span class="line"><span class="comment">//  获取一个“代表值”，表示未设置大小，常量</span></span><br><span class="line">  <span class="keyword">int</span> d = Configuration.SCREENLAYOUT_SIZE_UNDEFINED</span><br><span class="line">  </span><br><span class="line"><span class="comment">//  获取一个“代表值”，表示屏幕至少约为720x960(dp单位)，常量</span></span><br><span class="line">  <span class="keyword">int</span> d = Configuration.SCREENLAYOUT_SIZE_XLARGE</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 如果c大于d，说明当前屏幕大小至少为代表值d代表的大小</span></span><br><span class="line">  <span class="keyword">boolean</span> e = c &gt; d;</span><br></pre></td></tr></table></figure></p>
+<h4 id="判断是否为平板"><a href="#判断是否为平板" class="headerlink" title="判断是否为平板"></a>判断是否为平板</h4><p>&ensp;&ensp;&ensp;&ensp;官方给的方法<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isPad</span><span class="params">(Context context)</span></span>&#123;</span><br><span class="line"><span class="comment">//        获取屏幕总Bit数</span></span><br><span class="line">        <span class="keyword">int</span> a = context.getResources().getConfiguration().screenLayout;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        作为一个单位，对屏幕的bit大小进行位运算的数</span></span><br><span class="line">        <span class="keyword">int</span> b = Configuration.SCREENLAYOUT_SIZE_MASK;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        通过SCREENLAYOUT_SIZE_MASK计算得到一个结果，该结果是一个“代表值”</span></span><br><span class="line">        <span class="keyword">int</span> c = a &amp; b;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        获取一个代表值，表示屏幕至少约为480x640(dp单位)</span></span><br><span class="line">        <span class="keyword">int</span> d = Configuration.SCREENLAYOUT_SIZE_LARGE;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        如果代表值c大于代表值d，说明当前屏幕至少约为480x640(dp单位)</span></span><br><span class="line">        <span class="keyword">boolean</span> e = c &gt; d;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        如果大于480x640(dp单位)说明是平板，返回布尔值</span></span><br><span class="line">        <span class="keyword">return</span> e;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;简化合并一下<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isPad</span><span class="params">(Context context)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (context.getResources().getConfiguration().screenLayout &amp; Configuration.SCREENLAYOUT_SIZE_MASK) &gt;= Configuration.SCREENLAYOUT_SIZE_LARGE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;总起来说，就是获取屏幕bit大小，然后通过SCREENLAYOUT_SIZE_MASK计算当前bit大小的代表值，通过代表值的对比，就可以得到当前屏幕至少应该有多大</p>
+<p>&ensp;&ensp;&ensp;&ensp;但是这种方法在一定环境的刺激下就不灵了，比如华为的平板可以放大界面，所以有了一种优化方案：</p>
+<p>&ensp;&ensp;&ensp;&ensp;获取屏幕的长度和宽度(单位像素)，通过<label style="color:red;cursor:auto">勾股定理</label>计算屏幕的对角线长度，用对角线像素值计算出英寸大小，目前市面上最小的平板是7.0英寸，如果我们计算的英寸值大于等于7.0，说明当前的设备是平板设备，反之则是手机设备<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isPad</span><span class="params">(Context context)</span></span>&#123;</span><br><span class="line">        WindowManager windowManager = (WindowManager) context.getSystemService(context.WINDOW_SERVICE);</span><br><span class="line">        Display display = windowManager.getDefaultDisplay();</span><br><span class="line">        DisplayMetrics displayMetrics = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">        display.getMetrics(displayMetrics);</span><br><span class="line">        <span class="keyword">double</span> x = Math.pow(displayMetrics.widthPixels / displayMetrics.xdpi, <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">double</span> y = Math.pow(displayMetrics.heightPixels / displayMetrics.ydpi, <span class="number">2</span>);</span><br><span class="line"><span class="comment">//        屏幕英寸</span></span><br><span class="line">        <span class="keyword">double</span> inch = Math.sqrt(x + y);</span><br><span class="line"><span class="comment">//        大于等于7.0就是平板，反之就是手机</span></span><br><span class="line">        <span class="keyword">return</span> inch &gt;= <span class="number">7.0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>关于java</category>
+      </categories>
+      <tags>
+        <tag>java学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android工程结构</title>
     <url>/2021/09/07/Android%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><center><label style="color:red">注意：</label>下列所有目录均在Project目录模式下</center><br><img src="../Android工程结构/project.jpg"/></p>
@@ -1233,6 +1252,7 @@
 <h4 id="布局属性"><a href="#布局属性" class="headerlink" title="布局属性"></a>布局属性</h4><p>&ensp;&ensp;&ensp;&ensp;首先需要在EditText的布局中插入android:imeOptions=”actionSearch”和android:inputType=”text”属性，使键盘右下角显示搜索按钮<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:hint</span>=<span class="string">&quot;新闻搜索&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/edit_newsSearch&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:inputType</span>=<span class="string">&quot;text&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:lines</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:imeOptions</span>=<span class="string">&quot;actionSearch&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:paddingRight</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:paddingLeft</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_marginRight</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_marginLeft</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;48dp&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>注意：这里一定不要添加android:maxLength=”1”，添加后会无视android:imeOptions=”actionSearch”的效果</p>
 <h4 id="程序实现"><a href="#程序实现" class="headerlink" title="程序实现"></a>程序实现</h4><p>&ensp;&ensp;&ensp;&ensp;然后在java代码中给软键盘添加监听事件<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//    给键盘添加监听</span></span><br><span class="line">    edit_newsSearch.setOnKeyListener(<span class="keyword">new</span> View.OnKeyListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKey</span><span class="params">(View view, <span class="keyword">int</span> i, KeyEvent keyEvent)</span> </span>&#123;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             * i就是actionId或者keyId，通过actionId判断点击的按钮是否是软键盘的搜索</span></span><br><span class="line"><span class="comment">             * 这里有一个坑，应该算是sdk版本不同留下的坑</span></span><br><span class="line"><span class="comment">             * 在sdk30开发中，i的变量名叫做actionId，</span></span><br><span class="line"><span class="comment">             * 我非常确定，当点击搜索按钮时actionId和EditorInfo.IME_ACTION_SEARCH是相等的，</span></span><br><span class="line"><span class="comment">             * 即action == EditorInfo.IME_ACTION_SEARCH == 3</span></span><br><span class="line"><span class="comment">             * 但是在sdk26中i = 66，EditorInfo.IME_ACTION_SEARCH = 3</span></span><br><span class="line"><span class="comment">             * 不过keyEvent.KEYCODE_ENTER = 66，所以我要他妈使用keyEvent.KEYCODE_ENTER？</span></span><br><span class="line"><span class="comment">             * 原理是因为搜索按钮把回车按钮取代了吗？？？？</span></span><br><span class="line"><span class="comment">             * */</span></span><br><span class="line">            <span class="keyword">if</span> (i == keyEvent.KEYCODE_ENTER)&#123;</span><br><span class="line"><span class="comment">//                执行的事件</span></span><br><span class="line">                Toast.makeText(getContext(),edit_newsSearch.getText().toString(),Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>拓展：在EditText的父布局或者顶层布局中添加属性android:focusableInTouchMode=”true”和android:focusable=”true”，可以禁止EditText自动获取焦点</p>
 ]]></content>
       <categories>
         <category>关于java</category>
@@ -1288,17 +1308,6 @@
       </tags>
   </entry>
   <entry>
-    <title>RecyclerView滚动到指定item</title>
-    <url>/2021/10/27/RecyclerView%E6%BB%9A%E5%8A%A8%E5%88%B0%E6%8C%87%E5%AE%9Aitem/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
-      <categories>
-        <category>关于Android</category>
-      </categories>
-      <tags>
-        <tag>Android开发学习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Lambda</title>
     <url>/2021/07/24/Lambda/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>匿名类</p>
@@ -1310,6 +1319,17 @@
       </categories>
       <tags>
         <tag>java学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RecyclerView滚动到指定item</title>
+    <url>/2021/10/27/RecyclerView%E6%BB%9A%E5%8A%A8%E5%88%B0%E6%8C%87%E5%AE%9Aitem/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
+      <categories>
+        <category>关于Android</category>
+      </categories>
+      <tags>
+        <tag>Android开发学习</tag>
       </tags>
   </entry>
   <entry>
@@ -4191,6 +4211,335 @@
       </categories>
       <tags>
         <tag>Android开发学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Configuration类的常量与变量</title>
+    <url>/2021/11/17/Configuration%E7%B1%BB%E7%9A%84%E5%B8%B8%E9%87%8F%E4%B8%8E%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&ensp;&ensp;&ensp;&ensp;Android中Configuration类专门用于描述手机设备上的配置信息,这些配置信息既包括用户特定的配置项,也包括系统的动态设备配置。</p>
+<p>官方文档: <a href="https://developer.android.com/reference/android/content/res/Configuration">https://developer.android.com/reference/android/content/res/Configuration</a><br>中国地址: <a href="https://developer.android.google.cn/reference/android/content/res/Configuration">https://developer.android.google.cn/reference/android/content/res/Configuration</a></p>
+<p>在AndroidManifest.xml添加：<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt; uses-permission android:name=&quot;android.permission.CHANGE_CONFIGURATION&quot; /&gt;</span><br></pre></td></tr></table></figure><br>在&lt; activity标签中添加:<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">android:configChanges=&quot;orientation&quot;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Configuration对象"><a href="#Configuration对象" class="headerlink" title="Configuration对象"></a>Configuration对象</h4><p>&ensp;&ensp;&ensp;&ensp;对象获得<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Configuration configuration = getResources().getConfiguration();</span><br></pre></td></tr></table></figure></p>
+<h4 id="Configuration变量"><a href="#Configuration变量" class="headerlink" title="Configuration变量"></a>Configuration变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> colorMode;             <span class="comment">// 屏幕颜色的Bit</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> densityDpi;            <span class="comment">// 得到屏幕的像素密度</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">float</span> fontScale;           <span class="comment">// 获取当前用户设置的字体的缩放因子</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> hardKeyboardHidden;    <span class="comment">// 判断硬键盘是否可见，有两个可选值：HARDKEYBOARDHIDDEN_NO,HARDKEYBOARDHIDDEN_YES，分别是十六进制的0和1</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> keyboard;              <span class="comment">// 获取设备当前关联额键盘类型，该属性的返回值：KEYBOARD_12KEY（只有12个键的小键盘）、KEYBOARD_NOKEYS、KEYBOARD_QWERTY（普通键盘）</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> keyboardHidden;        <span class="comment">/* 该属性会返回一个boolean值用于表示当前的键盘是否可用,该属性不仅                                                                                </span></span><br><span class="line"><span class="comment">                                   * 会判断系统的硬件键盘,也会判断系统位于屏幕上的软键盘,如果该系统    </span></span><br><span class="line"><span class="comment">                                   * 的硬件键盘不可用但软键盘可用该属性会返回KEYBOARDHIDDEN_NO,只 </span></span><br><span class="line"><span class="comment">                                   * 有当两个键盘都不可用的时候才返回KEYBOARDHIDDEN_YES</span></span><br><span class="line"><span class="comment">                                   * */</span></span><br><span class="line"><span class="comment">/** <span class="doctag">@deprecated</span>(弃用) */</span>          </span><br><span class="line"><span class="meta">@Deprecated</span>                       </span><br><span class="line"><span class="keyword">public</span> Locale locale;             <span class="comment">// 获取用户当前的语言环境</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> mcc;                   <span class="comment">// 得到移动信号的国家码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> mnc;                   <span class="comment">// 得到移动信号的网络码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> navigation;            <span class="comment">/* 判断系统上方向导航设备的类型。该属性的返回值： </span></span><br><span class="line"><span class="comment">                                   * NAVIGATION_NONAV（无导航）、NAVIGATION_DPAD(DPAD导航）、 </span></span><br><span class="line"><span class="comment">                                   * NAVIGATION_TRACKBALL（轨迹球导航）、NAVIGATION_WHEEL（滚轮导航）</span></span><br><span class="line"><span class="comment">                                   * */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> navigationHidden;      <span class="comment">/* 全部5个案件或者DPAD(上下左右中按键)导航是否可用，</span></span><br><span class="line"><span class="comment">                                   * 返回NAVIGATIONHIDDEN_NO(不可用)，NAVIGATIONHIDDEN_YES(可用)</span></span><br><span class="line"><span class="comment">                                   * */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> orientation;           <span class="comment">/* 得到系统屏幕的方向,该属性将会返回ORIENTATION_LANDSCAPE(横向 </span></span><br><span class="line"><span class="comment">                                   * 屏幕),ORIENTATION_PORTRAIT(竖向屏幕),ORIENTATION_SQUARE(方 </span></span><br><span class="line"><span class="comment">                                   * 形屏幕)三个属性值之一</span></span><br><span class="line"><span class="comment">                                   * */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> screenHeightDp;        <span class="comment">// 屏幕可用高和宽，用dp表示</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> screenLayout;          <span class="comment">// 屏幕整体布局的位掩码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> screenWidthDp;         <span class="comment">// 当前可用的屏幕空间的宽度，以dp为单位</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> smallestScreenWidthDp; <span class="comment">// 应用程序在正常操作中看到的最小屏幕大小</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> touchscreen;           <span class="comment">/* 获取系统触摸屏的触摸方式。该属性的返回值： </span></span><br><span class="line"><span class="comment">                                   * TOUCHSCREEN_NOTOUCH（无触摸屏）、TOUCHSCREEN_STYLUS（触摸笔 </span></span><br><span class="line"><span class="comment">                                   * 式触摸屏）、TOUCHSCREEN_FINGER（接收手指的触摸屏）等属性值</span></span><br><span class="line"><span class="comment">                                   * */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> uiMode;                <span class="comment">// ui的bit</span></span><br></pre></td></tr></table></figure>
+<h4 id="Configuration常量"><a href="#Configuration常量" class="headerlink" title="Configuration常量"></a>Configuration常量</h4><p>&ensp;&ensp;&ensp;&ensp;复制别人的，好多都写错了，建议看官方文档</p>
+<table id="constants" class="jd-sumtable  ">
+    <tbody>
+        <tr>
+            <th colspan="12">常数</th>
+        </tr>
+        <tr class="alt-color api apilevel-17">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">density_dpi_undefined</td>
+            <td class="jd-descrcol" width="100%">默认值<code>densitydpi</code>这表明没有宽度已被指定。</td>
+        </tr>
+        <tr class=" api apilevel-3">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">hardkeyboardhidden_no</td>
+            <td class="jd-descrcol" width="100%">常数<code>hardkeyboardhidden</code>的相应值，物理键盘被暴露。</td>
+        </tr>
+        <tr class="alt-color api apilevel-3">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">hardkeyboardhidden_undefined</td>
+            <td class="jd-descrcol" width="100%">常数<code>hardkeyboardhidden</code>：一个值表示没有值已设置。</td>
+        </tr>
+        <tr class=" api apilevel-3">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">hardkeyboardhidden_yes</td>
+            <td class="jd-descrcol" width="100%">常数<code>hardkeyboardhidden</code>的相应值，物理键盘被隐藏。</td>
+        </tr>
+        <tr class="alt-color api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">keyboardhidden_no</td>
+            <td class="jd-descrcol" width="100%">常数<code>keyboardhidden</code>的相应值， keysexposed资源限定符。</td>
+        </tr>
+        <tr class=" api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">keyboardhidden_undefined</td>
+            <td class="jd-descrcol" width="100%">常数<code>keyboardhidden</code>：一个值表示没有值已设置。</td>
+        </tr>
+        <tr class="alt-color api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">keyboardhidden_yes</td>
+            <td class="jd-descrcol" width="100%">常数<code>keyboardhidden</code>的相应值， keyshidden资源限定符。</td>
+        </tr>
+        <tr class=" api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">keyboard_12key</td>
+            <td class="jd-descrcol" width="100%">常数<code>keyboard</code>的相应值， 12key资源限定符。</td>
+        </tr>
+        <tr class="alt-color api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">keyboard_nokeys</td>
+            <td class="jd-descrcol" width="100%">常数<code><code>keyboard</code></code>的相应值， nokeys资源限定符。</td>
+        </tr>
+        <tr class=" api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">keyboard_qwerty</td>
+            <td class="jd-descrcol" width="100%">常数<code><code>keyboard</code></code>的相应值， 键盘资源限定符。</td>
+        </tr>
+        <tr class="alt-color api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">keyboard_undefined</td>
+            <td class="jd-descrcol" width="100%">常数<code>keyboard</code>：一个值表示没有值已设置。</td>
+        </tr>
+        <tr class=" api apilevel-5">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">navigationhidden_no</td>
+            <td class="jd-descrcol" width="100%">常数<code>navigationhidden</code>的相应值， navexposed资源限定符。</td>
+        </tr>
+        <tr class="alt-color api apilevel-5">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">navigationhidden_undefined</td>
+            <td class="jd-descrcol" width="100%">常数<code>navigationhidden</code>：一个值表示没有值已设置。</td>
+        </tr>
+        <tr class=" api apilevel-5">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">navigationhidden_yes</td>
+            <td class="jd-descrcol" width="100%">常数<code>navigationhidden</code>的相应值， navhidden资源限定符。</td>
+        </tr>
+        <tr class="alt-color api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">navigation_dpad</td>
+            <td class="jd-descrcol" width="100%">常数navigation（导航）的相应值， 东风标致资源限定符。</td>
+        </tr>
+        <tr class=" api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">navigation_nonav</td>
+            <td class="jd-descrcol" width="100%">常数navigation（导航）的相应值， nonav资源限定符。</td>
+        </tr>
+        <tr class="alt-color api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">navigation_trackball</td>
+            <td class="jd-descrcol" width="100%">常数<code>navigation（导航）</code>的相应值， 轨迹球资源限定符。</td>
+        </tr>
+        <tr class=" api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">navigation_undefined</td>
+            <td class="jd-descrcol" width="100%">常数navigation（导航）：一个值表示没有值已设置。</td>
+        </tr>
+        <tr class="alt-color api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">navigation_wheel</td>
+            <td class="jd-descrcol" width="100%">常数<code>导航</code>的相应值， 轮资源限定符。</td>
+        </tr>
+        <tr class=" api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">orientation_landscape</td>
+            <td class="jd-descrcol" width="100%">常数<code>定位</code>的相应值， 土地资源限定符。</td>
+        </tr>
+        <tr class="alt-color api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">orientation_portrait</td>
+            <td class="jd-descrcol" width="100%">常数<code>定位</code>的相应值， 港口资源限定符。</td>
+        </tr>
+        <tr class=" api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">orientation_square</td>
+            <td class="jd-descrcol" width="100%"><em>这种不断的被废弃的在API级别16。目前不支持或使用。</em></td>
+        </tr>
+        <tr class="alt-color api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">orientation_undefined</td>
+            <td class="jd-descrcol" width="100%">常数<code>定位</code>：一个值表示没有值已设置。</td>
+        </tr>
+        <tr class=" api apilevel-17">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_layoutdir_ltr</td>
+            <td class="jd-descrcol" width="100%">
+                常数<code>screenlayout</code>：一个<code>screenlayout_layoutdir_mask</code>值表示一个布局目录已被设置为LTR。</td>
+        </tr>
+        <tr class="alt-color api apilevel-17">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_layoutdir_mask</td>
+            <td class="jd-descrcol" width="100%">常数<code>screenlayout</code>：编码布局方向位。</td>
+        </tr>
+        <tr class=" api apilevel-17">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_layoutdir_rtl</td>
+            <td class="jd-descrcol" width="100%">
+                常数<code>screenlayout</code>：一个<code>screenlayout_layoutdir_mask</code>值表示一个目录被设置为RTL布局。</td>
+        </tr>
+        <tr class="alt-color api apilevel-17">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_layoutdir_shift</td>
+            <td class="jd-descrcol" width="100%">常数<code>screenlayout</code>：位移到布局方向。</td>
+        </tr>
+        <tr class=" api apilevel-17">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_layoutdir_undefined</td>
+            <td class="jd-descrcol" width="100%">
+                常数<code>screenlayout</code>：一个<code>screenlayout_layoutdir_mask</code>值表示没有布局方向已定。</td>
+        </tr>
+        <tr class="alt-color api apilevel-4">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_long_mask</td>
+            <td class="jd-descrcol" width="100%">常数<code>screenlayout</code>：编码的纵横比位。</td>
+        </tr>
+        <tr class=" api apilevel-4">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_long_no</td>
+            <td class="jd-descrcol" width="100%">常数<code>screenlayout</code>：一个<code>screenlayout_long_mask</code>价值相当于
+                不久资源限定符。</td>
+        </tr>
+        <tr class="alt-color api apilevel-4">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_long_undefined</td>
+            <td class="jd-descrcol" width="100%">
+                常数<code>screenlayout</code>：一个<code>screenlayout_long_mask</code>值表示没有大小已设置。</td>
+        </tr>
+        <tr class=" api apilevel-4">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_long_yes</td>
+            <td class="jd-descrcol" width="100%">常数<code>screenlayout</code>：一个<code>screenlayout_long_mask</code>价值相当于
+                长资源限定符。</td>
+        </tr>
+        <tr class="alt-color api apilevel-4">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_size_large</td>
+            <td class="jd-descrcol" width="100%">
+                常数<code>screenlayout</code>：一个<code>screenlayout_size_mask</code>值指示屏幕至少约为480x640 dp单位，对应于 大资源限定符。</td>
+        </tr>
+        <tr class=" api apilevel-4">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_size_mask</td>
+            <td class="jd-descrcol" width="100%">常数<code>screenlayout</code>：编码比特的大小。</td>
+        </tr>
+        <tr class="alt-color api apilevel-4">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_size_normal</td>
+            <td class="jd-descrcol" width="100%">
+                常数<code>screenlayout</code>：一个<code>screenlayout_size_mask</code>值指示屏幕至少约320x470 dp单位，对应于 正常的资源限定符。</td>
+        </tr>
+        <tr class=" api apilevel-4">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_size_small</td>
+            <td class="jd-descrcol" width="100%">
+                常数<code>screenlayout</code>：一个<code>screenlayout_size_mask</code>值指示屏幕至少约320x426 dp单位，对应于 小资源限定符。</td>
+        </tr>
+        <tr class="alt-color api apilevel-4">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_size_undefined</td>
+            <td class="jd-descrcol" width="100%">
+                常数<code>screenlayout</code>：一个<code>screenlayout_size_mask</code>值表示没有大小已设置。</td>
+        </tr>
+        <tr class=" api apilevel-9">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_size_xlarge</td>
+            <td class="jd-descrcol" width="100%">
+                常数<code>screenlayout</code>：一个<code>screenlayout_size_mask</code>值指示屏幕至少约720x960 dp单位，对应于 超大资源限定符。</td>
+        </tr>
+        <tr class="alt-color api apilevel-17">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screenlayout_undefined</td>
+            <td class="jd-descrcol" width="100%">常数<code>screenlayout</code>：一个值表示screenlayout是未定义的</td>
+        </tr>
+        <tr class=" api apilevel-13">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screen_height_dp_undefined</td>
+            <td class="jd-descrcol" width="100%">默认值<code>screenHeightDp</code>这表明没有宽度已被指定。</td>
+        </tr>
+        <tr class="alt-color api apilevel-13">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">screen_width_dp_undefined</td>
+            <td class="jd-descrcol" width="100%">默认值<code>screenwidthdp</code>这表明没有宽度已被指定。</td>
+        </tr>
+        <tr class=" api apilevel-13">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">smallest_screen_width_dp_undefined</td>
+            <td class="jd-descrcol" width="100%">默认值<code>smallestscreenwidthdp</code>这表明没有宽度已被指定。</td>
+        </tr>
+        <tr class="alt-color api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">touchscreen_finger</td>
+            <td class="jd-descrcol" width="100%">常数<code>触摸屏</code>的相应值， 手指资源限定符。</td>
+        </tr>
+        <tr class=" api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">touchscreen_notouch</td>
+            <td class="jd-descrcol" width="100%">常数<code>触摸屏</code>的相应值， 无接触资源限定符。</td>
+        </tr>
+        <tr class="alt-color api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">touchscreen_stylus</td>
+            <td class="jd-descrcol" width="100%"><em>这种不断的被废弃的在API级别16。目前不支持或使用。</em></td>
+        </tr>
+        <tr class=" api apilevel-1">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">touchscreen_undefined</td>
+            <td class="jd-descrcol" width="100%">常数<code>触摸屏</code>：一个值表示没有值已设置。</td>
+        </tr>
+        <tr class="alt-color api apilevel-8">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">ui_mode_night_mask</td>
+            <td class="jd-descrcol" width="100%">常数<code>uimode</code>夜间模式：编码比特。</td>
+        </tr>
+        <tr class=" api apilevel-8">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">ui_mode_night_no</td>
+            <td class="jd-descrcol" width="100%">常数<code>uimode</code>：一个<code>ui_mode_night_mask</code>价值相当于 日间资源限定符。
+            </td>
+        </tr>
+        <tr class="alt-color api apilevel-8">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">ui_mode_night_undefined</td>
+            <td class="jd-descrcol" width="100%">常数<code>uimode</code>：一个<code>ui_mode_night_mask</code>值表明没有模式已设置。</td>
+        </tr>
+        <tr class=" api apilevel-8">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">ui_mode_night_yes</td>
+            <td class="jd-descrcol" width="100%">常数<code>uimode</code>：一个<code>ui_mode_night_mask</code>价值相当于 晚上资源限定符。
+            </td>
+        </tr>
+        <tr class="alt-color api apilevel-16">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">ui_mode_type_appliance</td>
+            <td class="jd-descrcol" width="100%">常数<code>uimode</code>：一个<code>ui_mode_type_mask</code>价值相当于 电器资源限定符。
+            </td>
+        </tr>
+        <tr class=" api apilevel-8">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">ui_mode_type_car</td>
+            <td class="jd-descrcol" width="100%">常数<code>uimode</code>：一个<code>ui_mode_type_mask</code>价值相当于 小型车资源限定符。
+            </td>
+        </tr>
+        <tr class="alt-color api apilevel-8">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">ui_mode_type_desk</td>
+            <td class="jd-descrcol" width="100%">常数<code>uimode</code>：一个<code>ui_mode_type_mask</code>价值相当于 书桌资源限定符。
+            </td>
+        </tr>
+        <tr class=" api apilevel-8">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">ui_mode_type_mask</td>
+            <td class="jd-descrcol" width="100%">常数<code>uimode</code>：编码模式位。</td>
+        </tr>
+        <tr class="alt-color api apilevel-8">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">ui_mode_type_normal</td>
+            <td class="jd-descrcol" width="100%">常数<code>uimode</code>：一个<code>ui_mode_type_mask</code>值对应的
+                没有用户界面模式限定符指定的资源。</td>
+        </tr>
+        <tr class=" api apilevel-13">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">ui_mode_type_television</td>
+            <td class="jd-descrcol" width="100%">常数<code>uimode</code>：一个<code>ui_mode_type_mask</code>价值相当于 电视机资源限定符。
+            </td>
+        </tr>
+        <tr class="alt-color api apilevel-8">
+            <td class="jd-typecol">int</td>
+            <td class="jd-linkcol">ui_mode_type_undefined</td>
+            <td class="jd-descrcol" width="100%">常数<code>uimode</code>：一个<code>ui_mode_type_mask</code>值表明没有模式已设置。</td>
+        </tr>
+    </tbody>
+</table>
+
+
+]]></content>
+      <categories>
+        <category>关于Android</category>
+      </categories>
+      <tags>
+        <tag>Android记事本</tag>
       </tags>
   </entry>
   <entry>
