@@ -1473,6 +1473,32 @@
       </tags>
   </entry>
   <entry>
+    <title>gitee+hexo博客</title>
+    <url>/2021/07/15/github-hexo%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><center>gitee等代码托管平台搭建hexo博客</center><br><span id="more"></span></p>
+<p>1.工具安装<br>安装node.js，<a href="https://nodejs.org/zh-cn/">下载</a><br>安装git工具，<a href="https://git-scm.com/">下载</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看node是否安装成功</span><br><span class="line">node -v</span><br><span class="line">npm -v </span><br></pre></td></tr></table></figure>
+<p>2.安装hexo<br>&ensp;&ensp;创建一个文件夹作为博客目录，右键 → Git Bsah Here打开<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 在新打开的命令窗口中执行</span><br><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure></p>
+<p>3.初始化环境<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 进入博客目录下</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
+<p>4.启动本地服务<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server # 或简写hexo s</span><br><span class="line"># 提示Start processing后，浏览器打开http://localhost:4000</span><br></pre></td></tr></table></figure></p>
+<p>5.gitee项目仓库地址<br>&ensp;&ensp;得到gitee中项目仓库的地址<a href="https://gitee.com/xxinin/blog">https://gitee.com/xxinin/blog</a></p>
+<p>6.打开博客目录下的_config.yml文件<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改以下配置：</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://gitee.com/xxinin/blog    #将地址换成自己的地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p>7.同步至gitee仓库<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 首次要安装一个部署插件</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean     # 清空旧缓存</span><br><span class="line">hexo generate  # 生成静态文件，可以用简写hexo g</span><br><span class="line">hexo deploy    # 推送到gitee，可以用简写hexo d</span><br><span class="line"># 输入gitee的用户名和密码（本人在这边出现问题用户名登录好像只能使用邮箱，用户名登录不上去）</span><br></pre></td></tr></table></figure></p>
+<p>8.登录<br>首次同步会要求登录gitee的账户，正常输入即可，通常情况下登陆一次就会有在本地保存凭据</p>
+<p>若hexo d同步时报错<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unable to access &#x27;https://gitee.com/xxinin/blog/&#x27;: The requested URL returned error: 403</span><br></pre></td></tr></table></figure><br>说明本地存在其他账户的凭据，打开控制面板→用户账户→管理windows凭据→删除和gitee相关的凭据即可</p>
+<p>9.开启gitee pages服务</p>
+<p>开启后得到域名<a href="https://xxinin.gitee.io/blog">https://xxinin.gitee.io/blog</a><br>填入_config.yml中url</p>
+<p>10.其它配置不作详细描述<br><a href="https://hexo.io/zh-cn/docs/">hexo 官方中文文档</a></p>
+]]></content>
+      <categories>
+        <category>随手记</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>hexo博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo+next中数学公式的引用</title>
     <url>/2021/08/08/hexo-next%E4%B8%AD%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BC%95%E7%94%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="简单方程"><a href="#简单方程" class="headerlink" title="简单方程"></a>简单方程</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ $ \begin &#123;equation&#125; \label &#123;eq1&#125; </span><br><span class="line">e=mc ^ 2 </span><br><span class="line">\end &#123;equation&#125; $ $</span><br></pre></td></tr></table></figure>
@@ -1501,32 +1527,6 @@
         <category>随手记</category>
       </categories>
       <tags>
-        <tag>hexo博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>gitee+hexo博客</title>
-    <url>/2021/07/15/github-hexo%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><center>gitee等代码托管平台搭建hexo博客</center><br><span id="more"></span></p>
-<p>1.工具安装<br>安装node.js，<a href="https://nodejs.org/zh-cn/">下载</a><br>安装git工具，<a href="https://git-scm.com/">下载</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看node是否安装成功</span><br><span class="line">node -v</span><br><span class="line">npm -v </span><br></pre></td></tr></table></figure>
-<p>2.安装hexo<br>&ensp;&ensp;创建一个文件夹作为博客目录，右键 → Git Bsah Here打开<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 在新打开的命令窗口中执行</span><br><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure></p>
-<p>3.初始化环境<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 进入博客目录下</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
-<p>4.启动本地服务<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server # 或简写hexo s</span><br><span class="line"># 提示Start processing后，浏览器打开http://localhost:4000</span><br></pre></td></tr></table></figure></p>
-<p>5.gitee项目仓库地址<br>&ensp;&ensp;得到gitee中项目仓库的地址<a href="https://gitee.com/xxinin/blog">https://gitee.com/xxinin/blog</a></p>
-<p>6.打开博客目录下的_config.yml文件<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改以下配置：</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://gitee.com/xxinin/blog    #将地址换成自己的地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
-<p>7.同步至gitee仓库<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 首次要安装一个部署插件</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean     # 清空旧缓存</span><br><span class="line">hexo generate  # 生成静态文件，可以用简写hexo g</span><br><span class="line">hexo deploy    # 推送到gitee，可以用简写hexo d</span><br><span class="line"># 输入gitee的用户名和密码（本人在这边出现问题用户名登录好像只能使用邮箱，用户名登录不上去）</span><br></pre></td></tr></table></figure></p>
-<p>8.登录<br>首次同步会要求登录gitee的账户，正常输入即可，通常情况下登陆一次就会有在本地保存凭据</p>
-<p>若hexo d同步时报错<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unable to access &#x27;https://gitee.com/xxinin/blog/&#x27;: The requested URL returned error: 403</span><br></pre></td></tr></table></figure><br>说明本地存在其他账户的凭据，打开控制面板→用户账户→管理windows凭据→删除和gitee相关的凭据即可</p>
-<p>9.开启gitee pages服务</p>
-<p>开启后得到域名<a href="https://xxinin.gitee.io/blog">https://xxinin.gitee.io/blog</a><br>填入_config.yml中url</p>
-<p>10.其它配置不作详细描述<br><a href="https://hexo.io/zh-cn/docs/">hexo 官方中文文档</a></p>
-]]></content>
-      <categories>
-        <category>随手记</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
         <tag>hexo博客</tag>
       </tags>
   </entry>
@@ -1696,6 +1696,21 @@
       </tags>
   </entry>
   <entry>
+    <title>单例模式</title>
+    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>解决某些场景下只需要创建该类的一个实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>调用时</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>关于java</category>
+      </categories>
+      <tags>
+        <tag>java学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>函数概念</title>
     <url>/2021/08/08/%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><h4 id="一-、绝对值"><a href="#一-、绝对值" class="headerlink" title="(一)、绝对值"></a>(一)、绝对值</h4><p>$ $<br>\begin{align}<br>\left | a \right | &amp; = \begin{Bmatrix}  \notag<br> a &amp; a\ge 0\\<br> -a &amp; a&lt; 0<br>\end{Bmatrix}\quad \quad (\left | a \right | \ge 0)<br>\end{align}<br>$ $</p>
@@ -1736,21 +1751,6 @@
       </tags>
   </entry>
   <entry>
-    <title>单例模式</title>
-    <url>/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>解决某些场景下只需要创建该类的一个实例</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line"><span class="comment">//    定义类成员变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> test obj;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    隐藏构造器，避免实例被调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">test</span><span class="params">()</span></span>&#123; &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//   暴露一个static方法用于创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">setName</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        判断是否已经创建过了实例</span></span><br><span class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)&#123;</span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        将实例返回</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>调用时</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 单例模式 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        不管怎么创建都是错的</span></span><br><span class="line"><span class="comment">//        test a = new test();</span></span><br><span class="line">        test a = test.setName();</span><br><span class="line">        test b = test.setName();</span><br><span class="line">        System.out.println(a == b);</span><br><span class="line"><span class="comment">//        若返回true，说明两个实例引用同一个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>关于java</category>
-      </categories>
-      <tags>
-        <tag>java学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在Android项目中使用阿里云maven</title>
     <url>/2021/10/30/%E5%9C%A8Android%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91maven/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><a href="https://developer.aliyun.com/mvn/guide">阿里云云效maven地址</a></p>
@@ -1785,6 +1785,21 @@
       </tags>
   </entry>
   <entry>
+    <title>夜郎自大</title>
+    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
+<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”<br><span id="more"></span><br>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
+<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
+<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
+<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
+<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
+<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+  </entry>
+  <entry>
     <title>在服务器中搭建hexo博客</title>
     <url>/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><center>个人服务器搭建hexo(宝塔)</center><br><br></p>
@@ -1812,21 +1827,6 @@
       <tags>
         <tag>hexo博客</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>夜郎自大</title>
-    <url>/2021/07/12/%E5%A4%9C%E9%83%8E%E8%87%AA%E5%A4%A7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&ensp;&ensp;&ensp;&ensp;接了一通电话，电话那头是一个不认识的人，不清楚叫什么，也不知道是哪个班的，只靠着电话的地理位置猜测，应该是她的朋友吧</p>
-<p>&ensp;&ensp;&ensp;&ensp;“接了吧，开免提”，旁边的老师说。他们本就聚集在我身上的目光，又硬了几分。<br>&ensp;&ensp;&ensp;&ensp;“喂，打电话干什么。”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“……”<br>&ensp;&ensp;&ensp;&ensp;“你能不能别再骚扰她了，也不要装作很深情。”<br><span id="more"></span><br>&ensp;&ensp;&ensp;&ensp;话到了这里，一瞬间竟让我有点不知所云——这个世界上真的有人比我还自以为是么？有点不能理解，为什么会觉得一个普通人有资格让我惦记几个月，这种自信来自于哪里</p>
-<p>&ensp;&ensp;&ensp;&ensp;脑海里思绪一阵翻滚，尽是些虎狼之词从心底涌起，旁边的老师好像看到我情绪有些波动，于是便打断说：“这个女孩我们都认识，是个好女孩，你不能凶她”。显然，他们没有听明白，电话的另一头是她的朋友。</p>
-<p>&ensp;&ensp;&ensp;&ensp;话毕，他们的关注点似乎从对我违反校规的盘问，转而到了我与她干戈对峙的原因，此刻没人说话的意思大概就是等我解释吧<br>&ensp;&ensp;&ensp;&ensp;“或许是因为我出轨了吧，他们都这样说，我也习惯接受了”<br>&ensp;&ensp;&ensp;&ensp;“那你到底？”<br>&ensp;&ensp;&ensp;&ensp;“我没有，人和畜生我还是可以分得清的”<br>&ensp;&ensp;&ensp;&ensp;“所以为什么？”<br>&ensp;&ensp;&ensp;&ensp;“很可笑，听别人说，是因为我边分手边和别的女孩打游戏，其实那几天，我都不知道是谁在玩”<br>&ensp;&ensp;&ensp;&ensp;“那是谁在玩？”<br>&ensp;&ensp;&ensp;&ensp;“我一个发小早就不上学了，家里催他找对象也一直没找，就寻思让他用我的号他们玩玩认识认识，后来好像朋友他们好几个人都拿我账号凑过数”<br>&ensp;&ensp;&ensp;&ensp;“那你怎么不坦白？”<br>&ensp;&ensp;&ensp;&ensp;“说不明白的，这种话说出来谁信，如果不是这种场合，估计你们也不信”<br>&ensp;&ensp;&ensp;&ensp;“就从来没解释过？”<br>&ensp;&ensp;&ensp;&ensp;“试过，实话肯定没人信，所以说了第一个谎言，然后又迫不得已用更多的谎言去掩饰那个谎言，越抹越黑最后干脆不管了”<br>&ensp;&ensp;&ensp;&ensp;“就因为这个？”<br>&ensp;&ensp;&ensp;&ensp;“还因为我冷暴力，其实不过是我那几天压力太大，精神崩溃而已”<br>&ensp;&ensp;&ensp;&ensp;“从来没有想过要合好吗？”<br>&ensp;&ensp;&ensp;&ensp;“甚至还试过，可惜我连对方生气的原因都是在几个月后才知道，自然碰了一鼻子灰”<br>&ensp;&ensp;&ensp;&ensp;“那你也挺可笑的，帮朋友害了自己”<br>&ensp;&ensp;&ensp;&ensp;“关键是我那朋友也不作为，最后什么都没捞到…”</p>
-<p>&ensp;&ensp;&ensp;&ensp;或许是因为他们机械的盘问与这个话题不相符合，会议室里又是一次死静，继而是我有些疑惑的目光，与他们的一丝不自信<br>&ensp;&ensp;&ensp;&ensp;“是，在你来之前，我们找过她了”<br>&ensp;&ensp;&ensp;&ensp;“都说了些什么？”<br>&ensp;&ensp;&ensp;&ensp;“问了些关于你的东西”<br>&ensp;&ensp;&ensp;&ensp;“然后呢”<br>&ensp;&ensp;&ensp;&ensp;“连你的名字都没有得到”<br>&ensp;&ensp;&ensp;&ensp;“这事别再牵扯别人，我已经在这里了”<br>&ensp;&ensp;&ensp;&ensp;“不止她自己，你身边的人都在保护你”</p>
-<p>&ensp;&ensp;&ensp;&ensp;这话竟让我有一丢丢的感动，电话里对方的轻狂似乎也不是那么欠揍，或许她们始终觉得是我对不起她，所以有些出言不逊，或许她们并不像我一般自以为是，单纯觉得我是个十足的垃圾人罢了；而于我呢，我没有对不起过谁，所以心安理得，对不起我的人，大概有他们的难言之隐，我也不会在意。</p>
-<p>&ensp;&ensp;&ensp;&ensp;“当着我们的面，你把电话再播回去解释清楚吧”<br>&ensp;&ensp;&ensp;&ensp;“别了吧，我的落魄不会让任何人看到”</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
   </entry>
   <entry>
     <title>子View超出父View</title>
@@ -2056,6 +2056,26 @@
       </tags>
   </entry>
   <entry>
+    <title>理想和痞子</title>
+    <url>/2021/09/26/%E7%90%86%E6%83%B3%E5%92%8C%E7%97%9E%E5%AD%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&ensp;&ensp;做完今天的笔记，又到了凌晨12点，收起书本，点上一根烟，看了下窗外，稀稀拉拉的还在下雨。</p>
+<p>&ensp;&ensp;玻璃窗的反光映出了脸，禁不住停留一眼，竟然有些陌生，的确已经记不得上次看自己是什么样子，可笑不管哪次，都是一样的感觉——三分不像学生，七分倒像痞子。<span id="more"></span></p>
+<p>&ensp;&ensp;并非自嘲，不止我自己这样觉得，一面之缘的路人、点头之交的过客、相识多年的朋友，甚至于我的老师也问：“你是什么样的学生？”具体是什么成分，我也搞不太清，时而骄傲放纵，时而虚心内敛，我想我大概是个很努力的混子，一边拼搏着未来，一边沉迷于过去。</p>
+<p>&ensp;&ensp;照理，倒映里的吊毛早该不上学了，这个时间，他应该在工厂的流水线上着夜班，或者工地的宿舍里抽烟打牌，也可能躺在员工宿舍，和旁边的哥们讨论车间里哪个妹子更好看、明天休班去哪里吃饭，绝不该是用键盘敲打笔记的同时思索着明天，至于“升本”一事，更像是天方夜谭。</p>
+<p>&ensp;&ensp;那为什么还在上学？或许是想以学习为借口从拖延的时间中得到救赎吧，或许是不敢面对社会而逃避吧，或许是要让那些抛过的冷眼通通收回去吧。但是无论如何，在以往的任何时候，都没有像现在这样发自内心的认真学习过，没有任何原因，只因为想这样。</p>
+<p>&ensp;&ensp;人总要为自己犯下的错买单，像过度的放纵总会由迫不得已的约束弥补，倒也不是真的迫不得已，甚至可以浪荡一生，只是不想让爱我的人继续失望，害怕他们绝望的看着我，好像在问为什么，我不知道该作何解释，这种拼了命也无法弥补的东西，比死亡还要可怕；害怕他们落寞离开时的背影，不想让他们怀揣着希望而来，却满带着失望离去，想告诉他们我尽力了，却又不知道尽力在哪里，千言万语只剩下一句对不起，真的对不起。</p>
+<p>&ensp;&ensp;十八那年，大梦初醒，才发现白活了十八年，醒的早也不早，晚也不晚，才明白任重而道远，父母、老师、伙伴，他们眼中带着希望看着我，成就感和压力也来自于此间，人生在世，总要成一件事，总要在世界上留下点什么，一世不过匆忙数十年，雁过留声，风过留痕，如果不能留下踪迹长存于世间，百年过后，再无人知你来过，岂不可悲。</p>
+<p>&ensp;&ensp;如今发生的变故，我明白，很难回到当初的心无旁骛，因为眼睛一闭，那些烦人的话就会像蚊子一样嗡嗡响，说我哪里哪里不对、没有做到什么什么、应该怎么怎么样…现在这般，好像死过了一次，因为的确变了很多，以往的嚣张、轻狂，还记得它们的样子，却感觉不到它们的气息，或许他们以另一种形态依附在我身上——满腔热血、不死不休。</p>
+<p>&ensp;&ensp;这种状态，大概就是巅峰状态吧，没有打游戏也没有其他任何因素可以影响我，日子忙碌且有意义，目标每天都在接近，理想耀眼而夺目；偶尔疲惫就停下，闭上眼，去回想那些不堪，总会在一个问题里挣扎——我到底哪里错了？我到底哪里错了？我知道了，可能是我还不够好、不够优秀吧，加油！</p>
+<p>&ensp;&ensp;习惯了这样的自由，被关心反而觉得不自在，哪怕一丢丢关心也会像过敏一样难受，大概是不知道该怎么回应对方吧，回应这种没有任何附件条件的、单纯的关心；每次面对他们，我想说些什么，但是好像说什么都没用，因为什么都描述不了牵引着血液流速加快的心脏颤动，大概那一刻我真的做好了用生命守护他们的准备。</p>
+<p>&ensp;&ensp;无数的誓言，无数的承诺，把世界渲染的吵闹异常，有人做不到却偏要说，有人做得到却没有机会，有人有机会却不被相信，我们好像都高估了自己，高估了自己在对方心里的地位，所以一步步的用争吵去试探，直至铁锁崩环。可笑就是这么奇怪，有人在乎你时，你总是抓着一些细节，找对方不在乎你的证据，等到不再在乎你了，又拼命去寻找那些蛛丝马迹，来证明对方还在乎你。人么，就是贱。</p>
+<p>&ensp;&ensp;由始至终，我明白，这世间的一切，通过努力都可以争取，唯有遥远的你，是我十二分的运气。</p>
+]]></content>
+      <categories>
+        <category>我的文章</category>
+      </categories>
+  </entry>
+  <entry>
     <title>程序开发常用的142个单词</title>
     <url>/2021/09/08/%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E7%9A%84142%E4%B8%AA%E5%8D%95%E8%AF%8D/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>A. 6<br>abstract 抽象的<br>abstract class 抽象类<br>account 账户<br>address 地址<br>annotation 注解、评注<br>array 数组</p>
@@ -2088,26 +2108,6 @@
       <tags>
         <tag>程序人生</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>理想和痞子</title>
-    <url>/2021/09/26/%E7%90%86%E6%83%B3%E5%92%8C%E7%97%9E%E5%AD%90/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&ensp;&ensp;做完今天的笔记，又到了凌晨12点，收起书本，点上一根烟，看了下窗外，稀稀拉拉的还在下雨。</p>
-<p>&ensp;&ensp;玻璃窗的反光映出了脸，禁不住停留一眼，竟然有些陌生，的确已经记不得上次看自己是什么样子，可笑不管哪次，都是一样的感觉——三分不像学生，七分倒像痞子。<span id="more"></span></p>
-<p>&ensp;&ensp;并非自嘲，不止我自己这样觉得，一面之缘的路人、点头之交的过客、相识多年的朋友，甚至于我的老师也问：“你是什么样的学生？”具体是什么成分，我也搞不太清，时而骄傲放纵，时而虚心内敛，我想我大概是个很努力的混子，一边拼搏着未来，一边沉迷于过去。</p>
-<p>&ensp;&ensp;照理，倒映里的吊毛早该不上学了，这个时间，他应该在工厂的流水线上着夜班，或者工地的宿舍里抽烟打牌，也可能躺在员工宿舍，和旁边的哥们讨论车间里哪个妹子更好看、明天休班去哪里吃饭，绝不该是用键盘敲打笔记的同时思索着明天，至于“升本”一事，更像是天方夜谭。</p>
-<p>&ensp;&ensp;那为什么还在上学？或许是想以学习为借口从拖延的时间中得到救赎吧，或许是不敢面对社会而逃避吧，或许是要让那些抛过的冷眼通通收回去吧。但是无论如何，在以往的任何时候，都没有像现在这样发自内心的认真学习过，没有任何原因，只因为想这样。</p>
-<p>&ensp;&ensp;人总要为自己犯下的错买单，像过度的放纵总会由迫不得已的约束弥补，倒也不是真的迫不得已，甚至可以浪荡一生，只是不想让爱我的人继续失望，害怕他们绝望的看着我，好像在问为什么，我不知道该作何解释，这种拼了命也无法弥补的东西，比死亡还要可怕；害怕他们落寞离开时的背影，不想让他们怀揣着希望而来，却满带着失望离去，想告诉他们我尽力了，却又不知道尽力在哪里，千言万语只剩下一句对不起，真的对不起。</p>
-<p>&ensp;&ensp;十八那年，大梦初醒，才发现白活了十八年，醒的早也不早，晚也不晚，才明白任重而道远，父母、老师、伙伴，他们眼中带着希望看着我，成就感和压力也来自于此间，人生在世，总要成一件事，总要在世界上留下点什么，一世不过匆忙数十年，雁过留声，风过留痕，如果不能留下踪迹长存于世间，百年过后，再无人知你来过，岂不可悲。</p>
-<p>&ensp;&ensp;如今发生的变故，我明白，很难回到当初的心无旁骛，因为眼睛一闭，那些烦人的话就会像蚊子一样嗡嗡响，说我哪里哪里不对、没有做到什么什么、应该怎么怎么样…现在这般，好像死过了一次，因为的确变了很多，以往的嚣张、轻狂，还记得它们的样子，却感觉不到它们的气息，或许他们以另一种形态依附在我身上——满腔热血、不死不休。</p>
-<p>&ensp;&ensp;这种状态，大概就是巅峰状态吧，没有打游戏也没有其他任何因素可以影响我，日子忙碌且有意义，目标每天都在接近，理想耀眼而夺目；偶尔疲惫就停下，闭上眼，去回想那些不堪，总会在一个问题里挣扎——我到底哪里错了？我到底哪里错了？我知道了，可能是我还不够好、不够优秀吧，加油！</p>
-<p>&ensp;&ensp;习惯了这样的自由，被关心反而觉得不自在，哪怕一丢丢关心也会像过敏一样难受，大概是不知道该怎么回应对方吧，回应这种没有任何附件条件的、单纯的关心；每次面对他们，我想说些什么，但是好像说什么都没用，因为什么都描述不了牵引着血液流速加快的心脏颤动，大概那一刻我真的做好了用生命守护他们的准备。</p>
-<p>&ensp;&ensp;无数的誓言，无数的承诺，把世界渲染的吵闹异常，有人做不到却偏要说，有人做得到却没有机会，有人有机会却不被相信，我们好像都高估了自己，高估了自己在对方心里的地位，所以一步步的用争吵去试探，直至铁锁崩环。可笑就是这么奇怪，有人在乎你时，你总是抓着一些细节，找对方不在乎你的证据，等到不再在乎你了，又拼命去寻找那些蛛丝马迹，来证明对方还在乎你。人么，就是贱。</p>
-<p>&ensp;&ensp;由始至终，我明白，这世间的一切，通过努力都可以争取，唯有遥远的你，是我十二分的运气。</p>
-]]></content>
-      <categories>
-        <category>我的文章</category>
-      </categories>
   </entry>
   <entry>
     <title>记录一次逆向某校园软件</title>
@@ -2145,14 +2145,21 @@
 <h4 id="导入完毕"><a href="#导入完毕" class="headerlink" title="导入完毕"></a>导入完毕</h4><p>&ensp;&ensp;三个文件中有两个安装包和一个配置文件，配置文件不会显示在雷电模拟器的桌面，所以桌面仅显示两个图标<br><img src="../闪不动校园/3006596058.png" width="50%" height="50%" /><br/></p>
 <h3 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h3><p>&ensp;&ensp;1.首先打开fake Location(软件别人开发的，VIP得自己花钱开)<br><img src="../闪不动校园/3946829225.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;2.点击左上角，登录账号<br/><br>&ensp;&ensp;3.点击右上角按钮→点击Settings→向下滑到低，点击数据导入(若与我本人不在同一学校，可以跳过导入步骤，使用自定义打卡点，自定义方式自行研究！)<br><img src="../闪不动校园/3362248827.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;4.点击中间空白部位<br><img src="../闪不动校园/4240035105.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;5.找到Pictures，点击<br><img src="../闪不动校园/200270087.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;6.找到fakeLocationConfig.bak，点击<br><img src="../闪不动校园/4051480541.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;7.这时候会弹出一个新窗口，所有的对号默认是全选的，不要动它，直接点击右下角的“导入”<br><br>&ensp;&ensp;8.提示“导入操作会覆盖现有已勾选的数据…”，不要理会，点击右下角继续导入<br/><br>&ensp;&ensp;9.退出清理fake Location后台并重新打开<br/><br>&ensp;&ensp;10.点击左上角，点击“路线模拟”<br><img src="../闪不动校园/1585825602.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;11.打开“闪不动校园”，正常登录即可，然后打开fake Location，同时闪不动校园的后台不要关，一定要用我提供给你的“闪不动校园”，它是经过特殊处理的<br>&ensp;&ensp;12.在fake Location中点击启动模拟<br><img src="../闪不动校园/1641389276.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;13.不管它要什么权限，我们都给它<br><img src="../闪不动校园/4262802683.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;14.点击启动模拟之后，稍等片刻会出现这个，说明已经开始运行了，马上切到闪动校园，点击中间的“Go”<br><img src="../闪不动校园/1353890881.png" width="50%" height="50%" /><br/><br><img src="../闪不动校园/1980040640.png" width="50%" height="50%" /><br/><br>&ensp;&ensp;15.看一下我的电脑全屏，说明它正在自动执行<br><img src="../闪不动校园/2500991956.png" width="80%" height="80%" /><br/><br>&ensp;&ensp;16.OK，这个时候已经在自动执行了，尽量不要进行任何操作，如果成绩已经达标可以暂停并结束（上个教程中的版本是不能点暂停的，说明我变强了haha），和我同校的同学们由于在前面添加过点位配置，所以程序会自动跑遍每一个打卡点，执行完毕后会自动暂停，大概15分钟左右，等待执行完毕后点击“结束”即可。同学们记得在一小时内务必将它暂停或关闭。如果想要刷多号，去到fake Location中点击“停止模拟”，然后点击“启动模拟”就好了<br/><br>&ensp;&ensp;17.效果图<br><img src="../闪不动校园/2340524516.png" width="80%" height="80%" /><br/></p>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
-<li><label style="cursor:auto;font-weight:700">乐享轩没钱，但是有实力，进来看看<a href="https://jq.qq.com/?_wv=1027&k=KXdMrdrn">1092594932</a></label></li>
+<li><label style="cursor:auto;font-weight:700">更多免费资源，尽在乐享轩：<a href="https://jq.qq.com/?_wv=1027&k=KXdMrdrn">1092594932</a></label></li>
 <li><label style="cursor:auto;font-weight:700">一定要在一小时内结束它，一定要在一小时内结束它！</label></li>
 <li><label style="cursor:auto;font-weight:700">一个虚拟设备累计登录不要超过3个账号，否则会锁imei，想一台电脑运行多个账号，可以通过“雷电多开器”多开几个虚拟设备，如果你技术支持的话就给“闪不动校园”做共存</label></li>
 <li><label style="cursor:auto;font-weight:700">一个账号同一天不要来回反复的登录，否则会封号</label></li>
 <li><label style="cursor:auto;font-weight:700">一定要在雷电模拟器中使用我提供的“闪不动校园”，不要尝试你的正版，正版会封号！！！</label></li>
-<li><label style="cursor:auto;font-weight:700">教程中所用到的软件均采集自网络，以学习交流软件设计思路为主要目的，请勿用于任何商业及违法用途，并于下载后的24小时内删除</label></li>
-<li><label style="cursor:auto;font-weight:700">感谢一位女同学，我并不认识她更未谋面，教程中用到的fake会员、闪动校园账号她都有免费提供，谢谢</label></li>
+<li><label style="cursor:auto;font-weight:700">为什么还会提示违规？因为你的数据不正常，这个数据要以你在闪动校园中的数据为基准，fake location中的不准确</label></li>
+<li><label style="cursor:auto;font-weight:700">为什么成绩无效？和违规提示一样的原因，你的数据异常</label></li>
+<li><label style="cursor:auto;font-weight:700">怎么让数据成为正常数据？你把我教程中演示用的配置导入一下不就不知道了？</label></li>
+<li><label style="cursor:auto;font-weight:700">手机不行，vmos或者多开软件都不行，除非你真机root，不然就用电脑模拟器</label></li>
+<li><label style="cursor:auto;font-weight:700">提示无网络，不要使用台式机，换成笔记本就好了</label></li>
+<li><label style="cursor:auto;font-weight:700">提示超过60天....，因为学校没有录入你的账号信息</label></li>
+<li><label style="cursor:auto;font-weight:700">本教程仅供学习研究程序设计思路，请勿用于任何违法作弊用途，并于下载后的24小时内删除，如作他用所承受的法律责任一概与作者无关（使用即代表同意上述观点）</label></li>
 <li><label style="cursor:auto;font-weight:700;font-size:30px">我&ensp;</label><label style="font-weight:700;font-size:40px">真&ensp;</label><label style="font-weight:700;font-size:50px">帅</label>
+
+
 
 
 
