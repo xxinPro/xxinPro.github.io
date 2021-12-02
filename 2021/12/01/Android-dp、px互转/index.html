@@ -29,7 +29,7 @@
 <meta property="og:description" content="什么是dp：&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;Device Independent Pixels(设备独立像素)，Android开发中常用dp来适配手机。不同的设备有不同的显示效果，当1英寸屏幕上有160个像素点（px）时，此时1dp&#x3D;1px&#x3D;1dpi。一般为了支持WVGA、HVGA和QVGA推荐使用dp，不依赖像素。 什么是px：&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;Pi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-01T02:48:50.000Z">
-<meta property="article:modified_time" content="2021-12-01T03:47:57.311Z">
+<meta property="article:modified_time" content="2021-12-01T05:14:23.433Z">
 <meta property="article:author" content="xxin">
 <meta property="article:tag" content="Android开发学习">
 <meta name="twitter:card" content="summary">
@@ -92,7 +92,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">93</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">94</span></a></li>
         <li class="menu-item menu-item-友链"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -167,7 +167,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-count">94</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -274,7 +274,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>613</span>
+      <span>617</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -296,7 +296,7 @@
 <p><label style="color:red;cursor:auto">什么是px：</label><br>&ensp;&ensp;&ensp;&ensp;Pixels，即像素，1px代表屏幕上的一个物理像素点。</p>
 <span id="more"></span>
 <h3 id="dp转px"><a href="#dp转px" class="headerlink" title="dp转px"></a>dp转px</h3><p>context.getResources().getDisplayMetrics().density可以得到在一个dpi区域中px的密度</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  dp值 x 区域密度 + 精度丢失值 = px值</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">dpToPx</span><span class="params">(<span class="keyword">int</span> dp,Context context)</span></span>&#123;</span><br><span class="line">        <span class="keyword">double</span> px = dp * context.getResources().getDisplayMetrics().density + <span class="number">0.5f</span>;</span><br><span class="line">        <span class="keyword">return</span> px;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  dp值 x 区域密度 + 精度丢失值 = px值</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">dpToPx</span><span class="params">(<span class="keyword">double</span> dp,Context context)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> px = (<span class="keyword">int</span>)(dp * context.getResources().getDisplayMetrics().density + <span class="number">0.5f</span>);</span><br><span class="line">        <span class="keyword">return</span> px;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="px转dp"><a href="#px转dp" class="headerlink" title="px转dp"></a>px转dp</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  px值 / 区域密度 + 精度丢失值 = dp值</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pxToDp</span><span class="params">(<span class="keyword">double</span> px,Context context)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp = (<span class="keyword">int</span>)(px/context.getResources().getDisplayMetrics().density + <span class="number">0.5f</span>);</span><br><span class="line">        <span class="keyword">return</span> dp;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -319,6 +319,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/12/02/Android%E8%8E%B7%E5%8F%96RecyclerView%E7%9A%84ItemView/" rel="next" title="Android获取RecyclerView的ItemView">
+                  Android获取RecyclerView的ItemView <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -352,13 +355,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">641k</span>
+    <span title="站点总字数">644k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9:42</span>
+    <span title="站点阅读时长">9:46</span>
   </span>
 </div><script defer src="/lib/three.js"></script><script defer src="/lib/waves.js"></script>
 
