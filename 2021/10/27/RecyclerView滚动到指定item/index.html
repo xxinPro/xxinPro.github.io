@@ -21,18 +21,21 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xxin.xyz","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="默认文章头">
+<meta name="description" content="使RecyclerView将指定item位置移动到当前视图的顶部">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RecyclerView滚动到指定item">
 <meta property="og:url" content="https://blog.xxin.xyz/2021/10/27/RecyclerView%E6%BB%9A%E5%8A%A8%E5%88%B0%E6%8C%87%E5%AE%9Aitem/index.html">
 <meta property="og:site_name" content="小衅笔记">
-<meta property="og:description" content="默认文章头">
+<meta property="og:description" content="使RecyclerView将指定item位置移动到当前视图的顶部">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.xxin.xyz/2021/10/27/RecyclerView滚动到指定item/img1.png">
+<meta property="og:image" content="https://blog.xxin.xyz/2021/10/27/RecyclerView滚动到指定item/img2.png">
 <meta property="article:published_time" content="2021-10-27T02:59:39.000Z">
-<meta property="article:modified_time" content="2021-11-16T07:51:28.545Z">
+<meta property="article:modified_time" content="2021-12-05T07:45:15.874Z">
 <meta property="article:author" content="xxin">
 <meta property="article:tag" content="Android开发学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.xxin.xyz/2021/10/27/RecyclerView滚动到指定item/img1.png">
 
 
 <link rel="canonical" href="https://blog.xxin.xyz/2021/10/27/RecyclerView%E6%BB%9A%E5%8A%A8%E5%88%B0%E6%8C%87%E5%AE%9Aitem/">
@@ -137,7 +140,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -150,6 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">1.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#item%E6%BB%9A%E5%8A%A8"><span class="nav-number">2.</span> <span class="nav-text">item滚动</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -273,7 +277,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>1.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -284,7 +288,7 @@
     </span>
 </div>
 
-            <div class="post-description"><center>默认文章头</center></div>
+            <div class="post-description"><center>使RecyclerView将指定item位置移动到当前视图的顶部</center></div>
         </div>
       </header>
 
@@ -292,7 +296,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><p>&ensp;&ensp;&ensp;&ensp;一组平平无奇的数据，从0-999共一千条，Adapter类就不外放了，没意思<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        RecyclerView recyclerView = findViewById(R.id.recyclerView);</span><br><span class="line">        setData(recyclerView);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setData</span><span class="params">(RecyclerView recyclerView)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; strings = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="comment">//        一千条数据</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">            strings.add(<span class="string">&quot;数据&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">        MyRecyclerViewAdapter myRecyclerViewAdapter = <span class="keyword">new</span> MyRecyclerViewAdapter(<span class="keyword">this</span>,strings);</span><br><span class="line">        LinearLayoutManager linearLayoutManager = <span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>,RecyclerView.VERTICAL,<span class="keyword">false</span>);</span><br><span class="line">        recyclerView.setAdapter(myRecyclerViewAdapter);</span><br><span class="line">        recyclerView.setLayoutManager(linearLayoutManager);</span><br><span class="line"><span class="comment">//        添加一条分割线</span></span><br><span class="line">        recyclerView.addItemDecoration(<span class="keyword">new</span> DividerItemDecoration(<span class="keyword">this</span>,DividerItemDecoration.VERTICAL));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>&ensp;&ensp;&ensp;&ensp;看下效果吧<br><img src="../RecyclerView滚动到指定item/img1.png" width="40%" height="40%" /></p>
+<h3 id="item滚动"><a href="#item滚动" class="headerlink" title="item滚动"></a>item滚动</h3><p>&ensp;&ensp;&ensp;&ensp;当RecyclerView的item全部加载完毕后，毫无疑问，第一条也就是item0一定是位于顶部的，那如何指定任意一个item，使得RecyclerView滑动到这个item置顶</p>
+<p>&ensp;&ensp;&ensp;&ensp;妈的，经过研究，根本就没有那么麻烦，我他妈又是视图树观察又是布局加载监听的，其实一个scrollToPosition()就搞定了，破防了妈的<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//    直接调用这个方法就是了</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setItemTo</span><span class="params">(RecyclerView recyclerView, <span class="keyword">final</span> <span class="keyword">int</span> position)</span></span>&#123;</span><br><span class="line">        recyclerView.scrollToPosition(position);<span class="comment">//滚动到指定item！！！</span></span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//    如果不想使用RecyclerView，用它的布局管理器也可以</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setItemTo</span><span class="params">(LinearLayoutManager linearLayoutManager, <span class="keyword">int</span> position)</span></span>&#123;</span><br><span class="line">        linearLayoutManager.scrollToPosition(position);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="../RecyclerView滚动到指定item/img2.png" width="40%" height="40%" /></p>
+
     </div>
 
     
@@ -349,13 +357,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">662k</span>
+    <span title="站点总字数">664k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">10:02</span>
+    <span title="站点阅读时长">10:03</span>
   </span>
 </div><script defer src="/lib/three.js"></script><script defer src="/lib/waves.js"></script>
 
