@@ -21,40 +21,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xxin.xyz","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="本地项目上传同步至github">
+<meta name="description" content="封装的OkHttpUtils">
 <meta property="og:type" content="article">
-<meta property="og:title" content="上传项目至github">
-<meta property="og:url" content="https://blog.xxin.xyz/2021/10/17/%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E8%87%B3github/index.html">
+<meta property="og:title" content="封装的OkHttpUtils">
+<meta property="og:url" content="https://blog.xxin.xyz/2021/12/07/%E5%B0%81%E8%A3%85%E7%9A%84OkHttpUtils/index.html">
 <meta property="og:site_name" content="小衅笔记">
-<meta property="og:description" content="本地项目上传同步至github">
+<meta property="og:description" content="封装的OkHttpUtils">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/上传项目至github/img1.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/上传项目至github/img2.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/上传项目至github/img3.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/上传项目至github/img4.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/上传项目至github/img5.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/上传项目至github/img6.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/上传项目至github/img7.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/上传项目至github/img8.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/上传项目至github/img9.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/上传项目至github/img10.png">
-<meta property="og:image" content="https://blog.xxin.xyz/2021/10/17/上传项目至github/img11.png">
-<meta property="article:published_time" content="2021-10-17T11:07:13.000Z">
-<meta property="article:modified_time" content="2021-11-16T08:31:33.614Z">
+<meta property="article:published_time" content="2021-12-07T09:24:17.000Z">
+<meta property="article:modified_time" content="2021-12-07T09:25:38.952Z">
 <meta property="article:author" content="xxin">
-<meta property="article:tag" content="github">
+<meta property="article:tag" content="乱七八糟">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.xxin.xyz/2021/10/17/上传项目至github/img1.png">
 
 
-<link rel="canonical" href="https://blog.xxin.xyz/2021/10/17/%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E8%87%B3github/">
+<link rel="canonical" href="https://blog.xxin.xyz/2021/12/07/%E5%B0%81%E8%A3%85%E7%9A%84OkHttpUtils/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xxin.xyz/2021/10/17/%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E8%87%B3github/","path":"2021/10/17/上传项目至github/","title":"上传项目至github"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xxin.xyz/2021/12/07/%E5%B0%81%E8%A3%85%E7%9A%84OkHttpUtils/","path":"2021/12/07/封装的OkHttpUtils/","title":"封装的OkHttpUtils"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>上传项目至github | 小衅笔记</title>
+<title>封装的OkHttpUtils | 小衅笔记</title>
   
 
 
@@ -241,7 +229,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.xxin.xyz/2021/10/17/%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E8%87%B3github/">
+    <link itemprop="mainEntityOfPage" href="https://blog.xxin.xyz/2021/12/07/%E5%B0%81%E8%A3%85%E7%9A%84OkHttpUtils/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="http://q1.qlogo.cn/g?b=qq&nk=3033528136&s=640">
@@ -254,7 +242,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          上传项目至github
+          封装的OkHttpUtils
         </h1>
 
         <div class="post-meta-container">
@@ -265,7 +253,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-10-17 19:07:13" itemprop="dateCreated datePublished" datetime="2021-10-17T19:07:13+08:00">2021-10-17</time>
+      <time title="创建时间：2021-12-07 17:24:17" itemprop="dateCreated datePublished" datetime="2021-12-07T17:24:17+08:00">2021-12-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -285,18 +273,18 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>767</span>
+      <span>2.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
-            <div class="post-description"><center>本地项目上传同步至github</center></div>
+            <div class="post-description"><center>封装的OkHttpUtils</center></div>
         </div>
       </header>
 
@@ -304,17 +292,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">创建仓库</label><br><img src="../上传项目至github/img1.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">复制仓库的ssh链接</label><br><img src="../上传项目至github/img2.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">在本地，把预备上传至github的项目文件夹存放在一个文件夹中，例如现在我将fix文件夹放在myProject文件夹中，fix文件夹内就是我想上传的文件</label><br><img src="../上传项目至github/img3.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">鼠标右键myProject文件夹，并选择Git Bash Here，然后在出现的窗口中输入“git clone 复制的ssh链接”从github下载项目</label><br><img src="../上传项目至github/img4.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">在myProject文件夹下，会发现多了一个与github仓库名一样的文件夹(比如我的多了一个fixNavbBar文件夹)</label><br><img src="../上传项目至github/img5.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">接着手动把fix文件夹下的所有文件复制粘贴至fixNavBar</label><br><img src="../上传项目至github/img6.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">然后在命令窗口中“输入cd 文件夹名”进入新文件夹</label><br><img src="../上传项目至github/img7.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入git add .(注意有个小点)，会把fixNavbBar文件夹下面新的文件或修改过的文件添加进来，如果之前已经添加了，它会自动省略</label><br><img src="../上传项目至github/img8.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入 git commit -m “logs”提交项目说明</label><br><img src="../上传项目至github/img9.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">输入 git push -u origin main，上传项目</label><br>&ensp;&ensp;&ensp;&ensp;<label style="color:red;cursor:auto">注意：</label>在2021年8月13号之后，github不允许用账号密码上传项目，必须使用token，如果没有token&ensp;<a href="">点击这里</a><br><img src="../上传项目至github/img10.png" width="70%" height="70%" ></p>
-<p>&ensp;&ensp;&ensp;&ensp;<label style="color:blank;font-weight:700;font-size:24px;cursor:auto">上传完成后到github查看项目即可</label><br><img src="../上传项目至github/img11.png" width="70%" height="70%" ></p>
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xxin.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.google.gson.Gson;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> okhttp3.Call;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Callback;</span><br><span class="line"><span class="keyword">import</span> okhttp3.MediaType;</span><br><span class="line"><span class="keyword">import</span> okhttp3.MultipartBody;</span><br><span class="line"><span class="keyword">import</span> okhttp3.OkHttpClient;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Request;</span><br><span class="line"><span class="keyword">import</span> okhttp3.RequestBody;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Response;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OkHttpUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> OkHttpClient okHttpClient = <span class="keyword">new</span> OkHttpClient();<span class="comment">//请求器</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Gson gson = <span class="keyword">new</span> Gson();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> OkHttpUtils okHttpUtils;<span class="comment">//工具类</span></span><br><span class="line">    <span class="keyword">private</span> Request request;<span class="comment">//请求类</span></span><br><span class="line">    <span class="keyword">private</span> Request.Builder builder;<span class="comment">//请求类构建</span></span><br><span class="line">    <span class="keyword">private</span> RequestBody requestBody;<span class="comment">//请求体</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    获取工具类</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> OkHttpUtils <span class="title">getOkHttpUtils</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (okHttpUtils == <span class="keyword">null</span>)&#123;</span><br><span class="line">            okHttpUtils = <span class="keyword">new</span> OkHttpUtils();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> okHttpUtils;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    请求地址</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> OkHttpUtils <span class="title">url</span><span class="params">(String url)</span></span>&#123;</span><br><span class="line">        builder = <span class="keyword">new</span> Request.Builder().url(url);</span><br><span class="line">        <span class="keyword">return</span> okHttpUtils;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    get请求</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(Class cls)</span></span>&#123;</span><br><span class="line">        request = builder.get().build();</span><br><span class="line">        <span class="keyword">return</span> httpRequest(cls);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    post提交</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">post</span><span class="params">(String json,String type,Class cls)</span></span>&#123;</span><br><span class="line">        requestBody = RequestBody.create(json, MediaType.parse(type));</span><br><span class="line">        request = builder.post(requestBody).build();</span><br><span class="line">        <span class="keyword">return</span> httpRequest(cls);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    put修改</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">put</span><span class="params">(String json,String type,Class cls)</span></span>&#123;</span><br><span class="line">        requestBody = RequestBody.create(json, MediaType.parse(type));</span><br><span class="line">        request = builder.put(requestBody).build();</span><br><span class="line">        <span class="keyword">return</span> httpRequest(cls);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    添加请求头</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> OkHttpUtils <span class="title">addHeard</span><span class="params">(String name,String value)</span></span>&#123;</span><br><span class="line">        builder.addHeader(name,value);</span><br><span class="line">        <span class="keyword">return</span> okHttpUtils;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    发起请求</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">httpRequest</span><span class="params">(Class cls)</span></span>&#123;</span><br><span class="line">        Object ob = <span class="keyword">null</span>;</span><br><span class="line">        Call call = okHttpClient.newCall(request);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Response execute = call.execute();</span><br><span class="line">            <span class="keyword">if</span> (execute.isSuccessful())&#123;</span><br><span class="line">                ob = gson.fromJson(execute.body().string(),cls);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ob;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    下载文件</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">download</span><span class="params">(Callback callback)</span></span>&#123;</span><br><span class="line">        request = builder.get().build();</span><br><span class="line">        Call call = okHttpClient.newCall(request);</span><br><span class="line">        call.enqueue(callback);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file 上传的文件.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> type 上传的文件的类型.</span></span><br><span class="line"><span class="comment">     **/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">upload</span><span class="params">(File file,String type,Class cls)</span></span>&#123;</span><br><span class="line">        requestBody = RequestBody.create(file,MediaType.parse(type));</span><br><span class="line">        MultipartBody multipartBody = <span class="keyword">new</span> MultipartBody.Builder()</span><br><span class="line">                .addFormDataPart(<span class="string">&quot;file&quot;</span>,file.getName(),requestBody)</span><br><span class="line">                .build();</span><br><span class="line">        request = builder.post(multipartBody).build();</span><br><span class="line">        <span class="keyword">return</span> httpRequest(cls);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -324,21 +302,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/github/" rel="tag"><i class="fa fa-tag"></i> github</a>
+              <a href="/tags/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/" rel="tag"><i class="fa fa-tag"></i> 乱七八糟</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/15/ScrollView-RecyclerView%E5%AE%9E%E7%8E%B0%E6%82%AC%E5%81%9C%E5%AF%BC%E8%88%AA%E6%A0%8F/" rel="prev" title="ScrollView+RecyclerView实现悬停导航栏">
-                  <i class="fa fa-chevron-left"></i> ScrollView+RecyclerView实现悬停导航栏
+                <a href="/2021/12/06/Android-%E6%97%B6%E9%97%B4%E5%92%8C%E6%97%B6%E9%97%B4%E6%88%B3/" rel="prev" title="Android 时间和时间戳">
+                  <i class="fa fa-chevron-left"></i> Android 时间和时间戳
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/17/github-SSH%E4%BB%A4%E7%89%8C%E8%A7%A3%E5%86%B3/" rel="next" title="github SSH令牌解决">
-                  github SSH令牌解决 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
