@@ -408,9 +408,9 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-PopupWindow</title>
-    <url>/2021/09/09/Android-PopupWindow/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>PopupWindow弹窗，后边再写</p>
+    <title>Android-Notification</title>
+    <url>/2021/09/09/Android-Notification/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>发送通知，后面再写</p>
 ]]></content>
       <categories>
         <category>关于Android</category>
@@ -420,9 +420,9 @@
       </tags>
   </entry>
   <entry>
-    <title>Android-Notification</title>
-    <url>/2021/09/09/Android-Notification/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>发送通知，后面再写</p>
+    <title>Android-PopupWindow</title>
+    <url>/2021/09/09/Android-PopupWindow/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>PopupWindow弹窗，后边再写</p>
 ]]></content>
       <categories>
         <category>关于Android</category>
@@ -1748,6 +1748,17 @@
       </tags>
   </entry>
   <entry>
+    <title>what is the &#39;inflate()&#39;?</title>
+    <url>/2021/09/13/what-is-the-inflate/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
+      <categories>
+        <category>关于Android</category>
+      </categories>
+      <tags>
+        <tag>Android开发学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>this和super</title>
     <url>/2021/07/20/this%E5%92%8Csuper/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>this()重载构造器和super()限定<br><span id="more"></span></p>
@@ -1757,17 +1768,6 @@
       </categories>
       <tags>
         <tag>java学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>what is the &#39;inflate()&#39;?</title>
-    <url>/2021/09/13/what-is-the-inflate/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
-      <categories>
-        <category>关于Android</category>
-      </categories>
-      <tags>
-        <tag>Android开发学习</tag>
       </tags>
   </entry>
   <entry>
@@ -2186,6 +2186,203 @@
       </categories>
       <tags>
         <tag>java学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数学常用公式定理</title>
+    <url>/2021/12/30/%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E5%AE%9A%E7%90%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="三角函数公式"><a href="#三角函数公式" class="headerlink" title="三角函数公式"></a>三角函数公式</h3><p><img src="../数学常用公式定理/img1.png" width="30%" height="30%" /></p>
+<p><center>正弦：$\sin A = \frac{a}{c} $ &ensp;&ensp; 余弦：$\cos A = \frac{b}{c} $</center><center>正切：$\tan A = \frac{a}{b} $&ensp;&ensp; 余切：$\cot A = \frac{b}{a} $</center><center>正割：$\sec A = \frac{c}{b} $&ensp;&ensp; 余割：$\csc A = \frac{c}{a} $</center><br>&ensp;&ensp; </p>
+<h4 id="基本关系"><a href="#基本关系" class="headerlink" title="基本关系"></a>基本关系</h4><ol>
+<li>$ \sec A = \frac{1}{\cos A} $</li>
+<li>$ \csc A = \frac{1}{\sin A} $</li>
+<li>$ \cot A = \frac{1}{\tan A} $</li>
+<li>$ \sin ^{2}A + \cos ^{2}A = 1 $</li>
+<li>$ \tan ^{2}A + 1 = \sec ^{2}A $</li>
+<li>$ \tan A = \frac{\sin A}{\cos A} $</li>
+<li>$ \cos 2A = \cos ^{2} A - \sin ^{2} A = 1 - 2\sin ^{2} A = 2\cos ^{2} A - 1 $</li>
+<li>$ \sin 2A = 2\sin A \times \cos A $</li>
+<li>$ \csc ^{2} A = \frac{1}{\sin ^{2} A}  = \frac{\cos ^{2} A + \sin ^{2} A}{\sin ^{2} A} = \frac{\cos ^{2} A}{\sin ^{2} A} + 1 = \cot ^{2}A + 1 $</li>
+<li>$ \cos (\alpha \pm  \beta ) = \cos \alpha \cos \beta \mp \sin \alpha \sin \beta  $</li>
+<li>$ \sin (\alpha \pm \beta ) = \sin \alpha \cos \beta \pm \cos \alpha \sin \beta  $</li>
+</ol>
+<h4 id="基本属性"><a href="#基本属性" class="headerlink" title="基本属性"></a>基本属性</h4><table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>正弦函数</th>
+      <th>余弦函数</th>
+      <th>正切函数</th>
+      <th>余切函数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>定义域</td>
+      <td>$R$</td>
+      <td>$R$</td>
+      <td>$x不等于k\pi + \frac{\pi}{2} $</td>
+      <td>$不等于k\pi $</td>
+    </tr>
+
+    <tr>
+      <td>值域</td>
+      <td>$[-1,1]$</td>
+      <td>$[-1,1]$</td>
+      <td>$R$</td>
+      <td>$R$</td>
+    </tr>
+
+    <tr>
+      <td>奇偶性</td>
+      <td>$奇函数$</td>
+      <td>$偶函数$</td>
+      <td>$奇函数$</td>
+      <td>$奇函数$</td>
+    </tr>
+
+    <tr>
+      <td>单调性</td>
+      <td></td>
+      <td></td>
+      <td>$单调递增$</td>
+      <td>$单调递减$</td>
+    </tr>
+
+    <tr>
+      <td>周期</td>
+      <td>$2\pi$</td>
+      <td>$2\pi$</td>
+      <td>$\pi$</td>
+      <td>$\pi$</td>
+    </tr>
+
+    <tr>
+      <td>$x=0时$</td>
+      <td>$0$</td>
+      <td>$1$</td>
+      <td>$0$</td>
+      <td>$无意义$</td>
+    </tr>
+
+    <tr>
+      <td>$x=\frac{\pi}{6}时$</td>
+      <td>$\frac{1}{2} $</td>
+      <td>$\frac{\sqrt {3}}{2} $</td>
+      <td>$\frac{\sqrt {3}}{3} $</td>
+      <td>$\sqrt {3} $</td>
+    </tr>
+
+    <tr>
+      <td>$x=\frac{\pi}{4}时$</td>
+      <td>$\frac{\sqrt {2}}{2} $</td>
+      <td>$\frac{\sqrt {2}}{2} $</td>
+      <td>$1$</td>
+      <td>$1$</td>
+    </tr>
+
+    <tr>
+      <td>$x=\frac{\pi}{3}时$</td>
+      <td>$\frac{\sqrt {3}}{2} $</td>
+      <td>$\frac{1}{2} $</td>
+      <td>$\sqrt {3} $</td>
+      <td>$\frac{\sqrt {3}}{3} $</td>
+    </tr>
+
+    <tr>
+      <td>$x=\frac{\pi}{2}时$</td>
+      <td>$1$</td>
+      <td>$0$</td>
+      <td>$无意义$</td>
+      <td>$0$</td>
+    </tr>
+
+    <tr>
+      <td>$x=\pi时$</td>
+      <td>$0$</td>
+      <td>$-1$</td>
+      <td>$0$</td>
+      <td>$无意义$</td>
+    </tr>
+
+    <tr>
+      <td>图像</td>
+      <td><img src="../数学常用公式定理/img2.png" height="90%" width="90%" /></td>
+      <td><img src="../数学常用公式定理/img3.png" height="90%" width="90%" /></td>
+      <td><img src="../数学常用公式定理/img4.png" height="90%" width="90%" /></td>
+      <td><img src="../数学常用公式定理/img5.png" height="90%" width="90%" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="反三角函数"><a href="#反三角函数" class="headerlink" title="反三角函数"></a>反三角函数</h3><table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>反正弦函数</th>
+      <th>反余弦函数</th>
+      <th>反正切函数</th>
+      <th>反余切函数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>函数式</td>
+      <td>$y = \arcsin X$</td>
+      <td>$y = \arccos X$</td>
+      <td>$y = \arctan X$</td>
+      <td>$y = \operatorname{arccot} X$</td>
+    </tr>
+
+    <tr>
+      <td>定义域</td>
+      <td>$[-1,1]$</td>
+      <td>$[-1,1]$</td>
+      <td>$R$</td>
+      <td>$R$</td>
+    </tr>
+
+    <tr>
+      <td>值域</td>
+      <td>$[-\frac{\pi }{2} ,\frac{\pi }{2} ]$</td>
+      <td>$[0,\pi]$</td>
+      <td>$[-\frac{\pi }{2} ,\frac{\pi }{2} ]$</td>
+      <td>$[0,\pi]$</td>
+    </tr>
+
+    <tr>
+      <td>奇偶性</td>
+      <td>$奇函数$</td>
+      <td>$非奇非偶$</td>
+      <td>$奇函数$</td>
+      <td>$非奇非偶$</td>
+    </tr>
+
+    <tr>
+      <td>图像</td>
+      <td><img src="../数学常用公式定理/img6.png" height="90%" width="90%" /></td>
+      <td><img src="../数学常用公式定理/img7.png" height="90%" width="90%" /></td>
+      <td><img src="../数学常用公式定理/img8.png" height="90%" width="90%" /></td>
+      <td><img src="../数学常用公式定理/img9.png" height="90%" width="90%" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="对数公式"><a href="#对数公式" class="headerlink" title="对数公式"></a>对数公式</h3><h4 id="对数恒等式"><a href="#对数恒等式" class="headerlink" title="对数恒等式"></a>对数恒等式</h4><ol>
+<li>对数第一恒等式</li>
+<li>对数第二恒等式</li>
+</ol>
+<h4 id="推导公式"><a href="#推导公式" class="headerlink" title="推导公式"></a>推导公式</h4><h3 id="等价无穷小公式"><a href="#等价无穷小公式" class="headerlink" title="等价无穷小公式"></a>等价无穷小公式</h3><h3 id="导数和微分公式"><a href="#导数和微分公式" class="headerlink" title="导数和微分公式"></a>导数和微分公式</h3><h4 id="导数定义表达式结构"><a href="#导数定义表达式结构" class="headerlink" title="导数定义表达式结构"></a>导数定义表达式结构</h4><ol>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+<h4 id="导数基本公式"><a href="#导数基本公式" class="headerlink" title="导数基本公式"></a>导数基本公式</h4><h4 id="微分基本公式"><a href="#微分基本公式" class="headerlink" title="微分基本公式"></a>微分基本公式</h4><h4 id="导数四则运算法则"><a href="#导数四则运算法则" class="headerlink" title="导数四则运算法则"></a>导数四则运算法则</h4><h4 id="微分四则运算法则"><a href="#微分四则运算法则" class="headerlink" title="微分四则运算法则"></a>微分四则运算法则</h4><h4 id="常用n阶导数公式"><a href="#常用n阶导数公式" class="headerlink" title="常用n阶导数公式"></a>常用n阶导数公式</h4><h4 id="切线与法线方程"><a href="#切线与法线方程" class="headerlink" title="切线与法线方程"></a>切线与法线方程</h4>]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
