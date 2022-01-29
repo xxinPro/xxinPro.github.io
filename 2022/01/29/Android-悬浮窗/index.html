@@ -21,26 +21,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xxin.xyz","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="路漫漫其修远兮，吾将上下而求索。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小衅笔记">
-<meta property="og:url" content="https://blog.xxin.xyz/archives/2021/11/index.html">
+<meta name="description" content="悬浮窗权限请求与使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-悬浮窗">
+<meta property="og:url" content="https://blog.xxin.xyz/2022/01/29/Android-%E6%82%AC%E6%B5%AE%E7%AA%97/index.html">
 <meta property="og:site_name" content="小衅笔记">
-<meta property="og:description" content="路漫漫其修远兮，吾将上下而求索。">
+<meta property="og:description" content="悬浮窗权限请求与使用">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-29T10:08:24.000Z">
+<meta property="article:modified_time" content="2022-01-29T12:59:45.479Z">
 <meta property="article:author" content="xxin">
-<meta property="article:tag" content="小衅,小衅笔记,乐享轩,乐享轩小衅,xxin,xxin笔记,xxinPro">
+<meta property="article:tag" content="Android程序设计">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://blog.xxin.xyz/archives/2021/11/">
+<link rel="canonical" href="https://blog.xxin.xyz/2022/01/29/Android-%E6%82%AC%E6%B5%AE%E7%AA%97/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2021/11/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xxin.xyz/2022/01/29/Android-%E6%82%AC%E6%B5%AE%E7%AA%97/","path":"2022/01/29/Android-悬浮窗/","title":"Android-悬浮窗"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | 小衅笔记</title>
+<title>Android-悬浮窗 | 小衅笔记</title>
   
 
 
@@ -135,7 +137,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -148,6 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E6%B8%85%E5%8D%95%E6%96%87%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0"><span class="nav-number">1.</span> <span class="nav-text">在清单文件中添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%94%B3%E8%AF%B7%E6%9D%83%E9%99%90"><span class="nav-number">2.</span> <span class="nav-text">动态申请权限</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -216,350 +219,113 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.xxin.xyz/2022/01/29/Android-%E6%82%AC%E6%B5%AE%E7%AA%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://q1.qlogo.cn/g?b=qq&nk=3033528136&s=640">
+      <meta itemprop="name" content="xxin">
+      <meta itemprop="description" content="路漫漫其修远兮，吾将上下而求索。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小衅笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android-悬浮窗
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-29 18:08:24" itemprop="dateCreated datePublished" datetime="2022-01-29T18:08:24+08:00">2022-01-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%85%B3%E4%BA%8EAndroid/" itemprop="url" rel="index"><span itemprop="name">关于Android</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>935</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description"><center>悬浮窗权限请求与使用</center></div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="在清单文件中添加"><a href="#在清单文件中添加" class="headerlink" title="在清单文件中添加"></a>在清单文件中添加</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.SYSTEM_ALERT_WINDOW&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.SYSTEM_OVERLAY_WINDOW&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="动态申请权限"><a href="#动态申请权限" class="headerlink" title="动态申请权限"></a>动态申请权限</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 请求悬浮窗权限</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> activity Activity</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> requestCode 请求码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">requestWindowPermission</span><span class="params">(Activity activity, <span class="keyword">int</span> requestCode)</span></span>&#123;</span><br><span class="line"><span class="comment">//        Android版本是否在6之后</span></span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M)&#123;</span><br><span class="line"><span class="comment">//            是否已经拥有悬浮窗权限</span></span><br><span class="line">            <span class="keyword">if</span> (Settings.canDrawOverlays(activity))&#123;</span><br><span class="line">                MyUtils.showToast(activity,<span class="string">&quot;已获得悬浮窗权限&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                MyUtils.showToast(activity,<span class="string">&quot;请赋予悬浮窗权限&quot;</span>);</span><br><span class="line"><span class="comment">//                跳转到授权页面</span></span><br><span class="line">                Intent intent = <span class="keyword">new</span> Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);</span><br><span class="line">                intent.setData(Uri.parse(<span class="string">&quot;package:&quot;</span> + activity.getPackageName()));</span><br><span class="line">                Log.d(TAG, <span class="string">&quot;requestWindowPermission: &quot;</span> + intent.getData());</span><br><span class="line">                activity.startActivityForResult(intent,requestCode);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">//            Android6之前版本,不需要动态申请</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="tag"><i class="fa fa-tag"></i> Android程序设计</a>
+          </div>
+
         
-        <span class="collection-header">很好! 目前共计 107 篇日志。 继续努力。</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-30T20:15:15+08:00"
-              content="2021-11-30">
-          11-30
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/30/Android%E8%87%AA%E5%AE%9A%E4%B9%89ImageView%E7%9A%84%E5%9B%9B%E4%B8%AA%E8%A7%92%E5%9C%86%E8%A7%92/" itemprop="url">
-            <span itemprop="name">Android自定义ImageView的四个角圆角</span>
-          </a>
-      </div>
-
-      
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/09/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/" rel="prev" title="公众号接口文档">
+                  <i class="fa fa-chevron-left"></i> 公众号接口文档
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-22T15:34:46+08:00"
-              content="2021-11-22">
-          11-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/22/Android-View%E4%BF%9D%E5%AD%98%E4%B8%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" itemprop="url">
-            <span itemprop="name">Android View保存为本地图片</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-19T17:08:20+08:00"
-              content="2021-11-19">
-          11-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/19/%E5%AD%90View%E8%B6%85%E5%87%BA%E7%88%B6View/" itemprop="url">
-            <span itemprop="name">子View超出父View</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-19T10:18:04+08:00"
-              content="2021-11-19">
-          11-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/19/hexo%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/" itemprop="url">
-            <span itemprop="name">hexo文章加密</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-17T20:05:14+08:00"
-              content="2021-11-17">
-          11-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/17/Android%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8D%E8%AE%BE%E5%A4%87/" itemprop="url">
-            <span itemprop="name">Android判断当前设备</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-17T19:02:32+08:00"
-              content="2021-11-17">
-          11-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/17/Android%E8%BD%AF%E9%94%AE%E7%9B%98%E6%98%BE%E7%A4%BA%E2%80%9C%E6%90%9C%E7%B4%A2%E2%80%9D/" itemprop="url">
-            <span itemprop="name">Android软键盘显示“搜索”</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-17T12:18:32+08:00"
-              content="2021-11-17">
-          11-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/17/Configuration%E7%B1%BB%E7%9A%84%E5%B8%B8%E9%87%8F%E4%B8%8E%E5%8F%98%E9%87%8F/" itemprop="url">
-            <span itemprop="name">Configuration类的常量与变量</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-13T18:03:42+08:00"
-              content="2021-11-13">
-          11-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/13/%E4%BF%AE%E6%94%B9Android%E9%A1%B9%E7%9B%AEsdk%E7%89%88%E6%9C%AC/" itemprop="url">
-            <span itemprop="name">修改Android项目sdk版本</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-10T11:36:05+08:00"
-              content="2021-11-10">
-          11-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/10/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82-7/" itemprop="url">
-            <span itemprop="name">Android实战-智慧城市(7)</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-06T16:51:01+08:00"
-              content="2021-11-06">
-          11-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/06/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82-6/" itemprop="url">
-            <span itemprop="name">Android实战-智慧城市(6)</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-06T11:38:15+08:00"
-              content="2021-11-06">
-          11-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/06/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82-5/" itemprop="url">
-            <span itemprop="name">Android实战-智慧城市(5)</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-05T19:47:33+08:00"
-              content="2021-11-05">
-          11-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/05/%E9%97%AA%E4%B8%8D%E5%8A%A8%E6%A0%A1%E5%9B%AD/" itemprop="url">
-            <span itemprop="name">闪不动校园</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-05T13:45:25+08:00"
-              content="2021-11-05">
-          11-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/05/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E9%80%86%E5%90%91%E6%9F%90%E6%A0%A1%E5%9B%AD%E8%BD%AF%E4%BB%B6/" itemprop="url">
-            <span itemprop="name">记录一次逆向某校园软件</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-04T14:12:26+08:00"
-              content="2021-11-04">
-          11-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/04/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82-4/" itemprop="url">
-            <span itemprop="name">Android实战-智慧城市(4)</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-02T16:13:33+08:00"
-              content="2021-11-02">
-          11-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/02/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82-3/" itemprop="url">
-            <span itemprop="name">Android实战-智慧城市(3)</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-02T14:37:10+08:00"
-              content="2021-11-02">
-          11-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/02/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82-2/" itemprop="url">
-            <span itemprop="name">Android实战-智慧城市(2)</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 </div>
   </main>
