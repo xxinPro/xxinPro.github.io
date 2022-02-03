@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.xxin.xyz","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="破解了，但是没有完全破解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录一次破解闪照">
+<meta property="og:url" content="https://blog.xxin.xyz/2022/02/03/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%A0%B4%E8%A7%A3%E9%97%AA%E7%85%A7/index.html">
+<meta property="og:site_name" content="小衅笔记">
+<meta property="og:description" content="破解了，但是没有完全破解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.xxin.xyz/2022/02/03/记录一次破解闪照/img1.png">
+<meta property="og:image" content="https://blog.xxin.xyz/2022/02/03/记录一次破解闪照/img2.png">
+<meta property="og:image" content="https://blog.xxin.xyz/2022/02/03/记录一次破解闪照/img2.png">
+<meta property="og:image" content="https://blog.xxin.xyz/2022/02/03/记录一次破解闪照/img3.png">
+<meta property="og:image" content="https://blog.xxin.xyz/2022/02/03/记录一次破解闪照/img4.png">
+<meta property="og:image" content="https://blog.xxin.xyz/2022/02/03/记录一次破解闪照/img5.png">
+<meta property="og:image" content="https://blog.xxin.xyz/2022/02/03/记录一次破解闪照/img6.png">
+<meta property="og:image" content="https://blog.xxin.xyz/2022/02/03/记录一次破解闪照/img7.png">
+<meta property="og:image" content="https://blog.xxin.xyz/2022/02/03/记录一次破解闪照/img8.png">
+<meta property="og:image" content="https://blog.xxin.xyz/2022/02/03/记录一次破解闪照/img9.png">
+<meta property="og:image" content="https://blog.xxin.xyz/2022/02/03/记录一次破解闪照/img10.png">
+<meta property="article:published_time" content="2022-02-03T11:40:58.000Z">
+<meta property="article:modified_time" content="2022-02-03T14:59:47.181Z">
+<meta property="article:author" content="xxin">
+<meta property="article:tag" content="Android逆向">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.xxin.xyz/2022/02/03/记录一次破解闪照/img1.png">
+
+
+<link rel="canonical" href="https://blog.xxin.xyz/2022/02/03/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%A0%B4%E8%A7%A3%E9%97%AA%E7%85%A7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.xxin.xyz/2022/02/03/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%A0%B4%E8%A7%A3%E9%97%AA%E7%85%A7/","path":"2022/02/03/记录一次破解闪照/","title":"记录一次破解闪照"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>记录一次破解闪照 | 小衅笔记</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">小衅笔记</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Never give up!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">109</span></a></li>
+        <li class="menu-item menu-item-友链"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AA%E7%85%A7%E5%82%A8%E5%AD%98%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">闪照储存位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E5%8A%A0%E5%AF%86%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">读取加密文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DES%E8%A7%A3%E5%AF%86%E5%92%8C%E5%8A%A0%E5%AF%86"><span class="nav-number">3.</span> <span class="nav-text">DES解密和加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96Key%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.</span> <span class="nav-text">获取Key对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#md5%E5%80%BC%E8%8E%B7%E5%8F%96"><span class="nav-number">5.</span> <span class="nav-text">md5值获取</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xxin"
+      src="http://q1.qlogo.cn/g?b=qq&nk=3033528136&s=640">
+  <p class="site-author-name" itemprop="name">xxin</p>
+  <div class="site-description" itemprop="description">路漫漫其修远兮，吾将上下而求索。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:x@xxin.xyz" title="E-Mail → mailto:x@xxin.xyz" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=3033528136&site=qq&menu=yes" title="QQ → https:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;3033528136&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/xxinPro" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.xxin.xyz/2022/02/03/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%A0%B4%E8%A7%A3%E9%97%AA%E7%85%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://q1.qlogo.cn/g?b=qq&nk=3033528136&s=640">
+      <meta itemprop="name" content="xxin">
+      <meta itemprop="description" content="路漫漫其修远兮，吾将上下而求索。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小衅笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          记录一次破解闪照
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-03 19:40:58" itemprop="dateCreated datePublished" datetime="2022-02-03T19:40:58+08:00">2022-02-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%85%B3%E4%BA%8EAndroid/" itemprop="url" rel="index"><span itemprop="name">关于Android</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description"><center>破解了，但是没有完全破解</center></div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>妈了个巴子的，白瞎我两天时间，气死</p>
+<h3 id="闪照储存位置"><a href="#闪照储存位置" class="headerlink" title="闪照储存位置"></a>闪照储存位置</h3><p>&ensp;&ensp;&ensp;&ensp;首先得找到闪照的文件储存的位置，这个过程相当繁琐，不再列举，直接把缓存的储存位置贴在下面<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/storage/emulated/0/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/chatpic/chatimg/</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;在这个路径的文件夹下，有许多的子文件夹，子文件夹中的文件，就是闪照图片加密后的文件了</p>
+<h3 id="读取加密文件"><a href="#读取加密文件" class="headerlink" title="读取加密文件"></a>读取加密文件</h3><p>&ensp;&ensp;&ensp;&ensp;以十六进制读取加密后的文件，可以看到字节流以“ENCRYPT:”开头<br><img src="../记录一次破解闪照/img1.png" width="70%" height="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;推己及人，如果是我开发这个程序，绝对会在读取加密文件的数据流时，在代码中判断与”ENCRYPT:”.getBytes(“UTF-8”)相同的流，那么也就是说在smali代码中很大可能通过”ENCRYPT:”这个字符串找到相应的解密方法<br>&ensp;&ensp;&ensp;&ensp;果然，在com.tencent.mobileqq.utils.DESUtils类中找到了它，顺便发现了闪照文件的加密方式，DES加密<br>&ensp;&ensp;&ensp;&ensp;那么可以推断，查看闪照时，程序读取加密文件的字节流并删除掉”ENCRYPT:”，然后通过Key进行DES解密，先编写DES解密方法吧</p>
+<p><img src="../记录一次破解闪照/img2.png" width="70%" height="70%" /></p>
+<h3 id="DES解密和加密"><a href="#DES解密和加密" class="headerlink" title="DES解密和加密"></a>DES解密和加密</h3><p>&ensp;&ensp;&ensp;&ensp;DES是一种过时的加密方式，不够安全，不过用在这里好像恰到好处。。。</p>
+<p>&ensp;&ensp;&ensp;&ensp;解密方法，只要向方法中传入需要解密的文件路径和解密的Key即可<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * DES加密文件解密</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filePath 加密文件的路径</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key 密钥</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">decrypt</span><span class="params">(String filePath,Key key)</span> <span class="keyword">throws</span> IOException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException </span>&#123;</span><br><span class="line">        File fromFile = <span class="keyword">new</span> File(filePath); <span class="comment">//已经加密的文件</span></span><br><span class="line">        File toFile = <span class="keyword">new</span> File(filePath + <span class="string">&quot;_decrypt.png&quot;</span>); <span class="comment">//解密的文件的路径</span></span><br><span class="line"></span><br><span class="line">        Cipher cipher = Cipher.getInstance(<span class="string">&quot;DES&quot;</span>);</span><br><span class="line">        cipher.init(Cipher.DECRYPT_MODE,key); <span class="comment">//使用密钥解密</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//加密文件文件头字节流</span></span><br><span class="line">        <span class="keyword">byte</span>[] encryptBytes = <span class="string">&quot;ENCRYPT:&quot;</span>.getBytes(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (fromFile.exists())&#123;</span><br><span class="line">            InputStream inputStream = <span class="keyword">new</span> FileInputStream(fromFile);</span><br><span class="line">            OutputStream outputStream = <span class="keyword">new</span> FileOutputStream(toFile);</span><br><span class="line"></span><br><span class="line">            CipherOutputStream cipherOutputStream = <span class="keyword">new</span> CipherOutputStream(outputStream,cipher);</span><br><span class="line">            <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="keyword">int</span> len;</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> ((len = inputStream.read(buffer)) &gt;= <span class="number">0</span>)&#123;</span><br><span class="line"><span class="comment">//                输出流中跳过加密文件头</span></span><br><span class="line">                <span class="keyword">if</span> (i == <span class="number">0</span>)&#123;</span><br><span class="line">                    cipherOutputStream.write(buffer, encryptBytes.length, len-encryptBytes.length);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    cipherOutputStream.write(buffer, <span class="number">0</span>, len);</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            inputStream.close();</span><br><span class="line">            outputStream.close();</span><br><span class="line">            cipherOutputStream.close();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;文件不存在&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;加密方法，有解密就顺手把加密放出来吧<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * DES加密文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> filePath 需要加密的文件的路径</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> key 密钥</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">encrypt</span><span class="params">(String filePath,Key key)</span> <span class="keyword">throws</span> IOException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException </span>&#123;</span><br><span class="line">    File fromFile = <span class="keyword">new</span> File(filePath); <span class="comment">//未加密的文件</span></span><br><span class="line">    File toFile = <span class="keyword">new</span> File(filePath + <span class="string">&quot;_encrypt&quot;</span>); <span class="comment">//加密的文件</span></span><br><span class="line"></span><br><span class="line">    Cipher cipher = Cipher.getInstance(<span class="string">&quot;DES&quot;</span>);</span><br><span class="line">    cipher.init(Cipher.ENCRYPT_MODE,key); <span class="comment">//使用密钥加密</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (fromFile.exists())&#123;</span><br><span class="line">        InputStream inputStream = <span class="keyword">new</span> FileInputStream(fromFile);</span><br><span class="line">        OutputStream outputStream = <span class="keyword">new</span> FileOutputStream(toFile);</span><br><span class="line">        CipherInputStream cipherInputStream = <span class="keyword">new</span> CipherInputStream(inputStream,cipher);</span><br><span class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> len;</span><br><span class="line">        <span class="keyword">while</span> ((len = cipherInputStream.read(buffer)) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            outputStream.write(buffer, <span class="number">0</span>, len);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        inputStream.close();</span><br><span class="line">        outputStream.close();</span><br><span class="line">        cipherInputStream.close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;文件不存在&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;获取密钥的方式，计算方式有很多种，我只不过是为了测试程序可行性临时写了一个<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据参数生成密钥</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> encodeKey key字符串参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> key对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Key <span class="title">getKey</span><span class="params">(String encodeKey)</span></span>&#123;</span><br><span class="line">    KeyGenerator key = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        key = KeyGenerator.getInstance(<span class="string">&quot;DES&quot;</span>);</span><br><span class="line">        key.init(<span class="keyword">new</span> SecureRandom(encodeKey.getBytes()));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">assert</span> key != <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> key.generateKey();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;万事具备，只欠解密的Key</p>
+<h3 id="获取Key对象"><a href="#获取Key对象" class="headerlink" title="获取Key对象"></a>获取Key对象</h3><p>&ensp;&ensp;&ensp;&ensp;通过这个输入流可以看到，它是在进行DES解密，并通过SecretKeySpec创建DES解密的Key对象；<br><img src="../记录一次破解闪照/img2.png" width="70%" height="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;在this(a(paramArrayOfByte),”DES”)中，虽然不知道a(paramArrayOfByte)是什么玩意儿，传入一个byte[]再返回一个byte[]，，，不过它一定是必要的<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] a(<span class="keyword">byte</span>[] paramArrayOfbyte) &#123;</span><br><span class="line">  <span class="keyword">byte</span>[] arrayOfByte = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">8</span>];</span><br><span class="line">  <span class="keyword">if</span> (<span class="number">8</span> &gt; paramArrayOfbyte.length) &#123;</span><br><span class="line">    System.arraycopy(paramArrayOfbyte, <span class="number">0</span>, arrayOfByte, <span class="number">0</span>, paramArrayOfbyte.length);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    System.arraycopy(paramArrayOfbyte, <span class="number">0</span>, arrayOfByte, <span class="number">0</span>, <span class="number">8</span>);</span><br><span class="line">  &#125; </span><br><span class="line">  <span class="keyword">return</span> arrayOfByte;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;然后去找a(paramArrayOfByte)所用到的paramArrayOfByte，它是方法的第三个参数，向上查找，发现当前类中重载的a方法调用了它，继续向上查找<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">a</span><span class="params">(String str, String str2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!a(str)) &#123;</span><br><span class="line">            <span class="keyword">long</span> currentTimeMillis = System.currentTimeMillis();</span><br><span class="line">            File file = <span class="keyword">new</span> File(str);</span><br><span class="line">            <span class="keyword">long</span> length = file.length() / <span class="number">1024</span>;</span><br><span class="line">            File file2 = <span class="keyword">new</span> File(str + <span class="string">&quot;.tmp&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (file2.exists()) &#123;</span><br><span class="line">                file2.delete();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//调用</span></span><br><span class="line">            a(file, file2, str2.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">            FileUtils.copyFile(file2, file);</span><br><span class="line">            file2.delete();</span><br><span class="line">            <span class="keyword">if</span> (QLog.isDevelopLevel()) &#123;</span><br><span class="line">                QLog.d(<span class="string">&quot;DESUtil&quot;</span>, <span class="number">4</span>, <span class="string">&quot;DES Encrypt filePath:&quot;</span> + str + <span class="string">&quot;,key:&quot;</span> + str2 + <span class="string">&quot;,costTime:&quot;</span> + (System.currentTimeMillis() - currentTimeMillis) + <span class="string">&quot;,fileSize:&quot;</span> + length + <span class="string">&quot;KB&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (QLog.isDevelopLevel()) &#123;</span><br><span class="line">            QLog.d(<span class="string">&quot;DESUtil&quot;</span>, <span class="number">2</span>, <span class="string">&quot;encrypt had encrypt,file:&quot;</span> + str);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;在com.tencent.mobileqq.dating.HotChatFlashPicActivity的子类HotChatFlashPicActivity$5中调用了这个方法，不过依然没有拿到key的计算方式，继续向上查找<br><img src="../记录一次破解闪照/img3.png" width="70%" height="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;在HotChatFlashPicActivity的A()方法中，发现返回了this.t，并且doOnCreate()中有this.t的赋值this.t = getIntent().getStringExtra(“md5”);，所以可以猜测，key的字符串参数是某字符串的md5加密值或者文件的md5唯一值，如果是前者还好，是后者就凉了<br><img src="../记录一次破解闪照/img4.png" width="70%" height="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;然后又经过一系列查找。。。发现在com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder类中向其put了md5参数<br><img src="../记录一次破解闪照/img5.png" width="70%" height="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;在这里插入log输出md5参数的值<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String paramString = paramMessageForPic.md5</span><br><span class="line">bundle.putString(<span class="string">&quot;md5&quot;</span>, paramString);</span><br><span class="line">Log.d(<span class="string">&quot;xxin&quot;</span>, paramString);</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;当点击聊天记录中的闪照时，LogCat中输出了它的md5值“5AB73AA4439EB210F65D2115C887A191”<br><img src="../记录一次破解闪照/img6.png" width="70%" height="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;通过这个md5，也就是key参数值，根据上面的思路，编写key获取方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * QQ闪照加密的KEY获取方式</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> md5 key参数值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> key对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Key <span class="title">getQQKey</span><span class="params">(String md5)</span> <span class="keyword">throws</span> UnsupportedEncodingException, NoSuchPaddingException, NoSuchAlgorithmException </span>&#123;</span><br><span class="line">    SecretKeySpec secretKeySpec = <span class="keyword">new</span> SecretKeySpec(a(md5.getBytes(<span class="string">&quot;UTF-8&quot;</span>)), <span class="string">&quot;DES&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> secretKeySpec;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] a(<span class="keyword">byte</span>[] bytes) &#123;</span><br><span class="line">    <span class="keyword">byte</span>[] bytes1 = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">8</span>];</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">8</span> &gt; bytes.length)&#123;</span><br><span class="line">        System.arraycopy(bytes, <span class="number">0</span>, bytes1, <span class="number">0</span>, bytes.length);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        System.arraycopy(bytes, <span class="number">0</span>, bytes1, <span class="number">0</span>, <span class="number">8</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bytes1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;调用key获取方法得到key，并使用key对加密的文件进行解密<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> NoSuchPaddingException, IOException, NoSuchAlgorithmException, InvalidKeyException </span>&#123;</span><br><span class="line">    String md5 = <span class="string">&quot;5AB73AA4439EB210F65D2115C887A191&quot;</span>; <span class="comment">//原文件的md5值是DES加密文件时使用的密钥值，妈的，初步推测这个md5值从服务器获取</span></span><br><span class="line">    Key qqKey = getQQKey(md5);</span><br><span class="line">    decrypt(<span class="string">&quot;C:\\Users\\30335\\Desktop\\闪照加密\\Cache_-f5ed123ea2f6cdd_fp&quot;</span>,qqKey); <span class="comment">//解密</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;目测解密成功<br><img src="../记录一次破解闪照/img7.png" width="70%" height="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;打开看一下，确实没问题<br><img src="../记录一次破解闪照/img8.png" width="70%" height="70%" /></p>
+<p>&ensp;&ensp;&ensp;&ensp;不过，如果多点几张不同的闪照，会发现md5值并不固定，所以它一定有一个计算方式🤔<br><img src="../记录一次破解闪照/img9.png" width="70%" height="70%" /></p>
+<h3 id="md5值获取"><a href="#md5值获取" class="headerlink" title="md5值获取"></a>md5值获取</h3><p>&ensp;&ensp;&ensp;&ensp;从上面知道，md5值是计算key对象用到的key参数值，key对象是解密闪照的密钥；md5值不固定，不同的图片的闪照有不同的md5值，但是同一张图片的闪照的md5值在任何情况下永远固定，不禁让人发起深思。。。这个md5不会是原图片文件签名的md5吧<br>&ensp;&ensp;&ensp;&ensp;妈的，是的，这个md5值是验证文件唯一性的值，字节流不同的文件有不同的md5值，并不是通过其它什么计算得出，且这个md5值是在对方发送闪照时一并发送，作为闪照的接收端只能从服务器发送的数据中接收<br>&ensp;&ensp;&ensp;&ensp;说简单直白点，要有原图的MD5，才能把加密后的图片解密成原图；只有原图，才能得到解密用的MD5；话说回来，都有原图了，我还解他妈的加密干什么</p>
+<p>&ensp;&ensp;&ensp;&ensp;当然，也可以直接问对方要原图MD5签名<br>&ensp;&ensp;&ensp;&ensp;<label style="color:red;cursor:auto">A</label>：妹子可以发张照片看吗？<br>&ensp;&ensp;&ensp;&ensp;<label style="color:red;cursor:auto">B</label>：[闪照]<br>&ensp;&ensp;&ensp;&ensp;<label style="color:red;cursor:auto">A</label>：妹子可以提供下闪照原图的MD5签名吗，我解密下，谢谢。<br>&ensp;&ensp;&ensp;&ensp;<label style="color:red;cursor:auto">B</label>：阴阳怪气什么啊，普信男真下头</p>
+<p>&ensp;&ensp;&ensp;&ensp;天无绝人之路，也可以像上面那样向原安装包中注入log，以使在点击闪照时在logcat中输出原图的md5签名，然后拿来解密闪照。。。<br><img src="../记录一次破解闪照/img10.png" width="70%" height="70%" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android%E9%80%86%E5%90%91/" rel="tag"><i class="fa fa-tag"></i> Android逆向</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/30/Android-Studio%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/" rel="prev" title="Android Studio无线调试">
+                  <i class="fa fa-chevron-left"></i> Android Studio无线调试
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备19064654号-5 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小衅</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">709k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">10:44</span>
+  </span>
+</div><script defer src="/lib/three.js"></script><script defer src="/lib/waves.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
