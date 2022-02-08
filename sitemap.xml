@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.xxin.xyz/2022/02/08/%E6%89%BE%E4%B8%AA%E5%A5%B3%E6%9C%8B%E5%8F%8B/</loc>
+    
+    <lastmod>2022-02-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.xxin.xyz/2021/09/23/Android-Glide/</loc>
     
     <lastmod>2022-02-07</lastmod>
@@ -844,14 +851,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://blog.xxin.xyz/tags/Android%E9%80%86%E5%90%91/</loc>
     <lastmod>2022-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/Android%E9%80%86%E5%90%91/</loc>
+    <loc>https://blog.xxin.xyz/tags/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2022-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -865,14 +872,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/hexo%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://blog.xxin.xyz/tags/github/</loc>
     <lastmod>2022-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.xxin.xyz/tags/github/</loc>
+    <loc>https://blog.xxin.xyz/tags/hexo%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2022-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
