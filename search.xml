@@ -658,6 +658,18 @@
       </tags>
   </entry>
   <entry>
+    <title>Android-Toolbar</title>
+    <url>/2021/09/09/Android-Toolbar/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>菜单栏，后边在写</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android-ViewPager</title>
     <url>/2021/09/13/Android-ViewPager/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h4 id="创建ViewPager控件"><a href="#创建ViewPager控件" class="headerlink" title="创建ViewPager控件"></a>创建ViewPager控件</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/linear&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ViewPager控件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">androidx.viewpager.widget.ViewPager</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/viewPager&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -685,18 +697,6 @@
 <p>定义变量、创建构造器、绑定事件（参考RecyclerView）<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> android.view.LayoutInflater;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewGroup;</span><br><span class="line"><span class="keyword">import</span> android.widget.LinearLayout;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.recyclerview.widget.RecyclerView;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">MyAdapter</span>.<span class="title">MyViewHolder</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;Integer&gt; integerArrayList;</span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;String&gt; stringArrayList;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(ArrayList&lt;String&gt; stringArrayList,ArrayList&lt;Integer&gt; integerArrayList)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.stringArrayList = stringArrayList;</span><br><span class="line">        <span class="keyword">this</span>.integerArrayList = integerArrayList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    创建布局</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MyViewHolder <span class="title">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        得到item布局文件</span></span><br><span class="line">        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,<span class="keyword">false</span>);</span><br><span class="line">        MyViewHolder myViewHolder = <span class="keyword">new</span> MyViewHolder(view);</span><br><span class="line">        <span class="keyword">return</span> myViewHolder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    绑定事件</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> MyViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        设置每页的背景和文本内容</span></span><br><span class="line">        holder.item_text.setText(stringArrayList.get(position));</span><br><span class="line">        holder.item_linearLayout.setBackgroundResource(integerArrayList.get(position));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="comment">//    获取条数</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> stringArrayList.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    MyViewHolder继承自RecyclerView的ViewHolder</span></span><br><span class="line"><span class="comment">//    创建一个内部类，该类对RecyclerView.ViewHolder进行封装</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> LinearLayout item_linearLayout;</span><br><span class="line">        <span class="keyword">private</span> TextView item_text;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyViewHolder</span><span class="params">(<span class="meta">@NonNull</span> View itemView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(itemView);</span><br><span class="line">            item_text = itemView.findViewById(R.id.item_text);</span><br><span class="line">            item_linearLayout = itemView.findViewById(R.id.item_linearLayout);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <h3 id="调用适配器"><a href="#调用适配器" class="headerlink" title="调用适配器"></a>调用适配器</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> androidx.viewpager2.widget.ViewPager2;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ViewPager2 viewPager2;</span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;Integer&gt; integerArrayList;</span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;String&gt; stringArrayList;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        stringArrayList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        integerArrayList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        stringArrayList.add(<span class="string">&quot;页面1&quot;</span>);</span><br><span class="line">        stringArrayList.add(<span class="string">&quot;页面2&quot;</span>);</span><br><span class="line">        stringArrayList.add(<span class="string">&quot;页面3&quot;</span>);</span><br><span class="line">        integerArrayList.add(R.color.antiquewhite);</span><br><span class="line">        integerArrayList.add(R.color.darkorange);</span><br><span class="line">        integerArrayList.add(R.color.lime);</span><br><span class="line"></span><br><span class="line">        viewPager2 = findViewById(R.id.viewPager2);</span><br><span class="line">        MyAdapter myAdapter = <span class="keyword">new</span> MyAdapter(stringArrayList,integerArrayList);</span><br><span class="line">        viewPager2.setAdapter(myAdapter);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="../Android-ViewPager2/ViewPager2.gif" height="40%" width="40%" /></p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android-Toolbar</title>
-    <url>/2021/09/09/Android-Toolbar/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>菜单栏，后边在写</p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -1900,7 +1900,7 @@
         <category>记事便笺</category>
       </categories>
       <tags>
-        <tag>设计文档</tag>
+        <tag>文件文档</tag>
       </tags>
   </entry>
   <entry>
@@ -2145,6 +2145,18 @@
       </tags>
   </entry>
   <entry>
+    <title>常用网站</title>
+    <url>/2022/02/22/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&ensp;&ensp;&ensp;&ensp;<a href="https://blog.xxin.xyz/">小衅笔记</a>：世界第一笔记<br>&ensp;&ensp;&ensp;&ensp;<a href="https://next.itellyou.cn/">MSDN</a>：纯净系统镜像下载<br>&ensp;&ensp;&ensp;&ensp;<a href="https://greasyfork.org/zh-CN">Greasy Fork</a>：提供用户油猴脚本<br>&ensp;&ensp;&ensp;&ensp;<a href="https://www.icourse163.org/">慕课网</a>：中国大学MOOC<br>&ensp;&ensp;&ensp;&ensp;<a href="https://www.runoob.com/">菜鸟教程</a>：学的不仅是技术，更是梦想<br>&ensp;&ensp;&ensp;&ensp;<a href="http://www.jsons.cn/">Json在线格式化</a>：编码转换，解密加密在线，与字节流相关的一切工具<br>&ensp;&ensp;&ensp;&ensp;<a href="http://coolaf.com/">在线工具</a>：post、get等工具<br>&ensp;&ensp;&ensp;&ensp;<a href="https://wodemo.net/">我的磨</a>：勉强算是一个建站工具吧。。。<br>&ensp;&ensp;&ensp;&ensp;<a href="https://www.haolizi.net/">好例子网</a>：实例源码下载<br>&ensp;&ensp;&ensp;&ensp;<a href="https://bbs.binmt.cc/">MT论坛</a>：mt论坛<br>&ensp;&ensp;&ensp;&ensp;<a href="https://lxx6.com/soft">乐享轩软件合集</a>：Android破解软件合集<br>&ensp;&ensp;&ensp;&ensp;<a href="https://www.ngrok.cc/">Sunny-Ngrok</a>：内网穿透服务<br>&ensp;&ensp;&ensp;&ensp;<a href="https://www.httpbin.org/">http测试网站</a>：向该网站发送网络请求，会返回发送的请求信息<br>&ensp;&ensp;&ensp;&ensp;<a href="https://freefq.com/">免费翻Q网</a>：Android、iPhone、windows、macos等翻Q软件下载，v2ray、ssr、xray等免费节点分享，还有好多功能不列举了<br>&ensp;&ensp;&ensp;&ensp;<a href="https://getafreenode.com/">GetAFreeNode</a>：免费获取v2节点<br>&ensp;&ensp;&ensp;&ensp;<a href="https://github.com/freefq/free">github节点分享</a>：在一个github项目中共享了大量免费v2ray、ssr节点</p>
+]]></content>
+      <categories>
+        <category>记事便笺</category>
+      </categories>
+      <tags>
+        <tag>网站相关</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>我的庸俗，我的封建</title>
     <url>/2021/07/18/%E6%88%91%E7%9A%84%E5%BA%B8%E4%BF%97%EF%BC%8C%E6%88%91%E7%9A%84%E5%B0%81%E5%BB%BA/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&ensp;&ensp;&ensp;&ensp;我的庸俗，向来我是承认的</p>
@@ -2306,6 +2318,17 @@
 <li>一个类只能继承一个类；一个类可以实现多个接口</li>
 </ol>
 ]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>枚举</title>
+    <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -2631,17 +2654,6 @@
       </tags>
   </entry>
   <entry>
-    <title>枚举</title>
-    <url>/2021/07/24/%E6%9E%9A%E4%B8%BE/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//枚举用enum定义，不再继承Object，默认继承java.lang.Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> 枚举 </span>&#123;</span><br><span class="line"><span class="comment">//    必须在第一行列出所有实例，并不是简单的列出，实例名省略了()，调用构造器创建实例，等同于 枚举 TEST = new 枚举();</span></span><br><span class="line">    PLUS&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eval</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//    枚举名.values;返回枚举的所有实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        枚举.PLUS.eval();</span><br><span class="line"><span class="comment">//        for (枚举 s : 枚举.values())&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(s);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> 枚举()&#123;</span><br><span class="line"><span class="comment">//        枚举的构造器只能用private修饰</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java学习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>某巨人逆向分析</title>
     <url>/2021/09/15/%E6%9F%90%E5%B7%A8%E4%BA%BA%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -2813,6 +2825,19 @@
       </tags>
   </entry>
   <entry>
+    <title>禁用笔记本键盘和触摸板</title>
+    <url>/2022/02/20/%E7%A6%81%E7%94%A8%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%94%AE%E7%9B%98%E5%92%8C%E8%A7%A6%E6%91%B8%E6%9D%BF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>cmd命令禁用，<a href="../禁用笔记本键盘和触摸板/disable keyboard.cmd">disable keyboard.cmd</a><br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">cd</span>/d&quot;%~dp0&quot;&amp;(<span class="built_in">cacls</span> &quot;<span class="variable">%SystemDrive%</span>\System Volume Information&quot; &gt;<span class="built_in">nul</span> <span class="number">2</span>&gt;<span class="built_in">nul</span>)||(<span class="built_in">start</span> &quot;&quot; mshta vbscript:CreateObject^(&quot;Shell.Application&quot;^).ShellExecute^(&quot;%~nx0&quot;,&quot; %*&quot;,&quot;&quot;,&quot;runas&quot;,<span class="number">1</span>^)^(window.close^)&amp;<span class="keyword">exit</span> /b)</span><br><span class="line">sc config i8042prt <span class="built_in">start</span>=disabled</span><br><span class="line">shutdown -r -t <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>cmd命令启用，<a href="../禁用笔记本键盘和触摸板/enable keyboard.cmd">enable keyboard.cmd</a><br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">cd</span>/d&quot;%~dp0&quot;&amp;(<span class="built_in">cacls</span> &quot;<span class="variable">%SystemDrive%</span>\System Volume Information&quot; &gt;<span class="built_in">nul</span> <span class="number">2</span>&gt;<span class="built_in">nul</span>)||(<span class="built_in">start</span> &quot;&quot; mshta vbscript:CreateObject^(&quot;Shell.Application&quot;^).ShellExecute^(&quot;%~nx0&quot;,&quot; %*&quot;,&quot;&quot;,&quot;runas&quot;,<span class="number">1</span>^)^(window.close^)&amp;<span class="keyword">exit</span> /b)</span><br><span class="line">sc config i8042prt <span class="built_in">start</span>=auto</span><br><span class="line">shutdown -r -t <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>操作笔记</category>
+      </categories>
+      <tags>
+        <tag>计算机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>理想和痞子</title>
     <url>/2021/09/26/%E7%90%86%E6%83%B3%E5%92%8C%E7%97%9E%E5%AD%90/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&ensp;&ensp;做完今天的笔记，又到了凌晨12点，收起书本，点上一根烟，看了下窗外，稀稀拉拉的还在下雨。</p>
@@ -2833,19 +2858,6 @@
       </categories>
       <tags>
         <tag>程序人生</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>禁用笔记本键盘和触摸板</title>
-    <url>/2022/02/20/%E7%A6%81%E7%94%A8%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%94%AE%E7%9B%98%E5%92%8C%E8%A7%A6%E6%91%B8%E6%9D%BF/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>cmd命令禁用，<a href="../禁用笔记本键盘和触摸板/disable keyboard.cmd">disable keyboard.cmd</a><br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">cd</span>/d&quot;%~dp0&quot;&amp;(<span class="built_in">cacls</span> &quot;<span class="variable">%SystemDrive%</span>\System Volume Information&quot; &gt;<span class="built_in">nul</span> <span class="number">2</span>&gt;<span class="built_in">nul</span>)||(<span class="built_in">start</span> &quot;&quot; mshta vbscript:CreateObject^(&quot;Shell.Application&quot;^).ShellExecute^(&quot;%~nx0&quot;,&quot; %*&quot;,&quot;&quot;,&quot;runas&quot;,<span class="number">1</span>^)^(window.close^)&amp;<span class="keyword">exit</span> /b)</span><br><span class="line">sc config i8042prt <span class="built_in">start</span>=disabled</span><br><span class="line">shutdown -r -t <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
-<p>cmd命令启用，<a href="../禁用笔记本键盘和触摸板/enable keyboard.cmd">enable keyboard.cmd</a><br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">cd</span>/d&quot;%~dp0&quot;&amp;(<span class="built_in">cacls</span> &quot;<span class="variable">%SystemDrive%</span>\System Volume Information&quot; &gt;<span class="built_in">nul</span> <span class="number">2</span>&gt;<span class="built_in">nul</span>)||(<span class="built_in">start</span> &quot;&quot; mshta vbscript:CreateObject^(&quot;Shell.Application&quot;^).ShellExecute^(&quot;%~nx0&quot;,&quot; %*&quot;,&quot;&quot;,&quot;runas&quot;,<span class="number">1</span>^)^(window.close^)&amp;<span class="keyword">exit</span> /b)</span><br><span class="line">sc config i8042prt <span class="built_in">start</span>=auto</span><br><span class="line">shutdown -r -t <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>操作笔记</category>
-      </categories>
-      <tags>
-        <tag>计算机</tag>
       </tags>
   </entry>
   <entry>
@@ -2886,7 +2898,7 @@
     <title>站点分类和标签说明</title>
     <url>/2022/01/01/%E7%AB%99%E7%82%B9%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h4 id="全部分类"><a href="#全部分类" class="headerlink" title="全部分类"></a>全部分类</h4><p>&ensp;&ensp;&ensp;&ensp;Android<br>&ensp;&ensp;&ensp;&ensp;Java<br>&ensp;&ensp;&ensp;&ensp;MySQL<br>&ensp;&ensp;&ensp;&ensp;乱七八糟<br>&ensp;&ensp;&ensp;&ensp;学习笔记<br>&ensp;&ensp;&ensp;&ensp;工具使用<br>&ensp;&ensp;&ensp;&ensp;我的文章<br>&ensp;&ensp;&ensp;&ensp;操作笔记<br>&ensp;&ensp;&ensp;&ensp;记事便笺<br>&ensp;&ensp;&ensp;&ensp;软件测试</p>
-<h4 id="全部标签"><a href="#全部标签" class="headerlink" title="全部标签"></a>全部标签</h4><p>&ensp;&ensp;&ensp;&ensp;Android学习<br>&ensp;&ensp;&ensp;&ensp;Android程序设计<br>&ensp;&ensp;&ensp;&ensp;Android备忘录<br>&ensp;&ensp;&ensp;&ensp;Android逆向<br>&ensp;&ensp;&ensp;&ensp;Android逆向工具<br>&ensp;&ensp;&ensp;&ensp;Android-Studio<br>&ensp;&ensp;&ensp;&ensp;Java学习<br>&ensp;&ensp;&ensp;&ensp;Java程序设计(暂未创建)<br>&ensp;&ensp;&ensp;&ensp;Java备忘录(暂未创建)<br>&ensp;&ensp;&ensp;&ensp;MySQL学习<br>&ensp;&ensp;&ensp;&ensp;github<br>&ensp;&ensp;&ensp;&ensp;hexo<br>&ensp;&ensp;&ensp;&ensp;宝塔面板<br>&ensp;&ensp;&ensp;&ensp;数学<br>&ensp;&ensp;&ensp;&ensp;智慧城市<br>&ensp;&ensp;&ensp;&ensp;移动设备<br>&ensp;&ensp;&ensp;&ensp;程序人生<br>&ensp;&ensp;&ensp;&ensp;站点日志<br>&ensp;&ensp;&ensp;&ensp;英语<br>&ensp;&ensp;&ensp;&ensp;计算机<br>&ensp;&ensp;&ensp;&ensp;软测学习<br>&ensp;&ensp;&ensp;&ensp;设计文档<br>&ensp;&ensp;&ensp;&ensp;野生技术</p>
+<h4 id="全部标签"><a href="#全部标签" class="headerlink" title="全部标签"></a>全部标签</h4><p>&ensp;&ensp;&ensp;&ensp;Android学习<br>&ensp;&ensp;&ensp;&ensp;Android程序设计<br>&ensp;&ensp;&ensp;&ensp;Android备忘录<br>&ensp;&ensp;&ensp;&ensp;Android逆向<br>&ensp;&ensp;&ensp;&ensp;Android逆向工具<br>&ensp;&ensp;&ensp;&ensp;Android-Studio<br>&ensp;&ensp;&ensp;&ensp;Java学习<br>&ensp;&ensp;&ensp;&ensp;Java程序设计(暂未创建)<br>&ensp;&ensp;&ensp;&ensp;Java备忘录(暂未创建)<br>&ensp;&ensp;&ensp;&ensp;MySQL学习<br>&ensp;&ensp;&ensp;&ensp;github<br>&ensp;&ensp;&ensp;&ensp;hexo<br>&ensp;&ensp;&ensp;&ensp;宝塔面板<br>&ensp;&ensp;&ensp;&ensp;数学<br>&ensp;&ensp;&ensp;&ensp;智慧城市<br>&ensp;&ensp;&ensp;&ensp;移动设备<br>&ensp;&ensp;&ensp;&ensp;程序人生<br>&ensp;&ensp;&ensp;&ensp;站点日志<br>&ensp;&ensp;&ensp;&ensp;英语<br>&ensp;&ensp;&ensp;&ensp;计算机<br>&ensp;&ensp;&ensp;&ensp;软测学习<br>&ensp;&ensp;&ensp;&ensp;操作文档<br>&ensp;&ensp;&ensp;&ensp;野生技术<br>&ensp;&ensp;&ensp;&ensp;网站相关</p>
 ]]></content>
       <categories>
         <category>记事便笺</category>
