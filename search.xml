@@ -581,25 +581,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android Studio无线调试</title>
-    <url>/2022/01/30/Android-Studio%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>1.在手机开发者选项中打开USB调试，打开无线调试，并使用USB数据线链接电脑</p>
-<p>2.在cmd窗口输入<br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure></p>
-<span id="more"></span>
-<p>如果设备环境正常，将会显示连接的设备<br><img src="../Android-Studio无线调试/img1.png" width="50%" height="50%" /></p>
-<p>3.在cmd窗口输入<br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">adb tcpip <span class="number">7218</span></span><br></pre></td></tr></table></figure></p>
-<p>如果端口被开启，将会显示<br><img src="../Android-Studio无线调试/img2.png" width="50%" height="50%" /></p>
-<p>4.查看手机的内网ip，以”adb connect”+内网ip+端口号的格式输入<br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">192</span>.<span class="number">168</span>.<span class="number">1</span>.<span class="number">2</span>:<span class="number">7218</span></span><br></pre></td></tr></table></figure></p>
-<p>连接成功将会显示<br><img src="../Android-Studio无线调试/img3.png" width="50%" height="50%" /></p>
-]]></content>
-      <categories>
-        <category>操作笔记</category>
-      </categories>
-      <tags>
-        <tag>Android-Studio</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android-SoundPool播放音效</title>
     <url>/2021/10/09/Android-SoundPool%E6%92%AD%E6%94%BE%E9%9F%B3%E6%95%88/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&ensp;&ensp;&ensp;&ensp;MediaPalyer虽然可以播放音频，但是资源占用量较高、延迟时间较长、不支持多个音频同时播放等缺点，SoundPool一般用来播放密集、急促、短暂的音效</p>
@@ -629,6 +610,25 @@
       </categories>
       <tags>
         <tag>Android学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android Studio无线调试</title>
+    <url>/2022/01/30/Android-Studio%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>1.在手机开发者选项中打开USB调试，打开无线调试，并使用USB数据线链接电脑</p>
+<p>2.在cmd窗口输入<br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure></p>
+<span id="more"></span>
+<p>如果设备环境正常，将会显示连接的设备<br><img src="../Android-Studio无线调试/img1.png" width="50%" height="50%" /></p>
+<p>3.在cmd窗口输入<br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">adb tcpip <span class="number">7218</span></span><br></pre></td></tr></table></figure></p>
+<p>如果端口被开启，将会显示<br><img src="../Android-Studio无线调试/img2.png" width="50%" height="50%" /></p>
+<p>4.查看手机的内网ip，以”adb connect”+内网ip+端口号的格式输入<br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">192</span>.<span class="number">168</span>.<span class="number">1</span>.<span class="number">2</span>:<span class="number">7218</span></span><br></pre></td></tr></table></figure></p>
+<p>连接成功将会显示<br><img src="../Android-Studio无线调试/img3.png" width="50%" height="50%" /></p>
+]]></content>
+      <categories>
+        <category>操作笔记</category>
+      </categories>
+      <tags>
+        <tag>Android-Studio</tag>
       </tags>
   </entry>
   <entry>
@@ -1803,7 +1803,7 @@
         <category>操作笔记</category>
       </categories>
       <tags>
-        <tag>idea</tag>
+        <tag>IntelliJ-IDEA</tag>
         <tag>Java备忘录</tag>
       </tags>
   </entry>
@@ -3008,7 +3008,7 @@
     <title>站点分类和标签说明</title>
     <url>/2022/01/01/%E7%AB%99%E7%82%B9%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h4 id="全部分类"><a href="#全部分类" class="headerlink" title="全部分类"></a>全部分类</h4><p>&ensp;&ensp;&ensp;&ensp;Android<br>&ensp;&ensp;&ensp;&ensp;Java<br>&ensp;&ensp;&ensp;&ensp;MySQL<br>&ensp;&ensp;&ensp;&ensp;乱七八糟<br>&ensp;&ensp;&ensp;&ensp;学习笔记<br>&ensp;&ensp;&ensp;&ensp;工具使用<br>&ensp;&ensp;&ensp;&ensp;我的文章<br>&ensp;&ensp;&ensp;&ensp;操作笔记<br>&ensp;&ensp;&ensp;&ensp;记事便笺<br>&ensp;&ensp;&ensp;&ensp;软件测试</p>
-<h4 id="全部标签"><a href="#全部标签" class="headerlink" title="全部标签"></a>全部标签</h4><p>&ensp;&ensp;&ensp;&ensp;Android学习<br>&ensp;&ensp;&ensp;&ensp;Android程序设计<br>&ensp;&ensp;&ensp;&ensp;Android备忘录<br>&ensp;&ensp;&ensp;&ensp;Android逆向<br>&ensp;&ensp;&ensp;&ensp;Android逆向工具<br>&ensp;&ensp;&ensp;&ensp;Android-Studio<br>&ensp;&ensp;&ensp;&ensp;Java学习<br>&ensp;&ensp;&ensp;&ensp;idea<br>&ensp;&ensp;&ensp;&ensp;Java程序设计<br>&ensp;&ensp;&ensp;&ensp;Java备忘录<br>&ensp;&ensp;&ensp;&ensp;MySQL学习<br>&ensp;&ensp;&ensp;&ensp;github<br>&ensp;&ensp;&ensp;&ensp;hexo<br>&ensp;&ensp;&ensp;&ensp;宝塔面板<br>&ensp;&ensp;&ensp;&ensp;数学<br>&ensp;&ensp;&ensp;&ensp;智慧城市<br>&ensp;&ensp;&ensp;&ensp;移动设备<br>&ensp;&ensp;&ensp;&ensp;程序人生<br>&ensp;&ensp;&ensp;&ensp;站点日志<br>&ensp;&ensp;&ensp;&ensp;英语<br>&ensp;&ensp;&ensp;&ensp;计算机<br>&ensp;&ensp;&ensp;&ensp;软测学习<br>&ensp;&ensp;&ensp;&ensp;文件文档<br>&ensp;&ensp;&ensp;&ensp;野生技术<br>&ensp;&ensp;&ensp;&ensp;网站相关</p>
+<h4 id="全部标签"><a href="#全部标签" class="headerlink" title="全部标签"></a>全部标签</h4><p>&ensp;&ensp;&ensp;&ensp;Android学习<br>&ensp;&ensp;&ensp;&ensp;Android程序设计<br>&ensp;&ensp;&ensp;&ensp;Android备忘录<br>&ensp;&ensp;&ensp;&ensp;Android逆向<br>&ensp;&ensp;&ensp;&ensp;Android逆向工具<br>&ensp;&ensp;&ensp;&ensp;Android-Studio<br>&ensp;&ensp;&ensp;&ensp;Java学习<br>&ensp;&ensp;&ensp;&ensp;IntelliJ-IDEA<br>&ensp;&ensp;&ensp;&ensp;Java程序设计<br>&ensp;&ensp;&ensp;&ensp;Java备忘录<br>&ensp;&ensp;&ensp;&ensp;MySQL学习<br>&ensp;&ensp;&ensp;&ensp;github<br>&ensp;&ensp;&ensp;&ensp;hexo<br>&ensp;&ensp;&ensp;&ensp;宝塔面板<br>&ensp;&ensp;&ensp;&ensp;数学<br>&ensp;&ensp;&ensp;&ensp;智慧城市<br>&ensp;&ensp;&ensp;&ensp;移动设备<br>&ensp;&ensp;&ensp;&ensp;程序人生<br>&ensp;&ensp;&ensp;&ensp;站点日志<br>&ensp;&ensp;&ensp;&ensp;英语<br>&ensp;&ensp;&ensp;&ensp;计算机<br>&ensp;&ensp;&ensp;&ensp;软测学习<br>&ensp;&ensp;&ensp;&ensp;文件文档<br>&ensp;&ensp;&ensp;&ensp;野生技术<br>&ensp;&ensp;&ensp;&ensp;网站相关</p>
 ]]></content>
       <categories>
         <category>记事便笺</category>
