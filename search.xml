@@ -1526,6 +1526,20 @@ apktool.jar&ensp;&ensp;&ensp;&ensp;下载apktool工具(2.6.0)点击下载
       </tags>
   </entry>
   <entry>
+    <title>Lambda</title>
+    <url>/2021/07/24/Lambda/</url>
+    <content><![CDATA[匿名类
+package July_2021.demo2;public class 匿名类 &#123;    public static void main(String[] args) &#123;        匿名类 nm = new 匿名类();        nm.test(new price()&#123;            @Override            public String name() &#123;                return &quot;测试&quot;;            &#125;        &#125;);    &#125;    public void test(price name)&#123;        System.out.println(name.name());    &#125;&#125;interface price&#123;    String name();&#125;
+lambda修改后
+package July_2021.demo2;public class 匿名类 &#123;    public static void main(String[] args) &#123;        匿名类 nm = new 匿名类();        nm.test(() -&gt; &#123;            return &quot;测试&quot;;        &#125;);    &#125;    public void test(price name)&#123;        System.out.println(name.name());    &#125;&#125;interface price&#123;    String name();&#125;]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CountDownLatch线程等待</title>
     <url>/2021/10/21/CountDownLatch%E7%BA%BF%E7%A8%8B%E7%AD%89%E5%BE%85/</url>
     <content><![CDATA[事发&ensp;&ensp;&ensp;&ensp;这是一个封装的okhttp get异步请求，如果请求成功，返回值为请求到的值，如果请求失败，则返回noValueimport org.jetbrains.annotations.NotNull;import java.io.IOException;import java.util.concurrent.CountDownLatch;import okhttp3.Call;import okhttp3.Callback;import okhttp3.MediaType;import okhttp3.OkHttpClient;import okhttp3.Request;import okhttp3.RequestBody;import okhttp3.Response;public class MyHttpRequest &#123;    private String value;	    public String myGet(String url)&#123;        OkHttpClient okHttpClient = new OkHttpClient();        Request request = new Request.Builder().url(url).build();        Call call = okHttpClient.newCall(request);        call.enqueue(new Callback() &#123;            @Override            public void onFailure(@NotNull Call call, @NotNull IOException e) &#123;                value = &quot;noValue&quot;;            &#125;            @Override            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException &#123;                value = response.body().string();\            &#125;        &#125;);        return value;    &#125;&#125;
@@ -1548,20 +1562,6 @@ apktool.jar&ensp;&ensp;&ensp;&ensp;下载apktool工具(2.6.0)点击下载
       </categories>
       <tags>
         <tag>Android程序设计</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Lambda</title>
-    <url>/2021/07/24/Lambda/</url>
-    <content><![CDATA[匿名类
-package July_2021.demo2;public class 匿名类 &#123;    public static void main(String[] args) &#123;        匿名类 nm = new 匿名类();        nm.test(new price()&#123;            @Override            public String name() &#123;                return &quot;测试&quot;;            &#125;        &#125;);    &#125;    public void test(price name)&#123;        System.out.println(name.name());    &#125;&#125;interface price&#123;    String name();&#125;
-lambda修改后
-package July_2021.demo2;public class 匿名类 &#123;    public static void main(String[] args) &#123;        匿名类 nm = new 匿名类();        nm.test(() -&gt; &#123;            return &quot;测试&quot;;        &#125;);    &#125;    public void test(price name)&#123;        System.out.println(name.name());    &#125;&#125;interface price&#123;    String name();&#125;]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java学习</tag>
       </tags>
   </entry>
   <entry>
@@ -1761,6 +1761,22 @@ final修饰的类final修饰的类不可被继承
       </tags>
   </entry>
   <entry>
+    <title>hexo文章加密</title>
+    <url>/2021/11/19/hexo%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/</url>
+    <content><![CDATA[&ensp;&ensp;&ensp;&ensp;安装加密插件npm install hexo-blog-encrypt
+
+&ensp;&ensp;&ensp;&ensp;打开hexo的配置文件，添加encrypt:   enable: true
+&ensp;&ensp;&ensp;&ensp;在需要加密的文件中添加相关字段password: 文章的密码message: 输入密码界面提示说明abstract: 文章界面介绍
+&ensp;&ensp;&ensp;&ensp;效果
+]]></content>
+      <categories>
+        <category>操作笔记</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo+next中数学公式的引用</title>
     <url>/2021/08/08/hexo-next%E4%B8%AD%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BC%95%E7%94%A8/</url>
     <content><![CDATA[简单方程代码$ $ \begin &#123;equation&#125; \label &#123;eq1&#125; e=mc ^ 2 \end &#123;equation&#125; $ $
@@ -1784,22 +1800,6 @@ final修饰的类final修饰的类不可被继承
 详细教程https://blog.csdn.net/weixin_45511189/article/details/115798563
 LaTex在线编辑器https://www.latexlive.com/
 
-]]></content>
-      <categories>
-        <category>操作笔记</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo文章加密</title>
-    <url>/2021/11/19/hexo%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/</url>
-    <content><![CDATA[&ensp;&ensp;&ensp;&ensp;安装加密插件npm install hexo-blog-encrypt
-
-&ensp;&ensp;&ensp;&ensp;打开hexo的配置文件，添加encrypt:   enable: true
-&ensp;&ensp;&ensp;&ensp;在需要加密的文件中添加相关字段password: 文章的密码message: 输入密码界面提示说明abstract: 文章界面介绍
-&ensp;&ensp;&ensp;&ensp;效果
 ]]></content>
       <categories>
         <category>操作笔记</category>
@@ -6006,12 +6006,39 @@ $p$级数$ $\begin{align}\sum_{n=1}^{\infty } \frac{1}{n^p}\end{align}$ $
 级数收敛的必要条件定理1若级数$\sum_{n=1}^{\infty } u_n$收敛，则$\lim_{n \to \infty } u_n=0$
 推论若$\lim_{n \to \infty } u_n \ne 0$或不存在，则级数$\sum_{n=1}^{\infty } u_n$发散
 正项级数正项级数的部分和数列$\{S_n\}$是单调增加的，所以定理2正项级数$\sum_{n=1}^{\infty } u_n$收敛的充分必要条件是它的部分和数列$\{S_n\}$有界
-定理3（比较判别法）设$\sum_{n=1}^{\infty } u_n$和$\sum_{n=1}^{\infty } v_n$均为正项级数，且$u_n \le v_n$，(1)如果级数$\sum_{n=1}^{\infty } v_n$收敛，则级数$\sum_{n=1}^{\infty } u_n$收敛(2)如果级数$\sum_{n=1}^{\infty } u_n$发散，则级数$\sum_{n=1}^{\infty } v_n$发散
-定理4（比较判别法的极限形式）设$\sum_{n=1}^{\infty } u_n$和$\sum_{n=1}^{\infty } v_n$均为正项级数，且$\lim_{n \to \infty } \frac{u_n}{v_n} = A$(1)若$0&lt;A&lt;+\infty$，则$\sum_{n=1}^{\infty } u_n$和$\sum_{n=1}^{\infty } v_n$同时收敛或发散(2)若$A=0$，且$\sum_{n=1}^{\infty } v_n$收敛，则$\sum_{n=1}^{\infty } u_n$收敛(3)若$A=+\infty$且$\sum_{n=1}^{\infty } v_n$发散，则$\sum_{n=1}^{\infty } u_n$发散
-定理5（比值判别法）设$\sum_{n=1}^{\infty } u_n$为正项级数，如果$\lim_{n \to \infty } \frac{u_n+1}{u_n} = \rho $(1)当$\rho &lt; 1$时，级数收敛(2)当$\rho &gt; 1$时，级数发散(3)当$\rho = 1$时，级数可能收敛，也可能发散
-定理6（根值判别法）设$\sum_{n=1}^{\infty } u_n$为正项级数，如果$\lim_{n \to \infty } \sqrt[n]{u_n}=p$(1)当$p &lt; 1$时，级数收敛(2)当$p &gt; 1$时，级数发散(3)当$p=1$时，可能收敛，也可能发散
-定理7（极限判别法）设$\sum_{n=1}^{\infty } u_n$为正项级数(1)如果$\lim_{n \to \infty} nu_n=l&gt;0$，则级数发散(2)如果$p &gt; 1$，而$\lim_{n \to \infty} n^pu_n=l(0\le l&lt;+\infty)$，则级数收敛
-交错级数定理8（莱布尼兹判别法）如果交错级数$\sum_{n=1}^{\infty } (-1)^{n-1}u_n$满足条件(1)$u_n \ge u_{n+1}$(2)$\lim_{n \to \infty} u_n=0$则级数收敛，且其和$S \le u_1$，其余项$r_n$的绝对值$|r_n| \le u_{n+1}$
+定理3（比较判别法）设$\sum_{n=1}^{\infty } u_n$和$\sum_{n=1}^{\infty } v_n$均为正项级数，且$u_n \le v_n$，
+
+如果级数$\sum_{n=1}^{\infty } v_n$收敛，则级数$\sum_{n=1}^{\infty } u_n$收敛
+如果级数$\sum_{n=1}^{\infty } u_n$发散，则级数$\sum_{n=1}^{\infty } v_n$发散
+
+定理4（比较判别法的极限形式）设$\sum_{n=1}^{\infty } u_n$和$\sum_{n=1}^{\infty } v_n$均为正项级数，且$\lim_{n \to \infty } \frac{u_n}{v_n} = A$
+
+若$0&lt;A&lt;+\infty$，则$\sum_{n=1}^{\infty } u_n$和$\sum_{n=1}^{\infty } v_n$同时收敛或发散
+若$A=0$，且$\sum_{n=1}^{\infty } v_n$收敛，则$\sum_{n=1}^{\infty } u_n$收敛
+若$A=+\infty$且$\sum_{n=1}^{\infty } v_n$发散，则$\sum_{n=1}^{\infty } u_n$发散
+
+定理5（比值判别法）设$\sum_{n=1}^{\infty } u_n$为正项级数，如果$\lim_{n \to \infty } \frac{u_n+1}{u_n} = \rho $
+
+当$\rho &lt; 1$时，级数收敛
+当$\rho &gt; 1$时，级数发散
+当$\rho = 1$时，级数可能收敛，也可能发散
+
+定理6（根值判别法）设$\sum_{n=1}^{\infty } u_n$为正项级数，如果$\lim_{n \to \infty } \sqrt[n]{u_n}=p$
+
+当$p &lt; 1$时，级数收敛
+当$p &gt; 1$时，级数发散
+当$p=1$时，可能收敛，也可能发散
+
+定理7（极限判别法）设$\sum_{n=1}^{\infty } u_n$为正项级数
+
+如果$\lim_{n \to \infty} nu_n=l&gt;0$，则级数发散
+如果$p &gt; 1$，而$\lim_{n \to \infty} n^pu_n=l(0\le l&lt;+\infty)$，则级数收敛
+
+交错级数定理8（莱布尼兹判别法）如果交错级数$\sum_{n=1}^{\infty } (-1)^{n-1}u_n$满足条件
+
+$u_n \ge u_{n+1}$
+$\lim_{n \to \infty} u_n=0$则级数收敛，且其和$S \le u_1$，其余项$r_n$的绝对值$|r_n| \le u_{n+1}$
+
 任意项级数定义如果级数$\sum_{n=1}^{\infty } |u_n|$收敛，则级数$\sum_{n=1}^{\infty } u_n$也收敛，此时称级数$\sum_{n=1}^{\infty } u_n$绝对收敛如果级数$\sum_{n=1}^{\infty } |u_n|$发散，而级数$\sum_{n=1}^{\infty } u_n$也收敛，此时称级数$\sum_{n=1}^{\infty } u_n$条件收敛
 定理9如果级数$\sum_{n=1}^{\infty } |u_n|$收敛，则级数$\sum_{n=1}^{\infty } u_n$一定收敛
 推论
