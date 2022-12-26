@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.xxin.xyz/2022/12/26/System%E5%92%8CRunTime/</loc>
+    <lastmod>2022-12-26</lastmod>
+  </url>
+  <url>
     <loc>https://blog.xxin.xyz/2022/02/22/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/</loc>
     <lastmod>2022-12-21</lastmod>
   </url>
@@ -77,11 +81,11 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/09/26/%E7%90%86%E6%83%B3%E5%92%8C%E7%97%9E%E5%AD%90/</loc>
+    <loc>https://blog.xxin.xyz/2022/02/20/%E7%A6%81%E7%94%A8%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%94%AE%E7%9B%98%E5%92%8C%E8%A7%A6%E6%91%B8%E6%9D%BF/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2022/02/20/%E7%A6%81%E7%94%A8%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%94%AE%E7%9B%98%E5%92%8C%E8%A7%A6%E6%91%B8%E6%9D%BF/</loc>
+    <loc>https://blog.xxin.xyz/2021/09/26/%E7%90%86%E6%83%B3%E5%92%8C%E7%97%9E%E5%AD%90/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -109,7 +113,7 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/09/09/%E6%89%8B%E6%9C%BA%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/</loc>
+    <loc>https://blog.xxin.xyz/2021/07/22/%E6%8E%A5%E5%8F%A3interface/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -117,7 +121,7 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/07/22/%E6%8E%A5%E5%8F%A3interface/</loc>
+    <loc>https://blog.xxin.xyz/2021/09/09/%E6%89%8B%E6%9C%BA%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -157,15 +161,15 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2022/01/09/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/</loc>
-    <lastmod>2022-10-14</lastmod>
-  </url>
-  <url>
     <loc>https://blog.xxin.xyz/2021/07/23/%E5%86%85%E9%83%A8%E7%B1%BB/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
     <loc>https://blog.xxin.xyz/2021/07/20/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2022-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2022/01/09/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -185,11 +189,11 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2022/01/09/mysql%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</loc>
+    <loc>https://blog.xxin.xyz/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/07/15/next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</loc>
+    <loc>https://blog.xxin.xyz/2022/01/09/mysql%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -209,11 +213,11 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/08/08/hexo-next%E4%B8%AD%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BC%95%E7%94%A8/</loc>
+    <loc>https://blog.xxin.xyz/2021/11/19/hexo%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/11/19/hexo%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/</loc>
+    <loc>https://blog.xxin.xyz/2021/08/08/hexo-next%E4%B8%AD%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BC%95%E7%94%A8/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -221,19 +225,19 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/10/14/arr%E5%BC%95%E5%85%A5AndroidStudio/</loc>
-    <lastmod>2022-10-14</lastmod>
-  </url>
-  <url>
     <loc>https://blog.xxin.xyz/2021/09/20/ViewPager-Fragment/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2022/05/22/VM%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://blog.xxin.xyz/2021/10/14/arr%E5%BC%95%E5%85%A5AndroidStudio/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
     <loc>https://blog.xxin.xyz/2021/10/22/TextView%E5%AE%9E%E7%8E%B0%E5%9B%BE%E6%96%87%E6%B7%B7%E6%8E%92/</loc>
+    <lastmod>2022-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2022/05/22/VM%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -261,11 +265,11 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2022/08/31/Git%E4%BB%93%E5%BA%93%E6%B7%BB%E5%8A%A0%E5%A4%9A%E4%B8%AA%E5%9C%B0%E5%9D%80/</loc>
+    <loc>https://blog.xxin.xyz/2022/08/21/Git%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AASSH-Key/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2022/08/21/Git%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AASSH-Key/</loc>
+    <loc>https://blog.xxin.xyz/2022/08/31/Git%E4%BB%93%E5%BA%93%E6%B7%BB%E5%8A%A0%E5%A4%9A%E4%B8%AA%E5%9C%B0%E5%9D%80/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -301,11 +305,11 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/10/30/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82/</loc>
+    <loc>https://blog.xxin.xyz/2021/09/07/Android%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/09/07/Android%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/</loc>
+    <loc>https://blog.xxin.xyz/2021/10/30/Android%E5%AE%9E%E6%88%98-%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -353,11 +357,11 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2022/01/29/Android-%E6%82%AC%E6%B5%AE%E7%AA%97/</loc>
+    <loc>https://blog.xxin.xyz/2021/09/25/Android-%E6%96%87%E4%BB%B6%E5%82%A8%E5%AD%98/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/09/25/Android-%E6%96%87%E4%BB%B6%E5%82%A8%E5%AD%98/</loc>
+    <loc>https://blog.xxin.xyz/2022/01/29/Android-%E6%82%AC%E6%B5%AE%E7%AA%97/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -377,7 +381,7 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/11/22/Android-View%E4%BF%9D%E5%AD%98%E4%B8%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/</loc>
+    <loc>https://blog.xxin.xyz/2022/05/15/Android-Volley%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -385,7 +389,7 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2022/05/15/Android-Volley%E6%A1%86%E6%9E%B6/</loc>
+    <loc>https://blog.xxin.xyz/2021/11/22/Android-View%E4%BF%9D%E5%AD%98%E4%B8%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -405,19 +409,19 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/10/09/Android-SoundPool%E6%92%AD%E6%94%BE%E9%9F%B3%E6%95%88/</loc>
-    <lastmod>2022-10-14</lastmod>
-  </url>
-  <url>
     <loc>https://blog.xxin.xyz/2022/01/30/Android-Studio%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/09/23/Android-Receiver/</loc>
+    <loc>https://blog.xxin.xyz/2021/10/09/Android-SoundPool%E6%92%AD%E6%94%BE%E9%9F%B3%E6%95%88/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
     <loc>https://blog.xxin.xyz/2021/09/11/Android-RecyclerView/</loc>
+    <lastmod>2022-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2021/09/23/Android-Receiver/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -437,11 +441,11 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2022/08/22/Android-NFC%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://blog.xxin.xyz/2022/09/24/Android-NTP%E6%97%B6%E9%97%B4/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2022/09/24/Android-NTP%E6%97%B6%E9%97%B4/</loc>
+    <loc>https://blog.xxin.xyz/2022/08/22/Android-NFC%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -453,11 +457,11 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/09/09/Android-ImageView/</loc>
+    <loc>https://blog.xxin.xyz/2021/09/10/Android-ListView/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/09/10/Android-ListView/</loc>
+    <loc>https://blog.xxin.xyz/2021/09/09/Android-ImageView/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -465,11 +469,11 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/09/24/Android-HTTP-content-type-%E5%AF%B9%E7%85%A7%E8%A1%A8/</loc>
+    <loc>https://blog.xxin.xyz/2021/10/09/Android-Handler/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/10/09/Android-Handler/</loc>
+    <loc>https://blog.xxin.xyz/2021/09/24/Android-HTTP-content-type-%E5%AF%B9%E7%85%A7%E8%A1%A8/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
@@ -481,11 +485,11 @@
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/09/13/Android-Fragment(%E4%B8%8B)/</loc>
+    <loc>https://blog.xxin.xyz/2021/09/13/Android-Fragment(%E4%B8%8A)/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2021/09/13/Android-Fragment(%E4%B8%8A)/</loc>
+    <loc>https://blog.xxin.xyz/2021/09/13/Android-Fragment(%E4%B8%8B)/</loc>
     <lastmod>2022-10-14</lastmod>
   </url>
   <url>
