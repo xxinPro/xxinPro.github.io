@@ -9200,7 +9200,8 @@ $[0,\pi]$
 
 
 
-对数公式对数恒等式对数第一恒等式$ \eqref {eq1} $$ $\begin{align} \label {eq1}a^{\log_{a}{N} } &amp; = N\end{align}$ $
+对数公式$ $\begin{matrix}a^x=N (a&gt;0,且a≠1) \\\Downarrow \\x=log_{(a)}(N)\end{matrix}$ $
+对数恒等式对数第一恒等式$ \eqref {eq1} $$ $\begin{align} \label {eq1}a^{\log_{a}{N} } &amp; = N\end{align}$ $
 对数第二恒等式$ \eqref {eq2} $$ $\begin{align} \label {eq2}\log_{a}{a^{b} } &amp; = b\end{align}
 对数推导公式
 $ \log_{a}{(MN)} = \log_{a}{M} + \log_{a}{N} $
