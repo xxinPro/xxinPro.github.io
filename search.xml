@@ -9458,7 +9458,7 @@ $\ln (1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+···+(-1)^{n-1}\frac{x^n}{n}+o(x^n)$
 
 $\sqrt{a^{2} - x^{2} } $，可做代换$x=a\sin {u}(-\frac{\pi }{2} &lt; u &lt; \frac{\pi }{2} )$
 $\sqrt{x^{2} + a^{2} } $，可做代换$x=a\tan {u}(-\frac{\pi }{2} &lt; u &lt; \frac{\pi }{2} )$
-$\sqrt{x^{2} - a^{2} } $，可做代换$ x=a\sec {u}(x&gt;a时，0&lt;u&lt;\frac{\pi}{2}；x&lt;-a时，令x=t，则t &gt; a) $
+$\sqrt{x^{2} - a^{2} } $，可做代换$ x=a\sec {u}(x&gt;a时，0&lt;u&lt;\frac{\pi}{2}；x&lt;-a时，令x=t，则t \gt a) $
 
 基本积分公式
 $\int k\mathrm{d}x = kx+C $
@@ -9510,7 +9510,7 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 
 
 
-规定2 当$ a&gt;b $时
+规定2 当$ a\gt b $时
 
 
   
@@ -9549,7 +9549,7 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 
 
 
-性质3 可加性，设$ a\ltb\ltc $，有
+性质3 可加性，设$ a \lt b \lt c $，有
 
 
   
@@ -9582,7 +9582,7 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
   
     $ $
     \begin{align}
-    \int_{a}^{b} f(x)\mathrm{d}x \ge 0 \; (a\ltb)
+    \int_{a}^{b} f(x)\mathrm{d}x \ge 0 \; (a \lt b)
     \end{align}
     $ $
   
@@ -9635,7 +9635,7 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
   
     $ $
     \begin{align}
-    \int_{a}^{b}f(x)\mathrm{d}x=f(\xi)(b-a) \; (a\le \xi \le b)
+    \int_{a}^{b}f(x)\mathrm{d}x=f(\xi)(b-a) \; (a \le \xi \le b)
     \end{align}
     $ $
   
@@ -9643,7 +9643,7 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 
 
 
-性质8 由定积分的几何意义可知，当$a&gt;0$时
+性质8 由定积分的几何意义可知，当$a\gt 0$时
 
 
   
@@ -9732,7 +9732,7 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 计算公式
 
   
-    极点在区域D内部时，$D=\{(\theta ,r)\, |\, 0\le \theta \le 2\pi ,0 \le r \le r(\theta )\}$，则有
+    极点在区域D内部时，$D=\{(\theta ,r)\, |\, 0 \le \theta \le 2\pi ,0 \le r \le r(\theta )\}$，则有
     $ $
     \begin{align}
     \iint\limits_{D}^{} f(r\cos\theta,r\sin\theta)r\mathrm{d}r\mathrm{d}\theta = \int_{0}^{2\pi}\mathrm{d}\theta\int_{0}^{r(\theta)}f(r\cos\theta,r\sin\theta)r\mathrm{d}r
@@ -9761,7 +9761,7 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 
 
   
-    极点在区域D之外，$D=\{(\theta ,r)\, |\, \alpha \le \theta \le \beta  ,r_{1}(\theta)\le r \le r_2(\theta )\}$，则有
+    极点在区域D之外，$D=\{(\theta ,r)\, |\, \alpha \le \theta \le \beta  ,r_{1}(\theta) \le r \le r_2(\theta )\}$，则有
     $ $
     \begin{align}
     \iint\limits_{D}^{} f(r\cos\theta,r\sin\theta)r\mathrm{d}r\mathrm{d}\theta = \int_{\alpha }^{\beta}\mathrm{d}\theta\int_{r_{1}(\theta)}^{r_{2}(\theta)}f(r\cos\theta,r\sin\theta)r\mathrm{d}r
@@ -9784,10 +9784,10 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 
 
 
-&ensp;&ensp;&ensp;&ensp;当$|q|\lt1$时，级数收敛；当$|q|\ge1$时，级数发散
+&ensp;&ensp;&ensp;&ensp;当$\left| q \right| \lt 1$时，级数收敛；当$\left|q \right|\ge1$时，级数发散
 调和级数&ensp;&ensp;&ensp;&ensp;调和级数$\sum_{n=1}^{\infty } \frac{1}{n} $是发散的
 $p$级数$ $\begin{align}\sum_{n=1}^{\infty } \frac{1}{n^p}\end{align}$ $
-&ensp;&ensp;&ensp;&ensp;$p$级数当$0\ltp\le1$时是发散的，当$p&gt;1$时是收敛的
+&ensp;&ensp;&ensp;&ensp;$p$级数当$0 \lt p \le 1$时是发散的，当$p\gt 1$时是收敛的
 数项级数&ensp;&ensp;&ensp;&ensp;如果级数的部分和数列$ \{S_n\} $有极限S（级数的和），则称级数是收敛的，如果没有极限，则称级数是发散的
 收敛级数的性质性质1&ensp;&ensp;&ensp;&ensp;若级数$\sum_{n=1}^{\infty } u_n$收敛于$S$，则级数$\sum_{n=1}^{\infty } ku_n$也收敛，且收敛于$kS$
 性质2&ensp;&ensp;&ensp;&ensp;若级数$\sum_{n=1}^{\infty } u_n$与级数$\sum_{n=1}^{\infty } v_n$分别收敛于$S_1,S_2$，则级数$\sum_{n=1}^{\infty } (u_n \pm v_n)$收敛于$S_1 \pm S_2$；但级数$\sum_{n=1}^{\infty } u_n$与级数$\sum_{n=1}^{\infty } v_n$都发散时，级数$\sum_{n=1}^{\infty } (u_n \pm v_n)$不一定发散
@@ -9803,31 +9803,31 @@ $p$级数$ $\begin{align}\sum_{n=1}^{\infty } \frac{1}{n^p}\end{align}$ $
 
 定理4（比较判别法的极限形式）设$\sum_{n=1}^{\infty } u_n$和$\sum_{n=1}^{\infty } v_n$均为正项级数，且$\lim_{n \to \infty } \frac{u_n}{v_n} = A$
 
-若$0\ltA\lt+\infty$，则$\sum_{n=1}^{\infty } u_n$和$\sum_{n=1}^{\infty } v_n$同时收敛或发散
+若$0 \lt A \lt +\infty$，则$\sum_{n=1}^{\infty } u_n$和$\sum_{n=1}^{\infty } v_n$同时收敛或发散
 若$A=0$，且$\sum_{n=1}^{\infty } v_n$收敛，则$\sum_{n=1}^{\infty } u_n$收敛
 若$A=+\infty$且$\sum_{n=1}^{\infty } v_n$发散，则$\sum_{n=1}^{\infty } u_n$发散
 
 定理5（比值判别法）设$\sum_{n=1}^{\infty } u_n$为正项级数，如果$\lim_{n \to \infty } \frac{u_n+1}{u_n} = \rho $
 
 当$\rho \lt 1$时，级数收敛
-当$\rho &gt; 1$时，级数发散
+当$\rho \gt 1$时，级数发散
 当$\rho = 1$时，级数可能收敛，也可能发散
 
 定理6（根值判别法）设$\sum_{n=1}^{\infty } u_n$为正项级数，如果$\lim_{n \to \infty } \sqrt[n]{u_n}=p$
 
 当$p \lt 1$时，级数收敛
-当$p &gt; 1$时，级数发散
+当$p \gt 1$时，级数发散
 当$p=1$时，可能收敛，也可能发散
 
 定理7（极限判别法）设$\sum_{n=1}^{\infty } u_n$为正项级数
 
-如果$\lim_{n \to \infty} nu_n=l&gt;0$，则级数发散
-如果$p &gt; 1$，而$\lim_{n \to \infty} n^pu_n=l(0\le l\lt+\infty)$，则级数收敛
+如果$\lim_{n \to \infty} nu_n=l \gt 0$，则级数发散
+如果$p \gt 1$，而$\lim_{n \to \infty} n^pu_n=l(0\le l \lt +\infty)$，则级数收敛
 
 交错级数定理8（莱布尼兹判别法）如果交错级数$\sum_{n=1}^{\infty } (-1)^{n-1}u_n$满足条件
 
 $u_n \ge u_{n+1}$
-$\lim_{n \to \infty} u_n=0$则级数收敛，且其和$S \le u_1$，其余项$r_n$的绝对值$|r_n| \le u_{n+1}$
+$\lim_{n \to \infty} u_n=0$则级数收敛，且其和$S \le u_1$，其余项$r_n$的绝对值$\left|r_n\right| \le u_{n+1}$
 
 任意项级数定义&ensp;&ensp;如果级数$\sum_{n=1}^{\infty } |u_n|$收敛，则级数$\sum_{n=1}^{\infty } u_n$也收敛，此时称级数$\sum_{n=1}^{\infty } u_n$绝对收敛&ensp;&ensp;如果级数$\sum_{n=1}^{\infty } |u_n|$发散，而级数$\sum_{n=1}^{\infty } u_n$也收敛，此时称级数$\sum_{n=1}^{\infty } u_n$条件收敛
 定理9如果级数$\sum_{n=1}^{\infty } |u_n|$收敛，则级数$\sum_{n=1}^{\infty } u_n$一定收敛
@@ -9837,14 +9837,14 @@ $\lim_{n \to \infty} u_n=0$则级数收敛，且其和$S \le u_1$，其余项$r_
 当$\sum_{n=1}^{\infty } u_n$条件收敛时，级数$\sum_{n=1}^{\infty} \frac{|u_n|+u_n}{2}$和$\sum_{n=1}^{\infty} \frac{|u_n|-u_n}{2} $均发散
 
 幂级数求幂级数的方法&ensp;&ensp;&ensp;&ensp;先求幂级数的收敛区间$(-R,R)$，然后讨论幂级数在$x=R$与$x=-R$处的敛散性，从而得出幂级数的收敛域
-定理1（阿贝尔定理）&ensp;&ensp;如果幂级数$\sum_{n=0}^{\infty}a_nx^n$当$x=x_0(x_0\ne0)$时收敛，则对于所有满足$|x|\lt|x_0|$的点$x$，幂级数$\sum_{n=0}^{\infty}a_nx^n$绝对收敛，&ensp;&ensp;反之，如果幂级数$\sum_{n=0}^{\infty}a_nx^n$当$x=x_0(x_0\ne0)$时发散，则对于所有满足$|x|&gt;|x_0|$的点$x$，幂级数$\sum_{n=0}^{\infty}a_nx^n$发散
+定理1（阿贝尔定理）&ensp;&ensp;如果幂级数$\sum_{n=0}^{\infty}a_nx^n$当$x=x_0(x_0\ne0)$时收敛，则对于所有满足$|x| \lt |x_0|$的点$x$，幂级数$\sum_{n=0}^{\infty}a_nx^n$绝对收敛，&ensp;&ensp;反之，如果幂级数$\sum_{n=0}^{\infty}a_nx^n$当$x=x_0(x_0\ne0)$时发散，则对于所有满足$|x| \gt |x_0|$的点$x$，幂级数$\sum_{n=0}^{\infty}a_nx^n$发散
 定理2设幂级数$\sum_{n=0}^{\infty}a_nx^n$，有$\lim_{n \to \infty} |\frac{a_n+1}{a_n} | = \rho$，则
 
 若$\rho \ne 0$，则收敛半径$R=\frac{1}{\rho}$
 若$\rho = 0$，则收敛半径$R = +\infty$
 若$\rho = +\infty$，则收敛半径$R=0$
 
-幂级数四则运算&ensp;&ensp;&ensp;&ensp;设幂级数$\sum_{n=0}^{\infty}a_nx^n$在其收敛区间$(-R_1,R_1)(R_1&gt;0)$内的和函数为$S_1(x)$，幂级数$\sum_{n=0}^{\infty}b_nx^n$在其收敛区间$(-R_2,R_2)(R_2&gt;0)$内的和函数为$S_2(x)$，取$R=\mathrm{min}\{R_1,R_2\} $，则有
+幂级数四则运算&ensp;&ensp;&ensp;&ensp;设幂级数$\sum_{n=0}^{\infty}a_nx^n$在其收敛区间$(-R_1,R_1)(R_1 \gt 0)$内的和函数为$S_1(x)$，幂级数$\sum_{n=0}^{\infty}b_nx^n$在其收敛区间$(-R_2,R_2)(R_2 \gt 0)$内的和函数为$S_2(x)$，取$R=\mathrm{min}\{R_1,R_2\} $，则有
 
 加减运算$\eqref {eq27}$
 
@@ -9929,13 +9929,13 @@ $S(x)$在其收敛域上连续，当$x_0 \in (-R,R)$时，有
 
 
 齐次&ensp;&ensp;一阶齐次线性微分方程$ $\begin{align}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=0\end{align}$ $
-&ensp;&ensp;一阶齐次线性微分方程的通解$ $\begin{align}y=Ce^{-\int P(x)\mathrm{d}x}\end{align}$ $
+&ensp;&ensp;一阶齐次线性微分方程的通解$ $\begin{align}y=Ce^{-\int P(x)\mathrm{d}x} \; (C=\pm e^{C_1})\end{align}$ $
 二阶线性微分方程二阶常系数齐次线性微分方程$ $\begin{align} \label {eq36}y’’+py’+qy &amp; = 0\end{align}$ $
 二阶常系数齐次线性微分方程解法&ensp;&ensp;根据$ \eqref {eq36} $列出它的特征方程$ \eqref {eq37} $$ $\begin{align}\label {eq37}r^2+pr+q=0\end{align}$ $
-&ensp;&ensp;1.当$\Delta = p^2-4q&gt;0$时，特征方程有两个不相等的实数根$r_1,r_2$$ $\begin{align}r_1 &amp; = \frac{-p+\sqrt{p^2-4q} }{2} \\r_2 &amp; = \frac{-p-\sqrt{p^2-4q} }{2}\end{align}$ $
+&ensp;&ensp;1.当$\Delta = p^2-4q \gt 0$时，特征方程有两个不相等的实数根$r_1,r_2$$ $\begin{align}r_1 &amp; = \frac{-p+\sqrt{p^2-4q} }{2} \\r_2 &amp; = \frac{-p-\sqrt{p^2-4q} }{2}\end{align}$ $
 &ensp;&ensp;此时方程$ \eqref {eq36} $的通解是$ $\begin{align}y=C_1e^{r_1x}+C_2e^{r_2x}\end{align}$ $
 &ensp;&ensp;2.当$\Delta = p^2-4q=0$时，特征方程有两个相等的实数根$r_1=r_2=-\frac{p}{2} $&ensp;&ensp;此时方程$ \eqref {eq36} $的通解是$ $\begin{align}y=(C_1+C_2x)e^{r_1x}\end{align}$ $
-&ensp;&ensp;3.当$\Delta = p^2-4q\lt0$时，特征方程为一对共轭的复根$r_1,r_2$（$\alpha,\beta$均为实数,$\beta\ne0$）$ $\begin{align}r_1 &amp; = \alpha +i\beta \\r_2 &amp; = \alpha - i\beta\end{align}$ $
+&ensp;&ensp;3.当$\Delta = p^2-4q \lt 0$时，特征方程为一对共轭的复根$r_1,r_2$（$\alpha,\beta$均为实数,$\beta\ne0$）$ $\begin{align}r_1 &amp; = \alpha +i\beta \\r_2 &amp; = \alpha - i\beta\end{align}$ $
 &ensp;&ensp;此时方程$ \eqref {eq36} $的通解是$ $\begin{align}y=e^{\alpha x}(C_1\cos {\beta x}+C_2\sin {\beta x})\end{align}$ $
 跳转：数学常用公式定理1
 
