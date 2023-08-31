@@ -9283,7 +9283,7 @@ $[u(x)v(x)]’ = u’(x)v(x) + u(x)v’(x)$
 $[Cu(x)]’ = Cu’(x)(C为常数)$
 $[\frac {u(x)}{v(x)}]’ = \frac {u’(x)v(x) - u(x)v’(x)}{v^2(x)}(v(x)≠0)$
 $[\frac {C}{v(x)}]’ = -\frac {Cv’(x)}{v^2(x)}(v(x)≠0,C为常数)$
-微分四则运算法则设u = u(v)、v = v(x)可微，则
+微分四则运算法则设$u = u(v)$、$v = v(x)$可微，则
 $ $\begin{align}d(u \pm v) = du \pm dv\end{align}$ $
 $ $\begin{align}d(Cu) = Cdu(C为常数)\end{align}$ $
 $ $\begin{align}d(uv) = vdu + udv\end{align}$ $
@@ -9449,10 +9449,10 @@ $\ln (1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+···+(-1)^{n-1}\frac{x^n}{n}+o(x^n)$
 
 
 
-性质2 设函数$f(x)$的原函数存在，$k$为非零常数，则$ $\begin{align}\int kf(x)dx &amp; = k\int f(x)dx\end{align}$ $
-性质3$ $\begin{align}  {\left ( \int f(x)dx \right ) }’ &amp; = f(x)\end{align}
+性质2 设函数$f(x)$的原函数存在，$k$为非零常数，则$ $\begin{align}\int kf(x)dx = k\int f(x)dx\end{align}$ $
+性质3$ $\begin{align}  {\left ( \int f(x)dx \right ) }’ = f(x)\end{align}
 \begin{align}  d\int f(x)dx = f(x)dx\end{align}$ $
-性质4$ $\begin{align}\int {f}’(x)dx &amp; = f(x)+C\end{align}
+性质4$ $\begin{align}\int {f}’(x)dx = f(x)+C\end{align}
 \begin{align}\int df(x) = f(x)+C\end{align}$ $
 三角代换一般的，a&gt;0时，当被积函数有
 
@@ -9529,7 +9529,7 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
   
     $ $
     \begin{align}
-    \int_{a}^{b} kf(x)\mathrm{d}x & = k\int_{a}^{b}  f(x)\mathrm{d}x \; (k是常数) 
+    \int_{a}^{b} kf(x)\mathrm{d}x = k\int_{a}^{b}  f(x)\mathrm{d}x \; (k是常数) 
     \end{align}
     $ $
   
@@ -9681,13 +9681,67 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
   
     $ $
     \begin{align}
-    F'(x) & = h'(x)f[h(x)]-g'(x)f[g(x)]
+    F'(x) = h'(x)f[h(x)]-g'(x)f[g(x)]
     \end{align}
     $ $
   
 
 
 
+微分方程定义&ensp;&ensp;定义1：凡含有参数，未知函数和未知函数导数(或微分)的方程，称为微分方程，有时简称为方程，未知函数是一元函数的微分方程称作常微分方程，未知函数是多元函数的微分方程称作偏微分方程。微分方程中出现的未知函数最高阶导数的阶数，称为微分方程的阶。
+&ensp;&ensp;定义2：任何代入微分方程后使其成为恒等式的函数，都叫做该方程的解。若微分方程的解中含有任意常数的个数与方程的阶数相同，且任意常数之间不能合并，则称此解为该方程的通解(或一般解)。当通解中的各任意常数都取特定值时所得到的解，称为方程的特解。
+一阶线性微分方程非齐次&ensp;&ensp;一阶非齐次线性微分方程$ $\begin{align}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=Q(x)\end{align}$ $
+&ensp;&ensp;一阶非齐次线性微分方程的通解
+
+
+  
+    $ $
+    \begin{align}
+    y=e^{-\int P(x)\mathrm{d}x}[\int Q(x)e^{\int P(x)\mathrm{d}x}\mathrm{d}x+C]
+    \end{align}
+    $ $
+  
+
+
+
+齐次&ensp;&ensp;一阶齐次线性微分方程$ $\begin{align}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=0\end{align}$ $
+&ensp;&ensp;一阶齐次线性微分方程的通解$ $\begin{align}y=Ce^{-\int P(x)\mathrm{d}x} \; (C=\pm e^{C_1})\end{align}$ $
+高阶线性微分方程常系数齐次线性微分方程&ensp;&ensp;形如$ \eqref {eq36} $称为常系数齐次线性微分方程，其中$p$、$q$为常数
+$ $\begin{align} \label {eq36}y’’+py’+qy = 0\end{align}$ $
+常系数齐次线性微分方程的通解&ensp;&ensp;根据$ \eqref {eq36} $列出特征方程，如一元二次方程$ \eqref {eq37} $$ $\begin{align}\label {eq37}r^2+pr+q=0\end{align}$ $
+&ensp;&ensp;解方程$ \eqref {eq37} $，有如下三种情况
+
+1.当$\Delta = p^2-4q \gt 0$时，特征方程$ \eqref {eq37} $有两个不相等的实数根$r_1,r_2$$ $
+
+\begin{align}r_1 = \frac{-p+\sqrt{\Delta } }{2} \\r_2 = \frac{-p-\sqrt{\Delta } }{2}\end{align}$ $
+&ensp;&ensp;此时微分方程$ \eqref {eq36} $的通解是$ $\begin{align}y=C_1e^{r_1x}+C_2e^{r_2x}\end{align}$ $
+
+2.当$\Delta = p^2-4q=0$时，特征方程$ \eqref {eq37} $有两个相等的实数根$r_1=r_2=-\frac{p}{2} $
+
+&ensp;&ensp;此时微分方程$ \eqref {eq36} $的通解是$ $\begin{align}y=(C_1+C_2x)e^{r_1x}\end{align}$ $
+
+3.当$\Delta = p^2-4q \lt 0$时，特征方程$ \eqref {eq37} $有一对共轭的复根$r_1,r_2$（$\alpha,\beta$均为实数,$\beta\ne0$），$i$为虚数，一般等于$\sqrt[]{-1} $
+
+$ $\begin{align}r_1 = \frac{-b+\sqrt[]{\Delta } }{2} = \alpha +i\beta \\r_2 = \frac{-b-\sqrt[]{\Delta } }{2} = \alpha - i\beta\end{align}$ $
+&ensp;&ensp;此时微分方程$ \eqref {eq36} $的通解是$ $\begin{align}y=e^{\alpha x}(C_1\cos {\beta x}+C_2\sin {\beta x})\end{align}$ $
+常系数非齐次线性微分方程&ensp;&ensp;形如$ \eqref {eq38} $称为常系数非齐次线性微分方程，其中$p$、$q$为常数$ $\begin{align} \label {eq38}y’’+py’+qy = f(x)\end{align}$ $
+常系数非齐次线性微分方程的通解&ensp;&ensp;形如如下两种形式的常系数非齐次线性微分方程可以使用待定系数法求特解
+$ $\begin{align}f(x)=e^{\lambda x}P_n(x)\end{align}$ $
+
+
+  
+    $ $
+    \begin{align}
+    f(x)=e^{\lambda x}[P_l(x)\cos (\omega x)+Q_n(x)\sin (\omega x)]
+    \end{align}
+    $ $
+  
+
+
+
+&ensp;&ensp;对应的原方程特解待定式为
+$ $\begin{align}y_0(x) = x^ke^{\lambda x}R_m(x)\end{align}$ $
+$ $\begin{align}y_0(x) = x^ke^{\lambda x}[R_{m1}(x)\cos \omega x+R_{m2}\sin \omega x]\end{align}$ $
 二重积分直角坐标下二重积分的计算当D为X -型区域时
 
 
@@ -9912,31 +9966,6 @@ $S(x)$在其收敛域上连续，当$x_0 \in (-R,R)$时，有
 &ensp;&ensp;其收敛区间为$(-R,R)$
 
 
-微分方程定义&ensp;&ensp;定义1：凡含有参数，未知函数和未知函数导数(或微分)的方程，称为微分方程，有时简称为方程，未知函数是一元函数的微分方程称作常微分方程，未知函数是多元函数的微分方程称作偏微分方程。微分方程中出现的未知函数最高阶导数的阶数，称为微分方程的阶。
-&ensp;&ensp;定义2：任何代入微分方程后使其成为恒等式的函数，都叫做该方程的解。若微分方程的解中含有任意常数的个数与方程的阶数相同，且任意常数之间不能合并，则称此解为该方程的通解(或一般解)。当通解中的各任意常数都取特定值时所得到的解，称为方程的特解。
-一阶线性微分方程非齐次&ensp;&ensp;一阶非齐次线性微分方程$ $\begin{align}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=Q(x)\end{align}$ $
-&ensp;&ensp;一阶非齐次线性微分方程的通解
-
-
-  
-    $ $
-    \begin{align}
-    y=e^{-\int P(x)\mathrm{d}x}[\int Q(x)e^{\int P(x)\mathrm{d}x}\mathrm{d}x+C]
-    \end{align}
-    $ $
-  
-
-
-
-齐次&ensp;&ensp;一阶齐次线性微分方程$ $\begin{align}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=0\end{align}$ $
-&ensp;&ensp;一阶齐次线性微分方程的通解$ $\begin{align}y=Ce^{-\int P(x)\mathrm{d}x} \; (C=\pm e^{C_1})\end{align}$ $
-二阶线性微分方程二阶常系数齐次线性微分方程$ $\begin{align} \label {eq36}y’’+py’+qy &amp; = 0\end{align}$ $
-二阶常系数齐次线性微分方程解法&ensp;&ensp;根据$ \eqref {eq36} $列出它的特征方程$ \eqref {eq37} $$ $\begin{align}\label {eq37}r^2+pr+q=0\end{align}$ $
-&ensp;&ensp;1.当$\Delta = p^2-4q \gt 0$时，特征方程有两个不相等的实数根$r_1,r_2$$ $\begin{align}r_1 &amp; = \frac{-p+\sqrt{p^2-4q} }{2} \\r_2 &amp; = \frac{-p-\sqrt{p^2-4q} }{2}\end{align}$ $
-&ensp;&ensp;此时方程$ \eqref {eq36} $的通解是$ $\begin{align}y=C_1e^{r_1x}+C_2e^{r_2x}\end{align}$ $
-&ensp;&ensp;2.当$\Delta = p^2-4q=0$时，特征方程有两个相等的实数根$r_1=r_2=-\frac{p}{2} $&ensp;&ensp;此时方程$ \eqref {eq36} $的通解是$ $\begin{align}y=(C_1+C_2x)e^{r_1x}\end{align}$ $
-&ensp;&ensp;3.当$\Delta = p^2-4q \lt 0$时，特征方程为一对共轭的复根$r_1,r_2$（$\alpha,\beta$均为实数,$\beta\ne0$）$ $\begin{align}r_1 &amp; = \alpha +i\beta \\r_2 &amp; = \alpha - i\beta\end{align}$ $
-&ensp;&ensp;此时方程$ \eqref {eq36} $的通解是$ $\begin{align}y=e^{\alpha x}(C_1\cos {\beta x}+C_2\sin {\beta x})\end{align}$ $
 跳转：数学常用公式定理1
 
 
