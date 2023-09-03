@@ -9393,7 +9393,7 @@ $ $\begin{align} \label {eq9}\frac{f(b)-f(a)}{F(b)-F(a)} =\frac{f’(\xi)}{F’(
   
     $ $
     \begin{align} \label {eq14}
-    f(x)=f(0)+f'(0)x+\frac{f''(0)}{2!}+···+\frac{f^{(n)}(0)}{n!}x^n+R_n(x)
+    f(x)=f(0)+f'(0)x+\frac{f''(0)}{2!}x^2+···+\frac{f^{(n)}(0)}{n!}x^n+R_n(x)
     \end{align}
     $ $
   
