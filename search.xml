@@ -9360,7 +9360,7 @@ $ $\begin{align} \label {eq9}\frac{f(b)-f(a)}{F(b)-F(a)} =\frac{f’(\xi)}{F’(
 
 
 佩亚诺余项当$\eqref {eq10}$中$R_n(x)$的表达式为$\eqref {eq11}$时，称为佩亚诺余项，近似表达$n$次泰勒多项式产生的误差$ $\begin{align} \label {eq11}R_n(x)=o[(x-x_0)^n]\end{align}$ $
-拉格朗日余项当$\eqref {eq10}$中$R_n(x)$的表达式为$\eqref {eq12}$时，称为拉格朗日余项，拉格朗日余项能够具体估算出误差的大小
+拉格朗日余项当$\eqref {eq10}$中$R_n(x)$的表达式为$\eqref {eq12}$时，称为拉格朗日余项，拉格朗日余项能够具体估算出误差的大小，其中$\xi$是$x_0$与$x$之间的某个值
 
 
   
@@ -9761,7 +9761,7 @@ $ $\begin{align}f(x)=e^{\lambda x}P_n(x)\end{align}$ $
 &ensp;&ensp;对应的原方程特解待定式为
 $ $\begin{align}y_0(x) = x^ke^{\lambda x}R_m(x)\end{align}$ $
 $ $\begin{align}y_0(x) = x^ke^{\lambda x}[R_{m1}(x)\cos \omega x+R_{m2}\sin \omega x]\end{align}$ $
-二重积分直角坐标下二重积分的计算当D为X -型区域时
+多元函数微分重积分直角坐标下二重积分的计算当D为X -型区域时
 
 
   
