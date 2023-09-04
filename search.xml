@@ -11288,10 +11288,10 @@ $p$级数$ $\begin{align}\sum_{n=1}^{\infty } \frac{1}{n^p}\end{align}$ $
 如果$\lim_{n \to \infty} nu_n=l \gt 0$，则级数发散
 如果$p \gt 1$，而$\lim_{n \to \infty} n^pu_n=l(0\le l \lt +\infty)$，则级数收敛
 
-交错级数定理8（莱布尼兹判别法）如果交错级数$\sum_{n=1}^{\infty } (-1)^{n-1}u_n$满足条件
+交错级数定理8（莱布尼兹判别法）如果交错级数$\sum_{n=1}^{\infty } (-1)^{n-1}u_n$如下满足条件，则级数收敛，且其和$S \le u_1$，其余项$r_n$的绝对值为$\left|r_n\right| \le u_{n+1}$
 
 $u_n \ge u_{n+1}$
-$\lim_{n \to \infty} u_n=0$则级数收敛，且其和$S \le u_1$，其余项$r_n$的绝对值$\left|r_n\right| \le u_{n+1}$
+$\lim_{n \to \infty} u_n=0$
 
 任意项级数定义&ensp;&ensp;如果级数$\sum_{n=1}^{\infty } |u_n|$收敛，则级数$\sum_{n=1}^{\infty } u_n$也收敛，此时称级数$\sum_{n=1}^{\infty } u_n$绝对收敛&ensp;&ensp;如果级数$\sum_{n=1}^{\infty } |u_n|$发散，而级数$\sum_{n=1}^{\infty } u_n$也收敛，此时称级数$\sum_{n=1}^{\infty } u_n$条件收敛
 定理9如果级数$\sum_{n=1}^{\infty } |u_n|$收敛，则级数$\sum_{n=1}^{\infty } u_n$一定收敛
@@ -11309,7 +11309,7 @@ $\lim_{n \to \infty} u_n=0$则级数收敛，且其和$S \le u_1$，其余项$r_
 若$\rho = +\infty$，则收敛半径$R=0$
 
 幂级数四则运算&ensp;&ensp;设幂级数$\sum_{n=0}^{\infty}a_nx^n$在其收敛区间$(-R_1,R_1)(R_1 \gt 0)$内的和函数为$S_1(x)$，幂级数$\sum_{n=0}^{\infty}b_nx^n$在其收敛区间$(-R_2,R_2)(R_2 \gt 0)$内的和函数为$S_2(x)$，取$R=\mathrm{min}\{R_1,R_2\} $，则有
-1.加减运算$\eqref {eq27}$
+1.加减运算$\eqref {eq27}$，其收敛区间为$(-R,R)$
 
 
   
@@ -11321,9 +11321,8 @@ $\lim_{n \to \infty} u_n=0$则级数收敛，且其和$S \le u_1$，其余项$r_
   
 
 
-&ensp;&ensp;其收敛区间为$(-R,R)$
 
-2.乘法运算$\eqref {eq28}$
+2.乘法运算$\eqref {eq28}$，其收敛区间为$(-R,R)$
 
 
   
@@ -11335,14 +11334,9 @@ $\lim_{n \to \infty} u_n=0$则级数收敛，且其和$S \le u_1$，其余项$r_
   
 
 
-&ensp;&ensp;其收敛区间为$(-R,R)$
 
-#### 幂函数的和函数的性质
-&ensp;&ensp;幂级数在其收敛区间内可以逐项求导或逐项积分，并且逐项求导或者逐项积分后所得幂级数的收敛区间不变，但在其收敛区间的端点处，级数的敛散性可能会改变
-
-
-设幂级数$\sum_{n=0}^{\infty}a_nx^n$的和函数为$S(x)$，则
-1.$S(x)$在其收敛域上连续，当$x_0 \in (-R,R)$时，有
+幂函数的和函数的性质&ensp;&ensp;幂级数在其收敛区间内可以逐项求导或逐项积分，并且逐项求导或者逐项积分后所得幂级数的收敛区间不变，但在其收敛区间的端点处，级数的敛散性可能会改变
+设幂级数$\sum_{n=0}^{\infty}a_nx^n$的和函数为$S(x)$，则1.$S(x)$在其收敛域上连续，当$x_0 \in (-R,R)$时，有
 
 
   
@@ -11365,7 +11359,10 @@ $\lim_{n \to \infty} u_n=0$则级数收敛，且其和$S \le u_1$，其余项$r_
     \end{align}
     $ $
   
-&lt;/table&gt;&ensp;&ensp;其收敛区间为$(-R,R)$
+
+
+
+&ensp;&ensp;其收敛区间为$(-R,R)$
 3.积分运算，$S(x)$在其收敛域上可积，且
 
 
@@ -11376,7 +11373,10 @@ $\lim_{n \to \infty} u_n=0$则级数收敛，且其和$S \le u_1$，其余项$r_
     \end{align}
     $ $
   
-&lt;/table&gt;&ensp;&ensp;其收敛区间为$(-R,R)$
+
+
+
+&ensp;&ensp;其收敛区间为$(-R,R)$
 跳转：数学常用公式定理1
 跳转：数学常用公式定理2
 ]]></content>
