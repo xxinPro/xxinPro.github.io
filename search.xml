@@ -9760,7 +9760,19 @@ $ $\begin{align}f(x)=e^{\lambda x}P_n(x)\end{align}$ $
 
 &ensp;&ensp;对应的原方程特解待定式为
 $ $\begin{align}y_0(x) = x^ke^{\lambda x}R_m(x)\end{align}$ $
-$ $\begin{align}y_0(x) = x^ke^{\lambda x}[R_{m1}(x)\cos \omega x+R_{m2}\sin \omega x]\end{align}$ $
+
+
+  
+    $ $
+    \begin{align}
+    y_0(x) = x^ke^{\lambda x}[R_{m1}(x)\cos \omega x+R_{m2}\sin \omega x]
+    \end{align}
+    $ $
+  
+
+
+
+
 多元函数微分重积分二重积分的性质性质1&ensp;&ensp;设$\alpha $与$\beta $为常数，则
 
 
