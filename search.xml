@@ -11309,73 +11309,74 @@ $\lim_{n \to \infty} u_n=0$则级数收敛，且其和$S \le u_1$，其余项$r_
 若$\rho = +\infty$，则收敛半径$R=0$
 
 幂级数四则运算&ensp;&ensp;设幂级数$\sum_{n=0}^{\infty}a_nx^n$在其收敛区间$(-R_1,R_1)(R_1 \gt 0)$内的和函数为$S_1(x)$，幂级数$\sum_{n=0}^{\infty}b_nx^n$在其收敛区间$(-R_2,R_2)(R_2 \gt 0)$内的和函数为$S_2(x)$，取$R=\mathrm{min}\{R_1,R_2\} $，则有
-
-加减运算$\eqref {eq27}$
-
-
- $ $
- \begin{align} \label {eq27}
- \sum_{n=0}^{\infty}a_nx^n \pm \sum_{n=0}^{\infty}b_nx^n=\sum_{n=0}^{\infty}(a_n \pm b_n)x^n = S_1(x) \pm S_2(x)
- \end{align}
- $ $
+1.加减运算$\eqref {eq27}$
 
 
-&ensp;&ensp;其收敛区间为$(-R,R)$
-
-乘法运算$\eqref {eq28}$
-
-
- $ $
- \begin{align} \label {eq28}
- \sum_{n=0}^{\infty}a_nx^n \cdot \sum_{n=0}^{\infty}b_nx^n = a_0b_0 + (a_0b_1+a_1b_0)x+(a_0b_2+a_1b_1+a_2b_0)x^2+ \cdot \cdot \cdot + (a_0b_n+a_1b_{n-1}+a_2b_{n-2}+\cdot \cdot \cdot +a_nb_0)x^n+\cdot \cdot \cdot = S_1(x)S_2(x)
- \end{align}
- $ $
+  
+    $ $
+    \begin{align} \label {eq27}
+    \sum_{n=0}^{\infty}a_nx^n \pm \sum_{n=0}^{\infty}b_nx^n=\sum_{n=0}^{\infty}(a_n \pm b_n)x^n = S_1(x) \pm S_2(x)
+    \end{align}
+    $ $
+  
 
 
 &ensp;&ensp;其收敛区间为$(-R,R)$
 
+2.乘法运算$\eqref {eq28}$
 
-幂函数的和函数的性质&ensp;&ensp;幂级数在其收敛区间内可以逐项求导或逐项积分，并且逐项求导或者逐项积分后所得幂级数的收敛区间不变，但在其收敛区间的端点处，级数的敛散性可能会改变
+
+  
+    $ $
+    \begin{align} \label {eq28}
+    \sum_{n=0}^{\infty}a_nx^n \cdot \sum_{n=0}^{\infty}b_nx^n = a_0b_0 + (a_0b_1+a_1b_0)x+(a_0b_2+a_1b_1+a_2b_0)x^2+ \cdot \cdot \cdot + (a_0b_n+a_1b_{n-1}+a_2b_{n-2}+\cdot \cdot \cdot +a_nb_0)x^n+\cdot \cdot \cdot = S_1(x)S_2(x)
+    \end{align}
+    $ $
+  
+
+
+&ensp;&ensp;其收敛区间为$(-R,R)$
+
+#### 幂函数的和函数的性质
+&ensp;&ensp;幂级数在其收敛区间内可以逐项求导或逐项积分，并且逐项求导或者逐项积分后所得幂级数的收敛区间不变，但在其收敛区间的端点处，级数的敛散性可能会改变
+
+
 设幂级数$\sum_{n=0}^{\infty}a_nx^n$的和函数为$S(x)$，则
-
-$S(x)$在其收敛域上连续，当$x_0 \in (-R,R)$时，有
-
+1.$S(x)$在其收敛域上连续，当$x_0 \in (-R,R)$时，有
 
 
- $ $
- \begin{align}
- \lim_{x \to x_0 } (\sum_{n=0}^{\infty } a_nx^n) = \sum _{n=0}^{\infty}(\lim_{x \to x_0 }a_nx^n) = \sum _{n=0}^{\infty}a_nx^n_0 = S(x_0)
- \end{align}
- $ $
+  
+    $ $
+    \begin{align}
+    \lim_{x \to x_0 } (\sum_{n=0}^{\infty } a_nx^n) = \sum _{n=0}^{\infty}(\lim_{x \to x_0 }a_nx^n) = \sum _{n=0}^{\infty}a_nx^n_0 = S(x_0)
+    \end{align}
+    $ $
+  
 
 
 
-
-微分运算，$S(x)$在其收敛区间$(-R,R)$内可导，且
-
-
- $ $
- \begin{align}
- S'(x)=(\sum_{n=0}^{\infty}a_nx^n)'=\sum_{n=0}^{\infty}(a_nx^n)'=\sum_{n=0}^{\infty}na_nx^{n-1}
- \end{align}
- $ $
+2.微分运算，$S(x)$在其收敛区间$(-R,R)$内可导，且
 
 
-&ensp;&ensp;其收敛区间为$(-R,R)$
-
-积分运算，$S(x)$在其收敛域上可积，且
-
-
- $ $
- \begin{align}
- \int_{0}^{x}S(t)\mathrm{d}t=\int_{0}^{x} (\sum_{n=0}^{\infty}a_nt^n)\mathrm{d}t=\sum_{n=0}^{\infty}(\int_{0}^{x}a_nt^n\mathrm{d}t)=\sum_{n=0}^{\infty} \frac{a_n}{n+1}x^{n+1}
- \end{align}
- $ $
-
-
-&ensp;&ensp;其收敛区间为$(-R,R)$
+  
+    $ $
+    \begin{align}
+    S'(x)=(\sum_{n=0}^{\infty}a_nx^n)'=\sum_{n=0}^{\infty}(a_nx^n)'=\sum_{n=0}^{\infty}na_nx^{n-1}
+    \end{align}
+    $ $
+  
+&lt;/table&gt;&ensp;&ensp;其收敛区间为$(-R,R)$
+3.积分运算，$S(x)$在其收敛域上可积，且
 
 
+  
+    $ $
+    \begin{align}
+    \int_{0}^{x}S(t)\mathrm{d}t=\int_{0}^{x} (\sum_{n=0}^{\infty}a_nt^n)\mathrm{d}t=\sum_{n=0}^{\infty}(\int_{0}^{x}a_nt^n\mathrm{d}t)=\sum_{n=0}^{\infty} \frac{a_n}{n+1}x^{n+1}
+    \end{align}
+    $ $
+  
+&lt;/table&gt;&ensp;&ensp;其收敛区间为$(-R,R)$
 跳转：数学常用公式定理1
 跳转：数学常用公式定理2
 ]]></content>
