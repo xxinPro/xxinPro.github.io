@@ -9829,7 +9829,10 @@ public class Mid extends Root &#123;    static &#123;        System.out.println(
     <content><![CDATA[跳转：数学常用公式定理1
 跳转：数学常用公式定理2
 
-多元函数微分有待补充
+多元函数微分基本概念平面点集点和点集之间的关系内点
+外点
+边界点
+聚点
 重积分二重积分的性质性质1&ensp;&ensp;设$\alpha $与$\beta $为常数，则
 
 
@@ -10065,8 +10068,7 @@ $u_n \ge u_{n+1}$
 $\lim_{n \to \infty} u_n=0$
 
 任意项级数定义&ensp;&ensp;如果级数$\sum_{n=1}^{\infty } |u_n|$收敛，则级数$\sum_{n=1}^{\infty } u_n$也收敛，此时称级数$\sum_{n=1}^{\infty } u_n$绝对收敛&ensp;&ensp;如果级数$\sum_{n=1}^{\infty } |u_n|$发散，而级数$\sum_{n=1}^{\infty } u_n$也收敛，此时称级数$\sum_{n=1}^{\infty } u_n$条件收敛
-定理9如果级数$\sum_{n=1}^{\infty } |u_n|$收敛，则级数$\sum_{n=1}^{\infty } u_n$一定收敛
-推论
+定理9如果级数$\sum_{n=1}^{\infty } |u_n|$收敛，则级数$\sum_{n=1}^{\infty } u_n$一定收敛推论
 
 如果级数$\sum_{n=1}^{\infty } u_n$发散，则级数$\sum_{n=1}^{\infty } |u_n|$一定发散
 当$\sum_{n=1}^{\infty } u_n$条件收敛时，级数$\sum_{n=1}^{\infty} \frac{|u_n|+u_n}{2}$和$\sum_{n=1}^{\infty} \frac{|u_n|-u_n}{2} $均发散
@@ -10085,7 +10087,7 @@ $\lim_{n \to \infty} u_n=0$
 
   
     $ $
-    \begin{align} \label {eq27}
+    \begin{align} \span {eq27}
     \sum_{n=0}^{\infty}a_nx^n \pm \sum_{n=0}^{\infty}b_nx^n=\sum_{n=0}^{\infty}(a_n \pm b_n)x^n = S_1(x) \pm S_2(x)
     \end{align}
     $ $
@@ -10098,7 +10100,7 @@ $\lim_{n \to \infty} u_n=0$
 
   
     $ $
-    \begin{align} \label {eq28}
+    \begin{align} \span {eq28}
     \sum_{n=0}^{\infty}a_nx^n \cdot \sum_{n=0}^{\infty}b_nx^n = a_0b_0 + (a_0b_1+a_1b_0)x+(a_0b_2+a_1b_1+a_2b_0)x^2+ \cdot \cdot \cdot + (a_0b_n+a_1b_{n-1}+a_2b_{n-2}+\cdot \cdot \cdot +a_nb_0)x^n+\cdot \cdot \cdot = S_1(x)S_2(x)
     \end{align}
     $ $
