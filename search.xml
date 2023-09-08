@@ -9805,19 +9805,14 @@ $ $
 
 &nbsp;&nbsp;其中，${f}’’_{xy}(x,y)$与${f}’’_{yx}(x,y)$称为混合偏导数，如果二者在区域$D$内连续，那么必定相等
 全微分定理一
-&nbsp;&nbsp;如果$z=f(x,y)$在点$(x,y)$可微分，那么在点$(x,y)$的偏导数$\frac{\partial z}{\partial x} $、$\frac{\partial z}{\partial y} $必定存在，且全微分为
-$ $\begin{align}\mathrm{d}z = \frac{\partial z}{\partial x} \Delta x + \frac{\partial z}{\partial y} \Delta y\end{align}$ $
-&nbsp;&nbsp;通常写作
-$ $\begin{align}\mathrm{d}z = \frac{\partial z}{\partial x} \mathrm{d}x + \frac{\partial z}{\partial y} \mathrm{d} y\end{align}$ $
+&nbsp;&nbsp;如果$z=f(x,y)$在点$(x,y)$可微分，那么在点$(x,y)$的偏导数$\frac{\partial z}{\partial x} $、$\frac{\partial z}{\partial y} $必定存在，且全微分为$ $\begin{align}\mathrm{d}z = \frac{\partial z}{\partial x} \Delta x + \frac{\partial z}{\partial y} \Delta y\end{align}$ $
+&nbsp;&nbsp;通常写作$ $\begin{align}\mathrm{d}z = \frac{\partial z}{\partial x} \mathrm{d}x + \frac{\partial z}{\partial y} \mathrm{d} y\end{align}$ $
 定理二
 &nbsp;&nbsp;如果$z=f(x,y)$的偏导数$\frac{\partial z}{\partial x} $、$\frac{\partial z}{\partial y} $在点$(x,y)$连续，那么在该点可微分
-求导法则一元函数与多元函数复合情形&nbsp;&nbsp;设$z=f(u,v)$在点$(u,v)$有连续偏导数，$u=\varphi (t)$、$v=\psi (t)$在$t$点可导，则有
-$ $\begin{align}\frac{\mathrm{d}z }{\mathrm{d}t } = \frac{\partial z}{\partial u} \frac{\mathrm{d}u }{\mathrm{d}t } + \frac{\partial z}{\partial v} \frac{\mathrm{d}v }{\mathrm{d}t }\end{align}$ $
-多元函数与多元函数复合情形&nbsp;&nbsp;设$z=f(u,v)$在点$(u,v)$有连续偏导数，$u=\varphi (x,y)$、$v=\psi (x,y)$在点$(x,y)$有对$x$、$y$的偏导数，则有
-$ $\begin{align}\frac{\partial z }{\partial x } = \frac{\partial z}{\partial u} \frac{\partial u }{\partial x } + \frac{\partial z}{\partial v} \frac{\partial v }{\partial x }\\\frac{\partial z }{\partial y } = \frac{\partial z}{\partial u} \frac{\partial u }{\partial y } + \frac{\partial z}{\partial v} \frac{\partial v }{\partial y }\end{align}$ $
+求导法则一元函数与多元函数复合情形&nbsp;&nbsp;设$z=f(u,v)$在点$(u,v)$有连续偏导数，$u=\varphi (t)$、$v=\psi (t)$在$t$点可导，则有$ $\begin{align}\frac{\mathrm{d}z }{\mathrm{d}t } = \frac{\partial z}{\partial u} \frac{\mathrm{d}u }{\mathrm{d}t } + \frac{\partial z}{\partial v} \frac{\mathrm{d}v }{\mathrm{d}t }\end{align}$ $
+多元函数与多元函数复合情形&nbsp;&nbsp;设$z=f(u,v)$在点$(u,v)$有连续偏导数，$u=\varphi (x,y)$、$v=\psi (x,y)$在点$(x,y)$有对$x$、$y$的偏导数，则有$ $\begin{align}\frac{\partial z }{\partial x } = \frac{\partial z}{\partial u} \frac{\partial u }{\partial x } + \frac{\partial z}{\partial v} \frac{\partial v }{\partial x }\\\frac{\partial z }{\partial y } = \frac{\partial z}{\partial u} \frac{\partial u }{\partial y } + \frac{\partial z}{\partial v} \frac{\partial v }{\partial y }\end{align}$ $
 多元函数极值极值求法定理一
-&ensp;&ensp;设$z=f(x,y)$在点$(x_0,y_0)$有偏导数，且有极值，则有
-$ $\begin{align}{f}’_x(x_0,y_0) = 0\\{f}’_y(x_0,y_0) = 0\end{align}$ $
+&ensp;&ensp;设$z=f(x,y)$在点$(x_0,y_0)$有偏导数，且有极值，则有$ $\begin{align}{f}’_x(x_0,y_0) = 0\\{f}’_y(x_0,y_0) = 0\end{align}$ $
 定理二
 &ensp;&ensp;设$z=f(x,y)$在点$(x_0,y_0)$的某邻域内有一阶和二阶连续偏导数，又${f}’_x(x_0,y_0) = 0$，${f}’_y(x_0,y_0) = 0$，令
 
@@ -9836,8 +9831,7 @@ $AC-B^2 = 0$时，需要讨论
 
 条件极值拉格朗日乘数法
 &ensp;&ensp;要找$z=f(x,y)$在附加条件$\varphi (x,y)=0$下的可能极值点，先做拉格朗日函数$ $\begin{align}L(x,y)=f(x,y)+\lambda \varphi (x,y)\end{align}$ $
-其中$\lambda$为参数；求拉格朗日函数对$x$、$y$的一阶偏导，并使之为零，然后与附加条件方程联立
-$ $\begin{align}\left\{\begin{matrix}  {f}’_x(x,y) + \lambda {\varphi}’_x(x,y) = 0 \\  {f}’_y(x,y) + \lambda {\varphi}’_y(x,y) = 0 \\  {\varphi}’_y(x,y) = 0\end{matrix}\right.\end{align}$ $
+其中$\lambda$为参数；求拉格朗日函数对$x$、$y$的一阶偏导，并使之为零，然后与附加条件方程联立$ $\begin{align}\left\{\begin{matrix}  {f}’_x(x,y) + \lambda {\varphi}’_x(x,y) = 0 \\  {f}’_y(x,y) + \lambda {\varphi}’_y(x,y) = 0 \\  {\varphi}’_y(x,y) = 0\end{matrix}\right.\end{align}$ $
 解出$x$、$y$、$\lambda$，列出所有$(x,y)$组合，就得到了$z=f(x,y)$在附加条件$\varphi (x,y)=0$下的可能极值点
 &ensp;&ensp;当自变量和条件增加时，例如$u=f(x,y,z,t)$在附加条件$\varphi (x,y,z,t)=0$，$\psi (x,y,z,t)=0$下的极值，可做拉格朗日函数
 
