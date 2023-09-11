@@ -10027,6 +10027,7 @@ $ $
 二重积分特性偶倍奇零对称性&ensp;&ensp;设$f(x,y)$在有界闭区域$D$上连续
 &ensp;&ensp;1、若积分区域$D$关于$y$轴对称，则
 
+&ensp;&ensp;(其中$D_1$是$D$的右半部分)
 $ $
 \begin{align}
 \iint\limits_{D}^{} f(x,y)\mathrm{d}x\mathrm{d}y = 
@@ -10041,6 +10042,7 @@ $ $
 &ensp;&ensp;2、若积分区域$D$关于$x$轴对称，则
 
 $ $
+&ensp;&ensp;(其中$D_1$是$D$的上半部分)
 \begin{align}
 \iint\limits_{D}^{} f(x,y)\mathrm{d}x\mathrm{d}y = 
 \left\{\begin{array} {r}
@@ -10053,6 +10055,7 @@ $ $
 
 &ensp;&ensp;3、若积分区域$D$关于原点对称，则
 
+&ensp;&ensp;(其中$D_1$是$D$的上半部分)
 $ $
 \begin{align}
 \iint\limits_{D}^{} f(x,y)\mathrm{d}x\mathrm{d}y = 
