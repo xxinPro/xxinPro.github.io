@@ -9918,7 +9918,7 @@ L(x,y,z,t)=f(x,y,z,t)+\lambda \varphi (x,y,z,t)+\mu \psi (x,y,z,t)
 
 
 
-直角坐标下二重积分的计算&ensp;&ensp;X-型：若区域$D$表示为
+直角坐标下二重积分的计算&ensp;&ensp;Y-型：若区域$D$表示为
 
 $ $
 \begin{align}
@@ -9936,7 +9936,7 @@ $ $
 
 
 
-&ensp;&ensp;Y-型：若区域$D$表示为
+&ensp;&ensp;X-型：若区域$D$表示为
 
 $ $
 \begin{align}
