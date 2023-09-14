@@ -9606,8 +9606,13 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
   $ $
 
 
-微分方程定义&ensp;&ensp;定义1：凡含有参数，未知函数和未知函数导数(或微分)的方程，称为微分方程，有时简称为方程，未知函数是一元函数的微分方程称作常微分方程，未知函数是多元函数的微分方程称作偏微分方程。微分方程中出现的未知函数最高阶导数的阶数，称为微分方程的阶。
-&ensp;&ensp;定义2：任何代入微分方程后使其成为恒等式的函数，都叫做该方程的解。若微分方程的解中含有任意常数的个数与方程的阶数相同，且任意常数之间不能合并，则称此解为该方程的通解(或一般解)。当通解中的各任意常数都取特定值时所得到的解，称为方程的特解。
+微分方程定义定义1：&ensp;&ensp;凡含有参数，未知函数和未知函数导数(或微分)的方程，称为微分方程，有时简称为方程，未知函数是一元函数的微分方程称作常微分方程，未知函数是多元函数的微分方程称作偏微分方程。微分方程中出现的未知函数最高阶导数的阶数，称为微分方程的阶。
+定义2：&ensp;&ensp;任何代入微分方程后使其成为恒等式的函数，都叫做该方程的解。若微分方程的解中含有任意常数的个数与方程的阶数相同，且任意常数之间不能合并，则称此解为该方程的通解(或一般解)。当通解中的各任意常数都取特定值时所得到的解，称为方程的特解。通解和特解都是微分方程的解。
+定义3：&ensp;&ensp;设$\varphi_1(x)$、$\varphi_2(x)$为两个函数，二者有如下两种线性关系
+
+当$\varphi_1(x)$、$\varphi_2(x)$不成比例，称$\varphi_1(x)$、$\varphi_2(x)$线性无关
+当$\varphi_1(x)$、$\varphi_2(x)$的比为常数，称$\varphi_1(x)$、$\varphi_2(x)$线性相关
+
 一阶线性微分方程非齐次&ensp;&ensp;一阶非齐次线性微分方程$ $\begin{align}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=Q(x)\end{align}$ $
 &ensp;&ensp;一阶非齐次线性微分方程的通解
 
@@ -9620,7 +9625,15 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 
 齐次&ensp;&ensp;一阶齐次线性微分方程$ $\begin{align}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=0\end{align}$ $
 &ensp;&ensp;一阶齐次线性微分方程的通解$ $\begin{align}y=Ce^{-\int P(x)\mathrm{d}x} \; (C=\pm e^{C_1})\end{align}$ $
-高阶线性微分方程常系数齐次线性微分方程&ensp;&ensp;形如$ \eqref {eq36} $称为常系数齐次线性微分方程，其中$p$、$q$为常数
+高阶线性微分方程性质&ensp;&ensp;有二阶常系数非齐次线性微分方程$ $\begin{align} \label {eq26}  y’’+P(x)y’+Q(x) = f(x)\end{align}$ $
+&ensp;&ensp;当$f(x) \equiv 0$时，有二阶常系数齐次线性微分方程$ $\begin{align} \label {eq27}  y’’+P(x)y’+Q(x) = 0\end{align}$ $
+性质1&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$为$\eqref {eq27}$的解，则$y=C_1 \varphi_1(x) + C_2 \varphi_2(x)$为$\eqref {eq27}$的解
+性质2&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$分别为$\eqref {eq26}$、$\eqref {eq27}$的解，则$y=C_1 \varphi_1(x) + C_2 \varphi_2(x)$为$\eqref {eq26}$的解
+性质3&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$为$\eqref {eq26}$的解，则$y=\varphi_2(x)-\varphi_1(x)$为$\eqref {eq27}$的解
+性质4&ensp;&ensp;对于$\eqref {eq26}$，如果有$ $\begin{align} \label {eq28}  y’’+P(x)y’+Q(x) = f_1(x)\end{align}\begin{align} \label {eq29}  y’’+P(x)y’+Q(x) = f_2(x)\end{align}$ $若$f(x)=f_1(x)+f_2(x)$且$\varphi_1(x)$、$\varphi_2(x)$分别为$\eqref {eq28}$、$\eqref {eq29}$的解，则$y=\varphi_1(x) + \varphi_2(x)$为$\eqref {eq26}$的解
+性质5&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$为$\eqref {eq27}$的两个线性无关解，则$y=C_1 \varphi_1(x) + C_2 \varphi_2(x)$为$\eqref {eq27}$的通解
+性质6&ensp;&ensp;若$\varphi(x)$是$\eqref {eq26}$的一个特解，$\psi (x)$为$\eqref {eq27}$的通解，则$y=\varphi(x)+\psi (x)$为$\eqref {eq26}$的通解
+常系数齐次线性微分方程&ensp;&ensp;形如$ \eqref {eq36} $称为常系数齐次线性微分方程，其中$p$、$q$为常数
 $ $\begin{align} \label {eq36}y’’+py’+qy = 0\end{align}$ $
 常系数齐次线性微分方程的通解&ensp;&ensp;根据$ \eqref {eq36} $列出特征方程，如一元二次方程$ \eqref {eq37} $$ $\begin{align}\label {eq37}r^2+pr+q=0\end{align}$ $
 &ensp;&ensp;解方程$ \eqref {eq37} $，有如下三种情况
