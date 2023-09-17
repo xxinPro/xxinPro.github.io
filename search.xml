@@ -9592,10 +9592,80 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
   $ $
 
 
-广义积分广义积分的性质性质1如果$ \int_{a}^{+\infty } f(x)\mathrm{d}x  $收敛，则$\int_{a}^{+\infty } kf(x)\mathrm{d}x $收敛，并且$\int_{a}^{+\infty } kf(x)\mathrm{d}x = k\int_{a}^{+\infty } f(x)\mathrm{d}x $
+反常积分无穷限反常积分&ensp;&ensp;1.设函数$f(x)$在区间$[a,+\infty )$上连续，则$f(x)$在无穷区间$[a,+\infty )$上的反常积分
+
+$ $
+\begin{align}
+\int_{a}^{+\infty } f(x)\mathrm{d}x = \lim_{t \to +\infty} \int_{a}^{t}f(x)\mathrm{d}x 
+\end{align}
+$ $
+
+
+
+&ensp;&ensp;2.设函数$f(x)$在区间$(-\infty,b]$上连续，则$f(x)$在无穷区间$(-\infty,b]$上的反常积分
+
+$ $
+\begin{align}
+\int_{-\infty}^{b } f(x)\mathrm{d}x = \lim_{t \to -\infty} \int_{t}^{b}f(x)\mathrm{d}x 
+\end{align}
+$ $
+
+
+&ensp;&ensp;3.设函数$f(x)$在区间$(-\infty,+\infty)$上连续，则函数$f(x)$在无穷区间$(-\infty,+\infty)$上的反常积分
+
+$ $
+\begin{align}
+\int_{-\infty}^{ +\infty} f(x)\mathrm{d}x = \int_{-\infty}^{ 0} f(x)\mathrm{d}x + \int_{0}^{ +\infty} f(x)\mathrm{d}x = \lim_{t \to -\infty} \int_{t}^{b}f(x)\mathrm{d}x +\lim_{t \to +\infty} \int_{a}^{t}f(x)\mathrm{d}x 
+\end{align}
+$ $
+
+
+无界函数的反常积分(瑕积分)&ensp;&ensp;1.设函数$f(x)$在区间$(a,b]$上连续，则$f(x)$在区间$(a,b]$上的反常积分
+
+$ $
+\begin{align}
+\int_{a}^{b} f(x)\mathrm{d}x = \lim_{t \to a^+} \int_{t}^{b} f(x)\mathrm{d}x 
+\end{align}
+$ $
+
+
+&ensp;&ensp;2.设函数$f(x)$在区间$[a,b)$上连续，则$f(x)$在区间$[a,b)$上的反常积分
+
+$ $
+\begin{align}
+\int_{a}^{b} f(x)\mathrm{d}x = \lim_{t \to b^-} \int_{a}^{t} f(x)\mathrm{d}x 
+\end{align}
+$ $
+
+
+&ensp;&ensp;3.设函数$f(x)$在区间$[a,c)\cup(c,b]$上连续，则$f(x)$在区间$[a,b]$上的反常积分
+
+$ $
+\begin{align}
+\int_{a}^{b} f(x)\mathrm{d}x = \int_{a}^{c} f(x)\mathrm{d}x +\int_{c}^{b} f(x)\mathrm{d}x = \lim_{t \to c^-} \int_{a}^{t} f(x)\mathrm{d}x +\lim_{t \to c^+} \int_{t}^{b} f(x)\mathrm{d}x 
+\end{align}
+$ $
+
+
+$\Gamma$函数$\Gamma$函数定义式
+
+$ $
+\begin{align}
+\Gamma (s)=\int_{0}^{+\infty } e^{-x}x^{s-1}\mathrm{d} x \space \space (s\gt0)
+\end{align}
+$ $
+
+
+常用公式
+
+$\Gamma (s+1)= s\Gamma (s)$
+$\Gamma (n+1)=n!$ (n为正整数)
+$\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
+
+反常积分申敛法性质1如果$ \int_{a}^{+\infty } f(x)\mathrm{d}x  $收敛，则$\int_{a}^{+\infty } kf(x)\mathrm{d}x $收敛，并且$\int_{a}^{+\infty } kf(x)\mathrm{d}x = k\int_{a}^{+\infty } f(x)\mathrm{d}x $
 性质2如果$ \int_{a}^{+\infty } f(x)\mathrm{d}x  $与$ \int_{a}^{+\infty } g(x)\mathrm{d}x  $收敛，则$ \int_{a}^{+\infty } [f(x) \pm g(x) ]\mathrm{d}x  $收敛，反之不一定成立
-广义积分的定理定理1如果$ f(x)\ge 0 $，那么$ \int_{a}^{+\infty } f(x)\mathrm{d}x $收敛的充分必要条件是，$ \int_{a}^{+\infty } f(x)\mathrm{d}x $的原函数$ F(x) = \int_{a}^{x} f(t)\mathrm{d}t $有界
-定理2 设$ 0 \le f(x) \le g(x) $如果$ \int_{a}^{+\infty } g(x)\mathrm{d}x $收敛，那么$ \int_{a}^{+\infty } f(x)\mathrm{d}x $收敛如果$ \int_{a}^{+\infty } f(x)\mathrm{d}x $发散，那么$ \int_{a}^{+\infty } g(x)\mathrm{d}x $发散
+定理1如果$ f(x)\ge 0 $，那么$ \int_{a}^{+\infty } f(x)\mathrm{d}x $收敛的充分必要条件是，$ \int_{a}^{+\infty } f(x)\mathrm{d}x $的原函数$ F(x) = \int_{a}^{x} f(t)\mathrm{d}t $有界
+定理2设$ 0 \le f(x) \le g(x) $如果$ \int_{a}^{+\infty } g(x)\mathrm{d}x $收敛，那么$ \int_{a}^{+\infty } f(x)\mathrm{d}x $收敛如果$ \int_{a}^{+\infty } f(x)\mathrm{d}x $发散，那么$ \int_{a}^{+\infty } g(x)\mathrm{d}x $发散
 定积分求导公式设有$F(x)=\int_{g(x)}^{h(x)}f(t)\mathrm{d}t$
 则它的导数$F’(x)$为
 
