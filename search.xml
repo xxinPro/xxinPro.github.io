@@ -9213,7 +9213,8 @@ $ \frac{\log_{c}{b} }{\log_{c}{a} } = \log_{a}{b} $
 $ \log_{a}{b} = \frac{1}{\log_{b}{a}}  $
 $ a^{x} = e^{x\ln_{}{a} }  $
 
-极限公式两个重要极限第一类重要极限$ \eqref {eq3} $$ $\begin{align} \label {eq3}\lim_{x \to 0} \frac{\sin x}{x} &amp; = 1\end{align}$ $
+极限公式单调有界定理单调有界数列必有极限，如果一个数列单调递增且有上界，或单调递减且有下界，则该数列收敛
+两个重要极限第一类重要极限$ \eqref {eq3} $$ $\begin{align} \label {eq3}\lim_{x \to 0} \frac{\sin x}{x} &amp; = 1\end{align}$ $
 第二类重要极限$ \eqref {eq4} $$ $\begin{align} \label {eq4}\lim_{x \to \infty} (1+\frac{1}{x} )^{x} &amp; = e\end{align}$ $
 由$ \eqref {eq4} $推导$ \eqref {eq5} $$ $\begin{align} \label {eq5}\lim_{x \to 0} (1+x )^{\frac{1}{x}} &amp; = e\end{align}$ $
 常见等价无穷小(当$ x\longrightarrow 0 $时)
@@ -9237,7 +9238,12 @@ $ x-\arctan x ∽ \frac{1}{3} x^3 $
 $ x-\arcsin x ∽ -\frac{1}{6} x^3 $
 $ x-\sin x ∽ \frac{1}{6} x^3 $
 
-单调有界定理单调有界数列必有极限，如果一个数列单调递增且有上界，或单调递减且有下界，则该数列收敛
+渐近线垂直渐近线
+&ensp;&ensp;若$\lim_{x \to a^+} f(x)=\infty$或$\lim_{x \to a^-} f(x)=\infty$，&ensp;&ensp;则称$x=a$为曲线$y=f(x)$的垂直渐近线
+水平渐近线
+&ensp;&ensp;若$\lim_{x \to +\infty} f(x)=b$或$\lim_{x \to -\infty} f(x)=b$，&ensp;&ensp;则称$y=b$为曲线$y=f(x)$的水平渐近线
+斜渐近线
+&ensp;&ensp;若$\lim_{x \to +\infty} \frac{f(x)}{x}=a \space (a\ne 0)$，$\lim_{x \to +\infty} \left[f(x)-ax\right]=b$，&ensp;&ensp;或$\lim_{x \to -\infty} \frac{f(x)}{x}=a \space (a\ne 0)$，$\lim_{x \to -\infty} \left[f(x)-ax\right]=b$，&ensp;&ensp;则称$y=ax+b$为曲线$y=f(x)$的斜渐近线
 导数和微分公式导数表达式结构
 $f’(x_{0} ) = \lim_{\Delta x \to 0} \frac{f(x_{0} + \Delta x) - f(x_{0} )}{\Delta x} $
 $f’(x_{0} ) = \lim_{h \to 0} \frac{f(x_{0} + h) - f(x_{0} )}{h} (h = \Delta x)$
