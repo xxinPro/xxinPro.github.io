@@ -11563,4 +11563,149 @@ static方法不能被重写，所以static方法无需再标记final
         <category>我的文章</category>
       </categories>
   </entry>
+  <entry>
+    <title>数学常用公式定理4</title>
+    <url>/2023/09/23/%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E5%AE%9A%E7%90%864/</url>
+    <content><![CDATA[跳转：数学常用公式定理1
+跳转：数学常用公式定理2
+
+行列式行列式概念逆序数
+&ensp;&ensp;排列$i_1 i_2 i_3 i_4$的逆序数记为$\tau (i_1 i_2 i_3 i_4)$
+二阶行列式
+
+$ $
+\begin{align}
+\begin{vmatrix}
+ a_{11} & a_{12}\\
+ a_{21} & a_{22}
+\end{vmatrix}=a_{11}a_{22}-a_{12}a_{21}
+\end{align}
+$ $
+
+
+三阶行列式
+
+$ $
+\begin{align}
+\begin{vmatrix}
+ a_{11} & a_{12} & a_{13}\\
+ a_{21} & a_{22} & a_{23}\\
+ a_{31} & a_{32} & a_{33}
+\end{vmatrix}=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}
+\end{align}
+$ $
+
+
+余子式与代数余子式&ensp;&ensp;把$\eqref {eq3}$中元素$a_{ij}$所在的第$i$行元素和第$j$列元素去掉，剩下的$n-1$行$n-1$列元素按照原排列次序构成的$n-1$阶行列式，称为元素$a_{ij}$的余子式，记为$M_{ij}$，并称$A_{ij}=(-1)^{i+j}M_{ij}$为元素$a_{ij}$的代数余子式
+
+$ $
+\begin{align} \label {eq3}
+D=
+\begin{vmatrix}
+ a_{11} & a_{12} & \cdots & a_{1n}\\
+ a_{21} & a_{22} & \cdots & a_{2n}\\
+ \vdots & \vdots & \ddots & \vdots\\
+ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}
+\end{align}
+$ $
+
+
+特殊行列式对角、上（下）三角行列式
+
+$ $
+\begin{align}
+\begin{vmatrix}
+ a_{11} & 0 & \cdots & 0\\
+ 0 & a_{22} & \cdots & 0\\
+ \vdots & \vdots &        & \vdots\\
+ 0 & 0 & \cdots & a_{nn}
+\end{vmatrix}
+=
+\begin{vmatrix}
+ a_{11} & a_{12} & \cdots & a_{1n}\\
+ 0 & a_{22} & \cdots & a_{2n}\\
+ \vdots & \vdots &        & \vdots\\
+ 0 & 0 & \cdots & a_{nn}
+\end{vmatrix}
+=
+\begin{vmatrix}
+ a_{11} & 0 & \cdots & 0\\
+ a_{21} & a_{22} & \cdots & 0\\
+ \vdots & \vdots &        & \vdots\\
+ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}
+=
+a_{11}a_{22}\cdots a_{nn}
+\end{align}
+$ $
+
+
+
+范德蒙行列式
+&ensp;&ensp;其中$\prod$表示全体同类因子的乘积
+
+$ $
+\begin{align}
+D_n=\begin{vmatrix}
+ 1 & 1 & \cdots & 1\\
+ x_1 & x_2 & \cdots & x_n\\
+ x_1^2 & x_2^2 & \cdots & x_n^2\\
+ \vdots & \vdots &  & \vdots\\
+ x_1^{n-1} & x_2^{n-1} & \cdots & x_n^{n-1}
+\end{vmatrix}
+=
+\prod \limits_{n\ge i \gt j\ge 1}^{}(x_i-x_j)
+\end{align}
+$ $
+
+
+
+$ $
+\begin{align}
+D_2=\begin{vmatrix}
+ 1 & 1\\
+ x_1 & x_2
+\end{vmatrix}=(x_2-x_1)
+\end{align}
+$ $
+
+
+
+$ $
+\begin{align}
+D_3=\begin{vmatrix}
+ 1 & 1 & 1\\
+ x_1 & x_2 & x_3\\
+ x_1^2 & x_2^2 & x_3^2
+\end{vmatrix}
+=
+(x_3-x_1)(x_3-x_2)(x_2-x_1)
+\end{align}
+$ $
+
+
+
+$ $
+\begin{align}
+D_4=\begin{vmatrix}
+ 1 & 1 & 1 & 1\\
+ x_1 & x_2 & x_3 & x_4\\
+ x_1^2 & x_2^2 & x_3^2 & x_4^2\\
+ x_1^3 & x_2^3 & x_3^3 & x_4^3
+\end{vmatrix}
+=
+(x^4-x^1)(x^4-x^2)(x^4-x^3)(x^3-x^1)(x^3-x^2)(x^2-x^1)
+\end{align}
+$ $
+
+
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
 </search>
