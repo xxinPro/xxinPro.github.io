@@ -11591,7 +11591,9 @@ $ $
  a_{11} & a_{12} & a_{13}\\
  a_{21} & a_{22} & a_{23}\\
  a_{31} & a_{32} & a_{33}
-\end{vmatrix}=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}
+\end{vmatrix}
+=
+a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}
 \end{align}
 $ $
 
@@ -11700,6 +11702,232 @@ D_4=\begin{vmatrix}
 $ $
 
 
+行列式的性质计算性质性质1：行列式与其转置行列式相等
+
+$ $
+\begin{align}
+\begin{vmatrix}
+ a_{11} & a_{12} & a_{13}\\
+ a_{21} & a_{22} & a_{23}\\
+ a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+=
+\begin{vmatrix}
+ a_{11} & a_{21} & a_{31}\\
+ a_{12} & a_{22} & a_{32}\\
+ a_{13} & a_{23} & a_{33}
+\end{vmatrix}
+\end{align}
+$ $
+
+
+性质2：对调两行或两列，行列式改变符号
+
+$ $
+\begin{align}
+\begin{vmatrix}
+ a_{11} & a_{12} & a_{13}\\
+ a_{21} & a_{22} & a_{23}\\
+ a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+=
+-\begin{vmatrix}
+ a_{21} & a_{22} & a_{23}\\
+ a_{11} & a_{12} & a_{13}\\
+ a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+=
+-\begin{vmatrix}
+ a_{12} & a_{11} & a_{13}\\
+ a_{22} & a_{21} & a_{23}\\
+ a_{32} & a_{31} & a_{33}
+\end{vmatrix}
+\end{align}
+$ $
+
+
+推论：由性质2得，如果行列式有两行或两列完全相同，行列式的值为零，$D=-D\Rightarrow D=0$
+
+$ $
+\begin{align}
+\begin{vmatrix}
+ l_{1} & l_{2} & l_{3}\\
+ l_{1} & l_{2} & l_{3}\\
+ l_{4} & l_{5} & l_{6}
+\end{vmatrix}
+=
+-\begin{vmatrix}
+ l_{1} & l_{2} & l_{3}\\
+ l_{1} & l_{2} & l_{3}\\
+ l_{4} & l_{5} & l_{6}
+\end{vmatrix}
+\end{align}
+$ $
+
+
+性质3：行列式某行或某列有公因子可以提取到行列式的外面
+
+$ $
+\begin{align}
+\begin{vmatrix}
+ 3a_{11} & 3a_{12} & 3a_{13}\\
+ 6a_{21} & a_{22} & a_{23}\\
+ 9a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+=
+3\begin{vmatrix}
+ a_{11} & a_{12} & a_{13}\\
+ 6a_{21} & a_{22} & a_{23}\\
+ 9a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+=
+3\begin{vmatrix}
+ a_{11} & 3a_{12} & 3a_{13}\\
+ 2a_{21} & a_{22} & a_{23}\\
+ 3a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+\end{align}
+$ $
+
+
+性质4：行列式中如果有两行或两列元素成正比，则行列式值为零，$2D=-2D \Rightarrow D=0$
+
+$ $
+\begin{align}
+\begin{vmatrix}
+ l_{1} & l_{2} & l_{3}\\
+ 2l_{1} & 2l_{2} & 2l_{3}\\
+ l_{4} & l_{5} & l_{6}
+\end{vmatrix}
+\Rightarrow 
+2\begin{vmatrix}
+ l_{1} & l_{2} & l_{3}\\
+ l_{1} & l_{2} & l_{3}\\
+ l_{4} & l_{5} & l_{6}
+\end{vmatrix}
+=
+-2\begin{vmatrix}
+ l_{1} & l_{2} & l_{3}\\
+ l_{1} & l_{2} & l_{3}\\
+ l_{4} & l_{5} & l_{6}
+\end{vmatrix}
+\end{align}
+$ $
+
+
+性质5：行列式某一行或某一列的元素都是两数之和，则行列式可拆分为两个行列式之和
+
+$ $
+\begin{align}
+\begin{vmatrix}
+ l_{1} & l_{2} & l_{3}\\
+ l_{4}+l_{10} & l_{5}+l_{11} & l_{6}+l_{12}\\
+ l_{7} & l_{8} & l_{9}
+\end{vmatrix}
+=
+\begin{vmatrix}
+ l_{1} & l_{2} & l_{3}\\
+ l_{4} & l_{5} & l_{6}\\
+ l_{7} & l_{8} & l_{9}
+\end{vmatrix}
++
+\begin{vmatrix}
+ l_{1} & l_{2} & l_{3}\\
+ l_{10} & l_{11} & l_{12}\\
+ l_{7} & l_{8} & l_{9}
+\end{vmatrix}
+\end{align}
+$ $
+
+
+性质6：行列式的某一行（列）的各元素乘同一数然后加到另一行（列）的对应元素上，行列式的值不变
+
+$ $
+\begin{align}
+\begin{vmatrix}
+ l_{1} & l_{2} & l_{3}\\
+ l_{4} & l_{5} & l_{6}\\
+ l_{7} & l_{8} & l_{9}
+\end{vmatrix}
+=
+\begin{vmatrix}
+ l_{1} & l_{2} & l_{3}\\
+ l_{4}+3l_{1} & l_{5}+3l_{2} & l_{6}+3l_{3}\\
+ l_{7} & l_{8} & l_{9}
+\end{vmatrix}
+\end{align}
+$ $
+
+
+展开性质引理1：一个$n$阶行列式，如果其中第$i$行所有元素除$(i,j)$元$a_{i,j}$外都为零，那么该行列式等于$a_{i,j}$和它的代数余子式的乘积
+
+$ $
+\begin{align}
+\begin{vmatrix}
+ a_{11} & a_{12} & a_{13}\\
+ 0 & a_{22} & 0\\
+ a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+=
+a_{22}A_{22}
+\end{align}
+$ $
+
+
+定理2：行列式等于它的任一行或列的各元素与其对应的代数余子式的成绩之和（展开法则）
+
+&ensp;&ensp;即：
+$ $
+\begin{align}
+D=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots +a_{in}A_{in}\space (i=1,2,3,\cdots ,n)
+\end{align}
+
+\begin{align}
+D=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots +a_{nj}A_{nj}\space (j=1,2,3,\cdots ,n)
+\end{align}
+$ $
+
+
+
+&ensp;&ensp;例：
+$ $
+\begin{align}
+D=\begin{vmatrix}
+ a_{11} & a_{12} & a_{13}\\
+ a_{21} & a_{22} & a_{23}\\
+ a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+=
+a_{11}A_{11}+a_{12}A_{12}+a_{13}A_{13}=a_{11}A_{11}+a_{21}A_{21}+a_{31}A_{31}
+\end{align}
+$ $
+
+
+推论：行列式的某一行（列）的元素与另一行（列）的对应元素的代数余子式乘积之和等于零
+
+$ $
+\begin{align}
+a_{i1}A_{j1}+a_{i2}A_{j2}+\cdots +a_{in}A_{jn}=0 \space (i \ne j)
+\end{align}
+\begin{align}
+a_{1i}A_{1j}+a_{2i}A_{2j}+\cdots +a_{ni}A_{nj}=0 \space (i \ne j)
+\end{align}
+$ $
+
+
+
+&ensp;&ensp;例：
+$ $
+\begin{align}
+D=\begin{vmatrix}
+ a_{11} & a_{12} & a_{13}\\
+ a_{21} & a_{22} & a_{23}\\
+ a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+\Rightarrow 
+a_{11}A_{21}+a_{12}A_{22}+a_{13}A_{23}=0
+\end{align}
+$ $
 ]]></content>
       <categories>
         <category>学习笔记</category>
