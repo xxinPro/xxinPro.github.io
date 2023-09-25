@@ -10680,6 +10680,70 @@ D=\begin{vmatrix}
 a_{11}A_{21}+a_{12}A_{22}+a_{13}A_{23}=0
 \end{align}
 $ $
+
+
+克莱姆法则（克拉默法则）&ensp;&ensp;注意：只有当方程组中的方程个数与未知数个数相等时才可以使用克莱姆法则；即，如果方程组由$n$个线性方程组成，那么每个线性方程中必须包含$n$个未知数.
+&ensp;&ensp;设，由$n$个线性方程组成的齐次方程组$\eqref {eq23}$，其中每个线性方程包含$n$个未知数，当$\eqref {eq23}$中的齐次线性方程不等于$0$时，有非齐次线性方程组$\eqref {eq24}$
+
+$ $
+\begin{align} \label {eq23}
+\left\{ 
+\begin{array}{lll} 
+a_{11}x_{1}+a_{12}x_{2}+\cdots +a_{1n}x_{n}=0 \\
+a_{21}x_{1}+a_{22}x_{2}+\cdots +a_{2n}x_{n}=0 \\
+\vdots\\
+a_{n1}x_{1}+a_{n2}x_{2}+\cdots +a_{nn}x_{n}=0
+\end{array} \right.
+\end{align}
+
+\begin{align} \label {eq24}
+\left\{ 
+\begin{array}{lll} 
+a_{11}x_{1}+a_{12}x_{2}+\cdots +a_{1n}x_{n}=b_{1} \\
+a_{21}x_{1}+a_{22}x_{2}+\cdots +a_{2n}x_{n}=b_{2} \\
+\vdots\\
+a_{n1}x_{1}+a_{n2}x_{2}+\cdots +a_{nn}x_{n}=b_{n}
+\end{array} \right.
+\end{align}
+$ $
+
+
+&ensp;&ensp;有$\eqref {eq23} \eqref {eq24}$的系数行列式$\eqref {eq25}$
+
+$ $
+\begin{align} \label {eq25}
+D=\begin{vmatrix}
+ a_{11} & a_{12} & \cdots & a_{1n}\\
+ a_{21} & a_{22} & \cdots & a_{2n}\\
+ \vdots & \vdots &  & \vdots\\
+ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}
+\end{align}
+$ $
+
+
+定理1：方程组$\eqref {eq23}$有只有零解的充分必要条件是$D\ne 0$；方程组$\eqref {eq23}$有非零解（或有无穷多个解）的充分必要条件是$D=0$
+定理2：方程组$\eqref {eq24}$有唯一解的充分必要条件是$D\ne 0$，此时$x_i=\frac {D_i}{D} \space (i=1,2,\cdots,n)$，当$D=0$时，方程组$\eqref {eq24}$要么无解，要么有无穷多个解
+&ensp;&ensp;在定理2中
+
+$ $
+\begin{align}
+D_1=\begin{vmatrix}
+ b_1 & a_{12} & \cdots & a_{1n}\\
+ b_2 & a_{22} & \cdots & a_{2n}\\
+ \vdots & \vdots &  & \vdots\\
+ b_n & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}
+;\space 
+D_n=\begin{vmatrix}
+ a_{11} & a_{12} & \cdots & b_1\\
+ a_{21} & a_{22} & \cdots & b_2\\
+ \vdots & \vdots &  & \vdots\\
+ a_{n1} & a_{n2} & \cdots & b_n
+\end{vmatrix}
+\end{align}
+$ $
+
 ]]></content>
       <categories>
         <category>学习笔记</category>
