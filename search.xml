@@ -11146,6 +11146,154 @@ $ $
 对称性 若$A \sim B$，则$B \sim A$
 传递性 若$A \sim B$，$B \sim C$，则$A \sim C$
 
+初等变换运算阶梯型、最简型、标准型（定义2）行阶梯型矩阵&ensp;&ensp;非零矩阵若满足：
+
+非零行在零行的上面，
+非零行的首非零元所在列 在上一行的首非零元所在列 的右边，
+
+则称此矩阵为行阶梯型矩阵。&ensp;&ensp;在行列式$A$中每一行的第一个非零元称为首非零元
+
+$ $
+\begin{align}
+A = 
+\begin{pmatrix}
+ 1 & 1 & -2 & 1\\
+ 0 & 1 & -1 & 1\\
+ 0 & 0 & 0 & 1\\
+ 0 & 0 & 0 & 0
+\end{pmatrix}
+\end{align}
+$ $
+
+
+行最简型矩阵&ensp;&ensp;若$A$是阶梯型矩阵，并且满足：
+
+非零行的首非零元为1，
+首非零元所在的列的其它元均为0，
+
+则称$A$为行最简型矩阵
+
+$ $
+\begin{align}
+A = 
+\begin{pmatrix}
+ 1 & 0 & -1 & 0\\
+ 0 & 1 & -1 & 0\\
+ 0 & 0 & 0 & 1\\
+ 0 & 0 & 0 & 0
+\end{pmatrix}
+\end{align}
+$ $
+
+
+
+标准型矩阵&ensp;&ensp;对最简型矩阵施以初等列变换可以得到标准型矩阵$F$，其左上角是一个单位矩阵，其余元全为0
+
+$ $
+\begin{align}
+F=
+\begin{pmatrix}
+ E_r & O\\
+ O & O
+\end{pmatrix}
+=
+\begin{pmatrix}
+ 1 & 0 & 0 & 0\\
+ 0 & 1 & 0 & 0\\
+ 0 & 0 & 1 & 0\\
+ 0 & 0 & 0 & 0
+\end{pmatrix}
+\end{align}
+$ $
+
+
+&ensp;&ensp;对于$m \times n$矩阵$A$，总可经过初等变换（行变换和列变换）把它化为标准型$F=\begin{pmatrix} E_r &amp; O\\ O &amp; O \end{pmatrix}$，其中$r$是行阶梯矩阵中非零行的行数
+初等矩阵&ensp;&ensp;由单位矩阵$E$经过一次初等变换得到的矩阵称为初等矩阵
+两行对换&ensp;&ensp;把单位矩阵中第$i$，$j$两行（或两列）对换，得初等矩阵$E(i,j)$
+
+$ $
+\begin{align}
+E(i,j)=\begin{pmatrix}
+ \color{red}1 & 0 & 0 & \cdots & 0 & 0 & 0\\
+ 0 & \color{red}0 & 0 & \cdots & 0 & \color{red}1 & 0\\
+ 0 & 0 & \color{red}1 & \cdots & 0 & 0 & 0\\
+ \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots\\
+ 0 & 0 & 0 & \cdots & \color{red}1 & 0 & 0\\
+ 0 & \color{red}1 & 0 & \cdots & 0 & \color{red}0 & 0\\
+ 0 & 0 & 0 & \cdots & 0 & 0 & \color{red}1
+\end{pmatrix}
+，
+E_4(2,3)=\begin{pmatrix}
+ 1 & 0 & 0 & 0\\
+ 0 & 0 & 1 & 0\\
+ 0 & 1 & 0 & 0\\
+ 0 & 0 & 0 & 1
+\end{pmatrix}
+\end{align}
+$ $
+
+
+
+数乘某行&ensp;&ensp;以数$k \ne 0$乘单位矩阵的第$i$行（或第$i$列），得初等矩阵$E\left(i\left(k\right)\right)$
+
+$ $
+\begin{align}
+E(i(k))=
+\begin{pmatrix}
+ 1 &  &  &  &  &  & \\
+  & \ddots &  &  &  &  & \\
+  &  & 1 &  &  &  & \\
+  &  &  & k &  &  & \\
+  &  &  &  & 1 &  & \\
+  &  &  &  &  & \ddots & \\
+  &  &  &  &  &  & 1
+\end{pmatrix}
+，
+E_4(3(k))=
+\begin{pmatrix}
+ 1 & 0 & 0 & 0\\
+ 0 & 1 & 0 & 0\\
+ 0 & 0 & k & 0\\
+ 0 & 0 & 0 & 1
+\end{pmatrix}
+\end{align}
+$ $
+
+
+数乘相加&ensp;&ensp;以$k$乘单位矩阵的第$j$行加到第$i$行上（或以$k$乘单位矩阵的第$i$列加到第$j$列上），得到初等矩阵$E(ij(k))$
+
+$ $
+\begin{align}
+E(ij(k))=
+\begin{pmatrix}
+ 1 &  &  &  &  &  & \\
+  & \ddots &  &  &  &  & \\
+  &  & 1 & \cdots & k &  & \\
+  &  &  & \ddots & \vdots &  & \\
+  &  &  &  & 1 &  & \\
+  &  &  &  &  & \ddots & \\
+  &  &  &  &  &  & 1
+\end{pmatrix}
+，
+E_4(23(k))=
+\begin{pmatrix}
+ 1 & 0 & 0 & 0\\
+ 0 & 1 & k & 0\\
+ 0 & 0 & 1 & 0\\
+ 0 & 0 & 0 & 1
+\end{pmatrix}
+\end{align}
+$ $
+
+
+&ensp;&ensp;初等矩阵的逆阵：
+
+$E(i,j)^{-1}=E(i,j)$
+$E(i(k))^{-1}=E(i(\frac {1}{k}))$
+$E(ij(k))^{-1}=E(ij(-k))$
+
+初等矩阵的性质性质1&ensp;&ensp;设$A$是一个$m \times n$矩阵，对$A$实施一次初等行变换，相当于在$A$的左边乘相应的$m$阶初等矩阵；对$A$实施一次初等列变换，相当于在$A$的右边乘相应的$n$阶初等矩阵
+性质2&ensp;&ensp;方阵$A$可逆的充分必要条件是，存在有限个初等矩阵$P_1$，$P_2$，$\cdots$，$P_l$，使$A=P_1 P_2 \cdots P_l$
 
 ]]></content>
       <categories>
