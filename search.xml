@@ -11214,13 +11214,13 @@ $ $
 $ $
 \begin{align}
 E(i,j)=\begin{pmatrix}
- \color{red}1 & 0 & 0 & \cdots & 0 & 0 & 0\\
- 0 & \color{red}0 & 0 & \cdots & 0 & \color{red}1 & 0\\
- 0 & 0 & \color{red}1 & \cdots & 0 & 0 & 0\\
+ {\color{Red}1} & 0 & 0 & \cdots & 0 & 0 & 0\\
+ 0 & {\color{Red}0} & 0 & \cdots & 0 & {\color{Red}1} & 0\\
+ 0 & 0 & {\color{Red}1} & \cdots & 0 & 0 & 0\\
  \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots\\
- 0 & 0 & 0 & \cdots & \color{red}1 & 0 & 0\\
- 0 & \color{red}1 & 0 & \cdots & 0 & \color{red}0 & 0\\
- 0 & 0 & 0 & \cdots & 0 & 0 & \color{red}1
+ 0 & 0 & 0 & \cdots & {\color{Red}1} & 0 & 0\\
+ 0 & {\color{Red}1} & 0 & \cdots & 0 & {\color{Red}0} & 0\\
+ 0 & 0 & 0 & \cdots & 0 & 0 & {\color{Red}1}
 \end{pmatrix}
 ，
 E_4(2,3)=\begin{pmatrix}
@@ -11293,7 +11293,128 @@ $E(i(k))^{-1}=E(i(\frac {1}{k}))$
 $E(ij(k))^{-1}=E(ij(-k))$
 
 初等矩阵的性质性质1&ensp;&ensp;设$A$是一个$m \times n$矩阵，对$A$实施一次初等行变换，相当于在$A$的左边乘相应的$m$阶初等矩阵；对$A$实施一次初等列变换，相当于在$A$的右边乘相应的$n$阶初等矩阵
+
+&ensp;&ensp;例1：两行（两列）对换
+$ $
+\begin{align}
+A = 
+\begin{pmatrix}
+ a_{11} & a_{12} & a_{13} & a_{14}\\
+ a_{21} & a_{22} & a_{23} & a_{24}\\
+ a_{31} & a_{32} & a_{33} & a_{34}\\
+ a_{41} & a_{42} & a_{43} & a_{44}
+\end{pmatrix}
+，
+E_4(2,3)=
+\begin{pmatrix}
+ 1 & 0 & 0 & 0\\
+ 0 & 0 & 1 & 0\\
+ 0 & 1 & 0 & 0\\
+ 0 & 0 & 0 & 1
+\end{pmatrix}
+\end{align}
+
+\begin{align}
+E_4(2,3)A=
+\begin{pmatrix}
+ a_{11} & a_{12} & a_{13} & a_{14}\\
+ {\color{Red} a_{31}} & {\color{Red} a_{32}} & {\color{Red} a_{33}} & {\color{Red} a_{34}}\\
+ {\color{Red} a_{21}} & {\color{Red} a_{22}} & {\color{Red} a_{23}} & {\color{Red} a_{24}}\\
+ a_{41} & a_{42} & a_{43} & a_{44}
+\end{pmatrix}
+，
+AE_4(2,3)=
+\begin{pmatrix}
+ a_{11} & {\color{Red} a_{13}} & {\color{Red} a_{12}} & a_{14}\\
+ a_{21} & {\color{Red} a_{23}} & {\color{Red} a_{22}} & a_{24}\\
+ a_{31} & {\color{Red} a_{33}} & {\color{Red} a_{32}} & a_{34}\\
+ a_{41} & {\color{Red} a_{43}} & {\color{Red} a_{42}} & a_{44}
+\end{pmatrix}
+\end{align}
+$ $
+
+
+
+&ensp;&ensp;例2：数乘某行（列）
+$ $
+\begin{align}
+A = 
+\begin{pmatrix}
+ a_{11} & a_{12} & a_{13}\\
+ a_{21} & a_{22} & a_{23}\\
+ a_{31} & a_{32} & a_{33}
+\end{pmatrix}
+，
+E_3(2(k))=
+\begin{pmatrix}
+ 1 & 0 & 0\\
+ 0 & k & 0\\
+ 0 & 0 & 1
+\end{pmatrix}
+\end{align}
+
+\begin{align}
+E_3(2(k))A = 
+\begin{pmatrix}
+ a_{11} & a_{12} & a_{13}\\
+ {\color{Red} ka_{21}} & {\color{Red} ka_{22}} & {\color{Red} ka_{23}}\\
+ a_{31} & a_{32} & a_{33}
+\end{pmatrix}
+，
+AE_3(2(k))=
+\begin{pmatrix}
+ a_{11} & {\color{Red} ka_{12}} & a_{13}\\
+ a_{21} & {\color{Red} ka_{22}} & a_{23}\\
+ a_{31} & {\color{Red} ka_{32}} & a_{33}
+\end{pmatrix}
+\end{align}
+$ $
+
+
+
+&ensp;&ensp;例3：数乘相加
+$ $
+\begin{align}
+A = 
+\begin{pmatrix}
+ a_{11} & a_{12} & a_{13} & a_{14}\\
+ a_{21} & a_{22} & a_{23} & a_{24}\\
+ a_{31} & a_{32} & a_{33} & a_{34}\\
+ a_{41} & a_{42} & a_{43} & a_{44}
+\end{pmatrix}
+，
+E_4(23(k))=
+\begin{pmatrix}
+ 1 & 0 & 0 & 0\\
+ 0 & 1 & k & 0\\
+ 0 & 0 & 1 & 0\\
+ 0 & 0 & 0 & 1
+\end{pmatrix}
+\end{align}
+
+\begin{align}
+E_4(23(k))A=
+\begin{pmatrix}
+ a_{11} & a_{12} & a_{13} & a_{14}\\
+ {\color{Red} a_{21}+ka_{31}}  & {\color{Red} a_{22}+ka_{32}}  & {\color{Red} a_{23}+ka_{33}}  & {\color{Red} a_{24}+ka_{34}} \\
+ a_{31} & a_{32} & a_{33} & a_{34}\\
+ a_{41} & a_{42} & a_{43} & a_{44}
+\end{pmatrix}
+，
+AE_4(23(k))=
+\begin{pmatrix}
+ a_{11} & a_{12} & {\color{Red} ka_{12}+a_{13}}  & a_{14}\\
+ a_{21} & a_{22} & {\color{Red} ka_{22}+a_{23}}  & a_{24}\\
+ a_{31} & a_{32} & {\color{Red} ka_{32}+a_{33}}  & a_{34}\\
+ a_{41} & a_{42} & {\color{Red} ka_{42}+a_{43}}  & a_{44}
+\end{pmatrix}
+\end{align}
+$ $
+
+
 性质2&ensp;&ensp;方阵$A$可逆的充分必要条件是，存在有限个初等矩阵$P_1$，$P_2$，$\cdots$，$P_l$，使$A=P_1 P_2 \cdots P_l$
+&ensp;&ensp;推论：方阵$A$可逆的充分必要条件是$A\underset{}{\overset{r}{\sim}}E$
+初等变换法求逆矩阵&ensp;&ensp;设$A$是$n$阶可逆矩阵，则$(A \space \vdots \space E) \underset{}{\overset{初等行变换}{\longrightarrow }} (E \space \vdots \space A^{-1})$
 
 ]]></content>
       <categories>
