@@ -11416,6 +11416,7 @@ $ $
 &ensp;&ensp;推论：方阵$A$可逆的充分必要条件是$A\underset{}{\overset{r}{\sim}}E$
 初等变换法求逆矩阵&ensp;&ensp;设$A$是$n$阶可逆矩阵，则$(A \space \vdots \space E) \underset{}{\overset{初等行变换}{\longrightarrow }} (E \space \vdots \space A^{-1})$
 
+
 ]]></content>
       <categories>
         <category>学习笔记</category>
