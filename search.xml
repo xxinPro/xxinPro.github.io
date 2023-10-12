@@ -10639,7 +10639,7 @@ a_{22}A_{22}
 $ $
 
 
-定理2：行列式等于它的任一行或列的各元素与其对应的代数余子式的成绩之和（展开法则）
+定理2：行列式等于它的任一行或列的各元素与其对应的代数余子式的乘积之和（展开法则）
 
 &ensp;&ensp;即：
 $ $
@@ -10864,6 +10864,68 @@ B =
 \end{align}
 $ $
 
+
+
+增广矩阵
+&ensp;&ensp;有非齐次线性方程组
+
+$ $
+\begin{align}
+\left\{ 
+\begin{array}{lll} 
+a_{11}x_{1}+a_{12}x_{2}+\cdots +a_{1n}x_{n}=b_{1} \\
+a_{21}x_{1}+a_{22}x_{2}+\cdots +a_{2n}x_{n}=b_{2} \\
+\vdots\\
+a_{m1}x_{1}+a_{m2}x_{2}+\cdots +a_{mn}x_{n}=b_{m}
+\end{array} \right.
+\end{align}
+$ $
+
+
+&ensp;&ensp;该方程组可表示为$Ax=b$，其中$A$称为系数矩阵，$x$称为未知数矩阵，$b$称为常数项矩阵
+
+$ $
+\begin{align}
+A = 
+\begin{pmatrix}
+ a_{11} & a_{12} & \cdots & a_{1n}\\
+ a_{21} & a_{22} & \cdots & a_{2n}\\
+ \vdots & \vdots &       & \vdots\\
+ a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+，
+x = 
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}
+，
+b = 
+\begin{pmatrix}
+b_1 \\
+b_2 \\
+\vdots \\
+b_m
+\end{pmatrix}
+\end{align}
+$ $
+
+
+&ensp;&ensp;将常数项矩阵$b$添加到系数矩阵$A$的右边，得到增广矩阵$B = (A \space \vdots \space b)$，书写时通常不写矩阵中的增广线“$|$”
+
+$ $
+\begin{align}
+B = (A \space \vdots \space b) = 
+\begin{pmatrix}
+ a_{11} & a_{12} & \cdots & a_{1n} & | & b_1 \\
+ a_{21} & a_{22} & \cdots & a_{2n} & | & b_2 \\
+ \vdots & \vdots &        & \vdots & | & \vdots\\
+ a_{m1} & a_{m2} & \cdots & a_{mn} & | & b_n
+\end{pmatrix}
+\end{align}
+$ $
 
 
 矩阵的运算加减运算&ensp;&ensp;只有当两个矩阵是同型矩阵时，才能进行加减运算
@@ -11415,7 +11477,47 @@ $ $
 性质2&ensp;&ensp;方阵$A$可逆的充分必要条件是，存在有限个初等矩阵$P_1$，$P_2$，$\cdots$，$P_l$，使$A=P_1 P_2 \cdots P_l$
 &ensp;&ensp;推论：方阵$A$可逆的充分必要条件是$A\underset{}{\overset{r}{\sim}}E$
 初等变换法求逆矩阵&ensp;&ensp;设$A$是$n$阶可逆矩阵，则$(A \space \vdots \space E) \underset{}{\overset{初等行变换}{\longrightarrow }} (E \space \vdots \space A^{-1})$
+矩阵的秩$k$阶子式&ensp;&ensp;定义4：在$m \times n$矩阵中，任取$k$行与$k$列（其中$k \le min\{m,n\}$），不改变它们在$A$中所处的位置次序而得的$k$阶行列式，称为矩阵$A$的$k$阶子式
+矩阵的秩&ensp;&ensp;定义5：设在矩阵$A$中有一个不等于$0$的$r$阶子式$D$，且所有$r + 1$阶子式（如果存在）全等于$0$，那么$D$称为$A$的最高阶非零子式，数$r$称为矩阵$A$的秩，并记作$R(A)$，规定$0$矩阵的秩等于$0$
+秩的计算&ensp;&ensp;引理：设$A\underset{}{\overset{r}{\sim}}B$，则$A$与$B$中非零子式的最高阶数相等（秩相等）&ensp;&ensp;定理2：若$A \sim B$，则$R(A) = R(B)$（矩阵的初等变换不改变矩阵的秩）
+&ensp;&ensp;对于$n$阶矩阵A，其$n$阶子式只有$|A|$，当$|A| \ne 0$时，$R(A) = n$，当$|A| = 0$时，$R(A) \lt n$，因此可逆矩阵又称满秩矩阵，不可以矩阵又称降秩矩阵
+&ensp;&ensp;矩阵秩的计算：当矩阵阶数较低时，可以采用定义法求出矩阵的秩；当矩阵结束较高时，将高阶矩阵通过初等行变换转化为行阶梯型矩阵，它的秩等于非零行的行数
+矩阵秩的性质
+$0 \le R(A_{m \times n}) \le min\{m,n\}$
+$R(A^T)=R(A)=R(A^T A)=R(A A^T)$
+若$A \sim b$，则$R(A) = R(B)$
+若$P$、$Q$可逆，则$R(PAQ)=R(A)$
+$max\{R(A),R(B)\} \le R(A,B) \le R(A)+R(B)$
+$R(A+B) \le R(A)+R(B)$
+$R(AB) \le min\{R(A),R(B)\}$
+若$A_{m \times n}B_{n \times l}=O$，则$R(A)+R(B) \le n$
 
+线性方程组的解&ensp;&ensp;设有$n$个未知数$m$个方程的线性方程组$\eqref {eq13}$
+
+$ $
+\begin{align} \label {eq13}
+\left\{ 
+\begin{array}{lll} 
+a_{11}x_{1}+a_{12}x_{2}+\cdots +a_{1n}x_{n}=b_{1} \\
+a_{21}x_{1}+a_{22}x_{2}+\cdots +a_{2n}x_{n}=b_{2} \\
+\vdots\\
+a_{m1}x_{1}+a_{m2}x_{2}+\cdots +a_{mn}x_{n}=b_{m}
+\end{array} \right.
+\end{align}
+$ $
+
+
+&ensp;&ensp;方程组$\eqref {eq13}$可表示为$Ax=b$，其中$A$为系数矩阵，$x$为未知数矩阵，$b$为常数项矩阵，利用$A$与增广矩阵$\overline{A} = (A \space \vdots \space b)$的秩讨论线性方程组的解，如果线性方程组有解，则称它是相容的，反之称为不相容
+&ensp;&ensp;定理3：对于上述方程组$Ax=b$
+
+无解的充分必要条件是$R(A) \lt R(\overline{A})$
+有惟一解的充分必要条件是$R(A)=R(\overline{A})=n$
+有无限多解的充分必要条件是$R(A)=R(\overline{A}) \lt n$
+
+&ensp;&ensp;定理4：$n$元齐次线性方程组$Ax=0$有非零解的充分必要条件是$R(A) \lt n$
+&ensp;&ensp;定理5：线性方程组$Ax=b$有解的充分必要条件是$R(A) = R(\overline{A})$
+&ensp;&ensp;定理6：矩阵方程$AX=B$有解的充分必要条件是$R(A)=R(A \space \vdots \space B)$
+&ensp;&ensp;定理7：设$AB=C$，则$R(C) \le min\{R(A),R(B)\}$
 
 ]]></content>
       <categories>
