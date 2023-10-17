@@ -11657,7 +11657,7 @@ a_1=\frac {-1}{k_1}(k_2a_2+\cdots+k_ma_m)\\ \\
 即:a_1能由a_2,\cdots,a_m线性表示
 \end{array}
 $ $
-特别的，(1).对于只有一个向量$a$的向量组$A$，当$a=0$（$a$为零向量）时$A$是线性相关的，当$a\ne 0$时（$a$不为零向量）时$A$是线性无关的；另外，当$A$中含有零向量时，$A$必定线性相关
+特别的，(1).对于只有一个向量$a$的向量组$A$，当$a=0$（$a$为零向量）时$A$是线性相关的，当$a\ne 0$时（$a$不为零向量）时$A$是线性无关的；此外，如果任意一个向量组$A$中含有零向量，则$A$必定线性相关
 
 $ $
 \begin{array}{l}
@@ -11683,8 +11683,8 @@ $ $
 
 &ensp;&ensp;2.齐次线性方程组$x_1a_1+x_2a_2+\cdots+x_ma_m=0$有非零解
 &ensp;&ensp;定理4：向量组$A:a_1,a_2,\cdots,a_m$线性相关的充分必要条件是它所构成的矩阵$A=(a_1,a_2,\cdots,a_m)$的秩小于向量个数$m$，即$R(A) \lt m$；向量组$A$线性无关的充分必要条件是$R(A)=m$
-&ensp;&ensp;线性方程组$x_1a_1+x_2a_2+\cdots+x_ma_m=0$有非零解，则$R(a_1,a_2,\cdots,a_m) \lt m$，即$A$线性相关
-&ensp;&ensp;3.$|a_1,a_2,\cdots,a_m| = 0$&ensp;&ensp;设向量组$A$中有$m$个$n$维列向量$a_1,a_2,\cdots,a_m$，如果$m=n$时$|a_1,a_2,\cdots,a_m| = 0$，则有$R(a_1,a_2,\cdots,a_m) \lt m=n$，即$A$线性相关&ensp;&ensp;若$|a_1,a_2,\cdots,a_m| \ne 0$，那么$R(a_1,a_2,\cdots,a_m) = m=n$，$A$线性无关
+&ensp;&ensp;线性方程组$x_1a_1+x_2a_2+\cdots+x_ma_m=0$有非零解，则$R(a_1,a_2,\cdots,a_m) \lt m$，即$A$线性相关；若$R(a_1,a_2,\cdots,a_m) = m$，那么线性方程组$x_1a_1+x_2a_2+\cdots+x_ma_m=0$只有零解，$A$线性无关
+&ensp;&ensp;3.$|a_1,a_2,\cdots,a_m| = 0$&ensp;&ensp;设向量组$A$中有$m$个$n$维列向量$a_1,a_2,\cdots,a_m$，如果$m=n$时$|a_1,a_2,\cdots,a_m| = 0$，则有$R(a_1,a_2,\cdots,a_m) \lt m=n$，即$A$线性相关；若$|a_1,a_2,\cdots,a_m| \ne 0$，那么$R(a_1,a_2,\cdots,a_m) = m=n$，$A$线性无关
 线性相关的性质
 设向量组$A:a_1,a_2,\cdots,a_m$线性无关，而向量组$B:a_1,a_2,\cdots,a_m,b$线性相关，则向量$b$必能由向量组$A$线性表示，且表示式是唯一的
 若向量组$A:a_1,a_2,\cdots,a_m$线性相关，则向量组$B:a_1,a_2,\cdots,a_m,a_{m+1}$线性相关；若向量组$B:a_1,a_2,\cdots,a_m,a_{m+1}$线性无关，则向量组$A:a_1,a_2,\cdots,a_m$线性无关
