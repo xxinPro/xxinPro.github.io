@@ -11481,7 +11481,7 @@ $ $
 矩阵的秩&ensp;&ensp;定义5：设在矩阵$A$中有一个不等于$0$的$r$阶子式$D$，且所有$r + 1$阶子式（如果存在）全等于$0$，那么$D$称为$A$的最高阶非零子式，数$r$称为矩阵$A$的秩，并记作$R(A)$，规定$0$矩阵的秩等于$0$
 秩的计算&ensp;&ensp;引理：设$A\underset{}{\overset{r}{\sim}}B$，则$A$与$B$中非零子式的最高阶数相等（秩相等）&ensp;&ensp;定理2：若$A \sim B$，则$R(A) = R(B)$（矩阵的初等变换不改变矩阵的秩）
 &ensp;&ensp;对于$n$阶矩阵A，其$n$阶子式只有$|A|$，当$|A| \ne 0$时，$R(A) = n$，当$|A| = 0$时，$R(A) \lt n$，因此可逆矩阵又称满秩矩阵，不可以矩阵又称降秩矩阵
-&ensp;&ensp;矩阵秩的计算：当矩阵阶数较低时，可以采用定义法求出矩阵的秩；当矩阵结束较高时，将高阶矩阵通过初等行变换转化为行阶梯型矩阵，它的秩等于非零行的行数
+&ensp;&ensp;矩阵秩的计算：当矩阵阶数较低时，可以采用定义法求出矩阵的秩；当矩阵阶数较高时，将高阶矩阵通过初等行变换转化为行阶梯型矩阵，它的秩等于非零行的行数
 矩阵秩的性质
 $0 \le R(A_{m \times n}) \le min\{m,n\}$
 $R(A^T)=R(A)=R(A^T A)=R(A A^T)$
@@ -11642,6 +11642,54 @@ $ $
 定理2&ensp;&ensp;向量组$B:b_1,b_2,\cdots,b_l$能由向量组$A:a_1,a_2,\cdots,a_m$线性表示的充分必要条件是矩阵$A=(a_1,a_2,\cdots,a_m)$的秩与矩阵$(A,B)=(a_1,a_2,\cdots,a_m,b_1,b_2,\cdots,b_l)$的秩，即$R(A)=R(A,B)$
 推论&ensp;&ensp;向量组$A:a_1,a_2,\cdots,a_m$与向量组$B:b_1,b_2,\cdots,b_l$等价的充分必要条件是$R(A)=R(B)=R(A,B)$，其中$A$和$B$是向量组$A$和$B$所构成的矩阵
 定理3&ensp;&ensp;设向量组$B:b_1,b_2,\cdots,b_l$能由向量组$A:a_1,a_2,\cdots,a_m$线性表示，则$R(b_1,b_2,\cdots,b_l) \le R(a_1,a_2,\cdots,a_m)$
+线性相关线性相关性的定义定义4&ensp;&ensp;给定向量组$A:a_1,a_2,\cdots,a_m$，如果存在不全为零的数$k_1,k_2,\cdots,k_m$，使$k_1a_1+k_2a_2+\cdots+k_ma_m=0$，则称向量组$A$是线性相关的，否则称它线性无关
+&ensp;&ensp;如果向量组$A:a_1,a_2,\cdots,a_m$线性相关，那么在向量$A$中至少有一个向量能由其余$m-1$个向量线性表示，这是因为有不全为$0$的数$k_1,k_2,\cdots,k_m$，使$k_1a_1+k_2a_2+\cdots+k_ma_m=0$，假设$k_1 \ne 0$，那么有$a_1=\frac {-1}{k_1}(k_2a_2+\cdots+k_ma_m)$，即$a_1$能由$a_2,\cdots,a_m$线性表示&ensp;&ensp;同样，如果向量组$A:a_1,a_2,\cdots,a_m$中某个向量能由其余$m-1$个向量线性表示，即有$\lambda_1,\lambda_2,\cdots,\lambda_{m-1}$，使$a_m=\lambda_1a_1+\lambda_2a_2+\cdots+\lambda_{m-1}a_{m-1}$，于是有$\lambda_1a_1+\lambda_2a_2+\cdots+\lambda_{m-1}a_{m-1}+(-1)a_m=0$，因为$\lambda_1,\lambda_2,\cdots,\lambda_{m-1},-1$这$m$个数不全为$0$，所以向量组$A$线性相关&ensp;&ensp;线性相关的向量组中，至少有一个向量是其余向量的线性组合，并称这个向量是多余的；在线性无关的向量组中，没有任何向量是其余向量的线性组合
+线性相关性的判别&ensp;&ensp;向量组$A:a_1,a_2,\cdots,a_m$线性相关的充分必要条件是
+&ensp;&ensp;1.向量组$A$中至少有一个向量可由其余向量线性表示
+
+$ $
+\begin{array}{l}
+\because A线性相关 \\
+\therefore 存在不全为0的数k_1,k_2,\cdots,k_m，\\
+使k_1a_1+k_2a_2+\cdots+k_ma_m=0 \\ \\
+如果设k_1\ne 0，则有\\
+a_1=\frac {-1}{k_1}(k_2a_2+\cdots+k_ma_m)\\ \\
+即:a_1能由a_2,\cdots,a_m线性表示
+\end{array}
+$ $
+特别的，(1).对于只有一个向量$a$的向量组$A$，当$a=0$（$a$为零向量）时$A$是线性相关的，当$a\ne 0$时（$a$不为零向量）时$A$是线性无关的；另外，当$A$中含有零向量时，$A$必定线性相关
+
+$ $
+\begin{array}{l}
+设a_1=0\\
+\therefore 存在不全为0的数k_1,k_2,\cdots,k_m\\
+使a_1=0\\ \\
+即:A线性相关
+\end{array}
+$ $
+(2).只有两个向量的向量组$A:a_1,a_2$，当$a_1$、$a_2$的分量对应成比例时，$A$是线性相关的
+
+$ $
+\begin{array}{l}
+设a_1,a_2成比例\\
+\therefore 存在不全为0的数k_1,k_2\\
+使k_1a_1+k_2a_2=0\\ \\
+即:A线性相关
+\end{array}
+$ $
+
+
+
+
+&ensp;&ensp;2.齐次线性方程组$x_1a_1+x_2a_2+\cdots+x_ma_m=0$有非零解
+&ensp;&ensp;定理4：向量组$A:a_1,a_2,\cdots,a_m$线性相关的充分必要条件是它所构成的矩阵$A=(a_1,a_2,\cdots,a_m)$的秩小于向量个数$m$，即$R(A) \lt m$；向量组$A$线性无关的充分必要条件是$R(A)=m$
+&ensp;&ensp;线性方程组$x_1a_1+x_2a_2+\cdots+x_ma_m=0$有非零解，则$R(a_1,a_2,\cdots,a_m) \lt m$，即$A$线性相关
+&ensp;&ensp;3.$|a_1,a_2,\cdots,a_m| = 0$&ensp;&ensp;设向量组$A$中有$m$个$n$维列向量$a_1,a_2,\cdots,a_m$，如果$m=n$时$|a_1,a_2,\cdots,a_m| = 0$，则有$R(a_1,a_2,\cdots,a_m) \lt m=n$，即$A$线性相关&ensp;&ensp;若$|a_1,a_2,\cdots,a_m| \ne 0$，那么$R(a_1,a_2,\cdots,a_m) = m=n$，$A$线性无关
+线性相关的性质
+设向量组$A:a_1,a_2,\cdots,a_m$线性无关，而向量组$B:a_1,a_2,\cdots,a_m,b$线性相关，则向量$b$必能由向量组$A$线性表示，且表示式是唯一的
+若向量组$A:a_1,a_2,\cdots,a_m$线性相关，则向量组$B:a_1,a_2,\cdots,a_m,a_{m+1}$线性相关；若向量组$B:a_1,a_2,\cdots,a_m,a_{m+1}$线性无关，则向量组$A:a_1,a_2,\cdots,a_m$线性无关
+设$A:a_1,a_2,\cdots,a_m$为$m$个$n$维向量组成的向量组，当$n \lt m$时，$A$线性相关
+
 
 ]]></content>
       <categories>
