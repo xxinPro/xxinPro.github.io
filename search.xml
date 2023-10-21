@@ -9015,10 +9015,10 @@ Windows徽标键&ensp;&ensp;一般上边不写字，会画一个不规则的方�
     <title>数学常用公式定理2</title>
     <url>/2022/04/04/%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E5%AE%9A%E7%90%862/</url>
     <content><![CDATA[数学常用公式定理1
-数学常用公式定理2
 数学常用公式定理3
 数学常用公式定理4
 数学常用公式定理5
+数学常用公式定理6
 
 不定积分不定积分的性质性质1 设函数$f(x)$及$g(x)$的原函数存在，则
 
@@ -9354,7 +9354,7 @@ $ $\begin{align}y_0(x) = x^k e^{\lambda x}R_m(x)\end{align}$ $
 数学常用公式定理3
 数学常用公式定理4
 数学常用公式定理5
-
+数学常用公式定理6
 
 
 
@@ -9373,6 +9373,7 @@ $ $\begin{align}y_0(x) = x^k e^{\lambda x}R_m(x)\end{align}$ $
 数学常用公式定理3
 数学常用公式定理4
 数学常用公式定理5
+数学常用公式定理6
 
 
 三角函数
@@ -9792,6 +9793,7 @@ $\ln (1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+···+(-1)^{n-1}\frac{x^n}{n}+o(x^n)$
 数学常用公式定理3
 数学常用公式定理4
 数学常用公式定理5
+数学常用公式定理6
 
 
 
@@ -9811,6 +9813,7 @@ $\ln (1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+···+(-1)^{n-1}\frac{x^n}{n}+o(x^n)$
 数学常用公式定理2
 数学常用公式定理3
 数学常用公式定理5
+数学常用公式定理6
 
 行列式行列式概念逆序数
 &ensp;&ensp;排列$i_1 i_2 i_3 i_4$的逆序数记为$\tau (i_1 i_2 i_3 i_4)$
@@ -10636,6 +10639,7 @@ $ $
 数学常用公式定理2
 数学常用公式定理3
 数学常用公式定理5
+数学常用公式定理6
 
 ]]></content>
       <categories>
@@ -10652,6 +10656,7 @@ $ $
 数学常用公式定理2
 数学常用公式定理4
 数学常用公式定理5
+数学常用公式定理6
 
 多元函数微分平面点集邻域&ensp;&ensp;点$P$的$\delta$邻域
 
@@ -11127,6 +11132,7 @@ $\lim_{n \to \infty} u_n=0$
 数学常用公式定理2
 数学常用公式定理4
 数学常用公式定理5
+数学常用公式定理6
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -11193,6 +11199,7 @@ public class Mid extends Root &#123;    static &#123;        System.out.println(
 数学常用公式定理2
 数学常用公式定理3
 数学常用公式定理4
+数学常用公式定理6
 
 矩阵初等变换初等变换定义1&ensp;&ensp;下面三种变换称为矩阵的初等行变换
 
@@ -11844,6 +11851,7 @@ $ $
 数学常用公式定理2
 数学常用公式定理3
 数学常用公式定理4
+数学常用公式定理6
 
 
 
@@ -13084,5 +13092,76 @@ static方法不能被重写，所以static方法无需再标记final
       <categories>
         <category>我的文章</category>
       </categories>
+  </entry>
+  <entry>
+    <title>数学常用公式定理6</title>
+    <url>/2023/10/01/%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E5%AE%9A%E7%90%866/</url>
+    <content><![CDATA[数学常用公式定理1
+数学常用公式定理2
+数学常用公式定理3
+数学常用公式定理4
+数学常用公式定理5
+
+
+向量的内积、长度及正交性内积定义1&ensp;&ensp;设$n$维向量
+
+$ $
+\begin{align}
+\alpha = \begin{pmatrix}
+a_1 \\
+a_2 \\
+\vdots \\
+a_n
+\end{pmatrix}
+，
+\beta = \begin{pmatrix}
+b_1 \\
+b_2 \\
+\vdots \\
+b_n
+\end{pmatrix}
+\end{align}
+$ $
+
+
+令
+
+$ $
+\begin{align}
+[\alpha,\beta]=a_1b_1+a_2b_2+\cdots+a_nb_n
+\end{align}
+$ $
+
+
+称$[\alpha,\beta]$为向量$\alpha$与$\beta$的内积
+&ensp;&ensp;内积具有下列性质（其中$\alpha$、$\beta$、$\gamma$为$n$维向量，$k$为实数）
+
+$[\alpha,\beta]=[\beta,\alpha]$
+$[k\alpha,\beta]=[\alpha,k\beta]=k[\alpha,\beta]$
+$[\alpha,\beta+\gamma]=[\alpha,\beta]+[\alpha,\gamma]$
+当$\alpha=0$时，$[\alpha,\alpha]=0$；当$\alpha \ne 0$时，$[\alpha,\alpha]\gt 0$
+
+长度定义2&ensp;&ensp;设$\alpha=(\alpha_1,\alpha_2,\cdots,\alpha_n)^T$，令$\parallel \alpha \parallel = \sqrt[]{[\alpha ,\alpha ]} =\sqrt[]{\alpha _1^2+\alpha _2^2+\cdots+\alpha _n^2}$，称$\parallel \alpha \parallel$为向量$\alpha$的长度或范数
+&ensp;&ensp;向量的长度有下列性质（其中$\alpha$为$n$维向量，$k$为实数）
+
+非负性 当$\alpha \ne 0$时，$\parallel \alpha \parallel \gt 0$；当$\alpha = 0$时，$\parallel \alpha \parallel = 0$
+齐次性 $\parallel k\alpha \parallel=|k|\parallel \alpha \parallel$
+
+&ensp;&ensp;当$\parallel e \parallel=1$时，称$e$为单位向量。如果$\alpha \ne 0$，取$e=\frac {\alpha}{\parallel \alpha \parallel}$，则$e$是一个单位向量，由向量$\alpha$得到向量$e$的过程称为把向量$\alpha$单位化
+&ensp;&ensp;
+
+$ $
+\begin{align}
+
+\end{align}
+$ $
+
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
   </entry>
 </search>
