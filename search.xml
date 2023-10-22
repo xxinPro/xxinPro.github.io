@@ -13148,6 +13148,103 @@ $[\alpha,\beta+\gamma]=[\alpha,\beta]+[\alpha,\gamma]$
 齐次性 $\parallel k\alpha \parallel=|k|\parallel \alpha \parallel$
 
 &ensp;&ensp;当$\parallel e \parallel=1$时，称$e$为单位向量。如果$\alpha \ne 0$，取$e=\frac {\alpha}{\parallel \alpha \parallel}$，则$e$是一个单位向量，由向量$\alpha$得到向量$e$的过程称为把向量$\alpha$单位化
+正交&ensp;&ensp;当$[\alpha,\beta]=0$时，称向量$\alpha$与$\beta$正交；若$\alpha=0$，则$\alpha$与任何向量正交&ensp;&ensp;一组两两正交的非零向量组，称为正交向量组
+定理1&ensp;&ensp;若$n$维向量$a_1,a_2,\cdots,a_r$是一组两两正交的非零向量，则$a_1,a_2,\cdots,a_r$线性无关
+标准正交基定义3&ensp;&ensp;设$n$维向量$e_1,e_2,\cdots,e_r$是向量空间$V$（$V \subseteq R^n$）的一个基，如果$e_1,e_2,\cdots,e_r$两两正交，且都是单位向量，则称$e_1,e_2,\cdots,e_r$是$V$的一个标准正交基
+例：
+
+$ $
+\begin{align}
+e_1=\begin{pmatrix}
+\frac{1}{\sqrt[]{2} }  \\
+\frac{1}{\sqrt[]{2} } \\
+0 \\
+0
+\end{pmatrix}，
+e_2=\begin{pmatrix}
+\frac{1}{\sqrt[]{2} }  \\
+-\frac{1}{\sqrt[]{2} } \\
+0 \\
+0
+\end{pmatrix}，
+e_3=\begin{pmatrix}
+0 \\
+0 \\
+\frac{1}{\sqrt[]{2} }  \\
+\frac{1}{\sqrt[]{2} }
+\end{pmatrix}
+\end{align}
+$ $
+
+
+是$R^3$的标准正交基
+标准正交化&ensp;&ensp;设$a_1,a_2,\cdots,a_r$是向量空间$V$的一个基，要求$V$的一个标准正交基，也就是要找一组两两正交的单位向量$e_1,e_2,\cdots,e_r$，使$e_1,e_2,\cdots,e_r$与$a_1,a_2,\cdots,a_r$等价，称为把基$a_1,a_2,\cdots,a_r$标准正交化
+施密特正交化&ensp;&ensp;标准正交化第一步，从线性无关组$a_1,a_2,\cdots,a_r$导出正交向量组$b_1,b_2,\cdots,b_r$的过程称为施密特正交化，对任何$k$（$1 \ge k \ge r$），向量组$b_1,b_2,\cdots,b_r$与$a_1,a_2,\cdots,a_r$等价
+
+$ $
+\begin{array}{l}
+b_1=a_1\\
+b_2=a_2-\frac{[a_2,b_1]}{[b_1,b_1]}b_1 \\
+b_3=a_3-\frac{[a_3,b_1]}{[b_1,b_1]}b_1 - \frac{[a_3,b_2]}{[b_2,b_2]}b_2 \\
+\cdots \\
+b_r=a_r-\frac{[a_r,b_1]}{[b_1,b_1]}b_1 -\frac{[a_r,b_2]}{[b_2,b_2]}b_2 -\cdots -\frac{[a_r,b_{r-1}]}{[b_{r-1},b_{r-1}]}b_{r-1}
+\end{array}
+$ $
+
+
+单位化&ensp;&ensp;标准正交化第二步，把等价矩阵$b_1,b_2,\cdots,b_r$单位化
+
+$ $
+\begin{align}
+e_1=\frac{1}{\parallel b_1 \parallel}b_1,e_2=\frac{1}{\parallel b_2 \parallel}b_2 ,\cdots,e_r=\frac{1}{\parallel b_r \parallel}b_r 
+\end{align}
+$ $
+
+
+$e_1,e_2,\cdots,e_r$就是$V$的一个标准正交基
+坐标计算公式&ensp;&ensp;若$e_1,e_2,\cdots,e_r$$V$的一个标准正交基，那么$V$中任一向量$a$能由$e_1,e_2,\cdots,e_r$线性表示，设表示式为$a=k_1e_1+k_2e_2+\cdots+k_re_r$，向量在标准正交基中的坐标$k_i$（i=i,2,\cdots,r），计算公式为$k_i=e_i^Ta=[a,e_i]$
+正交矩阵定义4&ensp;&ensp;如果$n$阶矩阵$A$满足$A^TA=E$（即$A^{-1}=A^T$），那么称$A$为正交矩阵，简称正交阵
+&ensp;&ensp;方阵$A$为正交矩阵的充分必要条件是$A$的列向量（或行向量）都是单位向量，且两两相交
+
+$ $
+\begin{align}
+\begin{array}{l}
+对于A^TA=E\Rightarrow \begin{pmatrix}
+a_1^T \\
+a_2^T \\
+\vdots \\
+a_n^T
+\end{pmatrix}
+\begin{pmatrix}
+a_1,a_2,\cdots,a_n
+\end{pmatrix}=E
+\\
+有a_i^Ta_j \left\{ 
+\begin {array} {l}
+1，当i=j时\\
+0，当i\ne j时
+\end {array} \right.
+（i,j=1,2,\cdots,n）
+\end{array}
+\end{align}
+$ $
+
+
+&ensp;&ensp;正交矩阵有下述性质
+
+若$A$为正交矩阵，则$A^{-1}=A^T$也是正交矩阵，且$|A| = 1$或$-1$
+若$A$和$B$都是正交矩阵，则$AB$也是正交矩阵
+
+定义5&ensp;&ensp;若$P$为正交矩阵，则线性变换$y=Px$称为正交变换
+
+&ensp;&ensp;设$y=Px$为正交变换，则有
+$ $
+\begin{align}
+\parallel y\parallel = \sqrt[]{y^Ty}=\sqrt[]{x^TP^TPx} = \sqrt[]{x^Tx}= \parallel x \parallel 
+\end{align}
+$ $
+
+
 &ensp;&ensp;
 
 $ $
@@ -13155,6 +13252,9 @@ $ $
 
 \end{align}
 $ $
+
+
+
 
 ]]></content>
       <categories>
