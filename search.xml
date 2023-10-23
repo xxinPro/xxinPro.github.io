@@ -11604,14 +11604,14 @@ $ $
 列向量组与行向量组的线性表示&ensp;&ensp;若$C_{m \times n}=A_{m \times l} \times B_{l \times n}$，则矩阵$C$的列向量组能由矩阵$A$的列向量组表示，$B$为这一表示的系数矩阵：
 
 $ $
-\begin{align}
+\begin{array} {c}
 (c_1,c_2,\cdots,c_n)=(a_1,a_2,\cdots,a_l)\begin{pmatrix}
  b_{11} & b_{12} & \cdots & b_{1n}\\
  b_{21} & b_{22} & \cdots & b_{2n}\\
  \vdots & \vdots &        & \vdots\\
  b_{l1} & b_{l2} & \cdots & b_{ln}
 \end{pmatrix}
-\end{align}
+\end{array}
 $ $
 
 
@@ -11620,7 +11620,7 @@ $ $
 &ensp;&ensp;若$C_{m \times n}=A_{m \times l} \times B_{l \times n}$，则矩阵$C$的行向量组能由矩阵$B$的行向量组表示，$A$为这一表示的系数矩阵：
 
 $ $
-\begin{align}
+\begin{array} {c}
 \begin{pmatrix}
  \gamma_1^T\\
  \gamma_2^T\\
@@ -11641,7 +11641,7 @@ $ $
  \vdots \\
  \beta_l^T
 \end{pmatrix}
-\end{align}
+\end{array}
 $ $
 
 
@@ -11649,8 +11649,35 @@ $ $
 定理2&ensp;&ensp;向量组$B:b_1,b_2,\cdots,b_l$能由向量组$A:a_1,a_2,\cdots,a_m$线性表示的充分必要条件是矩阵$A=(a_1,a_2,\cdots,a_m)$的秩与矩阵$(A,B)=(a_1,a_2,\cdots,a_m,b_1,b_2,\cdots,b_l)$的秩，即$R(A)=R(A,B)$
 推论&ensp;&ensp;向量组$A:a_1,a_2,\cdots,a_m$与向量组$B:b_1,b_2,\cdots,b_l$等价的充分必要条件是$R(A)=R(B)=R(A,B)$，其中$A$和$B$是向量组$A$和$B$所构成的矩阵
 定理3&ensp;&ensp;设向量组$B:b_1,b_2,\cdots,b_l$能由向量组$A:a_1,a_2,\cdots,a_m$线性表示，则$R(b_1,b_2,\cdots,b_l) \le R(a_1,a_2,\cdots,a_m)$
-线性相关线性相关性的定义定义4&ensp;&ensp;给定向量组$A:a_1,a_2,\cdots,a_m$，如果存在不全为零的数$k_1,k_2,\cdots,k_m$，使$k_1a_1+k_2a_2+\cdots+k_ma_m=0$，则称向量组$A$是线性相关的，否则称它线性无关
-&ensp;&ensp;如果向量组$A:a_1,a_2,\cdots,a_m$线性相关，那么在向量$A$中至少有一个向量能由其余$m-1$个向量线性表示，这是因为有不全为$0$的数$k_1,k_2,\cdots,k_m$，使$k_1a_1+k_2a_2+\cdots+k_ma_m=0$，假设$k_1 \ne 0$，那么有$a_1=\frac {-1}{k_1}(k_2a_2+\cdots+k_ma_m)$，即$a_1$能由$a_2,\cdots,a_m$线性表示&ensp;&ensp;同样，如果向量组$A:a_1,a_2,\cdots,a_m$中某个向量能由其余$m-1$个向量线性表示，即有$\lambda_1,\lambda_2,\cdots,\lambda_{m-1}$，使$a_m=\lambda_1a_1+\lambda_2a_2+\cdots+\lambda_{m-1}a_{m-1}$，于是有$\lambda_1a_1+\lambda_2a_2+\cdots+\lambda_{m-1}a_{m-1}+(-1)a_m=0$，因为$\lambda_1,\lambda_2,\cdots,\lambda_{m-1},-1$这$m$个数不全为$0$，所以向量组$A$线性相关&ensp;&ensp;线性相关的向量组中，至少有一个向量是其余向量的线性组合，并称这个向量是多余的；在线性无关的向量组中，没有任何向量是其余向量的线性组合
+线性相关线性相关性的定义定义4&ensp;&ensp;给定向量组$A:a_1,a_2,\cdots,a_m$，如果存在不全为零的数$k_1,k_2,\cdots,k_m$，使
+
+$ $
+\begin{array} {c}
+k_1a_1+k_2a_2+\cdots+k_ma_m=0
+\end{array}
+$ $
+
+则称向量组$A$是线性相关的，否则称它线性无关
+
+&ensp;&ensp;如果向量组$A:a_1,a_2,\cdots,a_m$线性相关，那么在向量$A$中至少有一个向量能由其余$m-1$个向量线性表示，这是因为有不全为$0$的数$k_1,k_2,\cdots,k_m$，使$k_1a_1+k_2a_2+\cdots+k_ma_m=0$，假设$k_1 \ne 0$，那么有
+
+$ $
+\begin{array} {c}
+a_1=\frac {-1}{k_1}(k_2a_2+\cdots+k_ma_m)
+\end{array}
+$ $
+
+
+即$a_1$能由$a_2,\cdots,a_m$线性表示&ensp;&ensp;同样，如果向量组$A:a_1,\cdots,a_m$中某个向量能由其余$m-1$个向量线性表示，即有$\lambda_1,\cdots,\lambda_{m-1}$，使$a_m=\lambda_1a_1+\cdots+\lambda_{m-1}a_{m-1}$，于是有
+
+$ $
+\begin{array} {c}
+\lambda_1a_1+\lambda_2a_2+\cdots+\lambda_{m-1}a_{m-1}+(-1)a_m=0
+\end{array}
+$ $
+
+
+因为$\lambda_1,\lambda_2,\cdots,\lambda_{m-1},-1$这$m$个数不全为$0$，所以向量组$A$线性相关&ensp;&ensp;线性相关的向量组中，至少有一个向量是其余向量的线性组合，并称这个向量是多余的；在线性无关的向量组中，没有任何向量是其余向量的线性组合
 线性相关性的判别&ensp;&ensp;向量组$A:a_1,a_2,\cdots,a_m$线性相关的充分必要条件是
 &ensp;&ensp;1.向量组$A$中至少有一个向量可由其余向量线性表示
 
@@ -11711,7 +11738,6 @@ $ $
 &ensp;&ensp;注意：最大无关组不一定唯一&ensp;&ensp;例：
 
 $ $
-\begin{align}
 \begin{array}{l}
 向量组A:a_1,a_2,a_3\\
 其中
@@ -11732,7 +11758,6 @@ a_3=\begin{pmatrix}
 \end{pmatrix}\\
 可取最大无关组A_0:a_1,a_2或A_1:a_2,a_3\\
 \end{array}
-\end{align}
 $ $
 
 
@@ -13106,7 +13131,7 @@ static方法不能被重写，所以static方法无需再标记final
 向量的内积、长度及正交性内积定义1&ensp;&ensp;设$n$维向量
 
 $ $
-\begin{align}
+\begin{array} {c}
 \alpha = \begin{pmatrix}
 a_1 \\
 a_2 \\
@@ -13120,16 +13145,16 @@ b_2 \\
 \vdots \\
 b_n
 \end{pmatrix}
-\end{align}
+\end{array}
 $ $
 
 
 令
 
 $ $
-\begin{align}
+\begin{array} {c}
 [\alpha,\beta]=a_1b_1+a_2b_2+\cdots+a_nb_n
-\end{align}
+\end{array}
 $ $
 
 
@@ -13154,7 +13179,7 @@ $[\alpha,\beta+\gamma]=[\alpha,\beta]+[\alpha,\gamma]$
 例：
 
 $ $
-\begin{align}
+\begin{array} {c}
 e_1=\begin{pmatrix}
 \frac{1}{\sqrt[]{2} }  \\
 \frac{1}{\sqrt[]{2} } \\
@@ -13173,7 +13198,7 @@ e_3=\begin{pmatrix}
 \frac{1}{\sqrt[]{2} }  \\
 \frac{1}{\sqrt[]{2} }
 \end{pmatrix}
-\end{align}
+\end{array}
 $ $
 
 
@@ -13195,9 +13220,9 @@ $ $
 单位化&ensp;&ensp;标准正交化第二步，把等价矩阵$b_1,b_2,\cdots,b_r$单位化
 
 $ $
-\begin{align}
+\begin{array} {c}
 e_1=\frac{1}{\parallel b_1 \parallel}b_1,e_2=\frac{1}{\parallel b_2 \parallel}b_2 ,\cdots,e_r=\frac{1}{\parallel b_r \parallel}b_r 
-\end{align}
+\end{array}
 $ $
 
 
@@ -13207,7 +13232,6 @@ $e_1,e_2,\cdots,e_r$就是$V$的一个标准正交基
 &ensp;&ensp;方阵$A$为正交矩阵的充分必要条件是$A$的列向量（或行向量）都是单位向量，且两两相交
 
 $ $
-\begin{align}
 \begin{array}{l}
 对于A^TA=E\Rightarrow \begin{pmatrix}
 a_1^T \\
@@ -13217,16 +13241,15 @@ a_n^T
 \end{pmatrix}
 \begin{pmatrix}
 a_1,a_2,\cdots,a_n
-\end{pmatrix}=E
-\\
+\end{pmatrix}=E \\
 有a_i^Ta_j \left\{ 
-\begin {array} {l}
+\begin {matrix}
 1，当i=j时\\
 0，当i\ne j时
-\end {array} \right.
-（i,j=1,2,\cdots,n）
+\end {matrix} 
+\right. \space
+(i,j=1,2,\cdots,n)
 \end{array}
-\end{align}
 $ $
 
 
@@ -13239,18 +13262,18 @@ $ $
 
 &ensp;&ensp;设$y=Px$为正交变换，则有
 $ $
-\begin{align}
+\begin{array} {c}
 \parallel y\parallel = \sqrt[]{y^Ty}=\sqrt[]{x^TP^TPx} = \sqrt[]{x^Tx}= \parallel x \parallel 
-\end{align}
+\end{array}
 $ $
 
 
 &ensp;&ensp;
 
 $ $
-\begin{align}
+\begin{array} {c}
 
-\end{align}
+\end{array}
 $ $
 
 
