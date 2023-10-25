@@ -12049,6 +12049,75 @@ $\lambda_1\lambda_2\cdots\lambda_n=|A|$
 
 定理2&ensp;&ensp;设$\lambda_1,\lambda_2,\cdots,\lambda_m$是方阵$A$的$m$个特征值，$\xi_1,\xi_2,\cdots,\xi_m$依次是与之对应的特征向量，如果$\lambda_1,\lambda_2,\cdots,\lambda_m$各不相等，则$\xi_1,\xi_2,\cdots,\xi_m$线性无关
 推论&ensp;&ensp;设$\lambda_1$和$\lambda_2$是方阵$A$的两个不同特征值，$\xi_1,\xi_2,\cdots,\xi_s$和$\eta_1,\eta_2,\cdots,\eta_t$分别是对应于$\lambda_1$和$\lambda_2$的线性无关的特征向量，则$\xi_1,\xi_2,\cdots,\xi_s,\eta_1,\eta_2,\cdots,\eta_t$线性无关
+相似矩阵矩阵的相似定义7&ensp;&ensp;设$A$、$B$都是$n$阶矩阵，若有可逆矩阵$P$，使$P^{-1}AP=B$，则称$B$是$A$的相似矩阵，或者说矩阵$A$与$B$相似，对$A$进行运算$P^{-1}AP$称为对$A$进行相似变换，可逆矩阵$P$称为把$A$变成$B$的相似变换矩阵&ensp;&ensp;相似矩阵必等价，等价矩阵不一定相似
+定理3&ensp;&ensp;若$n$阶矩阵$A$与$B$相似，则$A$与$B$的特征多项式相同，从而$A$与$B$的特征值亦相同
+
+$ $
+\begin{array} {c}
+{\color{Red} |B-\lambda E| = |P^{-1}AP-\lambda E| = |P^{-1}AP-\lambda P^{-1}EP|=|P^{-1}||A-\lambda E||P|=|A-\lambda E|} 
+\end{array}
+$ $
+
+
+&ensp;&ensp;根据定理3可知：
+
+  
+  $|A| = |B|$
+  
+  由特征值的性质$\lambda_1\lambda_2\cdots\lambda_n= |A| = |B|$
+  
+
+  
+  $tr(A)=tr(B)$
+  
+  $tr(A)=tr(B)=\lambda_1+\lambda_2+\cdots+\lambda_n$
+  
+
+  
+  $R(A)=R(B)$
+  
+
+
+
+矩阵的相似对角化定理3推论&ensp;&ensp;若$n$阶矩阵$A$与对角矩阵$\Lambda$相似，则$\lambda_1,\lambda_2,\cdots,\lambda_n$是$A$的$n$个特征值
+
+$ $
+\begin{array} {c}
+\Lambda=\begin{pmatrix}
+ \lambda_1 &  &  & \\
+  & \lambda_2 &  & \\
+  &  & \ddots & \\
+  &  &  & \lambda_n
+\end{pmatrix}
+\end{array}
+$ $
+
+
+&ensp;&ensp;对$n$阶矩阵$A$，寻求相似变换矩阵$P$，使$P^{-1}AP=\Lambda$为对角矩阵，称为把矩阵$A$对角化
+
+$ $
+\begin{array}{l}
+假设有可逆矩阵P，使P^{-1}AP=\Lambda为对角矩阵\\
+令P用列向量表示为P=(p_1,p_2,\cdots,p_n)\\ \\
+P^{-1}AP=\Lambda \Longrightarrow AP=P\Lambda \\ \\
+代入P=(p_1,p_2,\cdots,p_n)得:\\
+A(p_1,p_2,\cdots,p_n)=(p_1,p_2,\cdots,p_n)\begin{pmatrix}
+ \lambda_1 &  &  & \\
+  & \lambda_2 &  & \\
+  &  & \ddots & \\
+  &  &  & \lambda_n
+\end{pmatrix}\\ \\
+矩阵对应相乘得:\\
+(Ap_1,Ap_2,\cdots,Ap_n)=(\lambda_1p_1,\lambda_2p_2,\cdots,\lambda_np_n)\\ \\
+于是有:\\
+Ap_i=\lambda_ip_i \space (i=1,2,\cdots,n)
+\end{array}
+$ $
+
+
+$\lambda_i$是$A$的特征值，$P$的列向量$p_i$就是$A$的对应于特征值$\lambda_i$的特征向量，$p_i$构成的矩阵$P$就是把$A$变成$\Lambda$的相似变换矩阵
+定理4&ensp;&ensp;$n$阶矩阵$A$的对角矩阵相似（即$A$能对角化）的充分必要条件是$A$有$n$个线性无关的特征向量&ensp;&ensp;$A$有$n$个不相等的特征值，则必有$n$个线性无关的特征向量
+推论&ensp;&ensp;如果$n$阶矩阵$A$的$n$个特征值互不相等，则$A$与对角矩阵相似&ensp;&ensp;当$A$的特征方程有重根，例如$\lambda_1=\lambda=1$时，就不一定有$n$个线性无关的特征向量，从而不一定能对角化
 
 ]]></content>
       <categories>
