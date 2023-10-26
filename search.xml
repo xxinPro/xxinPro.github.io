@@ -11872,13 +11872,13 @@ $[k\alpha,\beta]=[\alpha,k\beta]=k[\alpha,\beta]$
 $[\alpha,\beta+\gamma]=[\alpha,\beta]+[\alpha,\gamma]$
 当$\alpha=0$时，$[\alpha,\alpha]=0$；当$\alpha \ne 0$时，$[\alpha,\alpha]\gt 0$
 
-长度定义2&ensp;&ensp;设$\alpha=(\alpha_1,\alpha_2,\cdots,\alpha_n)^T$，令$\left | \alpha \right | = \sqrt[]{[\alpha ,\alpha ]} =\sqrt[]{\alpha _1^2+\alpha _2^2+\cdots+\alpha _n^2}$，称$\left | \alpha \right |$为向量$\alpha$的长度或范数
+长度定义2&ensp;&ensp;设$\alpha=(\alpha_1,\alpha_2,\cdots,\alpha_n)^T$，令$\left \| \alpha \right \| = \sqrt[]{[\alpha ,\alpha ]} =\sqrt[]{\alpha _1^2+\alpha _2^2+\cdots+\alpha _n^2}$，称$\left \| \alpha \right \|$为向量$\alpha$的长度或范数
 &ensp;&ensp;向量的长度有下列性质（其中$\alpha$为$n$维向量，$k$为实数）
 
-非负性 当$\alpha \ne 0$时，$\left | \alpha \right | \gt 0$；当$\alpha = 0$时，$\left | \alpha \right | = 0$
-齐次性 $\left | k\alpha \right |=|k|\left | \alpha \right |$
+非负性 当$\alpha \ne 0$时，$\left \| \alpha \right \| \gt 0$；当$\alpha = 0$时，$\left \| \alpha \right \| = 0$
+齐次性 $\left \| k\alpha \right \|=|k|\left \| \alpha \right \|$
 
-&ensp;&ensp;当$\left | e \right |=1$时，称$e$为单位向量。如果$\alpha \ne 0$，取$e=\frac {\alpha}{\left | \alpha \right |}$，则$e$是一个单位向量，由向量$\alpha$得到向量$e$的过程称为把向量$\alpha$单位化
+&ensp;&ensp;当$\left \| e \right \|=1$时，称$e$为单位向量。如果$\alpha \ne 0$，取$e=\frac {\alpha}{\left \| \alpha \right \|}$，则$e$是一个单位向量，由向量$\alpha$得到向量$e$的过程称为把向量$\alpha$单位化
 正交&ensp;&ensp;当$[\alpha,\beta]=0$时，称向量$\alpha$与$\beta$正交；若$\alpha=0$，则$\alpha$与任何向量正交&ensp;&ensp;一组两两正交的非零向量组，称为正交向量组
 定理1&ensp;&ensp;若$n$维向量$a_1,a_2,\cdots,a_r$是一组两两正交的非零向量，则$a_1,a_2,\cdots,a_r$线性无关
 标准正交基定义3&ensp;&ensp;设$n$维向量$e_1,e_2,\cdots,e_r$是向量空间$V$（$V \subseteq R^n$）的一个基，如果$e_1,e_2,\cdots,e_r$两两正交，且都是单位向量，则称$e_1,e_2,\cdots,e_r$是$V$的一个标准正交基
