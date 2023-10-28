@@ -11969,7 +11969,7 @@ $ $
 &ensp;&ensp;设$y=Px$为正交变换，则有
 $ $
 \begin{array} {c}
-\left \| y\right \| = \sqrt[]{y^Ty}=\sqrt[]{x^TP^TPx} = \sqrt[]{x^Tx}= \left \| x \right \| 
+\left \| y \right \| = \sqrt[]{y^Ty}=\sqrt[]{x^TP^TPx} = \sqrt[]{x^Tx}= \left \| x \right \| 
 \end{array}
 $ $
 
@@ -11980,18 +11980,18 @@ $ $
 $ $
 \begin{align} \label {eq1}
 |A-\lambda E|=0 \Longrightarrow 
-\begin{pmatrix}
+\begin{vmatrix}
  a_{11}-\lambda & a_{12} & \cdots & a_{1n}\\
  a_{21} & a_{22}-\lambda & \cdots & a_{2n}\\
  \vdots & \vdots &  & \vdots\\
  a_{n1} & a_{n2} & \cdots & a_{nn}-\lambda
-\end{pmatrix}=0
+\end{vmatrix}=0
 \end{align}
 $ $
 
 
 &ensp;&ensp;$\eqref {eq1}$行列式是以$\lambda$为未知数的一元$n$次方程，称为矩阵$A$的特征方程，左端$|A-\lambda E|$是$\lambda$的$n$次多项式，记作$f(\lambda)$，称为矩阵$A$的特征多项式，$A$的特征值就是方程的解
-特征值的性质&ensp;&ensp;设$n$阶矩阵$A=(a_{ij})$的特征值为$\lambda_1,\lambda_2,\cdots,\lambda_n$，可知
+特征值的性质&ensp;&ensp;设$n$阶矩阵$A=\begin{pmatrix} a_{11} &amp; \cdots &amp; a_{1n} \\ \vdots &amp;        &amp; \vdots \\ a_{n1} &amp; \cdots &amp; a_{nn}\end{pmatrix}$的特征值为$\lambda_1,\lambda_2,\cdots,\lambda_n$，可知
 
 $\lambda_1+\lambda_2+\cdots+\lambda_n=a_{11}+a_{22}+\cdots+a_{nn}$
 $\lambda_1\lambda_2\cdots\lambda_n=|A|$
@@ -12079,7 +12079,7 @@ $ $
 
 
 
-矩阵的相似对角化定理3推论&ensp;&ensp;若$n$阶矩阵$A$与对角矩阵$\Lambda$相似，则$\lambda_1,\lambda_2,\cdots,\lambda_n$是$A$的$n$个特征值
+矩阵的相似对角化定理3推论&ensp;&ensp;若$n$阶矩阵$A$与对角矩阵$\Lambda$相似，则$\lambda_1,\lambda_2,\cdots,\lambda_n$是$A$的$n$个特征值，其中
 
 $ $
 \begin{array} {c}
@@ -12116,7 +12116,7 @@ $ $
 
 
 $\lambda_i$是$A$的特征值，$P$的列向量$p_i$就是$A$的对应于特征值$\lambda_i$的特征向量，$p_i$构成的矩阵$P$就是把$A$变成$\Lambda$的相似变换矩阵
-定理4&ensp;&ensp;$n$阶矩阵$A$的对角矩阵相似（即$A$能对角化）的充分必要条件是$A$有$n$个线性无关的特征向量&ensp;&ensp;$A$有$n$个不相等的特征值，则必有$n$个线性无关的特征向量
+定理4&ensp;&ensp;$n$阶矩阵$A$与对角矩阵相似（即$A$能对角化）的充分必要条件是$A$有$n$个线性无关的特征向量&ensp;&ensp;如果$A$有$n$个不相等的特征值，则必有$n$个线性无关的特征向量
 推论&ensp;&ensp;如果$n$阶矩阵$A$的$n$个特征值互不相等，则$A$与对角矩阵相似&ensp;&ensp;当$A$的特征方程有重根，例如$\lambda_1=\lambda=1$时，就不一定有$n$个线性无关的特征向量，从而不一定能对角化
 实对称矩阵的对角化性质1&ensp;&ensp;对称矩阵的特征值为实数
 性质2&ensp;&ensp;设$\lambda_1$、$\lambda_2$是对称矩阵$A$的两个特征值，$p_1$、$p_2$是对应的特征向量，若$\lambda_1 \ne \lambda_2$，则$p_1$与$p_2$正交
