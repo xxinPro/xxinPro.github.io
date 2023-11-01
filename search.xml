@@ -12013,7 +12013,93 @@ x_3=z_3
 $ $
 
 
-二次型的规范形正定二次型
+二次型的规范形&ensp;&ensp;如果标准形$f=k_1y_1^2+k_2y_2^2+\cdots+k_ny_n^2$的系数$k_1,k_2,\cdots,k_n$只在$1,-1,0$三个数中取值，则成为二次型的规范形
+定理6推论&ensp;&ensp;任给$n$元二次型$f(x)=x^TAx$（A^T=A），总有可逆变换$x=Cz$，使$f(Cz)$为规范形
+
+&ensp;&ensp;例：化二次型的标准形$f(y_1,y_1,y_3)=-2y_1^2+y_2^2+y_3^2$为规范形
+$ $
+\begin{array}{l}
+令\begin{cases}
+ y_1=\frac{1}{\sqrt[]{2}}z_1\\
+ y_2=z_2\\
+ y_3=z_3
+\end{cases}，于是有可逆矩阵C=\begin{pmatrix}
+ \frac{1}{\sqrt[]{2}} &  & \\
+  & 1 & \\
+  &  & 1
+\end{pmatrix}使y=Cz成立\\
+即f(y_1,y_1,y_3)经y=Cz后，f=-z_1+z_2+z_3\\
+{\color{Red} 其实还是可逆的线性变换} 
+\end{array}
+$ $
+
+
+正定二次型定理7（惯性定理）&ensp;&ensp;设二次型$f=x^TAx$的秩为$r$，且有两个可逆变换$x=Cy$及$x=Pz$使
+
+$ $
+\begin{array} {c}
+f=k_1y_1^2+k_2y_2^2+\cdots+k_ry_r^2 （k_i \ne 0）\\
+f=\lambda_1z_1^2+\lambda_2z_2^2+\cdots+\lambda_rz_r^2 （\lambda_i \ne 0）
+\end{array}
+$ $
+
+
+则$k_1,k_2,\cdots,k_r$中正数的个数与$\lambda_1,\lambda_2,\cdots,\lambda_r$中正数的个数相等
+&ensp;&ensp;二次型的标准形中正系数的个数称为二次型的正惯性指数，负系数的个数称为负惯性指数
+&ensp;&ensp;若二次型$f$的正惯性指数为$p$，秩为$r$，则$f$的规范形便可确定为
+
+$ $
+\begin{array} {c}
+f=y_1^2+\cdots+y_p^2-y_{p+1}^2-\cdots-y_r^2\\
+{\color{Red} p个正系数，r-p个负系数} 
+\end{array}
+$ $
+
+
+定义10&ensp;&ensp;设二次型$f(x)=x^TAx$，如果对任何$x \ne 0$，都有$f(x) \gt 0$，则称$f$为正定二次型，并称对称矩阵$A$是正定的；如果对任何$x\ne 0$都有$f(x) \lt 0$，则称$f$为负定二次型，并称矩阵$A$是负定的
+定理8&ensp;&ensp;$n$元二次型$f(x)=x^TAx$为正定的充分必要条件是：它的标准形的$n$个系数全为正，即它的规范形的$n$个系数全为1，亦即它的正惯性指数等于$n$
+推论&ensp;&ensp;对称矩阵$A$为正定矩阵的充分必要条件是：$A$的特征值全为正
+定理9&ensp;&ensp;对称矩阵$A$为正定的充分必要条件是：$A$的各阶主子式都为正，即
+
+$ $
+\begin{array} {c}
+a_{11} \gt 0,\begin{vmatrix}
+ a_{11} & a_{12}\\
+ a_{21} & a_{22}
+\end{vmatrix} \gt 0,\cdots,\begin{vmatrix}
+ a_{11} & \cdots & a_{1n} \\
+ \vdots &  & \vdots \\
+ a_{n1} & \cdots & a_{nn}
+\end{vmatrix} \gt 0
+\end{array}
+$ $
+
+
+对称矩阵$A$为负定的充分必要条件是：奇数阶主子式为负，偶数阶主子式为正，即
+
+$ $
+\begin{array} {c}
+(-1)^r\begin{vmatrix}
+ a_{11} & \cdots & a_{1r} \\
+ \vdots &  & \vdots \\
+ a_{r1} & \cdots & a_{rr}
+\end{vmatrix} \gt 0（r=1,2,\cdots,n）
+\end{array}
+$ $
+
+
+
+数学常用公式定理1
+数学常用公式定理2
+数学常用公式定理3
+数学常用公式定理4
+数学常用公式定理5
+
+
+
+
+
+
 ]]></content>
       <categories>
         <category>学习笔记</category>
