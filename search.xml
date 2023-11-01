@@ -11696,7 +11696,7 @@ $ $
 
 
 
-&ensp;&ensp;例：二次型$f$
+&ensp;&ensp;例：二次型$f(x_1,x_2,x_3)$
 $ $
 \begin{align*}
   f(x_1,x_2,x_3)=&a_{11}x_1^2+a_{12}x_1x_2+a_{13}x_1x_3+\\
@@ -11740,6 +11740,49 @@ $ $
 
 其中，$A=\begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\ \vdots &amp; \vdots &amp;  &amp; \vdots\\ a_{n1} &amp; a_{nn2} &amp; \cdots &amp; a_{nn}\end{pmatrix}$，$x=\begin{pmatrix}x_1 \\x_2 \\\vdots \\x_n\end{pmatrix}$，则$f$可记作$f=x^TAx$，对称矩阵$A$（因为$a_{ij}=a_{ji}$）叫做二次型$f$的矩阵，$f$叫做对称矩阵$A$的二次型，对称矩阵$A$的秩叫做二次型$f$的秩
 &ensp;&ensp;任给一个二次型，可惟一确定一个对称矩阵$A$，任给一个对称矩阵，也可惟一确定一个二次型
+合同对角化定义9&ensp;&ensp;设$A$和$B$是$n$阶矩阵，若有可逆矩阵$C$，使$B=C^TAC$，则称矩阵$A$与$B$合同，记作$A\simeq B$。对于对称矩阵$A$，寻求可逆矩阵$C$，使$C^TAC=B$为对角矩阵，称为把矩阵$A$合同对角化
+
+&ensp;&ensp;例：
+$ $
+\begin{array}{l}
+对于矩阵A=
+\begin{pmatrix}
+ 4 & 1\\
+ 1 & 4
+\end{pmatrix}，\\
+存在可逆矩阵C=
+\begin{pmatrix}
+ 1 & -\frac{1}{4} \\
+ 0 & 1
+\end{pmatrix}，\\
+使C^TAC成为对角矩阵\\
+C^TAC=\begin{pmatrix}
+ 4 & 0\\
+ 0 & \frac{15}{4} 
+\end{pmatrix}\\
+若令B=C^TAC，则A与B合同
+\end{array}
+$ $
+ 
+
+&ensp;&ensp;合同矩阵符合如下性质
+
+如果$A$与$B$合同，则$A\sim B$，$R(A)=R(B)$
+如果$A$与$B$合同，$A$为对称矩阵，则$B$也为对称矩阵
+任一实对称矩阵必合同于一对角矩阵
+
+
+&ensp;&ensp;实对称矩阵必可相似对角化与合同对角化
+$ $
+\begin{array} {l}
+设A为n阶对称矩阵\\
+根据定理5，必有正交矩阵P，\\
+使:P^{-1}AP=P^TAP=\Lambda\\
+其中\Lambda 是以A的n个特征值为对角元的对角矩阵
+\end{array}
+$ $
+
+
 二次型的标准形&ensp;&ensp;有可逆的线性变换
 
 $ $
@@ -11770,7 +11813,8 @@ x_n
  c_{21} & c_{22} & \cdots & c_{2n}\\
  \vdots & \vdots &  & \vdots\\
  c_{n1} & c_{nn2} & \cdots & c_{nn}
-\end{pmatrix}\begin{pmatrix}
+\end{pmatrix}
+\begin{pmatrix}
 y_1 \\
 y_2 \\
 \vdots \\
@@ -11788,8 +11832,188 @@ $ $
  
 
 
-正交变换化二次型成标准形&ensp;&ensp;将线性变换$x=Cy$代入二次型矩阵$f=x^TAx$中，有$f=x^TAx=(Cy)^TA(Cy)=y^T(C^TAC)y$
-配方法化二次型为成标准形二次型的规范形正定二次型
+正交变换化二次型成标准形&ensp;&ensp;将可逆的线性变换$x=Cy$代入二次型矩阵$f=x^TAx$中，有$f=x^TAx=(Cy)^TA(Cy)=y^T(C^TAC)y$，使$C^TAC$成为对角矩阵
+
+$ $
+\begin{array} {c}
+y^TC^TACy=k_1y_1^2+k_2y_2^2+\cdots+k_ny_n^2=
+(y_1,y_2,\cdots,y_n)
+\begin{pmatrix}
+ k_{1} &  &  & \\
+  & k_{2} &  & \\
+  &  & \ddots & \\
+  &  &  & k_{n}
+\end{pmatrix}
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{pmatrix}
+\end{array}
+$ $
+
+
+对于对称矩阵$A$，寻求可逆矩阵$C$，使$C^TAC$成为对角矩阵的过程，称为把对称矩阵$A$合同对角化
+定理6&ensp;&ensp;任给二次型$f=\sum_{i,j=1}^{n} a_{ij}x_ix_j$（$a_{ij}=a_{ji}$），总有正交变换$x=Py$，使$f$化为标准形$f=\lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2$，其中$\lambda_1,\lambda_2,\cdots,\lambda_n$是$f$的矩阵$A=(a_{ij})$的特征值
+
+$ $
+\begin{array}{l}
+由题意，二次型f的矩阵为A=
+\begin{pmatrix}
+ 4 & 1\\
+ 1 & 4
+\end{pmatrix}\\
+\therefore |A - \lambda E|=
+\begin{vmatrix}
+ 4-\lambda & 1\\
+ 1 & 4-\lambda
+\end{vmatrix}=0\\
+于是有(4-\lambda)^2-1=0\\
+\therefore A的特征值为\lambda _1=5,\lambda _2=3\\
+当\lambda _1=5时，A-5E=
+\begin{pmatrix}
+ -1 & 1\\
+ 1 & -1
+\end{pmatrix}\sim 
+\begin{pmatrix}
+ 1 & -1\\
+ 0 & 0
+\end{pmatrix}\\
+有特征向量\xi_1=\begin{pmatrix}
+1 \\
+1
+\end{pmatrix}\\
+当\lambda _2=3时，A-3E=
+\begin{pmatrix}
+ 1 & 1\\
+ 1 & 1
+\end{pmatrix}\sim 
+\begin{pmatrix}
+ 1 & 1\\
+ 0 & 0
+\end{pmatrix}\\
+有特征向量\xi_2=\begin{pmatrix}
+1 \\
+-1
+\end{pmatrix}\\
+\because \lambda_1 \ne \lambda_2\\
+\therefore \xi_1与\xi_2正交\\
+将\xi_1,\xi_2单位化，e_1=\frac{1}{\sqrt[]{2} }\begin{pmatrix}
+1 \\
+1
+\end{pmatrix} ,e_2=\frac{1}{\sqrt[]{2} }\begin{pmatrix}
+1 \\
+-1
+\end{pmatrix} \\
+令P=(e_1,e_2)=\begin{pmatrix}
+ \frac{1}{\sqrt[]{2}} & \frac{1}{\sqrt[]{2}}\\
+ \frac{1}{\sqrt[]{2}} & -\frac{1}{\sqrt[]{2}}
+\end{pmatrix}\\
+则P为正交矩阵，且P^TAP=\Lambda=\begin{pmatrix}
+ 5 & 0\\
+ 0 & 3
+\end{pmatrix}\\
+于是有正交变换\begin{pmatrix}
+ x_1\\
+ x_2
+\end{pmatrix}=
+\begin{pmatrix}
+ \frac{1}{\sqrt[]{2}} & \frac{1}{\sqrt[]{2}}\\
+ \frac{1}{\sqrt[]{2}} & -\frac{1}{\sqrt[]{2}}
+\end{pmatrix}
+\begin{pmatrix}
+ y_1\\
+ y_2
+\end{pmatrix}\\
+把二次型转换成标准形f=5y_1^2+3y_2^2
+\end{array}
+$ $
+ 
+
+配方法化二次型为成标准形
+&ensp;&ensp;例1：化二次型$f(x_1,x_2,x_3)=2x_1^2+5x_2^2+5x_3^2+4x_1x_2-4x_1x_3-8x_2x_3$为标准形
+$ $
+\begin{array}{l}
+\begin{align*}
+ 原式= & \underline{2(x_1^2+2x_1x_2-2x_1x_3)} +5x_2^2+5x_3^2-8x_2x_3\\
+  & {\color{Red} 把所有含x_1的项合并、配方} \\
+  =& 2(x_1+x_2-x_3)^2+3x_2^2+3x_3^2-4x_2x_3\\
+  =& 2(x_1+x_2-x_3)^2+\underline{3(x_2^2-\frac{4}{3}x_2x_3)} +3x_3^2\\
+  & {\color{Red} 把所有含x_2的项合并、配方}\\
+  =& 2(x_1+x_2-x_3)^2+3(x_2-\frac{2}{3}x_3)^2+\frac{5}{3}x_3^2
+\end{align*}\\
+令\begin{cases}
+ y_1= x_1+x_2-x_3\\
+ y_2= x_2-\frac{2}{3}x_3\\
+ y_3= x_3
+\end{cases}，即
+\begin{cases}
+ x_1= y_1-y_2+\frac{1}{3}y_3\\
+ x_2= y_2+\frac{2}{3}y_3\\
+ x_3= y_3
+\end{cases}\\
+于是有可逆矩阵C=\begin{pmatrix}
+ 1 & -1 & \frac{1}{3} \\
+ 0 & 1 & \frac{2}{3} \\
+ 0 & 0 & 1
+\end{pmatrix}，使x=Cy成立\\
+即，f(x_1,x_2,x_3)经x=Cy后，f=2y_1^2+3y_2^2+\frac{5}{3}y_3^2
+\end{array}
+$ $
+ 
+
+
+
+&ensp;&ensp;例2：$f(x_1,x_2,x_3)=x_1x_2+x_1x_3+x_2x_3$
+$ $
+\begin{array}{l}
+令\begin{cases}
+x_1= y_1+y_2\\
+x_2= y_1-y_2\\
+x_3= y_3
+\end{cases}，代入可得\underline{f=y_1^2-y_2^2+2y_1y_3} \\
+{\color{Red} f中不含平方项，先构造平方项} \\
+原式=(y_1+y_3)^2-y_2^2-y_3^2\\
+令\begin{cases}
+z_1=y_1+y_3 \\
+z_2=y_2 \\
+z_3=y_3
+\end{cases}，即\begin{cases}
+y_1=z_1-z_3 \\
+y_2=z_2 \\
+y_3=z_3
+\end{cases}，
+代入得\begin{cases}
+x_1=z_1+z_2-z_3 \\
+x_2=z_1-z_2-z_3 \\
+x_3=z_3
+\end{cases}\\
+于是有可逆矩阵\underline{C=C_1C_2}=\begin{pmatrix}
+ 1 & 1 & -1\\
+ 1 & -1 & -1\\
+ 0 & 0 & 1
+\end{pmatrix} ，使\underline{x=Cz} 成立\\
+{\color{Red} x=C_1y，y=C_2z，\therefore x=C_1C_2z=Cz} \\
+{\color{Red} C=C_1C_2=\begin{pmatrix}
+ 1 & 1 & 0\\
+ 1 & -1 & 0\\
+ 0 & 0 & 1
+\end{pmatrix}\begin{pmatrix}
+ 1 & 0 & -1\\
+ 0 & 1 & 0\\
+ 0 & 0 & 1
+\end{pmatrix}=\begin{pmatrix}
+ 1 & 1 & -1\\
+ 1 & -1 & -1\\
+ 0 & 0 & 1
+\end{pmatrix}} \\
+即，f(x_1,x_2,x_3)经x=Cz后，f=z_1^2-z_2^2-z_3^2
+\end{array}
+$ $
+
+
+二次型的规范形正定二次型
 ]]></content>
       <categories>
         <category>学习笔记</category>
