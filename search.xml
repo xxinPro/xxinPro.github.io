@@ -9205,8 +9205,8 @@ $[0,\pi]$
 
 
 对数公式$ $\begin{matrix}a^x=N (a&gt;0,且a≠1) \\\Downarrow \\x=log_{(a)}(N)\end{matrix}$ $
-对数恒等式对数第一恒等式$ \eqref {eq1} $$ $\begin{align} \label {eq1}a^{\log_{a}{N} } &amp; = N\end{align}$ $
-对数第二恒等式$ \eqref {eq2} $$ $\begin{align} \label {eq2}\log_{a}{a^{b} } &amp; = b\end{align}
+对数恒等式对数第一恒等式$ $\begin{array} {c}a^{\log_{a}{N} } &amp; = N\end{array}$ $
+对数第二恒等式$ $\begin{array} {c}\log_{a}{a^{b} } &amp; = b\end{array}$ $
 对数推导公式
 $ \log_{a}{(MN)} = \log_{a}{M} + \log_{a}{N} $
 $ \log_{a}{\frac{M}{N} } = \log_{a}{M} - \log_{a}{N} $
@@ -9216,10 +9216,11 @@ $ \frac{\log_{c}{b} }{\log_{c}{a} } = \log_{a}{b} $
 $ \log_{a}{b} = \frac{1}{\log_{b}{a}}  $
 $ a^{x} = e^{x\ln_{}{a} }  $
 
-极限公式定理与性质极限存在定理&ensp;&ensp;函数$f(x)$当$x \to x_0$时极限存在的充分必要条件是左极限和右极限各自存在且相等，即$ $\begin{align}\lim_{x \to x_0^+}f(x)=\lim_{x \to x_0^-}f(x)\end{align}$ $因此，即使左右极限都存在，但若不相等，则$\lim_{x \to x_0}f(x)$也不存在
+极限公式定理与性质极限存在定理&ensp;&ensp;函数$f(x)$当$x \to x_0$时极限存在的充分必要条件是左极限和右极限各自存在且相等，即$ $\begin{array} {c}\lim_{x \to x_0^+}f(x)=\lim_{x \to x_0^-}f(x)\end{array}$ $
+因此，即使左右极限都存在，但若不相等，则$\lim_{x \to x_0}f(x)$也不存在
 单调有界定理&ensp;&ensp;单调有界数列必有极限，如果一个数列单调递增且有上界，或单调递减且有下界，则该数列收敛
 零点定理&ensp;&ensp;设函数$f(x)$在闭区间$[a,b]$上连续，且$f(a)$与$f(b)$异号，则在开区间$(a,b)$内至少有一点$\xi$，使$f(\xi)=0$
-介质定理&ensp;&ensp;函数$f(x)$在闭区间$[a,b]$上连续，且在区间的端点处取不同的函数值，$f(a)=A$及$f(b)=B$，则对于$A$与$B$之间的任意一个数$C$，在开区间$(a,b)$内至少有一点$\xi$，使得$f(\xi)=C \space (a \lt \xi \lt b)$
+介值定理&ensp;&ensp;函数$f(x)$在闭区间$[a,b]$上连续，且在区间的端点处取不同的函数值，$f(a)=A$及$f(b)=B$，则对于$A$与$B$之间的任意一个数$C$，在开区间$(a,b)$内至少有一点$\xi$，使得$f(\xi)=C \space (a \lt \xi \lt b)$
 极限唯一性&ensp;&ensp;如果$\lim_{x \to x_0}f(x)$存在，那么这极限唯一
 局部有界性&ensp;&ensp;如果$\lim_{x \to x_0}f(x)=A$，那么存在常数$M \gt 0$和$\delta \gt 0$，使得当$0 \lt |x-x_0| \lt \delta$时，有$|f(x)| \le M$
 局部保号性&ensp;&ensp;如果$\lim_{x \to x_0}f(x)=A$，且$A \gt 0$（或$A \lt 0$），那么存在常数$\delta \gt 0$，使得当$0 \lt |x-x_0| \lt \delta$时，有$f(x) \gt 0$（或$f(x) \lt 0$）
@@ -9233,8 +9234,12 @@ $\lim[f(x) \times  g(x)] = \lim f(x) \times \lim g(x) = A\times B$
 
 
 如果$\varphi (x) \ge \psi (x)$，$\lim \varphi (x)=A$，$\lim \psi (x)=B$，那么$A \ge B$
+设函数$y=f[g(x)]$是由函数$u=g(x)$与$y=f(u)$复合而成，$f[g(x)]$在点$x_0$某去心邻域内有定义，若$\lim_{x \to x_0}g(x)=u_0$，$\lim_{u \to u_0}f(u)=A$，且存在$\delta_0 \gt 0$，当$x \in \stackrel {\circ}{U} (x_0, \delta_0 )$时，有$g(x) \ne u_0$，则
+$\lim_{x \to x_0} f[g(x)] = \lim_{x \to u_0} f(u) = A$
 
-极限存在准则准则一
+
+
+极限存在准则准则一（夹逼准则）
 &ensp;&ensp;如果函数$g(x)$、$f(x)$、$h(x)$满足以下条件：
 
 当$x \in \stackrel {\circ}{U}(x_0,r)$（或$|x|\gt M$）时，$g(x)\le f(x) \le h(x)$
@@ -9243,31 +9248,33 @@ $\lim _{x \to x_0} g(x) = A$，$\lim _{x \to x_0} h(x) = A$，
 那么$\lim _{x \to x_0} f(x)$的极限存在，且等于$A$
 准则二
 &ensp;&ensp;单调有界数列必有极限
+无穷小比较&ensp;&ensp;如果$\lim \frac{\beta}{\alpha} = 0$，那么就说$\beta$是比$\alpha$高阶的无穷小，记作$\beta = o(\alpha)$&ensp;&ensp;如果$\lim \frac{\beta}{\alpha} = \infty$，那么就说$\beta$是比$\alpha$低阶的无穷小&ensp;&ensp;如果$\lim \frac{\beta}{\alpha} = c \ne 0$，那么就说$\beta$与$\alpha$是同阶无穷小&ensp;&ensp;如果$\lim \frac{\beta}{\alpha^k} = c \ne 0,k \gt 0$，那么就说$\beta$是关于$\alpha$的$k$阶无穷小&ensp;&ensp;如果$\lim \frac{\beta}{\alpha} = 1$，那么就说$\beta$与$\alpha$是等阶无穷小，记作$\beta \sim \alpha$
 函数连续性&ensp;&ensp;设函数$y=f(x)$在点$x_0$的某一邻域内有定义，如果
-$ $\begin{align}\lim _{x \to x_0}f(x)=f(x_0)\end{align}$ $那么就称函数$f(x)$在点$x_0$连续
+$ $\begin{array} {c}\lim _{x \to x_0}f(x)=f(x_0)\end{array}$ $
+那么就称函数$f(x)$在点$x_0$连续
 两个重要极限第一类重要极限$ \eqref {eq3} $$ $\begin{align} \label {eq3}\lim_{x \to 0} \frac{\sin x}{x} &amp; = 1\end{align}$ $
 第二类重要极限$ \eqref {eq4} $$ $\begin{align} \label {eq4}\lim_{x \to \infty} (1+\frac{1}{x} )^{x} &amp; = e\end{align}$ $
 由$ \eqref {eq4} $推导$ \eqref {eq5} $$ $\begin{align} \label {eq5}\lim_{x \to 0} (1+x )^{\frac{1}{x}} &amp; = e\end{align}$ $
 常见等价无穷小(当$ x\longrightarrow 0 $时)
 
-$ \sin x ∽ x $
-$ \tan x ∽ x $
-$ \arcsin x ∽ x $
-$ \arctan x ∽ x $
-$ e^{x} - 1 ∽ x $
-$ a^{x} - 1 ∽ x\ln_{}{a}  (a&gt;0,a≠1) $
-$ \ln_{}{(1+x)} ∽ x $
-$ \log_{}{(1+x)} ∽ \frac{1}{\ln_{}{a}} x (a&gt;0,a≠1) $
-$ \ln_{}{(x+\sqrt[]{1+x^2} )}∽x $
-$ (1+x)^{a} -1 ∽ ax $
-$ \sqrt[n]{1+x} -1 ∽ \frac{1}{n} x $
-$ x-\sin x∽\frac{1}{6} x^3 $
-$ \tan x-x∽\frac{1}{3} x^3 $
-$ \tan x-\sin x∽\frac{1}{2} x^3 $
-$ 1 - \cos x ∽ \frac{1}{2} x^{2}  $
-$ x-\arctan x ∽ \frac{1}{3} x^3 $
-$ x-\arcsin x ∽ -\frac{1}{6} x^3 $
-$ x-\sin x ∽ \frac{1}{6} x^3 $
+$ \sin x \sim x $
+$ \tan x \sim x $
+$ \arcsin x \sim x $
+$ \arctan x \sim x $
+$ e^{x} - 1 \sim x $
+$ a^{x} - 1 \sim x\ln_{}{a}  (a&gt;0,a≠1) $
+$ \ln_{}{(1+x)} \sim x $
+$ \log_{}{(1+x)} \sim \frac{1}{\ln_{}{a}} x (a&gt;0,a≠1) $
+$ \ln_{}{(x+\sqrt[]{1+x^2} )}\sim x $
+$ (1+x)^{a} -1 \sim ax $
+$ \sqrt[n]{1+x} -1 \sim \frac{1}{n} x $
+$ x-\sin x\sim \frac{1}{6} x^3 $
+$ \tan x-x\sim \frac{1}{3} x^3 $
+$ \tan x-\sin x\sim \frac{1}{2} x^3 $
+$ 1 - \cos x \sim \frac{1}{2} x^{2}  $
+$ x-\arctan x \sim \frac{1}{3} x^3 $
+$ x-\arcsin x \sim -\frac{1}{6} x^3 $
+$ x-\sin x \sim \frac{1}{6} x^3 $
 
 渐近线垂直渐近线
 &ensp;&ensp;若$\lim_{x \to a^+} f(x)=\infty$或$\lim_{x \to a^-} f(x)=\infty$，&ensp;&ensp;则称$x=a$为曲线$y=f(x)$的垂直渐近线
@@ -9275,6 +9282,40 @@ $ x-\sin x ∽ \frac{1}{6} x^3 $
 &ensp;&ensp;若$\lim_{x \to +\infty} f(x)=b$或$\lim_{x \to -\infty} f(x)=b$，&ensp;&ensp;则称$y=b$为曲线$y=f(x)$的水平渐近线
 斜渐近线
 &ensp;&ensp;若$\lim_{x \to +\infty} \frac{f(x)}{x}=a \space (a\ne 0)$，$\lim_{x \to +\infty} \left[f(x)-ax\right]=b$，&ensp;&ensp;或$\lim_{x \to -\infty} \frac{f(x)}{x}=a \space (a\ne 0)$，$\lim_{x \to -\infty} \left[f(x)-ax\right]=b$，&ensp;&ensp;则称$y=ax+b$为曲线$y=f(x)$的斜渐近线
+
+&ensp;&ensp;例：求曲线$f(x)=\frac {2x^3}{x^2-3x+2}$的斜渐近线
+$ $
+\begin{array}{l}
+a=\lim_{x \to \infty} \frac{f(x)}{x}=\lim_{x \to \infty} \frac {2x^2}{x^2-3x+2}=2\\
+b=\lim_{x \to \infty} [f(x) - ax]=\lim_{x \to \infty} [\frac {2x^3}{x^2-3x+2} - 2x]=6\\
+曲线f(x)的斜渐近线为y=2x+6
+\end{array}
+$ $
+
+
+
+极值与最值函数单调性判定定理1&ensp;&ensp;设函数$y=f(x)$在$[a,b]$上连续，在$(a,b)$内可导
+
+如果在$(a,b)$内$f’(x) \ge 0$，那么函数$y=f(x)$在$[a,b]$上单调增加
+如果在$(a,b)$内$f’(x) \le 0$，那么函数$y=f(x)$在$[a,b]$上单调减少
+
+定理2&ensp;&ensp;设函数$y=f(x)$在$[a,b]$上连续，在$(a,b)$内具有一阶和二阶导数，那么
+
+若在$(a,b)$内$f’’(x) \gt 0$，则$f(x)$在$[a,b]$上的图形是凹的
+若在$(a,b)$内$f’’(x) \lt 0$，则$f(x)$在$[a,b]$上的图形是凸的
+
+极值与最值定理1&ensp;&ensp;设函数$f(x)$在$x_0$处可导，且在$x_0$处取得极值，则$f’(x_0)=0$
+定理2&ensp;&ensp;设函数$f(x)$在$x_0$处连续，且在$x_0$的某去心邻域$\stackrel {\circ}{U} (x_0, \delta )$内可导
+
+若$x \in (x_0-\delta ,x_0)$时，$f’(x) \gt 0$，$x \in (x_0 ,x_0+\delta)$时，$f’(x) \lt 0$，则$f(x)$在$x_0$处取得极大值
+若$x \in (x_0-\delta ,x_0)$时，$f’(x) \lt 0$，$x \in (x_0 ,x_0+\delta)$时，$f’(x) \gt 0$，则$f(x)$在$x_0$处取得极小值
+若$x \in \stackrel {\circ}{U} (x_0, \delta )$时，$f’(x)$的符号保持不变，则$f(x)$在$x_0$处没有极值
+
+定理3&ensp;&ensp;设函数$f(x)$在$x_0$处具有二阶导数，且$f’(x_0) = 0$，$f’’(x_0) \ne 0$，则
+
+当$f’’(x_0) \lt 0$时，函数$f(x)$在$x_0$处取得极大值
+当$f’’(x_0) \gt 0$时，函数$f(x)$在$x_0$处取得极小值
+
 导数公式导数表达式结构
 $f’(x_{0} ) = \lim_{\Delta x \to 0} \frac{f(x_{0} + \Delta x) - f(x_{0} )}{\Delta x} $
 $f’(x_{0} ) = \lim_{h \to 0} \frac{f(x_{0} + h) - f(x_{0} )}{h} (h = \Delta x)$
@@ -9298,11 +9339,33 @@ $ (\arccos {x})’ = -\frac {1}{\sqrt{1- x^2}} $
 $ (\arctan {x})’ = \frac {1}{1+x^2} $
 $ (\operatorname{arccot} x)’ = -\frac {1}{1+x^2} $
 
-导数四则运算法则$[u(x) \pm v(x)]’ = u’(x) \pm v’(x)$
-$[u(x)v(x)]’ = u’(x)v(x) + u(x)v’(x)$
-$[Cu(x)]’ = Cu’(x)(C为常数)$
-$[\frac {u(x)}{v(x)}]’ = \frac {u’(x)v(x) - u(x)v’(x)}{v^2(x)}(v(x)≠0)$
-$[\frac {C}{v(x)}]’ = -\frac {Cv’(x)}{v^2(x)}(v(x)≠0,C为常数)$
+导数四则运算法则&ensp;&ensp;设$u=u(x)$，$v=v(x)$都可导
+
+$ [u(x) \pm v(x)]’ = u’(x) \pm v’(x) $
+$ [u(x)v(x)]’ = u’(x)v(x) + u(x)v’(x) $
+$ [Cu(x)]’ = Cu’(x)(C为常数) $
+$ [\frac {u(x)}{v(x)}]’ = \frac {u’(x)v(x) - u(x)v’(x)}{v^2(x)}(v(x)≠0) $
+$ [\frac {C}{v(x)}]’ = -\frac {Cv’(x)}{v^2(x)}(v(x)≠0,C为常数) $
+
+反函数求导法则&ensp;&ensp;设$x=f(y)$在区间$I_y$内单调、可导且$f’(y) \ne 0$，则它的反函数$y=f^{-1}(x)$在$I_x=f(I_y)$内也可导，且
+
+$ $
+\begin{array} {c}
+[f^{-1}(x)]'=\frac{1}{f'(y)} 或\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{1}{\frac{\mathrm{d}x}{\mathrm{d}y} } 
+\end{array}
+$ $
+
+
+复合函数的求导法则&ensp;&ensp;设$y=f(u),u=g(x)$，且$f(u),g(x)$都可导，则复合函数$y=f[g(x)]$的导数为
+
+$ $
+\begin{array} {c}
+\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{\mathrm{d}y}{\mathrm{d}u} \cdot \frac{\mathrm{d}u}{\mathrm{d}x} 或y'(x)=f'(u)\cdot g'(x)
+\end{array}
+$ $
+
+
+
 常用n阶导数公式
 $ (e^x)^{(n)} = e^x $
 $ (a^x)^{(n)} = a^x · \ln^n_{\,}{b}  $
@@ -9320,29 +9383,60 @@ $ \left[(\ln_{}{(x+a)}\right]^{(n)} = (-1)^{n-1}\frac {(n-1)!}{(x+a)^n} $
 若$f’(x_{0})=0$，切线方程为：$y=f(x_0)$，法线方程为：$x=x_0$；
 若$f’(x_{0})=\infty$，切线方程为：$x=x_0$，法线方程为：$y=f(x_0)$
 
+隐函数的导数&ensp;&ensp;对隐函数两边求导，不赘述
+
+&ensp;&ensp;例：求由方程$e^y+xy-e=0$所确定的隐函数的导数
+$ $
+\begin{align*}
+ e^yy'+y+xy' & =0\\
+ \frac{y}{y'}& = -(e^y+ x ) \\
+ y' & = -\frac{y}{e^y+ x } 
+\end{align*}
+$ $
+
+
+
+参数方程的导数&ensp;&ensp;若参数方程$\begin{cases} x=\varphi (t)\\ y=\psi (t)\end{cases}$确定$y$与$x$间的函数关系，假设$\varphi (t)$、$\psi (t)$都可导，且$\varphi’(t) \ne 0$，于是有
+
+$ $
+\begin{array} {c}
+\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{\mathrm{d}y}{\mathrm{d}t}/\frac{\mathrm{d}x}{\mathrm{d}t} = \frac{\varphi'(t)}{\psi'(t)} 
+\end{array}
+$ $
+
+
+二阶导
+
+$ $
+\begin{array} {c}
+\frac{\mathrm{d}^2y}{\mathrm{d}x^2} =\frac{\mathrm{d}}{\mathrm{d}x}(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mathrm{d}}{\mathrm{d}t}(\frac{\mathrm{d}y}{\mathrm{d}x})/\frac{\mathrm{d}x}{\mathrm{d}t}=\frac{\psi''(t)\varphi'(t)-\psi'(t)\varphi''(t)}{\varphi'^3(t)}
+\end{array}
+$ $
+
+
 微分公式微分基本公式
-$ dC = 0(C为常数) $
-$ d(x ^{n}) = nx^{n-1}dx(n为实数) $
-$ d(\log_{a}{x}) = \frac{1}{x\ln_{}{a}}dx (a&gt;0,a≠1) $
-$ d(\ln_{}{x}) = \frac{1}{x}dx $
-$ d(a ^{x}) = a^{x}\ln_{}{a}dx(a&gt;0,a≠1) $
-$ d(e^{x}) = e^{x}dx $
-$ d(\sin {x}) = \cos {x}dx $
-$ d(\cos {x}) = \sin {x}dx $
-$ d(\tan {x}) = \frac {1}{\cos ^2 {x}}dx = \sec ^2 {x}dx $
-$ d(\cot {x}) = -\frac{1}{\sin ^2 {x}}dx = -\csc ^2 {x}dx $
-$ d(\sec {x}) = \sec {x} \tan {x}dx $
-$ d(\csc {x}) = -\csc {x} \cot {x}dx $
-$ d(\arcsin {x}) = \frac {1}{\sqrt{1- x^2}}dx $
-$ d(\arccos {x}) = -\frac {1}{\sqrt{1- x^2}}dx $
-$ d(\arctan {x}) = \frac {1}{1+x^2}dx $
-$ d(\operatorname{arccot} x) = -\frac {1}{1+x^2}dx $
+$ \mathrm{d}C = 0(C为常数) $
+$ \mathrm{d}(x ^{n}) = nx^{n-1}\mathrm{d}x(n为实数) $
+$ \mathrm{d}(\log_{a}{x}) = \frac{1}{x\ln_{}{a}}\mathrm{d}x (a&gt;0,a≠1) $
+$ \mathrm{d}(\ln_{}{x}) = \frac{1}{x}\mathrm{d}x $
+$ \mathrm{d}(a ^{x}) = a^{x}\ln_{}{a}\mathrm{d}x(a&gt;0,a≠1) $
+$ \mathrm{d}(e^{x}) = e^{x}\mathrm{d}x $
+$ \mathrm{d}(\sin {x}) = \cos {x}\mathrm{d}x $
+$ \mathrm{d}(\cos {x}) = \sin {x}\mathrm{d}x $
+$ \mathrm{d}(\tan {x}) = \frac {1}{\cos ^2 {x}}\mathrm{d}x = \sec ^2 {x}\mathrm{d}x $
+$ \mathrm{d}(\cot {x}) = -\frac{1}{\sin ^2 {x}}\mathrm{d}x = -\csc ^2 {x}\mathrm{d}x $
+$ \mathrm{d}(\sec {x}) = \sec {x} \tan {x}\mathrm{d}x $
+$ \mathrm{d}(\csc {x}) = -\csc {x} \cot {x}\mathrm{d}x $
+$ \mathrm{d}(\arcsin {x}) = \frac {1}{\sqrt{1- x^2}}\mathrm{d}x $
+$ \mathrm{d}(\arccos {x}) = -\frac {1}{\sqrt{1- x^2}}\mathrm{d}x $
+$ \mathrm{d}(\arctan {x}) = \frac {1}{1+x^2}\mathrm{d}x $
+$ \mathrm{d}(\operatorname{arccot} x) = -\frac {1}{1+x^2}\mathrm{d}x $
 
 微分四则运算法则设$u = u(v)$、$v = v(x)$可微，则
-$ $\begin{align}d(u \pm v) = du \pm dv\end{align}$ $
-$ $\begin{align}d(Cu) = Cdu(C为常数)\end{align}$ $
-$ $\begin{align}d(uv) = vdu + udv\end{align}$ $
-$ $\begin{align}d(\frac {u}{v}) = \frac {vdu - udv}{v^2}(v≠0)\end{align}$ $
+$ $\begin{align}\mathrm{d}(u \pm v) = \mathrm{d}u \pm \mathrm{d}v\end{align}$ $
+$ $\begin{align}\mathrm{d}(Cu) = C\mathrm{d}u(C为常数)\end{align}$ $
+$ $\begin{align}\mathrm{d}(uv) = v\mathrm{d}u + u\mathrm{d}v\end{align}$ $
+$ $\begin{align}\mathrm{d}(\frac {u}{v}) = \frac {v\mathrm{d}u - u\mathrm{d}v}{v^2}(v≠0)\end{align}$ $
 微分中值定理罗尔定理如果函数$f(x)$满足
 
 在闭区间$[a,b]$上连续；
@@ -9730,6 +9824,22 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
 当$\varphi_1(x)$、$\varphi_2(x)$不成比例，称$\varphi_1(x)$、$\varphi_2(x)$线性无关
 当$\varphi_1(x)$、$\varphi_2(x)$的比为常数，称$\varphi_1(x)$、$\varphi_2(x)$线性相关
 
+可分离变量的微分方程&ensp;&ensp;如果一阶微分方程能写成$g(y)\mathrm{d}y=f(x)\mathrm{d}x$的形式，则称为可分离变量的微分方程
+&ensp;&ensp;例如$\frac{\mathrm{d}y}{\mathrm{d}x} = 2xy^2$分离变量后得到$\frac{\mathrm{d}y}{y^2} = 2x\mathrm{d}x$，两边积分即得到通解
+齐次微分方程&ensp;&ensp;如果一阶微分方程可化成$\frac{\mathrm{d}y}{\mathrm{d}x} = \varphi(\frac{y}{x})$的形式，就称为齐次方程
+
+$ $
+\begin{array} {c}
+(xy-y^2)\mathrm{d}x-(x^2-2xy)\mathrm{d}y=0\\
+\Downarrow \\
+\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{xy-y^2}{x^2-2xy} \\
+\Downarrow \\
+\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{\frac{y}{x}-(\frac{y}{x})^2}{1-2(\frac{y}{x})} 
+\end{array}
+$ $
+
+
+&ensp;&ensp;在齐次方程$\frac{\mathrm{d}y}{\mathrm{d}x} = \varphi(\frac{y}{x})$中，令$u=\frac {y}{x}$，则$y=ux$，$y=ux$两边对$x$求导得$\frac{\mathrm{d}y}{\mathrm{d}x} = u+x\frac{\mathrm{d}u}{\mathrm{d}x} $，于是原齐次微分方程$\frac {\mathrm{d}y}{\mathrm{d}x}$化为可分离变量的微分方程$u+x\frac {\mathrm{d}u}{\mathrm{d}x} = \varphi (u)$
 一阶线性微分方程非齐次&ensp;&ensp;一阶非齐次线性微分方程$ $\begin{align}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=Q(x)\end{align}$ $
 &ensp;&ensp;一阶非齐次线性微分方程的通解
 
@@ -9742,6 +9852,9 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
 
 齐次&ensp;&ensp;一阶齐次线性微分方程$ $\begin{align}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=0\end{align}$ $
 &ensp;&ensp;一阶齐次线性微分方程的通解$ $\begin{align}y=Ce^{-\int P(x)\mathrm{d}x} \; (C=\pm e^{C_1})\end{align}$ $
+可降阶的高阶微分方程$y^{(n)}=f(x)$型&ensp;&ensp;两边一直积分就行
+$y’’=f(x,y’)$型&ensp;&ensp;方程中隐式包含$y$，若求通解，设$y’=p$，那么$y’’=\frac {\mathrm{d}p}{\mathrm{d}x}=p’$，原方程可化为关于$x$、$p$的一阶微分方程$p’=f(x,p)$
+$y’’=f(y,y’)$型&ensp;&ensp;方程中隐式包含$x$，若求通解，设$y’=p$，那么$y’’=\frac {\mathrm{d}p}{\mathrm{d}x}=\frac{\mathrm{d}p}{\mathrm{d}y} \cdot \frac{\mathrm{d}y}{\mathrm{d}x}=p\frac {\mathrm{d}p}{\mathrm{d}y}$，原方程可化为关于$y$、$p$的一阶微分方程$p\frac {\mathrm{d}p}{\mathrm{d}y}=f(y,p)$
 高阶线性微分方程性质&ensp;&ensp;有二阶常系数非齐次线性微分方程$ $\begin{align} \label {eq26}  y’’+P(x)y’+Q(x) = f(x)\end{align}$ $
 &ensp;&ensp;当$f(x) \equiv 0$时，有二阶常系数齐次线性微分方程$ $\begin{align} \label {eq27}  y’’+P(x)y’+Q(x) = 0\end{align}$ $
 性质1&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$为$\eqref {eq27}$的解，则$y=C_1 \varphi_1(x) + C_2 \varphi_2(x)$为$\eqref {eq27}$的解
