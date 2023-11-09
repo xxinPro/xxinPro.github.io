@@ -9252,9 +9252,33 @@ $\lim _{x \to x_0} g(x) = A$，$\lim _{x \to x_0} h(x) = A$，
 函数连续性&ensp;&ensp;设函数$y=f(x)$在点$x_0$的某一邻域内有定义，如果
 $ $\begin{array} {c}\lim _{x \to x_0}f(x)=f(x_0)\end{array}$ $
 那么就称函数$f(x)$在点$x_0$连续
-两个重要极限第一类重要极限$ \eqref {eq3} $$ $\begin{align} \label {eq3}\lim_{x \to 0} \frac{\sin x}{x} &amp; = 1\end{align}$ $
-第二类重要极限$ \eqref {eq4} $$ $\begin{align} \label {eq4}\lim_{x \to \infty} (1+\frac{1}{x} )^{x} &amp; = e\end{align}$ $
-由$ \eqref {eq4} $推导$ \eqref {eq5} $$ $\begin{align} \label {eq5}\lim_{x \to 0} (1+x )^{\frac{1}{x}} &amp; = e\end{align}$ $
+两个重要极限第一类重要极限$ \eqref {eq3} $
+
+$ $ 
+\begin{align} \label {eq3}
+\lim_{x \to 0} \frac{\sin x}{x} & = 1
+\end{align}
+$ $
+
+
+第二类重要极限$ \eqref {eq4} $
+
+$ $
+\begin{align} \label {eq4}
+\lim_{x \to \infty} (1+\frac{1}{x} )^{x} & = e
+\end{align}
+$ $
+
+
+由$ \eqref {eq4} $推导$ \eqref {eq5} $
+
+$ $
+\begin{align} \label {eq5}
+\lim_{x \to 0} (1+x )^{\frac{1}{x}} & = e
+\end{align}
+$ $
+
+
 常见等价无穷小(当$ x\longrightarrow 0 $时)
 
 $ \sin x \sim x $
@@ -9433,10 +9457,38 @@ $ \mathrm{d}(\arctan {x}) = \frac {1}{1+x^2}\mathrm{d}x $
 $ \mathrm{d}(\operatorname{arccot} x) = -\frac {1}{1+x^2}\mathrm{d}x $
 
 微分四则运算法则设$u = u(v)$、$v = v(x)$可微，则
-$ $\begin{align}\mathrm{d}(u \pm v) = \mathrm{d}u \pm \mathrm{d}v\end{align}$ $
-$ $\begin{align}\mathrm{d}(Cu) = C\mathrm{d}u(C为常数)\end{align}$ $
-$ $\begin{align}\mathrm{d}(uv) = v\mathrm{d}u + u\mathrm{d}v\end{align}$ $
-$ $\begin{align}\mathrm{d}(\frac {u}{v}) = \frac {v\mathrm{d}u - u\mathrm{d}v}{v^2}(v≠0)\end{align}$ $
+
+$ $
+\begin{array} {c}
+\mathrm{d}(u \pm v) = \mathrm{d}u \pm \mathrm{d}v
+\end{array}
+$ $
+
+
+
+$ $
+\begin{array} {c}
+\mathrm{d}(Cu) = C\mathrm{d}u(C为常数)
+\end{array}
+$ $
+
+
+
+$ $
+\begin{array} {c}
+\mathrm{d}(uv) = v\mathrm{d}u + u\mathrm{d}v
+\end{array}
+$ $
+
+
+
+$ $
+\begin{array} {c}
+\mathrm{d}(\frac {u}{v}) = \frac {v\mathrm{d}u - u\mathrm{d}v}{v^2}(v≠0)
+\end{array}
+$ $
+
+
 微分中值定理罗尔定理如果函数$f(x)$满足
 
 在闭区间$[a,b]$上连续；
@@ -9450,7 +9502,14 @@ $ $\begin{align}\mathrm{d}(\frac {u}{v}) = \frac {v\mathrm{d}u - u\mathrm{d}v}{v
 在开区间$(a,b)$内可导；
 
 那么在$(a,b)$内至少有一点$ \xi \; (a \lt \xi \le b)$，使等式$\eqref {eq8}$成立
-$ $\begin{align} \label {eq8}f(b)-f(a)=f’(\xi)(b-a)\end{align}$ $
+
+$ $
+\begin{align} \label {eq8}
+f(b)-f(a)=f'(\xi)(b-a)
+\end{align}
+$ $
+
+
 柯西中值定理如果函数$f(x)$及$F(x)$满足
 
 在闭区间$[a,b]$上连续；
@@ -9458,7 +9517,14 @@ $ $\begin{align} \label {eq8}f(b)-f(a)=f’(\xi)(b-a)\end{align}$ $
 对任一$ x\in (a,b) $，$F’(x)\ne 0$；
 
 那么在$(a,b)$内至少有一点$\xi$，使等式$\eqref {eq9}$成立
-$ $\begin{align} \label {eq9}\frac{f(b)-f(a)}{F(b)-F(a)} =\frac{f’(\xi)}{F’(\xi)}\end{align}$ $
+
+$ $
+\begin{align} \label {eq9}
+\frac{f(b)-f(a)}{F(b)-F(a)} =\frac{f'(\xi)}{F'(\xi)} 
+\end{align}
+$ $
+
+
 弧微分与曲率弧微分公式
 $\mathrm{d}s = \sqrt[]{1+y’^2} \mathrm{d}x $
 曲率公式
@@ -9472,7 +9538,15 @@ $\mathrm{d}s = \sqrt[]{1+y’^2} \mathrm{d}x $
   $ $
 
 
-佩亚诺余项当$\eqref {eq10}$中$R_n(x)$的表达式为$\eqref {eq11}$时，称为佩亚诺余项，近似表达$n$次泰勒多项式产生的误差$ $\begin{align} \label {eq11}R_n(x)=o[(x-x_0)^n]\end{align}$ $
+佩亚诺余项当$\eqref {eq10}$中$R_n(x)$的表达式为$\eqref {eq11}$时，称为佩亚诺余项，近似表达$n$次泰勒多项式产生的误差
+
+$ $
+\begin{align} \label {eq11}
+R_n(x)=o[(x-x_0)^n]
+\end{align}
+$ $
+
+
 拉格朗日余项当$\eqref {eq10}$中$R_n(x)$的表达式为$\eqref {eq12}$时，称为拉格朗日余项，拉格朗日余项能够具体估算出误差的大小，其中$\xi$是$x_0$与$x$之间的某个值
 
   $ $
@@ -9501,7 +9575,15 @@ $\mathrm{d}s = \sqrt[]{1+y’^2} \mathrm{d}x $
   $ $
 
 
-佩亚诺余项当$\eqref {eq14}$中$R_n(x)$的表达式为$\eqref {eq15}$时，称为佩亚诺余项$ $\begin{align} \label {eq15}R_n(x)=o[(x-x_0)^n]\end{align}$ $
+佩亚诺余项当$\eqref {eq14}$中$R_n(x)$的表达式为$\eqref {eq15}$时，称为佩亚诺余项
+
+$ $
+\begin{align} \label {eq15}
+R_n(x)=o[(x-x_0)^n]
+\end{align}
+$ $
+
+
 拉格朗日余项麦克劳林公式$\eqref {eq14}$由泰勒公式$\eqref {eq10}$取$x_0=0$得到，那么泰勒公式拉格朗日余项$\eqref {eq12}$中$\xi$在$0$与$x$之间，因此可以令$\xi=\theta x\space(x &lt; \theta &lt; 1)$，从而有麦克劳林拉格朗日余项
 
   $ $
@@ -9557,18 +9639,18 @@ $\ln (1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+···+(-1)^{n-1}\frac{x^n}{n}+o(x^n)$
 不定积分不定积分的性质性质1 设函数$f(x)$及$g(x)$的原函数存在，则
 
   $ $
-    \begin{align}
+    \begin{array} {c}
     \int \left [ f(x) \pm g(x) \right ] \mathrm{d}x = \int f(x) \mathrm{d}x  \pm \int g(x) \mathrm{d}x
-    \end{align}
+    \end{array}
     $ $
 
 
 
-性质2 设函数$f(x)$的原函数存在，$k$为非零常数，则$ $\begin{align}\int kf(x)dx = k\int f(x)dx\end{align}$ $
-性质3$ $\begin{align}  {\left ( \int f(x)dx \right ) }’ = f(x)\end{align}
-\begin{align}  d\int f(x)dx = f(x)dx\end{align}$ $
-性质4$ $\begin{align}\int {f}’(x)dx = f(x)+C\end{align}
-\begin{align}\int df(x) = f(x)+C\end{align}$ $
+性质2 设函数$f(x)$的原函数存在，$k$为非零常数，则$ $\begin{array} {c}\int kf(x)dx = k\int f(x)dx\end{array}$ $
+性质3$ $\begin{array} {c}  {\left ( \int f(x)dx \right ) }’ = f(x)\end{array}
+\begin{array} {c}  d\int f(x)dx = f(x)dx\end{array}$ $
+性质4$ $\begin{array} {c}\int {f}’(x)dx = f(x)+C\end{array}
+\begin{array} {c}\int df(x) = f(x)+C\end{array}$ $
 三角代换一般的，a&gt;0时，当被积函数有
 
 $\sqrt{a^{2} - x^{2} } $，可做代换$x=a\sin {u}(-\frac{\pi }{2} &lt; u &lt; \frac{\pi }{2} )$
@@ -9615,54 +9697,54 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 定积分定积分的性质规定1 当$ b=a $时
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   \int_{a}^{b} f(x)\mathrm{d}x = 0
-  \end{align}
+  \end{array}
   $ $
 
 
 规定2 当$ a\gt b $时
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   \int_{a}^{b} f(x)\mathrm{d}x = -\int_{b}^{a} f(x)\mathrm{d}x
-  \end{align}
+  \end{array}
   $ $
 
 
 性质1 被积函数中的常数因子可以提到积分号外
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   \int_{a}^{b} kf(x)\mathrm{d}x = k\int_{a}^{b}  f(x)\mathrm{d}x \; (k是常数) 
-  \end{align}
+  \end{array}
   $ $
 
 
 性质2 两个函数代数和、差的积分等于积分代数的和、差
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   \int_{a}^{b} [f(x) \pm g(x)]\mathrm{d}x = \int_{a}^{b}  f(x)\mathrm{d}x \pm \int_{a}^{b} g(x) \mathrm{d}x 
-  \end{align}
+  \end{array}
   $ $
 
 
 性质3 可加性，设$ a \lt b \lt c $，有
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   \int_{a}^{b} f(x)\mathrm{d}x = \int_{a}^{c} f(x) \mathrm{d}x + \int_{c}^{b} f(x)\mathrm{d} x
-  \end{align}
+  \end{array}
   $ $
 
 
 性质4 如果在区间$[a,b]$上$f(x) \equiv 1$，则
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   \int_{a}^{b} 1\mathrm{d}x = \int_{a}^{b} \mathrm{d}x = b-a
-  \end{align}
+  \end{array}
   $ $
 
 
@@ -9670,18 +9752,18 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 性质5 如果在区间$[a,b]$上$f(x) \ge 0$，则
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   \int_{a}^{b} f(x)\mathrm{d}x \ge 0 \; (a \lt b)
-  \end{align}
+  \end{array}
   $ $
 
 
 推论1 如果在区间$[a,b]$上$f(x) \le g(x)$，则
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   \int_{a}^{b} f(x)\mathrm{d} x \le \int_{a}^{b} g(x)\mathrm{d} x \; (a \lt b)
-  \end{align}
+  \end{array}
   $ $
 
 
@@ -9689,27 +9771,27 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 推论2
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   \left|\int_{a}^{b}f(x)\mathrm{d}x \right| \le \int_{a}^{b} \left|f(x)\right| \mathrm{d} x \; (a \lt b) 
-  \end{align}
+  \end{array}
   $ $
 
 
 性质6 估值定理。设$M$及$m$分别是函数$f(x)$在区间$[a,b]$上的最大值及最小值，则
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   m(b-a) \le \int_{a}^{b}f(x)\mathrm{d}x \le M(b-a)
-  \end{align}
+  \end{array}
   $ $
 
 
 性质7 定积分中值定理。如果函数$f(x)$在积分区间$[a,b]$上连续，那么在$[a,b]$上至少存在一个点$\xi$，使下式成立
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   \int_{a}^{b}f(x)\mathrm{d}x=f(\xi)(b-a) \; (a \le \xi \le b)
-  \end{align}
+  \end{array}
   $ $
 
 
@@ -9717,28 +9799,28 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 性质8 由定积分的几何意义可知，当$a\gt 0$时
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   \int_{-a}^{a} \sqrt{a^{2}-x^{2}} \mathrm{d}x = \frac{\pi }{2} a^{2} \\
   \int_{0}^{a} \sqrt{a^{2}-x^{2}} \mathrm{d}x = \frac{\pi }{4} a^{2}
-  \end{align}
+  \end{array}
   $ $
 
 
 牛顿-莱布尼兹公式微积分基本定理 如果函数$F(x)$是连续函数$f(x)$在区间$[a,b]$上的一个原函数，那么
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   \int_{a}^{b}f(x)\mathrm{d}x=F(b) -F(a)
-  \end{align}
+  \end{array}
   $ $
 
 
 反常积分无穷限反常积分&ensp;&ensp;1.设函数$f(x)$在区间$[a,+\infty )$上连续，则$f(x)$在无穷区间$[a,+\infty )$上的反常积分
 
 $ $
-\begin{align}
+\begin{array} {c}
 \int_{a}^{+\infty } f(x)\mathrm{d}x = \lim_{t \to +\infty} \int_{a}^{t}f(x)\mathrm{d}x 
-\end{align}
+\end{array}
 $ $
 
 
@@ -9746,54 +9828,54 @@ $ $
 &ensp;&ensp;2.设函数$f(x)$在区间$(-\infty,b]$上连续，则$f(x)$在无穷区间$(-\infty,b]$上的反常积分
 
 $ $
-\begin{align}
+\begin{array} {c}
 \int_{-\infty}^{b } f(x)\mathrm{d}x = \lim_{t \to -\infty} \int_{t}^{b}f(x)\mathrm{d}x 
-\end{align}
+\end{array}
 $ $
 
 
 &ensp;&ensp;3.设函数$f(x)$在区间$(-\infty,+\infty)$上连续，则函数$f(x)$在无穷区间$(-\infty,+\infty)$上的反常积分
 
 $ $
-\begin{align}
+\begin{array} {c}
 \int_{-\infty}^{ +\infty} f(x)\mathrm{d}x = \int_{-\infty}^{ 0} f(x)\mathrm{d}x + \int_{0}^{ +\infty} f(x)\mathrm{d}x = \lim_{t \to -\infty} \int_{t}^{b}f(x)\mathrm{d}x +\lim_{t \to +\infty} \int_{a}^{t}f(x)\mathrm{d}x 
-\end{align}
+\end{array}
 $ $
 
 
 无界函数的反常积分(瑕积分)&ensp;&ensp;1.设函数$f(x)$在区间$(a,b]$上连续，则$f(x)$在区间$(a,b]$上的反常积分
 
 $ $
-\begin{align}
+\begin{array} {c}
 \int_{a}^{b} f(x)\mathrm{d}x = \lim_{t \to a^+} \int_{t}^{b} f(x)\mathrm{d}x 
-\end{align}
+\end{array}
 $ $
 
 
 &ensp;&ensp;2.设函数$f(x)$在区间$[a,b)$上连续，则$f(x)$在区间$[a,b)$上的反常积分
 
 $ $
-\begin{align}
+\begin{array} {c}
 \int_{a}^{b} f(x)\mathrm{d}x = \lim_{t \to b^-} \int_{a}^{t} f(x)\mathrm{d}x 
-\end{align}
+\end{array}
 $ $
 
 
 &ensp;&ensp;3.设函数$f(x)$在区间$[a,c)\cup(c,b]$上连续，则$f(x)$在区间$[a,b]$上的反常积分
 
 $ $
-\begin{align}
+\begin{array} {c}
 \int_{a}^{b} f(x)\mathrm{d}x = \int_{a}^{c} f(x)\mathrm{d}x +\int_{c}^{b} f(x)\mathrm{d}x = \lim_{t \to c^-} \int_{a}^{t} f(x)\mathrm{d}x +\lim_{t \to c^+} \int_{t}^{b} f(x)\mathrm{d}x 
-\end{align}
+\end{array}
 $ $
 
 
 $\Gamma$函数$\Gamma$函数定义式
 
 $ $
-\begin{align}
+\begin{array} {c}
 \Gamma (s)=\int_{0}^{+\infty } e^{-x}x^{s-1}\mathrm{d} x \space \space (s\gt0)
-\end{align}
+\end{array}
 $ $
 
 
@@ -9811,9 +9893,9 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
 则它的导数$F’(x)$为
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   F'(x) = h'(x)f[h(x)]-g'(x)f[g(x)]
-  \end{align}
+  \end{array}
   $ $
 
 
@@ -9840,18 +9922,18 @@ $ $
 
 
 &ensp;&ensp;在齐次方程$\frac{\mathrm{d}y}{\mathrm{d}x} = \varphi(\frac{y}{x})$中，令$u=\frac {y}{x}$，则$y=ux$，$y=ux$两边对$x$求导得$\frac{\mathrm{d}y}{\mathrm{d}x} = u+x\frac{\mathrm{d}u}{\mathrm{d}x} $，于是原齐次微分方程$\frac {\mathrm{d}y}{\mathrm{d}x}$化为可分离变量的微分方程$u+x\frac {\mathrm{d}u}{\mathrm{d}x} = \varphi (u)$
-一阶线性微分方程非齐次&ensp;&ensp;一阶非齐次线性微分方程$ $\begin{align}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=Q(x)\end{align}$ $
+一阶线性微分方程非齐次&ensp;&ensp;一阶非齐次线性微分方程$ $\begin{array} {c}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=Q(x)\end{array}$ $
 &ensp;&ensp;一阶非齐次线性微分方程的通解
 
   $ $
-  \begin{align}
+  \begin{array} {c}
   y=e^{-\int P(x)\mathrm{d}x}[\int Q(x)e^{\int P(x)\mathrm{d}x}\mathrm{d}x+C]
-  \end{align}
+  \end{array}
   $ $
 
 
-齐次&ensp;&ensp;一阶齐次线性微分方程$ $\begin{align}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=0\end{align}$ $
-&ensp;&ensp;一阶齐次线性微分方程的通解$ $\begin{align}y=Ce^{-\int P(x)\mathrm{d}x} \; (C=\pm e^{C_1})\end{align}$ $
+齐次&ensp;&ensp;一阶齐次线性微分方程$ $\begin{array} {c}\frac{\mathrm{d}y}{\mathrm{d}x}+P(x)y=0\end{array}$ $
+&ensp;&ensp;一阶齐次线性微分方程的通解$ $\begin{array} {c}y=Ce^{-\int P(x)\mathrm{d}x} \; (C=\pm e^{C_1})\end{array}$ $
 可降阶的高阶微分方程$y^{(n)}=f(x)$型&ensp;&ensp;两边一直积分就行
 $y’’=f(x,y’)$型&ensp;&ensp;方程中隐式包含$y$，若求通解，设$y’=p$，那么$y’’=\frac {\mathrm{d}p}{\mathrm{d}x}=p’$，原方程可化为关于$x$、$p$的一阶微分方程$p’=f(x,p)$
 $y’’=f(y,y’)$型&ensp;&ensp;方程中隐式包含$x$，若求通解，设$y’=p$，那么$y’’=\frac {\mathrm{d}p}{\mathrm{d}x}=\frac{\mathrm{d}p}{\mathrm{d}y} \cdot \frac{\mathrm{d}y}{\mathrm{d}x}=p\frac {\mathrm{d}p}{\mathrm{d}y}$，原方程可化为关于$y$、$p$的一阶微分方程$p\frac {\mathrm{d}p}{\mathrm{d}y}=f(y,p)$
@@ -9868,42 +9950,102 @@ $ $\begin{align} \label {eq36}y’’+py’+qy = 0\end{align}$ $
 常系数齐次线性微分方程的通解&ensp;&ensp;根据$ \eqref {eq36} $列出特征方程，如一元二次方程$ \eqref {eq37} $$ $\begin{align}\label {eq37}r^2+pr+q=0\end{align}$ $
 &ensp;&ensp;解方程$ \eqref {eq37} $，有如下三种情况
 
-1.当$\Delta = p^2-4q \gt 0$时，特征方程$ \eqref {eq37} $有两个不相等的实数根$r_1,r_2$$ $
+情况1：当$\Delta = p^2-4q \gt 0$时，特征方程$ \eqref {eq37} $有两个不相等的实数根$r_1,r_2$$ $
 
-\begin{align}r_1 = \frac{-p+\sqrt{\Delta } }{2} \\r_2 = \frac{-p-\sqrt{\Delta } }{2}\end{align}$ $
-&ensp;&ensp;此时微分方程$ \eqref {eq36} $的通解是$ $\begin{align}y=C_1e^{r_1x}+C_2e^{r_2x}\end{align}$ $
+\begin{array} {c}r_1 = \frac{-p+\sqrt{\Delta } }{2} \\r_2 = \frac{-p-\sqrt{\Delta } }{2}\end{array}$ $
+&ensp;&ensp;此时微分方程$ \eqref {eq36} $的通解是$ $\begin{array} {c}y=C_1e^{r_1x}+C_2e^{r_2x}\end{array}$ $
 
-2.当$\Delta = p^2-4q=0$时，特征方程$ \eqref {eq37} $有两个相等的实数根$r_1=r_2=-\frac{p}{2} $
+情况2：当$\Delta = p^2-4q=0$时，特征方程$ \eqref {eq37} $有两个相等的实数根$r_1=r_2=-\frac{p}{2} $
 
-&ensp;&ensp;此时微分方程$ \eqref {eq36} $的通解是$ $\begin{align}y=(C_1+C_2x)e^{r_1x}\end{align}$ $
+&ensp;&ensp;此时微分方程$ \eqref {eq36} $的通解是$ $\begin{array} {c}y=(C_1+C_2x)e^{r_1x}\end{array}$ $
 
-3.当$\Delta = p^2-4q \lt 0$时，特征方程$ \eqref {eq37} $有一对共轭的复根$r_1,r_2$（$\alpha,\beta$均为实数,$\beta\ne0$），$i$为虚数，一般等于$\sqrt[]{-1} $
+情况3：当$\Delta = p^2-4q \lt 0$时，特征方程$ \eqref {eq37} $有一对共轭的复根$r_1,r_2$（$\alpha,\beta$均为实数,$\beta\ne0$），$i$为虚数，一般等于$\sqrt[]{-1} $
 
-$ $\begin{align}r_1 = \frac{-b+\sqrt[]{\Delta } }{2} = \alpha +i\beta \\r_2 = \frac{-b-\sqrt[]{\Delta } }{2} = \alpha - i\beta\end{align}$ $
-&ensp;&ensp;此时微分方程$ \eqref {eq36} $的通解是$ $\begin{align}y=e^{\alpha x}(C_1\cos {\beta x}+C_2\sin {\beta x})\end{align}$ $
+$ $\begin{array} {c}r_1 = \frac{-b+\sqrt[]{\Delta } }{2} = \alpha +i\beta \\r_2 = \frac{-b-\sqrt[]{\Delta } }{2} = \alpha - i\beta\end{array}$ $
+&ensp;&ensp;此时微分方程$ \eqref {eq36} $的通解是$ $\begin{array} {c}y=e^{\alpha x}(C_1\cos {\beta x}+C_2\sin {\beta x})\end{array}$ $
 常系数非齐次线性微分方程&ensp;&ensp;形如$ \eqref {eq38} $称为常系数非齐次线性微分方程，其中$p$、$q$为常数$ $\begin{align} \label {eq38}y’’+py’+qy = f(x)\end{align}$ $
-常系数非齐次线性微分方程的通解&ensp;&ensp;形如如下两种形式的常系数非齐次线性微分方程可以使用待定系数法求特解
-$ $\begin{align}f(x)=e^{\lambda x}P_n(x)\end{align}$ $
+常系数非齐次线性微分方程的特解&ensp;&ensp;形如如下两种形式的常系数非齐次线性微分方程可以使用待定系数法求特解
 
   $ $
-  \begin{align}
+  \begin{align} \label {eq39}
+  f(x)=e^{\lambda x}P_m(x)
+  \end{align}
+
+  \begin{align} \label {eq40}
   f(x)=e^{\lambda x}[P_l(x)\cos (\omega x)+Q_n(x)\sin (\omega x)]
   \end{align}
   $ $
 
 
-&ensp;&ensp;对应的原方程特解待定式为
-$ $\begin{align}y_0(x) = x^k e^{\lambda x}R_m(x)\end{align}$ $
+
+对于$\eqref {eq39}$型，其中$\lambda$是常数，$P_m(x)$是$x$的一个$m$次多项式
+
 
   $ $
-  \begin{align}
-  y_0(x) = x^ke^{\lambda x}[R_{m1}(x)\cos \omega x+R_{m2}\sin \omega x]
+  \begin{array} {c}
+  P_m(x) = a_0x^m+a_1x^{m-1}+\cdots + a_{m-1}x+a_m
+  \end{array}
+  $ $
+
+
+特解的待定式为
+
+  $ $
+  \begin{array} {c}
+  y_0(x) = x^k e^{\lambda x}R_m(x)
+  \end{array}
+  $ $
+
+
+
+对于$\eqref {eq40}$型，其中$\lambda$、$\omega$是常数，$\omega \ne 0$，$P_l(x)$、$Q_n(x)$分别是$x$的$l$次、$n$次多项式
+
+
+  $ $
+  \begin{array} {c}
+  P_l(x) = a_0x^l+a_1x^{l-1}+\cdots + a_{l-1}x+a_l \\
+  P_n(x) = a_0x^n+a_1x^{n-1}+\cdots + a_{n-1}x+a_n
+  \end{array}
+  $ $
+
+
+特解待定式为
+
+  $ $
+  \begin{array} {c}
+  y_0(x) = x^ke^{\lambda x}[R_{m1}(x)\cos (\omega x)+R_{m2}\sin (\omega x)]
+  \end{array}
+  $ $
+
+
+
+待定系数法求通解对于$\eqref {eq39}$型&ensp;&ensp;设有常系数非齐次线性微分方程$\eqref {eq41}$
+
+  $ $
+  \begin{align} \label {eq41}
+  y''+py'+qy=e^{\lambda x}P_m(x)
   \end{align}
   $ $
 
 
+若要求其通解，有以下四个步骤
 
-数学常用公式定理1
+步骤1：求$\eqref {eq41}$对应的齐次方程的通解
+
+1
+
+步骤2：得到$\eqref {eq41}$特解的待定式
+
+2
+
+步骤3：对$\eqref {eq41}$特解的待定式求导，得到特解
+
+3
+
+步骤4：求$\eqref {eq41}$的通解
+
+4
+对于$\eqref {eq40}$型数学常用公式定理1
 数学常用公式定理3
 数学常用公式定理4
 数学常用公式定理5
