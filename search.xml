@@ -10032,20 +10032,209 @@ $ $\begin{array} {c}r_1 = \frac{-b+\sqrt[]{\Delta } }{2} = \alpha +i\beta \\r_2 
 
 步骤1：求$\eqref {eq41}$对应的齐次方程的通解
 
-1
+&ensp;&ensp;令$y’’+py’+qy=0$，于是有特征方程
 
-步骤2：得到$\eqref {eq41}$特解的待定式
+  $ $
+  \begin{align} \label {eq42}
+  r^2+pr+q=0
+  \end{align}
+  $ $
 
-2
 
-步骤3：对$\eqref {eq41}$特解的待定式求导，得到特解
+假设解得不相等的实数根$r_1=\alpha$，$r_2=\beta$，则对应的齐次方程的通解为
 
-3
+  $ $
+  \begin{array} {c}
+  y_0=C_1e^{\alpha x}+C_2e^{\beta x}
+  \end{array}
+  $ $
+
+
+
+
+步骤2：得出$\eqref {eq41}$特解的待定式
+
+&ensp;&ensp;其特解待定式可拆解为三个部分
+
+  $ $
+  \begin{array}{c}
+  y_1(x) = x^k e^{\lambda x}R_m(x)\\
+  \Downarrow \\
+  y_1(x) = \underline{x^k_{}} \space \underline{e^{\lambda x}_{}} \space \underline{R_m(x)}
+  \end{array}
+  $ $
+
+
+
+其中$k$的取值与原方程$\eqref {eq41}$中的$\lambda$及特征方程$\eqref {eq42}$的特征根$r_1$、$r_2$有关
+当$\lambda = r_1$或$r_2$时，$k=1$
+当$\lambda = r_1 = r_2$时，$k=2$
+当$\lambda \ne r_1$且$\lambda \ne r_2$时，$k=0$
+
+
+
+
+待定式中的$e^{\lambda x}$与$\eqref {eq41}$中的$e^{\lambda x}$完全一致，
+
+&ensp;&ensp;若$\eqref {eq41}$中不存在$e^{\lambda x}$，说明$\lambda = 0$
+
+$R_m(x)$是与$\eqref {eq41}$的多项式$P_m(x)$不同系数但相同次数的多项式待定式
+
+
+&ensp;&ensp;例：
+  $ $
+  \begin{array}{l}
+  若P_m(x)=3x+1，则R_m(x)=ax+b；\\
+  若P_m(x)=x^2+4，则R_m(x)=ax^2+bx+c
+  \end{array}
+  $ $
+
+
+&ensp;&ensp;假设$P_m(x)$为$1$次多项式，$\lambda = r_1 = r_2$，那么$\eqref {eq41}$特解的待定式为
+
+  $ $
+  \begin{array}{c}
+  y_1=x^2 e^{\lambda x} (ax+b)
+  \end{array}
+  $ $
+
+
+
+
+步骤3：待定系数法求$a$、$b$的值，得到$\eqref {eq41}$的特解
+
+&ensp;&ensp;根据$\eqref {eq41}$可知
+
+  $ $
+  \begin{array}{c}
+  y_1''+py_1'+qy_1=e^{\lambda x}P_m(x)
+  \end{array}
+  $ $
+
+
+代入$y_1$、$y_1’$、$y_1’’$的待定式，由此可解出$a$、$b$的值，进而得到特解$y_1$
 
 步骤4：求$\eqref {eq41}$的通解
 
-4
-对于$\eqref {eq40}$型数学常用公式定理1
+&ensp;&ensp;非齐次线性微分方程的通解=对应的齐次线性微分方程的通解+自身的一个特解，即
+
+  $ $
+  \begin{array}{c}
+  y = y_0+y_1
+  \end{array}
+  $ $
+
+
+
+
+对于$\eqref {eq40}$型&ensp;&ensp;设有常系数非齐次线性微分方程$\eqref {eq43}$
+
+  $ $
+  \begin{align} \label {eq43}
+  y''+py'+qy=e^{\lambda x}[P_{l}(x)\cos(\omega x) + Q_{n}(x)\sin(\omega x)]
+  \end{align}
+  $ $
+
+
+若要求其通解，有以下四个步骤
+
+步骤1：求$\eqref {eq43}$对应的齐次方程的通解
+
+&ensp;&ensp;令$y’’+py’+qy=0$，于是有特征方程
+
+  $ $
+  \begin{align} \label {eq44}
+  r^2+pr+q=0
+  \end{align}
+  $ $
+
+
+假设解得一对共轭的复根$r_1=\alpha + \beta i$，$r_2= \alpha - \beta i$，则对应的齐次方程的通解为
+
+  $ $
+  \begin{array} {c}
+  y_0=e^{\alpha x}[C_1\cos(\beta x) + C_2\sin (\beta x)]
+  \end{array}
+  $ $
+
+
+
+步骤2：得出$\eqref {eq43}$特解的待定式
+
+&ensp;&ensp;其特解待定式可拆解为三个部分
+
+  $ $
+  \begin{array}{c}
+  y_1(x) = x^k e^{\lambda x} [R_{m1}\cos(\omega x) + R_{m2}\sin(\omega x)]\\
+  \Downarrow \\
+  y_1(x) = \underline{x^k_{}} \space \underline{e^{\lambda x}_{}} \space \underline{[R_{m1}\cos(\omega x) + R_{m2}\sin(\omega x)]}
+  \end{array}
+  $ $
+
+
+
+其中$k$的取值与原方程$\eqref {eq43}$中的$\lambda$、$\omega$及特征方程$\eqref {eq44}$的特征根$r_1$、$r_2$有关
+
+当$\lambda + \omega i = r_1$或$r_2$时，$k=1$
+当$\lambda + \omega i \ne r_1$且$\lambda + \omega i \ne r_2$时，$k=0$
+
+
+待定式中的$e^{\lambda x}$与$\eqref {eq43}$中的$e^{\lambda x}$完全一致，
+
+
+&ensp;&ensp;若$\eqref {eq43}$中不存在$e^{\lambda x}$，说明$\lambda = 0$
+
+$R_{m1}(x)$与$R_{m2}(x)$是两个待定多项式，与$M_n(x)$不同系数但相同次数，$M_n(x)$与$P_l(x)$、$Q_n(x)$中次数较大的一个相同
+
+
+&ensp;&ensp;例：
+  $ $
+  \begin{array}{l}
+  若P_l(x)=3x+1，Q_n(x)=5，\\
+  则R_{m1}(x)=ax+b，R_{m2}(x)=cx+d；\\
+  若P_l(x)=x^2+4，Q_n(x)=x+4，\\
+  则R_{m1}=ax^2+bx+c，R_{m2}(x)=\xi x^2+ \eta x + \mu 
+  \end{array}
+  $ $
+
+
+&ensp;&ensp;假设$P_n(x)$、$Q_l(x)$均为$1$次多项式，$\lambda + \omega i = r_1$，那么$\eqref {eq43}$特解的待定式为
+
+  $ $
+  \begin{array}{c}
+  y_1=x e^{\lambda x} [(ax+b)\cos(\omega x) + (cx+d)\sin(\omega x)]
+  \end{array}
+  $ $
+
+
+
+
+步骤3：待定系数法求$a$、$b$、$c$、$d$的值，得到$\eqref {eq43}$的特解
+
+&ensp;&ensp;根据$\eqref {eq43}$可知
+
+  $ $
+  \begin{array}{c}
+  y_1''+py_1'+qy_1=e^{\lambda x}[P_{l}(x)\cos(\omega x) + Q_{n}(x)\sin(\omega x)]
+  \end{array}
+  $ $
+
+
+代入$y_1$、$y_1’$、$y_1’’$的待定式，由此可解出$a$、$b$的值，进而得到特解$y_1$
+
+步骤4：求$\eqref {eq43}$的通解
+
+&ensp;&ensp;非齐次线性微分方程的通解=对应的齐次线性微分方程的通解+自身的一个特解，即
+
+  $ $
+  \begin{array}{c}
+  y = y_0+y_1
+  \end{array}
+  $ $
+
+
+
+数学常用公式定理1
 数学常用公式定理3
 数学常用公式定理4
 数学常用公式定理5
