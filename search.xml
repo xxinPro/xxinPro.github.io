@@ -10262,18 +10262,18 @@ $R_{m1}(x)$与$R_{m2}(x)$是两个待定多项式，与$M_n(x)$不同系数但�
 多元函数微分平面点集邻域&ensp;&ensp;点$P$的$\delta$邻域
 
 $ $
-\begin{array} {c}
+\begin{align*}
 \stackrel {}{U} (P_0, \delta ) & = \left \{  P \mid \left|P P_0\right| \lt \delta \right \} 
-\end{array}
+\end{align*}
 $ $
 
 
 &ensp;&ensp;点$P$的去心$\delta$邻域
 
 $ $
-\begin{array} {c}
+\begin{align*}
 \stackrel {\circ}{U} (P_0, \delta ) & = \left \{  P \mid 0 \lt \left|P P_0\right| \lt \delta \right \} 
-\end{array}
+\end{align*}
 $ $
 
 
@@ -10297,22 +10297,22 @@ $ $
 偏导数定义&nbsp;&nbsp;设$z=f(x,y)$，$z$在$(x_0,y_0)$处对$x$的偏导数为
 
 $ $
-\begin{array}{c}
+\begin{align*}
 \left.\begin{matrix} 
    \frac{\partial z}{\partial x}
 \end{matrix}\right |_{_{y = y_0}^{x = x_0}} = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x,y_0)-f(x_0,y_0)}{\Delta x} 
-\end{array}
+\end{align*}
 $ $
 
 
 &nbsp;&nbsp;对$y$的偏导数为
 
 $ $
-\begin{array}{c}
+\begin{align*}
 \left.\begin{matrix} 
    \frac{\partial z}{\partial y}
 \end{matrix}\right |_{_{y = y_0}^{x = x_0}} = \lim_{\Delta y \to 0} \frac{f(x_0,y_0 + \Delta y)-f(x_0,y_0)}{\Delta y} 
-\end{array}
+\end{align*}
 $ $
 
 
@@ -10320,32 +10320,145 @@ $ $
 高阶偏导数&nbsp;&nbsp;设在区域$D$内，${f}’_x(x,y)=\frac{\partial z}{\partial x} $，${f}’_y(x,y)=\frac{\partial z}{\partial y} $，如果二阶偏导数存在，则
 
 $ $
-\begin{array} {c}
+\begin{align*}
 \frac{\partial }{\partial x}(\frac{\partial z}{\partial x} ) = \frac{\partial ^2z}{\partial x^2}={f}''_{xx}(x,y)\\
 \frac{\partial }{\partial y}(\frac{\partial z}{\partial y} ) = \frac{\partial ^2z}{\partial y^2}={f}''_{yy}(x,y)\\
 \frac{\partial }{\partial x}(\frac{\partial z}{\partial y} ) = \frac{\partial ^2z}{\partial x \partial y}={f}''_{xy}(x,y)\\
 \frac{\partial }{\partial y}(\frac{\partial z}{\partial x} ) = \frac{\partial ^2z}{\partial y \partial x}={f}''_{yx}(x,y)
-\end{array}
+\end{align*}
 $ $
 
 
 &nbsp;&nbsp;其中，${f}’’_{xy}(x,y)$与${f}’’_{yx}(x,y)$称为混合偏导数，如果二者在区域$D$内连续，那么必定相等
 全微分定理一
-&nbsp;&nbsp;如果$z=f(x,y)$在点$(x,y)$可微分，那么在点$(x,y)$的偏导数$\frac{\partial z}{\partial x} $、$\frac{\partial z}{\partial y} $必定存在，且全微分为$ $\begin{array} {c}\mathrm{d}z = \frac{\partial z}{\partial x} \Delta x + \frac{\partial z}{\partial y} \Delta y\end{array}$ $
-&nbsp;&nbsp;通常写作$ $\begin{array} {c}\mathrm{d}z = \frac{\partial z}{\partial x} \mathrm{d}x + \frac{\partial z}{\partial y} \mathrm{d} y\end{array}$ $
+&nbsp;&nbsp;如果$z=f(x,y)$在点$(x,y)$可微分，那么在点$(x,y)$的偏导数$\frac{\partial z}{\partial x} $、$\frac{\partial z}{\partial y} $必定存在，且全微分为
+
+$ $
+\begin{align*}
+\mathrm{d}z = \frac{\partial z}{\partial x} \Delta x + \frac{\partial z}{\partial y} \Delta y
+\end{align*}
+$ $
+
+
+&nbsp;&nbsp;通常写作
+
+$ $
+\begin{align*}
+\mathrm{d}z = \frac{\partial z}{\partial x} \mathrm{d}x + \frac{\partial z}{\partial y} \mathrm{d} y
+\end{align*}
+$ $
+
+
 定理二
 &nbsp;&nbsp;如果$z=f(x,y)$的偏导数$\frac{\partial z}{\partial x} $、$\frac{\partial z}{\partial y} $在点$(x,y)$连续，那么在该点可微分
-求导法则一元函数与多元函数复合情形&nbsp;&nbsp;设$z=f(u,v)$在点$(u,v)$有连续偏导数，$u=\varphi (t)$、$v=\psi (t)$在$t$点可导，则有$ $\begin{array} {c}\frac{\mathrm{d}z }{\mathrm{d}t } = \frac{\partial z}{\partial u} \frac{\mathrm{d}u }{\mathrm{d}t } + \frac{\partial z}{\partial v} \frac{\mathrm{d}v }{\mathrm{d}t }\end{array}$ $
-多元函数与多元函数复合情形&nbsp;&nbsp;设$z=f(u,v)$在点$(u,v)$有连续偏导数，$u=\varphi (x,y)$、$v=\psi (x,y)$在点$(x,y)$有对$x$、$y$的偏导数，则有$ $\begin{array} {c}\frac{\partial z }{\partial x } = \frac{\partial z}{\partial u} \frac{\partial u }{\partial x } + \frac{\partial z}{\partial v} \frac{\partial v }{\partial x }\\\frac{\partial z }{\partial y } = \frac{\partial z}{\partial u} \frac{\partial u }{\partial y } + \frac{\partial z}{\partial v} \frac{\partial v }{\partial y }\end{array}$ $
+求导法则一元函数与多元函数复合情形&nbsp;&nbsp;设$z=f(u,v)$在点$(u,v)$有连续偏导数，$u=\varphi (t)$、$v=\psi (t)$在$t$点可导，则有
+
+$ $
+\begin{align*}
+\frac{\mathrm{d}z }{\mathrm{d}t } = \frac{\partial z}{\partial u} \frac{\mathrm{d}u }{\mathrm{d}t } + \frac{\partial z}{\partial v} \frac{\mathrm{d}v }{\mathrm{d}t } 
+\end{align*}
+$ $
+
+
+二阶导
+
+$ $
+\begin{align*}
+  \frac{\mathrm{d}^2z}{\mathrm{d}t^2} & = \frac{\mathrm{d} }{\mathrm{d} t}\left (\frac{\partial z}{\partial u} \frac{\mathrm{d}u }{\mathrm{d}t } + \frac{\partial z}{\partial v} \frac{\mathrm{d}v }{\mathrm{d}t } \right ) \\
+  & = \frac{\mathrm{d} }{\mathrm{d} t}\left ( \frac{\partial z}{\partial u} \frac{\mathrm{d}u }{\mathrm{d}t } \right) + \frac{\mathrm{d} }{\mathrm{d} t}\left ( \frac{\partial z}{\partial v} \frac{\mathrm{d}v }{\mathrm{d}t } \right) \\
+  & = \left [ \frac{\mathrm{d} }{\mathrm{d} t}\left ( \frac{\partial z}{\partial u}  \right)\frac{\mathrm{d}u }{\mathrm{d}t } + \frac{\mathrm{d} }{\mathrm{d} t}\left ( \frac{\mathrm{d}u }{\mathrm{d}t } \right)\frac{\partial z}{\partial u} \right ] + \left [ \frac{\mathrm{d} }{\mathrm{d} t}\left ( \frac{\partial z}{\partial v}  \right)\frac{\mathrm{d}v }{\mathrm{d}t } + \frac{\mathrm{d} }{\mathrm{d} t}\left ( \frac{\mathrm{d}v }{\mathrm{d}t } \right)\frac{\partial z}{\partial v} \right ] \\
+  & = \left \{ \left [ \frac{\partial }{\partial u}\left ( \frac{\partial z}{\partial u}  \right)\frac{\mathrm{d}u }{\mathrm{d}t } + \frac{\partial }{\partial v}\left ( \frac{\partial z}{\partial u}  \right)\frac{\mathrm{d}v }{\mathrm{d}t } \right ] \frac{\mathrm{d}u }{\mathrm{d}t } + \frac{\partial z}{\partial u} \frac{\mathrm{d}^2u }{\mathrm{d}t^2 } \right \} + \left \{ \left [ \frac{\partial }{\partial u}\left ( \frac{\partial z}{\partial v}  \right)\frac{\mathrm{d}u }{\mathrm{d}t } + \frac{\partial }{\partial v}\left ( \frac{\partial z}{\partial v}  \right)\frac{\mathrm{d}v }{\mathrm{d}t } \right ] \frac{\mathrm{d}v }{\mathrm{d}t } + \frac{\partial z}{\partial v} \frac{\mathrm{d}^2v }{\mathrm{d}t^2 } \right \} 
+\end{align*}
+$ $
+
+
+&nbsp;&nbsp;令$\frac {\partial z}{\partial u} = f_1’$，$\frac {\partial z}{\partial v} = f_2’$，则有
+
+$ $
+\begin{align*}
+\frac{\mathrm{d}z }{\mathrm{d}t } = f_1' \cdot \frac{\mathrm{d}u }{\mathrm{d}t } + f_2' \cdot \frac{\mathrm{d}v }{\mathrm{d}t } 
+\end{align*}
+$ $
+
+
+二阶导
+
+$ $
+\begin{align*}
+\frac{\mathrm{d}^2z}{\mathrm{d} t^2} = f_1' \cdot \frac{\mathrm{d} ^2u }{\mathrm{d} t^2 } + f_2' \cdot \frac{\mathrm{d} ^2v }{\mathrm{d} t^2 } + f_{11}'' \cdot \left ( \frac{\mathrm{d} u }{\mathrm{d} t } \right)^2 + 2f_{12}'' \cdot \frac{\mathrm{d} v }{\mathrm{d} t } \cdot \frac{\mathrm{d} u }{\mathrm{d} t } + f_{22}'' \cdot \left (\frac{\mathrm{d} v }{\mathrm{d} t }  \right )^2
+\end{align*}
+$ $
+
+
+
+多元函数与多元函数复合情形&nbsp;&nbsp;设$z=f(u,v)$在点$(u,v)$有连续偏导数，$u=\varphi (x,y)$、$v=\psi (x,y)$在点$(x,y)$有对$x$、$y$的偏导数，则有
+
+$ $
+\begin{align*}
+\frac{\partial z }{\partial x } = \frac{\partial z}{\partial u} \frac{\partial u }{\partial x } + \frac{\partial z}{\partial v} \frac{\partial v }{\partial x }\\
+\frac{\partial z }{\partial y } = \frac{\partial z}{\partial u} \frac{\partial u }{\partial y } + \frac{\partial z}{\partial v} \frac{\partial v }{\partial y } 
+\end{align*}
+$ $
+
+
+二阶导
+
+$ $
+\begin{align*}
+  \frac{\partial^2z}{\partial x^2} & = \frac{\partial }{\partial x}\left (\frac{\partial z}{\partial u} \frac{\partial u }{\partial x } + \frac{\partial z}{\partial v} \frac{\partial v }{\partial x } \right ) \\
+  & = \frac{\partial }{\partial x}\left ( \frac{\partial z}{\partial u} \frac{\partial u }{\partial x } \right) + \frac{\partial }{\partial x}\left ( \frac{\partial z}{\partial v} \frac{\partial v }{\partial x } \right) \\
+  & = \left [ \frac{\partial }{\partial x}\left ( \frac{\partial z}{\partial u}  \right)\frac{\partial u }{\partial x } + \frac{\partial }{\partial x}\left ( \frac{\partial u }{\partial x } \right)\frac{\partial z}{\partial u} \right ] + \left [ \frac{\partial }{\partial x}\left ( \frac{\partial z}{\partial v}  \right)\frac{\partial v }{\partial x } + \frac{\partial }{\partial x}\left ( \frac{\partial v }{\partial x } \right)\frac{\partial z}{\partial v} \right ] \\
+  & = \left \{ \left [ \frac{\partial }{\partial u}\left ( \frac{\partial z}{\partial u}  \right)\frac{\partial u }{\partial x } + \frac{\partial }{\partial v}\left ( \frac{\partial z}{\partial u}  \right)\frac{\partial v }{\partial x } \right ] \frac{\partial u }{\partial x } + \frac{\partial z}{\partial u} \frac{\partial ^2u }{\partial x^2 } \right \} + \left \{ \left [ \frac{\partial }{\partial u}\left ( \frac{\partial z}{\partial v}  \right)\frac{\partial u }{\partial x } + \frac{\partial }{\partial v}\left ( \frac{\partial z}{\partial v}  \right)\frac{\partial v }{\partial x } \right ] \frac{\partial v }{\partial x } + \frac{\partial z}{\partial v} \frac{\partial ^2v }{\partial x^2 } \right \} \\
+  \\
+  \frac{\partial^2z}{\partial y^2} & = \frac{\partial }{\partial y}\left (\frac{\partial z}{\partial u} \frac{\partial u }{\partial y } + \frac{\partial z}{\partial v} \frac{\partial v }{\partial y } \right ) \\
+  & = \frac{\partial }{\partial y}\left ( \frac{\partial z}{\partial u} \frac{\partial u }{\partial y } \right) + \frac{\partial }{\partial y}\left ( \frac{\partial z}{\partial v} \frac{\partial v }{\partial y } \right) \\
+  & = \left [ \frac{\partial }{\partial y}\left ( \frac{\partial z}{\partial u}  \right)\frac{\partial u }{\partial y } + \frac{\partial }{\partial y}\left ( \frac{\partial u }{\partial y } \right)\frac{\partial z}{\partial u} \right ] + \left [ \frac{\partial }{\partial y}\left ( \frac{\partial z}{\partial v}  \right)\frac{\partial v }{\partial y } + \frac{\partial }{\partial y}\left ( \frac{\partial v }{\partial y } \right)\frac{\partial z}{\partial v} \right ] \\
+  & = \left \{ \left [ \frac{\partial }{\partial u}\left ( \frac{\partial z}{\partial u}  \right)\frac{\partial u }{\partial y } + \frac{\partial }{\partial v}\left ( \frac{\partial z}{\partial u}  \right)\frac{\partial v }{\partial y } \right ] \frac{\partial u }{\partial y } + \frac{\partial z}{\partial u} \frac{\partial ^2u }{\partial y^2 } \right \} + \left \{ \left [ \frac{\partial }{\partial u}\left ( \frac{\partial z}{\partial v}  \right)\frac{\partial u }{\partial y } + \frac{\partial }{\partial v}\left ( \frac{\partial z}{\partial v}  \right)\frac{\partial v }{\partial y } \right ] \frac{\partial v }{\partial y } + \frac{\partial z}{\partial v} \frac{\partial ^2v }{\partial y^2 } \right \}
+\end{align*}
+$ $
+
+
+&ensp;&ensp;令$\frac {\partial z}{\partial u} = f_1’$，$\frac {\partial z}{\partial v} = f_2’$，则有
+
+$ $
+\begin{align*}
+\frac{\partial z }{\partial x } = f_1' \cdot \frac{\partial u }{\partial x } + f_2' \cdot \frac{\partial v }{\partial x }\\
+\frac{\partial z }{\partial y } = f_1' \cdot \frac{\partial u }{\partial y } + f_2' \cdot \frac{\partial v }{\partial y } 
+\end{align*}
+$ $
+
+
+二阶导
+
+$ $
+\begin{align*}
+\frac{\partial^2z}{\partial x^2} = f_1' \cdot \frac{\partial ^2u }{\partial x^2 } + f_2' \cdot \frac{\partial ^2v }{\partial x^2 } + f_{11}'' \cdot \left ( \frac{\partial u }{\partial x } \right)^2 + 2f_{12}'' \cdot \frac{\partial v }{\partial x } \cdot \frac{\partial u }{\partial x } + f_{22}'' \cdot \left (\frac{\partial v }{\partial x }  \right )^2\\
+\\
+\frac{\partial^2z}{\partial y^2} = f_1' \cdot \frac{\partial ^2u }{\partial y^2 } + f_2' \cdot \frac{\partial ^2v }{\partial y^2 } + f_{11}'' \cdot \left ( \frac{\partial u }{\partial y } \right)^2 + 2f_{12}'' \cdot \frac{\partial v }{\partial y } \cdot \frac{\partial u }{\partial y } + f_{22}'' \cdot \left (\frac{\partial v }{\partial y }  \right )^2
+\end{align*}
+$ $
+
+
+
+
 多元函数极值极值求法定理一
-&ensp;&ensp;设$z=f(x,y)$在点$(x_0,y_0)$有偏导数，且有极值，则有$ $\begin{array} {c}{f}’_x(x_0,y_0) = 0\\{f}’_y(x_0,y_0) = 0\end{array}$ $
+&ensp;&ensp;设$z=f(x,y)$在点$(x_0,y_0)$有偏导数，且有极值，则有
+
+$ $
+\begin{align*}
+{f}'_x(x_0,y_0) = 0\\
+{f}'_y(x_0,y_0) = 0
+\end{align*}
+$ $
+
+
 定理二
 &ensp;&ensp;设$z=f(x,y)$在点$(x_0,y_0)$的某邻域内有一阶和二阶连续偏导数，又${f}’_x(x_0,y_0) = 0$，${f}’_y(x_0,y_0) = 0$，令
 
 $ $
-\begin{array} {c}
+\begin{align*}
 {f}'_{xx}(x_0,y_0) = A,\space {f}'_{xy}(x_0,y_0) = B,\space {f}'_{yy}(x_0,y_0) = C
-\end{array}
+\end{align*}
 $ $
 
 
@@ -10356,53 +10469,61 @@ $AC-B^2 \lt 0$时，没有极值
 $AC-B^2 = 0$时，需要讨论
 
 条件极值拉格朗日乘数法
-&ensp;&ensp;要找$z=f(x,y)$在附加条件$\varphi (x,y)=0$下的可能极值点，先做拉格朗日函数$ $\begin{array} {c}L(x,y)=f(x,y)+\lambda \varphi (x,y)\end{array}$ $
+&ensp;&ensp;要找$z=f(x,y)$在附加条件$\varphi (x,y)=0$下的可能极值点，先做拉格朗日函数
+
+$ $
+\begin{align*}
+L(x,y)=f(x,y)+\lambda \varphi (x,y)
+\end{align*}
+$ $
+
+
 其中$\lambda$为参数；求拉格朗日函数对$x$、$y$的一阶偏导，并使之为零，然后与附加条件方程联立
 
 $ $
-\begin{array} {c}
+\begin{align*}
 \begin{cases}
   {f}'_x(x,y) + \lambda {\varphi}'_x(x,y) = 0 \\  
   {f}'_y(x,y) + \lambda {\varphi}'_y(x,y) = 0 \\
   {\varphi}'_y(x,y) = 0
 \end{cases}
-\end{array}
+\end{align*}
 $ $
 
 
 解出$x$、$y$、$\lambda$，列出所有$(x,y)$组合，就得到了$z=f(x,y)$在附加条件$\varphi (x,y)=0$下的可能极值点
 &ensp;&ensp;当自变量和条件增加时，例如$u=f(x,y,z,t)$在附加条件$\varphi (x,y,z,t)=0$，$\psi (x,y,z,t)=0$下的极值，可做拉格朗日函数
 
-\begin{array} {c}
+\begin{align*}
 L(x,y,z,t)=f(x,y,z,t)+\lambda \varphi (x,y,z,t)+\mu \psi (x,y,z,t)
-\end{array}
+\end{align*}
 
 
 其中$\varphi$、$\mu$均为参数，解法与上个相同
 重积分二重积分的性质性质1&ensp;&ensp;设$\alpha $与$\beta $为常数，则
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \iint\limits_{D}^{} [\alpha f(x,y)+\beta g(x,y)]\mathrm{d} \sigma = \alpha \iint \limits_{D}^{}f(x,y)\mathrm{d}\sigma + \beta \iint \limits_{D}^{}g(x,y)\mathrm{d} \sigma 
-  \end{array}
+  \end{align*}
   $ $
 
 
 性质2&ensp;&ensp;如果闭区域$D$被有限条曲线分为有限个部分闭区域，那么在$D$上的二重积分等于在各部分闭区域上的二重积分的和，例如$D$分为两个闭区域$D_1$和$D_2$，则
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \iint \limits _{D}^{}f(x,y)\mathrm{d} \sigma =\iint \limits _{D_1}^{}f(x,y)\mathrm{d} \sigma+\iint \limits _{D_2}{}f(x,y)\mathrm{d} \sigma
-  \end{array}
+  \end{align*}
   $ $
 
 
 性质3&ensp;&ensp;如果在$D$上，$f(x,y)=1$，$\sigma$为$D$的面积，那么
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \sigma =\iint \limits _{D}^{}1\cdot \mathrm{d}\sigma =\iint \limits _{D}^{} \mathrm{d} \sigma 
-  \end{array}
+  \end{align*}
   $ $
 
 
@@ -10410,36 +10531,36 @@ L(x,y,z,t)=f(x,y,z,t)+\lambda \varphi (x,y,z,t)+\mu \psi (x,y,z,t)
 性质4 ①&ensp;&ensp;如果在$D$上，$f(x,y) \le g(x,y)$，那么有
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \iint \limits _{D}^{} f(x,y)\mathrm{d} \sigma \le \iint \limits _{D}^{} g(x,y)\mathrm{d} \sigma  
-  \end{array}
+  \end{align*}
   $ $
 
 
 性质4 ②&ensp;&ensp;由于$f(x,y) \le \left|f(x,y)\right|$，那么有
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \left|\iint \limits _{D}^{} f(x,y)\mathrm{d} \sigma\right| \le \iint \limits _{D}^{} \left|f(x,y)\right|\mathrm{d} \sigma  
-  \end{array}
+  \end{align*}
   $ $
 
 
 性质5&ensp;&ensp;设$M$和$m$分别是$f(x,y)$在闭区域$D$上的最大值和最小值，$\sigma$是$D$的面积，则有
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   m\sigma \le \iint \limits _{D}^{} f(x,y)\mathrm{d}\sigma \le M\sigma
-  \end{array}
+  \end{align*}
   $ $
 
 
 性质6 二重积分的中值定理&ensp;&ensp;设$f(x,y)$在闭区域$D$上连续，$\sigma$是$D$的面积，则在$D$上至少存在一点$(\xi ,\eta )$，使得
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \iint \limits _{D}^{} f(x,y)\mathrm{d}\sigma =f(\xi, \eta)\sigma 
-  \end{array}
+  \end{align*}
   $ $
 
 
@@ -10447,18 +10568,18 @@ L(x,y,z,t)=f(x,y,z,t)+\lambda \varphi (x,y,z,t)+\mu \psi (x,y,z,t)
 直角坐标下二重积分的计算&ensp;&ensp;Y-型：若区域$D$表示为
 
 $ $
-\begin{array} {c}
+\begin{align*}
 D=\{(x,y)|a\le x\le b, \varphi _1(x)\le y \le \varphi _2(x)\}
-\end{array}
+\end{align*}
 $ $
 
 
 则有
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \iint\limits_{D}^{} f(x,y)\mathrm{d}\sigma  = \int_{a}^{b}\mathrm{d}x\int_{\varphi_{1}(x)}^{\varphi_{2}(x)}(x,y)\mathrm{d}y
-  \end{array}
+  \end{align*}
   $ $
 
 
@@ -10466,18 +10587,18 @@ $ $
 &ensp;&ensp;X-型：若区域$D$表示为
 
 $ $
-\begin{array} {c}
+\begin{align*}
 D=\{(x,y)|\varphi _1(x)\le x \le \varphi _2(x), c \le y \le d\}
-\end{array}
+\end{align*}
 $ $
 
 
 则有
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \iint\limits_{D}^{} f(x,y)\mathrm{d}\sigma  = \int_{c}^{d}\mathrm{d}y\int_{\varphi_{1}(y)}^{\varphi_{2}(y)}(x,y)\mathrm{d}x
-  \end{array}
+  \end{align*}
   $ $
 
 
@@ -10485,18 +10606,18 @@ $ $
 极坐标系下二重积分的计算直角坐标与极坐标的对应关系&ensp;&ensp;令$\begin{cases} x=\rho \cos \theta \\  y=\rho \sin \theta \end{cases} $，&ensp;&ensp;于是$f(x,y)=f(\rho \cos\theta,\rho \sin\theta)$，&ensp;&ensp;其中$\rho =\rho (\theta )$，&ensp;&ensp;若区域$D$表示为
 
 $ $
-\begin{array} {c}
+\begin{align*}
 D=\{(\rho,\theta)|\alpha \le \theta \le \beta ,\rho_1(\theta) \le \rho \le \rho_2(\theta)\}
-\end{array}
+\end{align*}
 $ $
 
 
 则有
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \iint\limits_{D}^{} f(x,y)\mathrm{d}\sigma  = \int_{\alpha }^{\beta }\mathrm{d}\theta \int_{\rho_1(\theta )}^{\rho_2(\theta )} f(\rho \cos\theta,\rho \sin\theta)\rho\mathrm{d}\rho
-  \end{array}
+  \end{align*}
   $ $
 
 
@@ -10504,35 +10625,35 @@ $ $
 三种情况&ensp;&ensp;1、若极点在区域$D$内部时
 
 $ $
-\begin{array} {c}
+\begin{align*}
 D=\{(\theta ,\rho )\, |\, 0 \le \theta \le 2\pi ,0 \le \rho  \le \rho (\theta )\}
-\end{array}
+\end{align*}
 $ $
 
 
 则有
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \iint\limits_{D}^{} f(\rho \cos\theta,\rho \sin\theta)\rho \mathrm{d}\rho \mathrm{d}\theta = \int_{0}^{2\pi}\mathrm{d}\theta\int_{0}^{\rho (\theta)}f(\rho \cos\theta,\rho \sin\theta)\rho \mathrm{d}\rho 
-  \end{array}
+  \end{align*}
   $ $
 
 
 &ensp;&ensp;2、若极点在区域$D$的边界线上
 
 $ $
-\begin{array} {c}
+\begin{align*}
 D=\{(\theta ,\rho )\, |\, \alpha \le \theta \le \beta  ,0 \le \rho  \le \rho (\theta )\}
-\end{array}
+\end{align*}
 $ $
 
 则有
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \iint\limits_{D}^{} f(\rho \cos\theta,\rho \sin\theta)\rho \mathrm{d}\rho \mathrm{d}\theta = \int_{\alpha }^{\beta}\mathrm{d}\theta\int_{0}^{\rho (\theta)}f(\rho \cos\theta,\rho \sin\theta)\rho \mathrm{d}\rho 
-  \end{array}
+  \end{align*}
   $ $
 
 
@@ -10540,17 +10661,17 @@ $ $
 &ensp;&ensp;3、若极点在区域$D$之外
 
 $ $
-\begin{array} {c}
+\begin{align*}
 D=\{(\theta ,\rho )\, |\, \alpha \le \theta \le \beta  ,\rho _{1}(\theta) \le \rho \le \rho _2(\theta )\}
-\end{array}
+\end{align*}
 $ $
 
 则有
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \iint\limits_{D}^{} f(\rho \cos\theta,\rho \sin\theta)\rho \mathrm{d}\rho \mathrm{d}\theta = \int_{\alpha }^{\beta}\mathrm{d}\theta\int_{\rho _{1}(\theta)}^{\rho _{2}(\theta)}f(\rho \cos\theta,\rho \sin\theta)\rho \mathrm{d}\rho 
-  \end{array}
+  \end{align*}
   $ $
 
 
@@ -10561,13 +10682,13 @@ $ $
 
 &ensp;&ensp;(其中$D_1$是$D$的右半部分)
 $ $
-\begin{array}{c}
+\begin{align*}
 \iint\limits_{D}^{} f(x,y)\mathrm{d}x\mathrm{d}y = 
 \begin{cases}
   2\iint\limits_{D_1}^{}f(x,y)\mathrm{d}x\mathrm{d}y ,& \space f(-x,y)=f(x,y) \\  
   0 ,& \space f(-x,y)=-f(x,y)
 \end{cases}
-\end{array}
+\end{align*}
 $ $
 
 
@@ -10577,13 +10698,13 @@ $ $
 
 &ensp;&ensp;(其中$D_1$是$D$的上半部分)
 $ $
-\begin{array} {c}
+\begin{align*}
 \iint\limits_{D}^{} f(x,y)\mathrm{d}x\mathrm{d}y = 
 \begin{cases}
   2\iint\limits_{D_1}^{}f(x,y)\mathrm{d}x\mathrm{d}y,&\space f(x,-y)=f(x,y) \\  
   0,&\space f(x,-y)=-f(x,y)
 \end{cases}
-\end{array}
+\end{align*}
 $ $
 
 
@@ -10593,13 +10714,13 @@ $ $
 
 &ensp;&ensp;(其中$D_1$是$D$的上半部分)
 $ $
-\begin{array} {c}
+\begin{align*}
 \iint\limits_{D}^{} f(x,y)\mathrm{d}x\mathrm{d}y = 
 \begin{cases}
   2\iint\limits_{D_1}^{}f(x,y)\mathrm{d}x\mathrm{d}y,&\space f(-x,-y)=f(x,y) \\  
   0,&\space f(-x,-y)=-f(x,y)
 \end{cases}
-\end{array}
+\end{align*}
 $ $
 
 
@@ -10608,9 +10729,9 @@ $ $
 
 
 $ $
-\begin{array} {c}
+\begin{align*}
 \iint \limits _{D}^{}f(x,y)\mathrm{d}x\mathrm{d}y= \iint \limits _{D}^{} f(y,x)\mathrm{d}x\mathrm{d}y=\frac{1}{2} \iint \limits _{D}^{}[f(x,y)+f(y,x)]\mathrm{d}x\mathrm{d}y
-\end{array}
+\end{align*}
 $ $
 
 
@@ -10619,9 +10740,9 @@ $ $
 
 
 $ $
-\begin{array} {c}
+\begin{align*}
 \iint \limits _{D}^{}f(x,y)\mathrm{d}x\mathrm{d}y=2 \iint \limits _{D1}^{}f(x,y)\mathrm{d}x\mathrm{d}y
-\end{array}
+\end{align*}
 $ $
 
 
