@@ -9899,6 +9899,67 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
   $ $
 
 
+
+定积分几何应用旋转体体积
+&ensp;&ensp;曲线$y=f(x)$与$x=a$、$x=b$及$x$轴围成的平面绕$x$轴旋转一周所得旋转体的体积为
+
+  $ $
+  \begin{align*}
+  V=\int_{a}^{b} \pi [f(x)]^2\mathrm{d}x
+  \end{align*}
+  $ $
+
+
+当曲线由参数方程$\begin{cases} x=\varphi(t) \\ y=\psi(t)\end{cases}$（$\alpha \le t \le \beta$）给出时
+
+  $ $
+  \begin{align*}
+  V=\int_{\alpha}^{\beta} \pi [\psi(t)]^2\mathrm{d}[\varphi(t)]
+  \end{align*}
+  $ $
+
+
+
+环形旋转体体积
+&ensp;&ensp;拱形曲线$y=f(x)$与$x$轴围成的平面绕$y$轴旋转一周所得旋转体的体积为
+
+  $ $
+  \begin{align*}
+  V=2\pi \int_{a}^{b} \left|x \right| \left|f(x) \right| \mathrm{d}x
+  \end{align*}
+  $ $
+
+
+当曲线由参数方程$\begin{cases} x=\varphi(t) \\ y=\psi(t)\end{cases}$（$\alpha \le t \le \beta$）给出时
+
+  $ $
+  \begin{align*}
+  V=2\pi \int_{\alpha }^{\beta } \left|\varphi(t) \right| \left|\psi(t) \right| \mathrm{d}[\varphi(t)]
+  \end{align*}
+  $ $
+
+
+
+
+平面曲线弧长
+&ensp;&ensp;$[a,b]$区间内函数$y=f(x)$的长度为
+
+  $ $
+  \begin{align*}
+  S=\int_{a}^{b} \sqrt[]{1+[f'(x)]^2}\mathrm{d}x
+  \end{align*}
+  $ $
+
+
+当曲线由参数方程$\begin{cases} x=\varphi(t) \\ y=\psi(t)\end{cases}$（$\alpha \le t \le \beta$）给出时
+
+  $ $
+  \begin{align*}
+  S=\int_{\alpha }^{\beta } \sqrt[]{[\varphi'(t)]^2+[\psi'(t)]^2}\mathrm{d}t
+  \end{align*}
+  $ $
+
+
 微分方程定义定义1：&ensp;&ensp;凡含有参数，未知函数和未知函数导数(或微分)的方程，称为微分方程，有时简称为方程，未知函数是一元函数的微分方程称作常微分方程，未知函数是多元函数的微分方程称作偏微分方程。微分方程中出现的未知函数最高阶导数的阶数，称为微分方程的阶。
 定义2：&ensp;&ensp;任何代入微分方程后使其成为恒等式的函数，都叫做该方程的解。若微分方程的解中含有任意常数的个数与方程的阶数相同，且任意常数之间不能合并，则称此解为该方程的通解(或一般解)。当通解中的各任意常数都取特定值时所得到的解，称为方程的特解。通解和特解都是微分方程的解。
 定义3：&ensp;&ensp;设$\varphi_1(x)$、$\varphi_2(x)$为两个函数，二者有如下两种线性关系
