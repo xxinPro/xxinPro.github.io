@@ -9655,7 +9655,107 @@ $\frac{1}{\sqrt[]{1-x^{2}} } \mathrm{d}x = \mathrm{d}(\arcsin x) $
 $\sec ^{2} x \mathrm{d}x = \mathrm{d}(\tan x) $
 $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 
-定积分定积分的性质规定1 当$ b=a $时
+定积分定积分定义
+&ensp;&ensp;设函数$f(x)$在$[a,b]$上有界，在$[a,b]$中任意插入若干个分支点
+
+  $ $
+  \begin{align*}
+  a=x_0 \lt x_1 \lt \cdots \lt x_{n-1} \lt x_n=b
+  \end{align*}
+  $ $
+
+
+把区间$[a,b]$分成$n$个小区间
+
+  $ $
+  \begin{align*}
+  [x_0,x_1],[x_1,x_2],\cdots ,[x_{n-1},x_n]
+  \end{align*}
+  $ $
+
+
+各个小区间的长度依次为
+
+  $ $
+  \begin{align*}
+  \Delta x_1=x_1-x_0,\Delta x_2=x_2-x_1,\cdots ,\Delta x_n=x_n-x_{n-1}
+  \end{align*}
+  $ $
+
+
+在每个小区间$[x_i,x_{i+1}]$上任取一点$\xi_i$（$x_{i-1} \le \xi_i \le x_i$），对函数值$f(\xi_i)$与$\Delta x_i$的乘积求和
+
+  $ $
+  \begin{align*}
+  S=\sum_{i=1}^{n} f(\xi _i)\Delta x_i
+  \end{align*}
+  $ $
+
+
+记$\lambda = \max \left \{ \Delta x_1,\Delta x_2,\cdots,\Delta x_n \right \} $，当$\lambda \to 0$时，和式的极限总存在，则该极限称为$f(x)$在区间$[a,b]$上的定积分
+
+  $ $
+  \begin{align*}
+  \int_{a}^{b} f(x) \mathrm{d}x = \lim_{\lambda \to 0} \sum_{i=1}^{n} f(\xi_i)\Delta x_i
+  \end{align*}
+  $ $
+
+
+
+定积分定义求极限&ensp;&ensp;定积分定义的和式极限
+
+  $ $
+  \begin{align*}
+  \int_{a}^{b} f(x) \mathrm{d}x=\lim_{n \to \infty} \sum_{i=1}^{n} \frac{b-a}{n} f\left [ a+\frac{(b-a)i}{n} \right ] 
+  \end{align*}
+  $ $
+
+
+其中
+
+  $ $
+  \begin{array}{l}
+  x=\left [ a+\frac {(b-a)i}{n} \right],\\
+  a=\xi_1,b=\xi_n,\\
+  \mathrm{d}x=\frac{b-a}{n}\\
+  \end{array}
+  $ $
+
+
+若要将和式极限转换为定积分形式
+
+  $ $
+  \begin{array}{l}
+  x=\left [ a+\frac {(b-a)i}{n} \right] = \xi_i,\\
+  {\color{Red} 先确定\xi_i,} \\
+  积分下限a=\lim_{n \to \infty }\xi_1,积分上限b=\lim_{n \to \infty }\xi_n,\\
+  {\color{Red} 如果(i=1,2,\cdots,n),那么积分下限为\lim_{n \to \infty }\xi_1,积分上限为\lim_{n \to \infty }\xi_n,} \\
+  \mathrm{d}x=\frac{b-a}{n}=\Delta x_i,\\
+  {\color{Red} 根据积分上限和下限有积分区间长度，} \\
+  {\color{Red} 积分区间长度/积分区间被分割的个数=\Delta x_i=\mathrm{d}x,}\\
+  于是有\int_{a}^{b} f(x) \mathrm{d} x
+  \end{array}
+  $ $
+
+
+
+&ensp;&ensp;例：将$\lim_{n \to \infty } \sum_{k=1}^{n} \frac{k}{n^2} \ln \left ( 1+\frac {k}{n} \right ) $转化为定积分形式
+  $ $
+  \begin{array}{l}
+  令x=\xi _k=\frac{k}{n},\\
+  于是积分下限a=\lim_{n \to \infty }\xi_1= 0,\\
+  积分上限b=\lim_{n \to \infty }\xi_n=1,\\
+  积分区间长度为b-a=1,\\
+  \because i=1,2,\cdots,n,\\
+  \therefore 积分区间[a,b]被分割了n个小区间,\\
+  \therefore \mathrm{d}x=\Delta x_i=\frac{b-a}{n} =\frac{1}{n},\\
+  即有\int_{0}^{1} x\ln (1+x)\mathrm{d} x
+  \end{array}
+  $ $
+
+
+
+定积分的性质规定1 当$ b=a $时
 
   $ $
   \begin{array} {c}
