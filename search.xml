@@ -10615,7 +10615,7 @@ $ $
 
 $ $
 \begin{align*}
-{f}'_{xx}(x_0,y_0) = A,\space {f}'_{xy}(x_0,y_0) = B,\space {f}'_{yy}(x_0,y_0) = C
+{f}''_{xx}(x_0,y_0) = A,\space {f}''_{xy}(x_0,y_0) = B,\space {f}''_{yy}(x_0,y_0) = C
 \end{align*}
 $ $
 
@@ -10625,6 +10625,16 @@ $ $
 $AC-B^2 \gt 0$时，有极值，且$A \lt 0$时有极大值，$A \gt 0$时有极小值
 $AC-B^2 \lt 0$时，没有极值
 $AC-B^2 = 0$时，需要讨论
+
+
+&ensp;&ensp;如果三元函数$u=f(x,y,z)$在点$(x_0,y_0,z_0)$具有偏导数，那么它在点$(x_0,y_0,z_0)$具有极值的充分必要条件是
+$ $
+\begin{align*}
+f'_x(x_0,y_0,z_0)=0,f'_y(x_0,y_0,z_0)=0,f'_z(x_0,y_0,z_0)=0
+\end{align*}
+$ $
+
+
 
 条件极值拉格朗日乘数法
 &ensp;&ensp;要找$z=f(x,y)$在附加条件$\varphi (x,y)=0$下的可能极值点，先做拉格朗日函数
@@ -10652,12 +10662,41 @@ $ $
 解出$x$、$y$、$\lambda$，列出所有$(x,y)$组合，就得到了$z=f(x,y)$在附加条件$\varphi (x,y)=0$下的可能极值点
 &ensp;&ensp;当自变量和条件增加时，例如$u=f(x,y,z,t)$在附加条件$\varphi (x,y,z,t)=0$，$\psi (x,y,z,t)=0$下的极值，可做拉格朗日函数
 
+$ $
 \begin{align*}
 L(x,y,z,t)=f(x,y,z,t)+\lambda \varphi (x,y,z,t)+\mu \psi (x,y,z,t)
 \end{align*}
+$ $
 
 
-其中$\varphi$、$\mu$均为参数，解法与上个相同
+其中$\varphi$、$\mu$均为参数；求拉格朗日函数对$x$、$y$、$z$、$t$的一阶偏导，并使之为零，然后与附加条件方程联立，并解出$x$、$y$、$z$、$t$、$\varphi$、$\mu$，并列出所有$(x,y,z,t)$组合，就得到了$u=f(x,y,z,t)$在附加条件$\varphi (x,y,z,t)=0$，$\psi (x,y,z,t)=0$下的可能极值点
+
+&ensp;&ensp;例：将长为2m的铁丝分成三段，依次围成圆、正方形与正三角形，求三个图形面积之和的最小值
+$ $
+\begin{array}{l}
+设圆形的周长为x，正方形周长为y，正三角形周长为z，则x+y+z-2=0\\
+\therefore S_圆=\frac{x^2}{4\pi},S_正=\frac{y}{16},S_三=\frac{\sqrt[]{3} }{36}z^2 \\ 
+令f(x,y,z)=\frac{x^2}{4\pi}+\frac{y^2}{16}+\frac{\sqrt[]{3} }{36}z^2，\varphi (x,y,z)=x+y+z-2\\
+做拉格朗日函数L(x,y,z)=f(x,y,z)+\lambda \varphi (x,y,z)\\
+\therefore L(x,y,z)= \frac{x^2}{4\pi}+\frac{y^2}{16}+\frac{\sqrt[]{3} }{36}z^2+\lambda (x+y+z-2)\\
+L'_x=\frac{x}{2\pi}+\lambda，L'_y=\frac{y}{8}+\lambda，L'_z=\frac{\sqrt[]{3}}{18}z+\lambda\\
+联立方程组\begin{cases}
+ \frac{x}{2\pi}+\lambda=0\\
+ \frac{y}{8}+\lambda=0\\
+ \frac{\sqrt[]{3}}{18}z+\lambda=0\\
+ x+y+z-2=0
+\end{cases}\space 解得\begin{cases}
+ \lambda = -\frac{1}{\pi + 4 + 3\sqrt[]{3} } \\
+ x=\frac{2\pi}{\pi + 4 + 3\sqrt[]{3}} \\
+ y=\frac{8}{\pi + 4 + 3\sqrt[]{3}} \\
+ z=\frac{6\sqrt[]{3}}{\pi + 4 + 3\sqrt[]{3}}
+\end{cases}\\
+此时S取最小值为\frac{1}{\pi + 4 + 3\sqrt[]{3}} 
+\end{array}
+$ $
+
+
+
 重积分二重积分的性质性质1&ensp;&ensp;设$\alpha $与$\beta $为常数，则
 
   $ $
