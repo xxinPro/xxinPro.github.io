@@ -14897,4 +14897,24 @@ java常用包&ensp;&ensp;&ensp;&ensp;java.lang: 这个包下包含了Java语言�
         <category>我的文章</category>
       </categories>
   </entry>
+  <entry>
+    <title>C语言中的函数</title>
+    <url>/2023/11/22/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[入口函数&ensp;&ensp;入口函数是C语言执行的起点#include&lt;stdio.h&gt;int main() &#123;    printf(&quot;hello world&quot;);    return 0;&#125;
+函数调用&ensp;&ensp;C语言从入口函数开始执行，但是编译器从上往下编译，当被调函数在下，主调函数在上时，主调函数并不知道被调函数的存在，所以会出现错误#include&lt;stdio.h&gt;int main() &#123;    // 此时 fun1 函数没有被定义    fun1();    return 0;&#125;void fun1() &#123;    printf(&quot;fun1\n&quot;);&#125;
+&ensp;&ensp;可以将被调函数fun1放在主调函数main之上，此时被调函数优先编译，当主调函数调用时，已经知道了被调函数的存在#include&lt;stdio.h&gt;void fun1() &#123;    printf(&quot;fun1\n&quot;);&#125;int main() &#123;    // 此时 fun1 已经被定义    fun1();    return 0;&#125;
+&ensp;&ensp;或者先对被调函数进行声明，提前告知被调函数的存在，函数虽然只可以定义一次，但可以被声明无数次#include&lt;stdio.h&gt;void fun1();    // 声明fun1函数的存在int main() &#123;    // 此时 fun1 函数虽然没有被定义，但是main函数已经知道它的存在    fun1();    return 0;&#125;void fun1() &#123;    printf(&quot;fun1\n&quot;);&#125;
+&ensp;&ensp;调用其他c文件中的函数时，也需要对其进行声明，例如demo2.c#include&lt;stdio.h&gt;void fun2() &#123;    printf(&quot;fun2\n&quot;);&#125;
+&ensp;&ensp;当demo1.c中的主调函数调用demo2.c的被调函数时#include &lt;stdio.h&gt;void fun1();extern void fun2();int main() &#123;    fun1();    fun2();    return 0;&#125;void fun1() &#123;    printf(&quot;fun1\n&quot;);&#125;
+函数声明&ensp;&ensp;c文件中的函数较少时，可以通过被调函数放在主调函数之上，或者在c文件中声明被调函数的方式，来解决函数未定义的问题，当c文件中函数过多时，大量函数声明将会使代码变得臃肿，函数的循环调用也使得上下顺序摆放不切实际，所以此时可以创建对应的头文件，在头文件中声明函数，在c文件中只声明头文件，例如demo1.c中的代码#include &lt;stdio.h&gt;void fun1();void fun2();int main() &#123;    fun1();    fun2();    return 0;&#125;void fun1() &#123;    printf(&quot;fun1\n&quot;);&#125;void fun2() &#123;    printf(&quot;fun2\n&quot;);&#125;
+&ensp;&ensp;创建对应的头文件demo1.h，并在其中声明fun1、fun2#include &lt;stdio.h&gt;extern void fun1();extern void fun2();
+&ensp;&ensp;而在demo1.c中只对demo1.h进行声明#include &quot;demo1.h&quot;int main() &#123;    fun1();    fun2();    return 0;&#125;void fun1() &#123;    printf(&quot;fun1\n&quot;);&#125;void fun2() &#123;    printf(&quot;fun2\n&quot;);&#125;
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+      <tags>
+        <tag>C/C++基础</tag>
+      </tags>
+  </entry>
 </search>
