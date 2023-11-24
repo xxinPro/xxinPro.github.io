@@ -14972,7 +14972,49 @@ static方法不能被重写，所以static方法无需再标记final
   <entry>
     <title>C指针</title>
     <url>/2022/11/23/C%E6%8C%87%E9%92%88/</url>
-    <content><![CDATA[指针变量&ensp;&ensp;定义指针变量数据类型 * 指针变量名;
+    <content><![CDATA[虚拟内存&ensp;&ensp;虚拟内存作为一个中间层，避免程序直接与物理内存交互，因而程序中访问的内存地址不再是真实的物理内存地址，而是每个进程独有的虚拟内存地址，虚拟内存地址由操作系统映射到适当的物理内存地址上，至于如何映射与开发者无关。
+
+&ensp;&ensp;在只启动一次的情况下，一个程序只可以拥有一个进程，多个程序的多个进程拥有结构相同的虚拟内存，在典型的32位系统中，虚拟内存空间总大小为4GB（64位系统远大于4G），其中包括用户空间和内核空间
+
+用户空间，占用虚拟内存空间3G，包括
+代码段（Code Segment）：也称为文本段，存储程序的机器码指令。通常是只读的，因为程序在运行时不应该修改自己的指令。
+数据段（Data Segment）：存储全局变量和静态变量。数据段分为初始化的数据段（Initialized Data Segment）和未初始化的数据段（Uninitialized Data Segment，也称为BSS段）。初始化的数据段包含在程序中明确初始化的全局和静态变量，而未初始化的数据段包含未初始化的全局和静态变量，这些变量会在程序运行时被初始化为零或空。
+堆（Heap）：动态内存分配的区域，由程序员进行手动管理。使用malloc()、calloc()、realloc()等函数分配内存，并使用free()函数释放内存。
+栈（Stack）：存储局部变量、函数参数和函数调用的返回地址。栈是一种后进先出（LIFO）的数据结构，它在函数调用时分配局部变量的空间，当函数返回时释放这些空间。
+常量区（Constant Area）：存储常量字符串，例如字符串字面量。这部分内存通常是只读的。
+内存映射区域（Memory-mapped Region）：存储与文件关联的内存映射区域。这包括共享内存等。
+
+
+内核空间，占用虚拟内存空间1G (0xC000_0000 ~ 0xFFFF_FFFF)
+
+指针概念&ensp;&ensp;在典型的32位系统中，虚拟内存空间总大小为4GB，因为4GB＝4,096MB＝4,194,304KB＝4,294,967,296byte，即虚拟内存空间共有4,294,967,296个字节；&ensp;&ensp;8位16进制从0x0000_0000到0xffff_ffff刚好4,294,967,296个数，每个数对应虚拟内存中的一个字节，将8位16进制中的每个数都作为虚拟内存的字节的储存地址；于是虚拟内存的储存地址范围从0x0000_0000到0xffff_ffff
+
+&ensp;&ensp;对于一个多字节的变量，例如一个占用4字节内存的int变量，假设其第一个字节储存在虚拟内存中的地址为0x7fc5_3001，那么其最后一个字节的地址就为0x7fc5_3004，它编号最小的储存地址0x7fc5_3001就是它的地址// int 占用4个字节// 如果第一个字节的储存地址是0x7fc5_3001// 那么变量num的储存地址就是0x7fc5_3001int num = 1;// 取num的指针，也就是内存地址int* pointer = &amp;num// 将会输出0x7fc5_3001printf(&quot;pointer = %p&quot;, pointer);
+指针变量&ensp;&ensp;定义指针变量数据类型* 指针变量名;
+&ensp;&ensp;取变量所在的内存地址int num = 100;int* pointer = &amp;num;// 将会输出 num 的内存地址printf(&quot;pointer = %p&quot;,pointer);
+&ensp;&ensp;取指针变量所指向的内存地址储存的值int num1 = 100;int* pointer = &amp;num1;// 取指针变量所指向的内存地址储存的值int num2 = *pointer;// 将会输出 100 ，num1 = num2printf(&quot;pointer = %d&quot;,num2);
+&ensp;&ensp;不同数据类型的指针只能存储对应类型的内存地址
+// 字符指针char ch = &#x27;A&#x27;;char* ch_pointer = &amp;ch;// 短整型指针short int sh = 10;short int* sh_pointer = &amp;sh;// 整形指针int in = 10;int* in_pointer = &amp;in;// 长整型指针long int lo = 10;long int* lo_pointer = &amp;lo;// 浮点型指针float fl = 10.0f;float* fl_pointer = &amp;fl;// 双浮点型指针double dou = 10.0;double* dou_pointer = &amp;dou;
+&ensp;&ensp;通用指针，可以储存任何变量类型的指针int num = 100;void* pointer = &amp;num;
+数组指针
+数组的指针和数组第一个元素的指针一致
+
+&ensp;&ensp;再次验证了，多字节变量的多个字节中储存编号最小的储存地址就是变量的储存地址int main() &#123;    // 定义变量    int arr[] = &#123; 1,2,3 &#125;;    // 数组的指针    int* arr_pointer = &amp;arr;    printf(&quot;arr_pointer = %p\n&quot;, arr_pointer);    // 数组第一个元素的指针    int* ele_1_pointer = &amp;arr[0];    printf(&quot;ele_1_pointer = %p\n&quot;, ele_1_pointer);        return 0;&#125;
+&ensp;&ensp;取数组的指针还可以通过直接赋值的方式，省去&amp;int main() &#123;    int arr[] = &#123; 1,2,3 &#125;;    // 取数组指针    int* arr_pointer = arr;&#125;
+
+数组的指针可以作为数组，以指针名加下标的方式，直接调用数组中的值
+
+int main() &#123;    int arr[] = &#123; 1,2,3 &#125;;    // 数组的指针    int* arr_pointer = &amp;arr;    // 与arr[0]完全一致，将会输出 1    printf(&quot;value_1 = %d\n&quot;, arr_pointer[0]);    // 将会输出 2    printf(&quot;value_2 = %d\n&quot;, arr_pointer[1]);    // 将会输出 3    printf(&quot;value_3 = %d\n&quot;, arr_pointer[2]);&#125;
+&ensp;&ensp;但是如果取第二个元素arr[1]的储存地址，用arr[1]的储存地址作为数组，调用数组中的值，将会以arr[1]的值为第一个元素int main() &#123;    int arr[] = &#123; 1,2,3 &#125;;    // 数组中第二个元素的指针    int* arr_1_pointer = &amp;arr[1];    // 将会输出 arr[1]的值 2    printf(&quot;value1 = %d\n&quot;, arr_1_pointer[0]);    // 将会输出 arr[2]的值 2    printf(&quot;value2 = %d\n&quot;, arr_1_pointer[1]);&#125;&ensp;&ensp;同理，如果取arr[2]的储存地址，用arr[2]的储存地址作为数组，调用数组中的值，将会以arr[2]的值作为第一个元素int main() &#123;    int arr[] = &#123; 1,2,3 &#125;;    // 数组中第三个元素的指针    int* arr_2_pointer = &amp;arr[2];    // 将会输出 arr[2]的值 3    printf(&quot;value1 = %d\n&quot;, arr_2_pointer[0]);&#125;
+
+数组元素间储存地址的关系
+
+&ensp;&ensp;数组第一个元素的储存地址+1后与数组第二个元素的储存地址完全一致，且两元素地址值之间相差刚好为一个int类型变量占用字节的大小。注意，指针+整数的方式只有在数组元素中才有意义int main() &#123;    int arr[] = &#123; 1,2,3 &#125;;    // 数组第一个元素的指针    int* ele_1_pointer = &amp;arr[0];    // 数组第二个元素的指针    int* ele_2_pointer = &amp;arr[1];    // 数组第一个元素指针的储存地址 +1    int* temp_pointer = ele_1_pointer + 1;    // 打印第一个元素指针 +1 后的地址    printf(&quot;temp_pointer = %p\n&quot;, temp_pointer);        // 打印数组第二个元素的指针    printf(&quot;ele_2_pointer = %p\n&quot;, ele_2_pointer);        return 0;&#125;
+&ensp;&ensp;两个指针可以相减，但是两个指针必须指向同一个数组中的元素，将会得到两个元素之间相差的元素的个数int main() &#123;    int arr[] = &#123; 1,2,3 &#125;;    // 数组第一个元素的指针    int* ele_1_pointer = &amp;arr[0];    // 数组第二个元素的指针    int* ele_2_pointer = &amp;arr[1];    // 数组第三个元素的指针    int* ele_3_pointer = &amp;arr[2];    // 第三个元素和第一个元素相差 2 ，将会输出2    int* minus_1 = ele_3_pointer - ele_1_pointer;    printf(&quot;minus_1 = %d\n&quot;, (int)minus_1);    // 第二个元素和第一个元素相差 1 ，将会输出1    int* minus_2 = ele_2_pointer - ele_1_pointer;    printf(&quot;minus_2 = %d\n&quot;, (int)minus_2);        return 0;&#125;
+指针的指针&ensp;&ensp;指针作为一个占用4字节内存的数据，它也有自己的指针，如下代码pointer_pointer指向指针pointer的地址int main() &#123;    int num = 100;    int* pointer = &amp;num;    printf(&quot;pointer = %p\n&quot;, pointer);    // 指针的指针    int** pointer_pointer = &amp;pointer;    printf(&quot;pointer_pointer = %p\n&quot;, pointer_pointer);        return 0;&#125;
+数组指针&ensp;&ensp;数组指针不同于指针数组，数组指针是指数组的指针，而指针数组则是指指针组成的数组
+// 指针数组：指针组成的数组int* p[3];
+// 数组指针：数组的指针int(*p)[3];
 ]]></content>
       <categories>
         <category>C/C++</category>
