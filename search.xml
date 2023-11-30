@@ -4640,7 +4640,7 @@ apktool.jar&ensp;&ensp;&ensp;&ensp;下载apktool工具(2.6.0)点击下载
 &ensp;&ensp;extern修饰外部变量或函数、引用外部变量或函数，extern修饰的变量或函数表示可以被外部调用，由于函数和变量默认可被外部调用，所以作为修饰关键字时extern是可有可无的，但是当引用外部变量或函数时，必须先使用extern声明extern void test(); // 引用外部函数extern int val1;    // 引用外部变量int main() &#123;    // 引用外部函数    test();    // 引用外部变量    printf(&quot;外部变量 = %d\n&quot;,val1);&#125;
 控制语句关键字if else for while do switch case break continue goto default
 &ensp;&ensp;goto直接跳转到目标标签所在的位置向下执行，如下代码将会输出125int main() &#123;    printf(&quot;1&quot;);    printf(&quot;2&quot;);    goto tmp;   // 将会跳转到tmp标签所在的位置向下执行    printf(&quot;3&quot;);    printf(&quot;4&quot;);    tmp:    // tmp标签    printf(&quot;5&quot;);    return 0;&#125;
-其他关键字&ensp;&ensp;sizeof用于测试变量数组占用储存空间的大小，返回值是unsigned int类型，单位是字节int a = 1;printf(&quot;size = %zu&quot;, sizeof(a));
+其他关键字&ensp;&ensp;sizeof，sizeof()函数用于获取括号中的表达式占用储存空间的大小，表达式在这里可以是变量、常量、数组、指针等，sizeof的返回值是size_t类型的无符号整数，单位是字节；size_t虽然在许多情况下被广泛使用，但并不是关键字，而是一个预定义的类型名，其占位符是%zuint a = 1;printf(&quot;size = %zu&quot;, sizeof(a));
 &ensp;&ensp;typedef用于给已有数据类型起别名，使用别名定义的变量与原数据类型定义的变量没有任何类型上的差异typedef int NEW_INT;        // 给int类型定义别名为NEW_INTNEW_INT val1 = 111;         // 使用别名定义变量printf(&quot;val1 = %d\n&quot;, val1);// 输出别名定义的变量typedef short int INT16;    // 给short int类型定义别名为INT16INT16 val2 = 10;            // 使用别名定义变量printf(&quot;val2 = %d\n&quot;, val2);// 输出别名定义的变量
 &ensp;&ensp;volatile修饰的变量每次使用时都去内存中取最新的值，而不是寄存器中的备份volatide int val1 = 11;
 类型转换自动转换&ensp;&ensp;字节数低的类型转字节数高的类型，会进行自动类型转换
@@ -4681,20 +4681,24 @@ apktool.jar&ensp;&ensp;&ensp;&ensp;下载apktool工具(2.6.0)点击下载
   <entry>
     <title>C语言数组</title>
     <url>/2022/11/21/C%E8%AF%AD%E8%A8%80%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[一维数组&ensp;&ensp;创建数组时如果未对数组进行初始化，系统会给每个元素分配默认值// 创建数组，不进行初始化int arr[10];
-&ensp;&ensp;创建数组并对数组部分初始化，未初始化的部分系统将会为其赋值为0// 创建数组，部分初始化int arr2[10] = &#123; 1,2 &#125;;// 将会输出 120printf(&quot;arr2 = %d%d%d\n&quot;, arr2[0],arr2[1],arr2[2]);
-&ensp;&ensp;创建数组并为每个元素初始化// 创建数组，全部初始化int arr3[10] = &#123; 1,2,3,4,5,6,7,8,9,0 &#125;;
-&ensp;&ensp;创建数组但不指定长度，数组的长度由初始化的元素个数决定// 创建数组，不指定数组长度int arr4[] = &#123; 1,2,3,4 &#125;;
-&ensp;&ensp;注意，使用大括号给数组赋值时，必须在数组声明时赋值，否则会报错，因为C语言规定数组变量一旦被声明，数组名指向的内存地址就不可更改；声明数组时如果不赋初始值，编译器会自动为数组分配内存地址，所以数组声明后无法再使用大括号给数组赋值int arr[3];arr = &#123;1,2,3&#125;;
-&ensp;&ensp;我说实话在这里边获取数组长度的方式是真他妈的操蛋，不能直接像java那样arr.length，只能通过计算占用储存空间大小的方式获取数组长度// 定义一个长度为3的数组int arr[3];// 数组占用的储存空间大小/元素占用的储存空间大小int arrLength = sizeof(arr) / sizeof(arr[0]);printf(&quot;数组arr长度 = %d&quot;, arrLength);
+    <content><![CDATA[一维数组&ensp;&ensp;注意：“初始化数组”和“给数组赋值”是不同的概念，初始化是在声明数组的同时为其分配内存并赋予初值，给数组赋值是在数组已经声明和分配内存的情况下为数组元素赋予新的值
+&ensp;&ensp;声明一个长度为10的数组，系统会给每个元素分配未定义的值（也称垃圾值），并为其分配连续的内存地址// 声明数组int arr[10];
+&ensp;&ensp;声明一个长度为10的数组，并对数组中的部分元素赋予初始值（简称初始化），未初始化的部分系统将会为其赋值为0// 声明数组，对部分元素初始化int arr2[10] = &#123; 1,2 &#125;;// 将会输出 120printf(&quot;arr2 = %d%d%d\n&quot;, arr2[0],arr2[1],arr2[2]);
+&ensp;&ensp;声明一个长度为10的数组，并对全部元素初始化// 声明数组，对全部元素初始化int arr3[10] = &#123; 1,2,3,4,5,6,7,8,9,0 &#125;;
+&ensp;&ensp;声明数组但不指定长度，数组的长度将由&#123;&#125;中初始值的个数决定// 声明数组，不指定数组长度int arr4[] = &#123; 1,2,3,4 &#125;;
+&ensp;&ensp;声明数组，并给指定的部分元素初始化// 只给第一个和第四个元素赋初始值int arr[5] = &#123;[0] = 1, [3] = 4&#125;;// 将会输出 10040printf(&quot;arr = %d%d%d%d%d\n&quot;, arr[0],arr[1],arr[2],arr[3],arr[4]);
+&ensp;&ensp;注意，使用大括号给数组赋初始值时，必须在数组声明时赋值，否则会报错，因为C语言规定数组变量一旦被声明，数组名指向的内存地址就不可更改；声明数组时如果不赋初始值，编译器会自动为数组分配内存地址，所以数组声明后无法再使用大括号给数组赋值// 声明数组int arr[3];// 数组已被声明，系统给每个元素分配垃圾值// 所以无法再使用&#123;&#125;对其进行初始化arr = &#123;1,2,3&#125;;
+&ensp;&ensp;在C语言中，数组名是一个指向数组首元素的指针常量，并不代表数组的所有元素的集合。如下代码中arr1是指向数组首元素的指针常量，并不等同于&#123;1,2,3,4,5&#125;，所以无法将arr1作为初始值赋值给数组arr2；且因为C语言中的数组变量无法直接被赋值，只能给数组中的元素赋值或初始化赋值，所以数组变量arr1也不能作为地址值赋值给数组变量arr2// 声明数组arr1，并对其赋初始值，正确int arr1[5] = &#123;1,2,3,4,5&#125;;// 给数组arr2赋值，错误int arr2[2] = arr1;
+&ensp;&ensp;我说实话在这里边获取数组长度的方式是真他妈的操蛋，不能直接像java那样arr.length，只能通过计算占用储存空间大小的方式获取数组长度// 定义一个长度为3的数组int arr[3];// 数组占用的储存空间大小/元素占用的储存空间大小int arrLength = sizeof(arr) / sizeof(int);printf(&quot;数组arr长度 = %d&quot;, arrLength);
 二维数组&ensp;&ensp;创建二维数组但未对数组进行初始化，系统会给每个元素分配默认值// 3行4列二维数组，未初始化int arr[3][4];
 &ensp;&ensp;创建二维数组并对数组部分初始化，未初始化的部分系统将会为其赋值为0// 3行4列二维数组，部分初始化int arr2[3][4] = &#123;    &#123;1,2,3&#125;,    &#123;1,2,3,4&#125;&#125;;// 将会输出0，因为第1行第4列的元素未进行初始化printf(&quot;arr = %d\n&quot;,arr2[0][3]);
 &ensp;&ensp;创建二维数组并对所有元素赋值，元素的个数不可以超过指定的个数// 3行4列二位数组，全部初始化int arr3[3][4] = &#123;    &#123;1,2,3,4&#125;,    &#123;5,6,7,8&#125;,    &#123;9,10,11,12&#125;&#125;;
 &ensp;&ensp;创建二维数组时可以不指定具体行数，行数将在二维数组创建时动态决定，但必须指定列数// 不指定行数，只指定列数int arr4[][4] = &#123;    &#123;1,2,3,4&#125;,    &#123;5,6,7,8&#125;&#125;;
 &ensp;&ensp;创建二维数组，并逐个对数组进行初始化，如下面9个元素，只对二维数组中[0][0]到[2][0]进行了初始化// 逐个对数组进行初始化int arr5[3][4] = &#123;    1,2,3,4,5,6,7,8,9&#125;;// 将会输出 9,0，因为[2][1]未进行初始化printf(&quot;arr5 = %d,%d&quot;, arr5[2][0], arr5[2][1]);
+&ensp;&ensp;创建二维数组，给指定部分元素初始化int arr[][4] = &#123;[0][1] = 1, [1][2] = 3&#125;;
 char数组&ensp;&ensp;char数组的最后一个元素如果为\0，该数组就构成了一个字符串，否则只能是字符数组，无法构成字符串char str[] = &#123; &#x27;t&#x27;,&#x27;e&#x27;,&#x27;s&#x27;,&#x27;t&#x27;,&#x27;\0&#x27; &#125;;// 将会输出 testprintf(&quot;字符串 = %s&quot;, str);
-&ensp;&ensp;如果直接给char数组赋值字符串，那么它的最后一位必定是\0// 储存长度为4的字符串，则char类型数组的长度至少为5，因为最后一位需要储存\0char str[] = &quot;test&quot;;// 将会输出 0，因为最后一个元素是 \0printf(&quot;str = %d\n&quot;, str[4]);// 将会输出空，因为 \0 代表空printf(&quot;str = %c\n&quot;, str[4]);
-&ensp;&ensp;\0会被计入数组占用的字节，但不会被计入字符串长度之内，其中strlen()是string.h下的函数char str[] = &quot;test&quot;;// 字符串占用的字节数为 5 ，因为最后一位是 \0printf(&quot;arr size = %d\n&quot;, sizeof str);// 字符串长度为 4 ，\0不计入其中printf(&quot;arr length = %d\n&quot;, strlen(str));
+&ensp;&ensp;如果直接给char数组赋值字符串，那么它的最后一位必定是\0// 储存长度为4的字符串，则char类型数组的长度至少为5，因为最后一位需要储存\0char str[] = &quot;test&quot;; // 等号右边这样写&#123;&quot;test&quot;&#125;也可以// 将会输出 0，因为最后一个元素是 \0printf(&quot;str = %d\n&quot;, str[4]);// 将会输出空，因为 \0 代表空printf(&quot;str = %c\n&quot;, str[4]);
+&ensp;&ensp;\0会被计入数组占用的字节，但不会被计入字符串长度之内，其中strlen()是string.h下的函数，用于计算字符串长度char str[] = &quot;test&quot;;// 字符串占用的字节数为 5 ，因为最后一位是 \0printf(&quot;arr size = %d\n&quot;, sizeof str);// 字符串长度为 4 ，\0不计入其中printf(&quot;arr length = %d\n&quot;, strlen(str));
 ]]></content>
       <categories>
         <category>C/C++</category>
@@ -14993,7 +14997,7 @@ static方法不能被重写，所以static方法无需再标记final
 
 指针概念&ensp;&ensp;在典型的32位系统中，虚拟内存空间总大小为4GB，因为4GB＝4,096MB＝4,194,304KB＝4,294,967,296byte，即虚拟内存空间共有4,294,967,296个字节；&ensp;&ensp;8位16进制从0x0000_0000到0xffff_ffff刚好4,294,967,296个数，每个数对应虚拟内存中的一个字节，将8位16进制中的每个数都作为虚拟内存的字节的内存地址；于是虚拟内存的内存地址范围从0x0000_0000到0xffff_ffff
 
-&ensp;&ensp;对于一个多字节的变量，例如一个占用4字节内存的int变量，假设其第一个字节储存在虚拟内存中的地址为0x7fc5_3001，那么其最后一个字节的地址就为0x7fc5_3004，它编号最小的内存地址0x7fc5_3001就是它的地址// int 占用4个字节// 如果第一个字节的内存地址是0x7fc5_3001// 那么变量num的内存地址就是0x7fc5_3001int num = 1;// 取num的指针，也就是内存地址int* pointer = &amp;num// 将会输出0x7fc5_3001printf(&quot;pointer = %p&quot;, pointer);
+&ensp;&ensp;对于一个多字节的变量，例如一个占用4字节内存的int变量，假设其第一个字节储存在虚拟内存中的地址为0x7fc5_3001，于是其最后一个字节的地址就为0x7fc5_3004，那么它编号最小的内存地址0x7fc5_3001就代表它本身的地址// int 占用4个字节// 假设第一个字节的内存地址是 0x7fc5_3001// 那么变量 num 的内存地址就是 0x7fc5_3001int num = 1;// 取 num 的指针，也就是内存地址int* pointer = &amp;num// 将会输出 0x7fc5_3001printf(&quot;pointer = %p&quot;, pointer);
 指针变量&ensp;&ensp;定义指针变量数据类型* 指针变量名;
 &ensp;&ensp;取变量所在的内存地址int num = 100;int* pointer = &amp;num;// 将会输出 num 的内存地址printf(&quot;pointer = %p&quot;,pointer);
 &ensp;&ensp;取指针变量所指向的内存地址储存的值int num1 = 100;int* pointer = &amp;num1;// 取指针变量所指向的内存地址储存的值int num2 = *pointer;// 将会输出 100 ，num1 = num2printf(&quot;pointer = %d&quot;,num2);
@@ -15001,14 +15005,12 @@ static方法不能被重写，所以static方法无需再标记final
 // 字符指针char ch = &#x27;A&#x27;;char* ch_pointer = &amp;ch;// 短整型指针short int sh = 10;short int* sh_pointer = &amp;sh;// 整形指针int in = 10;int* in_pointer = &amp;in;// 长整型指针long int lo = 10;long int* lo_pointer = &amp;lo;// 浮点型指针float fl = 10.0f;float* fl_pointer = &amp;fl;// 双浮点型指针double dou = 10.0;double* dou_pointer = &amp;dou;
 &ensp;&ensp;通用指针，可以储存任何变量类型的指针int num = 100;void* pointer = &amp;num;
 指针和数组的关系
-C语言规定数组的名字代表数组首元素的内存地址，因此数组名可以直接赋值给指针变量；同时也支持以&amp;的方式对数组名取首元素的内存地址。
+C语言规定数组的名字代表数组首元素的内存地址，因此数组名可以直接赋值给指针变量。
 
 &ensp;&ensp;注意区别：数组名只是一个地址，而指针是一个左值。
 
-左值是用来指明一个对象的表达式。最简单的左值就是变量名称。左值（lvalue）之所以称为“左”（以首字母为 L，代表 left），是因为一个左值表示一个对象，它可以出现在赋值运算符（assignment operator）的左边，例如“左表达式=右表达式”。
-其他表达式（那些表示一个值但不指明一个对象的），被类似地称为右值（rvalue）。右值是可以出现在赋值运算符右边而不是左边的表达式。例如，常量和算术表达式。
-从一个左值中必定可以解析出对应对象的地址，除非该对象是位字段（bit-field）或者被声明为寄存器存储类。生成左值的运算符包括下标运算符（subscript operator）[]和间接运算符（indirection operator）*。
-摘自稀土掘金文章
+左值（lvalue） 是指表达式结束后依然存在的持久化对象，通常是一个标识符（变量、数组元素、结构体成员等）。左值可以出现在赋值运算符的左边，表示一个可以被赋值的位置。在int x = 42;中，x是左值，因为它是一个标识符，可以出现在赋值运算符的左边
+右值（rvalue） 是指表达式结束后不再存在的临时对象，通常是一个常量、表达式的结果或临时计算得到的值。在int y = 10 + 5;中，10 + 5是右值，因为它是一个临时计算得到的值，不能被直接赋值。
 
 int main() &#123;    int arr[] = &#123; 1,2,3,4,5 &#125;;    // 将数组名直接赋值给指针变量    int* pointer_1 = arr;    // 取数组首元素的内存地址    int* pointer_2 = &amp;arr[0];    // 对数组名取内存地址，其结果仍是数组首元素的内存地址    int* pointer_3 = &amp;arr;    // 下面三个输出结果一样    printf(&quot;pointer_1 = %p\n&quot;, pointer_1);    printf(&quot;pointer_2 = %p\n&quot;, pointer_2);    printf(&quot;pointer_3 = %p\n&quot;, pointer_3);    return 0;&#125;
 

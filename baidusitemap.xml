@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.xxin.xyz/2022/11/21/C%E8%AF%AD%E8%A8%80%E6%95%B0%E7%BB%84/</loc>
+    <lastmod>2023-11-30</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2022/11/23/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/</loc>
+    <lastmod>2023-11-30</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2022/11/20/C%E8%AF%AD%E8%A8%80%E5%85%B3%E9%94%AE%E5%AD%97/</loc>
+    <lastmod>2023-11-30</lastmod>
+  </url>
+  <url>
     <loc>https://blog.xxin.xyz/2022/11/22/C%E8%AF%AD%E8%A8%80%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/</loc>
     <lastmod>2023-11-29</lastmod>
   </url>
@@ -9,24 +21,12 @@
     <lastmod>2023-11-29</lastmod>
   </url>
   <url>
-    <loc>https://blog.xxin.xyz/2022/11/23/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/</loc>
-    <lastmod>2023-11-28</lastmod>
-  </url>
-  <url>
     <loc>https://blog.xxin.xyz/2023/11/28/VMware%E5%AE%89%E8%A3%85Hackintosh/</loc>
     <lastmod>2023-11-28</lastmod>
   </url>
   <url>
     <loc>https://blog.xxin.xyz/2022/05/22/VM%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2023-11-28</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.xxin.xyz/2022/11/21/C%E8%AF%AD%E8%A8%80%E6%95%B0%E7%BB%84/</loc>
-    <lastmod>2023-11-27</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.xxin.xyz/2022/11/20/C%E8%AF%AD%E8%A8%80%E5%85%B3%E9%94%AE%E5%AD%97/</loc>
-    <lastmod>2023-11-27</lastmod>
   </url>
   <url>
     <loc>https://blog.xxin.xyz/2022/11/22/C%E8%AF%AD%E8%A8%80%E5%8F%98%E9%87%8F%E5%92%8C%E5%87%BD%E6%95%B0/</loc>
