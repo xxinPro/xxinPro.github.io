@@ -15005,27 +15005,39 @@ static方法不能被重写，所以static方法无需再标记final
 // 字符指针char ch = &#x27;A&#x27;;char* ch_pointer = &amp;ch;// 短整型指针short int sh = 10;short int* sh_pointer = &amp;sh;// 整形指针int in = 10;int* in_pointer = &amp;in;// 长整型指针long int lo = 10;long int* lo_pointer = &amp;lo;// 浮点型指针float fl = 10.0f;float* fl_pointer = &amp;fl;// 双浮点型指针double dou = 10.0;double* dou_pointer = &amp;dou;
 &ensp;&ensp;通用指针，可以储存任何变量类型的指针int num = 100;void* pointer = &amp;num;
 指针和数组的关系
-C语言规定数组的名字代表数组首元素的内存地址，因此数组名可以直接赋值给指针变量。
-
-&ensp;&ensp;注意区别：数组名只是一个地址，而指针是一个左值。
-
-左值（lvalue） 是指表达式结束后依然存在的持久化对象，通常是一个标识符（变量、数组元素、结构体成员等）。左值可以出现在赋值运算符的左边，表示一个可以被赋值的位置。在int x = 42;中，x是左值，因为它是一个标识符，可以出现在赋值运算符的左边
-右值（rvalue） 是指表达式结束后不再存在的临时对象，通常是一个常量、表达式的结果或临时计算得到的值。在int y = 10 + 5;中，10 + 5是右值，因为它是一个临时计算得到的值，不能被直接赋值。
+数组名代表数组首元素的内存地址，因此数组名可以直接赋值给指针变量，而实际上赋值时传递的是数组的地址
 
 int main() &#123;    int arr[] = &#123; 1,2,3,4,5 &#125;;    // 将数组名直接赋值给指针变量    int* pointer_1 = arr;    // 取数组首元素的内存地址    int* pointer_2 = &amp;arr[0];    // 对数组名取内存地址，其结果仍是数组首元素的内存地址    int* pointer_3 = &amp;arr;    // 下面三个输出结果一样    printf(&quot;pointer_1 = %p\n&quot;, pointer_1);    printf(&quot;pointer_2 = %p\n&quot;, pointer_2);    printf(&quot;pointer_3 = %p\n&quot;, pointer_3);    return 0;&#125;
 
-既知数组名代表数组首元素的内存地址，且数组名加下标的方式可以调用数组中的任一元素，那么数组首元素内存地址加下标的方式也能调用数组中的任一元素
+数组名只可作为不可变的左值，因为数组名表示数组的起始地址，而指针声明时是左值，但也可以作为右值
 
-int main() &#123;    int arr[] = &#123; 1,2,3,4,5 &#125;;    // 数组名代表了数组首元素的内存地址    int* pointer = arr;    // 使用数组首元素内存地址加下标的方式调用数组第二个元素    int num = pointer[1];    // 将会输出 2    printf(&quot;num = %d\n&quot;, num);        return 0;&#125;
-&ensp;&ensp;但是如果取第二个元素arr[1]的内存地址，并以arr[1]的内存地址加下标的方式调用数组中的元素，那么调用arr[1]将使用下标0，调用其他元素的下标均在原数组下标基础上-1int main() &#123;    int arr[] = &#123; 1,2,3,4,5 &#125;;    // 数组中第二个元素的内存地址    int* pointer = &amp;arr[1];    // 将会输出 arr[0] 的值 1    printf(&quot;value1 = %d\n&quot;, pointer[-1]);    // 将会输出 arr[1] 的值 2    printf(&quot;value2 = %d\n&quot;, pointer[0]);    // 将会输出 arr[2] 的值 3    printf(&quot;value3 = %d\n&quot;, pointer[1]);    return 0;&#125;
-&ensp;&ensp;同理，如果取第三个元素arr[2]的内存地址，用arr[2]的内存地址加下标的方式调用数组中的元素，那么调用arr[2]将使用下标0，调用其他元素的下标均在元素组下标基础上-2int main() &#123;    int arr[] = &#123; 1,2,3,4,5 &#125;;    // 数组中第三个元素的内存地址    int* pointer = &amp;arr[2];    // 将会输出 arr[1] 的值 2    printf(&quot;value1 = %d\n&quot;, pointer[-1]);    // 将会输出 arr[2] 的值 3    printf(&quot;value2 = %d\n&quot;, pointer[0]);    // 将会输出 arr[3] 的值 4    printf(&quot;value3 = %d\n&quot;, pointer[1]);        return 0;&#125;
 
-数组元素之间内存地址的关系
+左值（lvalue） 是指表达式结束后依然存在的持久化对象，通常是一个标识符（变量、数组元素、结构体成员等）。左值可以出现在赋值运算符的左边，表示一个可以被赋值的位置。在int x = 42;中，x是左值，因为它是一个标识符，可以出现在赋值运算符的左边，
+右值（rvalue） 是指表达式结束后不再存在的临时对象，通常是一个常量、表达式的结果或临时计算得到的值。在int y = 10 + 5;中，10 + 5是右值，因为它是一个临时计算得到的值，不能被直接赋值；
 
-&ensp;&ensp;数组首元素的内存地址+1可以得到数组第二个元素的内存，且两元素地址的值之间相差一个数组元素所占用字节的大小，例如int类型数组，那么两元素地址的值将相差4字节。注意，内存地址+整数的方式只有在数组元素中才有意义int main() &#123;    int arr[] = &#123; 1,2,3 &#125;;    // 数组第一个元素的指针    int* ele_1_pointer = &amp;arr[0];    // 数组第二个元素的指针    int* ele_2_pointer = &amp;arr[1];    // 数组第一个元素指针的内存地址 +1    int* temp_pointer = ele_1_pointer + 1;    // 打印第一个元素指针 +1 后的地址    printf(&quot;temp_pointer = %p\n&quot;, temp_pointer);    // 打印数组第二个元素的指针，与第一个元素指针 +1 后的地址相同    printf(&quot;ele_2_pointer = %p\n&quot;, ele_2_pointer);        return 0;&#125;
-&ensp;&ensp;同一数组两元素的两个指针可以相减，将会得到两个元素之间相差的元素的个数int main() &#123;    int arr[] = &#123; 1,2,3 &#125;;    // 数组第一个元素的指针    int* ele_1_pointer = &amp;arr[0];    // 数组第二个元素的指针    int* ele_2_pointer = &amp;arr[1];    // 数组第三个元素的指针    int* ele_3_pointer = &amp;arr[2];    // 第三个元素和第一个元素相差 2 ，将会输出2    int* minus_1 = ele_3_pointer - ele_1_pointer;    printf(&quot;minus_1 = %d\n&quot;, (int)minus_1);    // 第二个元素和第一个元素相差 1 ，将会输出1    int* minus_2 = ele_2_pointer - ele_1_pointer;    printf(&quot;minus_2 = %d\n&quot;, (int)minus_2);        return 0;&#125;
+int main() &#123;    int arr1[3] = &#123; 1,2,3 &#125;;    int num = 10;    int* pointer1 = &amp;num;    // 错误，因为数组名只可作为不可变的左值    arr1 = pointer1;    // 错误，因为数组无法接受直接赋予地址值，而arr1也不能作为初始值赋予arr2    int arr2[] = arr1;    // 指针可以作为左值，接受arr1传递的地址值    int* pointer2 = arr1;    // pointer2指针可以作为右值，对pointer1重新赋予地址值    pointer1 = pointer2;    return 0;&#125;
+
+数组名不能进行自增或自减运算，而指针变量可以
+
+&ensp;&ensp;数组首元素的指针自加可以移动到数组第二个元素，此时指针指向第二个元素，两元素地址十六进制值相差为一个数组元素的类型所占用字节的大小，例如int类型数组，那么两元素地址的十六进制值将相差4字节。注意，指针自加或+整数的方式只有在数组元素中才有意义
+int main() &#123;    int arr[] = &#123; 1,2,3,4,5,6,7,8 &#125;;    // 将数组名代表的数组首元素地址赋值给指针    int* pointer = arr;    // pointer此时指向数组的首元素地址，将会输出 1 及第一个元素的地址    printf(&quot;num = %d, pointer = %p\n&quot;, *pointer, pointer);    // 指针自加，即向下移动一个元素    pointer++;    // pointer此时指向数组第二个元素的地址，将会输出 2 及第二个元素的地址    printf(&quot;num = %d, pointer = %p\n&quot;, *pointer, pointer);    // 自加2，向下移动两个元素    pointer+=2;    // pointer此时指向数组第四个元素的地址，将会输出 4 及第四个元素的地址    printf(&quot;num = %d, pointer = %p\n&quot;, *pointer, pointer);    // 自减，向上移动一个元素    pointer--;    // pointer此时指向数组第三个元素的地址，将会输出 3 及第三个元素的地址    printf(&quot;num = %d, pointer = %p\n&quot;, *pointer, pointer);    return 0;&#125;
+&ensp;&ensp;同一数组两元素的两个指针可以相减，将会得到两个元素之间相差的元素的个数int main() &#123;    int arr[] = &#123; 1,2,3 &#125;;    // 数组第一个元素的指针    int* pointer1 = &amp;arr[0];    // 数组第二个元素的指针    int* pointer2 = &amp;arr[1];    // 数组第三个元素的指针    int* pointer3 = &amp;arr[2];    // 第三个元素和第一个元素下标相差 2 ，将会输出2    int minus_1 = (int)(pointer3 - pointer1);    printf(&quot;minus_1 = %d\n&quot;, minus_1);    // 第二个元素和第一个元素下标相差 1 ，将会输出1    int minus_2 = (int)(pointer2 - pointer1);    printf(&quot;minus_2 = %d\n&quot;, minus_2);        return 0;&#125;
+
+sizeof操作符对指针和数组名使用的结果不同，
+
+
+对数组名使用sizeof得到的是整个数组的大小，
+对指针变量使用sizeof得到的是指针本身的大小；
+
+int main() &#123;    // 数组中有 8 个 int 类型元素，因此数组的大小应该是 32 字节    int arr[] = &#123; 1,2,3,4,5,6,7,8 &#125;;    // 在32位系统 int 类型指针通常占用 4 字节的内存空间。    // 在64位系统 int 类型指针通常占用 8 字节的内存空间。    int* pointer = arr;    // 将会输出 32    printf(&quot;%zu\n&quot;, sizeof(arr));    // 在32位系统中输出 4 ，在64位系统中输出 8    printf(&quot;%zu\n&quot;, sizeof(pointer));    return 0;&#125;
+
+数组元素的指针加下标的方式也能调用数组中的元素
+
+int main() &#123;    int arr[] = &#123; 1,2,3,4,5 &#125;;    // 数组名代表了数组首元素的内存地址    // 将数组首元素的内存地址赋值给指针    int* pointer = arr;    // 使用指针加下标的方式调用数组第二个元素    int num = pointer[1];    // 将会输出 2    printf(&quot;num = %d\n&quot;, num);        return 0;&#125;
+&ensp;&ensp;如果取数组中第二个元素arr[1]的指针，并以arr[1]的指针加下标的方式调用数组中的元素，那么调用arr[1]将使用下标0，调用其他元素的下标均在原数组下标基础上-1int main() &#123;    int arr[] = &#123; 1,2,3,4,5 &#125;;    // 数组中第二个元素的内存地址    int* pointer = &amp;arr[1];    // 将会输出 arr[0] 的值 1    printf(&quot;value1 = %d\n&quot;, pointer[-1]);    // 将会输出 arr[1] 的值 2    printf(&quot;value2 = %d\n&quot;, pointer[0]);    // 将会输出 arr[2] 的值 3    printf(&quot;value3 = %d\n&quot;, pointer[1]);    return 0;&#125;
+&ensp;&ensp;同理，如果取第三个元素arr[2]的指针，用arr[2]的指针加下标的方式调用数组中的元素，那么调用arr[2]将使用下标0，调用其他元素的下标均在元素组下标基础上-2int main() &#123;    int arr[] = &#123; 1,2,3,4,5 &#125;;    // 数组中第三个元素的内存地址    int* pointer = &amp;arr[2];    // 将会输出 arr[1] 的值 2    printf(&quot;value1 = %d\n&quot;, pointer[-1]);    // 将会输出 arr[2] 的值 3    printf(&quot;value2 = %d\n&quot;, pointer[0]);    // 将会输出 arr[3] 的值 4    printf(&quot;value3 = %d\n&quot;, pointer[1]);        return 0;&#125;
 指针数组&ensp;&ensp;由指针组成的数组，其本质上还是一个数组int main() &#123;    // 指针数组    int* p[5];    int arr[5] = &#123; 1,2,3,4,5 &#125;;    // 循环将int类型数组中元素的地址值存进指针数组    for (size_t i = 0; i &lt; 5; i++) &#123;        p[i] = &amp;arr[i];    &#125;    // 输出指针数组中指针的地址值和地址中的值    for (size_t i = 0; i &lt; 5; i++) &#123;        printf(&quot;pointer = %p\n&quot;, p[i]);        printf(&quot;num = %d\n&quot;, *p[i]);    &#125;        return 0;&#125;
-指针的指针&ensp;&ensp;指针作为一个占用4字节内存的数据，它也有自己的指针，如下代码pointer_pointer指向指针pointer的地址int main() &#123;    int num = 100;    int* pointer = &amp;num;    printf(&quot;pointer = %p\n&quot;, pointer);    // 指针的指针    int** pointer_pointer = &amp;pointer;    printf(&quot;pointer_pointer = %p\n&quot;, pointer_pointer);        return 0;&#125;
+二级指针（多重指针）&ensp;&ensp;指针作为一个占用4字节内存的数据，它也有自己的内存地址，那么指针的内存地址也可以用另一个指针记录，如下代码pointer_pointer指向指针pointer的地址int main() &#123;    int num = 100;    int* pointer = &amp;num;    printf(&quot;pointer = %p\n&quot;, pointer);    // 指针的指针    int** pointer_pointer = &amp;pointer;    printf(&quot;pointer_pointer = %p\n&quot;, pointer_pointer);        return 0;&#125;
 数组指针&ensp;&ensp;数组指针不同于指针数组，指针数组是一个数组，其中的每个元素都是指针，数组指针是指向数组的指针，它指向的内存地址即是数组首元素的地址
 
 一维数组的指针
