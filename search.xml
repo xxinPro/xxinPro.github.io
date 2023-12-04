@@ -15038,10 +15038,12 @@ int main() &#123;    // 数组中有 8 个 int 类型元素，因此数组的大
 int main() &#123;    int arr[] = &#123; 1,2,3,4,5 &#125;;    // 数组名代表了数组首元素的内存地址    // 将数组首元素的内存地址赋值给指针    int* pointer = arr;    // 使用指针加下标的方式调用数组第二个元素    int num = pointer[1];    // 将会输出 2    printf(&quot;num = %d\n&quot;, num);        return 0;&#125;
 &ensp;&ensp;如果取数组中第二个元素arr[1]的指针，并以arr[1]的指针加下标的方式调用数组中的元素，那么调用arr[1]将使用下标0，调用其他元素的下标均在原数组下标基础上-1int main() &#123;    int arr[] = &#123; 1,2,3,4,5 &#125;;    // 数组中第二个元素的内存地址    int* pointer = &amp;arr[1];    // 将会输出 arr[0] 的值 1    printf(&quot;value1 = %d\n&quot;, pointer[-1]);    // 将会输出 arr[1] 的值 2    printf(&quot;value2 = %d\n&quot;, pointer[0]);    // 将会输出 arr[2] 的值 3    printf(&quot;value3 = %d\n&quot;, pointer[1]);    return 0;&#125;
 &ensp;&ensp;同理，如果取第三个元素arr[2]的指针，用arr[2]的指针加下标的方式调用数组中的元素，那么调用arr[2]将使用下标0，调用其他元素的下标均在元素组下标基础上-2int main() &#123;    int arr[] = &#123; 1,2,3,4,5 &#125;;    // 数组中第三个元素的内存地址    int* pointer = &amp;arr[2];    // 将会输出 arr[1] 的值 2    printf(&quot;value1 = %d\n&quot;, pointer[-1]);    // 将会输出 arr[2] 的值 3    printf(&quot;value2 = %d\n&quot;, pointer[0]);    // 将会输出 arr[3] 的值 4    printf(&quot;value3 = %d\n&quot;, pointer[1]);        return 0;&#125;
+&ensp;&ensp;其实我发现如果指针指向变量，也可以用像数组一样，取指针指向的变量的值int main() &#123;    int num = 10;    int* pointer = &amp;num;    // 将会输出 10    printf(&quot;pointer = %d\n&quot;, pointer[0]);    return 0;&#125;
 指针数组&ensp;&ensp;由指针组成的数组，其本质上还是一个数组int main() &#123;    // 指针数组    int* p[5];    int arr[5] = &#123; 1,2,3,4,5 &#125;;    // 循环将int类型数组中元素的地址值存进指针数组    for (size_t i = 0; i &lt; 5; i++) &#123;        p[i] = &amp;arr[i];    &#125;    // 输出指针数组中指针的地址值和地址中的值    for (size_t i = 0; i &lt; 5; i++) &#123;        printf(&quot;pointer = %p\n&quot;, p[i]);        printf(&quot;num = %d\n&quot;, *p[i]);    &#125;        return 0;&#125;
 二级指针（多重指针）&ensp;&ensp;指针作为一个占用4字节内存的数据，它也有自己的内存地址，那么指针的内存地址也可以用另一个指针记录，如下代码pointer_pointer指向指针pointer的地址int main() &#123;    int num = 100;    int* pointer = &amp;num;    printf(&quot;pointer = %p\n&quot;, pointer);    // 指针的指针    int** pointer_pointer = &amp;pointer;    printf(&quot;pointer_pointer = %p\n&quot;, pointer_pointer);        return 0;&#125;
 字符指针&ensp;&ensp;字符串有下面四种常见写法
 int main() &#123;    // char数组以 \0 结尾，构成字符串    char str1[] = &#123; &#x27;h&#x27;,&#x27;e&#x27;,&#x27;l&#x27;,&#x27;l&#x27;,&#x27;o&#x27;,&#x27;\0&#x27; &#125;;    // 直接在大括号中写字符串    char str2[] = &#123;&quot;hello&quot;&#125;;    // 去掉大括号    char str3[] = &quot;hello&quot;;    // 字符串直接赋值给指针，无法修改指定某个元素    char* str4 = &quot;hello&quot;;    // 将输出 4 个 hello    printf(&quot;str1=%s, str2=%s, str3=%s, str4=%s\n&quot;, str1, str2, str3, str4);    // 数组名代表的内存地址无法修改，但是可以修改元素值    str1[0] = &#x27;H&#x27;;    str2[0] = &#x27;H&#x27;;    str3[0] = &#x27;H&#x27;;    // 字符串直接赋值的指针，无法修改指定某个元素    // 但是可以修改指向的内存地址    str4 = &quot;Hello&quot;;    // 将输出 4 个 Hello    printf(&quot;str1=%s, str2=%s, str3=%s, str4=%s\n&quot;, str1, str2, str3, str4);    return 0;&#125;
+&ensp;&ensp;字符串指针即便转换成char数组，依然不能够修改指定的某个元素值int main() &#123;    char* str = &quot;hello&quot;;    // 将字符串指针作为参数传递给 test1    // test1 所接收的形参是 char 数组    test1(str);    return 0;&#125;void test1(char arr[]) &#123;    // 字符串指针即便转换成 char 数组    // 依然不能够修改指定的某个元素值    arr[0] = &#x27;H&#x27;;    printf(&quot;arr[0] = %c\n&quot;, arr[0]);&#125;
 &ensp;&ensp;给char类型的指针直接赋值字符串，相当于将一个char数组构成的字符串赋值给指针，不同的是这样的指针是可以修改指定元素值的
 int main() &#123;    // char数组以 \0 结尾，构成字符串    char str1[] = &#123; &#x27;h&#x27;,&#x27;e&#x27;,&#x27;l&#x27;,&#x27;l&#x27;,&#x27;o&#x27;,&#x27;\0&#x27; &#125;;    // char数组赋值给指针    // 相当于 char* str4 = &quot;hello&quot;    char* str4 = str1;    // 将输出两个 hello    printf(&quot;str1=%s, str2=%s\n&quot;, str1, str4);    // 需要注意的是，如果将char数组构成的字符串赋值给指针变量    // 是可以修改指定的元素值的    str4[0] = &#x27;H&#x27;;        // 将输出两个 Hello    printf(&quot;str1=%s, str2=%s\n&quot;, str1, str4);    return 0;&#125;
 数组指针&ensp;&ensp;数组指针不同于指针数组，指针数组是一个数组，其中的每个元素都是指针，数组指针是指向数组的指针，它指向数组的首元素地址
@@ -15147,6 +15149,95 @@ exit函数结束程序执行&ensp;&ensp;main函数结束时也会隐式调用exi
 &ensp;&ensp;exit属于stdlib.h库，用于结束函数的执行并向外部返回一个值，该返回值就是它的参数，通常使用两个常量EXIT_SUCCESS和EXIT_FAILURE作为参数，相当于0和1，分别代表正常结束和异常终止int main() &#123;    test1();    // test2不会被执行    test2();    return 0;&#125;void test1() &#123;    printf(&quot;hello\n&quot;);    // 将不会执行exit之后的代码    exit(EXIT_SUCCESS);&#125;void test2() &#123;    printf(&quot;hi\n&quot;);&#125;
 结束时调用方法&ensp;&ensp;在exit执行前执行atexit，函数，并传入一个函数指针，指针指向的函数将在exit结束前被调用int main() &#123;    test1();    test2();    return 0;&#125;void test1() &#123;    printf(&quot;hello\n&quot;);    // 结束前调用test3    atexit(test3);    exit(0);&#125;void test2() &#123;    printf(&quot;hi\n&quot;);&#125;void test3() &#123;    printf(&quot;bye&quot;);&#125;
 ]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+      <tags>
+        <tag>C/C++基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>可变参数</title>
+    <url>/2022/12/04/%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
+    <content><![CDATA[&ensp;&ensp;可变参数是指函数的参数数量是可变的，调用该函数时可以传入任意个实参；创建接收可变参数的函数时，第一个形参必须是int类型，代表接收到的实参的个数，第二个形参必须是...，代码如下/** * @param count 代表可变参数的个数 * @param ...   可变参数 */void func(int count, ...) &#123;&#125;
+&ensp;&ensp;使用可变参数，需要先引入stdarg.h头文件，可变参数有如下常用的变量类型和方法
+
+
+
+
+Variable
+Description
+
+
+
+
+va_list
+用于存储可变参数的信息，是一个指向可变参数列表的指针，可以按顺序获取参数的值；相当于可变参数的容器
+
+
+
+
+
+
+
+
+Function
+Description
+
+
+
+
+va_start(va_list, int)
+用于初始化va_list，使其指向可变参数列表的开始位置，该函数需要两个参数：可变参数容器，可变参数个数
+
+
+va_arg(va_list, type)
+用于获取va_list指向的当前参数的值，该函数需要两个参数：可变参数的容器，可变参数的变量类型；该函数有返回值，返回值的类型由传入的可变参数的变量类型决定；每调用一次，va_list的指针移动到下一个参数
+
+
+va_end(va_list)
+用于清理va_list，确保在函数退出时没有未处理的参数
+
+
+va_copy(va_list dest, va_list src)
+该函数接受两个参数，dest是要复制到的va_list，src是要复制的源va_list。调用va_copy后，dest将指向与src相同的参数列表，并且可以独立地访问和处理这个复制后的参数列表
+
+
+
+
+&ensp;&ensp;具体使用时，先申明一个va_list变量，用于存储可变参数的信息void func(int count, ...) &#123;    // 用于储存可变参数的信息    va_list vaList;&#125;
+&ensp;&ensp;初始化va_list，传入va_list和代表可变参数个数的变量void func(int count, ...) &#123;    // 用于储存可变参数的信息    va_list vaList;    // 初始化 va_list    va_start(vaList, count);&#125;
+&ensp;&ensp;取可变参数的值，va_arg每调用一次，va_list便指向下一个参数，这里使用for将每个参数取数并输出void func(int count, ...) &#123;    // 用于储存可变参数的信息    va_list vaList;    // 初始化 va_list    va_start(vaList, count);    for (int i = 0; i &lt; count; ++i) &#123;        // 取参数        int num = va_arg(vaList, int);        // 输出参数        printf(&quot;num = %d\n&quot;, num);    &#125;&#125;
+&ensp;&ensp;清理va_list，确保在函数退出时没有未处理的参数void func(int count, ...) &#123;    // 用于储存可变参数的信息    va_list vaList;    // 初始化 va_list    va_start(vaList, count);    for (int i = 0; i &lt; count; ++i) &#123;        // 取参数        int num = va_arg(vaList, int);        // 输出参数        printf(&quot;num = %d\n&quot;, num);    &#125;    // 清理 va_list    va_end(vaList);&#125;
+&ensp;&ensp;调用func// 调用 func ，并传入相应参数func(5,1,2,3,4,5);// 将输出// num = 1// num = 2// num = 3// num = 4// num = 5
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+      <tags>
+        <tag>C/C++基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>函数指针</title>
+    <url>/2022/12/04/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[函数的指针&ensp;&ensp;函数指针的声明方式函数返回值类型(*指针变量名)(函数形参);
+&ensp;&ensp;函数指针的声明及调用，如下代码将会输出num1 + num2 = 3int main() &#123;    // 声明函数指针    void(*pointer)(int,int);    // 取函数储存地址，赋值给函数指针    pointer = &amp;plus;    // 调用指针指向的函数    (*pointer)(1,2);    return 0;&#125;void plus(int num1, int num2) &#123;    printf(&quot;num1 + num2 = %d\n&quot;, num1+num2);&#125;
+&ensp;&ensp;函数指针可以被重新赋值，但是需要注意函数的形参，如下代码将会输出num1 - num2 = -1int main() &#123;    // 声明函数指针    void(*pointer)(int,int);    // 取函数储存地址，赋值给函数指针    pointer = &amp;plus;    // 重新对函数指针赋值，    // sub函数与plus函数形参是一样的    pointer = &amp;sub;    // 调用指针指向的函数    (*pointer)(1,2);    return 0;&#125;void plus(int num1, int num2) &#123;    printf(&quot;num1 + num2 = %d\n&quot;, num1+num2);&#125;void sub(int num1, int num2) &#123;    printf(&quot;num1 - num2 = %d\n&quot;, num1-num2);&#125;
+&ensp;&ensp;C语言规定，函数名本身就是指向函数的指针，因此不添加取地址符号&amp;也可取函数指针，如下int main() &#123;    // 取函数 test1 的地址值，赋值给函数指针    int(*pointer)(int) = test1;    // 调用 test1 函数    int result =  (*pointer)(10);    // 输出返回值    printf(&quot;result = %d\n&quot;, result);    return 0;&#125;int test1(int num) &#123;    return num * num;&#125;
+回调函数&ensp;&ensp;跟java里的回调方法不一样，所谓回调就是把函数指针作为实参传递给被调函数，在被调函数中调用形参中的函数指针main() &#123;    // 将函数指针作为可变参数传入 test    test(2, plus, sub);    return 0;&#125;/** * @param count 参数个数 * @param ...   可变参数 */void test(int count, ...) &#123;    // 存储可变参数    va_list vaList;    // 初始化 va_list    va_start(vaList, count);    // 从参数列表中取两个函数指针    int(*plus_pointer)(int,int) = va_arg(vaList, int(*)(int,int));    int(*sub_pointer)(int,int) = va_arg(vaList, int(*)(int,int));    // 调用函数指针    int plus_result = (*plus_pointer)(1,2);    int sub_result = (*sub_pointer)(1,2);    // 清理 va_list    printf(&quot;plus_result = %d\n&quot;, plus_result);    printf(&quot;sub_result = %d\n&quot;, sub_result);    va_end(vaList);&#125;int plus(int num1, int num2) &#123;    return num1 + num2;&#125;int sub(int num1, int num2) &#123;    return num1 - num2;&#125;
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+      <tags>
+        <tag>C/C++基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>储存类别</title>
+    <url>/2022/12/04/%E5%82%A8%E5%AD%98%E7%B1%BB%E5%88%AB/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>C/C++</category>
       </categories>
