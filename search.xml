@@ -4638,10 +4638,10 @@ apktool.jar&ensp;&ensp;&ensp;&ensp;下载apktool工具(2.6.0)点击下载
 储存类型关键字&ensp;&ensp;register修饰的变量称为寄存器变量，系统会尽量（不一定）将其储存空间存放在寄存器中，当变量中的数据被成功存放在寄存器中之后，就没有了内存地址，CPU取寄存器中的数据会快于内存中的数据，但register不能修饰数组，只能修饰字符型、短整形、整形及长整型变量// register声明寄存器变量register int val1 = 100;
 &ensp;&ensp;static可以修饰全局变量、局部变量以及函数// static修饰静态变量static int val2 = 100;
 &ensp;&ensp;const修饰的变量称为常量，常量值一旦被定义就无法修改，相当于java中的final// const修饰常量const int val3 = 100;
-&ensp;&ensp;auto可有可无了，修饰和不修饰一样// 没什么用，加和不加一样auto int val4 = 200;
-&ensp;&ensp;extern修饰外部变量或函数、引用外部变量或函数，extern修饰的变量或函数表示可以被外部调用，由于函数和变量默认可被外部调用，所以作为修饰关键字时extern是可有可无的，但是当引用外部变量或函数时，必须先使用extern声明extern void test(); // 引用外部函数extern int val1;    // 引用外部变量int main() &#123;    // 引用外部函数    test();    // 引用外部变量    printf(&quot;外部变量 = %d\n&quot;,val1);&#125;
+&ensp;&ensp;auto用于声明自动变量，自动变量通常是局部变量（函数的形参也视为局部变量），局部变量在不加任何修饰的情况下默认就是自动变量。所以auto可有可无了，修饰和不修饰一样// 没什么用，加和不加一样auto int val4 = 200;
+&ensp;&ensp;extern修饰外部变量或函数、引用外部变量或函数，extern修饰的变量或函数表示可以被外部调用，由于函数和变量默认可被外部调用，所以作为修饰关键字时extern是可以不添加的，但是当引用外部变量或函数时，必须使用extern对其声明extern void test(); // 引用外部函数extern int val1;    // 引用外部变量int main() &#123;    // 引用外部函数    test();    // 引用外部变量    printf(&quot;外部变量 = %d\n&quot;,val1);&#125;
 控制语句关键字if else for while do switch case break continue goto default
-&ensp;&ensp;goto直接跳转到目标标签所在的位置向下执行，如下代码将会输出125int main() &#123;    printf(&quot;1&quot;);    printf(&quot;2&quot;);    goto tmp;   // 将会跳转到tmp标签所在的位置向下执行    printf(&quot;3&quot;);    printf(&quot;4&quot;);    tmp:    // tmp标签    printf(&quot;5&quot;);    return 0;&#125;
+&ensp;&ensp;其中goto直接跳转到目标标签所在的位置向下执行，如下代码将会输出125；其它的不说了。int main() &#123;    printf(&quot;1&quot;);    printf(&quot;2&quot;);    goto tmp;   // 将会跳转到tmp标签所在的位置向下执行    printf(&quot;3&quot;);    printf(&quot;4&quot;);    tmp:    // tmp标签    printf(&quot;5&quot;);    return 0;&#125;
 其他关键字&ensp;&ensp;sizeof，sizeof()函数用于获取括号中的表达式占用储存空间的大小，表达式在这里可以是变量、常量、数组、指针等，sizeof的返回值是size_t类型的无符号整数，单位是字节；size_t虽然在许多情况下被广泛使用，但并不是关键字，而是一个预定义的类型名，其占位符是%zu或%zdint a = 1;printf(&quot;size = %zu&quot;, sizeof(a));
 &ensp;&ensp;typedef用于给已有数据类型起别名，使用别名定义的变量与原数据类型定义的变量没有任何类型上的差异typedef int NEW_INT;        // 给int类型定义别名为NEW_INTNEW_INT val1 = 111;         // 使用别名定义变量printf(&quot;val1 = %d\n&quot;, val1);// 输出别名定义的变量typedef short int INT16;    // 给short int类型定义别名为INT16INT16 val2 = 10;            // 使用别名定义变量printf(&quot;val2 = %d\n&quot;, val2);// 输出别名定义的变量
 &ensp;&ensp;volatile修饰的变量每次使用时都去内存中取最新的值，而不是寄存器中的备份volatide int val1 = 11;
@@ -4684,12 +4684,12 @@ apktool.jar&ensp;&ensp;&ensp;&ensp;下载apktool工具(2.6.0)点击下载
     <title>C语言数组</title>
     <url>/2022/11/21/C%E8%AF%AD%E8%A8%80%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[一维数组&ensp;&ensp;注意：“初始化数组”和“给数组赋值”是不同的概念，初始化是在声明数组的同时为其分配内存并赋予初值，给数组赋值是在数组已经声明和分配内存的情况下为数组元素赋予新的值
-&ensp;&ensp;声明一个长度为10的数组，系统会给每个元素分配未定义的值（也称垃圾值），并为其分配连续的内存地址// 声明数组int arr[10];
+&ensp;&ensp;声明一个长度为10的数组，系统会给每个元素分配未初始化值（未初始化的值是不确定的），并为其分配连续的内存地址// 声明数组int arr[10];
 &ensp;&ensp;声明一个长度为10的数组，并对数组中的部分元素赋予初始值（简称初始化），未初始化的部分系统将会为其赋值为0// 声明数组，对部分元素初始化int arr2[10] = &#123; 1,2 &#125;;// 将会输出 120printf(&quot;arr2 = %d%d%d\n&quot;, arr2[0],arr2[1],arr2[2]);
 &ensp;&ensp;声明一个长度为10的数组，并对全部元素初始化// 声明数组，对全部元素初始化int arr3[10] = &#123; 1,2,3,4,5,6,7,8,9,0 &#125;;
 &ensp;&ensp;声明数组但不指定长度，数组的长度将由&#123;&#125;中初始值的个数决定// 声明数组，不指定数组长度int arr4[] = &#123; 1,2,3,4 &#125;;
 &ensp;&ensp;声明数组，并给指定的部分元素初始化// 只给第一个和第四个元素赋初始值int arr[5] = &#123;[0] = 1, [3] = 4&#125;;// 将会输出 10040printf(&quot;arr = %d%d%d%d%d\n&quot;, arr[0],arr[1],arr[2],arr[3],arr[4]);
-&ensp;&ensp;注意，使用大括号给数组赋初始值时，必须在数组声明时赋值，否则会报错，因为C语言规定数组变量一旦被声明，数组名指向的内存地址就不可更改；声明数组时如果不赋初始值，编译器会自动为数组分配内存地址，所以数组声明后无法再使用大括号给数组赋值// 声明数组int arr[3];// 数组已被声明，系统给每个元素分配垃圾值// 所以无法再使用&#123;&#125;对其进行初始化arr = &#123;1,2,3&#125;;
+&ensp;&ensp;注意，使用大括号给数组赋初始值时，必须在数组声明时赋值，否则会报错，因为C语言规定数组变量一旦被声明，数组名指向的内存地址就不可更改；声明数组时如果不赋初始值，编译器会自动为数组每个元素赋未初始化值，并分配连续的内存地址，所以数组声明后无法再使用大括号给数组赋值// 声明数组int arr[3];// 数组被声明却未初始化// 系统给每个元素赋未初始化值并分配内存地址// 所以无法再使用&#123;&#125;对其进行初始化arr = &#123;1,2,3&#125;;
 &ensp;&ensp;在C语言中，数组名是一个指向数组首元素的指针常量，并不代表数组的所有元素的集合。如下代码中arr1是指向数组首元素的指针常量，并不等同于&#123;1,2,3,4,5&#125;，所以无法将arr1作为初始值赋值给数组arr2；且因为C语言中的数组变量无法直接被赋值，只能给数组中的元素赋值或初始化赋值，所以数组变量arr1也不能作为地址值赋值给数组变量arr2// 声明数组arr1，并对其赋初始值，正确int arr1[5] = &#123;1,2,3,4,5&#125;;// 给数组arr2赋值，错误int arr2[2] = arr1;
 &ensp;&ensp;我说实话在这里边获取数组长度的方式是真他妈的操蛋，不能直接像java那样arr.length，只能通过计算占用储存空间大小的方式获取数组长度// 定义一个长度为3的数组int arr[3];// 数组占用的储存空间大小/元素占用的储存空间大小int arrLength = sizeof(arr) / sizeof(int);printf(&quot;数组arr长度 = %d&quot;, arrLength);
 二维数组&ensp;&ensp;创建二维数组但未对数组进行初始化，系统会给每个元素分配默认值// 3行4列二维数组，未初始化int arr[3][4];
@@ -15237,7 +15237,38 @@ va_copy(va_list dest, va_list src)
   <entry>
     <title>储存类别</title>
     <url>/2022/12/04/%E5%82%A8%E5%AD%98%E7%B1%BB%E5%88%AB/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[自动储存区&ensp;&ensp;自动储存区中只储存自动变量，自动变量通常是局部变量，函数的形参也视为局部变量；auto用于修饰自动变量，局部变量在不加任何修饰的情况下默认就是自动变量（形参无法被修饰），所以没有任何修饰的局部变量默认就是自动变量，和函数形参一起储存在自动储存区
+&ensp;&ensp;自动存储区中的变量在它的作用域（函数或者代码块）被执行时创建、分配内存，在创建时如果没有初始化，变量的值将是未定义的，自动存储区中的变量只在作用域内可见和可用，作用域结束时销毁
+&ensp;&ensp;如下代码中，test函数的形参num和函数中的num2都储存在自动储存区，函数test就是它们的作用域，当作用域结束时，num和num2都被销毁int main() &#123;    // 这里 num2 已经被销毁，目前 num2_pointer 是空指针    int* num2_pointer = test(10);    // num2_pointer 此时为空指针，将会进入 if    if (num2_pointer == NULL) &#123;        printf(&quot;num2已被销毁&quot;);    &#125; else &#123;        printf(&quot;num2 = %d\n&quot;, *num2_pointer);    &#125;        return 0;&#125;int* test(int num) &#123;    printf(&quot;num = %d\n&quot;, num);    // num2 在 test 函数运行结束后会被销毁    int num2 = 10;    // num2 被销毁后它的指针就成了空指针    return (&amp;num2);&#125;
+静态储存区&ensp;&ensp;静态储存区中存放所有全局变量、静态变量（局部静态变量和全局静态变量）及const修饰的常量（普通常量和静态常量）；静态储存区中的数据在程序启动时就被分配空间，并在程序结束时才被释放，静态存储区的数据是在程序运行期间一直存在的，与函数的调用和返回无关
+&ensp;&ensp;静态局部变量的空间分配和赋初始值是在程序第一次进入声明这个变量的函数时，所以后续调用函数时不再为其分配空间和赋初始值。静态局部变量的生命周期贯穿整个程序运行期间，而不是只在函数调用时存在。
+&ensp;&ensp;如下代码说明了static修饰的静态局部变量不会在函数执行结束后被销毁，并且说明了只有程序第一次进入声明这个静态局部变量的函数时才会为其分配空间和赋初始值int main() &#123;    // 第一次调用 test 函数    int* num_pointer = test();    // 将会输出 11，说明 num_pointer 不是空指针，函数中的 num 变量没有被销毁    printf(&quot;num = %d\n&quot;, *num_pointer);    // 第二次调用 test 函数    num_pointer = test();    // 将会输出 12，num 不会再被分配空间和赋初始值，只执行了自加    printf(&quot;num = %d\n&quot;, *num_pointer);    return 0;&#125;int* test() &#123;    // 只在第一次进入 test 函数时为 num 分配空间，赋初始值    static int num = 10;    // 自加    num++;    // 将 num 的内存地址 return 出去    // test 执行完毕后如果 num 被销毁，那么内存地址将会为空    return (&amp;num);&#125;
+动态储存区&ensp;&ensp;在C语言中，动态存储区主要负责存储程序运行时动态分配的内存，这部分内存的生命周期不是由编译器决定的，而是由程序员在运行时显式地管理。动态存储区包括堆（heap）和栈（stack）两个部分
+&ensp;&ensp;堆（Heap）：堆是用于存储动态分配的内存的区域。在堆上分配的内存需要手动释放，否则可能导致内存泄漏。C语言中，通过malloc、calloc、realloc等函数来在堆上分配内存，通过free函数来释放堆上的内存&ensp;&ensp;栈（Stack）：栈是用于存储函数参数和局部变量的内存的区域。栈上的内存由系统自动管理，它在函数调用时被分配，函数结束时自动释放。栈上的内存生命周期短暂，通常与函数的执行周期相关
+int main() &#123;    // 在堆上分配一个包含5个整数的数组    int *arr = (int *)malloc(5 * sizeof(int));    // 释放在堆上分配的内存    free(arr);    return 0;&#125;
+寄存器储存区&ensp;&ensp;寄存器储存区用于指示编译器将变量存储在寄存器中，而不是存储在内存中。寄存器是CPU内部的高速存储器，访问速度比内存快。需要注意的是虽然C语言提供了register关键字，允许程序员建议编译器将某个变量存储在寄存器中，但实际上编译器并不一定会遵循这个建议。
+&ensp;&ensp;寄存器储存区主要用于频繁访问的变量，以提高程序的执行速度。由于寄存器数量有限，不是所有变量都能存储在寄存器中。编译器会根据程序的需求和架构的特性来决定是否将变量存储在寄存器中。寄存器储存区中的变量用于临时存储，程序员不能直接对寄存器进行地址操作，因为寄存器没有地址。
+&ensp;&ensp;随着编译器优化的发展，现代编译器能够自动分配寄存器
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+      <tags>
+        <tag>C/C++基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>结构体与共用体</title>
+    <url>/2022/12/05/%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E5%85%B1%E7%94%A8%E4%BD%93/</url>
+    <content><![CDATA[结构体格式&ensp;&ensp;结构体其实跟java类长得有点像，使用结构体也可以声明变量struct 结构体名 &#123;    数据类型 变量名;    ...    数据类型 变量名;&#125;;// 使用结构体声明变量struct 结构体名 变量名;
+&ensp;&ensp;如下代码创建了一个Person结构体，并且在main函数中使用该结构体声明了变量，用结构体声明变量与数组变量有相似之处，即声明结构体变量时如果不赋初始值，编译器会给结构体中的成员分配未初始化值（未初始化的值是不确定的）struct Person&#123;    int age;    int height;    char* name;    char* hobby[];&#125;;int main() &#123;    // 使用结构体定义变量    struct Person person;    // hobby数组已被声明，且声明时未赋予初始值    // 所以无法再对hobby数组赋值，此处语法错误    person.hobby = &#123;1,2,3&#125;;    // 未经过初始化的结构体中的变量 age，目前属于未初始化值    printf(&quot;age = %d\n&quot;, person.age);    // 为 age 变量赋值，该变量此前未经过初始化    person.age = 22;    // 重新赋值过后的 age    printf(&quot;age = %d\n&quot;, person.age);    return 0;&#125;
+&ensp;&ensp;用结构体声明变量并对结构体变量全体成员进行初始化，也和数组初始化很像；需要注意的是，结构体中的成员不能包含可变长度的数组，即结构体中的数组必须固定长度；另外注意，指针变量的未初始化值是一个未知的内存地址（也可能是一个特定的内存地址），所以最好显式的将它初始化为NULLstruct Person&#123;    int age;    int height;    char* name;    // 结构体中的数组必须固定长度    char* hobbies[2];&#125;;int main() &#123;    // 使用结构体定义变量，并对全体成员进行初始化    struct Person person = &#123;25, 180, &quot;John&quot;, &#123;&quot;Reading&quot;, &quot;Gardening&quot;&#125;&#125;;    // 访问结构体成员并输出    printf(&quot;Age: %d\n&quot;, person.age);    printf(&quot;Height: %d\n&quot;, person.height);    printf(&quot;Name: %s\n&quot;, person.name);    printf(&quot;Hobbies: %s, %s\n&quot;, person.hobbies[0], person.hobbies[1]);    return 0;&#125;
+&ensp;&ensp;用结构体声明变量并对结构体变量部分成员进行初始化，未被初始化的部分系统将会为其赋默认值struct Person&#123;    int age;    int height;    char* name;    // 结构体中的数组必须固定长度    char* hobbies[2];&#125;;int main() &#123;    // 使用结构体定义变量，并对部分成员进行初始化    struct Person person = &#123;25, 180, &quot;John&quot;&#125;;    // 访问结构体成员并输出    printf(&quot;Age: %d\n&quot;, person.age);    printf(&quot;Height: %d\n&quot;, person.height);    printf(&quot;Name: %s\n&quot;, person.name);    // 将会输出 null ，因为数组未被初始化    printf(&quot;Hobbies: %s, %s\n&quot;, person.hobbies[0], person.hobbies[1]);    return 0;&#125;
+&ensp;&ensp;当然也可以对指定的部分成员进行初始化，初始化先后顺序不受结构体中先后顺序的影响，未被初始化的部分系统将会为其赋默认值struct Person&#123;    int age;    int height;    char* name;    // 结构体中的数组必须固定长度    char* hobbies[2];&#125;;int main() &#123;    // 使用结构体定义变量，并对指定成员进行初始化    struct Person person = &#123;.age = 25, .name = &quot;John&quot;, .hobbies = &#123;&quot;Reading&quot;, &quot;Gardening&quot;&#125;&#125;;    // 访问结构体成员并输出    printf(&quot;Age: %d\n&quot;, person.age);    // 将会输出 0 ，因为 height 未被初始化    printf(&quot;Height: %d\n&quot;, person.height);        printf(&quot;Name: %s\n&quot;, person.name);    printf(&quot;Hobbies: %s, %s\n&quot;, person.hobbies[0], person.hobbies[1]);    return 0;&#125;
+&ensp;&ensp;声明结构体的同时用结构体声明变量，在之后的使用过程中对结构体变量中的成员重新赋值struct Person&#123;    int age;    int height;    char* name;    char* hobbies[2];&#125; person1, person2; // 声明结构体，同时用结构体声明变量int main() &#123;    // 给结构体变量中的成员重新赋值    person1.age = 20;    person2.age = 30;    return 0;&#125;
+&ensp;&ensp;声明结构体的同时用结构体声明变量，同时对结构体变量赋初始值struct Person&#123;    int age;    int height;    char* name;    char* hobbies[2];&#125;person1 = &#123;20, 180, &quot;John&quot;, &#123;&quot;Reading&quot;, &quot;Gardening&quot;&#125;&#125;,person2 = &#123;30, 170, &quot;Jack&quot;, &#123;&quot;Reading&quot;, &quot;Gardening&quot;&#125;&#125;;int main() &#123;    printf(&quot;person1 Age: %d\n&quot;, person1.age);    printf(&quot;person1 Height: %d\n&quot;, person1.height);    printf(&quot;person1 Name: %s\n&quot;, person1.name);    printf(&quot;person1 Hobbies: %s, %s\n&quot;, person1.hobbies[0], person1.hobbies[1]);    printf(&quot;person2 Age: %d\n&quot;, person2.age);    printf(&quot;person2 Height: %d\n&quot;, person2.height);    printf(&quot;person2 Name: %s\n&quot;, person2.name);    printf(&quot;person2 Hobbies: %s, %s\n&quot;, person2.hobbies[0], person2.hobbies[1]);    return 0;&#125;
+&ensp;&ensp;给结构体起别名，简化结构体变量的声明写法// 给结构体起别名 P，在下文中直接使用 P 定义结构体变量typedef struct Person&#123;    int age;    int height;    char* name;    char* hobbies[2];&#125; P;int main() &#123;    // 用结构体的别名定义结构体变量    P person = &#123;20, 180, &quot;John&quot;, &#123;&quot;Reading&quot;, &quot;Gardening&quot;&#125;&#125;;    printf(&quot;person Age: %d\n&quot;, person.age);    printf(&quot;person Height: %d\n&quot;, person.height);    printf(&quot;person Name: %s\n&quot;, person.name);    printf(&quot;person Hobbies: %s, %s\n&quot;, person.hobbies[0], person.hobbies[1]);    return 0;&#125;
+]]></content>
       <categories>
         <category>C/C++</category>
       </categories>
