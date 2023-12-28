@@ -14697,7 +14697,18 @@ for (int i = 1; i &lt; n; i = i*2) &#123;    printf(&quot;i = %d\n&quot;, i);  /
 
 
 那么当$n=8$时，$\log_2 8 + 1 = 4$，printf所在行的执行频度$f(n) \lt 4$，得到$f(n) = 3$；而当$n=9$时，$\log_2 9 + 1 \gt 4$，printf所在行的执行频度$f(n) \lt \log_2 9 + 1$，得到$f(n) = 4$&ensp;&ensp;由上可知代码中的语句频度$f(n) = \log_2 n + 2 + \log_2 n + 1$，所以时间复杂度$T(n) = O(\log_2 n)$
-空间复杂度]]></content>
+
+&ensp;&ensp;须知：
+$ $
+\begin{array} {c}
+O(1) \lt O(\log_2 n) \lt O(n) \lt O(n\log_2n) \lt O(n^2) \lt O(n^3) \lt O(2^n) \lt O(n!)
+\end{array}
+$ $
+
+
+空间复杂度&ensp;&ensp;空间复杂度作为算法所需储存空间的量度，它也是问题规模n的函数，记作$S(n) = O(f(n))$&ensp;&ensp;空间复杂度只需要分析算法在实现时所需要的辅助空间，若算法执行时所需要的辅助空间相对于输入数据量而言是个常数，则称这个算法为原地工作，辅助空间为$O(1)$&ensp;&ensp;如下两种数组逆序算法，第一种算法的空间复杂度为$O(1)$，因为它只借助了一个变量t，与问题规模n大小无关；for (int i = 0; i &lt; len/2; i++) &#123;    int t = arr[i];    arr[i] = arr[len - i - 1];    arr[len - i - 1] = t;&#125;
+第二种算法空间复杂度为$O(n)$，因为额外借助了一个与原数组等长的辅助数组int temp[len];for (int i = 0; i &lt; len; i++) &#123;    temp[len - i - 1] = arr[i];&#125;for (int i = 0; i &lt; len; i++) &#123;    arr[i] = temp[i];&#125;
+]]></content>
       <categories>
         <category>数据结构</category>
       </categories>
