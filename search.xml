@@ -15529,4 +15529,21 @@ static方法不能被重写，所以static方法无需再标记final
         <category>随笔一记</category>
       </categories>
   </entry>
+  <entry>
+    <title>fragment监听返回键</title>
+    <url>/2024/01/17/fragment%E7%9B%91%E5%90%AC%E8%BF%94%E5%9B%9E%E9%94%AE/</url>
+    <content><![CDATA[setOnKeyListener&ensp;&ensp;通过给fragment的根view添加按键按下监听，此方法接收的按键监听用法类似于Activity中的onKeyDown(int, KeyEvent)
+// 设置view在触摸模式下可获得焦点，从而能够接收按键事件view.setFocusableInTouchMode(true);// 请求将焦点移动到viewview.requestFocus();// 设置按键事件监听view.setOnKeyListener(new View.OnKeyListener() &#123;    @Override    public boolean onKey(View v, int keyCode, KeyEvent event) &#123;        // ...        return false;    &#125;&#125;);
+&ensp;&ensp;例如监听返回键按下view.setFocusableInTouchMode(true);view.requestFocus();view.setOnKeyListener(new View.OnKeyListener() &#123;    @Override    public boolean onKey(View v, int keyCode, KeyEvent event) &#123;        if (keyCode == KeyEvent.KEYCODE_BACK &amp;&amp; event.getAction() == KeyEvent.ACTION_DOWN) &#123;            Log.d(TAG, &quot;handleOnBackPressed: 按下返回键&quot;);        &#125;        return true;    &#125;&#125;);
+&ensp;&ensp;这其中：&ensp;&ensp;setFocusableInTouchMode(boolean)是用于设置view在触摸模式下是否可获取焦点，从而能够接收按键事件&ensp;&ensp;requestFocus()用于请求将焦点设置到指定的view，当调用这个方法时，系统会尝试将焦点移到指定的view上，使得该view能够响应用户的输入事件，比如按键事件。通常requestFocus()会与setFocusableInTouchMode(true)一起使用，以确保在触摸模式下能够接收焦点&ensp;&ensp;setOnKeyListener是用于设置按键事件监听器的方法
+OnBackPressedCallback&ensp;&ensp;该方法用于处理用户按下返回按钮的情况，类似于Activity中的onBackPressed()OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) &#123;    @Override    public void handleOnBackPressed() &#123;        Log.d(TAG, &quot;handleOnBackPressed: 按下返回键&quot;);    &#125;&#125;;getActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), onBackPressedCallback);
+&ensp;&ensp;这其中：&ensp;&ensp;OnBackPressedCallback是AndroidX Lifecycle库中的类，创建一个回调对象，用于处理返回按钮按下的事件，true代表启用该回调，默认为启用；当用户按下返回按钮时执行handleOnBackPressed中的逻辑&ensp;&ensp;getOnBackPressedDispatcher()用于获取一个OnBackPressedDispatcher对象，通过该对象注册回调以处理返回按钮的事件&ensp;&ensp;addCallback()用于添加处理返回按钮按下的事件，接收一个getViewLifecycleOwner()参数和onBackPressedCallback回调
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android开发手记</tag>
+      </tags>
+  </entry>
 </search>
