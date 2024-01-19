@@ -15546,4 +15546,143 @@ OnBackPressedCallback&ensp;&ensp;该方法用于处理用户按下返回按钮�
         <tag>Android开发手记</tag>
       </tags>
   </entry>
+  <entry>
+    <title>FileSelector使用手册</title>
+    <url>/2024/01/19/FileSelector%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[引用方式implementation &#x27;&#x27;
+启动方式1、启动Activity
+FileSelector.create(this)        .forResult(new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+2、注入frameLayout，其中forResult()的第一个参数代表需要被注入的frameLayout的id
+FileSelector.create(this)        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+操作文件在选择文件后，FileSelector将回调OnResultCallbackListener的onResult()方法，在onResult()方法中通过List&lt;FileBean&gt;集合可对文件进行操作
+对于FileBean类，其中仅包含一个可用的File或DocumentFile类型文件对象，因为在Android 11及以上的系统中，data或obb目录中的子文件是DocumentFile类型文件对象
+可以通过如下方法判断FileBean中包含的文件类型
+
+
+
+
+方法名
+返回结果
+
+
+
+
+public boolean isFile()
+为true时表示FileBean中包含一个File类型文件对象，反之为DocumentFile类型文件对象
+
+
+public boolean isDocumentFile()
+为true时表示FileBean中包含一个DocumentFile类型文件对象，反之为File类型文件对象
+
+
+
+
+通过如下方法可以获取FileBean中包含的File或DocumentFile文件对象
+
+
+
+
+方法名
+返回结果
+
+
+
+
+public File getFile()
+获取FileBean中包含的File类型文件对象
+
+
+public DocumentFile getDocumentFile()
+获取FileBean中包含的DocumentFile类型文件对象
+
+
+
+
+通过如下方法可以对FileBean类进行一些快捷操作
+
+
+
+
+方法名
+返回结果
+
+
+
+
+public long lastModified()
+取FileBean中包含文件的最后修改时间
+
+
+public long length()
+取FileBean中包含文件的大小
+
+
+public String getName()
+取FileBean中包含文件的文件名
+
+
+
+
+基本使用设置起始路径设置文件选择器打开的起始路径，默认起始路径为/storage/emulated/0，可以自定义设置为任何一个存在的路径，包括data(obb)目录及其子目录，若data(obb)目录或其子目录没有访问权限将会自动申请
+FileSelector.create(this)        .setInitPath(Environment.getExternalStorageDirectory().getAbsolutePath())   // 设置起始路径        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+设置排序规则设置文件列表的排序规则，默认根据文件名排序
+FileSelector.create(this)        .setSortRule(SortRule.Name) // 设置排序规则        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+FileSelector提供了如下三种排序规则
+public enum SortRule &#123;    Time,   // 按时间排序    Name,   // 按文件名排序    Size,   // 按大小排序&#125;
+若不满足，可以使用自定义的排序规则；需要注意的是，设置自定义排序规则后FileSelector中的排序规则将不生效
+FileSelector.create(this)        .selfSortRule(new Comparator&lt;FileItemBean&gt;() &#123;            @Override            public int compare(FileItemBean o1, FileItemBean o2) &#123;                // 自定义排序逻辑                return 0;            &#125;        &#125;)        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+自定义文件图标FileSelector提供了默认的文件图标，若不满足可以对文件图标进行自定义设置
+未知文件图标FileSelector通过文件的后缀名来设置对应的图标，所以当文件有一些不明所以的后缀名时，FileSelector将会为其设置一个未知文件图标，通过如下代码可以对该图标进行自定义
+FileSelector.create(this)        .setDefaultFileIcon(R.drawable.file_icon) // 设置未知文件的图标        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+文件夹图标自定义文件夹图标
+FileSelector.create(this)        .setDefaultFolderIcon(R.drawable.folder_icon) // 未知文件夹的图标        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+给指定类型文件添加图标FileSelector给小部分常见文件添加了图标，例如jpg、png，若对此图标不满足或想添加其他类型文件的图标，可以通过如下方式
+FileSelector.create(this)        .addIconBySuffix(&quot;jpg&quot;, R.drawable.img_icon)    // 给指定类型文件添加图标        .addIconBySuffix(&quot;png&quot;, R.drawable.img_icon)    // 给指定类型文件添加图标        .addIconBySuffix(&quot;mp3&quot;, R.drawable.music_icon)  // 给指定类型文件添加图标        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+批量添加，注意后缀名和图标的drawable id一一对应
+FileSelector.create(this)        .addBatchesIconBySuffix(            new String[] &#123;&quot;jpg&quot;, &quot;png&quot;, &quot;mp3&quot;&#125;,            new int[] &#123;R.drawable.img_icon, R.drawable.img_icon, R.drawable.music_icon&#125;)        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+加载略缩图开启略缩图加载后，图片、GIF图片以及视频的图标将显示一个略缩图，但是加载略缩图需要加载引擎，可以参考使用Glide实现的GlideEngine
+FileSelector.create(this)        .isDisplayThumbnail(true)   // 开启略缩图加载        .setImageEngine(GlideEngine.createGlideEngine()) // 设置略缩图加载引擎        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+文件修改时间的格式FileSelector中默认的文件修改时间的显示格式是2024-01-01 12:30:26，可以通过如下方式修改
+FileSelector.create(this)        .setLastModifiedPattern(&quot;yyyy年MM月dd日 HH时mm分ss秒&quot;) // 设置文件最后修改时间的显示格式        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+只显示文件夹设置文件列表中只显示文件夹，不显示文件
+FileSelector.create(this)        .isOnlyDisplayFolder(true)  // 只显示文件夹        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+只选择文件设置只能选择文件，禁止选择文件夹
+FileSelector.create(this)        .isOnlySelectFile(true) // 只能选择文件        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+显示指定类型文件设置仅显示指定类型的文件，如下代码设置后，将仅显示jpg、txt、mp3类型的文件
+FileSelector.create(this)        .addDisplayType(&quot;jpg&quot;, &quot;txt&quot;, &quot;mp3&quot;)    // 仅显示指定类型文件        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+设置最大选择数如下代码，最多只能选择5个文件
+FileSelector.create(this)        .setSelectMax(5)    // 设置文件最大选择数        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+开启震动默认为开启状态，选择文件或文件夹时将轻微震动手机
+FileSelector.create(this)        .isVibrator(true)   // 开启震动        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+自动打开选择模式开启后，在进入文件选择页面时将自动打开文件选择模式
+FileSelector.create(this)        .isAutoOpenSelectMode(true) // 自动打开选择模式        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+设置状态栏颜色在fragment注入模式下同样生效，所以在选择文件之后可能需要重新设置frameLayout所属Activity的状态栏颜色
+FileSelector.create(this)        .setStatusBarColor(R.color.blue)    // 设置状态栏颜色        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+设置状态栏字体颜色状态栏字体颜色只有黑色和白色两种，当为true时状态栏字体颜色将显示黑色
+在fragment注入模式下同样生效，所以在选择文件之后可能需要重新设置frameLayout所属Activity的状态栏字体颜色
+FileSelector.create(this)        .setStatusBarTextColor(true)  // 设置状态栏字体颜色        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+进阶使用1、设置FileSelector最下面一层view的样式
+FileSelectorViewStyle fileSelectorViewStyle = new FileSelectorViewStyle();fileSelectorViewStyle.setBackgroundColorId(R.color.white);  // 目前仅可设置背景色FileSelector.create(this)        .setFileSelectorViewStyle(fileSelectorViewStyle)        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+2、设置FileSelector顶部栏的样式
+
+FileSelectorTitleBarStyle fileSelectorTitleBarStyle = new FileSelectorTitleBarStyle();// 设置顶部栏高度，以dp为单位fileSelectorTitleBarStyle.setHeight(50);// 设置顶部栏背景色fileSelectorTitleBarStyle.setBackgroundColorId(R.color.blue);// 设置顶部栏左侧返回按钮的图片drawable资源idfileSelectorTitleBarStyle.setOverImageDrawableId(R.drawable.back);// 设置顶部栏中间标题textfileSelectorTitleBarStyle.setTitleText(&quot;请选择文件&quot;);// 设置顶部栏中间标题的字体大小，以sp为单位fileSelectorTitleBarStyle.setTitleTextSize(20);// 设置顶部栏中间标题的字体颜色fileSelectorTitleBarStyle.setTitleTextColorId(R.color.white);// 设置顶部栏右侧的按钮，在进入选择模式之后的textfileSelectorTitleBarStyle.setStartControlText(&quot;取消&quot;);// 设置顶部栏右侧的按钮，在退出选择模式之后的textfileSelectorTitleBarStyle.setEndControlText(&quot;全选&quot;);// 设置顶部栏右侧的按钮的字体大小fileSelectorTitleBarStyle.setControlTextSize(16);// 设置顶部栏右侧的按钮的字体颜色fileSelectorTitleBarStyle.setControlTextColorId(R.color.white);FileSelector.create(this)        .setFileSelectorTitleBarStyle(fileSelectorTitleBarStyle)        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+3、设置FileSelector路径显示栏的样式
+
+FileSelectorPathBarStyle fileSelectorPathBarStyle = new FileSelectorPathBarStyle();// 设置路径栏背景色fileSelectorPathBarStyle.setBackgroundColorId(R.color.white);// 设置路径栏头item的背景色fileSelectorPathBarStyle.setHeadItemBackgroundColorId(R.color.blue);// 设置路径栏头item的字体颜色fileSelectorPathBarStyle.setHeadItemTextColorId(R.color.white);// 设置路径栏其余item的背景色fileSelectorPathBarStyle.setItemBackgroundColorId(R.color.gray);// 设置路径栏其余item的字体颜色fileSelectorPathBarStyle.setItemTextColorId(R.color.black);// 设置路径栏所有item的字体大小fileSelectorPathBarStyle.setItemTextSize(16);// 设置路径栏item之间箭头图片的drawable资源idfileSelectorPathBarStyle.setArrowImageDrawableId(R.drawable.arrow);// 设置文件数量的描述fileSelectorPathBarStyle.setFileCountDescription(&quot;文件数量：&quot;);// 设置文件夹数量的描述fileSelectorPathBarStyle.setFolderCountDescription(&quot;文件夹数量：&quot;);// 设置文件及文件夹数量描述的字体颜色fileSelectorPathBarStyle.setDescriptionColorId(R.color.black);// 设置文件及文件夹数量描述的字体大小fileSelectorPathBarStyle.setDescriptionTextSize(16);FileSelector.create(this)        .setFileSelectorPathBatStyle(fileSelectorPathBarStyle)        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+4、设置FileSelector列表样式
+列表item的宽高、内边距、外边距及下划线，可以通过RecyclerView的addItemDecoration()方法设置，ItemDecoration可以参考CustomItemDecoration
+
+FileSelectorListViewStyle fileSelectorListViewStyle = new FileSelectorListViewStyle();// 设置列表背景色fileSelectorListViewStyle.setBackgroundColorId(R.color.white);// 设置当前目录为空时的提示fileSelectorListViewStyle.setEmptyFolderDescription(&quot;当前文件夹为空&quot;);// 设置当前目录为空时提示的字体颜色fileSelectorListViewStyle.setEmptyFolderDescriptionTextColorId(R.color.black);// 设置当前目录为空时提示的字体大小fileSelectorListViewStyle.setEmptyFolderDescriptionTextSize(20);// 设置当前目录为空时页面的背景色fileSelectorListViewStyle.setEmptyFolderBackgroundColorId(R.color.white);// 设置列表加载过程的提示fileSelectorListViewStyle.setLoadProgressDescription(&quot;文件加载中...&quot;);// 设置列表加载过程提示的字体颜色fileSelectorListViewStyle.setLoadProgressDescriptionTextColorId(R.color.black);// 设置列表加载过程提示的字体大小fileSelectorListViewStyle.setLoadProgressDescriptionTextSize(20);// 设置加载时环形进度条的颜色fileSelectorListViewStyle.setLoadProgressBarColorId(R.color.blue);// 设置加载页面的背景色fileSelectorListViewStyle.setLoadProgressBackgroundColorId(R.color.white);// 设置item的装饰fileSelectorListViewStyle.setItemDecoration(new CustomItemDecoration(this));// 以下代码是对item一些样式的设置FileSelectorListViewStyle.FileSelectorListItemStyle fileSelectorListItemStyle = new FileSelectorListViewStyle.FileSelectorListItemStyle();// 设置item背景色fileSelectorListItemStyle.setItemBackgroundColorId(R.color.white);// 设置item被点击时变化的背景色fileSelectorListItemStyle.setItemActionDownBackgroundColorId(R.color.gray);// 设置item中文件名的字体颜色fileSelectorListItemStyle.setFileNameTextColorId(R.color.black);// 设置item中文件名的字体大小fileSelectorListItemStyle.setFileSizeTextSize(16);// 设置item中文件修改时间的字体颜色fileSelectorListItemStyle.setLastModifiedTextColorId(R.color.gray);// 设置item中文件修改时间的字体大小fileSelectorListItemStyle.setLastModifiedTextSize(16);// 设置item中文件大小的字体颜色fileSelectorListItemStyle.setFileSizeTextColorId(R.color.gray);// 设置item中文件大小的字体大小fileSelectorListItemStyle.setFileSizeTextSize(16);// 设置item文件夹右侧箭头图片drawable资源idfileSelectorListItemStyle.setArrowDrawableId(R.drawable.arrow);// 设置item被选中后，checkBox显示的图片drawable资源idfileSelectorListItemStyle.setSelectedDrawableId(R.drawable.selected);// 设置item未被选中时，checkBox显示的图片drawable资源idfileSelectorListItemStyle.setDeselectedDrawableId(R.drawable.deselected);// 设置item的样式fileSelectorListViewStyle.setFileSelectorListItemStyle(fileSelectorListItemStyle);FileSelector.create(this)        .setFileSelectorListViewStyle(fileSelectorListViewStyle)        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+5、设置FileSelector底部栏样式
+
+FileSelectorFootBarStyle fileSelectorFootBarStyle = new FileSelectorFootBarStyle();// 设置底部栏背景色fileSelectorFootBarStyle.setBackgroundColorId(R.color.gray);// 设置底部栏按钮的背景色fileSelectorFootBarStyle.setBtnBackgroundColorId(R.color.white);// 设置底部栏按钮按下后变化的背景色fileSelectorFootBarStyle.setBtnActionDownBackgroundColorId(R.color.gray);// 设置底部栏左边按钮的textfileSelectorFootBarStyle.setLeftButtonText(&quot;全选&quot;);// 设置item被全选后底部栏左边按钮的textfileSelectorFootBarStyle.setLeftButtonSelectedAllText(&quot;取消全选&quot;);// 设置底部栏右边按钮的textfileSelectorFootBarStyle.setRightButtonText(&quot;确定&quot;);// 设置底部栏按钮的字体颜色fileSelectorFootBarStyle.setButtonTextColorId(R.color.black);// 设置底部栏按钮的字体大小fileSelectorFootBarStyle.setButtonTextSize(16);FileSelector.create(this)        .setFileSelectorFootBarStyle(fileSelectorFootBarStyle)        .forResult(R.id.frame_layout, true, new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
+开源地址还没有开源😀
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android开发手记</tag>
+      </tags>
+  </entry>
 </search>
