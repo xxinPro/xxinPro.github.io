@@ -5397,7 +5397,7 @@ char数组&ensp;&ensp;char数组的最后一个元素如果为\0，该数组就�
   <entry>
     <title>FileSelector使用手册</title>
     <url>/2024/01/19/FileSelector%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</url>
-    <content><![CDATA[引用方式implementation &#x27;&#x27;
+    <content><![CDATA[引用方式implementation &#x27;com.github.xxinPro:FileSelector:1.0&#x27;
 启动方式1、启动Activity
 FileSelector.create(this)        .forResult(new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
 2、注入frameLayout，其中forResult()的第一个参数代表需要被注入的frameLayout的id
@@ -5537,7 +5537,7 @@ ImageItemDecorationpublic class ImageItemDecoration extends RecyclerView.ItemDec
 5、设置FileSelector底部栏样式
 
 FileSelectorFootBarStyle fileSelectorFootBarStyle = new FileSelectorFootBarStyle();// 设置底部栏背景色fileSelectorFootBarStyle.setBackgroundColorId(R.color.gray);// 设置底部栏按钮的背景色fileSelectorFootBarStyle.setBtnBackgroundColorId(R.color.white);// 设置底部栏按钮按下后变化的背景色fileSelectorFootBarStyle.setBtnActionDownBackgroundColorId(R.color.gray);// 设置底部栏左边按钮的textfileSelectorFootBarStyle.setLeftButtonText(&quot;全选&quot;);// 设置item被全选后底部栏左边按钮的textfileSelectorFootBarStyle.setLeftButtonSelectedAllText(&quot;取消全选&quot;);// 设置底部栏右边按钮的textfileSelectorFootBarStyle.setRightButtonText(&quot;确定&quot;);// 设置底部栏按钮的字体颜色fileSelectorFootBarStyle.setButtonTextColorId(R.color.black);// 设置底部栏按钮的字体大小fileSelectorFootBarStyle.setButtonTextSize(16);FileSelector.create(this)        .setFileSelectorFootBarStyle(fileSelectorFootBarStyle)        .forResult(new OnResultCallbackListener() &#123;            @Override            public void onResult(List&lt;FileBean&gt; result) &#123;                // 文件处理逻辑            &#125;            @Override            public void onCancel() &#123;                // 未选择处理逻辑            &#125;        &#125;);
-开源地址还没有开源😀
+开源地址https://github.com/xxinPro/FileSelector
 ]]></content>
       <categories>
         <category>Android</category>
@@ -15701,14 +15701,16 @@ static方法不能被重写，所以static方法无需再标记final
   <entry>
     <title>记录一次发布jitpack</title>
     <url>/2024/01/29/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%8F%91%E5%B8%83jitpack/</url>
-    <content><![CDATA[&ensp;&ensp;我超tmd，这个gradle 8.x有问题，我使用的gradle版本是8.0，gradle插件版本是8.0.2，使用./gradlew publishToMavenLocal命令根本就生成不了aar文件，只有一个pom文件，jitpack也只生成了如下的一些文件，但是没有aar！&ensp;&ensp;jitpack官方也迟迟未更新gradle 8.x的文档，所以后面我把gradle版本换成了7.6，gradle插件版本换成了7.4.2Files: com/github/xxinPro/FileSelector/v1.0com/github/xxinPro/FileSelector/v1.0/FileSelector-v1.0-sources.jarcom/github/xxinPro/FileSelector/v1.0/FileSelector-v1.0.pomcom/github/xxinPro/FileSelector/v1.0/FileSelector-v1.0.pom.md5com/github/xxinPro/FileSelector/v1.0/FileSelector-v1.0.pom.sha1com/github/xxinPro/FileSelector/v1.0/build.log
+    <content><![CDATA[&ensp;&ensp;我超tmd，这个gradle 8.x有问题，我使用的gradle版本是8.0，gradle插件版本是8.0.2，使用./gradlew publishToMavenLocal命令根本就生成不了aar文件，只有一个pom文件，jitpack也只生成了如下的一些文件，但是没有aar！
+Files: com/github/xxinPro/FileSelector/v1.0com/github/xxinPro/FileSelector/v1.0/FileSelector-v1.0-sources.jarcom/github/xxinPro/FileSelector/v1.0/FileSelector-v1.0.pomcom/github/xxinPro/FileSelector/v1.0/FileSelector-v1.0.pom.md5com/github/xxinPro/FileSelector/v1.0/FileSelector-v1.0.pom.sha1com/github/xxinPro/FileSelector/v1.0/build.log
+&ensp;&ensp;jitpack官方也迟迟未更新gradle 8.x的文档，所以后面我把gradle版本换成了7.6，gradle插件版本换成了7.4.2
 打包arr&ensp;&ensp;最一开始，我无法使用./gradlew assembleRelease命令打包release版aar，只能打包debug版，并且在右侧gradle操作栏中也没有assembleRelease的选项，如下
 
 &ensp;&ensp;关掉设置中的这个选项之后恢复正常
 
 &ensp;&ensp;关掉之后点sync同步一下
 
-&ensp;&ensp;双击模块中的assembleRelease，则生成了一个release版aar包
+&ensp;&ensp;双击模块中的assembleRelease，生成一个release版aar包
 
 本地调试&ensp;&ensp;在模块gradle文件中引入maven-publish插件
 plugins &#123;    ...    id &#x27;maven-publish&#x27;&#125;
@@ -15724,7 +15726,8 @@ implementation &#x27;com.github.xxinPro:FileSelector:1.0&#x27;
 jdk:  - openjdk11
 &ensp;&ensp;将项目上传到github、gitee等仓库，如何上传不再赘述，上传成功之后创建一个release&ensp;&ensp;打开jitpack，输入github用户名/仓库名，查找刚刚上传的仓库
 
-&ensp;&ensp;点击Get it，将开始构建该仓库，等待构建完毕之后查看jitpack提供的Log即可，若Log中无错误，则说明发布成功
+&ensp;&ensp;点击Get it，将开始构建该仓库，等待构建完毕之后查看jitpack提供的Log，若Log中无错误，则说明发布成功，再次点击Get it即可获取引入方式
+
 参考：https://blog.csdn.net/H_O_W_E/article/details/125208062
 https://blog.csdn.net/cmmboy1990/article/details/124382540
 ]]></content>
