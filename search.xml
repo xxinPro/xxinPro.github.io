@@ -15757,4 +15757,34 @@ jdk:  - openjdk11
         <tag>Android开发手记</tag>
       </tags>
   </entry>
+  <entry>
+    <title>NDK开发</title>
+    <url>/2024/02/11/NDK%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[NDK开发工具下载
+
+在模块级gradle中指定NDK版本
+android &#123;    ndkVersion &quot;26.1.10909125&quot;&#125;
+cmake下载
+
+在指定模块中创建cmake构建脚本CMakeLists.txt，并在模块级gradle中指定cmake构建脚本位置及cmake版本
+android &#123;    externalNativeBuild &#123;        cmake &#123;            // 指定cmake构建脚本位置            path file(&#x27;src/main/cpp/CMakeLists.txt&#x27;)            // 指定cmake构建脚本的版本            version &#x27;3.22.1&#x27;        &#125;    &#125;&#125;
+创建一个cpp文件，这个cpp文件用于与java建立连接，引入如下库
+#include &lt;jni.h&gt;
+在cmake构建脚本CMakeLists.txt中，指定如下内容
+# 指定CMake的最低版本要求cmake_minimum_required(VERSION 3.22.1)# 定义本地库名称project(&quot;decoder&quot;)# 添加 decoder.cpp 共享库add_library($&#123;CMAKE_PROJECT_NAME&#125; SHARED    decoder.cpp)# 链接目标库到其他库target_link_libraries($&#123;CMAKE_PROJECT_NAME&#125;    android    log)
+在java代码中引入本地库
+static &#123;    System.loadLibrary(&quot;decoder&quot;);&#125;
+然后可以定义native方法
+public static native int test(int num1, int num2);
+通过Alt+Enter快捷键，可以在对应的c++文件中创建对应的函数
+extern &quot;C&quot;JNIEXPORT jint JNICALLJava_xyz_xxin_silkdecoder_DecoderNative_test(JNIEnv *env, jclass clazz, jint num1, jint num2) &#123;    // TODO: implement test()    return num1 + num2;&#125;
+参考：https://developer.android.google.cn/ndk/guides?hl=zh-cn
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android开发手记</tag>
+      </tags>
+  </entry>
 </search>
