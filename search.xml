@@ -15787,4 +15787,123 @@ extern &quot;C&quot;JNIEXPORT jint JNICALLJava_xyz_xxin_silkdecoder_DecoderNativ
         <tag>Android开发手记</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SILK API文档翻译</title>
+    <url>/2024/02/16/SILK-API%E6%96%87%E6%A1%A3%E7%BF%BB%E8%AF%91/</url>
+    <content><![CDATA[下载SILK开发包下载地址：https://lxx6.lanzouq.com/itL0C1oesnab
+中文文档应用程序编程接口（API）在interface文件夹中的四个头文件中定义：
+
+SKP_Silk_SDK_API.h – SILK编码器和解码器的函数声明。
+SKP_Silk_control.h – 控制编码器和从解码器获取状态信息的结构声明。
+SKP_API_typedef.h  – 类型定义。
+SKP_Silk_errors.h  – SILK SDK的错误代码描述。
+
+高级设置通常只应根据特殊需求进行更改，可以在src文件夹中的头文件中进行设置：
+
+SKP_Silk_define.h – 用于控制SILK SDK的各种定义。
+
+编码器控制结构描述（SKP_Silk_control.h）编码器结构（SKP_SILK_SDK_EncControlStruct）具有以下成员：
+
+SKP_int32 API_sampleRate;  （输入）编码器的API采样频率（以为赫兹单位）。有效值为：8000、12000、16000、24000、32000、44100和48000。这个采样频率表示输入信号到编码器的采样频率。
+SKP_int32 maxInternalSampleRate;  （输入）编码器的最大内部采样频率（以为赫兹单位）。有效值为：8000、12000、16000和24000。这个采样频率表示编码信号的采样频率。请注意，编码器可能会自动适应采样频率为较低的值。maxInternalSampleRate在呼叫设置期间不得超过RTP时间戳时钟速率。
+SKP_int packetSize;  （输入）每个包的样本数。在上述列出的任何API采样频率下，都支持对应于20、40、60、80或100毫秒的样本数，例如，在24000 Hz API采样频率下，20毫秒包的样本数为480。
+SKP_int32 bitRate;  （输入）激活语音的目标比特率，范围为5000-100000比特每秒（bps）。如果输入值不在支持的范围内，则在内部限制该值。
+SKP_int packetLossPercentage;  （输入）上行方向的估计数据包丢失百分比（0-100）。在数据包丢失的情况下，这控制错误传播。如果使用带内前向错误更正，则此信息还确定编码器将添加多少保护。
+SKP_int complexity;  （输入）复杂性设置。支持的值为0、1和2，其中0是最低复杂性，2是最高复杂性。
+SKP_int useInBandFEC;  （输入）启用/禁用带内前向错误更正（0禁用，1启用）。
+SKP_int useDTX;  （输入）启用/禁用不连续传输（0禁用，1启用）。
+
+解码器控制结构描述（SKP_Silk_control.h）解码器结构（SKP_SILK_SDK_DecControlStruct）具有以下成员：
+
+SKP_int32 API_sampleRate;  （输入）解码器输出信号的采样频率（以为赫兹单位）。这个采样频率与接收信号的内部采样频率无关。为了保留所有传输的信息，它至少应该是最大内部采样频率，即编码器的maxInternalSampleRate。有效值为：8000、12000、16000、24000、32000、44100和48000。
+SKP_int frameSize;  （输出）样本中的帧大小；始终对应于以API_sampleRate采样的20毫秒数据，即160、240、320、480、640、882或960。
+SKP_int framesPerPacket;  （输出）最后解码的包中的20毫秒帧数。可能的输出值为1、2、3、4或5。
+SKP_int moreInternalDecoderFrames;  （输出）当设置时，表示从已在解码器中缓冲的多帧有效负载中可用更多输出帧的标志（0或1）。
+SKP_int inBandFECOffset;  （输出）主有效负载和冗余有效负载之间的数据包距离（0、1或2）。
+
+注释：SILK解码器将始终解码每个函数调用的20毫秒帧。如果接收的数据包包含多帧，则必须多次调用解码器才能完全解码该数据包。为了指示数据包的解码何时完成，使用moreInternalDecoderFrames标志。如果moreInternalDecoderFrames为0，则最后一个数据包已完全解码，解码器准备好接收下一个数据包。当moreInternalDecoderFrames为1时，解码器尚未完成解码上一个数据包中包含的所有帧，应继续调用解码器，直到moreInternalDecoderFrames更改为0。此外，当moreInternalDecoderFrames为1时，SKP_Silk_SDK_Decode的输入inData将被忽略，因为在这种情况下，最后接收到的数据包的剩余部分将从内部缓冲区中读取。
+函数（SKP_Silk_SDK_API.h）所有函数都返回错误代码，如果在函数执行过程中没有遇到错误，则返回0。返回负值表示错误。错误代码的列表可以在SKP_Silk_errors.h中找到。
+SKP_Silk_SDK_Get_Encoder_Size将SILK编码器状态的大小（以字节为单位）写入*encSizeBytes。使用此函数可以为编码器状态分配适当的内存空间。
+SKP_int SKP_Silk_SDK_Get_Encoder_Size(    SKP_int32 *encSizeBytes);
+
+*encSizeBytes：（输出）编码器状态的大小（以字节为单位）。
+
+SKP_Silk_SDK_InitEncoder初始化编码器状态encState，并返回默认编码器状态encStatus。该函数必须在对编码器的第一次调用之前调用，并且可以被调用以重置内部编码器状态，例如在发起新的语音调用时。
+SKP_int SKP_Silk_SDK_InitEncoder(    void                            *encState,    SKP_SILK_SDK_EncControlStruct   *encStatus);
+
+*encState： （输入/输出）编码器状态。
+*encStatus：（输出）编码器状态结构。返回默认编码器设置。
+
+SKP_Silk_SDK_QueryEncoderSKP_int SKP_Silk_SDK_QueryEncoder(    const void                      *encState,    SKP_SILK_SDK_EncControlStruct   *encStatus);
+
+*encState：（输入）编码器状态。
+*encStatus：（输出）编码器状态结构体。返回当前编码器设置。
+
+描述：返回当前编码器设置encStatus。可以调用此函数来检查编码器的设置。结构成员是静态的，因为它们将保存作为输入传递给编码器的值，除非在超出预期范围的情况下受到内部限制。
+SKP_Silk_SDK_Encode这是主要的编码器函数。从samplesIn中读取nSamplesIn个输入样本，并在内部进行缓冲，直到至少有encControl-&gt;packetSize个样本可用时，将编码一个有效载荷并写入outData。参数指针nBytesOut同时用作输入和输出。作为输入，nBytesOut指定有效载荷可能包含的最大字节数；这是（最多）您的应用程序在outData数组中分配的字节数。作为输出，nBytesOut返回outData中有效载荷的实际大小。必须将encControl结构的所有成员设置为有效值（请参阅SKP_SILK_SDK_EncControlStruct的描述），否则将报告错误。输入向量samplesIn的采样频率必须选择为等于或高于encControl-&gt;API_sampleRate中存储的值。输入采样频率应选择等于或高于最大内部采样频率maxInternalSampleRate，并且可以根据最好支持集成应用程序的情况从有效的选择中选择。
+SKP_int SKP_Silk_SDK_Encode(    void                                *encState,    const SKP_SILK_SDK_EncControlStruct *encControl,    const SKP_int16                     *samplesIn,    SKP_int                             nSamplesIn,    SKP_uint8                           *outData,    SKP_int16                           *nBytesOut);
+
+*encState：（输入/输出）编码器状态。
+*encControl：（输入）保持编码器控制的结构。
+*samplesIn：（输入）具有音频样本的nSamplesIn的输入向量。
+nSamplesIn:（输入）输入样本数。必须对应10毫秒的倍数，并且不高于encControl-&gt;packetSize。
+*outData：（输出）输出有效载荷。
+*nBytesOut：（输入/输出）输入：有效负载中允许的最大字节数。输出：有效负载中的输出字节数。
+
+SKP_Silk_SDK_Get_Decoder_Size将SILK解码器状态的大小（以字节为单位）写入decSizeBytes。使用此函数可为解码器状态分配适当的内存空间。
+SKP_int SKP_Silk_SDK_Get_Decoder_Size(    SKP_int32 *decSizeBytes);
+
+decSizeBytes：（输出）解码器状态的大小（以字节为单位）。
+
+SKP_Silk_SDK_InitDecoder初始化解码器状态decState。该函数必须在第一次调用解码器之前调用，并且可以被调用以重置内部解码器状态，例如在发起新的语音呼叫时。
+SKP_int SKP_Silk_SDK_InitDecoder(    void *decState);
+*decState：（输入/输出）编码器状态。
+SKP_Silk_SDK_Decode这是解码器的主要功能。当有效负载在传输过程中丢失时，输入lostFlag应设置为1，否则应设置为0。nByteIn输入参数必须与有效负载中用于检测损坏数据包的字节数完全匹配。输出信号的采样率（以赫兹为单位）通过decStatus-&gt;API_sampleRate进行设置。应当确保解码器采样率匹配或超过编码信号的内部采样率。这可以通过将解码器采样率设置为至少24000或者通过在呼叫建立期间向远端发送器指示较低的最大采样率来实现。解码器更新解码器状态decStatus，该状态应用于处理多个帧数据包。请参阅解码器状态结构体的描述。
+SKP_int SKP_Silk_SDK_Decode(    void                            *decState,    SKP_SILK_SDK_DecControlStruct   *decStatus,    SKP_int                         lostFlag,    const SKP_uint8                 *inData,    const SKP_int                   nBytesIn,    SKP_int16                       *samplesOut,    SKP_int16                       *nSamplesOut);
+
+*decState：（输入/输出）解码器状态。
+*decStatus：（输入/输出）解码器状态结构体。
+lostFlag：（输入）用于激活数据包丢失隐藏的标志。0未丢失1已丢失。
+*inData：（输入）要解码的分组有效载荷。
+nBytesIn：（输入）有效载荷中的字节数（inData）。
+*samplesOut:（输出）解码的样本。
+*nSamplesOut:（输出）解码的采样数。
+
+SKP_Silk_SDK_search_for_LBRR提取低比特率冗余（LBRR）数据。如果在传输过程中丢失了一个数据包，并且在解码器端有未来的数据包可用，此函数可用于提取任何可用的带内错误校正数据。如果数据包n丢失，并且数据包n + 1或数据包n + 2在解码器端可用，则应执行以下操作：首先，应将数据包n + 1的有效负载输入到SKP_Silk_SDK_search_for_LBRR中，并提供一个lost_offset值为1，即相对于丢失的数据包的相对距离，即(n + 1) - n。如果在调用之后*nLBRRBytes大于零，则意味着数据包中存在LBRR数据，应调用解码器，将LBRRData作为输入有效负载（inData），nLBRRBytes作为有效负载长度（nBytesIn）。如果nLBRRBytes为零，则应搜索数据包n + 2，但这次将lost_offset设置为2，即(n + 2) - n。如果对于数据包n + 2，nLBRRBytes也为零，则应调用解码器，并将lostFlag设置为1以激活正常的数据包丢失遮挡。对于nLBRRBytes大于零的情况，应调用解码器，将LBRRData作为输入有效负载（inData），nLBRRBytes作为有效负载长度（nBytesIn）。
+void SKP_Silk_SDK_search_for_LBRR(    const SKP_uint8     *inData,     const SKP_int       nBytesIn,    SKP_int             lost_offset,    SKP_uint8           *LBRRData,    SKP_int16           *nLBRRBytes);
+
+*inData：（输入）未来的数据包有效载荷。
+nBytesIn：（输入）数据包有效载荷中的字节数。
+lost_offset：（输入）丢失数据包和未来数据包之间的数据包距离（1或2）。
+*LBRRData：（输出）提取的冗余LBRR有效载荷。
+*nLBRRBytes:（输出）LBRR有效负载的字节数。
+
+SKP_Silk_SDK_get_TOC返回数据包的目录（TOC）结构。
+void SKP_Silk_SDK_get_TOC(    const SKP_uint8         *inData,     const SKP_int           nBytesIn,     SKP_Silk_TOC_struct     *Silk_TOC);
+
+*inData：（输入）数据包有效载荷。
+nBytesIn：（输入）数据包中的字节数。
+*Silk_TOC:（输出）提取的有关数据包的目录信息。
+
+SKP_Silk_SDK_get_version返回一个包含Silk SDK版本号的字符串。
+SKP_INLINE const char *SKP_Silk_SDK_get_version();
+定义（SKP_Silk_define.h）该文件包含许多控制SILK操作的定义。为了确保正确的操作，大多数都应该单独处理。但是，如果需要与默认操作不同的操作，则可以更改一些。这些是：
+// 允许的值为0和1，其中0表示不受限制地使用内部复杂度模式。// 如果设置为1，则仅允许在最低复杂度设置下运行SILK，并减少内存使用。#define LOW_COMPLEXITY_ONLY 0// 允许的值为0和1，如果设置为0，SILK模式之间的内部切换会立即发生，导致音频带宽从一帧变到下一帧。// 如果设置为0，则计算复杂度略低。// 如果设置为1，则应用自适应低通滤波器来平滑开关，以获得更悦耳的输出。#define SWITCH_TRANSITION_FILTERING 1
+关于采样率的说明在单向SILK语音呼叫中涉及四种类型的采样频率：
+
+RTP时间戳时钟速率。这确定RTP时间戳的更新速率。它在呼叫设置期间进行协商，并在呼叫的持续时间内保持不变。
+内部采样率。这确定核心SILK编解码器运行的采样率。它可以通过maxInternalSampleRate编码器参数进行限制，该参数不得超过RTP时间戳时钟速率。这样做的原因是，SILK的早期版本无法解码具有比解码器API采样率更高的内部采样率的信号。
+编码器API采样率。这确定传递到SILK编码器的音频信号的采样率。虽然可以在对编码器的函数调用之间的任何时候更改，但在切换的时候可能会发生小的音频故障。
+解码器API采样率。这确定由SILK解码器提供的音频信号的采样率。虽然可以在对解码器的函数调用之间的任何时候更改，但在切换的时候可能会发生小的音频故障。
+
+参考测试程序该软件开发工具包（SDK）包含有关SILK编码器（test/Encoder.c）和解码器（test/Decoder.c）的测试程序的源代码实现。该代码作为API的参考实现，提供了一种快速编译、运行和分析SILK在不同模式下在任何比特率下的性能的方式。
+在Mac或Linux上，可以使用提供的Makefile来编译和生成SDK的测试程序。用于生成编码器和解码器测试程序的目标分别是Encoder和Decoder。类似地，在Windows上，可以通过提供的Visual Studio 2005或2010解决方案和项目来生成测试程序。运行任何可执行文件都可以。
+]]></content>
+      <categories>
+        <category>便笺</category>
+      </categories>
+      <tags>
+        <tag>频繁查阅</tag>
+      </tags>
+  </entry>
 </search>
