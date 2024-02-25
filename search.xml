@@ -15946,4 +15946,54 @@ SilkDecoder.decodeToPcm(silkFilePath, pcmFilePath, sampleRate);
         <tag>Android开发手记</tag>
       </tags>
   </entry>
+  <entry>
+    <title>线性表</title>
+    <url>/2024/02/23/%E7%BA%BF%E6%80%A7%E8%A1%A8/</url>
+    <content><![CDATA[线性表的特点：
+
+存在唯一的一个被称作“第一个”的数据元素；
+存在唯一的一个被称作“最后一个”的数据元素；
+除第一个之外，结构中的每个数据元素均只有一个前驱；
+除最后一个之外，结构中的每个数据元素均只有一个后继。
+
+顺序表线性表的顺序表示指的是用一组地址连续的存储单元依次存储线性表的数据元素，这种表示也称作线性表的顺序存储结构或顺序映像。通常称这种存储结构的线性表为顺序表
+静态顺序表定义数据结构体和顺序表结构体
+#define MAX_LENGTH 100      // 顺序表数据最大长度// 数据结构体typedef struct &#123;    String name;    int age;    int height;    int weight;&#125; Student;// 顺序表结构体typedef struct &#123;    int length;                 // 有效数据长度    Student data[MAX_LENGTH];   // 固定长度的数组&#125; List;
+初始化表
+void init(List *listP) &#123;    assert(listP);    listP-&gt;length = 0;&#125;
+输出表中数据
+void printList(List *listP) &#123;    assert(listP);    for (int i = 0; i &lt; listP-&gt;length; i++) &#123;        Student student = listP-&gt;data[i];        printf(&quot;name = %s, age = %d, height = %d, weight = %d\n&quot;, student.name, student.age, student.height, student.weight);    &#125;&#125;
+输出单个数据
+void printStudent(Student student) &#123;    printf(&quot;name = %s, age = %d, height = %d, weight = %d\n&quot;, student.name, student.age, student.height, student.weight);&#125;
+判断数据表是否已满
+int isFull(List *listP) &#123;    assert(listP);    return (listP-&gt;length &gt;= MAX_LENGTH);&#125;
+数据的尾插法和尾删法
+void deleteTail(List *listP) &#123;    assert(listP);    listP-&gt;length--;&#125;void insertTail(List *listP, Student student) &#123;    assert(listP);    if (!isFull(listP)) &#123;        listP-&gt;data[listP-&gt;length] = student;        listP-&gt;length++;    &#125;&#125;
+数据的头插法和头删法
+void deleteHead(List *listP) &#123;    assert(listP);    for (int i = 0; i &lt; listP-&gt;length - 1; i++) &#123;        listP-&gt;data[i] = listP-&gt;data[i + 1];    &#125;    listP-&gt;length--;&#125;void insertHead(List *listP, Student student) &#123;    assert(listP);    if (!isFull(listP)) &#123;        for (int i = listP-&gt;length - 1; i &gt;= 0; i--) &#123;            listP-&gt;data[i + 1] = listP-&gt;data[i];        &#125;        listP-&gt;data[0] = student;        listP-&gt;length++;    &#125;&#125;
+将数据插入指定位置和删除指定位置的数据
+void deleteByPosition(List *listP, int position) &#123;    assert(listP);    for (int i = position; i &lt; listP-&gt;length; i++) &#123;        listP-&gt;data[i] = listP-&gt;data[i + 1];    &#125;    listP-&gt;length--;&#125;void insertByPosition(List *listP, int position, Student student) &#123;    assert(listP);    if (!isFull(listP)) &#123;        for (int i = listP-&gt;length - 1; i &gt;= position; i--) &#123;            listP-&gt;data[i + 1] = listP-&gt;data[i];        &#125;        listP-&gt;data[position] = student;        listP-&gt;length++;    &#125;&#125;
+获取指定位置的数据
+void getData(List *listP, int position, Student *student) &#123;    assert(listP);    if (position &lt; listP-&gt;length &amp;&amp; position &gt;= 0) &#123;        (*student) = listP-&gt;data[position];    &#125;&#125;
+查找某节点在表中的位置，如果不存在则返回-1
+int getPosition(List *listP, Student student) &#123;    assert(listP);    for (int i = 0; i &lt; listP-&gt;length; i++) &#123;        Student temp = listP-&gt;data[i];        if (strcmp(temp.name, student.name) == 0 &amp;&amp; temp.age == student.age                &amp;&amp; temp.weight == student.weight &amp;&amp; temp.height == student.height) &#123;            return i;        &#125;    &#125;    return -1;&#125;
+获取某节点的前驱节点和获取后继节点
+void getPrev(List *listP, Student student, Student *prev) &#123;    assert(listP);    int position = getPosition(listP, student);    if (position &gt; 0) &#123;        getData(listP, position, prev);    &#125;&#125;void getNext(List *listP, Student student, Student *next) &#123;    assert(listP);    int position = getPosition(listP, student);    if (position &lt; listP-&gt;length) &#123;        getData(listP, position, next);    &#125;&#125;
+动态顺序表修改顺序表结构，使用指针代替固定长度的数组，并添加一个size参数，用于记录当前数据表中的数据占用内存大小
+#define INIT_LENGTH 10          // 顺序表数据初始长度typedef struct &#123;    int length;                 // 有效数据长度    long int size;              // 占用内存大小    Student *data;              // 数据储存地址指针&#125; List;
+初始化表
+void init(List *listP) &#123;    assert(listP);    // 初始所需内存大小    listP-&gt;size = sizeof(Student) * INIT_LENGTH;    // 初始有效数据长度    listP-&gt;length = 0;    // 动态分配内存    listP-&gt;data = (Student*) malloc(listP-&gt;size);&#125;
+ 重写判断数据表是否已满的函数，使该函数不再return任何值，每次添加数据时，调用该函数，如果数据表长度达到最大，则进行扩充
+ void isFull(List *listP) &#123;    assert(listP);    // 重新分配内存    if ( ( listP-&gt;length * sizeof(Student) ) &gt;= listP-&gt;size) &#123;        listP-&gt;size = listP-&gt;size + (long int)( sizeof(Student) * INIT_LENGTH );        Student *newDataPointer = ( Student* ) realloc( listP-&gt;data,  listP-&gt;size);        if (newDataPointer != NULL) &#123;            listP-&gt;data = newDataPointer;        &#125;    &#125;&#125;
+ 添加销毁数据表函数
+ void destroy(List *listP) &#123;    printf(&quot;======================\n&quot;);    printf(&quot;数据块最后大小 = %ld\n&quot;, listP-&gt;size);    free(listP-&gt;data);    listP-&gt;data = NULL;    listP-&gt;length = 0;    listP-&gt;size = 0;&#125;
+
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构C语言</tag>
+      </tags>
+  </entry>
 </search>
