@@ -16015,7 +16015,25 @@ Student student1 = &#123;.name = &quot;小冲&quot;, .age = 18, .height = 180, .
   <entry>
     <title>三角函数</title>
     <url>/2024/03/05/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[三角函数正弦余弦
+    <content><![CDATA[三角函数基本关系
+正弦：$\sin A = \frac{a}{c} $&ensp;&ensp;余弦：$\cos A = \frac{b}{c} $
+正切：$\tan A = \frac{a}{b} $&ensp;&ensp;余切：$\cot A = \frac{b}{a} $
+余割：$\csc A = \frac{c}{a} $&ensp;&ensp;正割：$\sec A = \frac{c}{b} $
+
+恒等式
+$ \sec A = \frac{1}{\cos A} $
+$ \csc A = \frac{1}{\sin A} $
+$ \cot A = \frac{1}{\tan A} $
+$ \sin ^{2}A + \cos ^{2}A = 1 $
+$ \tan ^{2}A + 1 = \sec ^{2}A $
+$ \tan A = \frac{\sin A}{\cos A} $
+$ \cos 2A = \cos ^{2} A - \sin ^{2} A = 1 - 2\sin ^{2} A = 2\cos ^{2} A - 1 $
+$ \sin 2A = 2\sin A \times \cos A $
+$ \csc ^{2} A = \frac{1}{\sin ^{2} A}  = \frac{\cos ^{2} A + \sin ^{2} A}{\sin ^{2} A} = \frac{\cos ^{2} A}{\sin ^{2} A} + 1 = \cot ^{2}A + 1 $
+$ \cos (\alpha \pm  \beta ) = \cos \alpha \cos \beta \mp \sin \alpha \sin \beta  $
+$ \sin (\alpha \pm \beta ) = \sin \alpha \cos \beta \pm \cos \alpha \sin \beta  $
+
+正弦余弦
 
 
 
