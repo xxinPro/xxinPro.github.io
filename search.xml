@@ -10748,7 +10748,8 @@ $ a^{x} = e^{x\ln_{}{a} }  $
 如果$\lim f(x)=A$，$\lim g(x)=B$，那么
 $\lim[f(x) \pm  g(x)] = \lim f(x) \pm \lim g(x) = A\pm B$
 $\lim[f(x) \times  g(x)] = \lim f(x) \times \lim g(x) = A\times B$
-若$B\ne 0$则$\lim \frac {f(x)}{g(x)}=\frac{\lim f(x)}{\lim g(x)}= \frac {A}{B}$
+若$B\ne 0$，则$\lim \frac {f(x)}{g(x)}=\frac{\lim f(x)}{\lim g(x)}= \frac {A}{B}$
+若$\lim f(x)$存在，$n$为正整数，则$\lim [f(x)]^n = [ \lim f(x) ]^n$
 
 
 如果$\varphi (x) \ge \psi (x)$，$\lim \varphi (x)=A$，$\lim \psi (x)=B$，那么$A \ge B$
