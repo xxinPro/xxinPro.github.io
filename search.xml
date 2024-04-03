@@ -11584,18 +11584,18 @@ $ $
 不定积分不定积分的性质性质1 设函数$f(x)$及$g(x)$的原函数存在，则
 
   $ $
-    \begin{array} {c}
+    \begin{align*}
     \int \left [ f(x) \pm g(x) \right ] \mathrm{d}x = \int f(x) \mathrm{d}x  \pm \int g(x) \mathrm{d}x
-    \end{array}
+    \end{align*}
     $ $
 
 
 
-性质2 设函数$f(x)$的原函数存在，$k$为非零常数，则$ $\begin{array} {c}\int kf(x)dx = k\int f(x)dx\end{array}$ $
-性质3$ $\begin{array} {c}  {\left ( \int f(x)dx \right ) }’ = f(x)\end{array}
-\begin{array} {c}  d\int f(x)dx = f(x)dx\end{array}$ $
-性质4$ $\begin{array} {c}\int {f}’(x)dx = f(x)+C\end{array}
-\begin{array} {c}\int df(x) = f(x)+C\end{array}$ $
+性质2 设函数$f(x)$的原函数存在，$k$为非零常数，则$ $\begin{align}\int kf(x)dx = k\int f(x)dx\end{align}$ $
+性质3$ $\begin{align}  {\left ( \int f(x)dx \right ) }’ = f(x)\end{align}
+\begin{align}  d\int f(x)dx = f(x)dx\end{align}$ $
+性质4$ $\begin{align}\int {f}’(x)dx = f(x)+C\end{align}
+\begin{align}\int df(x) = f(x)+C\end{align}$ $
 三角代换一般的，a&gt;0时，当被积函数有
 
 $\sqrt{a^{2} - x^{2} } $，可做代换$x=a\sin {u}(-\frac{\pi }{2} &lt; u &lt; \frac{\pi }{2} )$
@@ -11697,99 +11697,109 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 
 其中
 
-  $ $
-  \begin{array}{l}
-  x=\xi_i = \left [ a+\frac {(b-a)i}{n} \right],\\
-  a=\xi_1,b=\xi_n,\\
-  \mathrm{d}x=\frac{b-a}{n}\\
-  \end{array}
-  $ $
+$ $
+\begin{align*}
+& x=\xi_i = \left [ a+\frac {(b-a)i}{n} \right],\\
+& a=\xi_1,b=\xi_n,\\
+& \mathrm{d}x=\frac{b-a}{n}\\
+\end{align*}
+$ $
+
+
+当$a$、$b$取$0$、$1$时
+
+$ $
+\begin{align*}
+\int_{0}^{1} f(x)\mathrm{d}x = \lim_{n \to \infty}\sum_{i=1}^{n} f(\frac{i}{n} )\frac{1}{n} 
+\end{align*}
+$ $
+
 
 
 若要将和式极限转换为定积分形式
 
-  $ $
-  \begin{array}{l}
-  x=\left [ a+\frac {(b-a)i}{n} \right] = \xi_i,\\
-  {\color{Red} Tip：先确定\xi_i,} \\
-  积分下限a=\lim_{n \to \infty }\xi_1,积分上限b=\lim_{n \to \infty }\xi_n,\\
-  {\color{Red} Tip：如果(i=1,2,\cdots,n),那么积分下限为\lim_{n \to \infty }\xi_1,积分上限为\lim_{n \to \infty }\xi_n,} \\
-  \mathrm{d}x=\frac{b-a}{n}=\Delta x_i,\\
-  {\color{Red} Tip：根据积分上限和下限有积分区间长度，} \\
-  {\color{Red} 积分区间长度/积分区间被分割的个数=\Delta x_i=\mathrm{d}x,}\\
-  于是有\int_{a}^{b} f(x) \mathrm{d} x
-  \end{array}
-  $ $
+$ $
+\begin{align*}
+& x=\left [ a+\frac {(b-a)i}{n} \right] = \xi_i,\\
+& {\color{Red} Tip：先确定\xi_i,} \\
+& 积分下限a=\lim_{n \to \infty }\xi_1,积分上限b=\lim_{n \to \infty }\xi_n,\\
+& {\color{Red} Tip：如果(i=1,2,\cdots,n),那么积分下限为\lim_{n \to \infty }\xi_1,积分上限为\lim_{n \to \infty }\xi_n,} \\
+& \mathrm{d}x=\frac{b-a}{n}=\Delta x_i,\\
+& {\color{Red} Tip：根据积分上限和下限有积分区间长度，} \\
+& {\color{Red} 积分区间长度/积分区间被分割的个数=\Delta x_i=\mathrm{d}x,}\\
+& 于是有\int_{a}^{b} f(x) \mathrm{d} x
+\end{align*}
+$ $
 
 
 
 &ensp;&ensp;例：将$\lim_{n \to \infty } \sum_{i=1}^{n} \frac{i}{n^2} \ln \left ( 1+\frac {i}{n} \right ) $转化为定积分形式
-  $ $
-  \begin{array}{l}
-  令x=\xi _i=(0+\frac{i}{n}),\\
-  于是积分下限a=\lim_{n \to \infty }\xi_1= 0,\\
-  积分上限b=\lim_{n \to \infty }\xi_n=1,\\
-  积分区间长度为b-a=1,\\
-  \because i=1,2,\cdots,n,\\
-  \therefore 积分区间[a,b]被分割了n个小区间,\\
-  \therefore \mathrm{d}x=\Delta x_i=\frac{b-a}{n} =\frac{1}{n},\\
-  即有\int_{0}^{1} x\ln (1+x)\mathrm{d} x
-  \end{array}
-  $ $
+$ $
+\begin{align*}
+& 令x=\xi _i=(0+\frac{i}{n}),\\
+& 于是积分下限a=\lim_{n \to \infty }\xi_1= 0,\\
+& 积分上限b=\lim_{n \to \infty }\xi_n=1,\\
+& 积分区间长度为b-a=1,\\
+& \because i=1,2,\cdots,n,\\
+& \therefore 积分区间[a,b]被分割了n个小区间,\\
+& \therefore \mathrm{d}x=\Delta x_i=\frac{b-a}{n} =\frac{1}{n},\\
+& 即有\int_{0}^{1} x\ln (1+x)\mathrm{d} x
+\end{align*}
+$ $
 
 
 
 定积分的性质规定1 当$ b=a $时
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \int_{a}^{b} f(x)\mathrm{d}x = 0
-  \end{array}
+  \end{align*}
   $ $
 
 
 规定2 当$ a\gt b $时
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \int_{a}^{b} f(x)\mathrm{d}x = -\int_{b}^{a} f(x)\mathrm{d}x
-  \end{array}
+  \end{align*}
   $ $
 
 
 性质1 被积函数中的常数因子可以提到积分号外
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \int_{a}^{b} kf(x)\mathrm{d}x = k\int_{a}^{b}  f(x)\mathrm{d}x \; (k是常数) 
-  \end{array}
+  \end{align*}
   $ $
 
 
 性质2 两个函数代数和、差的积分等于积分代数的和、差
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \int_{a}^{b} [f(x) \pm g(x)]\mathrm{d}x = \int_{a}^{b}  f(x)\mathrm{d}x \pm \int_{a}^{b} g(x) \mathrm{d}x 
-  \end{array}
+  \end{align*}
   $ $
 
 
 性质3 可加性，设$ a \lt b \lt c $，有
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \int_{a}^{b} f(x)\mathrm{d}x = \int_{a}^{c} f(x) \mathrm{d}x + \int_{c}^{b} f(x)\mathrm{d} x
-  \end{array}
+  \end{align*}
   $ $
 
 
 性质4 如果在区间$[a,b]$上$f(x) \equiv 1$，则
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \int_{a}^{b} 1\mathrm{d}x = \int_{a}^{b} \mathrm{d}x = b-a
-  \end{array}
+  \end{align*}
   $ $
 
 
@@ -11797,18 +11807,18 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 性质5 如果在区间$[a,b]$上$f(x) \ge 0$，则
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \int_{a}^{b} f(x)\mathrm{d}x \ge 0 \; (a \lt b)
-  \end{array}
+  \end{align*}
   $ $
 
 
 推论1 如果在区间$[a,b]$上$f(x) \le g(x)$，则
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \int_{a}^{b} f(x)\mathrm{d} x \le \int_{a}^{b} g(x)\mathrm{d} x \; (a \lt b)
-  \end{array}
+  \end{align*}
   $ $
 
 
@@ -11816,27 +11826,27 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 推论2
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \left|\int_{a}^{b}f(x)\mathrm{d}x \right| \le \int_{a}^{b} \left|f(x)\right| \mathrm{d} x \; (a \lt b) 
-  \end{array}
+  \end{align*}
   $ $
 
 
 性质6 估值定理。设$M$及$m$分别是函数$f(x)$在区间$[a,b]$上的最大值及最小值，则
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   m(b-a) \le \int_{a}^{b}f(x)\mathrm{d}x \le M(b-a)
-  \end{array}
+  \end{align*}
   $ $
 
 
 性质7 定积分中值定理。如果函数$f(x)$在积分区间$[a,b]$上连续，那么在$[a,b]$上至少存在一个点$\xi$，使下式成立
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \int_{a}^{b}f(x)\mathrm{d}x=f(\xi)(b-a) \; (a \le \xi \le b)
-  \end{array}
+  \end{align*}
   $ $
 
 
@@ -11844,28 +11854,28 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 性质8 由定积分的几何意义可知，当$a\gt 0$时
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \int_{-a}^{a} \sqrt{a^{2}-x^{2}} \mathrm{d}x = \frac{\pi }{2} a^{2} \\
   \int_{0}^{a} \sqrt{a^{2}-x^{2}} \mathrm{d}x = \frac{\pi }{4} a^{2}
-  \end{array}
+  \end{align*}
   $ $
 
 
 牛顿-莱布尼兹公式微积分基本定理 如果函数$F(x)$是连续函数$f(x)$在区间$[a,b]$上的一个原函数，那么
 
   $ $
-  \begin{array} {c}
+  \begin{align*}
   \int_{a}^{b}f(x)\mathrm{d}x=F(b) -F(a)
-  \end{array}
+  \end{align*}
   $ $
 
 
 反常积分无穷限反常积分&ensp;&ensp;1.设函数$f(x)$在区间$[a,+\infty )$上连续，则$f(x)$在无穷区间$[a,+\infty )$上的反常积分
 
 $ $
-\begin{array} {c}
+\begin{align*}
 \int_{a}^{+\infty } f(x)\mathrm{d}x = \lim_{t \to +\infty} \int_{a}^{t}f(x)\mathrm{d}x 
-\end{array}
+\end{align*}
 $ $
 
 
@@ -11873,18 +11883,18 @@ $ $
 &ensp;&ensp;2.设函数$f(x)$在区间$(-\infty,b]$上连续，则$f(x)$在无穷区间$(-\infty,b]$上的反常积分
 
 $ $
-\begin{array} {c}
+\begin{align*}
 \int_{-\infty}^{b } f(x)\mathrm{d}x = \lim_{t \to -\infty} \int_{t}^{b}f(x)\mathrm{d}x 
-\end{array}
+\end{align*}
 $ $
 
 
 &ensp;&ensp;3.设函数$f(x)$在区间$(-\infty,+\infty)$上连续，则函数$f(x)$在无穷区间$(-\infty,+\infty)$上的反常积分
 
 $ $
-\begin{array} {c}
+\begin{align*}
 \int_{-\infty}^{ +\infty} f(x)\mathrm{d}x = \int_{-\infty}^{ 0} f(x)\mathrm{d}x + \int_{0}^{ +\infty} f(x)\mathrm{d}x = \lim_{t \to -\infty} \int_{t}^{b}f(x)\mathrm{d}x +\lim_{t \to +\infty} \int_{a}^{t}f(x)\mathrm{d}x 
-\end{array}
+\end{align*}
 $ $
 
 
