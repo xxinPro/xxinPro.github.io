@@ -11013,7 +11013,8 @@ $\csc ^{2} x \mathrm{d}x = \mathrm{d}(-\cot x) $
 
 
 
-定积分定义求极限&ensp;&ensp;定积分定义的和式极限
+定积分的精确定义
+&ensp;&ensp;将$[a,b]$等分为n个小区间，则各小区间的长度$\Delta x_i$相等，取每个小区间的右端点为$\xi _i$，于是有和式极限
 
   $ $
   \begin{align*}
@@ -11042,37 +11043,37 @@ $ $
 $ $
 
 
-
 若要将和式极限转换为定积分形式
 
 $ $
 \begin{align*}
-& x=\left [ a+\frac {(b-a)i}{n} \right] = \xi_i,\\
-& {\color{Red} Tip：先确定\xi_i,} \\
-& 积分下限a=\lim_{n \to \infty }\xi_1,积分上限b=\lim_{n \to \infty }\xi_n,\\
-& {\color{Red} Tip：如果(i=1,2,\cdots,n),那么积分下限为\lim_{n \to \infty }\xi_1,积分上限为\lim_{n \to \infty }\xi_n,} \\
-& \mathrm{d}x=\frac{b-a}{n}=\Delta x_i,\\
-& {\color{Red} Tip：根据积分上限和下限有积分区间长度，} \\
-& {\color{Red} 积分区间长度/积分区间被分割的个数=\Delta x_i=\mathrm{d}x,}\\
-& 于是有\int_{a}^{b} f(x) \mathrm{d} x
+& \color{red} Tip:先凑出小积分区间长度\Delta x_i \\
+& \mathrm{d}x = \Delta x_i =  \frac{b-a}{n} \\
+& \color{red} Tip:根据小积分区间长度，得到精确定义的\xi_i \\
+& x = \xi _i =a+\frac{(b-a)i}{n} \\
+& \color{red}Tip:确定积分下限和积分上限 \\
+& a为积分下限(a = \lim_{n \to \infty } \xi_1)，b为积分上限(b=\lim_{n \to \infty} \xi_n)\\
+&\color{red} Tip: 根据原式确定函数f(x)，于是得到\\
+& \int_{a}^{b}f(x)\mathrm{d}x 
 \end{align*}
 $ $
+
 
 
 
 &ensp;&ensp;例：将$\lim_{n \to \infty } \sum_{i=1}^{n} \frac{i}{n^2} \ln \left ( 1+\frac {i}{n} \right ) $转化为定积分形式
 $ $
 \begin{align*}
-& 令x=\xi _i=(0+\frac{i}{n}),\\
-& 于是积分下限a=\lim_{n \to \infty }\xi_1= 0,\\
-& 积分上限b=\lim_{n \to \infty }\xi_n=1,\\
-& 积分区间长度为b-a=1,\\
-& \because i=1,2,\cdots,n,\\
-& \therefore 积分区间[a,b]被分割了n个小区间,\\
-& \therefore \mathrm{d}x=\Delta x_i=\frac{b-a}{n} =\frac{1}{n},\\
-& 即有\int_{0}^{1} x\ln (1+x)\mathrm{d} x
+& 原式=\lim_{n \to \infty } \sum_{i=1}^{n} \frac{1}{n} \cdot \frac{i}{n} \ln \left ( 1+\frac {i}{n} \right ) \\
+& 令\mathrm{d}x = \Delta x_i = \frac{1}{n} \\
+& \therefore x = \xi_i  = (0+\frac{i}{n}) \\
+& \therefore a = 0，b = 1 \\
+& 根据原式，f(x) = x\ln (1+x) \\
+& 于是有\int_{0}^{1} x\ln (1+x)\mathrm{d}x  
 \end{align*}
 $ $
+
+
 
 
 
