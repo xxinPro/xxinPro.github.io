@@ -11286,7 +11286,45 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
 
 
 
-定积分几何应用旋转体体积
+定积分几何应用平面图形面积
+&ensp;&ensp;曲线$y_1=f_1(x)$、$y_2=f_2(x)$与$x=a$、$x=b$所围成的平面图形的面积为
+
+  $ $
+  \begin{align*}
+  S=\int_{a}^{b} \left | y_1-y_2\right | \mathrm{d} x
+  \end{align*}
+  $ $
+
+
+如果曲线$y_1=f_1(x)$由参数方程$\begin{cases} x=\varphi(t) \\ y_1=\psi(t)\end{cases}$（$\alpha \le t \le \beta$）给出，那么$y_1$与$x$轴所围成的平面图形的面积为
+
+  $ $
+  \begin{align*}
+  S_1=\int_{\alpha}^{\beta} \left | \psi (t)\right | \mathrm{d} [\varphi (t)]
+  \end{align*}
+  $ $
+
+
+曲边扇形面积
+&ensp;&ensp;曲线$r_1=r_1(\theta)$、$r_2=r_2(\theta)$与$\theta=\alpha$、$\theta=\beta$所围成的平面图形的面积为
+
+  $ $
+  \begin{align*}
+  S=\frac{1}{2} \int_{\alpha }^{\beta } |r_1^2(\theta ) - r_2^2(\theta )|\mathrm{d} \theta 
+  \end{align*}
+  $ $
+
+
+&ensp;&ensp;直角坐标与极坐标的对应关系
+
+  $ $
+  \begin{align*}
+  x=r(\theta )\cos \theta ,y=r(\theta )\sin \theta 
+  \end{align*}
+  $ $
+
+
+旋转体体积
 &ensp;&ensp;曲线$y=f(x)$与$x=a$、$x=b$及$x$轴围成的平面绕$x$轴旋转一周所得旋转体的体积为
 
   $ $
