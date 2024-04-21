@@ -10569,6 +10569,11 @@ $ $
 当$f’’(x_0) \lt 0$时，函数$f(x)$在$x_0$处取得极大值
 当$f’’(x_0) \gt 0$时，函数$f(x)$在$x_0$处取得极小值
 
+拐点的判别拐点定义&ensp;&ensp;连续曲线的凹弧与凸弧的分界点称为该曲线的拐点
+必要条件&ensp;&ensp;设$f’’(x_0)$存在，且点$(x_0, f(x_0))$为曲线的拐点，则$f’’(x_0) = 0$
+第一充分条件&ensp;&ensp;设$f(x)$在点$x=x_0$处连续，在点$x=x_0$的某去心邻域内二阶可导，且在该店的左右邻域内$f’’(x)$变号，则点$(x_0, f(x_0))$为曲线的拐点
+第二充分条件&ensp;&ensp;设$f(x)$在点$x=x_0$的某邻域内三阶可导，且$f’’(x_0) = 0$，$f’’’(x_0) \ne 0$，则点$(x_0, f(x_0))$为曲线的拐点
+第三充分条件&ensp;&ensp;设$f(x)$在$x_0$处$n(n \ge 2)$阶可导，且$f^{(n)}(x_0) = 0$，$f^{(n+1)}(x_0) \ne 0$，则当$n$为偶数时，点$(x_0, f(x_0))$为曲线的拐点
 导数公式导数表达式结构
 $f’(x_{0} ) = \lim_{\Delta x \to 0} \frac{f(x_{0} + \Delta x) - f(x_{0} )}{\Delta x} $
 $f’(x_{0} ) = \lim_{h \to 0} \frac{f(x_{0} + h) - f(x_{0} )}{h} (h = \Delta x)$
@@ -10945,14 +10950,19 @@ $\int \tan {x} \mathrm{d}x = -\ln \left|\cos {x}\right| + C $
 $\int \cot {x}\mathrm{d}x = \ln \left|\sin {x}\right| + C $
 $\int \sec {x}\mathrm{d}x = \ln \left|\sec {x} + \tan {x}\right| + C  $
 $\int \csc {x}\mathrm{d}x = \ln \left|\cot {x} - \csc {x}\right| + C $
-$\int \frac{\mathrm{d}x }{\sqrt{1-x^{2}} } = \arcsin x + C$
-$\int -\frac{\mathrm{d}x }{\sqrt{1-x^{2}} } = \arccos x + C$
-$\int \frac{\mathrm{d}x }{1+x^{2} } = \arctan x + C$
-$\int -\frac{\mathrm{d}x }{1+x^{2} } = \operatorname{arccot} x + C$
-$\int \frac{\mathrm{d}x }{\cos ^{2}x}  = \int \sec ^{2}x\mathrm{d}x = \tan x + C$
-$\int \frac{\mathrm{d}x }{\sin ^{2}x}  = \int \csc ^{2}x\mathrm{d}x = -\cot x + C$
 $\int \sec x \tan x \mathrm{d}x = \sec x + C $
 $\int \csc x \cot x \mathrm{d}x = -\csc x + C $
+$\int \frac{\mathrm{d}x }{\cos ^{2}x}  = \int \sec ^{2}x\mathrm{d}x = \tan x + C$
+$\int \frac{\mathrm{d}x }{\sin ^{2}x}  = \int \csc ^{2}x\mathrm{d}x = -\cot x + C$
+$\int \frac{\mathrm{d}x }{\sqrt{1-x^{2}} } = \arcsin x + C$
+$\int \frac{\mathrm{d}x }{\sqrt{a^2-x^{2}} } = \arcsin \frac{x}{a}  + C$
+$\int -\frac{\mathrm{d}x }{\sqrt{1-x^{2}} } = \arccos x + C$
+$\int \frac{1}{\sqrt[]{x^2+a^2} } \mathrm{d} x = \ln (x+\sqrt[]{x^2+a^2} ) + C$
+$\int \frac{1}{\sqrt[]{x^2-a^2} } \mathrm{d} x = \ln \left|x+\sqrt[]{x^2-a^2} \right| + C(x^2\ge a^2)$
+$\int \frac{\mathrm{d}x }{1+x^{2} } = \arctan x + C$
+$\int \frac{\mathrm{d}x }{a^2+x^{2} } = \frac{1}{a} \arctan \frac{x}{a}  + C$
+$\int -\frac{\mathrm{d}x }{1+x^{2} } = \operatorname{arccot} x + C$
+$\int \frac{1}{x^2-a^2} \mathrm{d}x = \frac{1}{2a} \ln \left |\frac{x-a}{x+a} \right | +C$
 
 常用凑微分等式
 $\mathrm{d}x = \frac{1}{a} \mathrm{d} (ax) $
@@ -11201,7 +11211,7 @@ $ $
   $ $
 
 
-反常积分无穷限反常积分&ensp;&ensp;1.设函数$f(x)$在区间$[a,+\infty )$上连续，则$f(x)$在无穷区间$[a,+\infty )$上的反常积分
+反常积分无穷区间&ensp;&ensp;1.设函数$f(x)$在区间$[a,+\infty )$上连续，则$f(x)$在无穷区间$[a,+\infty )$上的反常积分
 
 $ $
 \begin{align*}
@@ -11229,7 +11239,7 @@ $ $
 $ $
 
 
-无界函数的反常积分(瑕积分)&ensp;&ensp;1.设函数$f(x)$在区间$(a,b]$上连续，则$f(x)$在区间$(a,b]$上的反常积分
+无界函数（瑕积分）&ensp;&ensp;1.设函数$f(x)$在区间$(a,b]$上连续，则$f(x)$在区间$(a,b]$上的反常积分
 
 $ $
 \begin{align*}
@@ -11271,10 +11281,46 @@ $\Gamma (s+1)= s\Gamma (s)$
 $\Gamma (n+1)=n!$ (n为正整数)
 $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
 
-反常积分申敛法性质1如果$ \int_{a}^{+\infty } f(x)\mathrm{d}x  $收敛，则$\int_{a}^{+\infty } kf(x)\mathrm{d}x $收敛，并且$\int_{a}^{+\infty } kf(x)\mathrm{d}x = k\int_{a}^{+\infty } f(x)\mathrm{d}x $
-性质2如果$ \int_{a}^{+\infty } f(x)\mathrm{d}x  $与$ \int_{a}^{+\infty } g(x)\mathrm{d}x  $收敛，则$ \int_{a}^{+\infty } [f(x) \pm g(x) ]\mathrm{d}x  $收敛，反之不一定成立
-定理1如果$ f(x)\ge 0 $，那么$ \int_{a}^{+\infty } f(x)\mathrm{d}x $收敛的充分必要条件是，$ \int_{a}^{+\infty } f(x)\mathrm{d}x $的原函数$ F(x) = \int_{a}^{x} f(t)\mathrm{d}t $有界
-定理2设$ 0 \le f(x) \le g(x) $如果$ \int_{a}^{+\infty } g(x)\mathrm{d}x $收敛，那么$ \int_{a}^{+\infty } f(x)\mathrm{d}x $收敛如果$ \int_{a}^{+\infty } f(x)\mathrm{d}x $发散，那么$ \int_{a}^{+\infty } g(x)\mathrm{d}x $发散
+反常积分申敛法比较判别法&ensp;&ensp;设函数$f(x)$，$g(x)$在区间$\left[a,b\right)$上连续，其中$b \in \left(a, +\infty\right)$，并且$ 0 \le f(x) \le g(x) $，则
+
+如果$ \int_{a}^{b } g(x)\mathrm{d}x $收敛，那么$ \int_{a}^{b } f(x)\mathrm{d}x $收敛
+如果$ \int_{a}^{b } f(x)\mathrm{d}x $发散，那么$ \int_{a}^{b } g(x)\mathrm{d}x $发散
+
+极限形式比较判别法&ensp;&ensp;设函数$f(x)$，$g(x)$在区间$\left[a,b\right)$上连续，其中$b \in \left(a, +\infty\right)$，并且$ f(x) \ge 0 $，$ g(x) \gt 0 $，$\lim_{x \to +\infty} \frac{f(x)}{g(x)} = \lambda $，则
+
+当$\lambda \ne 0$且$\lambda \ne \infty$时，$\int_{a}^{b} g(x)\mathrm{d} x$与$\int_{a}^{b} f(x)\mathrm{d} x$有相同的敛散性
+当$\lambda =0$时，若$\int_{a}^{b} g(x)\mathrm{d} x$收敛，则$\int_{a}^{b} f(x)\mathrm{d} x$收敛
+当$\lambda = \infty$时，若$\int_{a}^{b} g(x)\mathrm{d} x$发散，则$\int_{a}^{b} f(x)\mathrm{d} x$发散
+
+重要结论
+  $ $
+  \begin{align*}
+  &\int_{0}^{1} \frac{1}{x^p} \mathrm{d} x \begin{cases}
+  \text{收敛}  & 0 \lt p \lt 1 \\
+  \text{发散}  & p \ge 1
+  \end{cases} \\
+
+  &\int_{0}^{+\infty } \frac{1}{x^p} \mathrm{d} x \begin{cases}
+  \text{收敛}  & p \gt 1 \\
+  \text{发散}  & p \le 1
+  \end{cases}
+  \end{align*}
+
+  \begin{align*}
+  &\int_{0}^{1} \frac{\ln x}{x^p} \mathrm{d} x \begin{cases}
+  \text{收敛}  & 0 \lt p \lt 1 \\
+  \text{发散}  & p \ge 1
+  \end{cases} \\
+
+  &\int_{0}^{+\infty } \frac{\ln x}{x^p} \mathrm{d} x \begin{cases}
+  \text{收敛}  & p \gt 1 \\
+  \text{发散}  & 0 \lt p \le 1
+  \end{cases}
+  \end{align*}
+  $ $
+
+
+
 定积分求导公式设有$F(x)=\int_{g(x)}^{h(x)}f(t)\mathrm{d}t$
 则它的导数$F’(x)$为
 
