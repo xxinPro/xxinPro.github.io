@@ -11361,11 +11361,12 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
   $ $
 
 
-&ensp;&ensp;直角坐标与极坐标的对应关系
 
+&ensp;&ensp;直角坐标与极坐标的对应关系
   $ $
   \begin{align*}
-  x=r(\theta )\cos \theta ,y=r(\theta )\sin \theta 
+  x=r(\theta )\cos \theta \\
+  y=r(\theta )\sin \theta 
   \end{align*}
   $ $
 
@@ -11416,7 +11417,7 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
 
   $ $
   \begin{align*}
-  S=\int_{a}^{b} \sqrt[]{1+[f'(x)]^2}\mathrm{d}x
+  S=\int_{a}^{b}\mathrm{d}s = \int_{a}^{b} \sqrt[]{1+[f'(x)]^2}\mathrm{d}x
   \end{align*}
   $ $
 
