@@ -11410,6 +11410,14 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
   $ $
 
 
+定直线旋转体体积
+&ensp;&ensp;设平面曲线$L:y=f(x)$（$a \le x \le b$），且$f(x)$可导，定直线$L_0:Ax+By+C=0$，且过$L_0$的任一条垂线与$L$至多有一个交点，则$L$绕$L_0$旋转一周所得旋转体的体积为
+
+  $ $
+  \begin{align*}
+  V=\frac{\pi}{(A^2+B^2)^{\frac{3}{2} }} \int_{a}^{b} \left [ Ax+Bf(x)+C \right ]^2\left| Af'(x)-B\right| \mathrm{d} x
+  \end{align*}
+  $ $
 
 
 平面曲线弧长
@@ -11428,6 +11436,54 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
   \begin{align*}
   S=\int_{\alpha }^{\beta } \sqrt[]{[\varphi'(t)]^2+[\psi'(t)]^2}\mathrm{d}t
   \end{align*}
+  $ $
+
+
+当曲线由极坐标方程$r=r(\theta)$（$\alpha \le \theta \le \beta$）给出时
+
+  $ $
+  \begin{align*}
+  S=\int_{a}^{b} \sqrt[]{[r(\theta)]^2 + [r'(\theta )]^2} \mathrm{d} \theta 
+  \end{align*}
+  $ $
+
+
+旋转体侧面积
+&ensp;&ensp;曲线$y=f(x)$与$x=a$、$x=b$及$x$轴围成的平面绕$x$轴旋转一周所得旋转体的侧面积为
+
+  $ $
+  \begin{align*}
+  S=2\pi \int_{a}^{b} \left| y\right| \mathrm{d} s=2\pi \int_{a}^{b} \left| y\right| \sqrt[]{1+\left[ f'(x)\right]^2} \mathrm{d} x
+  \end{align*}
+  $ $
+
+
+当曲线由参数方程$\begin{cases} x=\varphi(t) \\ y=\psi(t)\end{cases}$（$\alpha \le t \le \beta$）给出时
+
+  $ $
+  \begin{align*}
+  S=2\pi \int_{\alpha }^{\beta} \left| \psi (t)\right| \sqrt[]{\left[ \varphi ' (t)\right]^2+\left[ \psi' (t)\right]^2} \mathrm{d} t
+  \end{align*}
+  $ $
+
+
+当曲线由极坐标方程$r=r(\theta)$（$\alpha \le \theta \le \beta$）给出时
+
+  $ $
+  \begin{align*}
+  S=2\pi \int_{\alpha }^{\beta} \left| r(\theta) \sin \theta \right| \sqrt[]{\left[ r(\theta )\right]^2+\left[ r'(\theta )\right]^2} \mathrm{d} \theta 
+  \end{align*}
+  $ $
+
+
+平面图形的形心坐标
+&ensp;&ensp;设平面区域$D=\left \{ (x,y)|0 \le y \le f(x), a \le x \le b \right \} $，$y=f(x)$在$[a,b]$上连续，则$D$的形心坐标$(\bar{x}, \bar{y})$的计算公式为
+
+  $ $
+  \begin{gather*}
+  \bar{x} = \frac{\iint\limits_{D}x\mathrm{d}\sigma }{\iint\limits_{D}\mathrm{d}\sigma} =\frac{\int_{a}^{b} \mathrm{d} x\int_{0}^{f(x)} x\mathrm{d} y}{\int_{a}^{b} \mathrm{d} x\int_{0}^{f(x)} \mathrm{d} y} = \frac{\int_{a}^{b}xf(x) \mathrm{d} x}{\int_{a}^{b}f(x) \mathrm{d} x} \\
+  \bar{y} = \frac{\iint\limits_{D}y\mathrm{d}\sigma }{\iint\limits_{D}\mathrm{d}\sigma} =\frac{\int_{a}^{b} \mathrm{d} x\int_{0}^{f(x)} y\mathrm{d} y}{\int_{a}^{b} \mathrm{d} x\int_{0}^{f(x)} \mathrm{d} y} = \frac{\frac{1}{2}\int_{a}^{b}f^2(x) \mathrm{d} x}{\int_{a}^{b}f(x) \mathrm{d} x} 
+  \end{gather*}
   $ $
 
 
