@@ -16239,4 +16239,54 @@ static方法不能被重写，所以static方法无需再标记final
         <category>随笔一记</category>
       </categories>
   </entry>
+  <entry>
+    <title>Shizuku开发</title>
+    <url>/2024/04/28/Shizuku%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[Shizuku开源地址：https://github.com/RikkaApps/ShizukuShizuku开发指南：https://github.com/RikkaApps/Shizuku-API
+安装Shizuku该方案通过Shizuku给自己的软件授予adb shell权限，但前提是Shizuku必须拥有adb shell权限，具体可以参考
+Shizuku用户手册：https://shizuku.rikka.app/zh-hans/guide/setup/
+引入依赖可以选择引入maven central中的远程依赖
+def shizuku_version = &quot;13.1.5&quot;implementation &quot;dev.rikka.shizuku:api:$shizuku_version&quot;// implementation &quot;dev.rikka.shizuku:aidl:$shizuku_version&quot;     // 不需要在app gradle中引入// implementation &quot;dev.rikka.shizuku:shared:$shizuku_version&quot;   // 不需要在app gradle中引入implementation &quot;dev.rikka.shizuku:provider:$shizuku_version&quot;
+亦或者引入Shizuku-API中对应的模块
+implementation project(&#x27;:api&#x27;)// implementation project(&#x27;:shared&#x27;)    // 不需要在app gradle中引入// implementation project(&#x27;:aidl&#x27;)      // 不需要在app gradle中引入implementation project(&#x27;:provider&#x27;)
+添加支持在清单文件中加入如下代码
+&lt;provider    android:name=&quot;rikka.shizuku.ShizukuProvider&quot;    android:authorities=&quot;$&#123;applicationId&#125;.shizuku&quot;    android:multiprocess=&quot;false&quot;    android:enabled=&quot;true&quot;    android:exported=&quot;true&quot;    android:permission=&quot;android.permission.INTERACT_ACROSS_USERS_FULL&quot; /&gt;
+进行完这一步，已经可以发现在Shizuku的应用管理中出现了目标app
+判断权限判断当前app是否拥有shizuku中的adb shell权限
+/** * 判断是否拥有shizuku adb shell权限 */private boolean checkPermission() &#123;    return Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED;&#125;
+动态申请权限动态申请Shizuku adb shell权限
+private void requestShizukuPermission() &#123;    boolean checked = checkPermission();    if (checked) &#123;        Toast.makeText(this, &quot;已拥有权限&quot;, Toast.LENGTH_SHORT).show();        return;    &#125;    if (Shizuku.isPreV11()) &#123;        Toast.makeText(this, &quot;当前shizuku版本不支持动态申请&quot;, Toast.LENGTH_SHORT).show();        return;    &#125;    // 动态申请权限    Shizuku.requestPermission(MainActivity.PERMISSION_CODE);&#125;
+Shizuku授权监听
+private final Shizuku.OnRequestPermissionResultListener onRequestPermissionResultListener = new Shizuku.OnRequestPermissionResultListener() &#123;    @Override    public void onRequestPermissionResult(int requestCode, int grantResult) &#123;        boolean granted = grantResult == PackageManager.PERMISSION_GRANTED;        if (granted) &#123;            Toast.makeText(MainActivity.this, &quot;授权成功&quot;, Toast.LENGTH_SHORT).show();        &#125; else &#123;            Toast.makeText(MainActivity.this, &quot;授权失败&quot;, Toast.LENGTH_SHORT).show();        &#125;    &#125;&#125;;
+授权监听需要手动添加
+// 添加权限申请监听Shizuku.addRequestPermissionResultListener(onRequestPermissionResultListener);
+在Activity销毁时移除授权监听
+// 移除权限申请监听Shizuku.removeRequestPermissionResultListener(onRequestPermissionResultListener);
+Shizuku状态监听Shiziku服务被启动时会调用该监听，例如app运行期间，通过电脑abd命令启动Shizuku服务，将会立即调用该监听；此外，在app启动时倘若Shiziku服务处于启动状态，也会调用该监听
+// Shiziku服务启动时调用该监听Shizuku.addBinderReceivedListenerSticky(onBinderReceivedListener);private final Shizuku.OnBinderReceivedListener onBinderReceivedListener = new Shizuku.OnBinderReceivedListener() &#123;    @Override    public void onBinderReceived() &#123;        Toast.makeText(MainActivity.this, &quot;Shizuku服务启动&quot;, Toast.LENGTH_SHORT).show();    &#125;&#125;;
+Shiziku服务被终止时调用该监听，若app运行期间，Shizuku服务异常终止或手动停止，将会立即调用该监听
+// Shiziku服务终止时调用该监听Shizuku.addBinderDeadListener(onBinderDeadListener);private final Shizuku.OnBinderDeadListener onBinderDeadListener = new Shizuku.OnBinderDeadListener() &#123;    @Override    public void onBinderDead() &#123;        Toast.makeText(MainActivity.this, &quot;Shizuku服务终止&quot;, Toast.LENGTH_SHORT).show();    &#125;&#125;;
+在Activity销毁时移除监听
+Shizuku.removeBinderReceivedListener(onBinderReceivedListener);Shizuku.removeBinderDeadListener(onBinderDeadListener);
+执行命令在app级gradle文件中添加如下配置
+android &#123;    buildFeatures &#123;        buildConfig true    // 开启BuildConfig类的生成        aidl true           // 启用aidl    &#125;&#125;
+在main包下添加aidl目录，其与java、src目录同级，在aidl目录的指定包下创建IUserService.aidl
+package xyz.xxin.adbshellutils;interface IUserService &#123;    /**     * Shizuku服务端定义的销毁方法     */    void destroy() = 16777114;    /**     * 自定义的退出方法     */    void exit() = 1;    /**     * 执行命令     */    String exec(String command) = 2;&#125;
+在java目录的指定包下创建UserService.java，该服务继承IUserService.Stub，无需在app清单文件中注册
+public class UserService extends IUserService.Stub &#123;    @Override    public void destroy() throws RemoteException &#123;    &#125;    @Override    public void exit() throws RemoteException &#123;    &#125;    @Override    public String exec(String command) throws RemoteException &#123;    &#125;&#125;
+在UserService.java中实现IUserService.aidl中的方法
+public class UserService extends IUserService.Stub &#123;    @Override    public void destroy() throws RemoteException &#123;        System.exit(0);    &#125;    @Override    public void exit() throws RemoteException &#123;        destroy();    &#125;    @Override    public String exec(String command) throws RemoteException &#123;        StringBuilder stringBuilder = new StringBuilder();        try &#123;            // 执行shell命令            Process process = Runtime.getRuntime().exec(command);            // 读取执行结果            InputStreamReader inputStreamReader = new InputStreamReader(process.getInputStream());            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);            String line;            while ((line = bufferedReader.readLine()) != null) &#123;                stringBuilder.append(line).append(&quot;\n&quot;);            &#125;        &#125; catch (IOException e) &#123;            throw new RuntimeException(e);        &#125;        return stringBuilder.toString();    &#125;&#125;
+绑定服务
+Shizuku.bindUserService(userServiceArgs, serviceConnection);// 指定服务的各项参数private final Shizuku.UserServiceArgs userServiceArgs =        new Shizuku.UserServiceArgs(new ComponentName(BuildConfig.APPLICATION_ID, UserService.class.getName()))                .daemon(false)                .processNameSuffix(&quot;adb_service&quot;)                .debuggable(BuildConfig.DEBUG)                .version(BuildConfig.VERSION_CODE);// 建立服务连接通道private final ServiceConnection serviceConnection = new ServiceConnection() &#123;    @Override    public void onServiceConnected(ComponentName componentName, IBinder iBinder) &#123;        Toast.makeText(MainActivity.this, &quot;服务连接成功&quot;, Toast.LENGTH_SHORT).show();        if (iBinder != null &amp;&amp; iBinder.pingBinder()) &#123;            IUserService iUserService = IUserService.Stub.asInterface(iBinder);            try &#123;                // 执行shell命令                iUserService.exec(&quot;ls&quot;);            &#125; catch (RemoteException e) &#123;                throw new RuntimeException(e);            &#125;        &#125;    &#125;    @Override    public void onServiceDisconnected(ComponentName componentName) &#123;        Toast.makeText(MainActivity.this, &quot;服务连接断开&quot;, Toast.LENGTH_SHORT).show();    &#125;&#125;;
+解绑服务
+Shizuku.unbindUserService(userServiceArgs, serviceConnection, true);
+aidl参考：Android 接口定义语言 (AIDL)，跟着例子，来整一遍AIDL吧
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android开发手记</tag>
+      </tags>
+  </entry>
 </search>
