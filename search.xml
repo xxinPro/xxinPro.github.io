@@ -16243,6 +16243,7 @@ static方法不能被重写，所以static方法无需再标记final
     <title>Shizuku开发</title>
     <url>/2024/04/28/Shizuku%E5%BC%80%E5%8F%91/</url>
     <content><![CDATA[Shizuku开源地址：https://github.com/RikkaApps/ShizukuShizuku开发指南：https://github.com/RikkaApps/Shizuku-API
+示例项目开源地址：https://github.com/xxinPro/AdbShellUtils
 安装Shizuku该方案通过Shizuku给自己的软件授予adb shell权限，但前提是Shizuku必须拥有adb shell权限，具体可以参考
 Shizuku用户手册：https://shizuku.rikka.app/zh-hans/guide/setup/
 引入依赖可以选择引入maven central中的远程依赖
