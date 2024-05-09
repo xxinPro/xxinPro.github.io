@@ -11331,6 +11331,15 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
 
 
 
+区间再现公式若$f(x)$为连续函数，则
+
+  $ $
+  \begin{align*}
+  \int_{a}^{b} f(x)\mathrm{d} x = \int_{a}^{b} f(a+b-x)\mathrm{d} x
+  \end{align*}
+  $ $
+
+
 定积分求导公式设有$F(x)=\int_{g(x)}^{h(x)}f(t)\mathrm{d}t$
 则它的导数$F’(x)$为
 
@@ -11339,7 +11348,6 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
   F'(x) = h'(x)f[h(x)]-g'(x)f[g(x)]
   \end{align*}
   $ $
-
 
 
 定积分几何应用平面图形面积
@@ -12811,9 +12819,8 @@ $ $
 
 $ $
 \begin{align*}
-\left.\begin{matrix} 
-   \frac{\partial z}{\partial x}
-\end{matrix}\right |_{_{y = y_0}^{x = x_0}} = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x,y_0)-f(x_0,y_0)}{\Delta x} 
+\left.\frac{\partial z}{\partial x}\right |_{\substack{x=x_{0} \\ y=y_{0}}}=
+\lim _{\Delta x \rightarrow 0} \frac{f\left(x_{0}+\Delta x, y_{0}\right)-f\left(x_{0}, y_{0}\right)}{\Delta x}
 \end{align*}
 $ $
 
@@ -12822,9 +12829,8 @@ $ $
 
 $ $
 \begin{align*}
-\left.\begin{matrix} 
-   \frac{\partial z}{\partial y}
-\end{matrix}\right |_{_{y = y_0}^{x = x_0}} = \lim_{\Delta y \to 0} \frac{f(x_0,y_0 + \Delta y)-f(x_0,y_0)}{\Delta y} 
+\left.\frac{\partial z}{\partial y}\right |_{\substack{x=x_{0} \\ y=y_{0}}}= 
+\lim_{\Delta y \to 0} \frac{f(x_0,y_0 + \Delta y)-f(x_0,y_0)}{\Delta y} 
 \end{align*}
 $ $
 
