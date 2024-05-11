@@ -13032,7 +13032,7 @@ $ $
 \begin{cases}
   {f}'_x(x,y) + \lambda {\varphi}'_x(x,y) = 0 \\  
   {f}'_y(x,y) + \lambda {\varphi}'_y(x,y) = 0 \\
-  {\varphi}'_y(x,y) = 0
+  \varphi(x,y) = 0
 \end{cases}
 \end{align*}
 $ $
