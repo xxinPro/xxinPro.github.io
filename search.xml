@@ -12849,27 +12849,6 @@ $ $
 
 
 &nbsp;&nbsp;其中，${f}’’_{xy}(x,y)$与${f}’’_{yx}(x,y)$称为混合偏导数，如果二者在区域$D$内连续，那么必定相等
-全微分定理一
-&nbsp;&nbsp;如果$z=f(x,y)$在点$(x,y)$可微分，那么在点$(x,y)$的偏导数$\frac{\partial z}{\partial x} $、$\frac{\partial z}{\partial y} $必定存在，且全微分为
-
-$ $
-\begin{align*}
-\mathrm{d}z = \frac{\partial z}{\partial x} \Delta x + \frac{\partial z}{\partial y} \Delta y
-\end{align*}
-$ $
-
-
-&nbsp;&nbsp;通常写作
-
-$ $
-\begin{align*}
-\mathrm{d}z = \frac{\partial z}{\partial x} \mathrm{d}x + \frac{\partial z}{\partial y} \mathrm{d} y
-\end{align*}
-$ $
-
-
-定理二
-&nbsp;&nbsp;如果$z=f(x,y)$的偏导数$\frac{\partial z}{\partial x} $、$\frac{\partial z}{\partial y} $在点$(x,y)$连续，那么在该点可微分
 求导法则一元函数与多元函数复合情形&nbsp;&nbsp;设$z=f(u,v)$在点$(u,v)$有连续偏导数，$u=\varphi (t)$、$v=\psi (t)$在$t$点可导，则有
 
 $ $
@@ -12978,6 +12957,27 @@ $ $
 
 
 
+全微分定理一
+&nbsp;&nbsp;如果$z=f(x,y)$在点$(x,y)$可微分，那么在点$(x,y)$的偏导数$\frac{\partial z}{\partial x} $、$\frac{\partial z}{\partial y} $必定存在，且全微分为
+
+$ $
+\begin{align*}
+\mathrm{d}z = \frac{\partial z}{\partial x} \Delta x + \frac{\partial z}{\partial y} \Delta y
+\end{align*}
+$ $
+
+
+&nbsp;&nbsp;通常写作
+
+$ $
+\begin{align*}
+\mathrm{d}z = \frac{\partial z}{\partial x} \mathrm{d}x + \frac{\partial z}{\partial y} \mathrm{d} y
+\end{align*}
+$ $
+
+
+定理二
+&nbsp;&nbsp;如果$z=f(x,y)$的偏导数$\frac{\partial z}{\partial x} $、$\frac{\partial z}{\partial y} $在点$(x,y)$连续，那么在该点可微分
 多元函数极值极值求法定理一
 &ensp;&ensp;设$z=f(x,y)$在点$(x_0,y_0)$有偏导数，且有极值，则有
 
