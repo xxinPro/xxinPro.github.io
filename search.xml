@@ -11546,6 +11546,16 @@ $ $
   $ $
 
 
+也可写为$\eqref {eq1}$，题目未对$x_0$提出具体要求时，可以任取
+
+  $ $
+  \begin{align} \label {eq1}
+  y=e^{-\int _{x_0}^{x}P(t)\mathrm{d}t}[\int _{x_0}^{x} Q(t)e^{\int _{x_0}^{t} P(s)\mathrm{d}s}\mathrm{d}t+C]
+  \end{align}
+  $ $
+
+
+
 齐次&ensp;&ensp;一阶齐次线性微分方程
 
 $ $
