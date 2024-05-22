@@ -11556,7 +11556,7 @@ $ $
 
 
 
-齐次&ensp;&ensp;一阶齐次线性微分方程
+伯努利方程齐次&ensp;&ensp;一阶齐次线性微分方程
 
 $ $
 \begin{align*}
@@ -11575,8 +11575,8 @@ $ $
 
 
 可降阶的高阶微分方程$y^{(n)}=f(x)$型&ensp;&ensp;两边一直积分就行
-$y’’=f(x,y’)$型&ensp;&ensp;方程中隐式包含$y$，若求通解，设$y’=p$，那么$y’’=\frac {\mathrm{d}p}{\mathrm{d}x}=p’$，原方程可化为关于$x$、$p$的一阶微分方程$p’=f(x,p)$
-$y’’=f(y,y’)$型&ensp;&ensp;方程中隐式包含$x$，若求通解，设$y’=p$，那么$y’’=\frac {\mathrm{d}p}{\mathrm{d}x}=\frac{\mathrm{d}p}{\mathrm{d}y} \cdot \frac{\mathrm{d}y}{\mathrm{d}x}=p\frac {\mathrm{d}p}{\mathrm{d}y}$，原方程可化为关于$y$、$p$的一阶微分方程$p\frac {\mathrm{d}p}{\mathrm{d}y}=f(y,p)$
+$y’’=f(x,y’)$型&ensp;&ensp;方程中隐式包含$y$，若求通解，设$y’=p$ （$p=p(x)$），那么$y’’=\frac {\mathrm{d}p}{\mathrm{d}x}=p’$，原方程可化为关于$x$、$p$的一阶微分方程$p’=f(x,p)$
+$y’’=f(y,y’)$型&ensp;&ensp;方程中隐式包含$x$，若求通解，设$y’=p$ （$p=p(y)$），那么$y’’=\frac {\mathrm{d}p}{\mathrm{d}x}=\frac{\mathrm{d}p}{\mathrm{d}y} \cdot \frac{\mathrm{d}y}{\mathrm{d}x}=p\frac {\mathrm{d}p}{\mathrm{d}y}$，原方程可化为关于$y$、$p$的一阶微分方程$p\frac {\mathrm{d}p}{\mathrm{d}y}=f(y,p)$
 高阶线性微分方程性质&ensp;&ensp;有二阶常系数非齐次线性微分方程$ $\begin{align} \label {eq26}  y’’+P(x)y’+Q(x) = f(x)\end{align}$ $
 &ensp;&ensp;当$f(x) \equiv 0$时，有二阶常系数齐次线性微分方程$ $\begin{align} \label {eq27}  y’’+P(x)y’+Q(x) = 0\end{align}$ $
 性质1&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$为$\eqref {eq27}$的解，则$y=C_1 \varphi_1(x) + C_2 \varphi_2(x)$为$\eqref {eq27}$的解
