@@ -11579,12 +11579,10 @@ $y’’=f(x,y’)$型&ensp;&ensp;方程中隐式包含$y$，若求通解，设$
 $y’’=f(y,y’)$型&ensp;&ensp;方程中隐式包含$x$，若求通解，设$y’=p$ （$p=p(y)$），那么$y’’=\frac {\mathrm{d}p}{\mathrm{d}x}=\frac{\mathrm{d}p}{\mathrm{d}y} \cdot \frac{\mathrm{d}y}{\mathrm{d}x}=p\frac {\mathrm{d}p}{\mathrm{d}y}$，原方程可化为关于$y$、$p$的一阶微分方程$p\frac {\mathrm{d}p}{\mathrm{d}y}=f(y,p)$
 高阶线性微分方程性质&ensp;&ensp;有二阶常系数非齐次线性微分方程$ $\begin{align} \label {eq26}  y’’+P(x)y’+Q(x) = f(x)\end{align}$ $
 &ensp;&ensp;当$f(x) \equiv 0$时，有二阶常系数齐次线性微分方程$ $\begin{align} \label {eq27}  y’’+P(x)y’+Q(x) = 0\end{align}$ $
-性质1&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$为$\eqref {eq27}$的解，则$y=C_1 \varphi_1(x) + C_2 \varphi_2(x)$为$\eqref {eq27}$的解
-性质2&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$分别为$\eqref {eq26}$、$\eqref {eq27}$的解，则$y=C_1 \varphi_1(x) + C_2 \varphi_2(x)$为$\eqref {eq26}$的解
-性质3&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$为$\eqref {eq26}$的解，则$y=\varphi_2(x)-\varphi_1(x)$为$\eqref {eq27}$的解
-性质4&ensp;&ensp;对于$\eqref {eq26}$，如果有$ $\begin{align} \label {eq28}  y’’+P(x)y’+Q(x) = f_1(x)\end{align}\begin{align} \label {eq29}  y’’+P(x)y’+Q(x) = f_2(x)\end{align}$ $若$f(x)=f_1(x)+f_2(x)$且$\varphi_1(x)$、$\varphi_2(x)$分别为$\eqref {eq28}$、$\eqref {eq29}$的解，则$y=\varphi_1(x) + \varphi_2(x)$为$\eqref {eq26}$的解
-性质5&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$为$\eqref {eq27}$的两个线性无关解，则$y=C_1 \varphi_1(x) + C_2 \varphi_2(x)$为$\eqref {eq27}$的通解
-性质6&ensp;&ensp;若$\varphi(x)$是$\eqref {eq26}$的一个特解，$\psi (x)$为$\eqref {eq27}$的通解，则$y=\varphi(x)+\psi (x)$为$\eqref {eq26}$的通解
+性质1&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$为齐次方程$\eqref {eq27}$的两个线性无关解，则$y=C_1 \varphi_1(x) + C_2 \varphi_2(x)$为齐次方程$\eqref {eq27}$的通解
+性质2&ensp;&ensp;若$\varphi(x)$是非齐次方程$\eqref {eq26}$的一个特解，$\psi (x)$为齐次方程$\eqref {eq27}$的通解，则$y=\varphi(x)+\psi (x)$为非齐次方程$\eqref {eq26}$的通解
+性质3&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$为非齐次方程$\eqref {eq26}$的特解，则$y=\varphi_2(x)-\varphi_1(x)$为齐次方程$\eqref {eq27}$的解
+性质4&ensp;&ensp;对于非齐次方程$\eqref {eq26}$，设以下两式成立$ $\begin{align} \label {eq28}  y’’+P(x)y’+Q(x) = f_1(x)\end{align}\begin{align} \label {eq29}  y’’+P(x)y’+Q(x) = f_2(x)\end{align}$ $且$f(x)=f_1(x)+f_2(x)$，$\varphi_1(x)$、$\varphi_2(x)$分别为$\eqref {eq28}$、$\eqref {eq29}$的解，则$y=\varphi_1(x) + \varphi_2(x)$为非齐次方程$\eqref {eq26}$的解
 常系数齐次线性微分方程&ensp;&ensp;形如$ \eqref {eq36} $称为常系数齐次线性微分方程，其中$p$、$q$为常数
 $ $\begin{align} \label {eq36}y’’+py’+qy = 0\end{align}$ $
 常系数齐次线性微分方程的通解&ensp;&ensp;根据$ \eqref {eq36} $列出特征方程，如一元二次方程$ \eqref {eq37} $$ $\begin{align}\label {eq37}r^2+pr+q=0\end{align}$ $
