@@ -11950,19 +11950,19 @@ $R_{m1}(x)$与$R_{m2}(x)$是两个待定多项式，与$M_n(x)$不同系数但�
 二阶行列式
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{vmatrix}
  a_{11} & a_{12}\\
  a_{21} & a_{22}
 \end{vmatrix}=a_{11}a_{22}-a_{12}a_{21}
-\end{align}
+\end{align*}
 $ $
 
 
 三阶行列式
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{vmatrix}
  a_{11} & a_{12} & a_{13}\\
  a_{21} & a_{22} & a_{23}\\
@@ -11970,7 +11970,7 @@ $ $
 \end{vmatrix}
 =
 a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -11992,7 +11992,7 @@ $ $
 特殊行列式对角、上（下）三角行列式
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{vmatrix}
  a_{11} & 0 & \cdots & 0\\
  0 & a_{22} & \cdots & 0\\
@@ -12015,7 +12015,7 @@ $ $
 \end{vmatrix}
 =
 a_{11}a_{22}\cdots a_{nn}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -12024,7 +12024,7 @@ $ $
 &ensp;&ensp;其中$\prod$表示全体同类因子的乘积
 
 $ $
-\begin{align}
+\begin{align*}
 D_n=\begin{vmatrix}
  1 & 1 & \cdots & 1\\
  x_1 & x_2 & \cdots & x_n\\
@@ -12034,24 +12034,24 @@ D_n=\begin{vmatrix}
 \end{vmatrix}
 =
 \prod \limits_{n\ge i \gt j\ge 1}^{}(x_i-x_j)
-\end{align}
+\end{align*}
 $ $
 
 
 
 $ $
-\begin{align}
+\begin{align*}
 D_2=\begin{vmatrix}
  1 & 1\\
  x_1 & x_2
 \end{vmatrix}=(x_2-x_1)
-\end{align}
+\end{align*}
 $ $
 
 
 
 $ $
-\begin{align}
+\begin{align*}
 D_3=\begin{vmatrix}
  1 & 1 & 1\\
  x_1 & x_2 & x_3\\
@@ -12059,13 +12059,13 @@ D_3=\begin{vmatrix}
 \end{vmatrix}
 =
 (x_3-x_1)(x_3-x_2)(x_2-x_1)
-\end{align}
+\end{align*}
 $ $
 
 
 
 $ $
-\begin{align}
+\begin{align*}
 D_4=\begin{vmatrix}
  1 & 1 & 1 & 1\\
  x_1 & x_2 & x_3 & x_4\\
@@ -12074,14 +12074,14 @@ D_4=\begin{vmatrix}
 \end{vmatrix}
 =
 (x_4-x_1)(x_4-x_2)(x_4-x_3)(x_3-x_1)(x_3-x_2)(x_2-x_1)
-\end{align}
+\end{align*}
 $ $
 
 
 行列式的性质计算性质性质1：行列式与其转置行列式相等
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{vmatrix}
  a_{11} & a_{12} & a_{13}\\
  a_{21} & a_{22} & a_{23}\\
@@ -12093,14 +12093,14 @@ $ $
  a_{12} & a_{22} & a_{32}\\
  a_{13} & a_{23} & a_{33}
 \end{vmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 性质2：对调两行或两列，行列式改变符号
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{vmatrix}
  a_{11} & a_{12} & a_{13}\\
  a_{21} & a_{22} & a_{23}\\
@@ -12118,14 +12118,14 @@ $ $
  a_{22} & a_{21} & a_{23}\\
  a_{32} & a_{31} & a_{33}
 \end{vmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 推论：由性质2得，如果行列式有两行或两列完全相同，行列式的值为零，$D=-D\Rightarrow D=0$
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{vmatrix}
  l_{1} & l_{2} & l_{3}\\
  l_{1} & l_{2} & l_{3}\\
@@ -12137,14 +12137,14 @@ $ $
  l_{1} & l_{2} & l_{3}\\
  l_{4} & l_{5} & l_{6}
 \end{vmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 性质3：行列式某行或某列有公因子可以提取到行列式的外面
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{vmatrix}
  3a_{11} & 3a_{12} & 3a_{13}\\
  6a_{21} & a_{22} & a_{23}\\
@@ -12162,14 +12162,14 @@ $ $
  2a_{21} & a_{22} & a_{23}\\
  3a_{31} & a_{32} & a_{33}
 \end{vmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 性质4：行列式中如果有两行或两列元素成正比，则行列式值为零，$2D=-2D \Rightarrow D=0$
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{vmatrix}
  l_{1} & l_{2} & l_{3}\\
  2l_{1} & 2l_{2} & 2l_{3}\\
@@ -12187,14 +12187,14 @@ $ $
  l_{1} & l_{2} & l_{3}\\
  l_{4} & l_{5} & l_{6}
 \end{vmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 性质5：行列式某一行或某一列的元素都是两数之和，则行列式可拆分为两个行列式之和
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{vmatrix}
  l_{1} & l_{2} & l_{3}\\
  l_{4}+l_{10} & l_{5}+l_{11} & l_{6}+l_{12}\\
@@ -12212,14 +12212,14 @@ $ $
  l_{10} & l_{11} & l_{12}\\
  l_{7} & l_{8} & l_{9}
 \end{vmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 性质6：行列式的某一行（列）的各元素乘同一数然后加到另一行（列）的对应元素上，行列式的值不变
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{vmatrix}
  l_{1} & l_{2} & l_{3}\\
  l_{4} & l_{5} & l_{6}\\
@@ -12231,43 +12231,49 @@ $ $
  l_{4}+3l_{1} & l_{5}+3l_{2} & l_{6}+3l_{3}\\
  l_{7} & l_{8} & l_{9}
 \end{vmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
-展开性质引理1：一个$n$阶行列式，如果其中第$i$行所有元素除$(i,j)$元$a_{i,j}$外都为零，那么该行列式等于$a_{i,j}$和它的代数余子式的乘积
+性质7：行列式某一行或某一列的元素全为零，则行列式值为零
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{vmatrix}
- a_{11} & a_{12} & a_{13}\\
- 0 & a_{22} & 0\\
+ 0 & a_{12} & a_{13}\\
+ 0 & a_{22} & a_{23}\\
+ 0 & a_{32} & a_{33}
+\end{vmatrix}
+= 
+\begin{vmatrix}
+ 0 & 0 & 0\\
+ a_{21} & a_{22} & a_{23}\\
  a_{31} & a_{32} & a_{33}
 \end{vmatrix}
 =
-a_{22}A_{22}
-\end{align}
+0
+\end{align*}
 $ $
 
 
-定理2：行列式等于它的任一行或列的各元素与其对应的代数余子式的乘积之和（展开法则）
+展开性质定理1：行列式等于它的任一行或列的各元素与其对应的代数余子式的乘积之和（展开法则）
 
 &ensp;&ensp;即：
 $ $
-\begin{align}
+\begin{align*}
 D=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots +a_{in}A_{in}\space (i=1,2,3,\cdots ,n)
-\end{align}
+\end{align*}
 
-\begin{align}
+\begin{align*}
 D=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots +a_{nj}A_{nj}\space (j=1,2,3,\cdots ,n)
-\end{align}
+\end{align*}
 $ $
 
 
 
 &ensp;&ensp;例：
 $ $
-\begin{align}
+\begin{align*}
 D=\begin{vmatrix}
  a_{11} & a_{12} & a_{13}\\
  a_{21} & a_{22} & a_{23}\\
@@ -12275,26 +12281,41 @@ D=\begin{vmatrix}
 \end{vmatrix}
 =
 a_{11}A_{11}+a_{12}A_{12}+a_{13}A_{13}=a_{11}A_{11}+a_{21}A_{21}+a_{31}A_{31}
-\end{align}
+\end{align*}
+$ $
+
+
+引理：一个$n$阶行列式，如果其中第$i$行所有元素除$(i,j)$元$a_{i,j}$外都为零，那么该行列式等于$a_{i,j}$和它的代数余子式的乘积
+
+$ $
+\begin{align*}
+\begin{vmatrix}
+ a_{11} & a_{12} & a_{13}\\
+ 0 & a_{22} & 0\\
+ a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+=
+a_{22}A_{22}
+\end{align*}
 $ $
 
 
 推论：行列式的某一行（列）的元素与另一行（列）的对应元素的代数余子式乘积之和等于零
 
 $ $
-\begin{align}
+\begin{align*}
 a_{i1}A_{j1}+a_{i2}A_{j2}+\cdots +a_{in}A_{jn}=0 \space (i \ne j)
-\end{align}
-\begin{align}
+\end{align*}
+\begin{align*}
 a_{1i}A_{1j}+a_{2i}A_{2j}+\cdots +a_{ni}A_{nj}=0 \space (i \ne j)
-\end{align}
+\end{align*}
 $ $
 
 
 
 &ensp;&ensp;例：
 $ $
-\begin{align}
+\begin{align*}
 D=\begin{vmatrix}
  a_{11} & a_{12} & a_{13}\\
  a_{21} & a_{22} & a_{23}\\
@@ -12302,7 +12323,57 @@ D=\begin{vmatrix}
 \end{vmatrix}
 \Rightarrow 
 a_{11}A_{21}+a_{12}A_{22}+a_{13}A_{23}=0
-\end{align}
+\end{align*}
+$ $
+
+
+拉普拉斯行列式&ensp;&ensp;设$A$为$m$阶矩阵，$B$为$n$阶矩阵，$O$为零矩阵，则
+
+$ $
+\begin{gather*}
+\begin{vmatrix}
+ A & O\\
+ O & B
+\end{vmatrix}
+=
+\begin{vmatrix}
+ A & C\\
+ O & B
+\end{vmatrix}
+=
+\begin{vmatrix}
+ A & O\\
+ C & B
+\end{vmatrix}
+=
+\begin{vmatrix}
+A
+\end{vmatrix}\begin{vmatrix}
+B
+\end{vmatrix}\\
+
+\begin{vmatrix}
+ O & A\\
+ B & O
+\end{vmatrix}
+=
+\begin{vmatrix}
+ C & A\\
+ B & O
+\end{vmatrix}
+=
+\begin{vmatrix}
+ O & A\\
+ B & C
+\end{vmatrix}
+=
+(-1)^{mn}
+\begin{vmatrix}
+A
+\end{vmatrix}\begin{vmatrix}
+B
+\end{vmatrix}
+\end{gather*}
 $ $
 
 
@@ -12351,7 +12422,7 @@ $ $
 &ensp;&ensp;在定理2中，$D_n$就将系数行列式$D$的第$n$列，替换成线性方程组中所有线性方程的对应的值，即：
 
 $ $
-\begin{align}
+\begin{align*}
 D_i \space (i=1,2,\cdots,n)\Rightarrow 
 D_1=\begin{vmatrix}
  b_1 & a_{12} & \cdots & a_{1n}\\
@@ -12366,7 +12437,7 @@ D_n=\begin{vmatrix}
  \vdots & \vdots &  & \vdots\\
  a_{n1} & a_{n2} & \cdots & b_n
 \end{vmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -12374,7 +12445,7 @@ $ $
 矩阵矩阵概念&ensp;&ensp;$m$行$n$列矩阵，简称$m \times n$矩阵，拥有$m \times n$个元（元素），以数$a_{ij}$为$(i,j)$元的矩阵可记作$(a_{i,j})$或$(a_{i,j})_{m \times n}$，$m \times n$矩阵$A$记作$A_{m \times n}$
 
 $ $
-\begin{align}
+\begin{align*}
 A_{m\times n} = 
 \begin{pmatrix}
  a_{11} & a_{12} & \cdots & a_{1n}\\
@@ -12382,7 +12453,7 @@ A_{m\times n} =
  \vdots & \vdots &       & \vdots\\
  a_{m1} & a_{m2} & \cdots & a_{mn}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -12390,7 +12461,7 @@ $ $
 $n$阶矩阵（$n$阶方阵）&ensp;&ensp;行数和列数都等于$n$的矩阵称为$n$阶矩阵或$n$阶方阵，$n$阶矩阵$A$记作$A_n$
 
 $ $
-\begin{align}
+\begin{align*}
 A_{n} = 
 \begin{pmatrix}
  a_{11} & a_{12} & \cdots & a_{1n}\\
@@ -12398,7 +12469,7 @@ A_{n} =
  \vdots & \vdots &       & \vdots\\
  a_{n1} & a_{n2} & \cdots & a_{nn}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -12407,7 +12478,7 @@ $ $
 零矩阵&ensp;&ensp;元素全部为$0$的矩阵称为零矩阵，记作$O$
 
 $ $
-\begin{align}
+\begin{align*}
 O = 
 \begin{pmatrix}
  0 & 0 & \cdots & 0\\
@@ -12415,14 +12486,14 @@ O =
  \vdots & \vdots & \ddots & \vdots\\
  0 & 0 & \cdots & 0
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 对角矩阵&ensp;&ensp;除对角线外都为$0$的矩阵称为对角矩阵
 
 $ $
-\begin{align}
+\begin{align*}
 A_n = 
 \begin{pmatrix}
  l_1 & 0 & \cdots & 0\\
@@ -12430,14 +12501,14 @@ A_n =
  \vdots & \vdots & \ddots & \vdots\\
  0 & 0 & \cdots & l_n
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 单位矩阵&ensp;&ensp;对角线上的元素都是$1$，其他元素都是$0$的方阵，称为单位矩阵
 
 $ $
-\begin{align}
+\begin{align*}
 E = 
 \begin{pmatrix}
  1 & 0 & \cdots & 0\\
@@ -12445,26 +12516,26 @@ E =
  \vdots & \vdots & \ddots & \vdots\\
  0 & 0 & \cdots & 1
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 向量矩阵&ensp;&ensp;行矩阵又称行向量，只有一行
 
 $ $
-\begin{align}
+\begin{align*}
 A = 
 \begin{pmatrix}
  a_{1} & a_{2} & \cdots & a_{n}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 &ensp;&ensp;列矩阵又称列向量，只有一列
 
 $ $
-\begin{align}
+\begin{align*}
 B = 
 \begin{pmatrix}
  b_{1} \\
@@ -12472,7 +12543,7 @@ B =
  \vdots \\
  b_{m} 
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -12481,7 +12552,7 @@ $ $
 &ensp;&ensp;有非齐次线性方程组
 
 $ $
-\begin{align}
+\begin{align*}
 \left\{ 
 \begin{array}{lll} 
 a_{11}x_{1}+a_{12}x_{2}+\cdots +a_{1n}x_{n}=b_{1} \\
@@ -12489,14 +12560,14 @@ a_{21}x_{1}+a_{22}x_{2}+\cdots +a_{2n}x_{n}=b_{2} \\
 \vdots\\
 a_{m1}x_{1}+a_{m2}x_{2}+\cdots +a_{mn}x_{n}=b_{m}
 \end{array} \right.
-\end{align}
+\end{align*}
 $ $
 
 
 &ensp;&ensp;该方程组可表示为$Ax=b$，其中$A$称为系数矩阵，$x$称为未知数矩阵，$b$称为常数项矩阵
 
 $ $
-\begin{align}
+\begin{align*}
 A = 
 \begin{pmatrix}
  a_{11} & a_{12} & \cdots & a_{1n}\\
@@ -12520,14 +12591,14 @@ b_2 \\
 \vdots \\
 b_m
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 &ensp;&ensp;将常数项矩阵$b$添加到系数矩阵$A$的右边，得到增广矩阵$B = (A \space \vdots \space b)$，书写时通常不写矩阵中的增广线“$|$”
 
 $ $
-\begin{align}
+\begin{align*}
 B = (A \space \vdots \space b) = 
 \begin{pmatrix}
  a_{11} & a_{12} & \cdots & a_{1n} & | & b_1 \\
@@ -12535,14 +12606,14 @@ B = (A \space \vdots \space b) =
  \vdots & \vdots &        & \vdots & | & \vdots\\
  a_{m1} & a_{m2} & \cdots & a_{mn} & | & b_n
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 矩阵的运算加减运算&ensp;&ensp;只有当两个矩阵是同型矩阵时，才能进行加减运算
 
 $ $
-\begin{align}
+\begin{align*}
 A = 
 \begin{pmatrix}
  a_{11} & a_{12} & a_{13}\\
@@ -12556,16 +12627,16 @@ B =
  b_{21} & b_{22} & b_{23}\\
  b_{31} & b_{32} & b_{33}
 \end{pmatrix}
-\end{align}
+\end{align*}
 
-\begin{align}
+\begin{align*}
 A\pm B = 
 \begin{pmatrix}
  a_{11}\pm b_{11} & a_{12}\pm b_{12} & a_{13}\pm b_{13}\\
  a_{21}\pm b_{21} & a_{22}\pm b_{22} & a_{23}\pm b_{23}\\
  a_{31}\pm b_{31} & a_{32}\pm b_{32} & a_{33}\pm b_{33}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -12576,23 +12647,23 @@ $(A+B)+C=A+(B+C)$
 
 数与矩阵相乘
 $ $
-\begin{align}
+\begin{align*}
 A = 
 \begin{pmatrix}
  a_{11} & a_{12} & a_{13}\\
  a_{21} & a_{22} & a_{23}\\
  a_{31} & a_{32} & a_{33}
 \end{pmatrix}
-\end{align}
+\end{align*}
 
-\begin{align}
+\begin{align*}
 kA = 
 \begin{pmatrix}
  ka_{11} & ka_{12} & ka_{13}\\
  ka_{21} & ka_{22} & ka_{23}\\
  ka_{31} & ka_{32} & ka_{33}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -12605,7 +12676,7 @@ $k(A+B)=kA+kB$
 矩阵与矩阵相乘&ensp;&ensp;只有当第一个矩阵的列数与第二个矩阵的行数相等时，两个矩阵才能相乘，即$A_{m \times s} \times B_{s \times n} = C_{mn}$
 
 $ $
-\begin{align}
+\begin{align*}
 A = 
 \begin{pmatrix}
  a_{11} & a_{12} & a_{13}\\
@@ -12618,28 +12689,28 @@ B =
  b_{21} & b_{22} \\
  b_{31} & b_{32} 
 \end{pmatrix}
-\end{align}
+\end{align*}
 
-\begin{align}
+\begin{align*}
 A \times B=C=\begin{pmatrix}
  c_{11} & c_{12}\\
  c_{21} & c_{22}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 &ensp;&ensp;矩阵$C$的各元素为
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{array} {c}
 c_{11}=a_{11}b_{11}+a_{12}b_{21}+a_{13}b_{31}\\
 c_{12}=a_{11}b_{12}+a_{12}b_{22}+a_{13}b_{32}\\
 c_{21}=a_{21}b_{11}+a_{22}b_{21}+a_{23}b_{31}\\
 c_{22}=a_{21}b_{12}+a_{22}b_{22}+a_{23}b_{32}
 \end{array}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -12652,7 +12723,7 @@ $A(B+C)=AB+AC，(B+C)A=BA+CA$
 转置矩阵&ensp;&ensp;把矩阵$A$的行换成同序数的列得到一个新矩阵，叫做$A$的转置矩阵，记作$A^T$
 
 $ $
-\begin{align}
+\begin{align*}
 A = 
 \begin{pmatrix}
  a_{11} & a_{12} & \cdots & a_{1n}\\
@@ -12668,14 +12739,14 @@ A^T =
  \vdots & \vdots &       & \vdots\\
  a_{1n} & a_{2n} & \cdots & a_{mn}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 &ensp;&ensp;如果$A$为$n$阶方阵，满足$A^T=A$，那么称$A$为对称矩阵，对称矩阵的特点是，以对角线为对称轴，左下和右上的元素对应相等
 
 $ $
-\begin{align}
+\begin{align*}
 A = 
 \begin{pmatrix}
  l_{1} & x_{1} & x_{2}\\
@@ -12683,7 +12754,7 @@ A =
  x_{2} & x_{3} & l_{3}
 \end{pmatrix}
 =A^T
-\end{align}
+\end{align*}
 $ $
 
 
@@ -12703,7 +12774,7 @@ $|AB| = |A||B|$
 &ensp;&ensp;行列式$|A|$的各个元素的代数余子式$A_{ij}$所构成的矩阵，称为$A$的伴随矩阵，记作$A^{*}$&ensp;&ensp;$A^{*}$由$|A|$的各元素对应的代数余子式组成的矩阵转置得到
 
 $ $
-\begin{align}
+\begin{align*}
 A^{*}=
 \begin{pmatrix}
  A_{11} & A_{21} & \cdots & A_{n1}\\
@@ -12711,7 +12782,7 @@ A^{*}=
  \vdots & \vdots &       & \vdots\\
  A_{1n} & A_{2n} & \cdots & A_{nn}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -12746,7 +12817,7 @@ $ $
 当$|A| \ne 0$时
 
 $ $
-\begin{align}
+\begin{align*}
 A^{-1} =
 \frac {1}{|A|}A^{*} =
 \frac {1}{ad-bc}
@@ -12754,7 +12825,7 @@ A^{-1} =
  d & -b\\
  -c & a
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
