@@ -12595,14 +12595,14 @@ b_m
 $ $
 
 
-&ensp;&ensp;将常数项矩阵$b$添加到系数矩阵$A$的右边，得到增广矩阵$B = (A \space \vdots \space b)$，书写时通常不写矩阵中的增广线“$\begin{array} {c:c}  &amp; \end{array}$”
+&ensp;&ensp;将常数项矩阵$b$添加到系数矩阵$A$的右边，得到增广矩阵$B = \left ( \begin{array} {c:c} A &amp; b\end{array}\right)$，书写时通常不写矩阵中的增广线“$\begin{array} {c:c}  &amp; \end{array}$”
 
 $ $
 \begin{align*}
 B = 
 \left ( 
 \begin{array} {c:c}
- a & b
+ A & b
 \end{array}
 \right)
  = 
