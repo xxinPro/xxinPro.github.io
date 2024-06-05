@@ -12832,34 +12832,23 @@ $ $
 
 
 
+&ensp;&ensp;例：
 $ $
 \begin{align*}
-D_2=\begin{vmatrix}
+&D_2=\begin{vmatrix}
  1 & 1\\
  x_1 & x_2
-\end{vmatrix}=(x_2-x_1)
-\end{align*}
-$ $
+\end{vmatrix}=(x_2-x_1) \\
 
-
-
-$ $
-\begin{align*}
-D_3=\begin{vmatrix}
+&D_3=\begin{vmatrix}
  1 & 1 & 1\\
  x_1 & x_2 & x_3\\
  x_1^2 & x_2^2 & x_3^2
 \end{vmatrix}
 =
-(x_3-x_1)(x_3-x_2)(x_2-x_1)
-\end{align*}
-$ $
+(x_3-x_1)(x_3-x_2)(x_2-x_1) \\
 
-
-
-$ $
-\begin{align*}
-D_4=\begin{vmatrix}
+&D_4=\begin{vmatrix}
  1 & 1 & 1 & 1\\
  x_1 & x_2 & x_3 & x_4\\
  x_1^2 & x_2^2 & x_3^2 & x_4^2\\
@@ -13054,11 +13043,15 @@ $ $
 &ensp;&ensp;即：
 $ $
 \begin{align*}
-D=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots +a_{in}A_{in}\space (i=1,2,3,\cdots ,n)
-\end{align*}
-
-\begin{align*}
-D=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots +a_{nj}A_{nj}\space (j=1,2,3,\cdots ,n)
+D &=
+\begin{vmatrix}
+ a_{11} & a_{12} & \cdots & a_{1n}\\
+ a_{21} & a_{22} & \cdots & a_{2n}\\
+ \vdots & \vdots & \ddots & \vdots\\
+ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}\\
+&=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots +a_{in}A_{in}\space (i=1,2,3,\cdots ,n)\\
+&=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots +a_{nj}A_{nj}\space (j=1,2,3,\cdots ,n)
 \end{align*}
 $ $
 
@@ -13067,12 +13060,12 @@ $ $
 &ensp;&ensp;例：
 $ $
 \begin{align*}
-D=\begin{vmatrix}
+D&=\begin{vmatrix}
  a_{11} & a_{12} & a_{13}\\
  a_{21} & a_{22} & a_{23}\\
  a_{31} & a_{32} & a_{33}
-\end{vmatrix}
-=
+\end{vmatrix}\\
+&=
 a_{11}A_{11}+a_{12}A_{12}+a_{13}A_{13}=a_{11}A_{11}+a_{21}A_{21}+a_{31}A_{31}
 \end{align*}
 $ $
@@ -13212,7 +13205,7 @@ $ $
 
 定理1：方程组$\eqref {eq23}$有只有零解的充分必要条件是$D\ne 0$；方程组$\eqref {eq23}$有非零解（或有无穷多个解）的充分必要条件是$D=0$
 定理2：方程组$\eqref {eq24}$有唯一解的充分必要条件是$D\ne 0$，此时$x_i=\frac {D_i}{D} \space (i=1,2,\cdots,n)$，当$D=0$时，方程组$\eqref {eq24}$要么无解，要么有无穷多个解
-&ensp;&ensp;在定理2中，$D_n$就将系数行列式$D$的第$n$列，替换成线性方程组中所有线性方程的对应的值，即：
+&ensp;&ensp;在定理2中，$D_i$代表将系数行列式$D$的第$i$列，替换成线性方程组中方程对应的值，即：
 
 $ $
 \begin{align*}
@@ -13524,15 +13517,15 @@ $A(B+C)=AB+AC，(B+C)A=BA+CA$
 转置矩阵&ensp;&ensp;把矩阵$A$的行换成同序数的列得到一个新矩阵，叫做$A$的转置矩阵，记作$A^T$
 
 $ $
-\begin{align*}
+\begin{gather*}
 A = 
 \begin{pmatrix}
  a_{11} & a_{12} & \cdots & a_{1n}\\
  a_{21} & a_{22} & \cdots & a_{2n}\\
  \vdots & \vdots &       & \vdots\\
  a_{m1} & a_{m2} & \cdots & a_{mn}
-\end{pmatrix}
-\Rightarrow 
+\end{pmatrix} \\
+\Downarrow \\
 A^T = 
 \begin{pmatrix}
  a_{11} & a_{21} & \cdots & a_{m1}\\
@@ -13540,7 +13533,7 @@ A^T =
  \vdots & \vdots &       & \vdots\\
  a_{1n} & a_{2n} & \cdots & a_{mn}
 \end{pmatrix}
-\end{align*}
+\end{gather*}
 $ $
 
 
@@ -13689,15 +13682,15 @@ $ $
 则称此矩阵为行阶梯型矩阵。&ensp;&ensp;在行列式$A$中每一行的第一个非零元称为首非零元
 
 $ $
-\begin{align}
+\begin{align*}
 A = 
 \begin{pmatrix}
- 1 & 1 & -2 & 1\\
- 0 & 1 & -1 & 1\\
- 0 & 0 & 0 & 1\\
- 0 & 0 & 0 & 0
+ 1 & 1 & -2 & 1 & 0\\
+ 0 & 1 & -1 & 1 & 1\\
+ 0 & 0 & 0 & 1 & 1\\
+ 0 & 0 & 0 & 0 & 0
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -13709,15 +13702,15 @@ $ $
 则称$A$为行最简型矩阵
 
 $ $
-\begin{align}
+\begin{align*}
 A = 
 \begin{pmatrix}
- 1 & 0 & -1 & 0\\
- 0 & 1 & -1 & 0\\
- 0 & 0 & 0 & 1\\
- 0 & 0 & 0 & 0
+ 1 & 0 & -1 & 0 & 0\\
+ 0 & 1 & -1 & 0 & 0\\
+ 0 & 0 & 0 & 1 & 0\\
+ 0 & 0 & 0 & 0 & 0
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -13725,7 +13718,7 @@ $ $
 标准型矩阵&ensp;&ensp;对最简型矩阵施以初等列变换可以得到标准型矩阵$F$，其左上角是一个单位矩阵，其余元全为0
 
 $ $
-\begin{align}
+\begin{align*}
 F=
 \begin{pmatrix}
  E_r & O\\
@@ -13733,12 +13726,12 @@ F=
 \end{pmatrix}
 =
 \begin{pmatrix}
- 1 & 0 & 0 & 0\\
- 0 & 1 & 0 & 0\\
- 0 & 0 & 1 & 0\\
- 0 & 0 & 0 & 0
+ 1 & 0 & 0 & 0 & 0\\
+ 0 & 1 & 0 & 0 & 0\\
+ 0 & 0 & 0 & 0 & 0\\
+ 0 & 0 & 0 & 0 & 0
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -13747,8 +13740,8 @@ $ $
 两行对换&ensp;&ensp;把单位矩阵中第$i$，$j$两行（或两列）对换，得初等矩阵$E(i,j)$
 
 $ $
-\begin{align}
-E(i,j)=\begin{pmatrix}
+\begin{align*}
+&E(i,j)=\begin{pmatrix}
  {\color{Red}1} & 0 & 0 & \cdots & 0 & 0 & 0\\
  0 & {\color{Red}0} & 0 & \cdots & 0 & {\color{Red}1} & 0\\
  0 & 0 & {\color{Red}1} & \cdots & 0 & 0 & 0\\
@@ -13757,14 +13750,14 @@ E(i,j)=\begin{pmatrix}
  0 & {\color{Red}1} & 0 & \cdots & 0 & {\color{Red}0} & 0\\
  0 & 0 & 0 & \cdots & 0 & 0 & {\color{Red}1}
 \end{pmatrix}
-，
-E_4(2,3)=\begin{pmatrix}
+\\
+&E_4(2,3)=\begin{pmatrix}
  1 & 0 & 0 & 0\\
  0 & 0 & 1 & 0\\
  0 & 1 & 0 & 0\\
  0 & 0 & 0 & 1
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -13772,8 +13765,8 @@ $ $
 数乘某行&ensp;&ensp;以数$k \ne 0$乘单位矩阵的第$i$行（或第$i$列），得初等矩阵$E\left(i\left(k\right)\right)$
 
 $ $
-\begin{align}
-E(i(k))=
+\begin{align*}
+&E(i(k))=
 \begin{pmatrix}
  1 &  &  &  &  &  & \\
   & \ddots &  &  &  &  & \\
@@ -13783,23 +13776,23 @@ E(i(k))=
   &  &  &  &  & \ddots & \\
   &  &  &  &  &  & 1
 \end{pmatrix}
-，
-E_4(3(k))=
+\\
+&E_4(3(k))=
 \begin{pmatrix}
  1 & 0 & 0 & 0\\
  0 & 1 & 0 & 0\\
  0 & 0 & k & 0\\
  0 & 0 & 0 & 1
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 数乘相加&ensp;&ensp;以$k$乘单位矩阵的第$j$行加到第$i$行上（或以$k$乘单位矩阵的第$i$列加到第$j$列上），得到初等矩阵$E(ij(k))$
 
 $ $
-\begin{align}
-E(ij(k))=
+\begin{align*}
+&E(ij(k))=
 \begin{pmatrix}
  1 &  &  &  &  &  & \\
   & \ddots &  &  &  &  & \\
@@ -13809,15 +13802,15 @@ E(ij(k))=
   &  &  &  &  & \ddots & \\
   &  &  &  &  &  & 1
 \end{pmatrix}
-，
-E_4(23(k))=
+\\
+&E_4(23(k))=
 \begin{pmatrix}
  1 & 0 & 0 & 0\\
  0 & 1 & k & 0\\
  0 & 0 & 1 & 0\\
  0 & 0 & 0 & 1
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -13831,119 +13824,113 @@ $E(ij(k))^{-1}=E(ij(-k))$
 
 &ensp;&ensp;例1：两行（两列）对换
 $ $
-\begin{align}
-A = 
+\begin{align*}
+&A = 
 \begin{pmatrix}
  a_{11} & a_{12} & a_{13} & a_{14}\\
  a_{21} & a_{22} & a_{23} & a_{24}\\
  a_{31} & a_{32} & a_{33} & a_{34}\\
  a_{41} & a_{42} & a_{43} & a_{44}
 \end{pmatrix}
-，
-E_4(2,3)=
+\\
+&E_4(2,3)=
 \begin{pmatrix}
  1 & 0 & 0 & 0\\
  0 & 0 & 1 & 0\\
  0 & 1 & 0 & 0\\
  0 & 0 & 0 & 1
 \end{pmatrix}
-\end{align}
-
-\begin{align}
-E_4(2,3)A=
+\\
+&E_4(2,3)A=
 \begin{pmatrix}
  a_{11} & a_{12} & a_{13} & a_{14}\\
  {\color{Red} a_{31}} & {\color{Red} a_{32}} & {\color{Red} a_{33}} & {\color{Red} a_{34}}\\
  {\color{Red} a_{21}} & {\color{Red} a_{22}} & {\color{Red} a_{23}} & {\color{Red} a_{24}}\\
  a_{41} & a_{42} & a_{43} & a_{44}
 \end{pmatrix}
-，
-AE_4(2,3)=
+\\
+&AE_4(2,3)=
 \begin{pmatrix}
  a_{11} & {\color{Red} a_{13}} & {\color{Red} a_{12}} & a_{14}\\
  a_{21} & {\color{Red} a_{23}} & {\color{Red} a_{22}} & a_{24}\\
  a_{31} & {\color{Red} a_{33}} & {\color{Red} a_{32}} & a_{34}\\
  a_{41} & {\color{Red} a_{43}} & {\color{Red} a_{42}} & a_{44}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 
 &ensp;&ensp;例2：数乘某行（列）
 $ $
-\begin{align}
-A = 
+\begin{align*}
+&A = 
 \begin{pmatrix}
  a_{11} & a_{12} & a_{13}\\
  a_{21} & a_{22} & a_{23}\\
  a_{31} & a_{32} & a_{33}
 \end{pmatrix}
-，
-E_3(2(k))=
+\\
+&E_3(2(k))=
 \begin{pmatrix}
  1 & 0 & 0\\
  0 & k & 0\\
  0 & 0 & 1
 \end{pmatrix}
-\end{align}
-
-\begin{align}
-E_3(2(k))A = 
+\\
+&E_3(2(k))A = 
 \begin{pmatrix}
  a_{11} & a_{12} & a_{13}\\
  {\color{Red} ka_{21}} & {\color{Red} ka_{22}} & {\color{Red} ka_{23}}\\
  a_{31} & a_{32} & a_{33}
 \end{pmatrix}
-，
-AE_3(2(k))=
+\\
+&AE_3(2(k))=
 \begin{pmatrix}
  a_{11} & {\color{Red} ka_{12}} & a_{13}\\
  a_{21} & {\color{Red} ka_{22}} & a_{23}\\
  a_{31} & {\color{Red} ka_{32}} & a_{33}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
 
 &ensp;&ensp;例3：数乘相加
 $ $
-\begin{align}
-A = 
+\begin{align*}
+&A = 
 \begin{pmatrix}
  a_{11} & a_{12} & a_{13} & a_{14}\\
  a_{21} & a_{22} & a_{23} & a_{24}\\
  a_{31} & a_{32} & a_{33} & a_{34}\\
  a_{41} & a_{42} & a_{43} & a_{44}
 \end{pmatrix}
-，
-E_4(23(k))=
+\\
+&E_4(23(k))=
 \begin{pmatrix}
  1 & 0 & 0 & 0\\
  0 & 1 & k & 0\\
  0 & 0 & 1 & 0\\
  0 & 0 & 0 & 1
 \end{pmatrix}
-\end{align}
-
-\begin{align}
-E_4(23(k))A=
+\\
+&E_4(23(k))A=
 \begin{pmatrix}
  a_{11} & a_{12} & a_{13} & a_{14}\\
  {\color{Red} a_{21}+ka_{31}}  & {\color{Red} a_{22}+ka_{32}}  & {\color{Red} a_{23}+ka_{33}}  & {\color{Red} a_{24}+ka_{34}} \\
  a_{31} & a_{32} & a_{33} & a_{34}\\
  a_{41} & a_{42} & a_{43} & a_{44}
 \end{pmatrix}
-，
-AE_4(23(k))=
+\\
+&AE_4(23(k))=
 \begin{pmatrix}
  a_{11} & a_{12} & {\color{Red} ka_{12}+a_{13}}  & a_{14}\\
  a_{21} & a_{22} & {\color{Red} ka_{22}+a_{23}}  & a_{24}\\
  a_{31} & a_{32} & {\color{Red} ka_{32}+a_{33}}  & a_{34}\\
  a_{41} & a_{42} & {\color{Red} ka_{42}+a_{43}}  & a_{44}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -13955,11 +13942,11 @@ $A\underset{}{\overset{r}{\sim}}B$的充分必要条件是存在$m$阶可逆矩�
 $A\underset{}{\overset{c}{\sim}}B$的充分必要条件是存在$n$阶可逆矩阵$Q$，使$AQ=B$；
 $A \sim B$的充分必要条件是存在$m$阶可逆矩阵$P$及$n$阶可逆矩阵$Q$，使$PAQ=B$。
 
-初等变换法求逆矩阵&ensp;&ensp;设$A$是$n$阶可逆矩阵，则$(A \space \vdots \space E) \underset{}{\overset{初等行变换}{\longrightarrow }} (E \space \vdots \space A^{-1})$
+初等变换法求逆矩阵&ensp;&ensp;设$A$是$n$阶可逆矩阵，则$\left ( \begin{array} {c:c} A &amp; E\end{array}\right) \underset{}{\overset{初等行变换}{\longrightarrow }} \left ( \begin{array} {c:c} E &amp; A^{-1}\end{array}\right)$
 矩阵的秩$k$阶子式&ensp;&ensp;定义4：在$m \times n$矩阵中，任取$k$行与$k$列（其中$k \le min\{m,n\}$），不改变它们在$A$中所处的位置次序而得的$k$阶行列式，称为矩阵$A$的$k$阶子式
 矩阵的秩&ensp;&ensp;定义5：设在矩阵$A$中有一个不等于$0$的$r$阶子式$D$，且所有$r + 1$阶子式（如果存在）全等于$0$，那么$D$称为$A$的最高阶非零子式，数$r$称为矩阵$A$的秩，并记作$R(A)$，规定$0$矩阵的秩等于$0$
 秩的计算&ensp;&ensp;引理：设$A\underset{}{\overset{r}{\sim}}B$，则$A$与$B$中非零子式的最高阶数相等（秩相等）&ensp;&ensp;定理2：若$A \sim B$，则$R(A) = R(B)$（矩阵的初等变换不改变矩阵的秩）
-&ensp;&ensp;对于$n$阶矩阵A，其$n$阶子式只有$|A|$，当$|A| \ne 0$时，$R(A) = n$，当$|A| = 0$时，$R(A) \lt n$，因此可逆矩阵又称满秩矩阵，不可以矩阵又称降秩矩阵
+&ensp;&ensp;对于$n$阶矩阵A，其$n$阶子式只有$|A|$，当$|A| \ne 0$时，$R(A) = n$，当$|A| = 0$时，$R(A) \lt n$，因此可逆矩阵又称满秩矩阵，不可逆矩阵又称降秩矩阵
 &ensp;&ensp;矩阵秩的计算：当矩阵阶数较低时，可以采用定义法求出矩阵的秩；当矩阵阶数较高时，将高阶矩阵通过初等行变换转化为行阶梯型矩阵，它的秩等于非零行的行数
 矩阵秩的性质
 $0 \le R(A_{m \times n}) \le min\{m,n\}$
@@ -14001,19 +13988,19 @@ $ $
 
 &ensp;&ensp;例，3维向量：
 $ $
-\begin{align}
-\text{3维列向量} \space
+\begin{align*}
+&\text{3维列向量} \space
 a=\begin{pmatrix}
  a_{1}\\
  a_{2}\\
  a_{3}
 \end{pmatrix}
-，
-\text{3维行向量} \space
+\\
+&\text{3维行向量} \space
 b=\begin{pmatrix}
  b_1 & b_2 & b_3
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -14021,18 +14008,18 @@ $ $
 
 &ensp;&ensp;例，4个3维列向量所组成的列向量组$A:a_1,a_2,a_3,a_4$构成一个$3 \times 4$的矩阵：
 $ $
-\begin{align}
+\begin{align*}
 A=(a_1,a_2,a_3,a_4)=
 \begin{pmatrix}
  a_{11} & a_{21} & a_{31} & a_{41}\\
  a_{12} & a_{22} & a_{32} & a_{42}\\
  a_{13} & a_{23} & a_{33} & a_{43}
 \end{pmatrix}\text{} 
-\end{align}
+\end{align*}
 $ $
 &ensp;&ensp;4个3维行向量所组成的行向量组$B:b_1,b_2,b_3,b_4$构成一个$4 \times 3$的矩阵：
 $ $
-\begin{align}
+\begin{align*}
 B=(b_1,b_2,b_3,b_4)=
 \begin{pmatrix}
  b_{11} & b_{12} & b_{13}\\
@@ -14040,7 +14027,7 @@ B=(b_1,b_2,b_3,b_4)=
  b_{31} & b_{32} & b_{33}\\
  b_{41} & b_{42} & b_{43}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -14052,23 +14039,23 @@ $ $
 &ensp;&ensp;把向量组$A$和$B$所构成的矩阵依次记作$A=(a_1,a_2,\cdots,a_m)$和$B=(b_1,b_2,\cdots,b_l)$，向量组$B$能由向量组$A$线性表示，即对每个向量$b_j(j=1,2,\cdots,l)$存在数$k_{1j},k_{2j},\cdots,k_{mj}$，使
 
 $ $
-\begin{align}
+\begin{align*}
 b_j=k_{1j}a_1+k_{2j}a_2+\cdots+k_{mj}a_m=(a_1,a_2,\cdots,a_m)\begin{pmatrix}
  k_{1j}\\
  k_{2j}\\
  \vdots\\
  k_{mj}
 \end{pmatrix}
-\end{align}
+\end{align*}
 
-\begin{align}
+\begin{align*}
 (b_1,b_2,\cdots,b_l)=(a_1,a_2,\cdots,a_m)\begin{pmatrix}
  k_{11} & k_{12} & \cdots & k_{1l}\\
  k_{21} & k_{22} & \cdots & k_{2l}\\
  \vdots & \vdots &        & \vdots\\
  k_{m1} & k_{m2} & \cdots & k_{ml}
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
@@ -14206,7 +14193,7 @@ $ $
 向量组$A_0:a_1,a_2,\cdots,a_r$线性无关
 向量组$A$中任意$r+1$个向量（如果$A$中有$r+1$个向量的话）都线性相关那么称向量组$A_0$是向量组$A$的一个最大线性无关向量组（简称最大无关组）
 
-向量组的秩&ensp;&ensp;最大无关组所含向量个数$r$成为向量组$A$的秩，记作$R_A$
+向量组的秩&ensp;&ensp;向量组$A$的最大无关组所包含向量的个数$r$，称为向量组$A$的秩，记作$R_A$
 &ensp;&ensp;注意：最大无关组不一定唯一&ensp;&ensp;例：
 
 $ $
@@ -14248,7 +14235,7 @@ $ $
 线性方程组解的结构齐次线性方程组解的结构&ensp;&ensp;设有齐次线性方程组
 
 $ $
-\begin{align}
+\begin{align*}
 \left\{ 
 \begin{array}{lll} 
 a_{11}x_{1}+a_{12}x_{2}+\cdots +a_{1n}x_{n}=0 \\
@@ -14256,7 +14243,7 @@ a_{21}x_{1}+a_{22}x_{2}+\cdots +a_{2n}x_{n}=0 \\
 \vdots\\
 a_{m1}x_{1}+a_{m2}x_{2}+\cdots +a_{mn}x_{n}=0
 \end{array} \right.
-\end{align}
+\end{align*}
 $ $
 
 
@@ -14266,9 +14253,9 @@ $ $
 齐次线性方程组的通解&ensp;&ensp;把向量方程全体解所组成的集合记作$S$求得解集$S$的一个最大无关组$S_0:\xi_1,\xi_2,\cdots,\xi_t$，向量方程的任一解都可由最大无关组$S_0$线性表示，则最大无关组$S_0$的任何线性组合
 
 $ $
-\begin{align}
+\begin{align*}
 x=k_1\xi_1+k_2\xi_2+\cdots+k_t\xi_t（k_1,k_2,\cdots,k_t为任意实数）
-\end{align}
+\end{align*}
 $ $
 
 
@@ -14278,7 +14265,7 @@ $ $
 非齐次线性方程组解的结构&ensp;&ensp;设有非齐次线性方程组
 
 $ $
-\begin{align}
+\begin{align*}
 \left\{ 
 \begin{array}{lll} 
 a_{11}x_{1}+a_{12}x_{2}+\cdots +a_{1n}x_{n}=b_1 \\
@@ -14286,7 +14273,7 @@ a_{21}x_{1}+a_{22}x_{2}+\cdots +a_{2n}x_{n}=b_2 \\
 \vdots\\
 a_{m1}x_{1}+a_{m2}x_{2}+\cdots +a_{mn}x_{n}=b_m
 \end{array} \right.
-\end{align}
+\end{align*}
 $ $
 
 
@@ -14306,9 +14293,9 @@ $V$中任一向量都可由$a_1,a_2,\cdots,a_r$线性表示
 坐标定义9&ensp;&ensp;设向量空间$V$的基为$a_1,a_2,\cdots,a_r$，对于$V$中任一向量$\alpha$可惟一的表示为
 
 $ $
-\begin{align}
+\begin{align*}
 \alpha = \lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_r\alpha_r
-\end{align}
+\end{align*}
 $ $
 
 
@@ -14317,9 +14304,9 @@ $ $
 &ensp;&ensp;基变换公式：
 
 $ $
-\begin{align}
+\begin{align*}
 (b_1,b_2,b_3)=(a_1,a_2,a_3)P
-\end{align}
+\end{align*}
 $ $
 
 
@@ -14327,7 +14314,7 @@ $ $
 &ensp;&ensp;坐标变换公式：
 
 $ $
-\begin{align}
+\begin{align*}
 \begin{pmatrix}
 z_1 \\
 z_2 \\
@@ -14340,7 +14327,7 @@ y_1 \\
 y_2 \\
 y_3
 \end{pmatrix}
-\end{align}
+\end{align*}
 $ $
 
 
