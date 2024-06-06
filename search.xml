@@ -13984,9 +13984,9 @@ $ $
 &ensp;&ensp;定理5：线性方程组$Ax=b$有解的充分必要条件是$R(A) = R(\overline{A})$
 &ensp;&ensp;定理6：矩阵方程$AX=B$有解的充分必要条件是$R(A)=R(A \space \vdots \space B)$
 &ensp;&ensp;定理7：设$AB=C$，则$R(C) \le min\{R(A),R(B)\}$
-向量向量定义定义1 向量&ensp;&ensp;n个有次序的数$a_1,a_2,\cdots,a_n$所组成的数组称为$n$维向量，这$n$个数组称为向量的分量，第$i$个数$a_i$称为第$i$个分量
+向量向量定义定义1 向量&ensp;&ensp;$n$个有次序的数$a_1,a_2,\cdots,a_n$所组成的数组称为$n$维向量，这$n$个数组称为向量的分量，第$i$个数$a_i$称为第$i$个分量
 
-&ensp;&ensp;例，3维向量：
+&ensp;&ensp;例，两个3维向量：
 $ $
 \begin{align*}
 &\text{3维列向量} \space
@@ -14020,7 +14020,12 @@ $ $
 &ensp;&ensp;4个3维行向量所组成的行向量组$B:b_1,b_2,b_3,b_4$构成一个$4 \times 3$的矩阵：
 $ $
 \begin{align*}
-B=(b_1,b_2,b_3,b_4)=
+B=\begin{pmatrix}
+b_1 \\
+b_2 \\
+b_3 \\
+b_4
+\end{pmatrix}=
 \begin{pmatrix}
  b_{11} & b_{12} & b_{13}\\
  b_{21} & b_{22} & b_{23}\\
@@ -14033,8 +14038,8 @@ $ $
 
 
 线性组合向量的线性表示定义2 线性组合&ensp;&ensp;给定向量组$A:a_1,a_2,\cdots,a_m$，对于任意一组实数$k_1,k_2,\cdots,k_m$，表达式$k_1a_1+k_2a_2+\cdots+k_ma_m$称为向量组$A$的一个线性组合，$k_1,k_2,\cdots,k_m$称为这个线性组合的系数
-&ensp;&ensp;给定向量组$A:a_1,a_2,\cdots,a_m$和向量$b$，如果存在一组数$\lambda_1,\lambda_2,\cdots,\lambda_m$，使$b=\lambda_1a_1+\lambda_2a_2+\cdots+\lambda_ma_m$，则向量$b$是向量$A$的线性组合，称向量$b$能由向量组$A$线性表示&ensp;&ensp;等同于方程组$x_1a_1+x_2a_2+\cdots+x_ma_m=b$有解
-定理1&ensp;&ensp;向量$b$能由向量组$A:a_1,a_2,\cdots,a_m$线性表示的充分必要条件是矩阵$A=(a_1,a_2,\cdots,a_m)$的秩等于矩阵$B=(a_1,a_2,\cdots,a_m,b)$的秩&ensp;&ensp;当$R(A)=R(B)$时，方程组$x_1a_1+x_2a_2+\cdots+x_ma_m=b$有解
+&ensp;&ensp;给定向量组$A:a_1,a_2,\cdots,a_m$和向量$b$，如果存在一组数$\lambda_1,\lambda_2,\cdots,\lambda_m$，使$b=\lambda_1a_1+\lambda_2a_2+\cdots+\lambda_ma_m$，则向量$b$是向量$A$的线性组合，称向量$b$能由向量组$A$线性表示&ensp;&ensp;等同于线性方程组$x_1a_1+x_2a_2+\cdots+x_ma_m=b$有解
+定理1&ensp;&ensp;向量$b$能由向量组$A:a_1,a_2,\cdots,a_m$线性表示的充分必要条件是矩阵$A=(a_1,a_2,\cdots,a_m)$的秩等于矩阵$B=(a_1,a_2,\cdots,a_m,b)$的秩&ensp;&ensp;当$R(A)=R(B)$时，线性方程组$x_1a_1+x_2a_2+\cdots+x_ma_m=b$有解
 向量组的线性表示向量组等价定义3&ensp;&ensp;设有两个向量组$A:a_1,a_2,\cdots,a_m$及$B:b_1,b_2,\cdots,b_l$，若$B$组中的每个向量都能由向量组$A$线性表示，则称向量组$B$能由向量组$A$线性表示。若向量组$A$与向量组$B$能互相线性表示，则称这两个向量组等价
 &ensp;&ensp;把向量组$A$和$B$所构成的矩阵依次记作$A=(a_1,a_2,\cdots,a_m)$和$B=(b_1,b_2,\cdots,b_l)$，向量组$B$能由向量组$A$线性表示，即对每个向量$b_j(j=1,2,\cdots,l)$存在数$k_{1j},k_{2j},\cdots,k_{mj}$，使
 
@@ -14060,17 +14065,45 @@ $ $
 
 
 其中，矩阵$K_{m \times l}=(k_{ij})$称为这一线性表示的系数矩阵
+
+&ensp;&ensp;例：
+$ $
+\begin{align*}
+&有两个如下向量组A、B\\
+&A=\left (\alpha _1,\alpha _2 \right) = \begin{pmatrix}
+ 1 & 2\\
+ 0 & 1
+\end{pmatrix}\\
+&B=\left (\beta _1,\beta _2 \right) = \begin{pmatrix}
+ 2 & 1\\
+ 2 & -1
+\end{pmatrix}\\
+&并有系数矩阵K_1、K_2\\
+&K_1=\begin{pmatrix}
+ -2 & 3\\
+ 2 & -1
+\end{pmatrix}\\
+&K_2=\begin{pmatrix}
+ \frac{1}{4}  & \frac{3}{4} \\
+ \frac{1}{2}  & \frac{1}{2} 
+\end{pmatrix}\\
+&又AK_1=B，BK_2=A\\
+&于是有：A、B等价
+\end{align*}
+$ $
+
+
 列向量组与行向量组的线性表示&ensp;&ensp;若$C_{m \times n}=A_{m \times l} \times B_{l \times n}$，则矩阵$C$的列向量组能由矩阵$A$的列向量组表示，$B$为这一表示的系数矩阵：
 
 $ $
-\begin{array} {c}
+\begin{align*}
 (c_1,c_2,\cdots,c_n)=(a_1,a_2,\cdots,a_l)\begin{pmatrix}
  b_{11} & b_{12} & \cdots & b_{1n}\\
  b_{21} & b_{22} & \cdots & b_{2n}\\
  \vdots & \vdots &        & \vdots\\
  b_{l1} & b_{l2} & \cdots & b_{ln}
 \end{pmatrix}
-\end{array}
+\end{align*}
 $ $
 
 
@@ -14079,12 +14112,12 @@ $ $
 &ensp;&ensp;若$C_{m \times n}=A_{m \times l} \times B_{l \times n}$，则矩阵$C$的行向量组能由矩阵$B$的行向量组表示，$A$为这一表示的系数矩阵：
 
 $ $
-\begin{array} {c}
+\begin{align*}
 \begin{pmatrix}
- \gamma_1^T\\
- \gamma_2^T\\
+ c_1^T\\
+ c_2^T\\
  \vdots \\
- \gamma_m^T
+ c_m^T
 \end{pmatrix}
 =
 \begin{pmatrix}
@@ -14093,27 +14126,26 @@ $ $
  \vdots & \vdots &       & \vdots\\
  a_{m1} & a_{m2} & \cdots & a_{ml}
 \end{pmatrix}
-=
 \begin{pmatrix}
- \beta_1^T\\
- \beta_2^T\\
+ b_1^T\\
+ b_2^T\\
  \vdots \\
- \beta_l^T
+ b_l^T
 \end{pmatrix}
-\end{array}
+\end{align*}
 $ $
 
 
 
-定理2&ensp;&ensp;向量组$B:b_1,b_2,\cdots,b_l$能由向量组$A:a_1,a_2,\cdots,a_m$线性表示的充分必要条件是矩阵$A=(a_1,a_2,\cdots,a_m)$的秩与矩阵$(A,B)=(a_1,a_2,\cdots,a_m,b_1,b_2,\cdots,b_l)$的秩，即$R(A)=R(A,B)$
+定理2&ensp;&ensp;向量组$B:b_1,b_2,\cdots,b_l$能由向量组$A:a_1,a_2,\cdots,a_m$线性表示的充分必要条件是矩阵$A=(a_1,a_2,\cdots,a_m)$的秩等于矩阵$(A,B)=(a_1,a_2,\cdots,a_m,b_1,b_2,\cdots,b_l)$的秩，即$R(A)=R(A,B)$
 推论&ensp;&ensp;向量组$A:a_1,a_2,\cdots,a_m$与向量组$B:b_1,b_2,\cdots,b_l$等价的充分必要条件是$R(A)=R(B)=R(A,B)$，其中$A$和$B$是向量组$A$和$B$所构成的矩阵
 定理3&ensp;&ensp;设向量组$B:b_1,b_2,\cdots,b_l$能由向量组$A:a_1,a_2,\cdots,a_m$线性表示，则$R(b_1,b_2,\cdots,b_l) \le R(a_1,a_2,\cdots,a_m)$
 线性相关线性相关性的定义定义4&ensp;&ensp;给定向量组$A:a_1,a_2,\cdots,a_m$，如果存在不全为零的数$k_1,k_2,\cdots,k_m$，使
 
 $ $
-\begin{array} {c}
+\begin{align*}
 k_1a_1+k_2a_2+\cdots+k_ma_m=0
-\end{array}
+\end{align*}
 $ $
 
 则称向量组$A$是线性相关的，否则称它线性无关
@@ -14121,18 +14153,18 @@ $ $
 &ensp;&ensp;如果向量组$A:a_1,a_2,\cdots,a_m$线性相关，那么在向量$A$中至少有一个向量能由其余$m-1$个向量线性表示，这是因为有不全为$0$的数$k_1,k_2,\cdots,k_m$，使$k_1a_1+k_2a_2+\cdots+k_ma_m=0$，假设$k_1 \ne 0$，那么有
 
 $ $
-\begin{array} {c}
+\begin{align*}
 a_1=\frac {-1}{k_1}(k_2a_2+\cdots+k_ma_m)
-\end{array}
+\end{align*}
 $ $
 
 
 即$a_1$能由$a_2,\cdots,a_m$线性表示&ensp;&ensp;同样，如果向量组$A:a_1,\cdots,a_m$中某个向量能由其余$m-1$个向量线性表示，即有$\lambda_1,\cdots,\lambda_{m-1}$，使$a_m=\lambda_1a_1+\cdots+\lambda_{m-1}a_{m-1}$，于是有
 
 $ $
-\begin{array} {c}
+\begin{align*}
 \lambda_1a_1+\lambda_2a_2+\cdots+\lambda_{m-1}a_{m-1}+(-1)a_m=0
-\end{array}
+\end{align*}
 $ $
 
 
@@ -14194,8 +14226,9 @@ $ $
 向量组$A$中任意$r+1$个向量（如果$A$中有$r+1$个向量的话）都线性相关那么称向量组$A_0$是向量组$A$的一个最大线性无关向量组（简称最大无关组）
 
 向量组的秩&ensp;&ensp;向量组$A$的最大无关组所包含向量的个数$r$，称为向量组$A$的秩，记作$R_A$
-&ensp;&ensp;注意：最大无关组不一定唯一&ensp;&ensp;例：
+&ensp;&ensp;注意：最大无关组不一定唯一
 
+&ensp;&ensp;例：
 $ $
 \begin{array}{l}
 向量组A:a_1,a_2,a_3\\
@@ -14223,7 +14256,7 @@ $ $
 向量组秩的性质
 只含零向量的向量组没有最大无关组，规定它的秩为零
 若向量组$A$线性无关，则$A$自身就是它的最大无关组
-向量组$A$和它自己的最大无关组$A_0$是等价的
+向量组$A$和它的最大无关组$A_0$是等价的
 
 推论（最大无关组的等价定义）&ensp;&ensp;设向量组$A_0:a_1,a_2,\cdots,a_r$是向量组$A$的一个部分组，且满足
 
@@ -14396,7 +14429,7 @@ $[k\alpha,\beta]=[\alpha,k\beta]=k[\alpha,\beta]$
 $[\alpha,\beta+\gamma]=[\alpha,\beta]+[\alpha,\gamma]$
 当$\alpha=0$时，$[\alpha,\alpha]=0$；当$\alpha \ne 0$时，$[\alpha,\alpha]\gt 0$
 
-长度定义2&ensp;&ensp;设$\alpha=(\alpha_1,\alpha_2,\cdots,\alpha_n)^T$，令$\left \| \alpha \right \| = \sqrt[]{[\alpha ,\alpha ]} =\sqrt[]{\alpha _1^2+\alpha _2^2+\cdots+\alpha _n^2}$，称$\left \| \alpha \right \|$为向量$\alpha$的长度或范数
+长度（模）定义2&ensp;&ensp;设$\alpha=(\alpha_1,\alpha_2,\cdots,\alpha_n)^T$，令$\left \| \alpha \right \| = \sqrt[]{[\alpha ,\alpha ]} =\sqrt[]{\alpha _1^2+\alpha _2^2+\cdots+\alpha _n^2}$，称$\left \| \alpha \right \|$为向量$\alpha$的长度、模或范数
 &ensp;&ensp;向量的长度有下列性质（其中$\alpha$为$n$维向量，$k$为实数）
 
 非负性 当$\alpha \ne 0$时，$\left \| \alpha \right \| \gt 0$；当$\alpha = 0$时，$\left \| \alpha \right \| = 0$
