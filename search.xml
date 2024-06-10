@@ -12762,7 +12762,51 @@ $ $
  a_{31} & a_{32} & a_{33}
 \end{vmatrix}
 =
-a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}
+\begin{matrix}
+ a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}\\
+ -a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}
+\end{matrix}
+\end{align*}
+$ $
+
+
+定义计算三阶行列式
+&ensp;&ensp;将三阶行列式分为如下六项，取每项$a_{ij}$中的$j$并组成排列，再取排列的逆序数，若逆序数为偶数，则该项为正，反之为负。三、四阶行列式使然
+
+$ $
+\begin{align*}
+\begin{vmatrix}
+ a_{11} & a_{12} & a_{13}\\
+ a_{21} & a_{22} & a_{23}\\
+ a_{31} & a_{32} & a_{33}
+\end{vmatrix}
+=
+\left\{\begin{matrix}
+ a_{11}\left\{\begin{matrix}
+  a_{22} \left\{\begin{matrix}
+   a_{33} \space  \left [ \tau \left ( 123 \right )=0 \right ]
+  \end{matrix}\right.\\
+  a_{23} \left\{\begin{matrix}
+   a_{32} \space  \left [ \tau \left ( 132 \right )=1 \right ]
+  \end{matrix}\right.\\
+ \end{matrix}\right.\\
+ a_{12}\left\{\begin{matrix}
+  a_{21} \left\{\begin{matrix}
+   a_{33} \space  \left [ \tau \left ( 213 \right )=1 \right ]
+  \end{matrix}\right.\\
+  a_{23} \left\{\begin{matrix}
+   a_{31} \space  \left [ \tau \left ( 231 \right )=2 \right ]
+  \end{matrix}\right.\\
+ \end{matrix}\right.\\
+ a_{13} \left\{\begin{matrix}
+  a_{21} \left\{\begin{matrix}
+   a_{32} \space  \left [ \tau \left ( 312 \right )=2 \right ]
+  \end{matrix}\right.\\
+  a_{22} \left\{\begin{matrix}
+   a_{31} \space  \left [ \tau \left ( 321 \right )=3 \right ]
+  \end{matrix}\right.\\
+ \end{matrix}\right.
+\end{matrix}\right.
 \end{align*}
 $ $
 
@@ -12855,7 +12899,10 @@ $ $
  x_1^3 & x_2^3 & x_3^3 & x_4^3
 \end{vmatrix}
 =
-(x_4-x_1)(x_4-x_2)(x_4-x_3)(x_3-x_1)(x_3-x_2)(x_2-x_1)
+\begin{matrix}
+(x_4-x_1)(x_4-x_2)(x_4-x_3)\\
+(x_3-x_1)(x_3-x_2)(x_2-x_1)
+\end{matrix}
 \end{align*}
 $ $
 
@@ -13587,6 +13634,7 @@ $\left|A^{*}\right| = \left|A\right|^{n-1}$
 $(A^T)^{*} = (A^{*})^T$
 $(A^{-1})^{*} = (A^{*})^{-1}$
 $(AB)^{*} = B^{*}A^{*}$
+$(A^{*})^{*}=|A|^{n-2}A$
 
 可逆矩阵&ensp;&ensp;对于$n$阶矩阵$A$,如果有一个$n$阶矩阵$B$，使$AB=BA=E$，则说矩阵$A$是可逆的，并把$B$称为$A$的逆矩阵，$A$的逆矩阵记作$A^{-1}$，即$B=A^{-1}$&ensp;&ensp;如果矩阵$A$是可逆的，那么$A$的逆矩阵是唯一的
 定理1&ensp;&ensp;若矩阵$A$可逆，则$|A| \ne 0$定理2&ensp;&ensp;若$|A| \ne 0$，则矩阵$A$可逆，且$A^{-1}=\frac {1}{|A|}A^{*}$&ensp;&ensp;当$|A| = 0$时，$|A|$称为奇异矩阵，否则称非奇异矩阵&ensp;&ensp;根据定理2，如果有矩阵$A=\eqref {eq44}$，那么$A$的行列式$|A| = \eqref {eq45}$，$A$的伴随矩阵$A^{*} = \eqref {eq46}$
@@ -13632,7 +13680,7 @@ $ $
 
 &ensp;&ensp;可逆矩阵满足以下运算规律
 
-若$A$可逆，则$A^{-1}$也可逆，且$(A^{-1})^{-1}=A$，$|A^{-1}| = \frac {1}{|A|}$
+若$A$可逆，则$A^{-1}$也可逆，且$(A^{-1})^{-1}=A$，$\left |A^{-1} \right | = \left |A\right |^{-1} = \frac {1}{\left |A\right |}$
 若$A$可逆，数$k \ne 0$，则$kA$可逆，且$(kA)^{-1}=\frac {1}{k}A^{-1}$
 若$A$、$B$为同阶矩阵且均可逆，则$AB$也可逆，且$(AB)^{-1}=B^{-1}A^{-1}$
 若$A$可逆，则$A^T$也可逆，且$(A^T)^{-1}=(A^{-1})^T$
@@ -13952,11 +14000,12 @@ $A \sim B$的充分必要条件是存在$m$阶可逆矩阵$P$及$n$阶可逆矩�
 $0 \le R(A_{m \times n}) \le min\{m,n\}$
 $R(A^T)=R(A)=R(A^T A)=R(A A^T)$
 若$A \sim B$，则$R(A) = R(B)$
-若$P$、$Q$可逆，则$R(PAQ)=R(A)$
+若$P$、$Q$可逆，则$R(PAQ)=R(PA)=R(AQ)=R(A)$
 $max\{R(A),R(B)\} \le R(A,B) \le R(A)+R(B)$
 $R(A+B) \le R(A)+R(B)$
 $R(AB) \le min\{R(A),R(B)\}$
 若$A_{m \times n}B_{n \times l}=O$，则$R(A)+R(B) \le n$
+$\begin{cases}n，&amp;R(A)=n，\\1，&amp;R(A)=n-1，\\0，&amp;R(A)\lt n-1，\end{cases}$其中$A$为$n(n\ge 2)$阶方阵
 
 线性方程组的解&ensp;&ensp;设有$n$个未知数$m$个方程的线性方程组$\eqref {eq13}$
 
