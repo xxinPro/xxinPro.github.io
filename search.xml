@@ -14005,7 +14005,7 @@ $max\{R(A),R(B)\} \le R(A,B) \le R(A)+R(B)$
 $R(A+B) \le R(A)+R(B)$
 $R(AB) \le min\{R(A),R(B)\}$
 若$A_{m \times n}B_{n \times l}=O$，则$R(A)+R(B) \le n$
-$\begin{cases}n，&amp;R(A)=n，\\1，&amp;R(A)=n-1，\\0，&amp;R(A)\lt n-1，\end{cases}$其中$A$为$n(n\ge 2)$阶方阵
+$R(A^{*})=\begin{cases}n，&amp;R(A)=n，\\1，&amp;R(A)=n-1，\\0，&amp;R(A)\lt n-1，\end{cases}$其中$A$为$n(n\ge 2)$阶方阵
 
 线性方程组的解&ensp;&ensp;设有$n$个未知数$m$个方程的线性方程组$\eqref {eq13}$
 
