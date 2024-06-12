@@ -14007,10 +14007,10 @@ $R(AB) \le min\{R(A),R(B)\}$
 若$A_{m \times n}B_{n \times l}=O$，则$R(A)+R(B) \le n$
 $R(A^{*})=\begin{cases}n，&amp;R(A)=n，\\1，&amp;R(A)=n-1，\\0，&amp;R(A)\lt n-1，\end{cases}$其中$A$为$n(n\ge 2)$阶方阵
 
-线性方程组的解&ensp;&ensp;设有$n$个未知数$m$个方程的线性方程组$\eqref {eq13}$
+线性方程组的解&ensp;&ensp;设有$n$个未知数$m$个方程的线性方程组$\eqref {eq1}$
 
 $ $
-\begin{align} \label {eq13}
+\begin{align} \label {eq1}
 \left\{ 
 \begin{array}{lll} 
 a_{11}x_{1}+a_{12}x_{2}+\cdots +a_{1n}x_{n}=b_{1} \\
@@ -14022,7 +14022,7 @@ a_{m1}x_{1}+a_{m2}x_{2}+\cdots +a_{mn}x_{n}=b_{m}
 $ $
 
 
-&ensp;&ensp;方程组$\eqref {eq13}$可表示为$Ax=b$，其中$A$为系数矩阵，$x$为未知数矩阵，$b$为常数项矩阵，利用$A$与增广矩阵$\overline{A} = (A \space \vdots \space b)$的秩讨论线性方程组的解，如果线性方程组有解，则称它是相容的，反之称为不相容
+&ensp;&ensp;方程组$\eqref {eq1}$可表示为$Ax=b$，其中$A$为系数矩阵，$x$为未知数矩阵，$b$为常数项矩阵，利用$A$与增广矩阵$\overline{A} = (A \space \vdots \space b)$的秩讨论线性方程组的解，如果线性方程组有解，则称它是相容的，反之称为不相容
 &ensp;&ensp;定理3：对于上述方程组$Ax=b$
 
 无解的充分必要条件是$R(A) \lt R(\overline{A})$
@@ -14317,7 +14317,7 @@ $ $
 线性方程组解的结构齐次线性方程组解的结构&ensp;&ensp;设有齐次线性方程组
 
 $ $
-\begin{align*}
+\begin{align} \label {eq2}
 \left\{ 
 \begin{array}{lll} 
 a_{11}x_{1}+a_{12}x_{2}+\cdots +a_{1n}x_{n}=0 \\
@@ -14325,14 +14325,14 @@ a_{21}x_{1}+a_{22}x_{2}+\cdots +a_{2n}x_{n}=0 \\
 \vdots\\
 a_{m1}x_{1}+a_{m2}x_{2}+\cdots +a_{mn}x_{n}=0
 \end{array} \right.
-\end{align*}
+\end{align}
 $ $
 
 
-其向量方程为$Ax=0$，设它的解向量$x=\xi _1=\begin{pmatrix}\xi_{11} \\\xi_{21} \\\vdots \\\xi_{n1}\end{pmatrix}$，其解的结构有如下性质
-性质1&ensp;&ensp;若$x=\xi_1$，$x=\xi_2$为向量方程的解，则$x=\xi_1+\xi_2$也是向量方程的解
-性质2&ensp;&ensp;若$x=\xi_1$为向量方程的解，$k$为实数，则$x=k\xi_1$也是向量方程的解
-齐次线性方程组的通解&ensp;&ensp;把向量方程全体解所组成的集合记作$S$求得解集$S$的一个最大无关组$S_0:\xi_1,\xi_2,\cdots,\xi_t$，向量方程的任一解都可由最大无关组$S_0$线性表示，则最大无关组$S_0$的任何线性组合
+其向量方程为$Ax=0$，设它的解向量$x=\xi _i=\begin{pmatrix}\xi_{1i} \\\xi_{2i} \\\vdots \\\xi_{ni}\end{pmatrix}$，其解的结构有如下性质
+性质1&ensp;&ensp;若$x=\xi_1$，$x=\xi_2$为齐次方程组$\eqref {eq2}$的解，则$x=\xi_1+\xi_2$也是齐次方程组$\eqref {eq2}$的解
+性质2&ensp;&ensp;若$x=\xi_1$为齐次方程组$\eqref {eq2}$的解，$k$为实数，则$x=k\xi_1$也是齐次方程组$\eqref {eq2}$的解
+齐次线性方程组的通解&ensp;&ensp;把齐次线性方程组的全体解所组成的集合记作$S$，求得解集$S$的一个最大无关组$S_0:\xi_1,\xi_2,\cdots,\xi_t$，向量方程的任一解都可由最大无关组$S_0$线性表示，则最大无关组$S_0$的任何线性组合
 
 $ $
 \begin{align*}
@@ -14341,13 +14341,13 @@ x=k_1\xi_1+k_2\xi_2+\cdots+k_t\xi_t（k_1,k_2,\cdots,k_t为任意实数）
 $ $
 
 
-都是向量方程的通解，该最大无关组称为该齐次线性方程组的基础解系
+都是齐次方程组$\eqref {eq2}$的通解，该最大无关组称为该齐次线性方程组的基础解系
 &ensp;&ensp;如果$x=\xi_i(i=1,2,\cdots,t)$都是$Ax=0$的解，$k_i(i=1,2,\cdots,t)$为任意实数，那么$x=k_1\xi_1+k_2\xi_2+\cdots+k_t\xi_t$也是$Ax=0$的解
 定理7&ensp;&ensp;设有$m \times n$矩阵$A$的秩$R(A)=r$，则$n$元齐次线性方程组$Ax=0$的解集$S$的秩为$R_S=n-r$
 非齐次线性方程组解的结构&ensp;&ensp;设有非齐次线性方程组
 
 $ $
-\begin{align*}
+\begin{align} \label {eq3}
 \left\{ 
 \begin{array}{lll} 
 a_{11}x_{1}+a_{12}x_{2}+\cdots +a_{1n}x_{n}=b_1 \\
@@ -14355,13 +14355,13 @@ a_{21}x_{1}+a_{22}x_{2}+\cdots +a_{2n}x_{n}=b_2 \\
 \vdots\\
 a_{m1}x_{1}+a_{m2}x_{2}+\cdots +a_{mn}x_{n}=b_m
 \end{array} \right.
-\end{align*}
+\end{align}
 $ $
 
 
-其向量方程为$Ax=b$，设它的解向量$x=\eta _1=\begin{pmatrix}\eta_{11} \\\eta_{21} \\\vdots \\\eta_{n1}\end{pmatrix}$
-性质3&ensp;&ensp;设$x=\eta_1$，$x=\eta_2$都是向量方程的解，则$x=\eta_1-\eta_2$为对应的齐次线性方程组$Ax=0$的解
-性质4&ensp;&ensp;设$x=\eta$是向量方程的解，$x=\xi$是对应的齐次线性方程组$Ax=0$的解，则$x=\eta+\xi$仍是向量方程的解
+其向量方程为$Ax=b$，设它的解向量$x=\eta _i=\begin{pmatrix}\eta_{1i} \\\eta_{2i} \\\vdots \\\eta_{ni}\end{pmatrix}$
+性质3&ensp;&ensp;设$x=\eta_1$，$x=\eta_2$都是非齐次方程组$\eqref {eq3}$的解，则$x=\eta_1-\eta_2$为对应的齐次方程组$\eqref {eq2}$的解
+性质4&ensp;&ensp;设$x=\eta$是非齐次方程组$\eqref {eq3}$的解，$x=\xi$是对应的齐次方程组$\eqref {eq2}$的解，则$x=\eta+\xi$仍是非齐次方程组$\eqref {eq3}$的解
 非齐次线性方程组的通解&ensp;&ensp;如果$\eta_0$是$Ax=b$的特解，$\xi_1,\cdots,\xi_{n-r}$是$Ax=0$的一个基础解系，则$Ax=b$的通解为$\eta=\eta_0+k_1\xi_1+\cdots+k_{n-r}\xi_{n-r}$；其中$k_i(i=1,\cdots,n-r)$为任意实数，$n$是未知数$x_n$的个数，$r=R(A)$
 向量空间定义6&ensp;&ensp;设$V$为$n$维向量的集合，如果集合$V$非空，且集合$V$对于向量的加法及数乘两和运算封闭，那么就称集合$V$为向量空间&ensp;&ensp;所谓封闭，是指在集合$V$中可以进行向量的加法及数乘两种运算；若$a\in V，b\in V$，则$a+b\in V$；若$a\in V，k\in R$，则$ka \in V$
 向量空间的基定义7
