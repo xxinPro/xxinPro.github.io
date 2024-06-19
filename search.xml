@@ -14911,7 +14911,7 @@ e_3=\frac {1}{\sqrt[]{3}}\begin{pmatrix}
 $ $
 
 
-二次型二次型定义定义8&ensp;&ensp;含有$n$个变量$x_1,x_2,\cdots,x_n$的二次齐次函数$f(x_1,x_2,\cdots,x_n)$称为二次型
+二次型二次型定义&ensp;&ensp;含有$n$个变量$x_1,x_2,\cdots,x_n$的二次齐次函数$f(x_1,x_2,\cdots,x_n)$称为二次型 （注意$a_{ij}=a_{ji}$）
 
 $ $
 \begin{align*}
@@ -14922,7 +14922,7 @@ $ $
 
 
 
-&ensp;&ensp;展开上式$\cdots$中的内容，然后移项，则可以看到
+&ensp;&ensp;如果展开上式$\cdots$中的内容，然后移项，则可以看到
 $ $
 \begin{align*}
   f(x_1,x_2,\cdots,x_n)=&a_{11}x_1^2+2a_{12}x_1x_2+\cdots+2a_{1n}x_1x_n+\\
@@ -14949,15 +14949,29 @@ $ $
 
 
 
-&ensp;&ensp;例：二次型$f(x_1,x_2,x_3)$
+&ensp;&ensp;例：二次型$f(x_1,x_2,x_3)$（注意 $a_{ij}=a_{ji}$）
 $ $
 \begin{align*}
-  f(x_1,x_2,x_3)=&a_{11}x_1^2+a_{12}x_1x_2+a_{13}x_1x_3+\\
+  f(x_1,x_2,x_3)
+
+  =&a_{11}x_1^2+a_{12}x_1x_2+a_{13}x_1x_3+\\
   &a_{21}x_2x_1+a_{22}x_2^2+a_{23}x_2x_3+\\
   &a_{31}x_{3}x_1+a_{32}x_{3}x_2+a_{33}x_3^{2} \\ \\
+
   =&a_{11}x_1^2+2a_{12}x_1x_2+2a_{13}x_1x_3+\\
   &a_{22}x_2^2+2a_{23}x_2x_3+\\
-  &a_{33}x_3^{2}
+  &a_{33}x_3^{2} \\ \\
+
+  =&(x_1,x_2,x_3)\begin{pmatrix}
+    a_{11} & a_{12} & a_{13}\\
+    a_{21} & a_{22} & a_{23}\\
+    a_{31} & a_{32} & a_{33}
+  \end{pmatrix}\begin{pmatrix}
+    x_1 \\
+    x_2 \\
+    x_3
+  \end{pmatrix} \\ \\
+  =&x^T A x
 \end{align*}
 $ $
 
@@ -14991,9 +15005,9 @@ x_n
 $ $
  
 
-其中，$A=\begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\ \vdots &amp; \vdots &amp;  &amp; \vdots\\ a_{n1} &amp; a_{nn2} &amp; \cdots &amp; a_{nn}\end{pmatrix}$，$x=\begin{pmatrix}x_1 \\x_2 \\\vdots \\x_n\end{pmatrix}$，则$f$可记作$f=x^TAx$，对称矩阵$A$（因为$a_{ij}=a_{ji}$）叫做二次型$f$的矩阵，$f$叫做对称矩阵$A$的二次型，对称矩阵$A$的秩叫做二次型$f$的秩
-&ensp;&ensp;任给一个二次型，可惟一确定一个对称矩阵$A$，任给一个对称矩阵，也可惟一确定一个二次型
-合同对角化定义9&ensp;&ensp;设$A$和$B$是$n$阶矩阵，若有可逆矩阵$C$，使$B=C^TAC$，则称矩阵$A$与$B$合同，记作$A\simeq B$。对于对称矩阵$A$，寻求可逆矩阵$C$，使$C^TAC=B$为对角矩阵，称为把矩阵$A$合同对角化
+其中，$A=\begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\ \vdots &amp; \vdots &amp;  &amp; \vdots\\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\end{pmatrix}$，$x=\begin{pmatrix}x_1 \\x_2 \\\vdots \\x_n\end{pmatrix}$，则$f$可记作$f=x^TAx$，对称矩阵$A$叫做二次型$f$的矩阵，$f$叫做对称矩阵$A$的二次型，对称矩阵$A$的秩叫做二次型$f$的秩
+&ensp;&ensp;任给一个二次型，可唯一确定一个对称矩阵$A$，任给一个对称矩阵，也可唯一确定一个二次型
+合同对角化&ensp;&ensp;设$A$和$B$是$n$阶矩阵，若有可逆矩阵$C$，使$B=C^TAC$，则称矩阵$A$与$B$合同，记作$A\simeq B$。对于对称矩阵$A$，寻求可逆矩阵$C$，使$C^TAC=B$为对角矩阵，称为把矩阵$A$合同对角化&ensp;&ensp;但其实合同对角化并不一定非要作用于对称矩阵上，只是研究的二次型的矩阵刚好是对称矩阵
 
 &ensp;&ensp;例：
 $ $
@@ -15025,11 +15039,11 @@ $ $
 任一实对称矩阵必合同于一对角矩阵
 
 
-&ensp;&ensp;实对称矩阵必可相似对角化与合同对角化
+&ensp;&ensp;实对称矩阵必可相似对角化与合同对角化，由于二次型的矩阵皆为实对称矩阵，所以可以使用计算实对称矩阵相似对角化的方式来计算合同对角化
 $ $
 \begin{array} {l}
 设A为n阶对称矩阵\\
-根据定理5，必有正交矩阵P，\\
+则必有正交矩阵P，\\
 使:P^{-1}AP=P^TAP=\Lambda\\
 其中\Lambda 是以A的n个特征值为对角元的对角矩阵
 \end{array}
@@ -15048,13 +15062,15 @@ $ $
 $ $
 
 
-将其带入到二次型$f(x_1,x_2,\cdots,x_n)$中，使$f=k_1y_1^2+k_2y_2^2+\cdots+k_ny_n^2$，这种只含平方项的二次型，称为二次型的标准形，该可逆线性变换可记作$x=Cy$
+将其带入到二次型$f(x_1,x_2,\cdots,x_n)$中，使$f=\lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2$，这种只含平方项的二次型，称为二次型的标准形，该可逆线性变换可记作$x=Cy$
 
 &ensp;&ensp;因为
 $ $
-\begin{array} {c}
-x=Cy 
-\Longrightarrow 
+\begin{gather*}
+x=Cy  \\
+
+\Downarrow \\
+
 \begin{pmatrix}
 x_1 \\
 x_2 \\
@@ -15072,47 +15088,73 @@ y_1 \\
 y_2 \\
 \vdots \\
 y_n
-\end{pmatrix}
- \Longrightarrow 
+\end{pmatrix} \\
+
+\Downarrow \\
+
 \begin{cases}
   x_1= c_{11}y_1+c_{12}y_2+\cdots+c_{1n}y_n\\
   x_2= c_{21}y_1+c_{22}y_2+\cdots+c_{2n}y_n\\
   \cdots \\
   x_n= c_{n1}y_1+c_{n2}y_2+\cdots+c_{nn}y_n
 \end{cases}
-\end{array}
+\end{gather*}
 $ $
  
 
 
-正交变换化二次型成标准形&ensp;&ensp;将可逆的线性变换$x=Cy$代入二次型矩阵$f=x^TAx$中，有$f=x^TAx=(Cy)^TA(Cy)=y^T(C^TAC)y$，使$C^TAC$成为对角矩阵
+正交变换化二次型成标准形存在定理&ensp;&ensp;任给二次型$f(x)=x^TAx$，总有正交变换$x=Cy$，使$f(x)$化为标准形
 
 $ $
-\begin{array} {c}
-y^TC^TACy=k_1y_1^2+k_2y_2^2+\cdots+k_ny_n^2=
-(y_1,y_2,\cdots,y_n)
+\begin{align*}
+f(x) = \lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2 = g(y)
+\end{align*}
+$ $
+
+
+其中$\lambda_1,\lambda_2,\cdots,\lambda_n$是$f(x)$的矩阵$A=(a_{ij})$的特征值
+&ensp;&ensp;将正交变换$x=Cy$代入二次型矩阵$f(x)=x^TAx$中，有
+
+$ $
+\begin{align*}
+f(x)=x^TAx=(Cy)^TA(Cy)=y^T(C^TAC)y
+\end{align*}
+$ $
+
+
+对于对称矩阵$A$，寻求可逆矩阵$C$，使$C^TAC$成为对角矩阵的过程，称为把对称矩阵$A$合同对角化
+
+
+$ $
+\begin{align*}
+f(x) = & x^TAx \\
+= & (Cy)^TA(Cy) \\
+= & y^T(C^TAC)y \\
+= & (y_1,y_2,\cdots,y_n)
 \begin{pmatrix}
- k_{1} &  &  & \\
-  & k_{2} &  & \\
+ \lambda_{1} &  &  & \\
+  & \lambda_{2} &  & \\
   &  & \ddots & \\
-  &  &  & k_{n}
+  &  &  & \lambda_{n}
 \end{pmatrix}
 \begin{pmatrix}
 y_1 \\
 y_2 \\
 \vdots \\
 y_n
-\end{pmatrix}
-\end{array}
+\end{pmatrix} \\
+= & \lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2 \\
+= & g(y)
+\end{align*}
 $ $
 
 
-对于对称矩阵$A$，寻求可逆矩阵$C$，使$C^TAC$成为对角矩阵的过程，称为把对称矩阵$A$合同对角化
-定理6&ensp;&ensp;任给二次型$f=\sum_{i,j=1}^{n} a_{ij}x_ix_j$（$a_{ij}=a_{ji}$），总有正交变换$x=Py$，使$f$化为标准形$f=\lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2$，其中$\lambda_1,\lambda_2,\cdots,\lambda_n$是$f$的矩阵$A=(a_{ij})$的特征值
+
+&ensp;&ensp;例：化二次型$f(x_1,x_2)=4x_1^2+4x_2^2+2x_1x_2$为标准形
 
 $ $
 \begin{array}{l}
-由题意，二次型f的矩阵为A=
+由题意，二次型f(x)的矩阵为A=
 \begin{pmatrix}
  4 & 1\\
  1 & 4
@@ -15267,7 +15309,7 @@ $ $
 
 
 二次型的规范形&ensp;&ensp;如果标准形$f=k_1y_1^2+k_2y_2^2+\cdots+k_ny_n^2$的系数$k_1,k_2,\cdots,k_n$只在$1,-1,0$三个数中取值，则成为二次型的规范形
-定理6推论&ensp;&ensp;任给$n$元二次型$f(x)=x^TAx$（$A^T=A$），总有可逆变换$x=Cz$，使$f(Cz)$为规范形
+推论&ensp;&ensp;任给$n$元二次型$f(x)=x^TAx$（$A^T=A$），总有可逆变换$x=Cz$，使$f(Cz)$为规范形
 
 &ensp;&ensp;例：化二次型的标准形$f(y_1,y_1,y_3)=-2y_1^2+y_2^2+y_3^2$为规范形
 $ $
