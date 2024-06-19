@@ -14307,7 +14307,7 @@ $ $
 
 都是齐次方程组$\eqref {eq2}$的通解，该最大无关组称为该齐次线性方程组的基础解系
 &ensp;&ensp;如果$x=\xi_i(i=1,2,\cdots,t)$都是$Ax=0$的解，$k_i(i=1,2,\cdots,t)$为任意实数，那么$x=k_1\xi_1+k_2\xi_2+\cdots+k_t\xi_t$也是$Ax=0$的解
-定理7&ensp;&ensp;设有$m \times n$矩阵$A$的秩$R(A)=r$，则$n$元齐次线性方程组$Ax=0$的解集$S$的秩为$R_S=n-r$
+定理7&ensp;&ensp;设有$m \times n$矩阵$A$的秩$R(A)=r$，则$n$元齐次线性方程组$Ax=0$的解集$S$的秩为$R_S=n-r$&ensp;&ensp;$n$元非齐次线性方程组$Ax=b$的解集$S$的秩为$R_S=n-r+1$
 非齐次线性方程组解的结构&ensp;&ensp;设有非齐次线性方程组
 
 $ $
