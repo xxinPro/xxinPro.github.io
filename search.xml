@@ -15005,7 +15005,26 @@ x_n
 $ $
  
 
-其中，$A=\begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\ \vdots &amp; \vdots &amp;  &amp; \vdots\\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\end{pmatrix}$，$x=\begin{pmatrix}x_1 \\x_2 \\\vdots \\x_n\end{pmatrix}$，则$f$可记作$f=x^TAx$，对称矩阵$A$叫做二次型$f$的矩阵，$f$叫做对称矩阵$A$的二次型，对称矩阵$A$的秩叫做二次型$f$的秩
+其中
+
+$ $
+\begin{align*}
+A=\begin{pmatrix}
+ a_{11} & a_{12} & \cdots & a_{1n}\\
+ a_{21} & a_{22} & \cdots & a_{2n}\\
+ \vdots & \vdots &  & \vdots\\
+ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{pmatrix}$，$x=\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}
+\end{align*}
+$ $
+ 
+
+则$f$可记作$f=x^TAx$，对称矩阵$A$叫做二次型$f$的矩阵，$f$叫做对称矩阵$A$的二次型，对称矩阵$A$的秩叫做二次型$f$的秩
 &ensp;&ensp;任给一个二次型，可唯一确定一个对称矩阵$A$，任给一个对称矩阵，也可唯一确定一个二次型
 合同对角化&ensp;&ensp;设$A$和$B$是$n$阶矩阵，若有可逆矩阵$C$，使$B=C^TAC$，则称矩阵$A$与$B$合同，记作$A\simeq B$。对于对称矩阵$A$，寻求可逆矩阵$C$，使$C^TAC=B$为对角矩阵，称为把矩阵$A$合同对角化&ensp;&ensp;但其实合同对角化并不一定非要作用于对称矩阵上，只是研究的二次型的矩阵刚好是对称矩阵
 
@@ -15103,21 +15122,21 @@ $ $
  
 
 
-正交变换化二次型成标准形存在定理&ensp;&ensp;任给二次型$f(x)=x^TAx$，总有正交变换$x=Cy$，使$f(x)$化为标准形
+正交变换化二次型成标准形存在定理&ensp;&ensp;任给二次型$f=x^TAx$，总有正交变换$x=Cy$，使$f$化为标准形
 
 $ $
 \begin{align*}
-f(x) = \lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2 = g(y)
+f = \lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2
 \end{align*}
 $ $
 
 
-其中$\lambda_1,\lambda_2,\cdots,\lambda_n$是$f(x)$的矩阵$A=(a_{ij})$的特征值
-&ensp;&ensp;将正交变换$x=Cy$代入二次型矩阵$f(x)=x^TAx$中，有
+其中$\lambda_1,\lambda_2,\cdots,\lambda_n$是$f$的矩阵$A=(a_{ij})$的特征值
+&ensp;&ensp;将正交变换$x=Cy$代入二次型矩阵$f=x^TAx$中，有
 
 $ $
 \begin{align*}
-f(x)=x^TAx=(Cy)^TA(Cy)=y^T(C^TAC)y
+f=x^TAx=(Cy)^TA(Cy)=y^T(C^TAC)y
 \end{align*}
 $ $
 
@@ -15127,7 +15146,7 @@ $ $
 
 $ $
 \begin{align*}
-f(x) = & x^TAx \\
+f = & x^TAx \\
 = & (Cy)^TA(Cy) \\
 = & y^T(C^TAC)y \\
 = & (y_1,y_2,\cdots,y_n)
@@ -15144,7 +15163,6 @@ y_2 \\
 y_n
 \end{pmatrix} \\
 = & \lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2 \\
-= & g(y)
 \end{align*}
 $ $
 
@@ -15154,7 +15172,7 @@ $ $
 
 $ $
 \begin{array}{l}
-由题意，二次型f(x)的矩阵为A=
+由题意，二次型f的矩阵为A=
 \begin{pmatrix}
  4 & 1\\
  1 & 4
@@ -15309,7 +15327,7 @@ $ $
 
 
 二次型的规范形&ensp;&ensp;如果标准形$f=k_1y_1^2+k_2y_2^2+\cdots+k_ny_n^2$的系数$k_1,k_2,\cdots,k_n$只在$1,-1,0$三个数中取值，则成为二次型的规范形
-推论&ensp;&ensp;任给$n$元二次型$f(x)=x^TAx$（$A^T=A$），总有可逆变换$x=Cz$，使$f(Cz)$为规范形
+推论&ensp;&ensp;任给$n$元二次型$f=x^TAx$（$A^T=A$），总有可逆变换$x=Cz$，使$f(Cz)$为规范形
 
 &ensp;&ensp;例：化二次型的标准形$f(y_1,y_1,y_3)=-2y_1^2+y_2^2+y_3^2$为规范形
 $ $
@@ -15351,8 +15369,8 @@ f=y_1^2+\cdots+y_p^2-y_{p+1}^2-\cdots-y_r^2\\
 $ $
 
 
-定义10&ensp;&ensp;设二次型$f(x)=x^TAx$，如果对任何$x \ne 0$，都有$f(x) \gt 0$，则称$f$为正定二次型，并称对称矩阵$A$是正定的；如果对任何$x\ne 0$都有$f(x) \lt 0$，则称$f$为负定二次型，并称矩阵$A$是负定的
-定理8&ensp;&ensp;$n$元二次型$f(x)=x^TAx$为正定的充分必要条件是：它的标准形的$n$个系数全为正，即它的规范形的$n$个系数全为1，亦即它的正惯性指数等于$n$
+定义10&ensp;&ensp;设二次型$f=x^TAx$，如果对任何$x \ne 0$，都有$f \gt 0$，则称$f$为正定二次型，并称对称矩阵$A$是正定的；如果对任何$x\ne 0$都有$f \lt 0$，则称$f$为负定二次型，并称矩阵$A$是负定的
+定理8&ensp;&ensp;$n$元二次型$f=x^TAx$为正定的充分必要条件是：它的标准形的$n$个系数全为正，即它的规范形的$n$个系数全为1，亦即它的正惯性指数等于$n$
 推论&ensp;&ensp;对称矩阵$A$为正定矩阵的充分必要条件是：$A$的特征值全为正
 定理9&ensp;&ensp;对称矩阵$A$为正定的充分必要条件是：$A$的各阶主子式都为正，即
 
