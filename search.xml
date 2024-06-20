@@ -14976,7 +14976,7 @@ $ $
 $ $
 
 
-利用矩阵，$f$可表示为
+利用矩阵，$f(x_1,x_2,\cdots,x_n)$可表示为
 
 $ $
 \begin{align*}
@@ -15014,7 +15014,7 @@ A=\begin{pmatrix}
  a_{21} & a_{22} & \cdots & a_{2n}\\
  \vdots & \vdots &  & \vdots\\
  a_{n1} & a_{n2} & \cdots & a_{nn}
-\end{pmatrix}$，$x=\begin{pmatrix}
+\end{pmatrix}，x=\begin{pmatrix}
 x_1 \\
 x_2 \\
 \vdots \\
@@ -15146,7 +15146,7 @@ $ $
 
 $ $
 \begin{align*}
-f = & x^TAx \\
+f(x_1,x_2,\cdots,x_n) = & x^TAx \\
 = & (Cy)^TA(Cy) \\
 = & y^T(C^TAC)y \\
 = & (y_1,y_2,\cdots,y_n)
@@ -15163,6 +15163,7 @@ y_2 \\
 y_n
 \end{pmatrix} \\
 = & \lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2 \\
+= & f(y_1,y_2,\cdots,y_n)
 \end{align*}
 $ $
 
