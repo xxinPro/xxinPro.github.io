@@ -14442,7 +14442,16 @@ $[k\alpha,\beta]=[\alpha,k\beta]=k[\alpha,\beta]$
 $[\alpha,\beta+\gamma]=[\alpha,\beta]+[\alpha,\gamma]$
 当$\alpha=0$时，$[\alpha,\alpha]=0$；当$\alpha \ne 0$时，$[\alpha,\alpha]\gt 0$
 
-长度（模）&ensp;&ensp;设$\alpha=(\alpha_1,\alpha_2,\cdots,\alpha_n)^T$，令$\left \| \alpha \right \| = \sqrt[]{[\alpha ,\alpha ]} =\sqrt[]{\alpha _1^2+\alpha _2^2+\cdots+\alpha _n^2}$，称$\left \| \alpha \right \|$为向量$\alpha$的长度、模或范数
+长度（模）&ensp;&ensp;设$\alpha=(\alpha_1,\alpha_2,\cdots,\alpha_n)^T$，令
+
+$ $
+\begin{align*}
+\left \| \alpha \right \| = \sqrt[]{[\alpha ,\alpha ]} =\sqrt[]{\alpha _1^2+\alpha _2^2+\cdots+\alpha _n^2}
+\end{align*}
+$ $
+
+
+称$\left \| \alpha \right \|$为向量$\alpha$的长度、模或范数
 &ensp;&ensp;向量的长度有下列性质（其中$\alpha$为$n$维向量，$k$为实数）
 
 非负性 当$\alpha \ne 0$时，$\left \| \alpha \right \| \gt 0$；当$\alpha = 0$时，$\left \| \alpha \right \| = 0$
@@ -14677,7 +14686,7 @@ $ $
 $ $
 
 
-&ensp;&ensp;若$n$阶矩阵$A$与$B$相似，根据定理3可知：
+&ensp;&ensp;若$n$阶矩阵$A$与$B$相似，根据定理1可知：
 
   
   $|A| = |B|$
@@ -14693,6 +14702,16 @@ $ $
 
   
   $R(A)=R(B)$
+  
+
+  
+  $A$、$B$的各阶主子式分别相等
+  
+
+  
+  $\lambda _A = \lambda _B$
+  
+  若$A$、$B$矩阵特征值分别相等且无重根，则$A$、$B$必定相似
   
 
 
@@ -14810,6 +14829,44 @@ $ $
 
 定理2&ensp;&ensp;$n$阶矩阵$A$与对角矩阵相似（即$A$能对角化）的充分必要条件是$A$有$n$个线性无关的特征向量&ensp;&ensp;如果$A$有$n$个不相等的特征值，则必有$n$个线性无关的特征向量
 定理2推论&ensp;&ensp;如果$n$阶矩阵$A$的$n$个特征值互不相等，则$A$与对角矩阵相似&ensp;&ensp;当$A$的特征方程有重根，例如$\lambda_1=\lambda_2=1$时，由于二重特征值$1$未必有两个线性无关的特征向量，所以$A$就未必有$n$个线性无关的特征向量，从而未必能相似对角化。通过$n - R(A - \lambda_1E)$可得到二重特征值$\lambda_1$对应的线性无关特征向量的个数
+相似矩阵的性质&ensp;&ensp;若矩阵$A$、$B$相似，则符合以下结论
+
+  
+    $A^k$相似于$B^k$
+    
+    由$P^{-1}AP=B,(P^{-1}AP)^k=B^k,P^{-1}A^kP=B^k$
+  
+
+  
+    $A^{-1}$相似于$B^{-1}$
+    
+    由$P^{-1}AP=B,(P^{-1}AP)^{-1}=B^{-1},P^{-1}A^{-1}P=B^{-1}$
+  
+
+  
+    $f(A)$相似于$f(B)$
+    
+    由1、2可得
+  
+
+  
+    $A^{*}$相似于$B^{*}$
+    
+    
+      由$P^{-1}AP=B,(P^{-1}AP)^{*}=B^{*},P^{*}A^{*}(P^{*})^{-1}=B^{*},$
+      
+      $\left|A\right|P^{-1}A^{*}\left|A\right|^{-1}P=B^{*},P^{-1}A^{*}P=B^{*}$
+    
+  
+
+  
+    $A^T$相似于$B^T$
+    
+    由$P^{-1}AP=B,(P^{-1}AP)^T=B^T,P^TA^T(P^T)^{-1}=B^T$
+  
+
+
+
 实对称矩阵的对角化性质1&ensp;&ensp;对称矩阵的特征值为实数
 性质2&ensp;&ensp;设$\lambda_1$、$\lambda_2$是对称矩阵$A$的两个特征值，$p_1$、$p_2$是对应的特征向量，若$\lambda_1 \ne \lambda_2$，则$p_1$与$p_2$正交
 定理3&ensp;&ensp;设$A$为$n$阶对称矩阵，则必有正交矩阵$P$，使$P^{-1}AP=P^TAP=\Lambda$，其中$\Lambda$是以$A$的$n$个特征值为对角元的对角矩阵
@@ -15377,7 +15434,7 @@ f=y_1^2+\cdots+y_p^2-y_{p+1}^2-\cdots-y_r^2\\
 $ $
 
 
-性质
+正定二次型性质
 
 $n$元二次型$f=x^TAx$为正定的充分必要条件
 
