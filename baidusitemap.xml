@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.xxin.xyz/2021/12/30/%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E5%AE%9A%E7%90%861/</loc>
+    <lastmod>2024-06-30</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2024/01/19/FileSelector%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</loc>
+    <lastmod>2024-06-27</lastmod>
+  </url>
+  <url>
     <loc>https://blog.xxin.xyz/2023/10/01/%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E5%AE%9A%E7%90%866/</loc>
     <lastmod>2024-06-26</lastmod>
   </url>
@@ -23,10 +31,6 @@
   <url>
     <loc>https://blog.xxin.xyz/2024/04/28/Shizuku%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2024-04-28</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.xxin.xyz/2021/12/30/%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E5%AE%9A%E7%90%861/</loc>
-    <lastmod>2024-04-21</lastmod>
   </url>
   <url>
     <loc>https://blog.xxin.xyz/2023/12/03/%E7%BF%A1%E7%BF%A0%E8%A7%86%E9%A2%91%E9%80%86%E5%90%91%E8%BF%87%E7%A8%8B/</loc>
@@ -78,10 +82,6 @@
   </url>
   <url>
     <loc>https://blog.xxin.xyz/2024/01/29/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%8F%91%E5%B8%83jitpack/</loc>
-    <lastmod>2024-01-30</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.xxin.xyz/2024/01/19/FileSelector%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</loc>
     <lastmod>2024-01-30</lastmod>
   </url>
   <url>
