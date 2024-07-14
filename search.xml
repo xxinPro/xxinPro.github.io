@@ -10672,6 +10672,22 @@ $ (x^m)^{(n)} = \frac {m!}{(m-n)!} x^{m-n}(正整数m&gt;n) $
 $ (\frac {1}{x+a})^{(n)} = \frac {(-1)^n n!}{(x+a)^{n+1}} $
 $ \left[(\ln_{}{(x+a)}\right]^{(n)} = (-1)^{n-1}\frac {(n-1)!}{(x+a)^n} $
 
+莱布尼兹公式&ensp;&ensp;设 $u=u(x)$ ， $v=v(x)$ 均 $n$ 阶可导，则
+
+$ $
+\begin{align*}
+&(u \pm v)^{(n)}=u^{(n)} \pm v^{(n)}
+\end{align*}
+$ $
+
+$ $
+\begin{align*}
+(u v)^{(n)}&=u^{(n)} v+\mathrm{C}_{n}^{1} u^{(n-1)} v^{\prime}+\mathrm{C}_{n}^{2} u^{(n-2)} v^{\prime \prime}+\cdots+\mathrm{C}_{n}^{k} u^{(n-k)} v^{(k)}+\cdots+\mathrm{C}_{n}^{n-1} u^{\prime} v^{(n-1)}+u v^{(n)} \\
+&=\sum_{k=0}^{n} \mathrm{C}_{n}^{k} u^{(n-k)} v^{(k)}
+\end{align*}
+$ $
+
+
 切线与法线方程函数$f(x)$在点$(x_{0},f(x_{0}))$处的切线与法线方程
 
 若$f’(x_{0})≠0$且$f’(x_0)≠\infty $，切线方程为：$y-f(x_0) = f’(x_0)(x-x_0)$，法线方程为：$y-f(x_0) = -\frac{1}{f’(x_0)}(x-x_0)$；
