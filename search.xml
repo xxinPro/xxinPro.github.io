@@ -10801,10 +10801,35 @@ $ $
 
 
 弧微分与曲率弧微分公式
-$\mathrm{d}s = \sqrt[]{1+y’^2} \mathrm{d}x $
+&ensp;&ensp;在直角坐标系中
+
+  $ $
+  \begin{align*}
+    \mathrm{d}s = \sqrt[]{1+y'^2} \mathrm{d}x
+  \end{align*}
+  $ $
+
+
+&ensp;&ensp;在参数方程 $\begin{cases}x=\varphi(t) \\y=\psi(t)\end{cases}$ 中
+
+  $ $
+  \begin{align*}
+    \mathrm{d} s = \sqrt[]{\varphi'^2(t) + \psi'^2(t)} \mathrm{d} t
+  \end{align*}
+  $ $
+
+
 曲率公式
-曲率$K=\frac {\mathrm{d}\alpha}{\mathrm{d}s} = \frac {|y’’|}{(1+y’^2)^{\frac{2}{3}}}$
-曲率半径$\rho = \frac {1}{K}$
+
+  $ $
+  \begin{align*}
+    &曲率：K=\frac {|y''|}{(1+y'^2)^{\frac{3}{2}}}
+    \\
+    &曲率半径：\rho = \frac {1}{K}
+  \end{align*}
+  $ $
+
+
 泰勒公式泰勒公式
   $ $
   \begin{align} \label {eq10}
