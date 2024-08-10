@@ -16161,26 +16161,26 @@ run()或call()方法执行完成，线程正常结束
 顺序表线性表的顺序表示是指，用一组地址连续的存储单元，依次存储线性表的数据元素，这种表示也称作线性表的顺序存储结构或顺序映像。通常称这种存储结构的线性表为顺序表
 静态顺序表数据元素储存空间大小固定的顺序表，称为静态顺序表，其储存空间一旦被确定就无法修改。下面是静态顺序表的实现
 定义数据元素的结构体和顺序表的结构体
-// 数据表允许储存的元素上限个数#define MAX_LENGTH 100// 字符串typedef char* String;// 顺序表中数据元素的结构体typedef struct Student &#123;    String name;    int id;&#125; Student;// 代表数据表typedef struct List&#123;    Student data[MAX_LENGTH];   // 数据表中储存数据元素的数组    int length;                 // 数据表中数据元素的长度&#125; List;
+// 数据表允许储存的元素上限个数#define MAX_LENGTH 100// 顺序表中的数据元素typedef int ElemType;// 代表数据表typedef struct List&#123;    ElemType data[MAX_LENGTH];  // 数据表中储存数据元素的数组    int length;                 // 数据表中数据元素的长度&#125; List;
 初始化表
 /** * 静态顺序表的初始化 */void initList(List *list) &#123;    list-&gt;length = 0;&#125;
 输出表中所有数据
-/** * 输出数据表中的所有数据元素 */void printList(List list) &#123;    for (int i = 0; i &lt; list.length; i++) &#123;        Student student = list.data[i];        printf(&quot;name = %s, id = %d\n&quot;, student.name, student.id);    &#125;&#125;
+/** * 输出数据表中的所有数据元素 */void printList(List list) &#123;    for (int i = 0; i &lt; list.length; i++) &#123;        ElemType elem = list.data[i];        printf(&quot;data = %d\n&quot;, elem);    &#125;&#125;
 插入数据元素到指定位置
-/** * 插入数据 * @param list  * @param index     要插入的位置，以0为起始  * @param student   要插入的数据元素 * @return 是否插入成功 */bool listInsert(List *list, int index, Student student) &#123;    // 检查插入的位置是否有效    if (index &lt; 0 || index &gt; list-&gt;length)        return false;    // 检查储存空间是否已满    if (list-&gt;length &gt;= MAX_LENGTH)        return false;    // 将index及之后的元素全部后移一位    for (int i = list-&gt;length - 1; i &gt;= index; i--)        list-&gt;data[i + 1] = list-&gt;data[i];    // 数据插入    list-&gt;data[index] = student;    // 长度+1    list-&gt;length++;    return true;&#125;
+/** * 插入数据 * @param list  * @param index     要插入的位置，以0为起始  * @param elem      要插入的数据元素 * @return 是否插入成功 */bool listInsert(List *list, int index, ElemType elem) &#123;    // 检查插入的位置是否有效    if (index &lt; 0 || index &gt; list-&gt;length)        return false;    // 检查储存空间是否已满    if (list-&gt;length &gt;= MAX_LENGTH)        return false;    // 将index及之后的元素全部后移一位    for (int i = list-&gt;length - 1; i &gt;= index; i--)        list-&gt;data[i + 1] = list-&gt;data[i];    // 数据插入    list-&gt;data[index] = elem;    // 长度+1    list-&gt;length++;    return true;&#125;
 删除指定位置的数据元素
-/** * 删除数据 * @param list * @param index     要删除的位置，以0为起始 * @param student   被删除的数据元素 * @return */bool listDelete(List *list, int index, Student *student) &#123;    // 检查插入的位置是否有效    if (index &lt; 0 || index &gt;= list-&gt;length)        return false;    // 把需要被删除返回出去    *student = list-&gt;data[index];    // 将index之后的元素全部前移一位，用以覆盖index处的数据元素    for (int i = index + 1; i &lt; list-&gt;length; i++)        list-&gt;data[i - 1] = list-&gt;data[i];    // 长度-1    list-&gt;length--;    return true;&#125;
+/** * 删除数据 * @param list * @param index     要删除的位置，以0为起始 * @param elem      被删除的数据元素 * @return */bool listDelete(List *list, int index, ElemType *elem) &#123;    // 检查插入的位置是否有效    if (index &lt; 0 || index &gt;= list-&gt;length)        return false;    // 把需要被删除返回出去    *elem = list-&gt;data[index];    // 将index之后的元素全部前移一位，用以覆盖index处的数据元素    for (int i = index + 1; i &lt; list-&gt;length; i++)        list-&gt;data[i - 1] = list-&gt;data[i];    // 长度-1    list-&gt;length--;    return true;&#125;
 按值查找数据元素
-/** * 查找指定的数据元素，返回其在数据表中的下标（以0为起始） * @param list  * @param student 指定的数据元素 * @return 若查找失败，返回-1 */int locateElem(List list, Student student) &#123;    for (int i = 0; i &lt; list.length; i++)        // 对比数据元素的id        if (list.data[i].id == student.id)            return i;    return -1;&#125;
+/** * 查找指定的数据元素，返回其在数据表中的下标（以0为起始） * @param list  * @param elem 指定的数据元素 * @return 若查找失败，返回-1 */int locateElem(List list, ElemType elem) &#123;    for (int i = 0; i &lt; list.length; i++)        // 对比数据元素的id        if (list.data[i] == elem)            return i;    return -1;&#125;
 动态顺序表数据元素储存空间大小可以修改的顺序表，称为动态顺序表，其储存空间可以动态增加。下面是动态顺序表的实现
 修改上面静态顺序表结构体，使用指针代替固定长度的数组，并添加一个size参数，用于记录当前数据表中的储存空间占用的内存大小
-// 数据表允许储存的元素的初始个数#define INIT_LENGTH 100// 代表数据表typedef struct List &#123;    Student *data;  // 数据表中储存数据元素的首地址指针    int length;     // 数据表中数据元素的长度    int MaxSize;    // 数据表当前允许储存的数据元素最大个数&#125; List;
+// 数据表允许储存的元素的初始个数#define INIT_LENGTH 100// 顺序表中的数据元素typedef int ElemType;// 代表数据表typedef struct List &#123;    ElemType *data; // 数据表中储存数据元素的首地址指针    int length;     // 数据表中数据元素的长度    int MaxLength;  // 数据表当前允许储存的数据元素最大个数&#125; List;
 初始化表
-/** * 动态顺序表的初始化 */void initList(List *list) &#123;    list-&gt;length = 0;    list-&gt;MaxLength = INIT_LENGTH;    list-&gt;data = (Student*) malloc(sizeof(Student) * INIT_LENGTH);&#125;
+/** * 动态顺序表的初始化 */void initList(List *list) &#123;    list-&gt;length = 0;    list-&gt;MaxLength = INIT_LENGTH;    list-&gt;data = (ElemType*) malloc(sizeof(ElemType) * INIT_LENGTH);&#125;
 动态增加数据表储存空间
-/** * 动态增加数据表储存空间 */void expandList(List *list) &#123;    list-&gt;MaxLength += INIT_LENGTH;    Student *newData = (Student*) realloc(list-&gt;data, sizeof(Student) * list-&gt;MaxLength);    if (newData != NULL)        list-&gt;data = newData;&#125;
+/** * 动态增加数据表储存空间 */void expandList(List *list) &#123;    list-&gt;MaxLength += INIT_LENGTH;    ElemType *newData = (ElemType*) realloc(list-&gt;data, sizeof(ElemType) * list-&gt;MaxLength);    if (newData != NULL)        list-&gt;data = newData;&#125;
 在插入数据时，检查储存空间是否已满，若已满则动态增加空间
-/** * 插入数据 * @param list * @param index     要插入的位置，以0为起始 * @param student   要插入的数据元素 * @return 是否插入成功 */bool listInsert(List *list, int index, Student student) &#123;    // 检查插入的位置是否有效    if (index &lt; 0 || index &gt; list-&gt;length)        return false;    // 检查储存空间是否已满，若已满则动态增加空间    if (list-&gt;length &gt;= list-&gt;MaxLength)        expandList(list);    // 将index及之后的元素全部后移一位    for (int i = list-&gt;length - 1; i &gt;= index; i--)        list-&gt;data[i + 1] = list-&gt;data[i];    // 数据插入    list-&gt;data[index] = student;    // 长度+1    list-&gt;length++;    return true;&#125;
+/** * 插入数据 * @param list * @param index     要插入的位置，以0为起始 * @param elemType  要插入的数据元素 * @return 是否插入成功 */bool listInsert(List *list, int index, ElemType elemType) &#123;    // 检查插入的位置是否有效    if (index &lt; 0 || index &gt; list-&gt;length)        return false;    // 检查储存空间是否已满，若已满则动态增加空间    if (list-&gt;length &gt;= list-&gt;MaxLength)        expandList(list);    // 将index及之后的元素全部后移一位    for (int i = list-&gt;length - 1; i &gt;= index; i--)        list-&gt;data[i + 1] = list-&gt;data[i];    // 数据插入    list-&gt;data[index] = elemType;    // 长度+1    list-&gt;length++;    return true;&#125;
 链表用一组任意的存储单元存储线性表的数据元素，这组存储单元可以是连续的，也可以是不连续的，这种储存单元称为节点，每个节点包括两个域，其中存储数据元素信息的域称为数据域，存储直接后继存储位置的域称为指针域，指针域中存储的信息称作指针或链，n个结点通过指针链结成一个链表，即为线性表
 根据链表结点所含指针个数、指针指向和指针连接方式，可将链表分为单链表、循环链表、双向链表、二叉链表、十字链表、邻接表、邻接多重表等
 单链表对首元结点、头结点、头指针三个容易混淆的概念加以说明
@@ -16190,9 +16190,23 @@ run()或call()方法执行完成，线程正常结束
 头指针是指向链表中第一个结点的指针。若链表设有头结点，则头指针所指结点为线性表的头结点；若链表不设头结点，则头指针所指结点为该线性表的首元结点。
 
 定义节点和节点中数据的结构体
-// 节点中数据的结构体typedef struct &#123;    String name;    int age;    int height;    int weight;&#125; Student;// Node代表数据节点// LinkList代表数据表typedef struct Node &#123;    Student student;    // 当前节点中的数据    struct Node *next;  // 指向下个节点的指针&#125; Node, *LinkList;
-不使用头结点在上面的代码中，Node代表节点，LinkList代表单链表；若使用头结点，则LinkList本身作为指针将指向头结点，否则指向首元节点
+// 数据表允许储存的元素的初始个数#define INIT_LENGTH 100// 顺序表中的数据元素typedef int ElemType;// Node代表数据节点// LinkList代表数据表typedef struct Node &#123;    ElemType data;          // 当前节点中的数据    struct Node *nextNode;  // 指向下个节点的指针&#125; Node, *LinkList;
 使用头结点使用头结点时，LinkList本身作为指针将指向头结点，其指针域指向首元节点，数据域不储存数据
+输出链表中的数据
+/** * 输出链表数据 */void printList(LinkList linkList) &#123;    Node *p = linkList;    while (p-&gt;nextNode != NULL) &#123;        ElemType elemType = p-&gt;nextNode-&gt;data;        printf(&quot;data = %d\n&quot;, elemType);        p = p-&gt;nextNode;    &#125;&#125;
+初始化链表
+/** * 初始化链表 * @param linkList */void initList(LinkList *linkList) &#123;    // 给头结点分配内存地址    (*linkList) = (Node*)malloc(sizeof(Node));    (*linkList)-&gt;nextNode = NULL;&#125;
+求链表的表长
+/** * 求链表的表长，头结点的长度不包括在内 * @param linkList * @return */int Length(LinkList linkList) &#123;    int length = 0;    Node *p = linkList;    // 遍历链表，得到长度，该长度不包括头结点    while (p-&gt;nextNode != NULL) &#123;        length++;        p = p-&gt;nextNode;    &#125;    return length;&#125;
+查找链表中指定序号代表的节点
+/** * 按序号查找节点，头结点不包括在内 * @param linkList * @param i 链表的首个数据节点序号为1，头结点不包括在内 * @return */Node* getElement(LinkList linkList, int i) &#123;    int j = 0;    Node *p = linkList;    while (p != NULL &amp;&amp; j &lt; i) &#123;        j++;        p = p-&gt;nextNode;    &#125;    return p;&#125;
+查找对应值的节点
+/** * 按值查找节点 * @param linkList * @param elemType * @return */Node* locateElement(LinkList linkList, ElemType elemType) &#123;    Node *p = linkList;    while (p-&gt;nextNode != NULL) &#123;        if (p-&gt;nextNode-&gt;data == elemType)            return p-&gt;nextNode;    &#125;    return NULL;&#125;
+向链表中插入节点
+/** * 插入数据 * @param linkList * @param index     链表的首个数据节点序号为1 * @param elemType * @return */bool listInsert(LinkList linkList, int index, ElemType elemType) &#123;    int j = 0;    Node *p = linkList;    while (p != NULL &amp;&amp; j &lt; index - 1) &#123;        j++;        p = p-&gt;nextNode;    &#125;    if (p == NULL)        return false;    Node *newNode = (Node*)malloc(sizeof(Node));    newNode-&gt;nextNode = p-&gt;nextNode;    newNode-&gt;data = elemType;    p-&gt;nextNode = newNode;    return true;&#125;
+从链表中删除节点
+/** * 删除数据 * @param linkList * @param index         链表的首个数据节点序号为1 * @param elemType * @return */bool listDelete(LinkList linkList, int index, ElemType *elemType) &#123;    Node *p = linkList;    int j = 0;    // 找到要删除的节点的前驱节点    while (p != NULL &amp;&amp; j &lt; index - 1) &#123;        j++;        p = p-&gt;nextNode;    &#125;    if (p ==NULL || p-&gt;nextNode == NULL)        return false;    // 返回被删除的节点的值    (*elemType) = p-&gt;nextNode-&gt;data;    Node *temp = p-&gt;nextNode;    p-&gt;nextNode = p-&gt;nextNode-&gt;nextNode;    free(temp);    return true;&#125;
+不使用头结点在上面的代码中，Node代表节点，LinkList代表单链表；若使用头结点，则LinkList本身作为指针将指向头结点，否则指向首元节点
 ]]></content>
       <categories>
         <category>数据结构</category>
