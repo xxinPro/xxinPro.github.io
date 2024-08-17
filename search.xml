@@ -16222,6 +16222,9 @@ run()或call()方法执行完成，线程正常结束
 /** * 插入数据 * @param linkList * @param index     链表的首个数据节点序号为1 * @param elemType * @return */bool listInsert(LinkList *linkList, int index, ElemType elemType) &#123;    if (index &lt; 1 || index &gt; Length(*linkList) + 1)        return false;    // 创建新结点    Node *newNode = (Node*)malloc(sizeof(Node));    // 在首元节点位置插入新结点    if (index == 1) &#123;        newNode-&gt;data = elemType;        newNode-&gt;nextNode = (*linkList);        (*linkList) = newNode;        return true;    &#125;    int j = 1;    Node *p = (*linkList);    // 找到要插入的位置的前驱节点    while (p != NULL &amp;&amp; j &lt; index - 1) &#123;        j++;        p = p-&gt;nextNode;    &#125;    // 如果前驱节点不存在    if (p == NULL)        return false;    // 插入新结点    newNode-&gt;nextNode = p-&gt;nextNode;    newNode-&gt;data = elemType;    // 连接后继节点    p-&gt;nextNode = newNode;    return true;&#125;
 从链表中删除节点
 /** * 删除数据 * @param linkList * @param index         链表的首个数据节点序号为1 * @param elemType * @return */bool listDelete(LinkList *linkList, int index, ElemType *elemType) &#123;    if (index &lt; 1 || index &gt; Length(*linkList) + 1)        return false;    Node *temp = NULL;    if (index == 1) &#123;        temp = (*linkList);        (*linkList) = (*linkList)-&gt;nextNode;        free(temp);        return true;    &#125;    Node *p = (*linkList);    int j = 1;    // 找到要删除的节点的前驱节点    while (p != NULL &amp;&amp; j &lt; index - 1) &#123;        j++;        p = p-&gt;nextNode;    &#125;    if (p ==NULL || p-&gt;nextNode == NULL)        return false;    // 返回被删除的节点的值    (*elemType) = p-&gt;nextNode-&gt;data;    temp = p-&gt;nextNode;    p-&gt;nextNode = p-&gt;nextNode-&gt;nextNode;    free(temp);    return true;&#125;
+循环单链表带头结点的循环单链表，其最后一个节点的指针不是NULL，而是指向头结点， 从而使单链表在逻辑上形成一个环
+双链表双链表中的每个节点拥有两个指针，分别指向前驱节点和后继节点
+// Node代表数据节点// LinkList代表数据表typedef struct Node &#123;    ElemType data;          // 数据域    struct Node *nextNode;  // 指向后继节点的指针    struct Node *preNode;   // 指向前驱节点的指针&#125; Node, *LinkList;
 ]]></content>
       <categories>
         <category>数据结构</category>
@@ -16681,5 +16684,42 @@ static方法不能被重写，所以static方法无需再标记final
       <categories>
         <category>随笔一记</category>
       </categories>
+  </entry>
+  <entry>
+    <title>栈和队列</title>
+    <url>/2024/08/17/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/</url>
+    <content><![CDATA[栈栈是一种只允许在一端插入和删除节点的线性表，允许被插入和删除的一端称为栈顶，另一端则称为栈底
+顺序栈定义数据元素的结构体和栈的结构体
+// 栈中允许储存的元素的最大个数#define MAX_LENGTH 100// 栈中的数据元素typedef int ElemType;// Stack代表栈typedef struct Stack &#123;    ElemType data[MAX_LENGTH];  // 存放栈中数据    int top;                    // 指向栈顶元素的指针，初始值为-1&#125; Stack;
+初始化栈
+/** * 初始化栈 * @param stack */void initStack(Stack *stack) &#123;    // 该指针指向栈顶，初始值为-1    // 由此，若栈中仅有一个元素时，该指针的值为0    stack-&gt;top = -1;&#125;
+判断栈是否为空
+/** * 判断栈是否为空 * @param stack * @return */bool isEmpty(Stack stack) &#123;    return (stack.top == -1);&#125;
+数据入栈
+/** * 进栈 * @param stack * @param elemType * @return */bool push(Stack *stack, ElemType elemType) &#123;    // 判断栈是否已满    if (stack-&gt;top == MAX_LENGTH - 1)        return false;    // 数据入栈    stack-&gt;top++;    stack-&gt;data[stack-&gt;top] = elemType;    return true;&#125;
+数据出栈
+/** * 出栈 * @param stack * @param elemType * @return */bool pop(Stack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top == -1)        return false;    // 数据出栈    *elemType = stack-&gt;data[stack-&gt;top];    stack-&gt;top--;    return true;&#125;
+读取栈顶元素
+/** * 仅读取栈顶元素，不做出栈 * @param stack * @param elemType * @return */bool getTop(Stack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top == -1)        return false;    // 取元素，但不出栈    *elemType = stack-&gt;data[stack-&gt;top];    return true;&#125;
+共享栈定义数据元素的结构体和栈的结构体
+// 栈中允许储存的元素的最大个数#define MAX_LENGTH 100// 栈中的数据元素typedef int ElemType;// Stack代表栈typedef struct ShareStack &#123;    ElemType data[MAX_LENGTH];  // 存放共享栈的数据    int top1;                   // 指向1号栈的栈顶顶元素，初始值为-1    int top2;                   // 指向2号栈的栈顶顶元素，初始值为MAX_LENGTH&#125; ShareStack;
+初始化栈
+/** * 初始化栈 * @param stack */void initStack(ShareStack *stack) &#123;    stack-&gt;top1 = -1;    stack-&gt;top2 = MAX_LENGTH;&#125;
+判断栈是否为空
+/** * 判断栈1是否为空 * @param stack * @return */bool Stack1Empty(ShareStack stack) &#123;    return (stack.top1 == -1);&#125;/** * 判断栈2是否为空 * @param stack * @return */bool Stack2Empty(ShareStack stack) &#123;    return (stack.top1 == MAX_LENGTH);&#125;
+数据入栈
+/** * 进栈1 * @param stack * @param elemType * @return */bool push1(ShareStack *stack, ElemType elemType) &#123;    // 判断栈是否已满    if (stack-&gt;top2 - stack-&gt;top1 == 1)        return false;    // 数据入栈    stack-&gt;top1++;    stack-&gt;data[stack-&gt;top1] = elemType;    return true;&#125;/** * 进栈2 * @param stack * @param elemType * @return */bool push2(ShareStack *stack, ElemType elemType) &#123;    // 判断栈是否已满    if (stack-&gt;top2 - stack-&gt;top1 == 1)        return false;    // 数据入栈    stack-&gt;top2--;    stack-&gt;data[stack-&gt;top2] = elemType;    return true;&#125;
+数据出栈
+两个顺序栈共享一个一维数组的数据空间
+/** * 出栈1 * @param stack * @param elemType * @return */bool pop1(ShareStack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top1 == -1)        return false;    // 数据出栈    *elemType = stack-&gt;data[stack-&gt;top1];    stack-&gt;top1--;    return true;&#125;/** * 出栈2 * @param stack * @param elemType * @return */bool pop2(ShareStack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top2 == MAX_LENGTH)        return false;    // 数据出栈    *elemType = stack-&gt;data[stack-&gt;top2];    stack-&gt;top2++;    return true;&#125;
+读取栈顶元素
+/** * 仅读取栈1的栈顶元素，不做出栈 * @param stack * @param elemType * @return */bool getTop1(ShareStack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top1 == -1)        return false;    // 取元素，但不出栈    *elemType = stack-&gt;data[stack-&gt;top1];    return true;&#125;/** * 仅读取栈2的栈顶元素，不做出栈 * @param stack * @param elemType * @return */bool getTop2(ShareStack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top2 == MAX_LENGTH)        return false;    // 取元素，但不出栈    *elemType = stack-&gt;data[stack-&gt;top2];    return true;&#125;
+队列]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构C语言</tag>
+      </tags>
   </entry>
 </search>
