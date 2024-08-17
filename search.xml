@@ -16701,7 +16701,8 @@ static方法不能被重写，所以static方法无需再标记final
 /** * 出栈 * @param stack * @param elemType * @return */bool pop(Stack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top == -1)        return false;    // 数据出栈    *elemType = stack-&gt;data[stack-&gt;top];    stack-&gt;top--;    return true;&#125;
 读取栈顶元素
 /** * 仅读取栈顶元素，不做出栈 * @param stack * @param elemType * @return */bool getTop(Stack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top == -1)        return false;    // 取元素，但不出栈    *elemType = stack-&gt;data[stack-&gt;top];    return true;&#125;
-共享栈定义数据元素的结构体和栈的结构体
+共享栈两个顺序栈共享一个一维数组的数据空间
+定义数据元素的结构体和栈的结构体
 // 栈中允许储存的元素的最大个数#define MAX_LENGTH 100// 栈中的数据元素typedef int ElemType;// Stack代表栈typedef struct ShareStack &#123;    ElemType data[MAX_LENGTH];  // 存放共享栈的数据    int top1;                   // 指向1号栈的栈顶顶元素，初始值为-1    int top2;                   // 指向2号栈的栈顶顶元素，初始值为MAX_LENGTH&#125; ShareStack;
 初始化栈
 /** * 初始化栈 * @param stack */void initStack(ShareStack *stack) &#123;    stack-&gt;top1 = -1;    stack-&gt;top2 = MAX_LENGTH;&#125;
@@ -16710,7 +16711,6 @@ static方法不能被重写，所以static方法无需再标记final
 数据入栈
 /** * 进栈1 * @param stack * @param elemType * @return */bool push1(ShareStack *stack, ElemType elemType) &#123;    // 判断栈是否已满    if (stack-&gt;top2 - stack-&gt;top1 == 1)        return false;    // 数据入栈    stack-&gt;top1++;    stack-&gt;data[stack-&gt;top1] = elemType;    return true;&#125;/** * 进栈2 * @param stack * @param elemType * @return */bool push2(ShareStack *stack, ElemType elemType) &#123;    // 判断栈是否已满    if (stack-&gt;top2 - stack-&gt;top1 == 1)        return false;    // 数据入栈    stack-&gt;top2--;    stack-&gt;data[stack-&gt;top2] = elemType;    return true;&#125;
 数据出栈
-两个顺序栈共享一个一维数组的数据空间
 /** * 出栈1 * @param stack * @param elemType * @return */bool pop1(ShareStack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top1 == -1)        return false;    // 数据出栈    *elemType = stack-&gt;data[stack-&gt;top1];    stack-&gt;top1--;    return true;&#125;/** * 出栈2 * @param stack * @param elemType * @return */bool pop2(ShareStack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top2 == MAX_LENGTH)        return false;    // 数据出栈    *elemType = stack-&gt;data[stack-&gt;top2];    stack-&gt;top2++;    return true;&#125;
 读取栈顶元素
 /** * 仅读取栈1的栈顶元素，不做出栈 * @param stack * @param elemType * @return */bool getTop1(ShareStack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top1 == -1)        return false;    // 取元素，但不出栈    *elemType = stack-&gt;data[stack-&gt;top1];    return true;&#125;/** * 仅读取栈2的栈顶元素，不做出栈 * @param stack * @param elemType * @return */bool getTop2(ShareStack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top2 == MAX_LENGTH)        return false;    // 取元素，但不出栈    *elemType = stack-&gt;data[stack-&gt;top2];    return true;&#125;
