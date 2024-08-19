@@ -16722,4 +16722,39 @@ static方法不能被重写，所以static方法无需再标记final
         <tag>数据结构C语言</tag>
       </tags>
   </entry>
+  <entry>
+    <title>树</title>
+    <url>/2024/08/19/%E6%A0%91/</url>
+    <content><![CDATA[生成二叉树首先得快速生成一棵二叉树才能继续接下来的工作，下面是一棵二叉排序树的生成
+定义树和树结点的结构体
+// 顺序表中的数据元素typedef int ElemType;// 定义二叉树结点的结构体typedef struct Node &#123;    ElemType data;      // 数据域    struct Node* left;  // 左子树    struct Node* right; // 右子树&#125; Node, *SortTree;
+向二叉排序树中插入结点
+/** * 向二叉排序树中插入节点 * @param tree * @param elemType */void insert(SortTree *tree, ElemType elemType) &#123;    if ((*tree) == NULL) &#123;        // 如果树是空的，创建新节点        (*tree) = (Node*)malloc(sizeof(Node));        (*tree)-&gt;data = elemType;        (*tree)-&gt;right = NULL;        (*tree)-&gt;left = NULL;    &#125; else if (elemType &lt; (*tree)-&gt;data) &#123;        // 插入到左子树        insert(&amp;((*tree)-&gt;left), elemType);    &#125; else &#123;        // 插入到右子树        insert(&amp;((*tree)-&gt;right), elemType);    &#125;&#125;
+通过如下代码，向二叉树中插入
+SortTree sortTree = NULL;/** * 形成二叉树如下 *        5 *      /   \ *     3     7 *    / \   / \ *   2   4 6   8 */insert(&amp;sortTree, 5);insert(&amp;sortTree, 3);insert(&amp;sortTree, 7);insert(&amp;sortTree, 2);insert(&amp;sortTree, 4);insert(&amp;sortTree, 6);insert(&amp;sortTree, 8);
+访问结点数据
+/** * 访问根节点数据 * @param elemType */void visit(ElemType elemType) &#123;    printf(&quot;%d &quot;, elemType);&#125;
+遍历二叉树
+/** * 中序遍历（左-根-右） * @param tree */void inorderTraversal(SortTree tree) &#123;    if (tree != NULL) &#123;        inorderTraversal(tree-&gt;left);  // 访问左子树        visit(tree-&gt;data);             // 访问根节点数据        inorderTraversal(tree-&gt;right); // 访问右子树    &#125;&#125;/** * 先序遍历（根-左-右） * @param tree */void preorderTraversal(SortTree tree) &#123;    if (tree != NULL) &#123;        visit(tree-&gt;data);             // 访问根节点数据        preorderTraversal(tree-&gt;left); // 访问左子树        preorderTraversal(tree-&gt;right);// 访问右子树    &#125;&#125;/** * 后序遍历（左-右-根） * @param tree */void postorderTraversal(SortTree tree) &#123;    if (tree != NULL) &#123;        postorderTraversal(tree-&gt;left); // 访问左子树        postorderTraversal(tree-&gt;right);// 访问右子树        visit(tree-&gt;data);              // 访问根节点数据    &#125;&#125;
+线索二叉树中序线索二叉树添加ltag``rtag标志结点的左右指针是否是线索
+定义线索二叉树节点的结构体
+// 定义线索二叉树节点的结构体typedef struct Node &#123;    ElemType data;    struct Node *left, *right;  // 左右子树指针    int ltag, rtag;             // 标志左右指针是否是线索&#125; Node, *SortTree;
+在插入结点时，将ltag``rtag初始化为0
+/** * 向二叉排序树中插入节点 * @param tree * @param elemType */void insert(SortTree *tree, ElemType elemType) &#123;    if ((*tree) == NULL) &#123;        // 如果树是空的，创建新节点        (*tree) = (Node*)malloc(sizeof(Node));        (*tree)-&gt;data = elemType;        (*tree)-&gt;right = NULL;        (*tree)-&gt;left = NULL;        (*tree)-&gt;rtag = 0;        (*tree)-&gt;ltag = 0;    &#125; else if (elemType &lt; (*tree)-&gt;data) &#123;        // 插入到左子树        insert(&amp;((*tree)-&gt;left), elemType);    &#125; else &#123;        // 插入到右子树        insert(&amp;((*tree)-&gt;right), elemType);    &#125;&#125;
+给二叉树建立线索
+/** * 以中序遍历的方式建立线索 * @param currentNode   当前结点 * @param previousNode  前驱结点 */void inThread(Node *currentNode, Node **previousNode) &#123;    if (currentNode == NULL)        return;    // 递归，先对左子树进行线索化    inThread(currentNode-&gt;left, previousNode);    // 建立 当前节点 的 前驱节点 的 后继线索    if ((*previousNode) != NULL &amp;&amp; (*previousNode)-&gt;right == NULL) &#123;        (*previousNode)-&gt;rtag = 1;        (*previousNode)-&gt;right = currentNode;    &#125;    // 建立 当前节点 的 前驱线索    if (currentNode-&gt;left == NULL) &#123;        currentNode-&gt;ltag = 1;        currentNode-&gt;left = (*previousNode);    &#125;    // 使当前节点成为前驱节点    (*previousNode) = currentNode;    // 递归，对右子树进行线索化    inThread(currentNode-&gt;right, previousNode);&#125;/** * 给二叉树建立线索 * @param sortTree */void createInThread(SortTree sortTree) &#123;    if (sortTree == NULL)        return;    Node *preNode = NULL;    inThread(sortTree, &amp;preNode);    // 处理最后一个节点    preNode-&gt;right = NULL;    preNode-&gt;rtag = 1;&#125;
+在中序排序的二叉树中，寻找某结点的前驱节点
+/** * 在中序排序中，寻找线索树中第一个节点 * @param sortTree * @return */Node* firstNode(SortTree sortTree) &#123;    Node *temp = sortTree;    while (temp-&gt;ltag == 0)        temp = temp-&gt;left;    return temp;&#125;/** * 提供一个节点，在中序排序中，找到该节点的后继节点 * @param node * @return */Node* nextNode(Node *node) &#123;    // 若该结点存在右子树，则右子树中第一个结点即为当前结点的后继节点    if (node-&gt;rtag == 0)        return firstNode(node-&gt;right);    // 若该结点不存在右子树，则其右指针域所指的结点必是其后继节点    return node-&gt;right;&#125;
+在中序排序的二叉树中，寻找某结点的后继节点
+/** * 在中序排序中，寻找线索树树中最后一个节点 * @param sortTree * @return */Node* tailNode(SortTree sortTree) &#123;    Node *temp = sortTree;    while (temp-&gt;rtag == 0)        temp = temp-&gt;right;    return temp;&#125;/** * 提供一个节点，在中序排序中，找到该节点的前驱节点 * @param node * @return */Node* preNode(Node *node) &#123;    // 若该结点存在左子树，则左子树中最后一个结点即为当前结点的前驱节点    if (node-&gt;ltag == 0)        return tailNode(node-&gt;left);    // 若该结点不存在左子树，则其左指针域所指的结点必是其前驱节点    return node-&gt;left;&#125;
+在中序排序的线索二叉树中，遍历二叉树
+/** * 以中序排序遍历线索二叉树 * @param sortTree */void inOrder(SortTree sortTree) &#123;    Node *node = firstNode(sortTree);    while (node != NULL) &#123;        visit(node-&gt;data);        node = nextNode(node);    &#125;&#125;
+先序线索二叉树后序线索二叉树]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构C语言</tag>
+      </tags>
+  </entry>
 </search>
