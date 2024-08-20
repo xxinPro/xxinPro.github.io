@@ -9252,7 +9252,7 @@ SortTree sortTree = NULL;/** * 形成二叉树如下 *        5 *      /   \ *  
 /** * 在中序线索二叉树中，寻找线索树树中最后一个结点 * @param sortTree * @return */Node* tailNode(SortTree sortTree) &#123;    Node *temp = sortTree;    while (temp-&gt;rtag == 0)        temp = temp-&gt;right;    return temp;&#125;/** * 提供一个结点，在中序线索二叉树中，找到该结点的前驱结点 * @param node * @return */Node* preNode(Node *node) &#123;    // 若该结点存在左子树，则左子树中最后一个结点即为当前结点的前驱结点    if (node-&gt;ltag == 0)        return tailNode(node-&gt;left);    // 若该结点不存在左子树，则其左指针域所指的结点必是其前驱结点    return node-&gt;left;&#125;
 遍历中序线索二叉树
 /** * 遍历中序线索二叉树 * @param sortTree */void inOrder(SortTree sortTree) &#123;    Node *node = firstNode(sortTree);    while (node != NULL) &#123;        visit(node-&gt;data);        node = nextNode(node);    &#125;&#125;
-先序线索二叉树在先序线索二叉树中，若某结点拥有左子树，那么就无法通过左线索来寻找前驱，此时他的前驱有可能是父结点，也有可能是以左兄弟结点为根节点的子树的最后一个结点，无论如何要访问其父结点，所以在建立二叉树之处，添加结点时在结点的结构中指明父结点，形成三叉树
+先序线索二叉树在先序线索二叉树中，若某结点拥有左子树，那么就无法通过左线索来寻找前驱，此时他的前驱有可能是父结点，也有可能是以左兄弟结点为根节点的子树的最后一个结点，无论如何要访问其父结点，所以在结点的结构中添加明父结点，形成三叉树
 定义线索三叉树结点的结构体
 // 定义线索三叉树结点的结构体typedef struct Node &#123;    ElemType data;    struct Node *left, *right;  // 左右子树指针    struct Node *parent;        // 父结点    int ltag, rtag;             // 标志左右指针是否是线索&#125; Node, *SortTree;
 插入结点，在插入结点时，需指明结点的父结点
