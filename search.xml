@@ -15880,7 +15880,28 @@ public static void main(String[] args) &#123;    // 将会输出3434    System.o
 /** * 出栈1 * @param stack * @param elemType * @return */bool pop1(ShareStack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top1 == -1)        return false;    // 数据出栈    *elemType = stack-&gt;data[stack-&gt;top1];    stack-&gt;top1--;    return true;&#125;/** * 出栈2 * @param stack * @param elemType * @return */bool pop2(ShareStack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top2 == MAX_LENGTH)        return false;    // 数据出栈    *elemType = stack-&gt;data[stack-&gt;top2];    stack-&gt;top2++;    return true;&#125;
 读取栈顶元素
 /** * 仅读取栈1的栈顶元素，不做出栈 * @param stack * @param elemType * @return */bool getTop1(ShareStack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top1 == -1)        return false;    // 取元素，但不出栈    *elemType = stack-&gt;data[stack-&gt;top1];    return true;&#125;/** * 仅读取栈2的栈顶元素，不做出栈 * @param stack * @param elemType * @return */bool getTop2(ShareStack *stack, ElemType *elemType) &#123;    // 判断栈是否为空    if (stack-&gt;top2 == MAX_LENGTH)        return false;    // 取元素，但不出栈    *elemType = stack-&gt;data[stack-&gt;top2];    return true;&#125;
-队列]]></content>
+队列顺序储存结构定义数据元素的结构体和栈的结构体
+// 队列中允许储存的元素的最大个数#define MAX_LENGTH 100// 数据元素typedef int ElemType;typedef struct Queue &#123;    ElemType data[MAX_LENGTH];  // 数据域    int front, rear;            // 队头指针和队尾指针&#125; Queue;
+初始化队列
+void init(Queue *queue) &#123;    queue-&gt;front = 0;    queue-&gt;rear = 0;&#125;
+判断指定队列是否为空队
+bool isEmpty(Queue queue) &#123;    return queue.front == queue.rear;&#125;
+数据入队
+bool enQueue(Queue *queue, ElemType elem) &#123;    // 判断是否队满    if ((queue-&gt;rear + 1) % MAX_LENGTH == queue-&gt;front)        return false;    // 数据入队    queue-&gt;data[queue-&gt;rear] = elem;    queue-&gt;rear = (queue-&gt;rear + 1) % MAX_LENGTH;    return true;&#125;
+数据出队
+bool deQueue(Queue *queue, ElemType *elem) &#123;    // 判断是否队空    if (queue-&gt;front == queue-&gt;rear)        return false;    // 数据出队    *elem = queue-&gt;data[queue-&gt;front];    queue-&gt;front = (queue-&gt;front + 1) % MAX_LENGTH;    return true;&#125;
+链式储存结构带头指针的链式储存结构队列，链式储存结构的队列不限长度存入数据
+定义数据元素的结构体和栈的结构体
+// 数据元素typedef int ElemType;// 数据节点typedef struct Node &#123;    ElemType data;    struct Node *next;&#125; Node;// 代表队列typedef struct &#123;    Node *front;    // 指向头结点    Node *rear;     // 指向尾节点&#125; LinkQueue;
+初始化队列
+void init(LinkQueue *linkQueue) &#123;    linkQueue-&gt;front = (Node*)malloc(sizeof(Node));    linkQueue-&gt;rear = linkQueue-&gt;front;    linkQueue-&gt;front-&gt;next = NULL;&#125;
+判断队列是否为空
+bool isEmpty(LinkQueue linkQueue) &#123;    return linkQueue.front == linkQueue.rear;&#125;
+数据入队
+void enQueue(LinkQueue *linkQueue, ElemType elem) &#123;    Node *newNode = (Node*)malloc(sizeof(Node));    newNode-&gt;data = elem;    newNode-&gt;next = NULL;    // 新结点入链    linkQueue-&gt;rear-&gt;next = newNode;    linkQueue-&gt;rear = newNode;&#125;
+数据出队
+bool deQueue(LinkQueue *linkQueue, ElemType *elem) &#123;    if (linkQueue-&gt;rear == linkQueue-&gt;front)        return false;    Node *temp = linkQueue-&gt;front-&gt;next;    *elem = temp-&gt;data;    linkQueue-&gt;front-&gt;next = temp-&gt;next;    // 如果是最后一个结点出队，重置尾节点    if (linkQueue-&gt;rear == temp)        linkQueue-&gt;rear = linkQueue-&gt;front;    free(temp);    return true;&#125;
+]]></content>
       <categories>
         <category>数据结构</category>
       </categories>
