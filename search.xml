@@ -10716,12 +10716,23 @@ $\Gamma (s+1)= s\Gamma (s)$
 $\Gamma (n+1)=n!$ (n为正整数)
 $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
 
-反常积分申敛法比较判别法&ensp;&ensp;设函数$f(x)$，$g(x)$在区间$\left[a,b\right)$上连续，其中$b \in \left(a, +\infty\right)$，并且$ 0 \le f(x) \le g(x) $，则
+反常积分申敛法无穷区间比较判别法&ensp;&ensp;设函数$f(x)$，$g(x)$在区间$\left[a,+\infty\right)$上连续，并且$ 0 \le f(x) \le g(x) (a\le x \lt +\infty)$，则
+
+如果$ \int_{a}^{+\infty } g(x)\mathrm{d}x $收敛，那么$ \int_{a}^{+\infty } f(x)\mathrm{d}x $收敛
+如果$ \int_{a}^{+\infty } f(x)\mathrm{d}x $发散，那么$ \int_{a}^{+\infty } g(x)\mathrm{d}x $发散
+
+极限形式比较判别法&ensp;&ensp;设函数$f(x)$，$g(x)$在区间$\left[a,+\infty\right)$上连续，并且$ f(x) \ge 0 $，$ g(x) \gt 0 $，$\lim_{x \to +\infty} \frac{f(x)}{g(x)} = \lambda $，则
+
+当$\lambda \ne 0$且$\lambda \ne \infty$时，$\int_{a}^{+\infty} g(x)\mathrm{d} x$与$\int_{a}^{+\infty} f(x)\mathrm{d} x$有相同的敛散性
+当$\lambda =0$时，若$\int_{a}^{+\infty} g(x)\mathrm{d} x$收敛，则$\int_{a}^{+\infty} f(x)\mathrm{d} x$收敛
+当$\lambda = \infty$时，若$\int_{a}^{+\infty} g(x)\mathrm{d} x$发散，则$\int_{a}^{+\infty} f(x)\mathrm{d} x$发散
+
+无界函数比较判别法&ensp;&ensp;设函数$f(x)$，$g(x)$在区间$\left(a,b\right]$上连续，瑕点同为$x=a$，并且$ 0 \le f(x) \le g(x) (a \lt x \le b)$，则
 
 如果$ \int_{a}^{b } g(x)\mathrm{d}x $收敛，那么$ \int_{a}^{b } f(x)\mathrm{d}x $收敛
 如果$ \int_{a}^{b } f(x)\mathrm{d}x $发散，那么$ \int_{a}^{b } g(x)\mathrm{d}x $发散
 
-极限形式比较判别法&ensp;&ensp;设函数$f(x)$，$g(x)$在区间$\left[a,b\right)$上连续，其中$b \in \left(a, +\infty\right)$，并且$ f(x) \ge 0 $，$ g(x) \gt 0 $，$\lim_{x \to +\infty} \frac{f(x)}{g(x)} = \lambda $，则
+极限形式比较判别法&ensp;&ensp;设函数$f(x)$，$g(x)$在区间$\left(a,b\right]$上连续，瑕点同为$x=a$，并且$ f(x) \ge 0 $，$ g(x) \gt 0 $ $(a \lt x \le b)$，$\lim_{x \to a^+} \frac{f(x)}{g(x)} = \lambda $，则
 
 当$\lambda \ne 0$且$\lambda \ne \infty$时，$\int_{a}^{b} g(x)\mathrm{d} x$与$\int_{a}^{b} f(x)\mathrm{d} x$有相同的敛散性
 当$\lambda =0$时，若$\int_{a}^{b} g(x)\mathrm{d} x$收敛，则$\int_{a}^{b} f(x)\mathrm{d} x$收敛
