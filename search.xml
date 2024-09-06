@@ -11224,11 +11224,10 @@ $ $
 
 
 
-待定式中的$e^{\lambda x}$与$\eqref {eq41}$中的$e^{\lambda x}$完全一致，
-
-&ensp;&ensp;若$\eqref {eq41}$中不存在$e^{\lambda x}$，说明$\lambda = 0$
+待定式中的$e^{\lambda x}$与$\eqref {eq41}$中的$e^{\lambda x}$完全一致，若$\eqref {eq41}$中不存在$e^{\lambda x}$，说明$\lambda = 0$
 
 $R_m(x)$是与$\eqref {eq41}$的多项式$P_m(x)$不同系数但相同次数的多项式待定式
+
 
 
 &ensp;&ensp;例：
