@@ -10786,6 +10786,34 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
   $ $
 
 
+华里士公式
+  $ $
+  \begin{align*}
+
+  &\int_{0}^{\frac{\pi}{2} } \sin ^nx \mathrm{d}x = \int_{0}^{\frac{\pi}{2} } \cos ^nx \mathrm{d}x = \begin{cases}
+  \frac{n-1}{n} \cdot \frac{n-3}{n-2} \cdots \frac{2}{3} \cdot 1 ，&n为大于1的奇数\\
+  \frac{n-1}{n} \cdot \frac{n-3}{n-2} \cdots \frac{1}{2} \cdot \frac{\pi}{2} ，&n为正偶数
+  \end{cases}\\
+
+  &\int_{0}^{\pi } \sin ^nx \mathrm{d}x = \begin{cases}
+  2 \cdot \frac{n-1}{n} \cdot \frac{n-3}{n-2} \cdots \frac{2}{3} \cdot 1 ，&n为大于1的奇数\\
+  2 \cdot \frac{n-1}{n} \cdot \frac{n-3}{n-2} \cdots \frac{1}{2} \cdot \frac{\pi}{2} ，&n为正偶数
+  \end{cases}\\
+
+  &\int_{0}^{\pi } \cos ^nx \mathrm{d}x = \begin{cases}
+  0 ，&n为正奇数\\
+  2 \cdot \frac{n-1}{n} \cdot \frac{n-3}{n-2} \cdots \frac{1}{2} \cdot \frac{\pi}{2} ，&n为正偶数
+  \end{cases}\\
+
+  &\int_{0}^{2\pi } \sin ^nx \mathrm{d}x = \int_{0}^{2\pi } \cos ^nx \mathrm{d}x = \begin{cases}
+  0 ，&n为正奇数\\
+  4 \cdot\frac{n-1}{n} \cdot \frac{n-3}{n-2} \cdots \frac{1}{2} \cdot \frac{\pi}{2} ，&n为正偶数
+  \end{cases}
+
+  \end{align*}
+  $ $
+
+
 定积分几何应用平面图形面积
 &ensp;&ensp;曲线$y_1=f_1(x)$、$y_2=f_2(x)$与$x=a$、$x=b$所围成的平面图形的面积为
 
