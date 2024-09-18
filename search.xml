@@ -16881,7 +16881,7 @@ int part(int arr[], int low, int high) &#123;    // 将 low 所指的元素定�
 最好情况：$O(n^2)$
 最坏情况：$O(n^2)$
 空间复杂度：$O(1)$
-稳定性：稳定
+稳定性：不稳定
 适用性：适用于顺序储存和链式储存的线性表
 void sort(int arr[], int len) &#123;    // 通过 len - 1 次最小值的选择和交换，排列数据表    for (int i = 0; i &lt; len - 1; i++) &#123;        // 假设本趟的 i 为最小值        int min = i;        // 对 i 之后的元素遍历，找到最小值        for (int j = i + 1; j &lt; len; j++)            if (arr[j] &lt; arr[min])                min = j;        // 将最小值和 i 进行元素交换        if (min != i) &#123;            int temp = arr[min];            arr[min] = arr[i];            arr[i] = temp;        &#125;    &#125;&#125;
 堆排序时间复杂度：$O(n\log _2n)$
@@ -16893,7 +16893,7 @@ void sort(int arr[], int len) &#123;    // 通过 len - 1 次最小值的选择�
 空间复杂度：$O(n)$
 稳定性：稳定
 适用性：适用于顺序储存和链式储存的线性表
-/** * 将表中的数据以mid划分为两部分， * 并将这两部分视为两个数据表，然后进行合并 */void merge(int arr[], int low, int mid, int high) &#123;    int i, j, k;    // 构建辅助表    int* aux = (int*)malloc(sizeof(int) * (high - low + 1));    // 把原表中的数据复制进辅助表    for (k = low; k &lt;= high; k++)        aux[k] = arr[k];    // 以mid为中心将数据表划分为两部分    // 每趟循环将其中一部分的较小值储存至原数据表中    // 知道某一部分的数据被全部储存为止    for (i = low, j = mid + 1, k = i; i &lt;= mid &amp;&amp; j &lt;= high; k++) &#123;        if (aux[i] &lt; aux[j])            arr[k] = aux[i++];        else            arr[k] = aux[j++];    &#125;    // 将另一部分没有被全部储存的数据存进原数据表    while (i &lt;= mid) arr[k++] = aux[i++];    while (j &lt;= high) arr[k++] = aux[j++];    // 释放辅助表    free(aux);&#125;void mergeSort(int arr[], int low, int high) &#123;    if (low &lt; high) &#123;        int mid = (low + high) / 2;        // 处理左部分        mergeSort(arr, low, mid);        // 处理右部分        mergeSort(arr, mid + 1, high);        // 合并处理完毕的两部分        merge(arr, low, mid, high);    &#125;&#125;void sort(int arr[], int len) &#123;    mergeSort(arr, 0, len - 1);&#125;
+/** * 将表中的数据以mid划分为两部分， * 并将这两部分视为两个数据表，然后进行合并 */void merge(int arr[], int low, int mid, int high) &#123;    int i, j, k;    // 构建辅助表    int* aux = (int*)malloc(sizeof(int) * (high - low + 1));    // 把原表中的数据复制进辅助表    for (k = low; k &lt;= high; k++)        aux[k] = arr[k];    // 以mid为中心将数据表划分为两部分    // 每趟循环将其中一部分的较小值储存至原数据表中    // 直到某一部分的数据被全部储存为止    for (i = low, j = mid + 1, k = i; i &lt;= mid &amp;&amp; j &lt;= high; k++) &#123;        if (aux[i] &lt; aux[j])            arr[k] = aux[i++];        else            arr[k] = aux[j++];    &#125;    // 将另一部分没有被全部储存的数据存进原数据表    while (i &lt;= mid) arr[k++] = aux[i++];    while (j &lt;= high) arr[k++] = aux[j++];    // 释放辅助表    free(aux);&#125;void mergeSort(int arr[], int low, int high) &#123;    if (low &lt; high) &#123;        int mid = (low + high) / 2;        // 处理左部分        mergeSort(arr, low, mid);        // 处理右部分        mergeSort(arr, mid + 1, high);        // 合并处理完毕的两部分        merge(arr, low, mid, high);    &#125;&#125;void sort(int arr[], int len) &#123;    mergeSort(arr, 0, len - 1);&#125;
 ]]></content>
       <categories>
         <category>数据结构</category>
