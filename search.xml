@@ -15119,6 +15119,7 @@ e_3=\frac {1}{\sqrt[]{3}}\begin{pmatrix}
 $ $
 
 
+谱分解定理&ensp;&ensp;若$n$阶实对称矩阵$\boldsymbol{A}$的特征值为:$\lambda_{1}, \lambda_{2}, \cdots, \lambda_{n}$，相应的特征向量为:$\boldsymbol{a}_{1}, \boldsymbol{\alpha}_{2}, \cdots, \boldsymbol{\alpha}_{n}$(已正交化单位化)，则$A=\lambda_{1} a_{1} a_{1}^{\mathrm{T}}+\lambda_{1} a_{2} a_{2}^{\mathrm{T}}+\cdots+i_{n} \alpha_{n} a_{n}^{\mathrm{T}}$
 二次型二次型定义&ensp;&ensp;含有$n$个变量$x_1,x_2,\cdots,x_n$的二次齐次函数$f(x_1,x_2,\cdots,x_n)$称为二次型 （注意$a_{ij}=a_{ji}$）
 
 $ $
