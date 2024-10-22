@@ -10926,7 +10926,7 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
 
   $ $
   \begin{align*}
-  S=\int_{a}^{b} \sqrt[]{[r(\theta)]^2 + [r'(\theta )]^2} \mathrm{d} \theta 
+  S=\int_{\alpha}^{\beta} \sqrt[]{[r(\theta)]^2 + [r'(\theta )]^2} \mathrm{d} \theta 
   \end{align*}
   $ $
 
