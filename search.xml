@@ -11921,15 +11921,12 @@ $ $
 
 
 常用n阶导数公式
-$ (e^x)^{(n)} = e^x $
-$ (a^x)^{(n)} = a^x · \ln^n_{\,}{a}  $
-$ (\sin {x}) ^{(n)} = \sin {(x + n · \frac {\pi}{2})} $
-$ (\cos {x}) ^{(n)} = \cos {(x + n · \frac {\pi}{2})} $
-$ (x ^n)^{(n)} = n! $
-$ (x^m)^{(n)} = 0(正整数m&lt;n) $
-$ (x^m)^{(n)} = \frac {m!}{(m-n)!} x^{m-n}(正整数m&gt;n) $
-$ (\frac {1}{x+a})^{(n)} = \frac {(-1)^n n!}{(x+a)^{n+1}} $
-$ \left[\ln_{}{(x+a)}\right]^{(n)} = (-1)^{n-1}\frac {(n-1)!}{(x+a)^n} $
+
+$ \left(\mathrm{e}^{a x+b}\right)^{(n)}=a^{n} \mathrm{e}^{a x+b} $
+$ {[\sin (a x+b)]^{(n)}=a^{n} \sin \left(a x+b+\frac{n \pi}{2}\right)} $
+$ {[\cos (a x+b)]^{(n)}=a^{n} \cos \left(a x+b+\frac{n \pi}{2}\right)} $
+$ {[\ln (a x+b)]^{(n)}=(-1)^{n-1} a^{n} \frac{(n-1)!}{(a x+b)^{n}}} $
+$ \left(\frac{1}{a x+b}\right)^{(n)}=(-1)^{n} a^{n} \frac{n!}{(a x+b)^{n+1}} $
 
 莱布尼兹公式&ensp;&ensp;设 $u=u(x)$ ， $v=v(x)$ 均 $n$ 阶可导，则
 
