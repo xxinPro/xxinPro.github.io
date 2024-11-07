@@ -13333,6 +13333,17 @@ $ $
 $ $
 
 
+
+&nbsp;&nbsp;全增量：
+$ $
+\begin{align*}
+  \Delta z& = f(x+\Delta x,y+\Delta y)-f(x,y)\\
+  & = A\Delta x+B\Delta y+o(\sqrt[]{(\Delta x)^2+(\Delta y)^2} )\\
+\end{align*}
+$ $
+其中，$\Delta x \to 0$，$\Delta y \to 0$，$A=\frac{\partial z}{\partial x}$，$B=\frac{\partial z}{\partial y}$
+
+
 定理二
 &nbsp;&nbsp;如果$z=f(x,y)$的偏导数$\frac{\partial z}{\partial x} $、$\frac{\partial z}{\partial y} $在点$(x,y)$连续，那么在该点可微分
 多元函数极值极值求法定理一
