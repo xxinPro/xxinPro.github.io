@@ -13336,11 +13336,14 @@ $ $
 
 &nbsp;&nbsp;全增量：
 $ $
+\begin{array}{l}
 \begin{align*}
   \Delta z& = f(x+\Delta x,y+\Delta y)-f(x,y)\\
   & = A\Delta x+B\Delta y+o(\sqrt[]{(\Delta x)^2+(\Delta y)^2} )\\
-\end{align*} \\
+\end{align*}\\
+\\
 其中，\Delta x \to 0，\Delta y \to 0，A=\frac{\partial z}{\partial x}，B=\frac{\partial z}{\partial y}
+\end{array}
 $ $
 
 
