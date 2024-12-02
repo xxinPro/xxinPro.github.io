@@ -14927,6 +14927,8 @@ $\lambda_1\lambda_2\cdots\lambda_n=|A|$
   
   $Ax=\lambda x \Rightarrow x=\lambda A^{-1}x \Rightarrow x=\lambda \frac {1}{|A|}A^{*}x \Rightarrow \frac {|A|}{\lambda}x=A^{*}x$
   
+  作为结论，$A^{*}x= \frac {|A|}{\lambda} x$可以用在不可逆的矩阵$A$上。此外，当$\lambda = 0$时，虽然不能作为分母，但可以通过如下手段解决：由于$|A|=\lambda_1\lambda_2\lambda_3$，则$\frac {|A|}{\lambda_1} = \frac{\lambda_1\lambda_2\lambda_3}{\lambda_1} = \lambda_2\lambda_3$  
+  
 
 
 
