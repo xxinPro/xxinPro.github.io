@@ -16934,4 +16934,18 @@ java常用包&ensp;&ensp;&ensp;&ensp;java.lang: 这个包下包含了Java语言�
         <tag>Android开发手记</tag>
       </tags>
   </entry>
+  <entry>
+    <title>集合</title>
+    <url>/2023/06/08/%E9%9B%86%E5%90%88/</url>
+    <content><![CDATA[单列集合&ensp;&ensp;单列集合Collection是所有单列集合实现接口及类的父类，其下有List和Set两个接口，而List下又有ArrayList、LinkedList和Vector（已淘汰）三个实现类，Set下有HashSet和TreeSet两个实现类，HashSet又是LinkedHashSet的父类。。。
+List&ensp;&ensp;List中的元素有序、可重复、有索引
+&ensp;&ensp;Set中的元素无序、不重复、无索引
+双列集合]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java基础</tag>
+      </tags>
+  </entry>
 </search>
