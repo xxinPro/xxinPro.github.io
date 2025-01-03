@@ -9805,7 +9805,7 @@ public class 单例模式 &#123;    public static void main(String[] args)&#123;
 3.创建git仓库mkdir /home/blog/repos #在blog用户目录下创建repos文件夹作为仓库位置cd /home/blog/reposgit init --bare blog.git #初始化一个名叫blog.git的仓库
 4.配置钩子实现自动部署找到 /home/blog/repos/blog.git/hooks/post-update.sample 改名post-update，内容改为#!/bin/bashgit --work-tree=/www/wwwroot/blog.xxin.xyz --git-dir=/home/blog/repos/blog.git checkout -f                  ↑博客静态文件储存的位置                 ↑仓库位置然后给权限cd blog.git/hooks/sudo chmod +x post-update  #赋予其可执行权限sudo chown -R blog:blog /home/blog/repos/ #仓库所有者改为blogsudo chown -R blog:blog /www/wwwroot/blog.xxin.xyz/ #站点文件夹所有者改为blog
 5.测试可用性#在主机端，如果能将仓库拉下来，说明Git仓库搭建成功git clone blog@service_ip:/home/blog/repos/blog.git
-三、修改本地配置1.本地config.yml配置本地Hexo博客文件夹中的_config.yml文件尾部deploy:  type: git  repo: blog@159.75.7.25:/home/blog/repos/blog.git #仓库地址  branch: master
+三、修改本地配置1.本地config.yml配置本地Hexo博客文件夹中的_config.yml文件尾部deploy:  type: git  repo: blog@service_ip:/home/blog/repos/blog.git #仓库地址  branch: master
 2.测试hexo clean  #清除缓存hexo generate #生成静态页面hexo delopy  #将本地静态页面目录部署到云服务器
 也可以在package.json中添加npm脚本，这样就可以直接npm run dd一下执行&quot;scripts&quot;: &#123;    &quot;build&quot;: &quot;hexo generate&quot;,    &quot;clean&quot;: &quot;hexo clean&quot;,    &quot;deploy&quot;: &quot;hexo deploy&quot;,    &quot;dd&quot;: &quot;hexo clean &amp;&amp; hexo g -d&quot;,    &quot;server&quot;: &quot;hexo server&quot;,    &quot;ss&quot;: &quot;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&quot;  &#125;,
 3.访问测试https://blog.xxin.xyz
