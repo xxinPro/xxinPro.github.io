@@ -17214,4 +17214,184 @@ static方法不能被重写，所以static方法无需再标记final
         <category>随笔一记</category>
       </categories>
   </entry>
+  <entry>
+    <title>IO流</title>
+    <url>/2025/02/23/IO%E6%B5%81/</url>
+    <content><![CDATA[字节流输入流InputStreamInputStream是所有字节输入流的父类，常用的方法有如下：
+
+int read()
+
+&ensp;&ensp;按字节读取数据，返回值即为读取到的字节，当返回-1时，文件读取完毕
+
+int read(byte[])
+
+&ensp;&ensp;将读取到的数据放置在byte数组中，返回值为本次读取的字节长度，当返回-1时，文件读取完毕
+
+void close()
+
+&ensp;&ensp;关闭输入流
+FileInputStreamFileInputStream是InputStream的子类，用于读取文件的字节流，其有三个构造方法，分别如下：
+
+FileInputStream(File)
+
+&ensp;&ensp;传入文件对象，需要确保该文件存在
+
+FileInputStream(String)
+
+&ensp;&ensp;传入文件路径，需要确保该文件存在
+
+FileInputStream(FileDescriptor)
+
+&ensp;&ensp;传入文件句柄，需要确保该文件存在
+
+按字节读取文件
+
+// 创建输入流try (FileInputStream fis = new FileInputStream(path))&#123;    int read;    // 循环读取文件中的所有字节    while ((read = fis.read()) != -1) &#123;        System.out.println((char)read);    &#125;&#125; catch (IOException e) &#123;    throw new RuntimeException(e);&#125;
+
+读取文件字节到byte数组中
+
+// 创建输入流try (FileInputStream fis = new FileInputStream(path))&#123;    StringBuilder sb = new StringBuilder();    byte[] buffer = new byte[1024];    int len;    // 循环读取文件中的所有字节    while ((len = fis.read(buffer)) != -1) &#123;        sb.append(new String(buffer, 0, len));    &#125;    System.out.println(sb);&#125; catch (IOException e) &#123;    throw new RuntimeException(e);&#125;
+输出流OutputStreamOutputStream是所有字节输出流的父类，常用的方法有如下：
+
+void write(int)
+
+&ensp;&ensp;写出数据，每次仅写出一个字节
+
+void write(byte[])
+
+&ensp;&ensp;写出数据，将数组中的所有字节写出
+
+void flush()
+
+&ensp;&ensp;刷新输出流
+
+void close()
+
+&ensp;&ensp;关闭输出流
+FileOutputStreamFileOutputStream是OutputStream的子类，文件输出流，用于将数据字节流输出到文件，其有五个构造方法分别如下：
+
+FileOutputStream(String)
+
+&ensp;&ensp;传入文件路径，文件不存在时会自动创建，文件存在时会清空内容
+
+FileOutputStream(String, boolean)
+
+&ensp;&ensp;传入文件路径，第二个参数表示是否续写
+
+FileOutputStream(File)
+
+&ensp;&ensp;传入文件对象，文件不存在时会自动创建，文件存在时会清空内容
+
+FileOutputStream(File, boolean)
+
+&ensp;&ensp;传入文件对象，第二个参数表示是否续写
+
+FileOutputStream(FileDescriptor)
+
+&ensp;&ensp;传入文件句柄
+
+按字节写出文件
+
+// 创建输出流try (FileOutputStream fos = new FileOutputStream(path)) &#123;    // 指定的内容    String text = &quot;测试文字&quot;;    // 将内容转换成字节流    byte[] bytes = text.getBytes(StandardCharsets.UTF_8);    // 将字节一个个写出    for (byte b : bytes) &#123;        fos.write(b);    &#125;&#125; catch (IOException e) &#123;    throw new RuntimeException(e);&#125;
+
+一次性写出
+
+// 创建输出流try (FileOutputStream fos = new FileOutputStream(path)) &#123;    // 指定的内容    String text = &quot;测试文字&quot;;    // 将内容转换成字节流    byte[] bytes = text.getBytes(StandardCharsets.UTF_8);    // 一次性写出    fos.write(bytes);&#125; catch (IOException e) &#123;    throw new RuntimeException(e);&#125;
+字符流FileReader和FileWriter，其底层是InputStreamReader和OutputStreamWriter实现，后两者在创建时传入InputStream和OutputStream，并且创建时可以指定解码类型
+输入流ReaderReader是所有字符输入流的父类，常用的方法有如下：
+
+int read()
+
+&ensp;&ensp;按字符读取数据，返回值即为读取到的字符，当返回-1时，文件读取完毕
+
+int read(char[])
+
+&ensp;&ensp;将读取到的数据放置在char数组中，返回值为本次读取的字符长度，当返回-1时，文件读取完毕
+
+void close()
+
+&ensp;&ensp;关闭输入流
+FileReaderFileReader是Reader的子类，用于读取文件的字节流，其有三个构造方法，分别如下：
+
+FileReader(String)
+
+&ensp;&ensp;传入文件对象，需要确保该文件存在
+
+FileReader(File)
+
+&ensp;&ensp;传入文件路径，需要确保该文件存在
+
+FileReader(FileDescriptor)
+
+&ensp;&ensp;传入文件句柄，需要确保该文件存在
+
+每次读取一个字符
+
+// 创建字符输入流try (FileReader fr = new FileReader(path))&#123;    int read;    // 循环读取文件    while ((read = fr.read()) != -1) &#123;        // 输出本轮读取到的字符        System.out.print((char)read);    &#125;&#125; catch (IOException e) &#123;    throw new RuntimeException(e);&#125;
+
+一次读取多个字符
+
+// 创建字符输入流try (FileReader fr = new FileReader(path))&#123;    int len;    char[] buffer = new char[1024];    StringBuilder sb = new StringBuilder();    // 循环读取文件内容    while ((len = fr.read(buffer)) != -1) &#123;        // 将本轮读取到的字符累加到sb        sb.append(new String(buffer, 0, len));    &#125;    // 打印    System.out.println(sb);&#125; catch (IOException e) &#123;    throw new RuntimeException(e);&#125;
+输出流WriterWriter是所有字符输出流的父类，常用的方法有如下：
+
+void write(int)
+
+&ensp;&ensp;写出数据，每次仅写出一个字符，虽然都是int类型数据，但是该数据是由字符的char对应的int，不同于OutputStream.read(int)的字节流
+
+void write(char[])
+
+&ensp;&ensp;写出数据，将数组中的所有字符写出
+
+write(String)
+
+&ensp;&ensp;写出数据，将字符串写出
+
+void flush()
+
+&ensp;&ensp;刷新输出流
+
+void close()
+
+&ensp;&ensp;关闭输出流
+FileWriterFileWriter是Writer的子类，字符输出流，用于将数据字符流输出到文件，其有五个构造方法分别如下：
+
+FileWriter(String)
+
+&ensp;&ensp;传入文件路径，文件不存在时会自动创建，文件存在时会清空内容
+
+FileWriter(String, boolean)
+
+&ensp;&ensp;传入文件路径，第二个参数表示是否续写
+
+FileWriter(File)
+
+&ensp;&ensp;传入文件对象，文件不存在时会自动创建，文件存在时会清空内容
+
+FileWriter(File, boolean)
+
+&ensp;&ensp;传入文件对象，第二个参数表示是否续写
+
+FileWriter(FileDescriptor)
+
+&ensp;&ensp;传入文件句柄
+
+按字符写出文件
+
+try (FileWriter fw = new FileWriter(path))&#123;    String text = &quot;测试内容&quot;;    for (int i = 0; i &lt; text.length(); i++) &#123;        // 逐个取字符串中的字符，并转换为int类型        int c = text.charAt(i);        // 写出        fw.write(c);    &#125;&#125; catch (IOException e) &#123;    throw new RuntimeException(e);&#125;
+
+一次性写出多个字符
+
+try (FileWriter fw = new FileWriter(path))&#123;    // 目标字符串    String text = &quot;岳阳楼记&quot;;    // 创建长度相当的char数组    char[] cs = new char[text.length()];    // 得到目标字符串对应的char数组    text.getChars(0, text.length(), cs, 0);    // 一次性写入    fw.write(cs);&#125; catch (IOException e) &#123;    throw new RuntimeException(e);&#125;
+
+直接写出字符串
+
+try (FileWriter fw = new FileWriter(path))&#123;    // 目标字符串    String text = &quot;小石潭记&quot;;    // 直接写出    fw.write(text);&#125; catch (IOException e) &#123;    throw new RuntimeException(e);&#125;
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java基础</tag>
+      </tags>
+  </entry>
 </search>
