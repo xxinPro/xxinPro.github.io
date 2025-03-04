@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.xxin.xyz/2023/06/07/synchronized/</loc>
+    <lastmod>2025-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.xxin.xyz/2023/04/26/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</loc>
+    <lastmod>2025-03-04</lastmod>
+  </url>
+  <url>
     <loc>https://blog.xxin.xyz/2025/02/23/IO%E6%B5%81/</loc>
     <lastmod>2025-03-04</lastmod>
   </url>
@@ -19,10 +27,6 @@
   <url>
     <loc>https://blog.xxin.xyz/2021/07/15/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2025-01-03</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.xxin.xyz/2023/06/07/synchronized/</loc>
-    <lastmod>2024-12-25</lastmod>
   </url>
   <url>
     <loc>https://blog.xxin.xyz/2023/10/01/%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E5%AE%9A%E7%90%866/</loc>
@@ -310,10 +314,6 @@
   </url>
   <url>
     <loc>https://blog.xxin.xyz/2022/10/26/%E5%90%91Android%E5%A4%96%E7%BD%AETF%E5%8D%A1%E4%B8%AD%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE/</loc>
-    <lastmod>2023-05-23</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.xxin.xyz/2023/04/26/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</loc>
     <lastmod>2023-05-23</lastmod>
   </url>
   <url>

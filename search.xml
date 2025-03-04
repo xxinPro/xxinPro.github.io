@@ -9275,9 +9275,13 @@ text/x-script.zsh
   <entry>
     <title>synchronized</title>
     <url>/2023/06/07/synchronized/</url>
-    <content><![CDATA[同步代码块&ensp;&ensp;使用synchronized关键字给代码块加锁，synchronized后的括号内可以填入任意对象，被填入的对象将作为同步监视器；线程在执行同步代码块之前，必须先获得对同步监视器的锁定，当同步代码执行完成后，线程会释放对同步监视器的锁定；如果同步监视器已经被其他线程锁定，则当前线程进入阻塞队列，等待同步监视器的锁定被释放，这种方式可以确保同一时刻只有一个线程访问加锁的代码块（）。
-&ensp;&ensp;如下代码，lock对象充当同步监视器，当一个线程调用test方法并进入同步代码块之前，必须先获得lock对象的锁定，如果已经有其他线程持有了该锁定，当前线程将进入阻塞状态。public class Main &#123;    private final Object lock = new Object();    public void test() &#123;        synchronized (lock) &#123;            // 执行需要同步的代码            // ...        &#125; // 在代码块执行完成后，会自动释放对同步监视器的锁定    &#125;&#125;
-&ensp;&ensp;如果多个线程调用了同一个Main对象的test方法，它们将竞争同一个lock对象的锁定，那么只有一个线程能够获得该对象的锁定，并执行同步代码块中的代码，其他线程将被阻塞，直到获得了锁定的线程释放锁。&ensp;&ensp;但如果多个线程调用不同Main对象的test方法，那么每个线程都有不同的lock对象作为同步监视器，获得不同的同步监视器的锁定，所以test方法中的同步代码是独立的，不会发生阻塞。&ensp;&ensp;若要使多个线程能够同步调用不同Main对象的test方法，可以将lock设为静态，此时多个线程将竞争同一个静态锁，只有一个线程能够获得静态锁并执行同步代码块中的代码，其他线程将被阻塞，直到获得锁的线程释放锁。public class Main &#123;    // 设为静态    private static final Object lock = new Object();    public void test() &#123;        synchronized (lock) &#123;            // 执行需要同步的代码            // ...        &#125; // 在代码块执行完成后，会自动释放对同步监视器的锁定    &#125;&#125;
+    <content><![CDATA[同步代码块&ensp;&ensp;使用synchronized关键字给代码块加锁，synchronized后的括号内可以填入任意对象，被填入的对象将作为同步监视器；线程在执行同步代码块之前，必须先获得对同步监视器的锁定，当同步代码执行完成后，线程会释放对同步监视器的锁定；如果同步监视器已经被其他线程锁定，则当前线程进入阻塞队列，等待同步监视器的锁定被释放，这种方式可以确保同一时刻只有一个线程访问加锁的代码块。
+&ensp;&ensp;如下代码，lock对象充当同步监视器，当一个线程调用test方法并进入同步代码块之前，必须先获得lock对象的锁定，如果已经有其他线程持有了该锁定，当前线程将进入阻塞状态。
+public class Main &#123;    private final Object lock = new Object();    public void test() &#123;        synchronized (lock) &#123;            // 执行需要同步的代码            // ...        &#125; // 在代码块执行完成后，会自动释放对同步监视器的锁定    &#125;&#125;
+&ensp;&ensp;如果多个线程调用了同一个Main对象的test方法，它们将竞争同一个lock对象的锁定，那么只有一个线程能够获得该对象的锁定，并执行同步代码块中的代码，其他线程将被阻塞，直到获得了锁定的线程释放锁。
+&ensp;&ensp;但如果多个线程调用不同Main对象的test方法，那么每个线程都有不同的lock对象作为同步监视器，获得不同的同步监视器的锁定，所以test方法中的同步代码是独立的，不会发生阻塞。
+&ensp;&ensp;若要使多个线程能够同步调用不同Main对象的test方法，可以将lock设为静态，此时多个线程将竞争同一个静态锁，只有一个线程能够获得静态锁并执行同步代码块中的代码，其他线程将被阻塞，直到获得锁的线程释放锁。
+public class Main &#123;    // 设为静态    private static final Object lock = new Object();    public void test() &#123;        synchronized (lock) &#123;            // 执行需要同步的代码            // ...        &#125; // 在代码块执行完成后，会自动释放对同步监视器的锁定    &#125;&#125;
 同步方法普通同步方法&ensp;&ensp;普通同步方法，以当前实例对象作为同步监视器
 // 同步方法public synchronized void test() &#123;    // 执行需要同步的代码&#125;// 等同于public void test() &#123;    synchronized (this) &#123;        // 执行需要同步的代码    &#125;&#125;
 &ensp;&ensp;如下代码执行时，多个线程同时执行syncTest，操作value值递减，由于运行中的线程时间片用完时会进入阻塞状态，假设当前线程在即将操作value值时进入阻塞状态，阻塞期间其他得到时间片的线程继续对value值操作，当阻塞的线程重新获得时间片并执行时，进入阻塞状态之前所操作过的value可能已经被其他线程改变，所以当输出value时会出现相同的值，甚至出现负数public class SyncTest implements Runnable &#123;    private int value = 100;    public static void main(String[] args) &#123;        SyncTest syncTest = new SyncTest();        Thread thread1 = new Thread(syncTest);        Thread thread2 = new Thread(syncTest);        Thread thread3 = new Thread(syncTest);        thread1.start();        thread2.start();        thread3.start();    &#125;    @Override    public void run() &#123;        for (int i = 0; i &lt; 100; i++) &#123;            try &#123;                // sleep会使线程主动放弃执行权，模拟被调度器将时间片分配给其他线程                Thread.sleep(1);            &#125; catch (InterruptedException e) &#123;                e.printStackTrace();            &#125;            if (value &gt; 0) &#123;                System.out.println(&quot;value=&quot; + (--value));            &#125;        &#125;    &#125;&#125;
@@ -10235,15 +10239,24 @@ va_copy(va_list dest, va_list src)
   <entry>
     <title>多线程实现方式</title>
     <url>/2023/04/26/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[创建线程的几种方法继承Thread&ensp;&ensp;继承Thread类并重写run()方法，public class TestThread extends Thread &#123;    @Override    public void run() &#123;        super.run();        for (int i = 0; i &lt; 20; i++) &#123;            System.out.println(i);        &#125;    &#125;&#125;
-&ensp;&ensp;创建TestThread对象，并调用start()方法public static void main(String[] args) &#123;    TestThread testThread = new TestThread();    testThread.start();&#125;
-&ensp;&ensp;如果逻辑并不复杂，可以直接创建Thread对象并重写run()方法public static void main(String[] args) &#123;    new Thread() &#123;        @Override        public void run() &#123;            super.run();            for (int i = 0; i &lt; 20; i++) &#123;                System.out.println(i);            &#125;        &#125;    &#125;.start();&#125;
-实现Runnable&ensp;&ensp;实现Runnable接口并重写run()方法public class TestRunnable implements Runnable &#123;    @Override    public void run() &#123;        for (int i = 0; i &lt; 20; i++) &#123;            System.out.println(i);        &#125;    &#125;&#125;
-&ensp;&ensp;创建TestRunnable对象，创建Thread对象，并传入TestRunnable对象public static void main(String[] args) &#123;    TestRunnable testRunnable = new TestRunnable();    new Thread(testRunnable).start();&#125;
-&ensp;&ensp;或者直接传入匿名类public static void main(String[] args) &#123;    new Thread(new Runnable() &#123;        @Override        public void run() &#123;            for (int i = 0; i &lt; 20; i++) &#123;                System.out.println(i);            &#125;        &#125;    &#125;).start();&#125;
-&ensp;&ensp;注意：如果在创建Thread对象时，传入Runnable同时重写run()方法，那么它们两个都会被执行public static void main(String[] args) &#123;    new Thread(new Runnable() &#123;        @Override        public void run() &#123;            System.out.println(&quot;执行Runnable匿名类的run方法&quot;);        &#125;    &#125;) &#123;        @Override        public void run() &#123;            super.run();            System.out.println(&quot;执行重写run方法&quot;);        &#125;    &#125;.start();&#125;
-实现Callable&ensp;&ensp;实现Callable类,重写run()方法并指定其泛型类型public class TestCallable implements Callable&lt;String&gt; &#123;    @Override    public String call() throws Exception &#123;        return &quot;测试&quot;;    &#125;&#125;
-&ensp;&ensp;创建FutureTask对象，并传入TestCallable，将FutureTask放在Thread中执行，执行后通过FutureTask的get()方法可以获取到TestCallable的返回值public static void main(String[] args) &#123;    TestCallable testCallable = new TestCallable();    FutureTask&lt;String&gt; futureTask = new FutureTask&lt;&gt;(testCallable);    new Thread(futureTask).start();    try &#123;        String s = futureTask.get();        System.out.println(s);    &#125; catch (InterruptedException | ExecutionException e) &#123;        e.printStackTrace();    &#125;&#125;
+    <content><![CDATA[创建线程的几种方法继承Thread&ensp;&ensp;继承Thread类并重写run()方法，
+public class TestThread extends Thread &#123;    @Override    public void run() &#123;        super.run();        for (int i = 0; i &lt; 20; i++) &#123;            System.out.println(i);        &#125;    &#125;&#125;
+&ensp;&ensp;创建TestThread对象，并调用start()方法
+public static void main(String[] args) &#123;    TestThread testThread = new TestThread();    testThread.start();&#125;
+&ensp;&ensp;如果逻辑并不复杂，可以直接创建Thread对象并重写run()方法
+public static void main(String[] args) &#123;    new Thread() &#123;        @Override        public void run() &#123;            super.run();            for (int i = 0; i &lt; 20; i++) &#123;                System.out.println(i);            &#125;        &#125;    &#125;.start();&#125;
+实现Runnable&ensp;&ensp;实现Runnable接口并重写run()方法
+public class TestRunnable implements Runnable &#123;    @Override    public void run() &#123;        for (int i = 0; i &lt; 20; i++) &#123;            System.out.println(i);        &#125;    &#125;&#125;
+&ensp;&ensp;创建TestRunnable对象，创建Thread对象，并传入TestRunnable对象
+public static void main(String[] args) &#123;    TestRunnable testRunnable = new TestRunnable();    new Thread(testRunnable).start();&#125;
+&ensp;&ensp;或者直接传入匿名类
+public static void main(String[] args) &#123;    new Thread(new Runnable() &#123;        @Override        public void run() &#123;            for (int i = 0; i &lt; 20; i++) &#123;                System.out.println(i);            &#125;        &#125;    &#125;).start();&#125;
+&ensp;&ensp;注意：如果在创建Thread对象时，传入Runnable同时重写run()方法，那么它们两个都会被执行
+public static void main(String[] args) &#123;    new Thread(new Runnable() &#123;        @Override        public void run() &#123;            System.out.println(&quot;执行Runnable匿名类的run方法&quot;);        &#125;    &#125;) &#123;        @Override        public void run() &#123;            super.run();            System.out.println(&quot;执行重写run方法&quot;);        &#125;    &#125;.start();&#125;
+实现Callable&ensp;&ensp;前两种多线程实现方式做不到接收返回值，而实现Callable接口并重写call()方法可以得到线程的返回值。
+// 指定Callable泛型中的类型public class TestCallable implements Callable&lt;String&gt; &#123;    @Override    public String call() throws Exception &#123;        return &quot;测试&quot;;    &#125;&#125;
+&ensp;&ensp;创建FutureTask对象，并传入TestCallable，将FutureTask放在Thread中执行，执行后通过FutureTask的get()方法可以获取到TestCallable的返回值
+public static void main(String[] args) &#123;    TestCallable testCallable = new TestCallable();    FutureTask&lt;String&gt; futureTask = new FutureTask&lt;&gt;(testCallable);    // 启动线程    new Thread(futureTask).start();    try &#123;        // 得到返回值        String s = futureTask.get();        System.out.println(s);    &#125; catch (InterruptedException | ExecutionException e) &#123;        e.printStackTrace();    &#125;&#125;
 ]]></content>
       <categories>
         <category>Java</category>
