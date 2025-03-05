@@ -9293,6 +9293,9 @@ public class Main &#123;    // 设为静态    private static final Object lock 
 &ensp;&ensp;要使代码在多个线程中同步，需要确定同步监视器的唯一，可以用当前类的class对象作为同步监视器@Overridepublic void run() &#123;    super.run();    for (int i = 0; i &lt; 100; i++) &#123;        try &#123;            Thread.sleep(1);        &#125; catch (InterruptedException e) &#123;            e.printStackTrace();        &#125;        synchronized (TestThread.class) &#123;            if (value &gt; 0) &#123;                System.out.println(&quot;value=&quot; + (--value));            &#125;        &#125;    &#125;&#125;
 &ensp;&ensp;或则创建一个静态对象，作为同步监视器private final static Object lock = new Object();@Overridepublic void run() &#123;    super.run();    for (int i = 0; i &lt; 100; i++) &#123;        try &#123;            Thread.sleep(1);        &#125; catch (InterruptedException e) &#123;            e.printStackTrace();        &#125;        synchronized (lock) &#123;            if (value &gt; 0) &#123;                System.out.println(&quot;value=&quot; + (--value));            &#125;        &#125;    &#125;&#125;
 &ensp;&ensp;又或者使用静态同步方法@Overridepublic void run() &#123;    super.run();    for (int i = 0; i &lt; 100; i++) &#123;        try &#123;            Thread.sleep(1);        &#125; catch (InterruptedException e) &#123;            e.printStackTrace();        &#125;        sub();    &#125;&#125;private synchronized static void sub() &#123;    if (value &gt; 0) &#123;        System.out.println(&quot;value=&quot; + (--value));    &#125;&#125;
+Lock锁相当于操作系统同步机制中的PV操作
+private Lock lock = new ReentrantLock();@Overridepublic void run() &#123;    while (true) &#123;        // 加锁        lock.lock();        try &#123;            Thread.sleep(10);            if (num &lt; 100) &#123;                num++;                System.out.println(&quot;第&quot; + num);            &#125; else &#123;                break;            &#125;        &#125; catch (InterruptedException e) &#123;            throw new RuntimeException(e);        &#125; finally &#123;            // 解锁            lock.unlock();        &#125;    &#125;&#125;
+与synchronized相同，如果多个线程运行同一个对象中的run()（该对象的类实现了Runnable接口），那么将竞争同一个Lock锁；如果多个线程运行多个对象中的run()，此时需要将Lock锁设为静态
 ]]></content>
       <categories>
         <category>Java</category>
@@ -17453,5 +17456,125 @@ java常用包&ensp;&ensp;&ensp;&ensp;java.lang: 这个包下包含了Java语言�
       <categories>
         <category>随笔一记</category>
       </categories>
+  </entry>
+  <entry>
+    <title>线程池</title>
+    <url>/2025/03/04/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</url>
+    <content><![CDATA[JAVA线程池
+Executors.newFixedThreadPool(int)
+
+创建一个最大线程数固定的线程池，参数中传入最大线程数的数量，这些线程全部作为核心线程，一经创建不进行回收。提交任务到线程池时，如果线程都在忙，任务会被放入工作队列，其工作队列的长度为int的取值范围，视为无界，所以可以说它不会拒绝任务抛出RejectedExecutionException异常
+
+Executors.newCachedThreadPool()
+
+创建一个可缓存的线程池，缓存即线程池中的线程可以复用。该线程池中没有核心线程，全部皆为临时线程，线程的数量会根据并发任务的数量自动扩容，上限为int的取值范围，视为无界，线程的空闲时间超过60秒会自动回收。由于线程的数量无上限，所以可以说它不会拒绝任务抛出RejectedExecutionException异常
+它的工作队列是一个阻塞队列，队列没有长度所以不存储任务，每个插入到阻塞队列的任务必须阻塞等待，直到线程池中的线程取出任务，当有新任务到来时，如果没有空闲线程取出任务，线程池会立刻创建新的线程来处理任务，任务不会进入工作队列而是直接传递给可用的线程，适合处理大量短期异步任务
+该工作队列符合生产者消费者模型，当有线程作为生产者插入任务时，如果线程池中没有线程作为消费者等待任务，那么生产者线程会被阻塞，直到任务被取出；同样，线程池中的线程作为消费者取任务时，如果没有其他线程作为生产者插入任务，消费者线程也会被阻塞，直到取出一个任务。如下代码示例
+// 代码示例说明SynchronousQueue&lt;String&gt; queue = new SynchronousQueue&lt;&gt;();// 生产者线程Thread producer = new Thread(() -&gt; &#123;    try &#123;        System.out.println(&quot;生产者尝试插入数据...&quot;);        queue.put(&quot;Data&quot;); // 此处会阻塞        System.out.println(&quot;生产者插入成功&quot;);    &#125; catch (InterruptedException e) &#123;        Thread.currentThread().interrupt();    &#125;&#125;);// 消费者线程Thread consumer = new Thread(() -&gt; &#123;    try &#123;        Thread.sleep(2000); // 故意延迟消费        System.out.println(&quot;消费者开始获取数据...&quot;);        String data = queue.take();        System.out.println(&quot;获取到数据: &quot; + data);    &#125; catch (InterruptedException e) &#123;        Thread.currentThread().interrupt();    &#125;&#125;);producer.start();consumer.start();/* 输出结果：生产者尝试插入数据...（2秒后）消费者开始获取数据...生产者插入成功获取到数据: Data*/
+
+Executors.newSingleThreadExecutor()
+
+创建单个线程数的线程池，就一个核心线程，如果这个线程异常终止，线程池会创建一个新的线程代替它。提交任务到线程池时，如果线程在忙，任务会被放入工作队列，其工作队列的长度为int的取值范围，视为无界，所以可以说它不会拒绝任务抛出RejectedExecutionException异常
+
+Executors.newScheduledThreadPool(int)
+
+创建一个可以执行延迟任务的线程池，支持定时或周期性执行任务，参数中传入核心线程数的数量，最大线程数上限为int的取值范围，视为无界；工作队列的初始长度为16，但是队列满时会自动扩容，最大为int的取值范围
+
+Executors.newSingleThreadScheduledExecutor()
+
+创建单线程可以执行延迟任务的线程池，同上但限制了线程池中的线程数为1
+
+Executors.newWorkStealingPool()
+
+创建一个抢占式执行的线程池
+自定义线程池自定义线程池通常需要填入7个参数，如下代码供参考
+ThreadPoolExecutor pool = new ThreadPoolExecutor(        5,                  // 核心线程数        10,                 // 最大线程数        10,                 // 临时线程空闲存活时间        TimeUnit.SECONDS,   // 临时线程空闲存活时间单位        new LinkedBlockingDeque&lt;&gt;(),            // 工作队列        Executors.defaultThreadFactory(),       // 线程工厂        new ThreadPoolExecutor.AbortPolicy()    // 拒绝策略);// 执行任务pool.submit(new Runnable() &#123;    @Override    public void run() &#123;        System.out.println(&quot;run&quot;);    &#125;&#125;);// 停止pool.shutdown();
+
+参数一：核心线程数
+
+线程池中的核心线程数，核心线程即使处于空闲状态，线程池也不会回收它们
+
+参数二：最大线程数
+
+线程池中允许的最大线程数，最大线程数不能小于核心线程数，当最大线程数大于核心线程数时，意为最多允许存在最大线程数 - 核心线程数个临时线程
+
+参数三：临时线程空闲存活时间
+
+当临时线程空闲时会被线程池回收，此处为空闲存活的时间值
+
+参数四：临时线程空闲存活时间单位
+
+当临时线程空闲时会被线程池回收，此处为空闲存活的时间单位，可以为纳秒、微秒、毫秒、秒、分钟、、天
+
+参数五：工作队列
+
+用于存放待执行的任务的阻塞队列，常见有
+
+ArrayBlockingQueue
+一个由数组支持的有界阻塞队列。按照先进先出的原则对元素进行排序
+
+
+LinkedBlockingQueue
+一个由链表结构组成的有界阻塞队列。如果构造时未指定容量，则默认容量为Integer.MAX_VALUE，即视为无界队列
+
+
+SynchronousQueue
+一个不存储元素的阻塞队列。每个插入操作必须等到另一个线程的对应移除操作，反之亦然
+
+
+PriorityBlockingQueue
+一个支持优先级排序的无界阻塞队列，元素必须实现Comparable接口或在构造队列时提供Comparator，以便进行排序
+
+
+LinkedBlockingDeque
+一个由链表结构组成的双端阻塞队列。它可以从两端插入和移除元素
+
+
+LinkedTransferQueue
+一个由链表结构组成的无界阻塞队列。与SynchronousQueue类似，还含有非阻塞方法
+
+
+DelayQueue
+一个使用优先级队列实现的无界阻塞队列，只有在延迟期满时才能从中提取元素
+
+
+
+
+参数六：线程工厂
+
+默认的线程工厂
+Executors.defaultThreadFactory()
+自定义线程工厂，如下设置线程名
+class MyThreadFactory implements ThreadFactory &#123;    private final String prefix;    private final AtomicInteger atomicInteger = new AtomicInteger(1);    public MyThreadFactory(String prefix) &#123;        this.prefix = prefix;    &#125;    @Override    public Thread newThread(Runnable runnable) &#123;        Thread thread = new Thread(runnable);        // 设置线程名        thread.setName(prefix + &quot;-&quot; + atomicInteger.getAndIncrement());        return thread;    &#125;&#125;
+
+参数七：拒绝策略
+
+
+AbortPolicy
+丢弃任务并抛出RejectedExecutionException异常（默认策略）
+
+
+CallerRunsPolicy
+调用任务的run()方法，绕过线程池直接执行
+
+
+DiscardPolicy
+直接丢弃任务，不抛出任何异常
+
+
+DiscardOldestPolicy
+丢弃工作队列中等待最久的任务，然后把当前任务加入队列中
+
+
+
+通过实现RejectedExecutionHandler接口来自定义拒绝策略
+class MyRejectedExecutionHandler implements RejectedExecutionHandler &#123;    @Override    public void rejectedExecution(Runnable runnable, ThreadPoolExecutor threadPoolExecutor) &#123;        throw new RejectedExecutionException(&quot;线程池出现异常，线程被拒绝&quot;);    &#125;&#125;
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java基础</tag>
+      </tags>
   </entry>
 </search>
