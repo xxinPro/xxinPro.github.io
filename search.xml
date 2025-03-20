@@ -17864,4 +17864,36 @@ static方法不能被重写，所以static方法无需再标记final
         <category>随笔一记</category>
       </categories>
   </entry>
+  <entry>
+    <title>SpringBoot集成Mybatis</title>
+    <url>/2025/03/19/SpringBoot%E9%9B%86%E6%88%90Mybatis/</url>
+    <content><![CDATA[JDBCJDBC是一套执行SQL语句的API，它提供了一种基准，Java连接数据库必须遵循这个基准，数据库厂商负责提供JDBC驱动程序，由驱动程序建立程序和数据库之间的连接
+JDBC配置传统的配置方式
+&lt;!-- 引入mysql JDBC --&gt;&lt;dependency&gt;    &lt;groupId&gt;mysql&lt;/groupId&gt;    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;    &lt;version&gt;8.0.33&lt;/version&gt;&lt;/dependency&gt;
+新版本的MySQL连接器的配置方式
+&lt;!-- 引入mysql JDBC --&gt;&lt;dependency&gt;    &lt;groupId&gt;com.mysql&lt;/groupId&gt;    &lt;artifactId&gt;mysql-connector-j&lt;/artifactId&gt;    &lt;version&gt;9.2.0&lt;/version&gt;&lt;/dependency&gt;
+加载驱动传统的MySQL jdbc驱动程序加载方式
+// 加载 MySQL jdbc 驱动程序Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);// 建立数据库连接Connection connection = DriverManager.getConnection(url, username, password);// 创建 Statement 对象，通过该对象执行 SQL 语句Statement statement = connection.createStatement();
+如下方式加载驱动程序，线程安全性更高，此外通过DataSource接口实现的类可以更好地与连接池集成，便于管理和优化连接
+// 加载 MySQL jdbc 驱动程序Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);// 建立数据库连接MysqlDataSource dataSource = new MysqlDataSource();dataSource.setUrl(url);dataSource.setUser(username);dataSource.setPassword(password);Connection connection = dataSource.getConnection();// 创建 Statement 对象，通过该对象执行 SQL 语句Statement statement = connection.createStatement();
+执行命令执行增、删、改命令，返回被影响的行数int result = statement.executeUpdate(sql);
+执行查询命令，返回结果集ResultSet resultSet = statement.executeQuery(sql);// 遍历结果集while (resultSet.next()) &#123;    // 获取结果集中的数据    String softName = resultSet.getString(&quot;softName&quot;);    float softSize = resultSet.getFloat(&quot;softSize&quot;);    // 输出数据    System.out.println(&quot;softName: &quot; + softName + &quot;, softSize: &quot; + softSize);&#125;resultSet.close();statement.close();connection.close();
+MybatisMyBatis Spring Boot Starter是Spring Boot官方提供的MyBatis集成方案，简化了MyBatis与Spring Boot的集成过程
+&lt;!-- 引入mybatis --&gt;&lt;dependency&gt;    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;    &lt;version&gt;3.0.4&lt;/version&gt;&lt;/dependency&gt;
+配置Mybatis配置，在application.properties中配置Mybatis的相关信息
+# 数据库地址spring.datasource.url=jdbc:mysql://localhost:3306/db# 驱动类全类名spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver# 数据库用户信息spring.datasource.username=rootspring.datasource.password=admin
+根据数据库表，创建对应的实体类，Mybatis会自动把查询到的数据，根据数据库表的字段名，映射到实体类对应的属性上
+CREATE TABLE soft(  softName VARCHAR(20),  softSize FLOAT);
+@Data@NoArgsConstructorpublic class Soft &#123;    private String softName;    private float softSize;&#125;
+编写Mybatis的持久层接口，通过@Mapper给接口添加注解，Mybatis会自动扫描注解@Mapper的接口，动态的为该接口生成一个实现类，并将该实现类对象注入到Spring的IOC容器中
+通过@Select注解，Mybatis会自动执行注解中的SQL语句，并把查询结果集映射到实体类对应的属性上，结果集中多个实体类组成集合并返回
+@Mapperpublic interface SoftMapper &#123;    @Select(&quot;SELECT * FROM soft&quot;)    List&lt;Soft&gt; select();&#125;
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Spring Boot</tag>
+      </tags>
+  </entry>
 </search>
