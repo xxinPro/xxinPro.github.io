@@ -17896,4 +17896,52 @@ CREATE TABLE soft(  softName VARCHAR(20),  softSize FLOAT);
         <tag>Spring Boot</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SpringBoot</title>
+    <url>/2025/03/31/SpringBoot/</url>
+    <content><![CDATA[搭建方式idea脚手架
+然后勾选Spring Web
+
+官网搭建
+访问start.spring.io
+生成SpringBoot项目
+下载项目，解压并导入idea
+
+手动搭建添加依赖创建一个maven项目，在pom.xml文件中添加SpringBoot的起步依赖
+SpringBoot项目必须继承spring-boot-starter-parent，spring-boot-starter-parent中定义了常用配置、插件等信息
+&lt;!-- 父工程 --&gt;&lt;parent&gt;    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;    &lt;version&gt;3.4.4&lt;/version&gt;    &lt;relativePath/&gt;&lt;/parent&gt;
+起步依赖中包含了其他依赖，如spring-boot-starter、spring-boot-starter-tomcat、spring-web
+&lt;!-- SpringBoot起步依赖 --&gt;&lt;dependencies&gt;    &lt;!-- 引入SpringBoot web开发依赖 --&gt;    &lt;dependency&gt;        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;        &lt;version&gt;3.4.4&lt;/version&gt;    &lt;/dependency&gt;    &lt;!-- 引入SpringBoot 测试依赖 --&gt;    &lt;dependency&gt;        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;        &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;        &lt;version&gt;3.4.4&lt;/version&gt;        &lt;scope&gt;test&lt;/scope&gt;    &lt;/dependency&gt;&lt;/dependencies&gt;
+插件的作用是将SpringBoot项目打包成可执行的jar包
+&lt;!-- 插件 --&gt;&lt;build&gt;    &lt;plugins&gt;        &lt;plugin&gt;            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;        &lt;/plugin&gt;    &lt;/plugins&gt;&lt;/build&gt;
+编写启动类@SpringBootApplication是一个组合注解，包含了@Configuration、@EnableAutoConfiguration和@ComponentScan三个注解，用于标识一个类是一个SpringBoot应用程序的启动类
+
+@Configuration：标识该类是一个配置类，用于定义Bean的配置信息
+@EnableAutoConfiguration：启用自动配置机制，自动配置Spring所需的依赖项和配置
+@ComponentScan：扫描当前包及其子包中@Component、@Service、@Repository和@Controller注解的类，为它们注册Bean
+
+@SpringBootApplicationpublic class SpringBootApp &#123;    public static void main(String[] args) &#123;        SpringApplication.run(SpringBootApp.class, args);    &#125;&#125;
+编写配置文件在src/main/resources目录下创建application.properties文件，用于配置SpringBoot应用程序的各种属性，如数据库连接、端口号、日志级别等
+spring.application.name=test# 端口号server.port=8080
+编写控制类
+@Controller：用于定义控制器类，负责处理HTTP请求
+@RequestMapping：用于定义请求映射，将HTTP请求映射到指定的方法上，该注解也可以用在类上。@GetMapping、@PostMapping、@PutMapping、@DeleteMapping等注解是@RequestMapping的简化版，分别用于处理GET、POST、PUT、DELETE请求
+@ResponseBody：将Controller方法的返回值直接写入HTTP响应体，如果是对象，则会自动转换为JSON格式。SpringBoot默认使用Jackson库进行对象的序列化和反序列化
+
+@Controllerpublic class TestController &#123;        @RequestMapping(&quot;/test&quot;)    @ResponseBody    public String test() &#123;        return &quot;test&quot;;    &#125;&#125;
+
+@RestController：是@Controller和@ResponseBody的组合注解
+
+@RestControllerpublic class TestController &#123;        @RequestMapping(&quot;/test&quot;)    public String test() &#123;        return &quot;test&quot;;    &#125;&#125;
+带参数的请求，如下代码发送请求时可以附带name和age参数，附带的参数必须与方法的参数名一致
+@RequestMapping(&quot;/test&quot;)public String test(String name, int age) &#123;    return &quot;&#123;name: \&quot;&quot; + name + &quot;\&quot;, age: &quot; + age + &quot;&#125;&quot;;&#125;
+也可以使用@RequestParam注解，如下代码发送请求时可以附带name和age参数，附带的参数可以与方法的参数名不一致@RequestMapping(&quot;/test&quot;)public String test(@RequestParam(&quot;name&quot;) String s1, @RequestParam(&quot;age&quot;) int i1) &#123;    return &quot;&#123;name: \&quot;&quot; + s1 + &quot;\&quot;, age: &quot; + i1 + &quot;&#125;&quot;;&#125;
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Spring Boot</tag>
+      </tags>
+  </entry>
 </search>
