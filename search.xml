@@ -17919,23 +17919,33 @@ TreeMap&ensp;&ensp;对于数值类型数据，TreeMap默认会按照从小到大
   <entry>
     <title>面向对象之继承</title>
     <url>/2021/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E7%BB%A7%E6%89%BF/</url>
-    <content><![CDATA[类继承注意，被final标记的类不能被继承
-&ensp;&ensp;创建一个Person类，public class Person &#123;&#125;
-&ensp;&ensp;Boy类继承Person类public class Boy extends Person &#123;    &#125;
+    <content><![CDATA[类继承如下代码，Boy类继承Person类，Boy类是子类，Person类是父类
+// 父类public class Person &#123;&#125;// 子类public class Boy extends Person &#123;    &#125;
 
-&ensp;&ensp;在Person类中添加方法public class Person &#123;    public void age() &#123;        System.out.println(&quot;年龄&quot;);    &#125;    public void height() &#123;        System.out.println(&quot;身高&quot;);    &#125;    public void width() &#123;        System.out.println(&quot;体重&quot;);    &#125;&#125;
-&ensp;&ensp;因为Boy是继承Person，所以可以调用Person类中的方法public class Boy extends Person &#123;    public void name() &#123;        System.out.println(&quot;小明&quot;);    &#125;    public static void main(String[] args) &#123;        Boy boy = new Boy();        boy.height();        boy.width();        boy.age();    &#125;&#125;
-&ensp;&ensp;如上代码在Boy类的main方法中调用Person类的三个方法，将会输出身高体重年龄
-方法重写注意事项
+一个类如果被final关键字修饰，则该类不能被继承
+public final class Person &#123;    &#125;
+子类必须在构造方法中的第一行显式或隐式调用父类的构造方法，具体分为以下几种情况
+
+如果父类没有带参的构造方法，子类会隐式调用父类的无参构造方法
+如果父类只有一个带参的构造方法，子类必须使用super显式调用父类的构造方法
+如果父类有多个带参的构造方法，子类选择父类中一个带参的构造方法，使用super调用即可
+
+// 父类public class Person &#123;    private String name;        public Person(String name) &#123;        this.name = name;    &#125;&#125;// 子类public class Boy extends Person &#123;    public Boy(String name) &#123;        // super必须在第一行，super之后可以写逻辑        super(name);    &#125;&#125;
+子类的对象可以直接调用父类的方法，如下
+// 父类public class Person &#123;    public void age() &#123;        System.out.println(&quot;年龄&quot;);    &#125;    public void height() &#123;        System.out.println(&quot;身高&quot;);    &#125;    public void width() &#123;        System.out.println(&quot;体重&quot;);    &#125;&#125;public static void main(String[] args) &#123;    // 创建子类对象    Boy boy = new Boy();    // 调用父类方法    boy.height();    boy.width();    boy.age();&#125;
+方法重写注意
 
 private方法不能被重写
 final标记的方法不能被重写
-static方法不能被重写，所以static方法无需再标记final
+static方法不能被重写
+子类重写父类方法时，访问权限不能低于父类的访问权限
+子类重写父类方法时，返回值类型不能高于父类的返回值类型
+子类重写父类方法时，抛出的异常不能高于父类的抛出的异常
 
-&ensp;&ensp;在Boy类中可以对Person类已有的方法重写public class Boy extends Person &#123;    @Override    public void age() &#123;        System.out.println(&quot;年龄18&quot;);    &#125;    @Override    public void height() &#123;        System.out.println(&quot;身高180&quot;);    &#125;    @Override    public void width() &#123;        System.out.println(&quot;体重120&quot;);    &#125;    public static void main(String[] args) &#123;        Boy boy = new Boy();        boy.height();        boy.width();        boy.age();    &#125;&#125;
-&ensp;&ensp;此时将会输出身高180体重120年龄18
-&ensp;&ensp;如果想在子类中调用父类的方法，可以使用super关键字public class Boy extends Person &#123;    @Override    public void age() &#123;        super.age();        System.out.println(&quot;年龄18&quot;);    &#125;    @Override    public void height() &#123;        super.height();        System.out.println(&quot;身高180&quot;);    &#125;    @Override    public void width() &#123;        super.width();        System.out.println(&quot;体重120&quot;);    &#125;    public static void main(String[] args) &#123;        Boy boy = new Boy();        boy.height();        boy.width();        boy.age();    &#125;&#125;
-&ensp;&ensp;此时将会输出身高身高180体重体重120年龄年龄18
+在Boy类中对Person类的方法重写，重写后的方法会覆盖父类的方法
+public class Boy extends Person &#123;    @Override    public void age() &#123;        System.out.println(&quot;年龄18&quot;);    &#125;    @Override    public void height() &#123;        System.out.println(&quot;身高180&quot;);    &#125;    @Override    public void width() &#123;        System.out.println(&quot;体重120&quot;);    &#125;&#125;
+&ensp;&ensp;如果想在子类中调用父类的方法，可以使用super关键字
+public class Boy extends Person &#123;    @Override    public void age() &#123;        super.age();        System.out.println(&quot;年龄18&quot;);    &#125;    @Override    public void height() &#123;        super.height();        System.out.println(&quot;身高180&quot;);    &#125;    @Override    public void width() &#123;        super.width();        System.out.println(&quot;体重120&quot;);    &#125;&#125;
 ]]></content>
       <categories>
         <category>Java</category>
@@ -17965,5 +17975,57 @@ static方法不能被重写，所以static方法无需再标记final
       <categories>
         <category>随笔一记</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Kotlin</title>
+    <url>/2025/04/05/Kotlin/</url>
+    <content><![CDATA[声明变量Kotlin使用val声明不可变变量，使用var声明可变变量
+val name: String = &quot;小明&quot;var age: Int = 18
+类型推导机制：自动推导变量的数据类型，不需要显式指定
+val name = &quot;小明&quot;var age = 18
+但是如果延迟赋值，就必须显式指定类型
+val name: Stringval age: Intname = &quot;小明&quot;age = 18
+函数Kotlin使用fun声明函数
+fun test() &#123;    println(&quot;test&quot;)&#125;
+返回值类型放在形参列表后面，使用:分隔
+fun add(i1: Int, i2: Int): Int &#123;    return i1 + i2&#125;
+函数只有一个表达式时，可以省略花括号和return关键字，用一个等号代替
+fun add(i1: Int, i2: Int): Int = i1 + i2
+因为类型推导机制的存在，可以省略返回值类型
+fun add(i1: Int, i2: Int) = i1 + i2
+类声明类Kotlin使用class声明类
+class User &#123;    private var name: String = &quot;&quot;    private var age: Int = 0&#125;
+类中没有属性和方法时，可以省略花括号class User
+Kotlin中创建对象不需要使用new关键字
+val user = User()user.setAge(18)user.setName(&quot;xxin&quot;)println(user.toString())
+构造函数Kotlin中构造函数分为主构造函数和次构造函数，主构造函数只能有一个，次构造函数可以有多个
+主构造函数主构造函数写在类名后面，使用constructor关键字声明，后面括号中的形参作为类的属性，使用var或val关键字修饰，constructor关键字也可以省略
+如果类没有显式声明任何主构造函数和次构造函数，会自动生成一个无参的主构造函数
+class User constructor(private var name: String, private var age: Int) &#123;    private var name: String = name    private var age: Int = age&#125;
+主构造函数没有函数体，如果要在主构造函数中写逻辑，可以写在init结构体中
+class User(private var name: String, private var age: Int) &#123;    init &#123;        println(&quot;name: $name, age: $age&quot;)    &#125;&#125;
+主构造函数中的形参可以省略var或val关键字，省略之后的形参不作为属性，只能在init结构体中使用
+class User(name: String, age: Int) &#123;    init &#123;        println(&quot;name: $name, age: $age&quot;)    &#125;&#125;
+次构造函数Kotlin中可以有多个次构造函数，而无主构造函数，使用constructor关键字声明次构造函数
+class User &#123;    private var name: String = &quot;&quot;    private var age: Int = 0    // 使用 this 调用两个参数的构造函数    constructor(name: String) : this(name, 18) &#123;        println(&quot;一个参数的构造函数&quot;)    &#125;    // 给属性赋值    constructor(name: String, age: Int) &#123;        println(&quot;两个参数的构造函数&quot;)        this.name = name        this.age = age    &#125;&#125;
+当一个类既有主构造函数又有次构造函数时，所有次构造函数必须直接或间接的调用主构造函数
+// 主构造函数中的形参省略了var或val关键字，只能在init结构体中使用open class User(name: String, age: Int) &#123;    private var name: String = &quot;&quot;    private var age: Int = 0    init &#123;        // 初始化块中给属性赋值        println(&quot;初始化块&quot;)        this.name = name        this.age = age    &#125;    // 次构造函数，直接调用主构造函数    constructor(name: String) : this(name, 18) &#123;        println(&quot;一个参数的构造函数&quot;)    &#125;    // 次构造函数，间接调用主构造函数    constructor(age: Int) : this(&quot;xxin&quot;) &#123;        println(&quot;两个参数的构造函数&quot;)    &#125;&#125;
+继承Kotlin中的类默认是不可继承的，如果要使一个类可以被继承，需要在类名前添加open关键字
+open class User &#123;&#125;
+让IKun类继承User类，使用:关键字
+下面代码中，被继承的类User之所以带有()，是因为Kotlin和java一样，在类继承时子类的构造函数会调用父类的构造函数，如果父类没有定义构造函数，子类继承时应该调用父类的无参构造函数，所以被继承的类带有()
+class IKun : User() &#123;    &#125;
+如果父类有多个构造函数，子类只需要选择调用一个构造函数即可，具体选择哪个构造函数，在继承时通过括号中的参数指定
+// 父类的主构造函数无形参open class User() &#123;    // 一个形参的次构造函数    constructor(name: String) : this() &#123;        println(&quot;User的构造方法1&quot;)    &#125;    // 两个形参的次构造函数    constructor(name: String, age: Int) : this(name) &#123;        println(&quot;User的构造方法2&quot;)    &#125;&#125;// 调用空参的主构造函数class IKun(name: String) : User() &#123;&#125;// 调用一个形参的次构造函数class IKun(name: String) : User(name) &#123;&#125;
+如果子类中只有次构造函数，没有主构造函数，那么被继承的类User后不需要再带()，构造函数中使用super关键字调用父类的构造函数
+class IKun : User &#123;    constructor() : super() &#123;        println(&quot;IKun constructor&quot;)    &#125;&#125;
+
+]]></content>
+      <categories>
+        <category>Kotlin</category>
+      </categories>
+      <tags>
+        <tag>Kotlin入门</tag>
+      </tags>
   </entry>
 </search>
