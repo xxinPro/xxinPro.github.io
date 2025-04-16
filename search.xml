@@ -17979,7 +17979,35 @@ public class Boy extends Person &#123;    @Override    public void age() &#123; 
   <entry>
     <title>Kotlin</title>
     <url>/2025/04/05/Kotlin/</url>
-    <content><![CDATA[声明变量Kotlin使用val声明不可变变量，使用var声明可变变量
+    <content><![CDATA[修饰符
+
+
+
+修饰符
+说明
+
+
+
+
+private
+只能在当前类中访问
+
+
+protected
+只能在当前类和子类中访问
+
+
+public
+任何类都可以访问（默认）
+
+
+internal
+只能在当前模块中访问
+
+
+
+
+声明变量Kotlin使用val声明不可变变量，使用var声明可变变量
 val name: String = &quot;小明&quot;var age: Int = 18
 类型推导机制：自动推导变量的数据类型，不需要显式指定
 val name = &quot;小明&quot;var age = 18
@@ -17999,27 +18027,44 @@ class User &#123;    private var name: String = &quot;&quot;    private var age:
 Kotlin中创建对象不需要使用new关键字
 val user = User()user.setAge(18)user.setName(&quot;xxin&quot;)println(user.toString())
 构造函数Kotlin中构造函数分为主构造函数和次构造函数，主构造函数只能有一个，次构造函数可以有多个
-主构造函数主构造函数写在类名后面，使用constructor关键字声明，后面括号中的形参作为类的属性，使用var或val关键字修饰，constructor关键字也可以省略
-如果类没有显式声明任何主构造函数和次构造函数，会自动生成一个无参的主构造函数
-class User constructor(private var name: String, private var age: Int) &#123;    private var name: String = name    private var age: Int = age&#125;
+主构造函数主构造函数写在类名后面，使用constructor关键字声明，后面括号中的形参也作为类的属性，在类中可以直接调用，使用var或val关键字修饰，constructor关键字也可以省略
+class User constructor(private var name: String, private var age: Int) &#123;&#125;
+如果类没有显式声明任何主构造函数和次构造函数，会自动生成一个无参的主构造函数，如下三种写法实际上完全一致
+class Userclass User()class User constructor()
 主构造函数没有函数体，如果要在主构造函数中写逻辑，可以写在init结构体中
-class User(private var name: String, private var age: Int) &#123;    init &#123;        println(&quot;name: $name, age: $age&quot;)    &#125;&#125;
-主构造函数中的形参可以省略var或val关键字，省略之后的形参不作为属性，只能在init结构体中使用
-class User(name: String, age: Int) &#123;    init &#123;        println(&quot;name: $name, age: $age&quot;)    &#125;&#125;
+class User(private var name: String, private var age: Int) &#123;    init &#123;        printInfo()    &#125;        private fun printInfo() &#123;        println(&quot;name: $name, age: $age&quot;)    &#125;&#125;
+主构造函数中的形参可以省略var或val关键字，省略之后的形参不再作为类的属性，只能在init结构体中被调用
+class User(name: String, age: Int) &#123;    private var name: String    private var age: Int    init &#123;        this.name = name        this.age = age        printInfo()    &#125;    private fun printInfo() &#123;        println(&quot;name: $name, age: $age&quot;)    &#125;&#125;
 次构造函数Kotlin中可以有多个次构造函数，而无主构造函数，使用constructor关键字声明次构造函数
 class User &#123;    private var name: String = &quot;&quot;    private var age: Int = 0    // 使用 this 调用两个参数的构造函数    constructor(name: String) : this(name, 18) &#123;        println(&quot;一个参数的构造函数&quot;)    &#125;    // 给属性赋值    constructor(name: String, age: Int) &#123;        println(&quot;两个参数的构造函数&quot;)        this.name = name        this.age = age    &#125;&#125;
 当一个类既有主构造函数又有次构造函数时，所有次构造函数必须直接或间接的调用主构造函数
 // 主构造函数中的形参省略了var或val关键字，只能在init结构体中使用open class User(name: String, age: Int) &#123;    private var name: String = &quot;&quot;    private var age: Int = 0    init &#123;        // 初始化块中给属性赋值        println(&quot;初始化块&quot;)        this.name = name        this.age = age    &#125;    // 次构造函数，直接调用主构造函数    constructor(name: String) : this(name, 18) &#123;        println(&quot;一个参数的构造函数&quot;)    &#125;    // 次构造函数，间接调用主构造函数    constructor(age: Int) : this(&quot;xxin&quot;) &#123;        println(&quot;两个参数的构造函数&quot;)    &#125;&#125;
 继承Kotlin中的类默认是不可继承的，如果要使一个类可以被继承，需要在类名前添加open关键字
 open class User &#123;&#125;
-让IKun类继承User类，使用:关键字
-下面代码中，被继承的类User之所以带有()，是因为Kotlin和java一样，在类继承时子类的构造函数会调用父类的构造函数，如果父类没有定义构造函数，子类继承时应该调用父类的无参构造函数，所以被继承的类带有()
+类的继承使用:关键字，Kotlin中所有类默认继承Any类
+class IKun : Any() &#123;&#125;
+下面代码中，让IKun类继承User类，被继承的类User之所以带有()，是因为Kotlin和java一样，在类继承时子类的构造函数会调用父类的构造函数，如果父类没有定义构造函数，子类继承时应该调用父类的无参构造函数，所以被继承的类带有()
 class IKun : User() &#123;    &#125;
-如果父类有多个构造函数，子类只需要选择调用一个构造函数即可，具体选择哪个构造函数，在继承时通过括号中的参数指定
-// 父类的主构造函数无形参open class User() &#123;    // 一个形参的次构造函数    constructor(name: String) : this() &#123;        println(&quot;User的构造方法1&quot;)    &#125;    // 两个形参的次构造函数    constructor(name: String, age: Int) : this(name) &#123;        println(&quot;User的构造方法2&quot;)    &#125;&#125;// 调用空参的主构造函数class IKun(name: String) : User() &#123;&#125;// 调用一个形参的次构造函数class IKun(name: String) : User(name) &#123;&#125;
+如果父类有多个构造函数，子类只需要选择调用一个构造函数即可，具体选择哪个构造函数，在继承时通过()中的参数指定
+// 父类的主构造函数无形参open class User() &#123;    // 一个形参的次构造函数    constructor(name: String) : this() &#123;        println(&quot;User的构造方法1&quot;)    &#125;    // 两个形参的次构造函数    constructor(name: String, age: Int) : this(name) &#123;        println(&quot;User的构造方法2&quot;)    &#125;&#125;// 子类调用父类空参的主构造函数class IKun(name: String) : User() &#123;&#125;// 子类调用父类一个形参的次构造函数class IKun(name: String) : User(name) &#123;&#125;
 如果子类中只有次构造函数，没有主构造函数，那么被继承的类User后不需要再带()，构造函数中使用super关键字调用父类的构造函数
 class IKun : User &#123;    constructor() : super() &#123;        println(&quot;IKun constructor&quot;)    &#125;&#125;
-
+接口和java一样，Kotlin中的接口使用interface关键字声明
+interface IKun &#123;    fun sing()    fun dance()    fun rap()    fun basketball()&#125;
+实现接口使用:，实现多个接口使用,分隔，重写方法时，需要使用override关键字
+class XiaoHeiZi : IKun &#123;    override fun sing() &#123;        println(&quot;我会唱&quot;)    &#125;    override fun dance() &#123;        println(&quot;我会跳&quot;)    &#125;    override fun rap() &#123;        println(&quot;我会rap&quot;)    &#125;    override fun basketball() &#123;        println(&quot;我会篮球&quot;)    &#125;&#125;
+调用接口中的方法
+val iKun: IKun = XiaoHeiZi()iKun.sing()iKun.dance()iKun.rap()iKun.basketball()
+数据类Kotlin中提供了数据类，使用data关键字声明，会自动生成equals()、hashCode()、toString()方法
+data class User(var name: String, var age: Int)
+等同于
+class User(var name: String, var age: Int)&#123;    override fun equals(other: Any?): Boolean &#123;        // 三个等于号是比较地址，两个等于号是比较值        if (this === other) return true        // 安全调用运算符 ?. ，如果other为null就返回null，否则返回other的javaClass        if (javaClass != other?.javaClass) return false        // 将 other 转换为 User 类型        other as User        // 比较 name 和 age        if (name != other.name) return false        if (age != other.age) return false        return true    &#125;    override fun hashCode(): Int &#123;        var result = name.hashCode()        result = 31 * result + age        return result    &#125;    override fun toString(): String &#123;        return &quot;User(name=&#x27;$name&#x27;, age=$age)&quot;    &#125;&#125;
+单例类Kotlin中提供了单例类，使用object关键字声明，会自动生成一个实例，并且是线程安全的
+object Singleton &#123;    fun singletonTest() &#123;        println(&quot;singletonTest&quot;)    &#125;&#125;
+调用
+Singleton.singletonTest()
+等同于
+class Singleton() &#123;    companion object &#123;        // 使用 @Volatile 保证变量的可见性        @Volatile        private var instance: Singleton? = null        fun getInstance(): Singleton &#123;            // 第一次检查，避免不必要的同步            if (instance == null) &#123;                synchronized(Singleton::class) &#123;                    // 第二次检查，确保只有一个实例被创建                    if (instance == null) &#123;                        instance = Singleton()                    &#125;                &#125;            &#125;            return instance!!        &#125;    &#125;&#125;
 ]]></content>
       <categories>
         <category>Kotlin</category>
