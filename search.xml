@@ -5960,7 +5960,7 @@ Producer(&#123; s1, s2 -&gt;    println(&quot;$&#123;s1&#125;，我是练习时�
 此外如果Lambda表达式只有一个参数，参数可以使用it关键字代替
 Producer &#123;    println(&quot;$&#123;it&#125;，我是练习时长两年半的个人练习生cxk，我喜欢唱跳rap篮球&quot;)&#125;.start()
 函数作为参数Lambda表达式可以作为参数传递给函数，如下，在子线程中执行传入的函数
-fun execute(func: (str: String) -&gt; String) &#123;    // 若线程池为空，创建线程池    if (pool == null) &#123;        pool = ThreadPoolExecutor(            5, 10, 10,            TimeUnit.SECONDS,            LinkedBlockingDeque(),            Executors.defaultThreadFactory(),            ThreadPoolExecutor.AbortPolicy()        )    &#125;    // 执行任务    pool!!.execute &#123;        func(&quot;cxk&quot;)    &#125;&#125;
+fun execute(func: (str: String) -&gt; String) &#123;    // 若线程池为空，创建线程池    if (pool == null) &#123;        pool = ThreadPoolExecutor(            5, 10, 10,            TimeUnit.SECONDS,            LinkedBlockingDeque(),            Executors.defaultThreadFactory(),            ThreadPoolExecutor.AbortPolicy()        )    &#125;    // 执行任务    pool!!.execute &#123;        func(&quot;cxk&quot;)    &#125;    pool!!.shutdown()&#125;
 正常调用时
 execute(fun(name: String) &#123;    println(&quot;全民制作人大家好，我是练习时长两年半的个人练习生$&#123;name&#125;，我喜欢唱跳rap篮球&quot;)&#125;)
 Lambda表达式通过Lambda表达式简化代码
