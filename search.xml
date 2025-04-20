@@ -5872,8 +5872,25 @@ val name: String = &quot;小明&quot;var age: Int = 18
 val name = &quot;小明&quot;var age = 18
 但是如果延迟赋值，就必须显式指定类型
 val name: Stringval age: Intname = &quot;小明&quot;age = 18
+逻辑控制条件语句ifKotlin的if语法和Java基本一致
+fun getType(any : Any?) : String &#123;    if (any is String) &#123;        return &quot;String&quot;    &#125; else if (any is Number) &#123;        // double float long int short byte 都是Number的子类        return &quot;Number&quot;    &#125; else if (any is Char) &#123;        return &quot;Char&quot;    &#125; else if (any == null) &#123;        return &quot;null&quot;    &#125;    return &quot;Unknown&quot;&#125;
+Kotlin的if语句允许有返回值，即每个条件代码块中的最后一行代码
+fun getType(any : Any?) : String &#123;    return if (any is String) &#123;        &quot;String&quot;    &#125; else if (any is Number) &#123;        &quot;Number&quot;    &#125; else if (any is Char) &#123;        &quot;Char&quot;    &#125; else if (any == null) &#123;        &quot;null&quot;    &#125; else &#123;        &quot;Unknown&quot;    &#125;&#125;
+进一步简化
+fun getType(any: Any?) = if (any is String) &quot;String&quot;else if (any is Number) &quot;Number&quot;else if (any is Char) &quot;Char&quot;else if (any == null) &quot;null&quot;else &quot;Unknown&quot;
+whenwhen语句可以替代if、else if、else，并且也可以有返回值
+fun getType(any: Any?) : String &#123;    return when (any) &#123;        is String -&gt; &#123;&quot;String&quot;&#125;        is Number -&gt; &#123;&quot;Number&quot;&#125;        is Char -&gt; &#123;&quot;Char&quot;&#125;        null -&gt; &#123;&quot;null&quot;&#125;        else -&gt; &#123;&quot;Unknown&quot;&#125;    &#125;&#125;
+进一步简化fun getType(any: Any?) = when (any) &#123;    is String -&gt; &quot;String&quot;    is Number -&gt; &quot;Number&quot;    is Char -&gt; &quot;Char&quot;    null -&gt; &quot;null&quot;    else -&gt; &quot;Unknown&quot;&#125;
+when语句还可以用于范围判断
+fun getSope(num : Number) &#123;    when (num) &#123;        in 0..10 -&gt; println(&quot;0..10&quot;)        in 11..20 -&gt; println(&quot;11..20&quot;)        in 21..30 -&gt; println(&quot;21..30&quot;)        else -&gt; println(&quot;out of range&quot;)    &#125;&#125;
+// 上面的 0..10 可以看作数学闭区间，即 [0, 10]val r1: IntRange = 1..10// 左闭右开区间，即 [1, 10)val r2: IntRange = 1 until 10
+forfor语句主要用于遍历
+// 单列集合遍历val list = listOf(1, 2, 3, 4, 5)for (i in list) &#123;    println(i)&#125;// 双列集合遍历val map = mapOf(&quot;a&quot; to 1, &quot;b&quot; to 2, &quot;c&quot; to 3)for ((key, value) in map) &#123;    println(&quot;$key -&gt; $value&quot;)&#125;
+whilewhile语句可以用于循环
+var i = 0while (i &lt; 5) &#123;    println(i)    i++&#125;
 函数Kotlin使用fun声明函数
 fun test() &#123;    println(&quot;test&quot;)&#125;
+如果未注明返回值类型，会自动推导为Unit类型，即无返回值fun test(): Unit &#123;    println(&quot;test&quot;)&#125;
 返回值类型放在形参列表后面，使用:分隔
 fun add(i1: Int, i2: Int): Int &#123;    return i1 + i2&#125;
 函数只有一个表达式时，可以省略花括号和return关键字，用一个等号代替
@@ -5926,6 +5943,32 @@ Singleton.singletonTest()
 class Singleton() &#123;    companion object &#123;        // 使用 @Volatile 保证变量的可见性        @Volatile        private var instance: Singleton? = null        fun getInstance(): Singleton &#123;            // 第一次检查，避免不必要的同步            if (instance == null) &#123;                synchronized(Singleton::class) &#123;                    // 第二次检查，确保只有一个实例被创建                    if (instance == null) &#123;                        instance = Singleton()                    &#125;                &#125;            &#125;            return instance!!        &#125;    &#125;&#125;
 调用
 Singleton.getInstance().singletonTest()
+Lambda表达式Lambda表达式的结构如下
+&#123; 参数名1: 参数类型, 参数名2: 参数类型 -&gt; 函数体 &#125;// 例如val lambda = &#123; s1: String, s2: String -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;
+函数式接口如果函数所需的参数是一个函数式接口，那么可以直接将Lambda表达式作为参数传递给函数，首先
+// 个人练习生，fun interface定义函数式接口fun interface Trainee &#123;    // 展示才艺    fun showTalent(s1: String, s2: String)&#125;// 全民制作人，使用Trainee作为参数类型class Producer (private val trainee: Trainee) &#123;    fun start() &#123;        trainee.showTalent(&quot;全民制作人大家好&quot;, &quot;我喜欢&quot;)    &#125;&#125;
+创建全民制作人对象时，需要传入个人练习生的匿名类，如下
+Producer(object : Trainee &#123;    override fun showTalent(s1: String, s2: String) &#123;        println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)        println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)    &#125;&#125;).start()
+使用Lambda表达式可以简化代码
+val lambda = &#123; s1: String, s2: String -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;Producer(lambda).start()
+Lambda表达式不必声明为变量，直接写入
+Producer(&#123; s1: String, s2: String -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;).start()
+Lambda表达式的参数类型可以省略，编译器会自动推导
+Producer(&#123; s1, s2 -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;).start()
+如果Lambda表达式是最后一个参数，那么可以将其放在括号外面；如果Lambda表达式是唯一一个参数，那么可以省略括号
+// 放在括号外面Producer() &#123; s1, s2 -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;.start()// 省略括号Producer &#123; s1, s2 -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;.start()
+此外如果Lambda表达式只有一个参数，参数可以使用it关键字代替
+Producer &#123;    println(&quot;$&#123;it&#125;，我是练习时长两年半的个人练习生cxk，我喜欢唱跳rap篮球&quot;)&#125;.start()
+函数作为参数Lambda表达式可以作为参数传递给函数，如下，在子线程中执行传入的函数
+fun execute(func: (str: String) -&gt; String) &#123;    // 若线程池为空，创建线程池    if (pool == null) &#123;        pool = ThreadPoolExecutor(            5, 10, 10,            TimeUnit.SECONDS,            LinkedBlockingDeque(),            Executors.defaultThreadFactory(),            ThreadPoolExecutor.AbortPolicy()        )    &#125;    // 执行任务    pool!!.execute &#123;        func(&quot;cxk&quot;)    &#125;&#125;
+正常调用时
+execute(fun(name: String) &#123;    println(&quot;全民制作人大家好，我是练习时长两年半的个人练习生$&#123;name&#125;，我喜欢唱跳rap篮球&quot;)&#125;)
+Lambda表达式通过Lambda表达式简化代码
+execute &#123;    println(&quot;全民制作人大家好，我是练习时长两年半的个人练习生$&#123;it&#125;，我喜欢唱跳rap篮球&quot;)&#125;
+Lambda表达式也可以作为函数的返回值，如下方法可以简化
+fun getFunc(): (str: String) -&gt; Unit &#123;    return fun(str: String) &#123;        println(&quot;全民制作人大家好，我是练习时长两年半的个人练习生$&#123;str&#125;，我喜欢唱跳rap篮球&quot;)    &#125;&#125;// Lambda简化fun getFunc(): (str: String) -&gt; Unit &#123;    return &#123;        println(&quot;全民制作人大家好，我是练习时长两年半的个人练习生$&#123;it&#125;，我喜欢唱跳rap篮球&quot;)    &#125;&#125;
+调用时
+// 调用execute函数execute&#123; getFunc()(it) &#125;
 ]]></content>
       <categories>
         <category>Kotlin</category>
