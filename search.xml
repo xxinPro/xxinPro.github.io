@@ -18134,11 +18134,13 @@ Collecting networkx (from -r requirements.txt (line 1))  Downloading networkx-3.
 编写测试代码scorer.py定义了ContainerVulnerabilityScorer类，用于计算漏洞评分
 from scorer import ContainerVulnerabilityScorerif __name__ == &quot;__main__&quot;:    # 创建评分器实例    scorer = ContainerVulnerabilityScorer()    # 示例输入    cvss_score = 7.5    path_length = 3    centrality = 0.6    # 计算分数    score = scorer.score(cvss_score, path_length, centrality)    print(f&quot;计算得到的分数: &#123;score&#125;&quot;)
 运行代码，控制台输出
-// 控制台输出计算得到的分数: 0.705
+计算得到的分数: 0.705
+
 builder.py用于构建攻击图并获取关键路径，通过如下代码调试
 from builder import AttackGraphBuilderif __name__ == &quot;__main__&quot;:    # 创建 AttackGraphBuilder 实例    builder = AttackGraphBuilder()    # 添加资产    builder.add_asset(&#x27;A&#x27;, &#x27;Start&#x27;)    builder.add_asset(&#x27;B&#x27;, &#x27;Server&#x27;)    builder.add_asset(&#x27;C&#x27;, &#x27;Database&#x27;)    builder.add_asset(&#x27;Z&#x27;, &#x27;End&#x27;)    # 添加漏洞    builder.add_vulnerability(&#x27;A&#x27;, &#x27;CVE-2025-1234&#x27;, 7.5)    builder.add_vulnerability(&#x27;B&#x27;, &#x27;CVE-2025-5678&#x27;, 6.0)    # 添加攻击路径    builder.add_attack_path(&#x27;A&#x27;, &#x27;B&#x27;, &#x27;Exploit&#x27;)    builder.add_attack_path(&#x27;B&#x27;, &#x27;C&#x27;, &#x27;Privilege Escalation&#x27;)    builder.add_attack_path(&#x27;C&#x27;, &#x27;Z&#x27;, &#x27;Data Theft&#x27;)    # 构建图    builder.build_graph()    # 获取关键路径    critical_paths = builder.get_critical_paths()    print(&quot;关键路径:&quot;, critical_paths)
 控制台输出
 攻击图构建完成，共包含节点： 4关键路径: [[&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;Z&#x27;]]
+
 flow_injector.py中定义了SDNPolicyInjector类，用于向软件定义网络（SDN）控制器注入流量阻止规则，通过如下代码调试
 import requestsimport jsonfrom flow_injector import SDNPolicyInjectorif __name__ == &quot;__main__&quot;:    # 替换为你的SDN控制器IP地址    controller_ip = &quot;your_controller_ip&quot;    # 替换为你的交换机ID    switch_id = &quot;your_switch_id&quot;    # 替换为源IP地址    src_ip = &quot;192.168.1.100&quot;    # 替换为目标IP地址    dst_ip = &quot;192.168.1.101&quot;    injector = SDNPolicyInjector(controller_ip)    injector.inject_block_rule(switch_id, src_ip, dst_ip)
 ]]></content>
