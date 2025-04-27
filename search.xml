@@ -5874,7 +5874,7 @@ val name = &quot;小明&quot;var age = 18
 val name: Stringval age: Intname = &quot;小明&quot;age = 18
 逻辑控制条件语句ifKotlin的if语法和Java基本一致
 fun getType(any : Any?) : String &#123;    if (any is String) &#123;        return &quot;String&quot;    &#125; else if (any is Number) &#123;        // double float long int short byte 都是Number的子类        return &quot;Number&quot;    &#125; else if (any is Char) &#123;        return &quot;Char&quot;    &#125; else if (any == null) &#123;        return &quot;null&quot;    &#125;    return &quot;Unknown&quot;&#125;
-Kotlin的if语句允许有返回值，即每个条件代码块中的最后一行代码
+Kotlin的if-else语句是一个表达式，可以返回值，返回值即每个条件代码块中的最后一行代码
 fun getType(any : Any?) : String &#123;    return if (any is String) &#123;        &quot;String&quot;    &#125; else if (any is Number) &#123;        &quot;Number&quot;    &#125; else if (any is Char) &#123;        &quot;Char&quot;    &#125; else if (any == null) &#123;        &quot;null&quot;    &#125; else &#123;        &quot;Unknown&quot;    &#125;&#125;
 进一步简化
 fun getType(any: Any?) = if (any is String) &quot;String&quot;else if (any is Number) &quot;Number&quot;else if (any is Char) &quot;Char&quot;else if (any == null) &quot;null&quot;else &quot;Unknown&quot;
@@ -5945,7 +5945,9 @@ class Singleton() &#123;    companion object &#123;        // 使用 @Volatile �
 Singleton.getInstance().singletonTest()
 Lambda表达式Lambda表达式的结构如下
 &#123; 参数名1: 参数类型, 参数名2: 参数类型 -&gt; 函数体 &#125;// 例如val lambda = &#123; s1: String, s2: String -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;
-函数式接口如果函数所需的参数是一个函数式接口，那么可以直接将Lambda表达式作为参数传递给函数，首先
+函数式接口函数式接口是指只包含一个抽象方法的接口，在Kotlin中，函数式接口可以使用fun interface关键字声明
+Java中的函数式接口可以省略fun interface关键字，或者使用@FunctionalInterface注解声明
+如果一个函数所需的参数是函数式接口，那么可以直接将Lambda表达式作为参数传递给函数
 // 个人练习生，fun interface定义函数式接口fun interface Trainee &#123;    // 展示才艺    fun showTalent(s1: String, s2: String)&#125;// 全民制作人，使用Trainee作为参数类型class Producer (private val trainee: Trainee) &#123;    fun start() &#123;        trainee.showTalent(&quot;全民制作人大家好&quot;, &quot;我喜欢&quot;)    &#125;&#125;
 创建全民制作人对象时，需要传入个人练习生的匿名类，如下
 Producer(object : Trainee &#123;    override fun showTalent(s1: String, s2: String) &#123;        println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)        println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)    &#125;&#125;).start()
