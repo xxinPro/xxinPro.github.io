@@ -12796,7 +12796,8 @@ $(A^{*})^{*}=|A|^{n-2}A$
 数学常用公式定理5
 数学常用公式定理6
 
-多元函数微分平面点集邻域&ensp;&ensp;点$P$的$\delta$邻域
+多元函数微分
+邻域&ensp;&ensp;点$P$的$\delta$邻域
 
 $ $
 \begin{align*}
@@ -12814,23 +12815,7 @@ $ $
 $ $
 
 
-点和点集之间的关系内点
-&nbsp;&nbsp;存在点$P$的邻域$\stackrel {}{U}(P)$，且$\stackrel {}{U}(P) \subset E$，则称$P$为$E$的内点
-外点
-&nbsp;&nbsp;存在点$P$的邻域$\stackrel {}{U}(P)$，且$\stackrel {}{U}(P) \cap E = \varnothing$，则称$P$为$E$的外点
-边界点
-&nbsp;&nbsp;点$P$的任意邻域$\stackrel {}{U}(P)$，既含有属于$E$的点，又含有不属于$E$的点，则称$P$为$E$的边界点
-聚点&nbsp;&nbsp;对于$\forall \delta \gt 0$，点$P$的去心邻域$\stackrel {0}{U}(P,\delta )$内总有$E$中的点，那么称$P$是$E$的聚点
-重要平面点集开集
-&nbsp;&nbsp;如果点集$E$的点都是内点，称$E$为开集
-闭集
-&nbsp;&nbsp;如果点集$E$的边界$\partial E \subset E$，称$E$为闭集
-连通集
-&nbsp;&nbsp;如果点集$E$内任何两点，都可用折线连接起来，并且折线上的所有点属于$E$，称$E$为连通集
-区域
-&nbsp;&nbsp;连通的开集$E$，称为区域或开区域
-闭区域
-&nbsp;&nbsp;开区域连同其边界一起构成的点集称为闭区域
+
 偏导数定义&nbsp;&nbsp;设$z=f(x,y)$，$z$在$(x_0,y_0)$处对$x$的偏导数为
 
 $ $
