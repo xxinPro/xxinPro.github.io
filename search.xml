@@ -5897,6 +5897,8 @@ fun add(i1: Int, i2: Int): Int &#123;    return i1 + i2&#125;
 fun add(i1: Int, i2: Int): Int = i1 + i2
 因为类型推导机制的存在，可以省略返回值类型
 fun add(i1: Int, i2: Int) = i1 + i2
+Kotlin中函数可以接收另一个函数作为参数
+// 接受一个函数作为参数，参数中的函数又接收两个Int类型的参数，并返回Int类型的值fun execute(func : (num1: Int, num2: Int) -&gt; Int) &#123;    val result = func(1, 2)    println(&quot;result = $result&quot;)&#125;// 调用executeval func = fun (num1: Int, num2: Int): Int &#123;    return num1 + num2&#125;execute(func)
 类声明类Kotlin使用class声明类
 class User &#123;    private var name: String = &quot;&quot;    private var age: Int = 0&#125;
 类中没有属性和方法时，可以省略花括号class User
@@ -5932,9 +5934,9 @@ class XiaoHeiZi : IKun &#123;    override fun sing() &#123;        println(&quot
 调用接口中的方法
 val iKun: IKun = XiaoHeiZi()iKun.sing()iKun.dance()iKun.rap()iKun.basketball()
 数据类Kotlin中提供了数据类，使用data关键字声明，会自动生成equals()、hashCode()、toString()方法
-data class User(var name: String, var age: Int)
+data class User(private val name: String, private val age: Int)
 等同于
-class User(var name: String, var age: Int)&#123;    override fun equals(other: Any?): Boolean &#123;        // 三个等于号是比较地址，两个等于号是比较值        if (this === other) return true        // 安全调用运算符 ?. ，如果other为null就返回null，否则返回other的javaClass        if (javaClass != other?.javaClass) return false        // 将 other 转换为 User 类型        other as User        // 比较 name 和 age        if (name != other.name) return false        if (age != other.age) return false        return true    &#125;    override fun hashCode(): Int &#123;        var result = name.hashCode()        result = 31 * result + age        return result    &#125;    override fun toString(): String &#123;        return &quot;User(name=&#x27;$name&#x27;, age=$age)&quot;    &#125;&#125;
+class User(private val name: String, private val age: Int) &#123;    override fun equals(other: Any?): Boolean &#123;        // 三个等于号是比较地址，两个等于号是比较值        if (this === other) return true        // other不属于User类型        if (other !is User) return false        // 判断对象属性是否相等        if (age != other.age) return false        if (name != other.name) return false        return true    &#125;    override fun hashCode(): Int &#123;        var result = age        result = 31 * result + name.hashCode()        return result    &#125;    override fun toString(): String &#123;        return &quot;User(name=&#x27;$name&#x27;, age=$age)&quot;    &#125;&#125;
 单例类Kotlin中提供了单例类，使用object关键字声明，会自动生成一个实例，并且是线程安全的
 object Singleton &#123;    fun singletonTest() &#123;        println(&quot;singletonTest&quot;)    &#125;&#125;
 调用
@@ -11256,6 +11258,14 @@ $(0,\pi)$
 
 
 
+
+
+常用不等式
+$ $
+\begin{align*}
+\sqrt{\frac{a^{2}+b^{2}}{2}} \geq \frac{a+b}{2} \geq \sqrt{a b} \geq \frac{2}{\frac{1}{a}+\frac{1}{b}}
+\end{align*}
+$ $
 
 
 对数公式
@@ -18119,38 +18129,5 @@ TreeMap&ensp;&ensp;对于数值类型数据，TreeMap默认会按照从小到大
       <categories>
         <category>随笔一记</category>
       </categories>
-  </entry>
-  <entry>
-    <title>云数据网络安全</title>
-    <url>/2025/04/25/%E4%BA%91%E6%95%B0%E6%8D%AE%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</url>
-    <content><![CDATA[使用PyCharm打开项目并执行
-模块说明scorer.pyscorer.py：CVS评分模块：支持CVSS、路径长度和中心性指标的加权计算。定义了ContainerVulnerabilityScorer类，通过score方法计算最终评分。
-flow_injector.pyflow_injector.py：策略注入模块：调用OpenDaylight控制器接口，实现流量隔离规则的注入。SDNPolicyInjector类提供了inject_block_rule方法，用于下发阻止特定源IP到目标IP流量的规则。
-builder.pybuilder.py：攻击图建模模块：使用networkx库构建攻击图。该模块定义了AttackGraphBuilder类，提供了添加资产、漏洞、攻击路径等功能，还能获取关键路径和计算节点分数。主要方法如下：
-add_asset：添加资产到图中。add_vulnerability：为资产添加漏洞信息。add_attack_path：添加攻击路径。get_critical_paths：获取从节点A到节点Z的所有简单路径并排序。score_node：计算指定节点的漏洞分数。
-依赖项requirements.txt文件列出了项目所需的依赖库，目前包含networkx和requests。
-安装依赖在项目根目录下执行以下命令安装依赖networkx和requests库，之后根据实际环境补充资产数据、漏洞分数与控制器信息。
-pip install -r requirements.txt
-控制台输出如下，说明安装成功
-Collecting networkx (from -r requirements.txt (line 1))  Downloading networkx-3.4.2-py3-none-any.whl.metadata (6.3 kB)Requirement already satisfied: requests in e:\python\python310\lib\site-packages (from -r requirements.txt (line 2)) (2.31.0)Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in e:\python\python310\lib\site-packages (from requests-&gt;-r requirements.txt (line 2)) (3.4.0)Requirement already satisfied: idna&lt;4,&gt;=2.5 in e:\python\python310\lib\site-packages (from requests-&gt;-r requirements.txt (line 2)) (3.10)             Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in e:\python\python310\lib\site-packages (from requests-&gt;-r requirements.txt (line 2)) (2.2.3)Requirement already satisfied: certifi&gt;=2017.4.17 in e:\python\python310\lib\site-packages (from requests-&gt;-r requirements.txt (line 2)) (2024.8.30)Downloading networkx-3.4.2-py3-none-any.whl (1.7 MB)   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 899.1 kB/s eta 0:00:00Installing collected packages: networkxSuccessfully installed networkx-3.4.2
-编写测试代码scorer.py定义了ContainerVulnerabilityScorer类，用于计算漏洞评分，通过如下代码调试
-from scorer import ContainerVulnerabilityScorerif __name__ == &quot;__main__&quot;:    # 创建评分器实例    scorer = ContainerVulnerabilityScorer()    # 示例输入    cvss_score = 7.5    path_length = 3    centrality = 0.6    # 计算分数    score = scorer.score(cvss_score, path_length, centrality)    print(f&quot;计算得到的分数: &#123;score&#125;&quot;)
-运行代码，控制台输出
-计算得到的分数: 0.705
-
-builder.py用于构建攻击图并获取关键路径，通过如下代码调试
-from builder import AttackGraphBuilderif __name__ == &quot;__main__&quot;:    # 创建 AttackGraphBuilder 实例    builder = AttackGraphBuilder()    # 添加资产    builder.add_asset(&#x27;A&#x27;, &#x27;Start&#x27;)    builder.add_asset(&#x27;B&#x27;, &#x27;Server&#x27;)    builder.add_asset(&#x27;C&#x27;, &#x27;Database&#x27;)    builder.add_asset(&#x27;Z&#x27;, &#x27;End&#x27;)    # 添加漏洞    builder.add_vulnerability(&#x27;A&#x27;, &#x27;CVE-2025-1234&#x27;, 7.5)    builder.add_vulnerability(&#x27;B&#x27;, &#x27;CVE-2025-5678&#x27;, 6.0)    # 添加攻击路径    builder.add_attack_path(&#x27;A&#x27;, &#x27;B&#x27;, &#x27;Exploit&#x27;)    builder.add_attack_path(&#x27;B&#x27;, &#x27;C&#x27;, &#x27;Privilege Escalation&#x27;)    builder.add_attack_path(&#x27;C&#x27;, &#x27;Z&#x27;, &#x27;Data Theft&#x27;)    # 构建图    builder.build_graph()    # 获取关键路径    critical_paths = builder.get_critical_paths()    print(&quot;关键路径:&quot;, critical_paths)
-控制台输出
-攻击图构建完成，共包含节点： 4关键路径: [[&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;Z&#x27;]]
-
-flow_injector.py中定义了SDNPolicyInjector类，用于向软件定义网络（SDN）控制器注入流量阻止规则，通过如下代码调试
-import requestsimport jsonfrom flow_injector import SDNPolicyInjectorif __name__ == &quot;__main__&quot;:    # 替换为你的SDN控制器IP地址    controller_ip = &quot;your_controller_ip&quot;    # 替换为你的交换机ID    switch_id = &quot;your_switch_id&quot;    # 替换为源IP地址    src_ip = &quot;192.168.1.100&quot;    # 替换为目标IP地址    dst_ip = &quot;192.168.1.101&quot;    injector = SDNPolicyInjector(controller_ip)    injector.inject_block_rule(switch_id, src_ip, dst_ip)
-]]></content>
-      <categories>
-        <category>分类</category>
-      </categories>
-      <tags>
-        <tag>标签</tag>
-      </tags>
   </entry>
 </search>
