@@ -5834,10 +5834,12 @@ internal
 
 声明变量Kotlin使用val声明不可变变量，使用var声明可变变量
 val name: String = &quot;小明&quot;var age: Int = 18
-类型推导机制：自动推导变量的数据类型，不需要显式指定
+kotlin类型推导机制：自动推导变量的数据类型，不需要显式指定
 val name = &quot;小明&quot;var age = 18
 但是如果延迟赋值，就必须显式指定类型
 val name: Stringval age: Intname = &quot;小明&quot;age = 18
+kotlin中不允许变量为null，如有必要，必须使用?修饰
+val name: String? = nullvar age: Int? = null
 逻辑控制条件语句ifKotlin的if语法和Java基本一致
 fun getType(any : Any?) : String &#123;    if (any is String) &#123;        return &quot;String&quot;    &#125; else if (any is Number) &#123;        // double float long int short byte 都是Number的子类        return &quot;Number&quot;    &#125; else if (any is Char) &#123;        return &quot;Char&quot;    &#125; else if (any == null) &#123;        return &quot;null&quot;    &#125;    return &quot;Unknown&quot;&#125;
 Kotlin的if-else语句是一个表达式，可以返回值，返回值即每个条件代码块中的最后一行代码
@@ -5861,84 +5863,88 @@ fun test() &#123;    println(&quot;test&quot;)&#125;
 fun add(i1: Int, i2: Int): Int &#123;    return i1 + i2&#125;
 函数只有一个表达式时，可以省略花括号和return关键字，用一个等号代替
 fun add(i1: Int, i2: Int): Int = i1 + i2
-因为类型推导机制的存在，可以省略返回值类型
+使用=号时，由于类型推导机制的存在，可以省略返回值类型
 fun add(i1: Int, i2: Int) = i1 + i2
 Kotlin中函数可以接收另一个函数作为参数
 // 接受一个函数作为参数，参数中的函数又接收两个Int类型的参数，并返回Int类型的值fun execute(func : (num1: Int, num2: Int) -&gt; Int) &#123;    val result = func(1, 2)    println(&quot;result = $result&quot;)&#125;// 调用executeval func = fun (num1: Int, num2: Int): Int &#123;    return num1 + num2&#125;execute(func)
 类声明类Kotlin使用class声明类
-class User &#123;    private var name: String = &quot;&quot;    private var age: Int = 0&#125;
+class User (name: String, age: Int)&#123;    private var name: String    private var age: Int    init &#123;        this.name = name        this.age = age    &#125;    override fun toString(): String &#123;        return &quot;User(name=&#x27;$name&#x27;, age=$age)&quot;    &#125;&#125;
 类中没有属性和方法时，可以省略花括号class User
 Kotlin中创建对象不需要使用new关键字
-val user = User()user.setAge(18)user.setName(&quot;xxin&quot;)println(user.toString())
+val user = User(&quot;小明&quot;, 18)println(user.toString())
 构造函数Kotlin中构造函数分为主构造函数和次构造函数，主构造函数只能有一个，次构造函数可以有多个
-主构造函数主构造函数写在类名后面，使用constructor关键字声明，后面括号中的形参也作为类的属性，在类中可以直接调用，使用var或val关键字修饰，constructor关键字也可以省略
-class User constructor(private var name: String, private var age: Int) &#123;&#125;
+主构造函数主构造函数写在类名后面，使用constructor(...)关键字声明，constructor关键字也可以省略，括号中是主构造函数的形参列表
+class User constructor()
 如果类没有显式声明任何主构造函数和次构造函数，会自动生成一个无参的主构造函数，如下三种写法实际上完全一致
 class Userclass User()class User constructor()
 主构造函数没有函数体，如果要在主构造函数中写逻辑，可以写在init结构体中
 class User(private var name: String, private var age: Int) &#123;    init &#123;        printInfo()    &#125;        private fun printInfo() &#123;        println(&quot;name: $name, age: $age&quot;)    &#125;&#125;
-主构造函数中的形参可以省略var或val关键字，省略之后的形参不再作为类的属性，只能在init结构体中被调用
-class User(name: String, age: Int) &#123;    private var name: String    private var age: Int    init &#123;        this.name = name        this.age = age        printInfo()    &#125;    private fun printInfo() &#123;        println(&quot;name: $name, age: $age&quot;)    &#125;&#125;
-次构造函数Kotlin中可以有多个次构造函数，而无主构造函数，使用constructor关键字声明次构造函数
-class User &#123;    private var name: String = &quot;&quot;    private var age: Int = 0    // 使用 this 调用两个参数的构造函数    constructor(name: String) : this(name, 18) &#123;        println(&quot;一个参数的构造函数&quot;)    &#125;    // 给属性赋值    constructor(name: String, age: Int) &#123;        println(&quot;两个参数的构造函数&quot;)        this.name = name        this.age = age    &#125;&#125;
+主构造函数中如果存在var或val声明的形参，形参也作为类的成员变量，和常规成员变量的使用完全一致
+class User constructor(var name: String, var age: Int)// 省略constructor关键字class User(var name: String, var age: Int)
+但如果主构造函数中的形参没有var或val声明，则不会作为类的成员变量，只能在init结构体和类中作为被使用，其他函数中无法使用
+class User(name: String, age: Int)&#123;    // 主构造函数中的形参在类中被使用    private val name: String = name    private val age: Int = age    init &#123;        // 主构造函数中的形参在结构体中被使用        println(&quot;name = $name, age = $age&quot;)    &#125;        override fun toString(): String &#123;        return &quot;User(name=&#x27;$&#123;this.name&#125;&#x27;, age=$&#123;this.age&#125;)&quot;    &#125;&#125;
+次构造函数Kotlin在类中使用constructor关键字声明次构造函数，可以有多个次构造函数，而无主构造函数
+// 注意此时的类名后没有括号，说明没有显式声明主构造函数// 而类中又声明了次构造函数，所以不会自动生成主构造函数class User &#123;    // 由于在构造函数中一定会对两个成员变量进行赋值    // 所以在声明时可以省略赋予初始值    private var name: String    private var age: Int    // 使用 this 调用两个参数的构造函数    constructor(name: String) : this(name, 18)    // 给属性赋值    constructor(name: String, age: Int) &#123;        this.name = name        this.age = age    &#125;&#125;
 当一个类既有主构造函数又有次构造函数时，所有次构造函数必须直接或间接的调用主构造函数
-// 主构造函数中的形参省略了var或val关键字，只能在init结构体中使用open class User(name: String, age: Int) &#123;    private var name: String = &quot;&quot;    private var age: Int = 0    init &#123;        // 初始化块中给属性赋值        println(&quot;初始化块&quot;)        this.name = name        this.age = age    &#125;    // 次构造函数，直接调用主构造函数    constructor(name: String) : this(name, 18) &#123;        println(&quot;一个参数的构造函数&quot;)    &#125;    // 次构造函数，间接调用主构造函数    constructor(age: Int) : this(&quot;xxin&quot;) &#123;        println(&quot;两个参数的构造函数&quot;)    &#125;&#125;
+class User() &#123;    // 此时在主构造函数中未对两个成员变量进行赋值    // 所以在声明时必须赋予初始值，或者使用 ? 表示可为null    private var name: String? = null    private var age: Int? = null    // 使用 this 调用两个参数的构造函数    constructor(name: String) : this(name, 18)    // 给属性赋值    constructor(name: String, age: Int) : this() &#123;        this.name = name        this.age = age    &#125;&#125;
 继承Kotlin中的类默认是不可继承的，如果要使一个类可以被继承，需要在类名前添加open关键字
-open class User &#123;&#125;
-类的继承使用:关键字，Kotlin中所有类默认继承Any类
-class IKun : Any() &#123;&#125;
-下面代码中，让IKun类继承User类，被继承的类User之所以带有()，是因为Kotlin和java一样，在类继承时子类的构造函数会调用父类的构造函数，如果父类没有定义构造函数，子类继承时应该调用父类的无参构造函数，所以被继承的类带有()
-class IKun : User() &#123;    &#125;
-如果父类有多个构造函数，子类只需要选择调用一个构造函数即可，具体选择哪个构造函数，在继承时通过()中的参数指定
-// 父类的主构造函数无形参open class User() &#123;    // 一个形参的次构造函数    constructor(name: String) : this() &#123;        println(&quot;User的构造方法1&quot;)    &#125;    // 两个形参的次构造函数    constructor(name: String, age: Int) : this(name) &#123;        println(&quot;User的构造方法2&quot;)    &#125;&#125;// 子类调用父类空参的主构造函数class IKun(name: String) : User() &#123;&#125;// 子类调用父类一个形参的次构造函数class IKun(name: String) : User(name) &#123;&#125;
-如果子类中只有次构造函数，没有主构造函数，那么被继承的类User后不需要再带()，构造函数中使用super关键字调用父类的构造函数
+open class User
+类的继承使用:符号，Kotlin中所有类默认继承Any类
+class IKun : Any()// 由于未显式声明任何主次构造函数的类，会自动生成一个无参的主构造函数// 所以上面的写法等同于class IKun() : Any()
+被继承的类User之所以带有()，是因为Kotlin和java一样，在类继承时子类的构造函数会调用父类的构造函数，如果父类没有显式定义构造函数，子类继承时应该调用父类的无参构造函数，所以被继承的类带有()
+class IKun : User()
+如果父类有多个构造函数，子类继承时只需要选择调用一个构造函数即可，具体选择哪个，在继承时通过()中的参数指定
+// 父类的主构造函数无形参open class User() &#123;    // 一个形参的次构造函数    constructor(name: String) : this() &#123;        println(&quot;User的构造方法1&quot;)    &#125;    // 两个形参的次构造函数    constructor(name: String, age: Int) : this(name) &#123;        println(&quot;User的构造方法2&quot;)    &#125;&#125;// 子类继承父类，调用父类空参的主构造函数class IKun(name: String) : User()// 子类继承父类，调用父类一个形参的次构造函数class IKun(name: String) : User(name)
+如果子类中只有次构造函数，没有主构造函数，那么继承父类时不能使用()，而是在次构造函数中使用super关键字调用父类的构造函数
 class IKun : User &#123;    constructor() : super() &#123;        println(&quot;IKun constructor&quot;)    &#125;&#125;
-接口和java一样，Kotlin中的接口使用interface关键字声明
-interface IKun &#123;    fun sing()    fun dance()    fun rap()    fun basketball()&#125;
-实现接口使用:，实现多个接口使用,分隔，重写方法时，需要使用override关键字
-class XiaoHeiZi : IKun &#123;    override fun sing() &#123;        println(&quot;我会唱&quot;)    &#125;    override fun dance() &#123;        println(&quot;我会跳&quot;)    &#125;    override fun rap() &#123;        println(&quot;我会rap&quot;)    &#125;    override fun basketball() &#123;        println(&quot;我会篮球&quot;)    &#125;&#125;
-调用接口中的方法
-val iKun: IKun = XiaoHeiZi()iKun.sing()iKun.dance()iKun.rap()iKun.basketball()
 数据类Kotlin中提供了数据类，使用data关键字声明，会自动生成equals()、hashCode()、toString()方法
 data class User(private val name: String, private val age: Int)
 等同于
 class User(private val name: String, private val age: Int) &#123;    override fun equals(other: Any?): Boolean &#123;        // 三个等于号是比较地址，两个等于号是比较值        if (this === other) return true        // other不属于User类型        if (other !is User) return false        // 判断对象属性是否相等        if (age != other.age) return false        if (name != other.name) return false        return true    &#125;    override fun hashCode(): Int &#123;        var result = age        result = 31 * result + name.hashCode()        return result    &#125;    override fun toString(): String &#123;        return &quot;User(name=&#x27;$name&#x27;, age=$age)&quot;    &#125;&#125;
 单例类Kotlin中提供了单例类，使用object关键字声明，会自动生成一个实例，并且是线程安全的
 object Singleton &#123;    fun singletonTest() &#123;        println(&quot;singletonTest&quot;)    &#125;&#125;
-调用
+在其他kotlin类中调用
 Singleton.singletonTest()
-等同于
-class Singleton() &#123;    companion object &#123;        // 使用 @Volatile 保证变量的可见性        @Volatile        private var instance: Singleton? = null        fun getInstance(): Singleton &#123;            // 第一次检查，避免不必要的同步            if (instance == null) &#123;                synchronized(Singleton::class) &#123;                    // 第二次检查，确保只有一个实例被创建                    if (instance == null) &#123;                        instance = Singleton()                    &#125;                &#125;            &#125;            return instance!!        &#125;    &#125;&#125;
-调用
-Singleton.getInstance().singletonTest()
+经过反编译发现，等同于
+class Singleton &#123;    companion object &#123;        var INSTANCE: Singleton = Singleton()    &#125;    fun singletonTest() &#123;        println(&quot;singletonTest&quot;)    &#125;&#125;
+在其他类中调用如下。其实如果一个使用object关键字声明的类，在java类中的调用也是用如下方式
+Singleton.INSTANCE.singletonTest()
+接口和java一样，Kotlin中的接口使用interface关键字声明
+interface IKun &#123;    fun sing()    fun dance()    fun rap()    fun basketball()&#125;
+实现接口使用:符号，实现多个接口使用,分隔，重写方法时，需要使用override关键字
+class XiaoHeiZi : IKun &#123;    override fun sing() &#123;        println(&quot;我会唱&quot;)    &#125;    override fun dance() &#123;        println(&quot;我会跳&quot;)    &#125;    override fun rap() &#123;        println(&quot;我会rap&quot;)    &#125;    override fun basketball() &#123;        println(&quot;我会篮球&quot;)    &#125;&#125;
+调用接口中的方法
+val iKun: IKun = XiaoHeiZi()iKun.sing()iKun.dance()iKun.rap()iKun.basketball()
 Lambda表达式Lambda表达式的结构如下
 &#123; 参数名1: 参数类型, 参数名2: 参数类型 -&gt; 函数体 &#125;// 例如val lambda = &#123; s1: String, s2: String -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;
-函数式接口函数式接口是指只包含一个抽象方法的接口，在Kotlin中，函数式接口可以使用fun interface关键字声明
-Java中的函数式接口可以省略fun interface关键字，或者使用@FunctionalInterface注解声明
+函数式接口函数式接口是指只包含一个抽象方法的接口，在Kotlin中，函数式接口使用fun interface关键字声明
+Java中的函数式接口使用@FunctionalInterface注解声明
 如果一个函数所需的参数是函数式接口，那么可以直接将Lambda表达式作为参数传递给函数
-// 个人练习生，fun interface定义函数式接口fun interface Trainee &#123;    // 展示才艺    fun showTalent(s1: String, s2: String)&#125;// 全民制作人，使用Trainee作为参数类型class Producer (private val trainee: Trainee) &#123;    fun start() &#123;        trainee.showTalent(&quot;全民制作人大家好&quot;, &quot;我喜欢&quot;)    &#125;&#125;
-创建全民制作人对象时，需要传入个人练习生的匿名类，如下
-Producer(object : Trainee &#123;    override fun showTalent(s1: String, s2: String) &#123;        println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)        println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)    &#125;&#125;).start()
+/** * 函数式接口，用于定义内容传输的回调方法 */fun interface OnContentTransmitter &#123;    /**     * 传输指定的内容     */    fun transmitContent(content: String)&#125;/** * 执行器，用于执行传输操作 */class TransmitExecutor(private val onContentTransmitter: OnContentTransmitter) &#123;     /**     * 执行传输操作，传输内容     */    fun executeTransmit() &#123;        onContentTransmitter.transmitContent(&quot;hello world&quot;)    &#125;&#125;
+创建TransmitExecutor对象时，需要传入OnContentTransmitter的匿名类，如下
+TransmitExecutor (object : OnContentTransmitter &#123;    override fun transmitContent(content: String) &#123;        println(content)    &#125;&#125;).executeTransmit()
 使用Lambda表达式可以简化代码
-val lambda = &#123; s1: String, s2: String -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;Producer(lambda).start()
+val lambda = &#123; content: String -&gt;    println(content)&#125;TransmitExecutor(lambda).executeTransmit()
 Lambda表达式不必声明为变量，直接写入
-Producer(&#123; s1: String, s2: String -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;).start()
+TransmitExecutor(&#123; content: String -&gt;    println(content)&#125;).executeTransmit()
 Lambda表达式的参数类型可以省略，编译器会自动推导
-Producer(&#123; s1, s2 -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;).start()
+TransmitExecutor(&#123; content -&gt;    println(content)&#125;).executeTransmit()
 如果Lambda表达式是最后一个参数，那么可以将其放在括号外面；如果Lambda表达式是唯一一个参数，那么可以省略括号
-// 放在括号外面Producer() &#123; s1, s2 -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;.start()// 省略括号Producer &#123; s1, s2 -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;.start()
+TransmitExecutor &#123; content -&gt;    println(content)&#125;.executeTransmit()
 此外如果Lambda表达式只有一个参数，参数可以使用it关键字代替
-Producer &#123;    println(&quot;$&#123;it&#125;，我是练习时长两年半的个人练习生cxk，我喜欢唱跳rap篮球&quot;)&#125;.start()
+TransmitExecutor &#123;    println(it)&#125;.executeTransmit()
+同样如果一个函数需要的参数是函数式接口时，和上面的步骤一致
+/** * 执行传输操作 * 调用传入的 [OnContentTransmitter] 接口实例的 [OnContentTransmitter.transmitContent] 方法 */fun execute(onContentTransmitter: OnContentTransmitter) &#123;    // 调用回调接口的方法，传入要传输的内容    onContentTransmitter.transmitContent(&quot;hello world&quot;)&#125;// 执行传输操作，传入一个 Lambda 表达式实现的内容传输回调execute &#123;    // 打印传输的内容    println(it)&#125;
 函数作为参数Lambda表达式可以作为参数传递给函数，如下，在子线程中执行传入的函数
-fun execute(func: (str: String) -&gt; String) &#123;    // 若线程池为空，创建线程池    if (pool == null) &#123;        pool = ThreadPoolExecutor(            5, 10, 10,            TimeUnit.SECONDS,            LinkedBlockingDeque(),            Executors.defaultThreadFactory(),            ThreadPoolExecutor.AbortPolicy()        )    &#125;    // 执行任务    pool!!.execute &#123;        func(&quot;cxk&quot;)    &#125;    pool!!.shutdown()&#125;
+fun execute(func: (content: String) -&gt; Boolean) &#123;    val result: Boolean = func.invoke(&quot;hello world&quot;)    println(&quot;执行结果 = $result&quot;)&#125;
 正常调用时
-execute(fun(name: String) &#123;    println(&quot;全民制作人大家好，我是练习时长两年半的个人练习生$&#123;name&#125;，我喜欢唱跳rap篮球&quot;)&#125;)
-Lambda表达式通过Lambda表达式简化代码
-execute &#123;    println(&quot;全民制作人大家好，我是练习时长两年半的个人练习生$&#123;it&#125;，我喜欢唱跳rap篮球&quot;)&#125;
-Lambda表达式也可以作为函数的返回值，如下方法可以简化
-fun getFunc(): (str: String) -&gt; Unit &#123;    return fun(str: String) &#123;        println(&quot;全民制作人大家好，我是练习时长两年半的个人练习生$&#123;str&#125;，我喜欢唱跳rap篮球&quot;)    &#125;&#125;// Lambda简化fun getFunc(): (str: String) -&gt; Unit &#123;    return &#123;        println(&quot;全民制作人大家好，我是练习时长两年半的个人练习生$&#123;it&#125;，我喜欢唱跳rap篮球&quot;)    &#125;&#125;
+execute (fun (content: String): Boolean &#123;    if (TextUtils.isEmpty(content))        return false    println(content)    return true&#125;)
+通过Lambda表达式简化代码
+execute &#123;    if (TextUtils.isEmpty(it))        return@execute false    println(it)    return@execute true&#125;
+函数作为返回值Lambda表达式也可以作为函数的返回值，如下函数的返回值也是函数，可以简化
+/** * 函数的返回值是 * (str: String, like: String) -&gt; Unit * 这么一个函数类型的返回值 */fun getFunc(): (name: String, like: String) -&gt; Unit &#123;    return fun(name: String, like: String) &#123;        println(&quot;全民制作人大家好，我是练习时长两年半的个人练习生$name，我喜欢$like&quot;)    &#125;&#125;// Lambda简化fun getFunc(): (name: String, like: String) -&gt; Unit &#123;    return  &#123; name, like -&gt;        println(&quot;全民制作人大家好，我是练习时长两年半的个人练习生$name，我喜欢$like&quot;)    &#125;&#125;
 调用时
-// 调用execute函数execute&#123; getFunc()(it) &#125;
+getFunc().invoke(&quot;cxk&quot;, &quot;唱、跳、rap、篮球&quot;)// 或者（不好看）getFunc()(&quot;cxk&quot;, &quot;唱、跳、rap、篮球&quot;)
 ]]></content>
       <categories>
         <category>Kotlin</category>
