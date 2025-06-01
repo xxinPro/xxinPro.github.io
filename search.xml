@@ -5867,7 +5867,7 @@ fun add(i1: Int, i2: Int): Int = i1 + i2
 fun add(i1: Int, i2: Int) = i1 + i2
 Kotlin中函数可以接收另一个函数作为参数
 // 接受一个函数作为参数，参数中的函数又接收两个Int类型的参数，并返回Int类型的值fun execute(func : (num1: Int, num2: Int) -&gt; Int) &#123;    val result = func(1, 2)    println(&quot;result = $result&quot;)&#125;// 调用executeval func = fun (num1: Int, num2: Int): Int &#123;    return num1 + num2&#125;execute(func)
-类声明类Kotlin使用class声明类
+类和接口声明类Kotlin使用class声明类
 class User (name: String, age: Int)&#123;    private var name: String    private var age: Int    init &#123;        this.name = name        this.age = age    &#125;    override fun toString(): String &#123;        return &quot;User(name=&#x27;$name&#x27;, age=$age)&quot;    &#125;&#125;
 类中没有属性和方法时，可以省略花括号class User
 Kotlin中创建对象不需要使用new关键字
