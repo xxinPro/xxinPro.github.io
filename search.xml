@@ -5887,7 +5887,7 @@ class User(name: String, age: Int)&#123;    // 主构造函数中的形参在类
 // 注意此时的类名后没有括号，说明没有显式声明主构造函数// 而类中又声明了次构造函数，所以不会自动生成主构造函数class User &#123;    // 由于在构造函数中一定会对两个成员变量进行赋值    // 所以在声明时可以省略赋予初始值    private var name: String    private var age: Int    // 使用 this 调用两个参数的构造函数    constructor(name: String) : this(name, 18)    // 给属性赋值    constructor(name: String, age: Int) &#123;        this.name = name        this.age = age    &#125;&#125;
 当一个类既有主构造函数又有次构造函数时，所有次构造函数必须直接或间接的调用主构造函数
 class User() &#123;    // 此时在主构造函数中未对两个成员变量进行赋值    // 所以在声明时必须赋予初始值，或者使用 ? 表示可为null    private var name: String? = null    private var age: Int? = null    // 使用 this 调用两个参数的构造函数    constructor(name: String) : this(name, 18)    // 给属性赋值    constructor(name: String, age: Int) : this() &#123;        this.name = name        this.age = age    &#125;&#125;
-继承Kotlin中的类默认是不可继承的，如果要使一个类可以被继承，需要在类名前添加open关键字
+继承Kotlin中的类默认是不可继承的，如果要使一个类可以被继承，需要在类名前添加open关键字，否则类和其中的方法都是final的，无法被继承
 open class User
 类的继承使用:符号，Kotlin中所有类默认继承Any类
 class IKun : Any()// 由于未显式声明任何主次构造函数的类，会自动生成一个无参的主构造函数// 所以上面的写法等同于class IKun() : Any()
@@ -5915,7 +5915,7 @@ interface IKun &#123;    fun sing()    fun dance()    fun rap()    fun basketbal
 class XiaoHeiZi : IKun &#123;    override fun sing() &#123;        println(&quot;我会唱&quot;)    &#125;    override fun dance() &#123;        println(&quot;我会跳&quot;)    &#125;    override fun rap() &#123;        println(&quot;我会rap&quot;)    &#125;    override fun basketball() &#123;        println(&quot;我会篮球&quot;)    &#125;&#125;
 调用接口中的方法
 val iKun: IKun = XiaoHeiZi()iKun.sing()iKun.dance()iKun.rap()iKun.basketball()
-Lambda表达式Lambda表达式的结构如下
+静态Lambda表达式Lambda表达式的结构如下
 &#123; 参数名1: 参数类型, 参数名2: 参数类型 -&gt; 函数体 &#125;// 例如val lambda = &#123; s1: String, s2: String -&gt;    println(&quot;$&#123;s1&#125;，我是练习时长两年半的个人练习生cxk&quot;)    println(&quot;$&#123;s2&#125;唱跳rap篮球&quot;)&#125;
 函数式接口函数式接口是指只包含一个抽象方法的接口，在Kotlin中，函数式接口使用fun interface关键字声明
 Java中的函数式接口使用@FunctionalInterface注解声明
@@ -18199,6 +18199,37 @@ binding.button1.setOnClickListener &#123;    Toast.makeText(this, &quot;按钮1&
       </categories>
       <tags>
         <tag>标签</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>kotlin标准函数</title>
+    <url>/2025/06/01/kotlin%E6%A0%87%E5%87%86%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[letlet的作用是对一个对象执行let中的操作，并返回指定对象
+基本使用let中的it表示当前对象，return@let表示let的返回值
+val str: String = &quot;Hello&quot;val strLen: Int = str.let &#123;    return@let it.length&#125;println(&quot;str length is $strLen&quot;)
+return@let可以省略，let会自动返回最后一行的表达式，即可写作
+val strLen: Int = str.let &#123;    it.length&#125;
+其实本质上还是高阶函数，所以亦可写为完全形式
+val func: (String) -&gt; Int = fun (it: String): Int &#123;    return it.length&#125;val strLen:Int = str.let(func)
+安全调用配合空安全使用，只有在对象不为null时才会执行let中的操作
+fun main() &#123;    val str: String? = &quot;Hello&quot;    // str不为null时执行let中的操作    str?.let &#123;        println(it)    &#125;&#125;
+链式调用let的返回值可以作为下一个函数的参数，实现链式调用
+val result: String = str    .let &#123; it.toUpperCase() &#125;    .let &#123; it.trim() &#125;println(result)
+run扩展函数形式run的作用是对一个对象执行run中的操作，并返回指定对象，与let的区别在于run中的this表示调用run函数的当前对象
+val str: String = &quot;Hello&quot;val len:Int = str.run &#123;     // 返回str长度    this.length&#125;
+非扩展函数形式run的非扩展函数形式是直接调用的，与run的扩展函数的区别在于run中的this代表的是当前类对象
+val str: String = &quot;Hello&quot;val len: Int = run &#123;    str.length&#125;
+withwith有两个参数，第一个参数可以是任意对象，第二个参数是一个函数，在第二个参数的函数代码块中，可以使用this代表第一个参数对象，并且返回任意类型的对象
+var textView = TextView(context)    textView = with(textView) &#123;    // 在with中，this代表textView    this.text = &quot;hello&quot;    this.textSize = 18f    // 返回textView    return@with this&#125;
+第二个参数的代码块中this可以省略，于是代码可以进一步简化，如下
+val textView = with(TextView(context)) &#123;    this.text = &quot;hello&quot;    this.textSize = 18f    this.setTextColor(Color.RED)    return@with this&#125;
+
+]]></content>
+      <categories>
+        <category>Kotlin</category>
+      </categories>
+      <tags>
+        <tag>Kotlin入门</tag>
       </tags>
   </entry>
 </search>
