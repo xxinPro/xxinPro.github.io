@@ -18223,6 +18223,12 @@ withwith有两个参数，第一个参数可以是任意对象，第二个参数
 var textView = TextView(context)    textView = with(textView) &#123;    // 在with中，this代表textView    this.text = &quot;hello&quot;    this.textSize = 18f    // 返回textView    return@with this&#125;
 第二个参数的代码块中this可以省略，于是代码可以进一步简化，如下
 val textView = with(TextView(context)) &#123;    this.text = &quot;hello&quot;    this.textSize = 18f    this.setTextColor(Color.RED)    return@with this&#125;
+apply感觉和with差不多，但是apply的返回值是当前对象，而with的返回值是函数的返回值，且with需要传入一个对象，而apply可以直接调用
+val textView = TextView(context).apply &#123;    this.text = &quot;hello&quot;    this.textSize = 18f    this.setTextColor(Color.RED)&#125;
+this同样可以省略
+val textView = TextView(context).apply &#123;    text = &quot;hello&quot;    textSize = 18f    setTextColor(Color.RED)&#125;
+also感觉和let差不多，但是also的返回值是调用它的对象，而let的返回值是函数参数的返回值；also一般用于执行附加操作
+val user = User(&quot;小明&quot;, 18).also &#123;    println(it)&#125;
 
 ]]></content>
       <categories>
