@@ -18229,7 +18229,12 @@ this同样可以省略
 val textView = TextView(context).apply &#123;    text = &quot;hello&quot;    textSize = 18f    setTextColor(Color.RED)&#125;
 also感觉和let差不多，但是also的返回值是调用它的对象，而let的返回值是函数参数的返回值；also一般用于执行附加操作
 val user = User(&quot;小明&quot;, 18).also &#123;    println(it)&#125;
-
+takeIf、takeUnlesstakeIf可以直接被其他对象调用，作为高阶函数，其参数是一个函数，当参数函数返回值为true时，返回调用takeIf的对象，否则返回null
+val user = User(&quot;小明&quot;, 18).takeIf &#123;    // lambda返回值为true时，takeIf返回user，否则返回null    it.age &gt; 18&#125;
+takeUnless与takeIf相反，当参数函数返回值为false时，返回调用takeUnless的对象，否则返回null
+val user = User(&quot;小明&quot;, 18).takeUnless &#123;    // lambda返回值为false时，takeUnless返回user，否则返回null    it.age &gt; 18&#125;
+repeat用于重复执行指定的代码块一定次数，没有返回值
+val str: String = &quot;Hello&quot;// 将输出3次Hellorepeat(3) &#123;    println(str)&#125;
 ]]></content>
       <categories>
         <category>Kotlin</category>
