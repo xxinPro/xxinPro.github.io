@@ -18195,10 +18195,10 @@ override fun onCreate(savedInstanceState: Bundle?) &#123;    super.onCreate(save
 binding.button1.setOnClickListener &#123;    Toast.makeText(this, &quot;按钮1&quot;, Toast.LENGTH_SHORT).show()&#125;binding.button2.setOnClickListener &#123;    Toast.makeText(this, &quot;按钮2&quot;, Toast.LENGTH_SHORT).show()&#125;
 ]]></content>
       <categories>
-        <category>分类</category>
+        <category>Android</category>
       </categories>
       <tags>
-        <tag>标签</tag>
+        <tag>Android开发手记</tag>
       </tags>
   </entry>
   <entry>
