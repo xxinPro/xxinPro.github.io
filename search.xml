@@ -18243,4 +18243,46 @@ val str: String = &quot;Hello&quot;// 将输出3次Hellorepeat(3) &#123;    prin
         <tag>Kotlin入门</tag>
       </tags>
   </entry>
+  <entry>
+    <title>字符串匹配</title>
+    <url>/2025/08/05/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/</url>
+    <content><![CDATA[暴力匹配算法暴力匹配算法的时间复杂度是O(n*m)，其中n是目标字符串的长度，m是要查找的字符串的长度
+// 字符串定义#define STACK_MAX_LENGTH 100typedef struct String &#123;    char ch[STACK_MAX_LENGTH];    int len;&#125; String;
+/** * 暴力匹配算法 * 寻找字符串位置，返回数组下标 * @param s 目标字符串 * @param t 要查找的字符串 * @return t在s中的数组下标 */int find(String s, String t) &#123;    // 代表s、t中当前正在对比的字符的指针    int i = 0, j = 0;    // 指针越界，循环结束    while (i &lt; s.len &amp;&amp; j &lt; t.len) &#123;        if (s.ch[i] == t.ch[j]) &#123;            // 字符匹配成功，指针后移            i++;            j++;        &#125; else &#123;            // 字符匹配失败，指针位置重置            i = i - j + 1;            j = 0;        &#125;    &#125;    // 匹配成功返回下标，匹配失败返回-1    if (j &gt;= t.len)        return i - j;    return -1;&#125;
+KMP算法KMP算法的时间复杂度是O(n+m)，其中n是目标字符串的长度，m是要查找的字符串的长度，KMP算法的核心是next数组
+int match_find(String s, String t, const int next[]) &#123;    // 代表s、t中当前正在对比的字符的指针    int i = 0, j = 0;    // 指针越界，循环结束    while (i &lt; s.len &amp;&amp; j &lt; t.len) &#123;        if (j == -1 || s.ch[i] == t.ch[j]) &#123;            // 字符匹配成功，指针后移            i++; j++;        &#125; else &#123;            // 字符匹配失败，指针位置根据next数组做出调整            j = next[j];        &#125;    &#125;    // 匹配成功返回下标，匹配失败返回-1    if (j &gt;= t.len)        return i - j;    return -1;&#125;
+next数组next数组手算
+例1
+
+a b a b a
+在如上字符串的next数组中：
+第一位元素为-1。第一位元素之前没有字符串，无法取前后缀
+第二位元素为0。第二位元素之前的字符串，前后缀皆为空集，没有相同前后缀
+第三位元素为0。第三位元素之前字符串的前缀为&#123;a&#125;，后缀为&#123;b&#125;，没有相同前后缀，从字符串第一位开始匹配（下标0）
+第四位元素为1。第四位元素之前字符串的前缀为&#123;a, ab&#125;，后缀为&#123;a, ba&#125;，最长相同前后缀为a，从字符串第二位开始匹配（下标1）
+第五位元素为2。第五位元素之前字符串的前缀为&#123;a, ab, aba&#125;，后缀为&#123;b, ab, bab&#125;，最长相同前后缀为ab，从字符串第三位开始匹配（下标2）
+其实就是在某个字符之前的所有字符串里，找开头和结尾相同的最长字符串的长度，这个长度可以作为当前字符的next值，当匹配失败时，就可以根据next值来调整指针位置，从而减少匹配次数
+
+例2
+
+a b a a b c
+在如上字符串的next数组中：
+第一位元素为-1。第一位元素之前没有字符串，无法取前后缀
+第二位元素为0。第二位元素之前的字符串，前后缀皆为空集，没有相同前后缀
+第三位元素为0。第三位元素之前字符串的前缀为&#123;a&#125;，后缀为&#123;b&#125;，没有相同前后缀，从字符串第一位开始匹配（下标0）
+第四位元素为1。第四位元素之前字符串的前缀为&#123;a, ab&#125;，后缀为&#123;a, ba&#125;，最长相同前后缀为a，从字符串第二位开始匹配（下标1）
+第五位元素为1。第五位元素之前字符串的前缀为&#123;a, ab, aba&#125;，后缀为&#123;a, aa, baa&#125;，最长相同前后缀为a，从字符串第二位开始匹配（下标1）
+第六位元素为2。第六位元素之前字符串的前缀为&#123;a, ab, aba, abaa&#125;，后缀为&#123;b, ab, aab, baab&#125;，最长相同前后缀为ab，从字符串第三位开始匹配（下标2）
+next数组计算next数组的计算过程可以看作模式串与自身的匹配过程，计算next数组的时间复杂度是O(m)，其中m是模式串的长度
+void get_next(String str, int next[]) &#123;    /*     * i、j是指向字符串的两个下标指针，示意如下     *     *    i     *    ↓     *  _ a b a a b c a b a     *  ↑     *  j     *     * i 代表当前要计算的值的下标位置     * j 代表next[i]的候选值     *     */    int i = 0, j= -1;    // next数组的0位元素无需计算    next[0] = -1;    printf(&quot;next[%d&quot;, next[0]);    // 循环 length-1 次，计算0位元素之后的后序元素值    while (i &lt; str.len - 1) &#123;        if (j == -1 || str.ch[i] == str.ch[j]) &#123;            /*             * 如果上下指针指示的字符相同，或者j指针位于起始位，             * 则两指针向后走，并记当前j下标为第i位的next值             */            i++; j++;            next[i] = j;            printf(&quot; %d&quot;, next[i]);        &#125; else &#123;            /*             * 如果上下指针指示的字符不同，则j回退             * 根据前面的匹配可以知道，next[j]之前的字符已经匹配成功，             * 所以可以直接将j回退到next[j]，而不需要一个一个字符的对比             */            j = next[j];        &#125;    &#125;    printf(&quot;]\n&quot;);&#125;
+nextval数组nextval是对next数组的优化
+void get_next(String str, int next[]) &#123;    /*     * i、j是指向字符串的两个下标指针，示意如下     *     *    i     *    ↓     *  _ a b a a b c a b a     *  ↑     *  j     *     * i 代表当前要计算的值的下标位置     * j 代表next[i]的候选值     *     */    int i = 0, j= -1;    // next数组的0位元素无需计算    next[0] = -1;    printf(&quot;next[%d&quot;, next[0]);    // 循环 length-1 次，计算0位元素之后的后序元素值    while (i &lt; str.len - 1) &#123;        if (j == -1 || str.ch[i] == str.ch[j]) &#123;            // 字符匹配成功，指针后移            i++; j++;            // 计算nextval数组            if (string.ch[i] == string.ch[j])                next[i] = next[j];            else                next[i] = j;            printf(&quot; %d&quot;, next[i]);        &#125; else &#123;            // 如果上下指针指示的字符不同，则j回退            j = next[j];        &#125;    &#125;    printf(&quot;]\n&quot;);&#125;
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构C语言</tag>
+      </tags>
+  </entry>
 </search>
