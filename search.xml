@@ -13148,8 +13148,8 @@ $ $
 
 定理二
 &nbsp;&nbsp;如果$z=f(x,y)$的偏导数$\frac{\partial z}{\partial x} $、$\frac{\partial z}{\partial y} $在点$(x,y)$连续，那么在该点可微分
-多元函数极值极值求法定理一
-&ensp;&ensp;设$z=f(x,y)$在点$(x_0,y_0)$有偏导数，且有极值，则有
+多元函数极值极值求法定理一（必要条件）
+&ensp;&ensp;设$z=f(x,y)$在点$(x_0,y_0)$存在偏导数，且有极值，则有
 
 $ $
 \begin{align*}
@@ -13159,7 +13159,7 @@ $ $
 $ $
 
 
-定理二
+定理二（充分条件）
 &ensp;&ensp;设$z=f(x,y)$在点$(x_0,y_0)$的某邻域内有一阶和二阶连续偏导数，又${f}’_x(x_0,y_0) = 0$，${f}’_y(x_0,y_0) = 0$，令
 
 $ $
@@ -18297,6 +18297,28 @@ next数组计算next数组的计算过程可以看作模式串与自身的匹配
 void get_next(String str, int next[]) &#123;    /*     * i、j是指向字符串的两个下标指针，示意如下     *     *    i     *    ↓     *  _ a b a a b c a b a     *  ↑     *  j     *     * i 代表当前要计算的值的下标位置     * j 代表next[i]的候选值     *     */    int i = 0, j= -1;    // next数组的0位元素无需计算    next[0] = -1;    printf(&quot;next[%d&quot;, next[0]);    // 循环 length-1 次，计算0位元素之后的后序元素值    while (i &lt; str.len - 1) &#123;        if (j == -1 || str.ch[i] == str.ch[j]) &#123;            /*             * 如果上下指针指示的字符相同，或者j指针位于起始位，             * 则两指针向后走，并记当前j下标为第i位的next值             */            i++; j++;            next[i] = j;            printf(&quot; %d&quot;, next[i]);        &#125; else &#123;            /*             * 如果上下指针指示的字符不同，则说明前后缀匹配失败，j回退至next[j]             * 根据前面的匹配可以知道，next[j]之前的字符前后缀已经匹配成功，             * 所以可以直接将j回退到next[j]，从next[j]开始继续进行前后缀匹配             */            j = next[j];        &#125;    &#125;    printf(&quot;]\n&quot;);&#125;
 nextval数组nextval是对next数组的优化
 void get_next(String str, int next[]) &#123;    int i = 0, j= -1;    // next数组的0位元素无需计算    next[0] = -1;    printf(&quot;next[%d&quot;, next[0]);    // 循环 length-1 次，计算0位元素之后的后序元素值    while (i &lt; str.len - 1) &#123;        if (j == -1 || str.ch[i] == str.ch[j]) &#123;            // 字符匹配成功，指针后移            i++; j++;            // 计算nextval数组            if (string.ch[i] == string.ch[j])                next[i] = next[j];            else                next[i] = j;            printf(&quot; %d&quot;, next[i]);        &#125; else &#123;            // 如果上下指针指示的字符不同，则j回退            j = next[j];        &#125;    &#125;    printf(&quot;]\n&quot;);&#125;
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图的结构</title>
+    <url>/2025/08/07/%E5%9B%BE%E7%9A%84%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[邻接矩阵法用一个一维数组存储图的顶点信息，用一个二维数组存储图的边信息。
+// 顶点最大个数#define MAX_LENGTH 100// 图的顶点，仅记录最基础的数据，顶点代号typedef char VertexType;// 图的边，仅记录最基础的数据，边的权值typedef int EdgeType;/* * 图的结构 * 包括顶点表和边表 * 以及顶点个数和边的条数 */typedef struct Graph &#123;    // 顶点表    VertexType vertices[MAX_LENGTH];    // 边表    EdgeType edges[MAX_LENGTH][MAX_LENGTH];    // 顶点个数和边的条数    int vernum, arcnum;&#125; Graph;
+邻接表法可以简单理解为，用一个一维数组存储图的所有顶点信息（顶点表），每个顶点结点中包含一个链式结构的边表，边表由依附于该顶点的所有边的边结点组成。
+顶点结点中包含了顶点的信息和指向第一条边的指针。边结点中包含了边的信息（边的权值）、边指向的顶点，和依附于同一个结点的下一条边的指针。
+// 顶点最大个数#define MAX_LENGTH 100// 图的顶点，仅记录最基础的数据，顶点代号typedef char VertexType;// 图的边，仅记录最基础的数据，边的权值typedef int EdgeType;// 边结点typedef struct EdgeNode &#123;    // 边结点数据    EdgeType edge_data;    // 该边指向的顶点，在顶点表中的下标位置    int vertex_index;    // 指向依附于同一个结点的下一条边    // 通过该指针形成了一个链式结构的边表    struct EdgeNode *next_edge_node;&#125; EdgeNode;// 顶点结点typedef struct VertexNode &#123;    // 顶点结点数据    VertexType vertex_data;    // 指向依附于该顶点的第一条边    EdgeNode *first_edge_node;&#125; VertexNode, VertexTable[MAX_LENGTH]; // 顶点结点和顶点表// 图结构typedef struct Graph &#123;    // 在此处成为邻接表    VertexTable table;    // 顶点个数和边的条数    int vernum, arcnum;&#125; Graph;
+十字链表法十字链表仅可存储有向图，用一个一维数组存储图的所有顶点信息（顶点表），每个顶点结点中包含两个链式结构的弧表（出弧和入弧），出弧由弧尾相同的弧结点组成，入弧由弧头相同的弧结点组成。
+顶点结点中包含了顶点的信息、第一条入弧的指针和第一条出弧的指针。弧结点中包含了弧的信息（弧的权值）、弧尾依附的顶点、弧头指向的顶点，和弧尾弧头相同的下一条弧的指针。
+// 顶点最大个数#define MAX_LENGTH 100// 图的顶点，仅记录最基础的数据，顶点代号typedef char VertexType;// 图的弧，仅记录最基础的数据，弧的权值typedef int EdgeType;// 弧结点typedef struct EdgeNode &#123;    // 弧结点数据    EdgeType edge_data;    // 弧尾依附的顶点在顶点表中的下标    int tail_vertex_index;    // 弧头指向的顶点在顶点表中的下标    int head_vertex_index;    // 指向弧尾相同的下一条弧，通过该指针形成出弧表    struct EdgeNode *tail_edge_node;    // 指向弧头相同的下一条弧，通过该指针形成入弧表    struct EdgeNode *head_edge_node;&#125; EdgeNode;// 顶点结点typedef struct VertexNode &#123;    // 顶点结点数据    VertexType vertex_data;    // 指向顶点的第一条入弧    EdgeNode *firstIn;    // 指向顶点的第一条出弧    EdgeNode *firstOut;&#125; VertexNode, VertexTable[MAX_LENGTH]; // 顶点结点和顶点表// 图结构typedef struct Graph &#123;    // 在此处成为十字链表    VertexTable table;    // 顶点个数和边的条数    int vernum, arcnum;&#125; Graph;
+邻接多重表十字链表仅可存储无向图，用一个一维数组存储图的所有顶点信息（顶点表），每个顶点结点中包含一个链式结构的边表，边表中边表结点的成分复杂，每个边结点中包含两个指针，指向两个顶点。
+顶点结点中包含了顶点的信息和指向第一条边的指针。边结点中包含了边的信息、边依附的第一个顶点、同样依附的第一个顶点的下一条边指针、边依附的第二个顶点，同样依附的第而个顶点的下一条边指针。
+// 顶点最大个数#define MAX_LENGTH 100// 图的顶点，仅记录最基础的数据，顶点代号typedef char VertexType;// 图的边，仅记录最基础的数据，边的权值typedef int EdgeType;// 边结点typedef struct EdgeNode &#123;    // 边结点数据    EdgeType edge_data;    // 边依附的第一个顶点，在顶点表中的下标    int i_vertex_index;    // 指向依附的第一个顶点的下一条边    struct EdgeNode *i_edge_node;    // 边依附的第二个顶点，在顶点表中的下标    int j_vertex_index;    // 指向依附的第二个顶点的下一条边    struct EdgeNode *j_edge_node;&#125; EdgeNode;// 顶点结点typedef struct VertexNode &#123;    // 顶点结点数据    VertexType vertex_data;    // 指向依附于该顶点的第一条边    EdgeNode *first_edge_node;&#125; VertexNode, VertexTable[MAX_LENGTH]; // 顶点结点和顶点表typedef struct Graph &#123;    // 在此处成为邻接多重表    VertexTable table;    // 顶点个数和边的条数    int vernum, arcnum;&#125; Graph;
 ]]></content>
       <categories>
         <category>数据结构</category>
