@@ -11307,7 +11307,23 @@ $(0,\pi)$
 常用不等式
 $ $
 \begin{align*}
-\sqrt{\frac{a^{2}+b^{2}}{2}} \geq \frac{a+b}{2} \geq \sqrt{a b} \geq \frac{2}{\frac{1}{a}+\frac{1}{b}}
+1+x \le e^x
+\end{align*}
+
+\begin{align*}
+2ab \le a^2+b^2
+\end{align*}
+
+\begin{align*}
+\frac{x}{1+x} \lt \ln (1+x) \lt x \space (x \gt 0)
+\end{align*}
+
+\begin{align*}
+\ln ^\alpha n \lt n^\beta  \lt a^n \space (\alpha \gt 0,\beta \gt 0,a\gt 1)
+\end{align*}
+
+\begin{align*}
+\frac{2}{\frac{1}{a}+\frac{1}{b}} \le \sqrt{a b} \le \frac{a+b}{2} \le \sqrt{\frac{a^{2}+b^{2}}{2}}
 \end{align*}
 $ $
 
