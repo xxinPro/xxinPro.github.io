@@ -12311,7 +12311,7 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
   \text{发散}  & p \ge 1
   \end{cases} \\
 
-  &\int_{0}^{+\infty } \frac{1}{x^p} \mathrm{d} x \begin{cases}
+  &\int_{1}^{+\infty } \frac{1}{x^p} \mathrm{d} x \begin{cases}
   \text{收敛}  & p \gt 1 \\
   \text{发散}  & p \le 1
   \end{cases}
@@ -12323,7 +12323,7 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
   \text{发散}  & p \ge 1
   \end{cases} \\
 
-  &\int_{0}^{+\infty } \frac{\ln x}{x^p} \mathrm{d} x \begin{cases}
+  &\int_{1}^{+\infty } \frac{\ln x}{x^p} \mathrm{d} x \begin{cases}
   \text{收敛}  & p \gt 1 \\
   \text{发散}  & 0 \lt p \le 1
   \end{cases}
