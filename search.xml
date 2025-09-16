@@ -12389,11 +12389,11 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
   $ $
 
 
-如果曲线$y_1=f_1(x)$由参数方程$\begin{cases} x=\varphi(t) \\ y_1=\psi(t)\end{cases}$（$\alpha \le t \le \beta$）给出，那么$y_1$与$x$轴所围成的平面图形的面积为
+如果曲线$y=f(x)$由参数方程$\begin{cases} x=\varphi(t) \\ y=\psi(t)\end{cases}$（$\alpha \le t \le \beta$）给出，那么$y$与$x$轴所围成的平面图形的面积为
 
   $ $
   \begin{align*}
-  S_1=\int_{\alpha}^{\beta} \left | \psi (t)\right | \mathrm{d} [\varphi (t)]
+  S=\int_{\alpha}^{\beta} \left | \psi (t)\right | \mathrm{d} [\varphi (t)]
   \end{align*}
   $ $
 
