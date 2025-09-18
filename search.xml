@@ -12600,8 +12600,8 @@ $ $
 可降阶的高阶微分方程$y^{(n)}=f(x)$型&ensp;&ensp;两边一直积分就行
 $y’’=f(x,y’)$型&ensp;&ensp;方程中隐式包含$y$，若求通解，设$y’=p$ （$p=p(x)$），那么$y’’=\frac {\mathrm{d}p}{\mathrm{d}x}=p’$，原方程可化为关于$x$、$p$的一阶微分方程$p’=f(x,p)$
 $y’’=f(y,y’)$型&ensp;&ensp;方程中隐式包含$x$，若求通解，设$y’=p$ （$p=p(y)$），那么$y’’=\frac {\mathrm{d}p}{\mathrm{d}x}=\frac{\mathrm{d}p}{\mathrm{d}y} \cdot \frac{\mathrm{d}y}{\mathrm{d}x}=p\frac {\mathrm{d}p}{\mathrm{d}y}$，原方程可化为关于$y$、$p$的一阶微分方程$p\frac {\mathrm{d}p}{\mathrm{d}y}=f(y,p)$
-高阶线性微分方程性质&ensp;&ensp;有二阶常系数非齐次线性微分方程$ $\begin{align} \label {eq26}  y’’+P(x)y’+Q(x) = f(x)\end{align}$ $
-&ensp;&ensp;当$f(x) \equiv 0$时，有二阶常系数齐次线性微分方程$ $\begin{align} \label {eq27}  y’’+P(x)y’+Q(x) = 0\end{align}$ $
+高阶线性微分方程性质&ensp;&ensp;二阶非齐次线性微分方程$ $\begin{align} \label {eq26}  y’’+P(x)y’+Q(x) = f(x)\end{align}$ $
+&ensp;&ensp;当$f(x) \equiv 0$时，有二阶齐次线性微分方程$ $\begin{align} \label {eq27}  y’’+P(x)y’+Q(x) = 0\end{align}$ $
 性质1&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$为齐次方程$\eqref {eq27}$的两个线性无关解，则$y=C_1 \varphi_1(x) + C_2 \varphi_2(x)$为齐次方程$\eqref {eq27}$的通解
 性质2&ensp;&ensp;若$\varphi(x)$是非齐次方程$\eqref {eq26}$的一个特解，$\psi (x)$为齐次方程$\eqref {eq27}$的通解，则$y=\varphi(x)+\psi (x)$为非齐次方程$\eqref {eq26}$的通解
 性质3&ensp;&ensp;若$\varphi_1(x)$、$\varphi_2(x)$为非齐次方程$\eqref {eq26}$的特解，则$y=\varphi_2(x)-\varphi_1(x)$为齐次方程$\eqref {eq27}$的解
@@ -12664,6 +12664,69 @@ y=e^{\alpha x}(C_1\cos {\beta x}+C_2\sin {\beta x})
 $ $
 
 
+n阶常系数齐次线性微分方程有特征根，写微分方程解
+
+若 $ r $ 为特征方程的单实根
+
+
+$ $
+\begin{align*}
+e^{rx} \text{为微分方程解}
+\end{align*}
+$ $
+
+
+
+若 $ r $ 为特征方程的 $ k $ 重实根
+
+
+$ $
+\begin{align*}
+\left ( C_1 + C_2x+ C_3x^2 + \cdots + C_kx^{k-1} \right )e^{rx} \text{为微分方程的解}
+\end{align*}
+$ $
+
+
+
+若 $ r=\alpha \pm \beta i $ 为特征方程的单共轭复根
+
+
+$ $
+\begin{align*}
+e^{\alpha x}(C_1\cos {\beta x}+C_2\sin {\beta x}) \text{为微分方程的解}
+\end{align*}
+$ $
+
+
+
+若 $ r=\alpha \pm \beta i $ 为特征方程的二重共轭复根
+
+
+$ $
+\begin{align*}
+e^{\alpha x}[(C_1 + C_2x)\cos {\beta x}+(C_3 + C_4x)\sin {\beta x}] \text{为微分方程的解}
+\end{align*}
+$ $
+
+
+
+有微分方程解，写特征根
+
+如果微分方程的解中含 $ e^{rx} $
+
+$ r $ 至少为特征方程的单实根
+
+如果微分方程的解中含 $ x^{k-1}e^{rx} $
+
+$ r $ 至少为特征方程的 $ k $ 重实根
+
+如果微分方程的解中含 $ e^{\alpha x}\cos {\beta x} $ 或 $ e^{\alpha x}\sin {\beta x} $
+
+$ r=\alpha \pm \beta i $ 至少为特征方程的单共轭复根
+
+如果微分方程的解中含 $ xe^{\alpha x}\cos {\beta x} $ 或 $ xe^{\alpha x}\sin {\beta x} $
+
+$ r=\alpha \pm \beta i $ 至少为特征方程的二重共轭复根
 常系数非齐次线性微分方程&ensp;&ensp;形如$ \eqref {eq38} $称为常系数非齐次线性微分方程，其中$p$、$q$为常数
 
 $ $
