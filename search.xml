@@ -13284,7 +13284,7 @@ $ $
 
 $ $
 \begin{align*}
-L(x,y)=f(x,y)+\lambda \varphi (x,y)
+L(x,y,\lambda)=f(x,y)+\lambda \varphi (x,y)
 \end{align*}
 $ $
 
@@ -13294,9 +13294,9 @@ $ $
 $ $
 \begin{align*}
 \begin{cases}
-  {f}'_x(x,y) + \lambda {\varphi}'_x(x,y) = 0 \\  
-  {f}'_y(x,y) + \lambda {\varphi}'_y(x,y) = 0 \\
-  \varphi(x,y) = 0
+  L'_x={f}'_x(x,y) + \lambda {\varphi}'_x(x,y) = 0 \\  
+  L'_y={f}'_y(x,y) + \lambda {\varphi}'_y(x,y) = 0 \\
+  L'_\lambda = \varphi(x,y) = 0
 \end{cases}
 \end{align*}
 $ $
@@ -13307,7 +13307,7 @@ $ $
 
 $ $
 \begin{align*}
-L(x,y,z,t)=f(x,y,z,t)+\lambda \varphi (x,y,z,t)+\mu \psi (x,y,z,t)
+L(x,y,z,t,\lambda,\mu)=f(x,y,z,t)+\lambda \varphi (x,y,z,t)+\mu \psi (x,y,z,t)
 \end{align*}
 $ $
 
