@@ -15319,7 +15319,7 @@ $ $
 &ensp;&ensp;定理1：对于上述方程组$Ax=b$
 
 无解的充分必要条件是$R(A) \lt R(\overline{A})$
-有惟一解的充分必要条件是$R(A)=R(\overline{A})=n$
+有唯一解的充分必要条件是$R(A)=R(\overline{A})=n$
 有无限多解的充分必要条件是$R(A)=R(\overline{A}) \lt n$
 
 &ensp;&ensp;定理2：$n$元齐次线性方程组$Ax=0$有非零解的充分必要条件是$R(A) \lt n$
