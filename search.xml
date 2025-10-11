@@ -15185,27 +15185,12 @@ k_1a_1+k_2a_2+\cdots+k_ma_m=0
 \end{align*}
 $ $
 
-则称向量组$A$是线性相关的，否则称它线性无关
 
-&ensp;&ensp;如果向量组$A:a_1,a_2,\cdots,a_m$线性相关，那么在向量$A$中至少有一个向量能由其余$m-1$个向量线性表示，这是因为有不全为$0$的数$k_1,k_2,\cdots,k_m$，使$k_1a_1+k_2a_2+\cdots+k_ma_m=0$，假设$k_1 \ne 0$，那么有
+则称向量组$A$是线性相关的，否则称线性无关。如果向量组$A$线性相关，那么在$A$中至少有一个向量能由其余$m-1$个向量线性表示
 
-$ $
-\begin{align*}
-a_1=\frac {-1}{k_1}(k_2a_2+\cdots+k_ma_m)
-\end{align*}
-$ $
+&ensp;&ensp;同样，如果向量组$A$中某个向量能由其余$m-1$个向量线性表示，即有不全为零的数$\lambda_1,\cdots,\lambda_{m-1}$，使$a_m=\lambda_1a_1+\cdots+\lambda_{m-1}a_{m-1}$，则称向量组$A$是线性相关的
 
-
-即$a_1$能由$a_2,\cdots,a_m$线性表示&ensp;&ensp;同样，如果向量组$A:a_1,\cdots,a_m$中某个向量能由其余$m-1$个向量线性表示，即有$\lambda_1,\cdots,\lambda_{m-1}$，使$a_m=\lambda_1a_1+\cdots+\lambda_{m-1}a_{m-1}$，于是有
-
-$ $
-\begin{align*}
-\lambda_1a_1+\lambda_2a_2+\cdots+\lambda_{m-1}a_{m-1}+(-1)a_m=0
-\end{align*}
-$ $
-
-
-因为$\lambda_1,\lambda_2,\cdots,\lambda_{m-1},-1$这$m$个数不全为$0$，所以向量组$A$线性相关&ensp;&ensp;线性相关的向量组中，至少有一个向量是其余向量的线性组合，并称这个向量是多余的；在线性无关的向量组中，没有任何向量是其余向量的线性组合
+&ensp;&ensp;线性相关的向量组中，至少有一个向量是其余向量的线性组合；在线性无关的向量组中，没有任何向量是其余向量的线性组合
 线性相关性的判别&ensp;&ensp;向量组$A:a_1,a_2,\cdots,a_m$线性相关的充分必要条件是
 &ensp;&ensp;1.向量组$A$中至少有一个向量可由其余向量线性表示
 
