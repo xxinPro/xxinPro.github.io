@@ -14685,9 +14685,9 @@ $(A^{*})^{*}=|A|^{n-2}A$
 $A^{*}=\left | A\right |A^{-1}$
 $(kA)^{*}=k^{n-1}A^{*}$
 
-可逆矩阵&ensp;&ensp;对于$n$阶矩阵$A$,如果有一个$n$阶矩阵$B$，使$AB=BA=E$，则说矩阵$A$是可逆的，并把$B$称为$A$的逆矩阵，$A$的逆矩阵记作$A^{-1}$，即$B=A^{-1}$&ensp;&ensp;如果矩阵$A$是可逆的，那么$A$的逆矩阵是唯一的
-定理1&ensp;&ensp;若矩阵$A$可逆，则$|A| \ne 0$
-定理2&ensp;&ensp;若$|A| \ne 0$，则矩阵$A$可逆，且$A^{-1}=\frac {1}{|A|}A^{*}$（当$|A| = 0$时，$|A|$称为奇异矩阵，否则称非奇异矩阵）
+可逆矩阵&ensp;&ensp;对于 $n$ 阶矩阵 $A$, 如果有一个 $n$ 阶矩阵 $B$，使 $AB=BA=E$，则说矩阵 $A$ 是可逆的，并把 $B$ 称为 $A$ 的逆矩阵，$A$ 的逆矩阵记作 $A^{-1}$，即 $B=A^{-1}$&ensp;&ensp;如果矩阵 $A$ 是可逆的，那么 $A$ 的逆矩阵是唯一的
+定理1若矩阵 $A$ 可逆，则 $|A| \ne 0$&ensp;&ensp;当 $|A| \ne 0$ 时，$R(A)=n$，当 $|A| = 0$ 时，$R(A) \lt n$
+定理2若 $|A| \ne 0$，则矩阵 $A$ 可逆，且 $A^{-1}=\frac {1}{|A|}A^{*}$（当 $|A| = 0$ 时，$|A|$ 称为奇异矩阵，否则称非奇异矩阵）
 
 &ensp;&ensp;可逆矩阵满足以下运算规律
 
@@ -15016,7 +15016,7 @@ $R(A^T)=R(A)=R(A^T A)=R(A A^T)$
 若$A \sim B$，则$R(A) = R(B)$
 若$P$、$Q$可逆，则$R(PAQ)=R(PA)=R(AQ)=R(A)$
 $max\{R(A),R(B)\} \le R(A,B) \le R(A)+R(B)$
-$R(A+B) \le R(A)+R(B)$
+$R(A+B) \le R(A,B) \le R(A)+R(B)$
 $R(AB) \le min\{R(A),R(B)\}$
 若$A_{m \times n}B_{n \times l}=O$，则$R(A)+R(B) \le n$
 $R(A^{*})=\begin{cases}n，&amp;R(A)=n，\\1，&amp;R(A)=n-1，\\0，&amp;R(A)\lt n-1，\end{cases}$其中$A$为$n(n\ge 2)$阶方阵
