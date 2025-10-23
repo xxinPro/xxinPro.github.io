@@ -11519,11 +11519,11 @@ $ [Cu(x)]’ = Cu’(x)(C为常数) $
 $ [\frac {u(x)}{v(x)}]’ = \frac {u’(x)v(x) - u(x)v’(x)}{v^2(x)}(v(x)≠0) $
 $ [\frac {C}{v(x)}]’ = -\frac {Cv’(x)}{v^2(x)}(v(x)≠0,C为常数) $
 
-反函数求导法则&ensp;&ensp;设$y=f(x)$在区间$I_x$内单调、可导且$f’(x) \ne 0$，则它的反函数$x=f^{-1}(y)$在$I_y=f(I_x)$内也可导，且
+反函数求导法则&ensp;&ensp;设 $y=f(x)$ 在某区间内可导且 $f’(x) \ne 0$，则它的反函数 $x=\varphi (y)$ 在该区间内也可导，且
 
 $ $
 \begin{align*}
-[f^{-1}(y)]'=\frac{1}{f'(x)}
+[\varphi (y)]'=\frac{1}{f'(x)}
 \end{align*}
 $ $
 
@@ -11532,7 +11532,7 @@ $ $
 
 $ $
 \begin{align*}
-\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{1}{\frac{\mathrm{d}x}{\mathrm{d}y} } 
+\frac{\mathrm{d}x}{\mathrm{d}y} = \frac{1}{\frac{\mathrm{d}y}{\mathrm{d}x} } 
 \end{align*}
 $ $
 
@@ -11541,7 +11541,17 @@ $ $
 
 $ $
 \begin{align*}
-[f^{-1}(y)]''=-\frac{f''(x)}{[f'(x)]^3} 
+[\varphi(y)]''=-\frac{f''(x)}{[f'(x)]^3} 
+\end{align*}
+$ $
+
+
+&ensp;&ensp;因为
+
+$ $
+\begin{align*}
+\frac{\mathrm{d}^2 x}{\mathrm{d} y^2} = & \frac{\mathrm{d} \left (\frac{1}{\frac{\mathrm{d}y }{\mathrm{d} x} } \right )}{\mathrm{d} y} \dot{}  \frac{1}{\frac{\mathrm{d}y}{\mathrm{d}x} } \\
+ = & -\frac{\frac{\mathrm{d}^2 y}{\mathrm{d} x^2}}{\left(\frac{\mathrm{d} y}{\mathrm{d} x}\right)^3} 
 \end{align*}
 $ $
 

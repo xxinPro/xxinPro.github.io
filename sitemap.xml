@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.xxin.xyz/2021/12/30/%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E5%AE%9A%E7%90%861/</loc>
+    
+    <lastmod>2025-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xxin.xyz/2023/10/01/%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E5%AE%9A%E7%90%866/</loc>
     
     <lastmod>2025-10-20</lastmod>
@@ -32,15 +41,6 @@
     <loc>https://blog.xxin.xyz/2023/09/04/%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E5%AE%9A%E7%90%863/</loc>
     
     <lastmod>2025-09-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xxin.xyz/2021/12/30/%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E5%AE%9A%E7%90%861/</loc>
-    
-    <lastmod>2025-09-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
