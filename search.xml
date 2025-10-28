@@ -12395,20 +12395,19 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
 
 
 &ensp;&ensp;直角坐标与极坐标的对应关系
-  $ $
-  \begin{align*}
-  x=r(\theta )\cos \theta \\
-  y=r(\theta )\sin \theta 
-  \end{align*}
-  $ $
+$ $
+\begin{align*}
+x=r(\theta )\cos \theta \\
+y=r(\theta )\sin \theta 
+\end{align*}
+$ $
 
 &ensp;&ensp;扇形面积公式
-  $ $
-  \begin{align*}
-  S_{\text{扇}}=\frac{1}{2}\theta r^2 \space \left ( \theta 为圆心角，r为半径 \right ) 
-  \end{align*}
-  $ $
-
+$ $
+\begin{align*}
+S_{\text{扇}}=\frac{1}{2}\theta r^2 \space \left ( \theta 为圆心角，r为半径 \right ) 
+\end{align*}
+$ $
 
 
 旋转体体积
