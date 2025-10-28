@@ -12402,6 +12402,14 @@ $\Gamma (\frac{1}{2} ) = \sqrt[]{\pi} $
   \end{align*}
   $ $
 
+&ensp;&ensp;扇形面积公式
+  $ $
+  \begin{align*}
+  S_{\text{扇}}=\frac{1}{2}\theta r^2 \space \left ( \theta 为圆心角，r为半径 \right ) 
+  \end{align*}
+  $ $
+
+
 
 旋转体体积
 &ensp;&ensp;曲线$y=f(x)$与$x=a$、$x=b$及$x$轴围成的平面绕$x$轴旋转一周所得旋转体的体积为
