@@ -5753,6 +5753,8 @@ interface IKun &#123;    fun sing()    fun dance()    fun rap()    fun basketbal
 class XiaoHeiZi : IKun &#123;    override fun sing() &#123;        println(&quot;我会唱&quot;)    &#125;    override fun dance() &#123;        println(&quot;我会跳&quot;)    &#125;    override fun rap() &#123;        println(&quot;我会rap&quot;)    &#125;    override fun basketball() &#123;        println(&quot;我会篮球&quot;)    &#125;&#125;
 调用接口中的方法
 val iKun: IKun = XiaoHeiZi()iKun.sing()iKun.dance()iKun.rap()iKun.basketball()
+伴生对象Kotlin中没有static关键字，伴生对象类似于Java中的静态，使用companion object声明伴生对象
+class User &#123;    companion object &#123;        const val TYPE_ADMIN = 1        const val TYPE_GUEST = 2    &#125;&#125;// 调用伴生对象中的成员变量val adminType = User.TYPE_ADMINval guestType = User.TYPE_GUEST
 集合List创建只读List使用listOf()函数。在kotlin中，List是只读的创建可变MutableList， 使用mutableListOf()函数。在kotlin中，MutableList是List的子接口，可以进行增删改操作
 val mutableList: MutableList&lt;String&gt; = mutableListOf(&quot;a&quot;, &quot;b&quot;)val list: List&lt;String&gt; = listOf(&quot;a&quot;, &quot;b&quot;)
 获取list中的第一个或最后一个元素，分别使用.first()和.last()函数。不过.first()和.last()不是List特有的函数，而是kotlin.collections包中定义的扩展函数，适用于所有实现Collection的类
