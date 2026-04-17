@@ -18491,7 +18491,7 @@ ResponseBody的数据流只能被消费一次，若需多次读取，可用respo
 public class LoggingInterceptor implements Interceptor &#123;    private static final String TAG = LoggingInterceptor.class.getSimpleName();    @NonNull    @Override    public Response intercept(@NonNull Chain chain) throws IOException &#123;        Request request = chain.request();                // 记录请求发送之前的时间        long startTime = System.nanoTime();                // 把请求递交给下一责任链，并拿到下一责任链返回的响应        Response response = chain.proceed(request);                // 计算请求耗时，输出        long duration = System.nanoTime() - startTime;        LogUtil.d(TAG, &quot;请求耗时: &quot; + duration);                // 响应体只能读取一次，使用peekBody获取副本避免影响后续处理        ResponseBody peekBody = response.peekBody(Long.MAX_VALUE);                // 输出Body        LogUtil.d(TAG, &quot;Body: &quot; + peekBody.string());                // 把响应返回给责任链中上个拦截器        return response;    &#125;&#125;
 添加拦截器到OkHttpClient中
 OkHttpClient okHttpClient = new OkHttpClient.Builder()        .addInterceptor(new HeaderInterceptor())        .addInterceptor(new LoggingIntercepter())        .build();
-网络拦截器RetrofitRetrofit本身不执行网络请求，只负责封装请求和解析结果，真正的网络通信由OkHttp负责
+网络拦截器VolleyRetrofitRetrofit本身不执行网络请求，只负责封装请求和解析结果，真正的网络通信由OkHttp负责
 发送get请求先根据API返回的json数据结构
 ]]></content>
       <categories>
