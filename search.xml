@@ -18503,7 +18503,8 @@ public class TimingEventListener extends EventListener &#123;    private static 
 添加事件监听器到OkHttpClient中，有如下两种方法
 // 全局单一实例，所有 Call 共享OkHttpClient okHttpClient = new OkHttpClient.Builder()        .eventListenerFactory(new EventListener.Factory() &#123;            @NonNull            @Override            public EventListener create(@NonNull Call call) &#123;                return new TimingEventListener();            &#125;        &#125;)        .build();// 每个 Call 一个新实例OkHttpClient okHttpClient = new OkHttpClient.Builder()        .eventListener(new TimingEventListener())        .build();
 参考：OkHttp拦截器OkHttp事件监听器
-VolleyRequestQueue可以用一个单例类来管理，后续需要发送网络请求时，直接从单例类中获取RequestQueue对象即可，如下代码创建RequestQueue对象
+Volley请求器Volley适合数据量小但请求频繁的场景，它把响应全部存在内存里，处理小块数据速度很快，但是也因此不适合上传、下载大文件
+Volley发送请求需要创建一个RequestQueue请求器对象，该对象可以用一个单例类来管理，后续需要发送网络请求时，直接从单例类中获取RequestQueue对象即可，如下代码创建请求器对象
 RequestQueue requestQueue = Volley.newRequestQueue(ApplicationHolder.getInstance().getApplication());
 发送get请求使用StringRequest发送的请求，在请求成功的情况下，直接返回字符串结果，失败的情况下返回一个VolleyError对象
 创建Volley的Request对象时，需要传入请求方法、请求地址、请求成功回调和失败的回调
@@ -18519,10 +18520,100 @@ String url = &quot;https://www.httpbin.org/post&quot;;StringRequest stringReques
 String url = &quot;https://www.httpbin.org/post&quot;;StringRequest stringRequest = new StringRequest(Request.Method.POST, url,        new Response.Listener&lt;String&gt;() &#123;            @Override            public void onResponse(String response) &#123;                LogUtil.d(TAG, &quot;response: &quot; + response);            &#125;        &#125;,        new Response.ErrorListener() &#123;            @Override            public void onErrorResponse(VolleyError error) &#123;                LogUtil.d(TAG, &quot;error: &quot; + error.getMessage());            &#125;        &#125;) &#123;        @Override    public byte[] getBody() throws AuthFailureError &#123;        String json = &quot;&#123; \&quot;email\&quot;: \&quot;x@xxin.xyz\&quot;, \&quot;password\&quot;: \&quot;123456\&quot;&#125;&quot;;        return json.getBytes();    &#125;        @Override    public Map&lt;String, String&gt; getHeaders() throws AuthFailureError &#123;        Map&lt;String, String&gt; headers = new HashMap&lt;&gt;();        headers.put(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;);        return headers;    &#125;&#125;;
 如果使用JsonObjectRequest对象，需要将json数据转换为JSONObject对象
 String url = &quot;https://www.httpbin.org/post&quot;;String json = &quot;&#123; \&quot;email\&quot;: \&quot;x@xxin.xyz\&quot;, \&quot;password\&quot;: \&quot;123456\&quot;&#125;&quot;;JSONObject jsonObject;try &#123;    jsonObject = new JSONObject(json);&#125; catch (JSONException e) &#123;    throw new RuntimeException(e);&#125;JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject,        new Response.Listener&lt;JSONObject&gt;() &#123;            @Override            public void onResponse(JSONObject response) &#123;                LogUtil.d(TAG, &quot;response: &quot; + response);            &#125;        &#125;,        new Response.ErrorListener() &#123;            @Override            public void onErrorResponse(VolleyError error) &#123;                LogUtil.d(TAG, &quot;error: &quot; + error.getMessage());            &#125;        &#125;);requestQueue.add(jsonObjectRequest);
-加载图片Volley加载图片，食之无味，弃之可惜，估计是我境界还没到那种高度，所以才用不到吧
+加载图片Volley加载图片，好处是请求结果拿到后，不用手动切到主线程，直接就可以加载到ImageView上
 String imgUrl = &quot;https://www.httpbin.org/image&quot;;ImageRequest imageRequest = new ImageRequest(imgUrl,        new Response.Listener&lt;Bitmap&gt;() &#123;            @Override            public void onResponse(Bitmap response) &#123;                binding.image.setImageBitmap(response);            &#125;        &#125;, 0, 0, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.RGB_565,        new Response.ErrorListener() &#123;            @Override            public void onErrorResponse(VolleyError error) &#123;                LogUtil.d(TAG, &quot;error: &quot; + error.getMessage());            &#125;        &#125;);requestQueue.add(imageRequest);
-RetrofitRetrofit本身不执行网络请求，只负责封装请求和解析结果，真正的网络通信由OkHttp负责
-发送get请求发送post请求]]></content>
+Retrofit请求器Retrofit本身不执行网络请求，只负责封装请求和解析结果，真正的网络通信由OkHttp负责
+如下代码，创建Retrofit请求器对象，其中
+
+baseUrl为接口的基础地址，必须以/结尾，后续发送请求添加的路径会拼接在基础地址后面
+addConverterFactory为添加Gson转换工厂，用于将json数据转换为Java对象
+
+Retrofit retrofit = new Retrofit.Builder()        .baseUrl(&quot;https://m1.apifoxmock.com/m1/8092681-7849123-default/&quot;)        .addConverterFactory(GsonConverterFactory.create())        .build();
+发送get请求首先根据接口返回的json数据，创建一个用于解析结果的类，假设创建了GetResponseBean类，然后创建一个接口函数，用于发送get请求，如下代码
+public interface RequestTestService &#123;    // get/common 会拼接在 baseUrl 后面    @GET(&quot;get/common&quot;)    Call&lt;GetResponseBean&gt; getTest();&#125;
+通过Retrofit创建一个RequestTestService对象
+RequestTestService requestTestService = retrofit.create(RequestTestService.class);
+然后调用getTest()方法，将会返回一个用于发送请求的Call对象，和OkHttp的Call对象差不多，call.execute()发送同步请求，call.enqueue()发送异步请求
+Call&lt;GetResponseBean&gt; call = requestTestService.getTest();// 同步请求Response&lt;GetResponseBean&gt; response = call.execute();// 异步请求call.enqueue(new Callback&lt;&gt;() &#123;    @Override    public void onResponse(Call&lt;GetResponseBean&gt; call, Response&lt;GetResponseBean&gt; response) &#123;        if (response.isSuccessful()) &#123;            LogUtil.d(TAG, &quot;response: &quot; + response.body());        &#125; else &#123;            LogUtil.d(TAG, &quot;response: code&quot; + response.code());        &#125;    &#125;        @Override    public void onFailure(Call&lt;GetResponseBean&gt; call, Throwable t) &#123;        LogUtil.d(TAG, &quot;error: &quot; + t.getMessage());    &#125;&#125;);
+发送post请求自定义请求器Retrofit基于OkHttp，所以可以自定义OkHttp的请求器
+OkHttpClient okHttpClient = new OkHttpClient.Builder()        .build();Retrofit retrofit = new Retrofit.Builder()        .baseUrl(&quot;https://m1.apifoxmock.com/m1/8092681-7849123-default/&quot;)        .addConverterFactory(GsonConverterFactory.create())        .client(okHttpClient)        .build();
+注解指南请求方法注解
+
+
+
+注解
+描述
+示例
+
+
+
+
+@GET
+GET 请求（获取数据）
+@GET(“users/list”)
+
+
+@POST
+POST 请求（提交数据）
+@POST(“users/new”)
+
+
+@PUT
+PUT 请求（更新完整资源）
+@PUT(“users/{id}”)
+
+
+@DELETE
+DELETE 请求（删除资源）
+@DELETE(“users/{id}”)
+
+
+@PATCH
+PATCH 请求（部分更新）
+@PATCH(“users/{id}”)
+
+
+@HEAD
+只获取响应头
+@HEAD(“users/list”)
+
+
+@OPTIONS
+获取服务器支持的 HTTP 方法
+@OPTIONS(“users”)
+
+
+@HTTP
+自定义 HTTP 方法
+@HTTP(method = “SEARCH”, path = “search”)
+
+
+
+
+参数注解@Path@Path用于替换URL路径中的占位符如下代码，调用getRepo(&quot;repo-name&quot;)方法，将会返回baseUrl/users/repo-name路径的响应
+@GET(&quot;users/&#123;repo&#125;&quot;)Call&lt;Repo&gt; getRepo(@Path(&quot;repo&quot;) String repoName);
+@Query@Query用于添加URL查询参数如下代码，调用searchRepos(&quot;stars&quot;)方法，将会返回baseUrl/search/repositories?sort=stars路径的响应
+@GET(&quot;search/repositories&quot;)Call&lt;SearchResult&gt; searchRepos(@Query(&quot;sort&quot;) String sort);
+@QueryMap@QueryMap用于添加多个URL查询参数
+@GET(&quot;search/repositories&quot;)Call&lt;SearchResult&gt; searchRepos(@QueryMap Map&lt;String, String&gt; options);
+通过如下Map对象，调用时service.searchRepos(hashMap)方法，将会返回baseUrl/search/repositories?sort=stars路径的响应
+Map&lt;String, String&gt; hashMap = new HashMap&lt;&gt;();hashMap.put(&quot;sort&quot;, &quot;stars&quot;);
+@Field@Field用于添加表单数据，必须配合@FormUrlEncoded注解使用，如下代码，调用login(&quot;username&quot;, &quot;password&quot;)方法，会将username和password作为表单数据发送
+@FormUrlEncoded@POST(&quot;user/login&quot;)Call&lt;LoginResponse&gt; login(@Field(&quot;username&quot;) String username, @Field(&quot;password&quot;) String password);
+@FieldMap@FieldMap用于添加多个表单数据，也必须配合@FormUrlEncoded注解使用
+@FormUrlEncoded@POST(&quot;user/update&quot;)Call&lt;User&gt; updateUser(@FieldMap Map&lt;String, String&gt; fields);
+通过如下Map对象，调用updateUser(hashMap)方法，会将hashMap中的键值对作为表单数据发送
+Map&lt;String, String&gt; hashMap = new HashMap&lt;&gt;();hashMap.put(&quot;username&quot;, &quot;username&quot;);hashMap.put(&quot;password&quot;, &quot;password&quot;);
+@Body@Body用于提交json格式的请求体，必须配合@POST注解使用，如下代码，调用createUser(user)方法，会将user对象转换为json数据发送
+@POST(&quot;users/new&quot;)Call&lt;User&gt; createUser(@Body User user);
+@Header@Header用于添加请求头，如下代码，调用getUserInfo(&quot;token&quot;)方法，会将Authorization: token作为请求头发送
+@GET(&quot;user/info&quot;)Call&lt;User&gt; getUserInfo(@Header(&quot;Authorization&quot;) String token);
+@Headers@Headers添加多个固定请求头，如下代码，调用getUsers()方法，会将Accept: application/json和User-Agent: MyApp/1.0作为请求头发送
+@Headers(&#123;    &quot;Accept: application/json&quot;,    &quot;User-Agent: MyApp/1.0&quot;&#125;)@GET(&quot;users/list&quot;)Call&lt;List&lt;User&gt;&gt; getUsers();
+@HeaderMap添加多个动态请求头，如下代码，调用getUserInfo(hashMap)方法，会将hashMap中的键值对作为请求头发送@GET(&quot;user/info&quot;)Call&lt;User&gt; getUserInfo(@HeaderMap Map&lt;String, String&gt; headers);
+@Url@Url定义的URL，不包含baseUrl，如下代码直接向fullUrl发送请求
+@GETCall&lt;ResponseBody&gt; getDynamicUrl(@Url String fullUrl);
+]]></content>
       <categories>
         <category>Android</category>
       </categories>
