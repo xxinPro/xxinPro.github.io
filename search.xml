@@ -18535,7 +18535,11 @@ public interface RequestTestService &#123;    // get/common 会拼接在 baseUrl
 RequestTestService requestTestService = retrofit.create(RequestTestService.class);
 然后调用getTest()方法，将会返回一个用于发送请求的Call对象，和OkHttp的Call对象差不多，call.execute()发送同步请求，call.enqueue()发送异步请求
 Call&lt;GetResponseBean&gt; call = requestTestService.getTest();// 同步请求Response&lt;GetResponseBean&gt; response = call.execute();// 异步请求call.enqueue(new Callback&lt;&gt;() &#123;    @Override    public void onResponse(Call&lt;GetResponseBean&gt; call, Response&lt;GetResponseBean&gt; response) &#123;        if (response.isSuccessful()) &#123;            LogUtil.d(TAG, &quot;response: &quot; + response.body());        &#125; else &#123;            LogUtil.d(TAG, &quot;response: code&quot; + response.code());        &#125;    &#125;        @Override    public void onFailure(Call&lt;GetResponseBean&gt; call, Throwable t) &#123;        LogUtil.d(TAG, &quot;error: &quot; + t.getMessage());    &#125;&#125;);
-发送post请求自定义请求器Retrofit基于OkHttp，所以可以自定义OkHttp的请求器
+发送post请求根据要发送的json，创建LoginRequestBean类，然后根据接口返回的json创建LoginResponseBean类，然后创建一个接口函数，用于发送post请求，如下代码
+public interface RequestTestService &#123;    @POST(&quot;post/login&quot;)    Call&lt;LoginResponseBean&gt; login(@Body LoginRequestBean request);&#125;
+通过如下代码，拿到call对象，然后调用call.execute()发送同步请求，call.enqueue()发送异步请求
+RequestTestService requestTestService = retrofit.create(RequestTestService.class);LoginRequestBean loginRequest = new LoginRequestBean(&quot;x@xxin.xyz&quot;, &quot;123456&quot;);Call&lt;LoginResponseBean&gt; call = requestTestService.login(loginRequest);
+自定义请求器Retrofit基于OkHttp，所以可以自定义OkHttp的请求器
 OkHttpClient okHttpClient = new OkHttpClient.Builder()        .build();Retrofit retrofit = new Retrofit.Builder()        .baseUrl(&quot;https://m1.apifoxmock.com/m1/8092681-7849123-default/&quot;)        .addConverterFactory(GsonConverterFactory.create())        .client(okHttpClient)        .build();
 注解指南请求方法注解
 
