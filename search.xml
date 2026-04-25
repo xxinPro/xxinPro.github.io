@@ -18564,7 +18564,7 @@ String imgUrl = &quot;https://www.httpbin.org/image&quot;;ImageRequest imageRequ
 Retrofit请求器Retrofit本身不执行网络请求，只负责封装请求和解析结果，真正的网络通信由OkHttp负责。发送请求前，先创建Retrofit请求器对象，如下代码，其中
 
 baseUrl为接口的基础地址，必须以/结尾，后续发送请求添加的路径会拼接在基础地址后面
-addConverterFactory为添加Gson转换工厂，用于将json数据转换为Java对象
+addConverterFactory为添加json解析器，此处添加Gson作为解析器，用于将json数据转换为Java对象
 
 Retrofit retrofit = new Retrofit.Builder()        .baseUrl(&quot;https://m1.apifoxmock.com/m1/8092681-7849123-default/&quot;)        .addConverterFactory(GsonConverterFactory.create())        .build();
 发送get请求首先根据接口返回的json数据，创建一个用于解析结果的类，假设创建了GetResponseBean类，然后创建接口并添加用于发送get请求的函数，如下代码
@@ -18572,13 +18572,27 @@ public interface RequestTestService &#123;    // get/common 会拼接在 baseUrl
 通过Retrofit创建RequestTestService接口的对象
 RequestTestService requestTestService = retrofit.create(RequestTestService.class);
 然后调用getTest()方法，将会返回一个用于发送请求的Call对象，用法和OkHttp的Call对象差不多，call.execute()发送同步请求，call.enqueue()发送异步请求
-Call&lt;GetResponseBean&gt; call = requestTestService.getTest();// 同步请求Response&lt;GetResponseBean&gt; response = call.execute();// 异步请求call.enqueue(new Callback&lt;&gt;() &#123;    @Override    public void onResponse(Call&lt;GetResponseBean&gt; call, Response&lt;GetResponseBean&gt; response) &#123;        if (response.isSuccessful()) &#123;            LogUtil.d(TAG, &quot;response: &quot; + response.body());        &#125; else &#123;            LogUtil.d(TAG, &quot;response: code&quot; + response.code());        &#125;        response.close();    &#125;        @Override    public void onFailure(Call&lt;GetResponseBean&gt; call, Throwable t) &#123;        LogUtil.d(TAG, &quot;error: &quot; + t.getMessage());    &#125;&#125;);
-发送post请求根据要发送的json，创建LoginRequestBean类，然后根据接口返回的json创建LoginResponseBean类，接着创建创建接口，在接口中添加用于发送post请求的函数，如下代码
+Call&lt;GetResponseBean&gt; call = requestTestService.getTest();// 1.同步请求Response&lt;GetResponseBean&gt; response = call.execute();// 2.异步请求call.enqueue(new Callback&lt;&gt;() &#123;    @Override    public void onResponse(Call&lt;GetResponseBean&gt; call, Response&lt;GetResponseBean&gt; response) &#123; &#125;        @Override    public void onFailure(Call&lt;GetResponseBean&gt; call, Throwable t) &#123; &#125;&#125;);
+发送post请求根据要发送的json，创建对应Bean类，假设此处创建了LoginRequestBean类，然后根据接口返回的json创建LoginResponseBean类，接着创建创建接口，在接口中添加用于发送post请求的函数，如下代码
 public interface RequestTestService &#123;    @POST(&quot;post/login&quot;)    Call&lt;LoginResponseBean&gt; login(@Body LoginRequestBean loginRequestBean);&#125;
 通过如下代码，拿到call对象，然后调用call.execute()发送同步请求，call.enqueue()发送异步请求
 RequestTestService requestTestService = retrofit.create(RequestTestService.class);LoginRequestBean loginRequestBean = new LoginRequestBean(&quot;x@xxin.xyz&quot;, &quot;123456&quot;);Call&lt;LoginResponseBean&gt; call = requestTestService.login(loginRequestBean);
 自定义请求器Retrofit基于OkHttp，所以可以自定义OkHttp的请求器
-OkHttpClient okHttpClient = new OkHttpClient.Builder()        .build();Retrofit retrofit = new Retrofit.Builder()        .baseUrl(&quot;https://m1.apifoxmock.com/m1/8092681-7849123-default/&quot;)        .addConverterFactory(GsonConverterFactory.create())        .client(okHttpClient)        .build();
+OkHttpClient okHttpClient = new OkHttpClient.Builder()        .build();Retrofit retrofit = new Retrofit.Builder()        .baseUrl(&quot;https://m1.apifoxmock.com/m1/8092681-7849123-default/&quot;)        .addConverterFactory(GsonConverterFactory.create())        .client(okHttpClient)   // 自定义 OkHttp 请求器        .build();
+文件下载在Retrofit中文件下载方法通常标注@Streaming注解，并且使用Call&lt;ResponseBody&gt;作为返回值
+@Streaming注解是预防内存溢出的关键，用于指示框架不要将整个响应体加载到内存，而是以流式方式逐步读取
+public interface RequestTestService &#123;    @GET(&quot;/image&quot;)    @Streaming    Call&lt;ResponseBody&gt; downloadFile();&#125;
+剩下的操作和OkHttp下载文件一样，拿到ResponseBody对象后，调用responseBody.byteStream()方法获取输入流，然后把输入流写入文件即可
+RequestTestService requestTestService = retrofit.create(RequestTestService.class);Call&lt;ResponseBody&gt; responseBodyCall = requestTestService.downloadFile();
+文件上传单个文件上传在Retrofit中文件上传方法标注@Multipart注解，告诉Retrofit使用multipart/form-data编码，方法每个Part参数都需要标注@Part注解
+@Multipart必须和@POST或@PUT搭配使用，不能和@FormUrlEncoded同时使用
+public interface RequestTestService &#123;    @POST(&quot;post&quot;)    @Multipart    Call&lt;ResponseBody&gt; uploadFile(@Part MultipartBody.Part file);&#125;
+Retrofit上传文件时，必须把文件封装成MultipartBody.Part对象，创建方法如下
+RequestBody requestBody = RequestBody.create(file, MediaType.get(&quot;application/octet-stream&quot;));MultipartBody.Part part = MultipartBody.Part.createFormData(&quot;file&quot;, file.getName(), requestBody);Call&lt;ResponseBody&gt; responseBodyCall = requestTestService.uploadFile(part);
+多个文件上传如果需要上传多个文件，可以在接口方法中添加多个@Part参数
+public interface RequestTestService &#123;    @POST(&quot;post&quot;)    @Multipart    Call&lt;ResponseBody&gt; uploadFiles(@Part MultipartBody.Part file1, @Part MultipartBody.Part file2);&#125;
+在调用uploadFiles()方法时，需要创建多个MultipartBody.Part对象，如下代码
+RequestBody requestBody1 = RequestBody.create(file1, MediaType.get(&quot;application/octet-stream&quot;));MultipartBody.Part part1 = MultipartBody.Part.createFormData(&quot;file1&quot;, file1.getName(), requestBody1);RequestBody requestBody2 = RequestBody.create(file2, MediaType.get(&quot;application/octet-stream&quot;));MultipartBody.Part part2 = MultipartBody.Part.createFormData(&quot;file2&quot;, file2.getName(), requestBody2);Call&lt;ResponseBody&gt; responseBodyCall = requestTestService.uploadFiles(part1, part2);
 注解指南请求方法注解
 
 
@@ -18648,6 +18662,8 @@ Map&lt;String, String&gt; hashMap = new HashMap&lt;&gt;();hashMap.put(&quot;sort
 Map&lt;String, String&gt; hashMap = new HashMap&lt;&gt;();hashMap.put(&quot;username&quot;, &quot;username&quot;);hashMap.put(&quot;password&quot;, &quot;password&quot;);
 @Body@Body用于提交json格式的请求体，必须配合@POST注解使用，如下代码，调用createUser(user)方法，会将user对象转换为json数据发送
 @POST(&quot;users/new&quot;)Call&lt;User&gt; createUser(@Body User user);
+@Part@Part用于添加multipart/form-data格式的请求体，必须配合@Multipart注解使用，如下代码，调用uploadFile(file)方法，会将file作为文件数据发送
+@Multipart@POST(&quot;file/upload&quot;)Call&lt;UploadResponse&gt; uploadFile(@Part MultipartBody.Part file);
 @Header@Header用于添加请求头，如下代码，调用getUserInfo(&quot;token&quot;)方法，会将Authorization: token作为请求头发送
 @GET(&quot;user/info&quot;)Call&lt;User&gt; getUserInfo(@Header(&quot;Authorization&quot;) String token);
 @Headers@Headers添加多个固定请求头，如下代码，调用getUsers()方法，会将Accept: application/json和User-Agent: MyApp/1.0作为请求头发送
