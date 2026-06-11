@@ -18685,4 +18685,85 @@ Map&lt;String, String&gt; hashMap = new HashMap&lt;&gt;();hashMap.put(&quot;user
         <tag>Android开发手记</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Baseline Profile</title>
+    <url>/2026/06/08/Baseline-Profile/</url>
+    <content><![CDATA[新环境
+当前所使用的Android Studio的版本为Android Studio Panda 4 | 2025.3.4 Patch 1
+Gradle的版本为8.11.1
+AGP的版本为8.9.2
+
+新建模块在项目中创建一个Baseline Profile Generator模块，在窗口的参数中，只说一下Target application，和Use Gradle Managed Device
+其中，Target application是要生成的基准配置文件所对应的应用模块，Use Gradle Managed Device选中后，将模块设置为在自动管理的Android模拟器上运行基准配置文件生成器，使用真机的情况下，不需要勾选这个选项。完成后点击Finish
+项目变化完事之后，除了添加一个新模块之外，项目中还会发生如下的变化
+
+gradle目录下的libs.versions.toml配置文件
+项目根目录下的build.gradle
+项目根目录下的settings.gradle
+项目根目录下的gradle.properties
+app模块的build.gradle
+
+libs.versions.toml会增加如下配置
+[versions]uiautomator = &quot;2.3.0&quot;benchmarkMacroJunit4 = &quot;1.4.1&quot;baselineprofile = &quot;1.4.1&quot;profileinstaller = &quot;1.4.1&quot;[libraries]androidx-uiautomator = &#123; group = &quot;androidx.test.uiautomator&quot;, name = &quot;uiautomator&quot;, version.ref = &quot;uiautomator&quot; &#125;androidx-benchmark-macro-junit4 = &#123; group = &quot;androidx.benchmark&quot;, name = &quot;benchmark-macro-junit4&quot;, version.ref = &quot;benchmarkMacroJunit4&quot; &#125;androidx-profileinstaller = &#123; group = &quot;androidx.profileinstaller&quot;, name = &quot;profileinstaller&quot;, version.ref = &quot;profileinstaller&quot; &#125;[plugins]android-test = &#123; id = &quot;com.android.test&quot;, version.ref = &quot;agp&quot; &#125;baselineprofile = &#123; id = &quot;androidx.baselineprofile&quot;, version.ref = &quot;baselineprofile&quot; &#125;
+如果引入上面的配置，实际上相当于
+// librariesimplementation &#x27;androidx.test.uiautomator:uiautomator:2.3.0&#x27;implementation &#x27;androidx.benchmark:benchmark-macro-junit4:1.4.1&#x27;implementation &#x27;androidx.profileinstaller:profileinstaller:1.4.1&#x27;// pluginsplugins &#123;    id &#x27;com.android.test&#x27; version &#x27;8.9.2&#x27; apply false    id &#x27;androidx.baselineprofile&#x27; version &#x27;1.4.1&#x27; apply false&#125;
+project:build.gradle在项目根目录下的build.gradle文件中，会增加如下配置，声明了两个插件的版本，之后在app模块的build.gradle文件中再声明时无需注明版本号
+plugins &#123;    alias(libs.plugins.android.test) apply false    alias(libs.plugins.baselineprofile) apply false&#125;
+settings.gradle没什么好说的，增加了一个模块的引用
+include &#x27;:baselineprofile&#x27;
+gradle.properties在gradle.properties文件中，会增加如下配置，启用Gradle的配置缓存功能，以加快构建速度
+org.gradle.configuration-cache=true
+app:build.gradleapp模块的build.gradle文件中会增加如下配置，其中：
+
+baselineProfile project(&#39;:baselineprofile&#39;)依赖项，让Gradle知道应该从哪个模块获取已生成的基准配置文件
+profileinstaller依赖项，应用首次启动时，它会读取并安装打包在APK中的基准配置文件，告诉Android Runtime（ART）哪些代码路径需要提前编译（AOT）
+
+plugins &#123;    // 新增    alias(libs.plugins.baselineprofile)&#125;dependencies &#123;    // 新增    implementation libs.androidx.profileinstaller    baselineProfile project(&#x27;:baselineprofile&#x27;)&#125;
+Baseline Profile模块配置Baseline Profile Generator模块的build.gradle文件中，简单分析一下如下配置
+alias(libs.plugins.android.test)声明了这是一个测试模块
+plugins &#123;    alias(libs.plugins.android.test)    alias(libs.plugins.kotlin.android)    alias(libs.plugins.baselineprofile)&#125;
+targetProjectPath指定了要生成基准配置文件的目标应用模块，animationsDisabled则是自动关闭设备动画，保证测试结果稳定
+android &#123;    targetProjectPath = &quot;:app&quot;    testOptions &#123;        // 自动关闭设备动画，保证测试结果稳定。        animationsDisabled = true    &#125;&#125;
+在baselineProfile配置项中，启用useConnectedDevices选项，让生成器在连接的设备上运行测试，以收集基准配置文件数据
+baselineProfile &#123;    useConnectedDevices = true&#125;
+如下依赖项，其中：
+
+benchmark-macro-junit4是基准测试框架
+espresso-core和uiautomator是用于编写用户界面测试的库
+junit是用于编写单元测试的库
+
+dependencies &#123;    implementation libs.androidx.benchmark.macro.junit4    implementation libs.androidx.espresso.core    implementation libs.androidx.junit    implementation libs.androidx.uiautomator&#125;
+其他配置实际上，在有了上面的配置之后，项目就已经具备了生成基准配置文件的能力了，但是在生成之前，我们还需要对baselineprofile模块进行一些额外的配置
+在app模块的build.gradle文件中，增加如下配置，让启动热点代码尽可能位于DEX前部，减少启动时的随机I/O和页面加载时间，在较新的gradle版本中，这个配置项已经被默认启用
+baselineProfile &#123;    // 让启动热点代码尽可能位于 DEX 前部    dexLayoutOptimization = true&#125;
+编写测试用例BaselineProfileRule负责采集性能数据和Profile，并将其转换为基准配置文件格式，UIAutomator负责点击、滑动、长按、输入等用户界面交互操作
+@get:Ruleval rule = BaselineProfileRule()@Testfun generate() &#123;    rule.collect(        packageName = TARGET_PACKAGE,        includeInStartupProfile = true    ) &#123;        // 模拟按下 Home 键        pressHome()        // 启动 Activity        startActivityAndWait()        /*         * device 实际上是 UiDevice         * 等价于UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())         */                // 等待页面加载        device.waitForIdle()    &#125;&#125;
+查找text为 分类 的view并点击
+device.findObject(    By.text(&quot;分类&quot;))?.click()
+通过资源id匹配view并点击
+device.findObject(    By.res(TARGET_PACKAGE, &quot;btn_login&quot;))?.click()device.findObject(    By.res(&quot;$&#123;TARGET_PACKAGE&#125;:id/btn_login&quot;))?.click()
+RecyclerView滚动
+// 通过资源 id 匹配 recyclerViewval list = device.findObject(    By.res(        TARGET_PACKAGE,        &quot;rv_list&quot;    ))// 获取 recyclerView 的可见区域val rect = list.visibleBounds// 滑动 recyclerView 3 次device.swipe(    rect.centerX(),    rect.bottom - 100,    rect.centerX(),    rect.top + 100,    3)
+还有很多，用到的时候再查文档吧
+生成基准配置文件在旧的AGP版本中，执行如下命令（其中:baselineprofile是模块名），会在连接的设备上运行测试用例，收集性能数据，并生成基准配置文件
+./gradlew :baselineprofile:generateBaselineProfile
+但是AGP 8.2+以后，这个Task在app模块上了，所以执行如下命令
+./gradlew :app:generateBaselineProfile
+也有可能Task名字变了，执行如下命令查看一下指定的模块中有没有相应的Task
+./gradlew :baselineprofile:tasks --all
+打包生成基准配置文件之后，如果配置文件路径没在main目录下，需要将生成的基准配置文件复制到app模块的src/main/baseline-prof.txt路径下，之后可以通过如下命令将其打包到APK中
+./gradlew :app:assembleRelease
+参考：
+
+https://developer.android.com/topic/performance/baselineprofiles/overview
+https://codelabs.developers.google.com/android-baseline-profiles-improve
+
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android开发手记</tag>
+      </tags>
+  </entry>
 </search>
