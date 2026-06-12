@@ -5070,8 +5070,12 @@ junit是用于编写单元测试的库
 
 dependencies &#123;    implementation libs.androidx.benchmark.macro.junit4    implementation libs.androidx.espresso.core    implementation libs.androidx.junit    implementation libs.androidx.uiautomator&#125;
 其他配置实际上，在有了上面的配置之后，项目就已经具备了生成基准配置文件的能力了，但是在生成之前，我们还需要对baselineprofile模块进行一些额外的配置
-在app模块的build.gradle文件中，增加如下配置，让启动热点代码尽可能位于DEX前部，减少启动时的随机I/O和页面加载时间，在较新的gradle版本中，这个配置项已经被默认启用
-baselineProfile &#123;    // 让启动热点代码尽可能位于 DEX 前部    dexLayoutOptimization = true&#125;
+在app模块的build.gradle文件中，增加如下配置：
+
+dexLayoutOptimization让启动热点代码尽可能位于DEX前部，减少启动时的随机I/O和页面加载时间，在较新的gradle版本中，这个配置项已经被默认启用。
+automaticGenerationDuringBuild设置为false，避免在构建APK时自动采集Profile
+
+baselineProfile &#123;    // 让启动热点代码尽可能位于 DEX 前部    dexLayoutOptimization = true    // 构建 APK 时，不要自动采集 Profile    automaticGenerationDuringBuild = false&#125;
 编写关键路径采集BaselineProfileRule负责采集性能数据和Profile，并将其转换为基准配置文件格式，UIAutomator负责点击、滑动、长按、输入等用户界面交互操作
 @get:Ruleval rule = BaselineProfileRule()@Testfun generate() &#123;    rule.collect(        // 采集关键路径的目标包名        packageName = TARGET_PACKAGE,        // 最多采集多少轮        maxIterations = 15,        // 连续多少轮结果一致，认为采集稳定，停止采集        stableIterations = 3,        // 生成文件名前缀 jqTools-baseline-prof.txt        outputFilePrefix = &quot;jqTools&quot;,        // 是否生成 Startup Profile，即startup-prof.txt，告诉 ART 这些代码启动一定会执行，冷启动更快        includeInStartupProfile = true,        // Profile文件稳定性检查，为true时启动严格检查，要求baseline-prof文件完全一致        strictStability = false,        // 过滤导出的 Profile 条目，为 true 时保留，为 false 时忽略        filterPredicate = &#123;            // 例如，忽略以下类            it !in listOf(                &quot;android.app.ActivityThread\$AppBindData&quot;,                &quot;android.app.ActivityThread\$ProviderKey&quot;,            )        &#125;    ) &#123;        // 模拟按下 Home 键        pressHome()        // 启动 Activity        startActivityAndWait()        /*         * device 实际上是 UiDevice         * 等价于UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())         */                // 等待页面加载        device.waitForIdle()    &#125;&#125;
 查找text为 分类 的view并点击
