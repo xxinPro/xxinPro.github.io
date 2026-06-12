@@ -5090,6 +5090,7 @@ RecyclerView滚动
 编写性能测试在生成基准配置文件后，可以通过运行性能测试来验证其效果，在目标设备上自动运行app并监控其性能指标，如启动时间、内存使用情况
 MacrobenchmarkRule负责控制测试流程、统计性能指标、处理测试结果
 @get:Ruleval rule = MacrobenchmarkRule()/** * 关闭所有编译优化，执行性能测试 */@Testfun startupCompilationNone() =    benchmark(CompilationMode.None())/** * 强制使用 Baseline Profile */@Testfun startupCompilationBaselineProfiles() =    benchmark(CompilationMode.Partial(BaselineProfileMode.Require))/** * 启动性能测试 * @param compilationMode 优化方式 */private fun benchmark(compilationMode: CompilationMode) &#123;    // 重复执行性能测试，收集数据计算平均值    rule.measureRepeated(        packageName = TARGET_PACKAGE,            // 测试的应用包名        metrics = listOf(StartupTimingMetric()), // 统计启动时间        compilationMode = compilationMode,       // 优化方式        startupMode = StartupMode.COLD,          // 启动方式，冷启动、热启动等        iterations = 10,                         // 测试次数        setupBlock = &#123;                           // 每次测试前执行            pressHome()        &#125;,        measureBlock = &#123;                         // 自动化测试代码            startActivityAndWait()        &#125;    )&#125;
+执行性能测试时，注意将项目variants变体设置为benchmarkRelease，以确保测试的是优化后的版本
 打包生成基准配置文件之后，如果配置文件路径没在main目录下，需要将生成的基准配置文件复制到app模块的src/main/baseline-prof.txt路径下，之后可以通过如下命令将其打包到APK中
 ./gradlew :app:assembleRelease
 参考：
